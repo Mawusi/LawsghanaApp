@@ -133,7 +133,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-xs-offset-0 col-sm-12 col-sm-offset-0 col-md-12 col-md-offset-0 links">
                         
-                            <a href="/constitution/all_countries">Constitution</a>
+                            <a href="/constitution/all_countries">All Constitution</a>
                             <a href="/pre_1992_legislation">Pre 4th Republic Laws</a>
                             <a href="/post_1992_legislation">4th Republic Laws</a>
                             <a href="/judgement/Ghana">Case Laws</a>
