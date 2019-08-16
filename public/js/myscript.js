@@ -19,13 +19,13 @@ $(document).ready(function(){
   $('.tabPanedHide_expanded_view').hide();
 
   
-//   $( ".printLink" ).click(function() {
-//     $(".print-preview").printObject();
-//   });
-  
-  $('.printLink').click(function() {
-    window.print();
+  $( ".printLink" ).click(function() {
+    $(".print-preview").printObject();
   });
+
+//   $('.printLink').click(function() {
+//     window.print();
+//   });
 
 
     //TOGGLE ALL AMENDMENTS AND REGULATION UNDER AN ACT

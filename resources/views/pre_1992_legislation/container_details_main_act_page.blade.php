@@ -36,7 +36,8 @@
         
         <label>Print</label>
             <!--<a href=""><li style="list-style: none;">Whole Act</li></a>-->
-            <a href=""  class="printLink"><li>Current Selection</li></a>
+            <a href=""  class="btn btn-primary btn-sm printLink"><li>Current Selections</li></a>
+            <button type="button" class="btn btn-primary btn-sm"> Print</button>
         <br><br>
         
         <label>View</label>

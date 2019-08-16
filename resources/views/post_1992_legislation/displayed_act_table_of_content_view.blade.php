@@ -144,9 +144,15 @@
         <div id="contentTab" class="tab-pane fade">
             <div class="row">
                 <div class="col-md-7 table-wrapper-scroll-display" style="height: 600px;">
-                    <div id="display_preamble"></div>
-                    <div id="display_content"></div>
-                    <div id="display_view_all_section"></div>
+                    
+
+                    <div class="print-preview">
+                        <div id="display_content"></div>
+                        <div id="display_preamble"></div>
+                        <div id="display_view_all_section"></div>
+                    </div>
+                        
+                    
                 </div>
                 @include('post_1992_legislation.container_details_main_act_page')
             </div>   
