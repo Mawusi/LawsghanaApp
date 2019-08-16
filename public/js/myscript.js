@@ -1,0 +1,2060 @@
+//-------------------------------------------------------------------------------------------------------------------------
+
+// TOGGLE DISPLAY BETWEEN REGULATION PREAMBLE AND REGULATION CONTENT
+$(document).ready(function(){
+
+    var gsid = 0; 
+    var psid = 0, nsid = 0;
+
+  $('.tabPanedHide_amendments').hide();
+  $('.tabPanedHide_amendments_table').hide();
+  $('.tabPanedHide_amendments_content').hide();
+
+  $('.tabPanedHide_regulations').hide();
+  $('.tabPanedHide_regulations_table').hide();
+  $('.tabPanedHide_regulations_content').hide();
+
+  $('.tabPanedHide_acts_content').hide();
+
+  $('.tabPanedHide_expanded_view').hide();
+
+  
+//   $( ".printLink" ).click(function() {
+//     $(".print-preview").printObject();
+//   });
+  
+  $('.printLink').click(function() {
+    window.print();
+  });
+
+
+    //TOGGLE ALL AMENDMENTS AND REGULATION UNDER AN ACT
+    //For all amendments
+    function all_amendments_link_toggle() {
+        $('.tabPanedHide_regulations').hide();
+            $('.tabPanedHide_regulations_table').hide();
+            $('.tabPanedHide_regulations_content').hide();
+            $('.tabPanedHide_amendments_table').hide();
+            $('.tabPanedHide_amendments_content').hide();
+            $('.tabPanedHide_amendments').show();
+            $('#tabs a[href="#all_amendmentsTab"]').tab('show');
+    }
+
+    $(document).on('click','.all_amendments_link', function(e){
+        e.preventDefault();
+        all_amendments_link_toggle();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) { 
+            $("#all_amendments").html(this.responseText); 
+            $("#amend_datatable").DataTable();
+        }
+    xhr.send();
+    });
+   
+
+    //For all regulations
+   $('#all_regulations_link_toggle').click(function (e) {
+    e.preventDefault();
+        $('#tabs a[href="#all_regulationsTab"]').tab('show');
+        $('.tabPanedHide_amendments').hide();
+        $('.tabPanedHide_amendments_table').hide();
+        $('.tabPanedHide_amendments_content').hide();
+        $('.tabPanedHide_regulations').show();
+    });
+   $('.all_regulations_link').click(function(e){
+    e.preventDefault();
+    var xhr = new XMLHttpRequest();
+    var link = $(this).attr("href");
+    xhr.open("GET", link, true);
+    xhr.onreadystatechange = function receiveUpdate(e) {
+        $("#all_regulations").html(this.responseText);
+        $("#regulated_datatable").DataTable();  
+    }
+    xhr.send();
+    });
+
+
+
+    //TOGGLE FUNCTION FOR AMENDMENT AND REGULATION
+    //For a particular amendment...Toggle to table of content
+   function amended_act_toggle() {
+        $('#tabs a[href="#amended_table_of_Content_Tab"]').tab('show');
+        $('.tabPanedHide_amendments_table').show();
+   }
+   function act_content_link_toggle()
+    {
+    $('#tabs a[href="#contentTab"]').tab('show');
+    $('.tabPanedHide_acts_content').show();
+    }   
+    // For a particular amendment .....toggle to content
+   function amended_act_toggle_content() {
+    $('#tabs a[href="#amendmentcontentTab"]').tab('show');
+    $('.tabPanedHide_amendments_content').show();
+    }
+
+    //for regulation
+   function regulation_act_toggle() {
+    $('#tabs a[href="#regulated_table_of_Content_Tab"]').tab('show');
+    $('.tabPanedHide_regulations_table').show();
+
+    }
+
+   function regulation_act_toggle_content() {
+    $('#tabs a[href="#regulatedcontentTab"]').tab('show');
+    $('.tabPanedHide_regulations_content').show();
+    }
+
+
+    //for amendments under act
+   $(document).on('click','.amended_link', function(e){
+        e.preventDefault();
+        amended_act_toggle();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) { 
+            $("#single_preamble_amended_content").html(""); 
+            $("#single_amended_content").html("");
+            $("#single_view_all_sections_amend").html("");
+            $("#single_container_details_amend").hide();
+            $("#amended_table_of_content").html(this.responseText);
+        }
+    xhr.send();
+    });
+    
+     //for amendments under regulation
+   $(document).on('click','.amended_for_regulation_link', function(e){
+        e.preventDefault();
+        amended_act_toggle();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) { 
+            $("#single_preamble_amended_content_for_regulation").html(""); 
+            $("#single_amended_content_for_regulation").html("");
+            $("#single_view_all_sections_amend_for_regulation").html("");
+            $("#single_container_details_amends_under_regulation").hide();
+            $("#amended_regulation_table_of_content").html(this.responseText);
+        }
+    xhr.send();
+    });
+
+    //regulations
+    $(document).on('click','.regulated_link', function(e){
+        e.preventDefault();
+        regulation_act_toggle();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#single_preamble_regulation_content").html(""); 
+            $("#single_regulation_content").html("");
+            $("#single_view_all_sections_regulation").html("");
+            $("#single_container_details_regulation").hide();
+            $("#regulated_table_of_content").html(this.responseText);
+        }
+    xhr.send();
+    });
+
+    //for preamble amendment under act
+    $(document).on('click','.single_preamble_amended_link', function(e){
+        e.preventDefault();
+        amended_act_toggle_content();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#single_preamble_amended_content").html(this.responseText); 
+            $("#single_amended_content").html("");
+            $("#single_view_all_sections_amend").html("");
+            $(".single_container_details_link_amend").trigger("click");
+            $(".show li").hide();
+        }
+        xhr.send();
+    });
+    
+    //for preamble amendment under regulation
+    $(document).on('click','.single_preamble_amended_regulation_link', function(e){
+        e.preventDefault();
+        amended_act_toggle_content();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#single_preamble_amended_content_for_regulation").html(this.responseText); 
+            $("#single_amended_content_for_regulation").html("");
+            $("#single_view_all_sections_amend_for_regulation").html("");
+            $(".single_container_details_link_amend_regulation").trigger("click");
+            $(".show li").hide();
+        }
+        xhr.send();
+    });
+
+    $(document).on('click','.single_preamble_regulation_link', function(e){
+        e.preventDefault();
+        regulation_act_toggle_content();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#single_preamble_regulation_content").html(this.responseText); 
+            $("#single_regulation_content").html("");
+            $("#single_view_all_sections_regulation").html("");
+            $('.single_container_details_link_regulation').trigger("click");
+            $(".show li").hide();
+        }
+        xhr.send();
+    });
+
+    //show the hidden for amendments under an act
+    $(document).on('click','.single_container_details_link_amend', function(e){
+        e.preventDefault();
+        amended_act_toggle_content();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#single_container_details_amend").html(this.responseText);
+            $("#single_container_details_amend").show();
+            $(".show li").hide();
+        }
+        xhr.send();
+    });
+    
+     //show the hidden for amendments under an regulation
+    $(document).on('click','.single_container_details_link_amend_regulation', function(e){
+        e.preventDefault();
+        amended_act_toggle_content();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#single_container_details_amends_under_regulation").html(this.responseText);
+            $("#single_container_details_amends_under_regulation").show();
+            $(".show li").hide();
+        }
+        xhr.send();
+    });
+
+    $(document).on('click','.single_container_details_link_regulation', function(e){
+        e.preventDefault();
+        regulation_act_toggle_content();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#single_container_details_regulation").html(this.responseText);
+            $("#single_container_details_regulation").show(); 
+            $(".show li").hide();
+        }
+        xhr.send();
+    });
+
+    //-----------------------------------------------------end
+
+//    $('.amended_link_content').click(function(e){
+//         e.preventDefault();
+//         var xhr = new XMLHttpRequest();
+//         var link = $(this).attr("href");
+//         xhr.open("GET", link, true);
+//         xhr.onreadystatechange = function receiveUpdate(e) {
+//             $("#amended_content").html(this.responseText); 
+//         }
+//         xhr.send();
+//     });
+
+
+    //GENERAL PREAMBLE LINK
+    // General preamble click to show on content tab
+    $('#preamble_link_toggle').click(function (e) {
+         e.preventDefault();
+         $('#tabs a[href="#contentTab"]').tab('show');
+         $('.tabPanedHide_acts_content').show();
+        //  $('.tabPanedHide_amendments').hide();
+        //  $('.tabPanedHide_regulations').hide();
+    });
+    
+    //GENERAL CONTENT LINK
+    // General content click to show on content tab
+    $('.content_link_toggle').click(function (e) {
+        e.preventDefault();
+         $('#tabs a[href="#contentTab"]').tab('show');
+    });
+    
+    $('.view_all_section_link').click(function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_content").html("");
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html(this.responseText);   
+        }
+        xhr.send();
+    });
+    
+    
+    //IMPORTANT FOR THE PREVIOUS AND NEXT--------------------THE STARTING OF THE PREVIOUS AND NEXT-----------------------------
+    
+    // VIEW ALL SECTIONS FOR THE VARIOUS GROUPS
+    
+    // General View all section links for post
+    $('.view_all_section_link_with_prev_next').click(function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        
+        var psid = $(this).attr("sid");
+        setPrevNext(psid);
+        
+       console.log("this is activated when all section dropdown is clicked");
+       
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_content").html("");
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html(this.responseText);   
+        }
+        xhr.send();
+    });
+    
+    // General View all section links for pre
+    $('.pre_view_all_section_link_with_prev_next').click(function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        
+        var psid = $(this).attr("sid");
+        preSetPrevNext(psid);
+        
+       console.log("this is activated when all section dropdown is clicked");
+       
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_content").html("");
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html(this.responseText);   
+        }
+        xhr.send();
+    });
+    
+    // General View all section links for constitution
+    $('.constitution_view_all_section_link_with_prev_next').click(function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        
+        var psid = $(this).attr("sid");
+        constitutionSetPrevNext(psid);
+        
+       console.log("this is activated when all section dropdown is clicked");
+       
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_content").html("");
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html(this.responseText);   
+        }
+        xhr.send();
+    });
+    
+    // General View all section links for constitution amended
+    $('.constitution_amended_view_all_section_link_with_prev_next').click(function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        
+        var psid = $(this).attr("sid");
+        constitutionAmendedSetPrevNext(psid);
+        
+       console.log("this is activated when all section dropdown is clicked");
+       
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_content").html("");
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html(this.responseText);   
+        }
+        xhr.send();
+    });
+    
+    // General View all section links for regulation
+    $('.regulation_view_all_section_link_with_prev_next').click(function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        
+        var psid = $(this).attr("sid");
+        regulationSetPrevNext(psid);
+        
+       console.log("this is activated when all section dropdown is clicked");
+       
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_content").html("");
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html(this.responseText);   
+        }
+        xhr.send();
+    });
+    
+    // General View all section links for amendments
+    $('.amendments_view_all_section_link_with_prev_next').click(function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        
+        var psid = $(this).attr("sid");
+        amendmentsSetPrevNext(psid);
+        
+       console.log("this is activated when all section dropdown is clicked");
+       
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_content").html("");
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html(this.responseText);   
+        }
+        xhr.send();
+    });
+    
+    //View all single amendments links for amendments under an act
+    $(document).on('click','.single_view_all_amendments_section_link', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        var psid = $(this).attr("sid");
+        amendsUnderActSetPrevNext(psid);
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#single_preamble_amended_content").html("");
+            $("#single_amended_content").html("");
+            $("#single_view_all_sections_amend").html(this.responseText);
+            $(".show li").show();
+        }
+        xhr.send();
+    });
+    
+    //View all single amendments links for amendments under an regulation
+    $(document).on('click','.single_view_all_amendments_under_regulation_section_link', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        var psid = $(this).attr("sid");
+        amendsUnderRegulationsetPrevNext(psid);
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#single_preamble_amended_content_for_regulation").html("");
+            $("#single_amended_content_for_regulation").html("");
+            $("#single_view_all_sections_amend_for_regulation").html(this.responseText);
+            $(".show li").show();
+        }
+        xhr.send();
+    });
+    
+    //View all single regulation links for regulation under an act
+    $(document).on('click','.single_view_all_regulation_section_link', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        var psid = $(this).attr("sid");
+        regulationUnderActSetPrevNext(psid);
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#single_preamble_regulation_content").html("");
+            $("#single_regulation_content").html("");
+            $("#single_view_all_sections_regulation").html(this.responseText);
+            $(".show li").show();
+        }
+        xhr.send();
+    });
+    //-----------------------------------------------------------------------------------------------------------------
+    
+    // PREVIOUS AND NEXT BUTTON FOR ACTS
+    
+    //previous for post act
+    $(document).on('click','.previous_content_act', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        setPrevNext(psid);
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+     //previous for pre act
+    $(document).on('click','.previous_content_pre_act', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        preSetPrevNext(psid);
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+    //previous for constitution act
+    $(document).on('click','.previous_content_constitution_act', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        constitutionSetPrevNext(psid);
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+    //previous for constitution amended act
+    $(document).on('click','.previous_content_constitution_amended_act', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        constitutionAmendedSetPrevNext(psid);
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+
+    //previous for regulation
+    $(document).on('click','.previous_content_regulation', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        regulationSetPrevNext(psid);
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+    //previous for amendments
+    $(document).on('click','.previous_content_amendments', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        amendmentsSetPrevNext(psid);
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+    //previous for amendments UNDER act
+    $(document).on('click','.previous_amended_under_act', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        amendsUnderActSetPrevNext(psid);
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#single_preamble_amended_content").html("");
+            $("#single_view_all_sections_amend").html("");
+            $("#single_amended_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+     //previous for amendments UNDER regulation
+    $(document).on('click','.previous_amendment_under_regulation', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        amendsUnderRegulationsetPrevNext(psid);
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#single_preamble_amended_content_for_regulation").html("");
+            $("#single_view_all_sections_amend_for_regulation").html("");
+            $("#single_amended_content_for_regulation").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+    //previous for regulations UNDER act
+    $(document).on('click','.previous_regulation_under_act', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        regulationUnderActSetPrevNext(psid);
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#single_preamble_regulation_content").html("");
+            $("#single_view_all_sections_regulation").html("");
+            $("#single_regulation_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+    //-------------------------------------------END OF PREVIOUS BUTTON---------------------------------
+     //next for post act
+    $(document).on('click','.next_content_act', function(e){
+         e.preventDefault();
+        var ids = $('#act_contents').val();
+ 
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        setPrevNext(nsid);
+
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+     //next for pre act
+    $(document).on('click','.next_content_pre_act', function(e){
+         e.preventDefault();
+        var ids = $('#pre_act_contents').val();
+ 
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        preSetPrevNext(nsid);
+
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+    
+    //next for constitution act
+    $(document).on('click','.next_content_constitution_act', function(e){
+         e.preventDefault();
+        var ids = $('#constitution_act_contents').val();
+ 
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        constitutionSetPrevNext(nsid);
+
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+    //next for constitution amended act
+    $(document).on('click','.next_content_constitution_amended_act', function(e){
+         e.preventDefault();
+        var ids = $('#constitution_amended_act_contents').val();
+ 
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        constitutionAmendedSetPrevNext(nsid);
+
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+     //next for regulation
+    $(document).on('click','.next_content_regulation', function(e){
+         e.preventDefault();
+        var ids = $('#regulation_act_contents').val();
+ 
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        regulationSetPrevNext(nsid);
+
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+    //next for amendments
+    $(document).on('click','.next_content_amendments', function(e){
+         e.preventDefault();
+        var ids = $('#amendments_act_contents').val();
+ 
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        amendmentsSetPrevNext(nsid);
+
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+    //next for amendments UNDER act
+    $(document).on('click','.next_amended_under_act', function(e){
+         e.preventDefault();
+        var ids = $('#amends_under_act_contents').val();
+ 
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        amendsUnderActSetPrevNext(nsid);
+
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#single_preamble_amended_content").html("");
+            $("#single_view_all_sections_amend").html("");
+            $("#single_amended_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+    //next for amendments UNDER regulations
+    $(document).on('click','.next_amendment_under_regulation', function(e){
+         e.preventDefault();
+        var ids = $('#amends_under_regulations_contents').val();
+ 
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        amendsUnderRegulationsetPrevNext(nsid);
+
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#single_preamble_amended_content_for_regulation").html("");
+            $("#single_view_all_sections_amend_for_regulation").html("");
+            $("#single_amended_content_for_regulation").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+    //next for regulations UNDER act
+    $(document).on('click','.next_regulation_under_act', function(e){
+         e.preventDefault();
+        var ids = $('#regulation_under_act_contents').val();
+ 
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        regulationUnderActSetPrevNext(nsid);
+
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#single_preamble_regulation_content").html("");
+            $("#single_view_all_sections_regulation").html("");
+            $("#single_regulation_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+    
+    // END OF PREVIOUS AND NEXT BUTTON for act--------end of the clicking
+    
+    //-------------------------------------------THE PROCESS FOR THE PREVIOUS AND NEXT---------------------------------------
+
+    //BUILDING THE FUNCTION FOR THE PREVIOUS AND NEXT
+
+    // BUILDING THE PREVIOUS AND NEXT--------the process for the post act
+    function setPrevNext(gsid1){
+        var sid = gsid1;       
+        var ids = $('#act_contents').val();
+        console.log('ids', JSON.parse(ids)); //showing all ids
+        var previous = '', next = '';
+        //find index of sid in ids array
+        var aay = JSON.parse(ids);
+        
+        var arrayLength = aay.length;
+        var index = 0;
+        for (var i = 0; i < arrayLength; i++) {
+            if(aay[i] == sid){
+                index = i;
+            }
+        }
+
+        console.log('index', index); // showing the clicked index
+        previous = (index > 0) ? index - 1: 0;
+        next = (index == arrayLength-1)?arrayLength-1:index + 1;
+        console.log('previous', aay[previous], 'next',aay[next]); //showing the next and previous ids
+        psid = aay[previous]; nsid = aay[next];
+        
+        var pLink = '/post_1992_legislation/content/'+aay[previous];
+        var nLink = '/post_1992_legislation/content/'+aay[next];
+        
+        $('.previous_content_act').attr('href', pLink);
+        $('.next_content_act').attr('href', nLink);
+
+    }
+    
+    // BUILDING THE PREVIOUS AND NEXT--------the process for the pre act
+    function preSetPrevNext(gsid2){
+        var sid = gsid2;       
+        var ids = $('#pre_act_contents').val();
+        console.log('ids', JSON.parse(ids)); //showing all ids
+        var previous = '', next = '';
+        //find index of sid in ids array
+        var aay = JSON.parse(ids);
+        
+        var arrayLength = aay.length;
+        var index = 0;
+        for (var i = 0; i < arrayLength; i++) {
+            if(aay[i] == sid){
+                index = i;
+            }
+        }
+
+        console.log('index', index); // showing the clicked index
+        previous = (index > 0) ? index - 1: 0;
+        next = (index == arrayLength-1)?arrayLength-1:index + 1;
+        console.log('previous', aay[previous], 'next',aay[next]); //showing the next and previous ids
+        psid = aay[previous]; nsid = aay[next];
+        
+        var pLink = '/pre_1992_legislation/content/'+aay[previous];
+        var nLink = '/pre_1992_legislation/content/'+aay[next];
+        
+        $('.previous_content_pre_act').attr('href', pLink);
+        $('.next_content_pre_act').attr('href', nLink);
+
+    }
+    
+    // BUILDING THE PREVIOUS AND NEXT--------the process for the constitution act
+    function constitutionSetPrevNext(gsid3){
+        var sid = gsid3;       
+        var ids = $('#constitution_act_contents').val();
+        console.log('ids', JSON.parse(ids)); //showing all ids
+        var previous = '', next = '';
+        //find index of sid in ids array
+        var aay = JSON.parse(ids);
+        
+        var arrayLength = aay.length;
+        var index = 0;
+        for (var i = 0; i < arrayLength; i++) {
+            if(aay[i] == sid){
+                index = i;
+            }
+        }
+
+        console.log('index', index); // showing the clicked index
+        previous = (index > 0) ? index - 1: 0;
+        next = (index == arrayLength-1)?arrayLength-1:index + 1;
+        console.log('previous', aay[previous], 'next',aay[next]); //showing the next and previous ids
+        psid = aay[previous]; nsid = aay[next];
+        
+        var pLink = '/constitution/Republic/constitution_content/'+aay[previous];
+        var nLink = '/constitution/Republic/constitution_content/'+aay[next];
+        
+        $('.previous_content_constitution_act').attr('href', pLink);
+        $('.next_content_constitution_act').attr('href', nLink);
+
+    }
+    
+    // BUILDING THE PREVIOUS AND NEXT--------the process for the constitution amended act
+    function constitutionAmendedSetPrevNext(gsid4){
+        var sid = gsid4;       
+        var ids = $('#constitution_amended_act_contents').val();
+        console.log('ids', JSON.parse(ids)); //showing all ids
+        var previous = '', next = '';
+        //find index of sid in ids array
+        var aay = JSON.parse(ids);
+        
+        var arrayLength = aay.length;
+        var index = 0;
+        for (var i = 0; i < arrayLength; i++) {
+            if(aay[i] == sid){
+                index = i;
+            }
+        }
+
+        console.log('index', index); // showing the clicked index
+        previous = (index > 0) ? index - 1: 0;
+        next = (index == arrayLength-1)?arrayLength-1:index + 1;
+        console.log('previous', aay[previous], 'next',aay[next]); //showing the next and previous ids
+        psid = aay[previous]; nsid = aay[next];
+        
+        var pLink = '/constitution_amended/Republic/constitution_content/'+aay[previous];
+        var nLink = '/constitution_amended/Republic/constitution_content/'+aay[next];
+        
+        $('.previous_content_constitution_amended_act').attr('href', pLink);
+        $('.next_content_constitution_amended_act').attr('href', nLink);
+
+    }
+    
+    // BUILDING THE PREVIOUS AND NEXT--------the process for the regulation
+    function regulationSetPrevNext(gsid5){
+        var sid = gsid5;       
+        var ids = $('#regulation_act_contents').val();
+        console.log('ids', JSON.parse(ids)); //showing all ids
+        var previous = '', next = '';
+        //find index of sid in ids array
+        var aay = JSON.parse(ids);
+        
+        var arrayLength = aay.length;
+        var index = 0;
+        for (var i = 0; i < arrayLength; i++) {
+            if(aay[i] == sid){
+                index = i;
+            }
+        }
+
+        console.log('index', index); // showing the clicked index
+        previous = (index > 0) ? index - 1: 0;
+        next = (index == arrayLength-1)?arrayLength-1:index + 1;
+        console.log('previous', aay[previous], 'next',aay[next]); //showing the next and previous ids
+        psid = aay[previous]; nsid = aay[next];
+        
+        var pLink = '/post_1992_legislation/regulation_act/content/'+aay[previous];
+        var nLink = '/post_1992_legislation/regulation_act/content/'+aay[next];
+        
+        $('.previous_content_regulation').attr('href', pLink);
+        $('.next_content_regulation').attr('href', nLink);
+
+    }
+    
+    // BUILDING THE PREVIOUS AND NEXT--------the process for the amendments
+    function amendmentsSetPrevNext(gsid6){
+        var sid = gsid6;       
+        var ids = $('#amendments_act_contents').val();
+        console.log('ids', JSON.parse(ids)); //showing all ids
+        var previous = '', next = '';
+        //find index of sid in ids array
+        var aay = JSON.parse(ids);
+        
+        var arrayLength = aay.length;
+        var index = 0;
+        for (var i = 0; i < arrayLength; i++) {
+            if(aay[i] == sid){
+                index = i;
+            }
+        }
+
+        console.log('index', index); // showing the clicked index
+        previous = (index > 0) ? index - 1: 0;
+        next = (index == arrayLength-1)?arrayLength-1:index + 1;
+        console.log('previous', aay[previous], 'next',aay[next]); //showing the next and previous ids
+        psid = aay[previous]; nsid = aay[next];
+        
+        var pLink = '/post_1992_legislation/amended_acts/content/'+aay[previous];
+        var nLink = '/post_1992_legislation/amended_acts/content/'+aay[next];
+        
+        $('.previous_content_amendments').attr('href', pLink);
+        $('.next_content_amendments').attr('href', nLink);
+    }
+    
+    // BUILDING THE PREVIOUS AND NEXT--------the process for the amendments UNDER an act
+    function amendsUnderActSetPrevNext(gsid7){
+        var sid = gsid7;       
+        var ids = $('#amends_under_act_contents').val();
+        console.log('ids', JSON.parse(ids)); //showing all ids
+        var previous = '', next = '';
+        //find index of sid in ids array
+        var aay = JSON.parse(ids);
+        
+        var arrayLength = aay.length;
+        var index = 0;
+        for (var i = 0; i < arrayLength; i++) {
+            if(aay[i] == sid){
+                index = i;
+            }
+        }
+
+        console.log('index', index); // showing the clicked index
+        previous = (index > 0) ? index - 1: 0;
+        next = (index == arrayLength-1)?arrayLength-1:index + 1;
+        console.log('previous', aay[previous], 'next',aay[next]); //showing the next and previous ids
+        psid = aay[previous]; nsid = aay[next];
+        
+        var pLink = '/post_1992_legislation/amended_act_content/'+aay[previous];
+        var nLink = '/post_1992_legislation/amended_act_content/'+aay[next];
+        
+        $('.previous_amended_under_act').attr('href', pLink);
+        $('.next_amended_under_act').attr('href', nLink);
+
+    }
+    
+    // BUILDING THE PREVIOUS AND NEXT--------the process for the amendments UNDER an regulation
+    function amendsUnderRegulationsetPrevNext(gsid8){
+        var sid = gsid8;       
+        var ids = $('#amends_under_regulations_contents').val();
+        console.log('ids', JSON.parse(ids)); //showing all ids
+        var previous = '', next = '';
+        //find index of sid in ids array
+        var aay = JSON.parse(ids);
+        
+        var arrayLength = aay.length;
+        var index = 0;
+        for (var i = 0; i < arrayLength; i++) {
+            if(aay[i] == sid){
+                index = i;
+            }
+        }
+
+        console.log('index', index); // showing the clicked index
+        previous = (index > 0) ? index - 1: 0;
+        next = (index == arrayLength-1)?arrayLength-1:index + 1;
+        console.log('previous', aay[previous], 'next',aay[next]); //showing the next and previous ids
+        psid = aay[previous]; nsid = aay[next];
+        
+        var pLink = '/post_1992_legislation/amended_act_regulation_content/'+aay[previous];
+        var nLink = '/post_1992_legislation/amended_act_regulation_content/'+aay[next];
+        
+        $('.previous_amendment_under_regulation').attr('href', pLink);
+        $('.next_amendment_under_regulation').attr('href', nLink);
+
+    }
+    
+    // BUILDING THE PREVIOUS AND NEXT--------the process for the regulation UNDER an act
+    function regulationUnderActSetPrevNext(gsid9){
+        var sid = gsid9;       
+        var ids = $('#regulation_under_act_contents').val();
+        console.log('ids', JSON.parse(ids)); //showing all ids
+        var previous = '', next = '';
+        //find index of sid in ids array
+        var aay = JSON.parse(ids);
+        
+        var arrayLength = aay.length;
+        var index = 0;
+        for (var i = 0; i < arrayLength; i++) {
+            if(aay[i] == sid){
+                index = i;
+            }
+        }
+
+        console.log('index', index); // showing the clicked index
+        previous = (index > 0) ? index - 1: 0;
+        next = (index == arrayLength-1)?arrayLength-1:index + 1;
+        console.log('previous', aay[previous], 'next',aay[next]); //showing the next and previous ids
+        psid = aay[previous]; nsid = aay[next];
+        
+        var pLink = '/post_1992_legislation/regulations_content/'+aay[previous];
+        var nLink = '/post_1992_legislation/regulations_content/'+aay[next];
+        
+        $('.previous_regulation_under_act').attr('href', pLink);
+        $('.next_regulation_under_act').attr('href', nLink);
+
+    }
+    
+    //---------------------------------------PREVIOUS AND NEXT FOR THE PARTS AND SECTION-----------------------------------
+    
+    //FOR POST
+    $(document).on('click','.content_link', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");        
+        //set previous and next function
+        gsid = $(this).attr("sid"); 
+        setPrevNext(gsid);
+        
+        xhr.open("GET", link, true);
+
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+    //PREVIOUS AND NEXT FOR THE PARTS AND SECTION
+    //FOR PRE
+    $(document).on('click','.pre_content_link', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");        
+        //set previous and next function
+        gsid = $(this).attr("sid"); 
+        preSetPrevNext(gsid);
+        
+        xhr.open("GET", link, true);
+
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+    
+    //PREVIOUS AND NEXT FOR THE PARTS AND SECTION 
+    //FOR CONSTITUTION
+    $(document).on('click','.constitution_content_link', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");        
+        //set previous and next function
+        gsid = $(this).attr("sid"); 
+        constitutionSetPrevNext(gsid);
+        
+        xhr.open("GET", link, true);
+
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+    //PREVIOUS AND NEXT FOR THE PARTS AND SECTION 
+    //FOR AMENDED CONSTITUTION
+    $(document).on('click','.constitution_amended_content_link', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");        
+        //set previous and next function
+        gsid = $(this).attr("sid"); 
+        constitutionAmendedSetPrevNext(gsid);
+        
+        xhr.open("GET", link, true);
+
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+    //PREVIOUS AND NEXT FOR THE PARTS AND SECTION 
+    //FOR REGULATIONS
+    $(document).on('click','.regulation_content_link', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");        
+        //set previous and next function
+        gsid = $(this).attr("sid"); 
+        regulationSetPrevNext(gsid);
+        
+        xhr.open("GET", link, true);
+
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+    //PREVIOUS AND NEXT FOR THE PARTS AND SECTION 
+    //FOR AMENDMENTS
+    $(document).on('click','.amendments_content_link', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");        
+        //set previous and next function
+        gsid = $(this).attr("sid"); 
+        amendmentsSetPrevNext(gsid);
+        
+        xhr.open("GET", link, true);
+
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+    //PREVIOUS AND NEXT FOR THE PARTS AND SECTION 
+    //FOR AMENDMENTS UNDER AN ACT
+    $(document).on('click','.sinlge_amended_act_content_link', function(e){
+        e.preventDefault();
+        amended_act_toggle_content();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        //set previous and next function
+        gsid = $(this).attr("sid"); 
+        amendsUnderActSetPrevNext(gsid);
+        
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#single_preamble_amended_content").html(""); 
+            $("#single_amended_content").html(this.responseText);
+            $("#single_view_all_sections_amend").html("");
+            $('.single_container_details_link_amend').trigger("click");
+            $(".show li").show();
+            
+        }
+        xhr.send();
+    }); 
+    
+    //PREVIOUS AND NEXT FOR THE PARTS AND SECTION 
+    //FOR AMENDMENTS UNDER AN REGULATION
+    $(document).on('click','.single_amendments_to_regulation_link', function(e){
+        e.preventDefault();
+        amended_act_toggle_content();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        //set previous and next function
+        gsid = $(this).attr("sid"); 
+        amendsUnderRegulationsetPrevNext(gsid);
+        
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#single_preamble_amended_content_for_regulation").html(""); 
+            $("#single_amended_content_for_regulation").html(this.responseText);
+            $("#single_view_all_sections_amend_for_regulation").html("");
+            $('.single_container_details_link_amend_regulation').trigger("click");
+            $(".show li").show();
+            
+        }
+        xhr.send();
+    });
+    
+    //PREVIOUS AND NEXT FOR THE PARTS AND SECTION 
+    //FOR REGULATIONS UNDER AN ACT
+    $(document).on('click','.sinlge_regulation_act_content_link', function(e){
+        e.preventDefault();
+        regulation_act_toggle_content();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        //set previous and next function
+        gsid = $(this).attr("sid"); 
+        regulationUnderActSetPrevNext(gsid);
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#single_preamble_regulation_content").html(""); 
+            $("#single_regulation_content").html(this.responseText);
+            $("#single_view_all_sections_regulation").html("");
+            $('.single_container_details_link_regulation').trigger("click");
+            $(".show li").show();
+        }
+        xhr.send();
+    }); 
+    
+    //-----------------------------------------------------------------------------------------------------end of the process for act 
+
+
+
+
+
+
+
+    // DISPLAY PREAMBLE AND CONTENT IN TAB
+    //Acts preamble
+    // $('.act_preamble_link').click(function(e){
+    //     e.preventDefault();
+    //     var xhr = new XMLHttpRequest();
+    //     var link = $(this).attr("href");
+    //     xhr.open("GET", link, true);
+    //     xhr.onreadystatechange = function receiveUpdate(e) {
+    //         $("#act_content").html("");
+    //         $("#view_acts_section").html("");
+    //         $("#act_preamble").html(this.responseText);  
+
+    //         $("#display_content").html("");
+    //         $("#display_view_all_section").html("");
+    //         $("#display_preamble").html(this.responseText);
+    //     }
+    //     xhr.send();
+    // });
+
+    //EXPANDED VIEW
+    $('.expanded_link').click(function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#acts_expanded_view").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+    //New
+    $('#expanded_link_toggle_all_pre1992_preview_1').click(function (e) {
+        e.preventDefault();
+        $('#tabs a[href="#expandedTab"]').tab('show');
+        $('.tabPanedHide_expanded_view').show();
+    });
+    $('#expanded_link_toggle_all_pre1992_preview_2').click(function (e) {
+        e.preventDefault();
+        $('#tabs a[href="#expandedTab"]').tab('show');
+        $('.tabPanedHide_expanded_view').show();
+    });
+    
+
+
+    //GENERAL PREAMBLE LINK
+    // General Preamble link: Click and go to Display Preamble at Content
+    $('.preamble_link').click(function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_content").html("");
+            $("#display_view_all_section").html("");
+            $("#display_preamble").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+    //---------------------------------------IMPORTANT FOR THE PREVIOUS AND NEXT-----------THE BEGINNING----FROM THE PARTS AND SECTIONS
+    //GENERAL CONTENT LINK
+    // General content link: Click and go to Display section at Content for post 
+    $('.content_link').click(function(e){
+        e.preventDefault();
+        act_content_link_toggle();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+            
+        }
+        xhr.send();
+    });
+    
+    // General content link: Click and go to Display section at Content for pre
+    $('.pre_content_link').click(function(e){
+        e.preventDefault();
+        act_content_link_toggle();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+            
+        }
+        xhr.send();
+    });
+    
+    // General content link: Click and go to Display section at Content for constitution
+    $('.constitution_content_link').click(function(e){
+        e.preventDefault();
+        act_content_link_toggle();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+            
+        }
+        xhr.send();
+    });
+    
+    // General content link: Click and go to Display section at Content for amended constitution
+    $('.constitution_amended_content_link').click(function(e){
+        e.preventDefault();
+        act_content_link_toggle();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+            
+        }
+        xhr.send();
+    });
+    
+    // General content link: Click and go to Display section at Content for regulation
+    $('.regulation_content_link').click(function(e){
+        e.preventDefault();
+        act_content_link_toggle();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+            
+        }
+        xhr.send();
+    });
+    
+    // General content link: Click and go to Display section at Content for amendments
+    $('.amendments_content_link').click(function(e){
+        e.preventDefault();
+        act_content_link_toggle();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+            
+        }
+        xhr.send();
+    });
+
+    // General content link: Click and go to Display section at Content for amendments on regulation
+    $('.amended_regulation_content_link').click(function(e){
+        e.preventDefault();
+        act_content_link_toggle();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+            
+        }
+        xhr.send();
+    });
+    
+    //GENERAL PREVIOUS AND NEXT SHOW/HIDE
+    // hide next and previous for General preamble and content
+    $(".preamble_link").click(function(){
+        $(".show li").hide();
+    });
+    $(".content_link, .pre_content_link, .constitution_content_link,.constitution_amended_content_link,.amendments_content_link, .amended_regulation_content_link,.regulation_content_link, .view_all_section_link").click(function(){
+        $(".show li").show();
+    });
+    //----------------------------------------------------IMPORTANT FOR THE PREVIOUS AND NEXT----------THE END
+
+    //click to scroll to top
+    $("[data-scroll-to]").click(function() {
+      var $this = $(this),
+      $toElement      = $this.attr('data-scroll-to'),
+      $focusElement   = $this.attr('data-scroll-focus'),
+      $offset         = $this.attr('data-scroll-offset') * 1 || 0,
+      $speed          = $this.attr('data-scroll-speed') * 1 || 500;
+
+      $('html, body').animate({
+        scrollTop: $($toElement).offset().top + $offset
+      }, $speed);
+  
+      if ($focusElement) $($focusElement).focus();
+    });
+
+     // FILTERING CONSTITUTION----------------------------------------------------
+    /* For all Constitution */
+    $('#all_constitution_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".all_constitution_filter_year").val();
+        var country     = $(".all_constitution_filter_country").val();
+        if(year === ""){
+            year = 0;
+        }
+        if(country === ""){
+            country = 0;
+        }        
+        window.location.href = '/constitution/filter/'+year+'/'+country;
+    });
+
+    /* For all Africa Countries */
+    $('#africa_constitution_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".africa_constitution_filter_year").val();
+        var country     = $(".africa_constitution_filter_country").val();
+        if(year === ""){
+            year = 0;
+        }
+        if(country === ""){
+            country = 0;
+        }        
+        window.location.href = '/constitution/1/africa/filter/'+year+'/'+country;
+    });
+
+    /* For all Asia Countries */
+    $('#asia_constitution_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".asia_constitution_filter_year").val();
+        var country     = $(".asia_constitution_filter_country").val();
+        if(year === ""){
+            year = 0;
+        }
+        if(country === ""){
+            country = 0;
+        }        
+        window.location.href = '/constitution/2/asia/filter/'+year+'/'+country;
+    });
+
+    /* For all Europe Countries */
+    $('#europe_constitution_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".europe_constitution_filter_year").val();
+        var country     = $(".europe_constitution_filter_country").val();
+        if(year === ""){
+            year = 0;
+        }
+        if(country === ""){
+            country = 0;
+        }        
+        window.location.href = '/constitution/3/europe/filter/'+year+'/'+country;
+    });
+
+    /* For all North America Countries */
+    $('#north_america_constitution_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".north_america_constitution_filter_year").val();
+        var country     = $(".north_america_constitution_filter_country").val();
+        if(year === ""){
+            year = 0;
+        }
+        if(country === ""){
+            country = 0;
+        }        
+        window.location.href = '/constitution/4/north_america/filter/'+year+'/'+country;
+    });
+
+    /* For all North America Countries */
+    $('#south_america_constitution_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".south_america_constitution_filter_year").val();
+        var country     = $(".south_america_constitution_filter_country").val();
+        if(year === ""){
+            year = 0;
+        }
+        if(country === ""){
+            country = 0;
+        }        
+        window.location.href = '/constitution/5/south_america/filter/'+year+'/'+country;
+    });
+
+    // FILTERING POST-1992 LEGISLATION----------------------------------------------------
+    /* For all Post-1992 Legislation */
+    $('#all_post_1992_legislation_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".all_post_1992_legislation_filter_year").val();
+        var category     = $(".all_post_1992_legislation_filter_category").val();
+        if(year === ""){
+            year = 0;
+        }
+        if(category === ""){
+            category = 0;
+        }        
+        window.location.href = '/post_1992_legislation/filter/'+year+'/'+category;
+    });
+
+    /* For Acts of Parliament */
+    $('#acts_of_parliament_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".acts_of_parliament_filter_year").val();
+        var category     = $(".acts_of_parliment_filter_category").val();
+        if(year === ""){
+            year = 0;
+        }
+        if(category === ""){
+            category = 0;
+        }        
+        window.location.href = '/post_1992_legislation/1/filter/'+year+'/'+category;
+    });
+
+    /* For Legislative Instruments */
+    $('#legislative_instrument_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".legislative_instrument_filter_year").val();
+        var category     = $(".legislative_instrument_filter_category").val();
+        if(year === ""){
+            year = 0;
+        }
+        if(category === ""){
+            category = 0;
+        }        
+        window.location.href = '/post_1992_legislation/2/filter/'+year+'/'+category;
+    });
+
+    /* For Amendments */
+    $('#amendments_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".amendments_filter_year").val();
+        var category     = $(".amendments_filter_category").val();
+        if(year === ""){
+            year = 0;
+        }
+        if(category === ""){
+            category = 0;
+        }        
+        window.location.href = '/post_1992_legislation/3/filter/'+year+'/'+category;
+    });
+
+    // FILTERING PRE-1992 LEGISLATION----------------------------------------------------
+    /* For all Pre-1992 Legislation */
+    $('#all_pre_1992_legislation_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".all_pre_1992_legislation_filter_year").val();
+        var category     = $(".all_pre_1992_legislation_filter_category").val();
+        if(year === ""){
+            year = 0;
+        }
+        if(category === ""){
+            category = 0;
+        }        
+        window.location.href = '/pre_1992_legislation/filter/'+year+'/'+category;
+    });
+
+    /* For all first republic*/
+    $('#first_republic_legislation_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".first_republic_filter_year").val();
+        var category     = $(".first_republic_filter_category").val();
+        if(year === ""){
+            year = 0;
+        }
+        if(category === ""){
+            category = 0;
+        }        
+        window.location.href = '/pre_1992_legislation/1/filter/'+year+'/'+category;
+    });
+
+    /* For all second republic*/
+    $('#second_republic_legislation_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".second_republic_filter_year").val();
+        var category     = $(".second_republic_filter_category").val();
+        if(year === ""){
+            year = 0;
+        }
+        if(category === ""){
+            category = 0;
+        }        
+        window.location.href = '/pre_1992_legislation/2/filter/'+year+'/'+category;
+    });
+
+    /* For all third republic*/
+    $('#third_republic_legislation_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".third_republic_filter_year").val();
+        var category     = $(".third_republic_filter_category").val();
+        if(year === ""){
+            year = 0;
+        }
+        if(category === ""){
+            category = 0;
+        }        
+        window.location.href = '/pre_1992_legislation/3/filter/'+year+'/'+category;
+    });
+
+    /* PNDC Law*/
+    $('#pndc_law_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".pndc_law_filter_year").val();
+        var category     = $(".pndc_law_filter_category").val();
+        if(year === ""){
+            year = 0;
+        }
+        if(category === ""){
+            category = 0;
+        }        
+        window.location.href = '/pre_1992_legislation/4/filter/'+year+'/'+category;
+    });
+
+    /* NLC Decree*/
+    $('#nlc_decree_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".nlc_decree_filter_year").val();
+        var category     = $(".nlc_decree_filter_category").val();
+        if(year === ""){
+            year = 0;
+        }
+        if(category === ""){
+            category = 0;
+        }        
+        window.location.href = '/pre_1992_legislation/5/filter/'+year+'/'+category;
+    });
+
+    /* NRC Decree*/
+    $('#nrc_decree_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".nrc_decree_filter_year").val();
+        var category     = $(".nrc_decree_filter_category").val();
+        if(year === ""){
+            year = 0;
+        }
+        if(category === ""){
+            category = 0;
+        }        
+        window.location.href = '/pre_1992_legislation/6/filter/'+year+'/'+category;
+    });
+
+    /* SMC Decree*/
+    $('#smc_decree_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".smc_decree_filter_year").val();
+        var category     = $(".smc_decree_filter_category").val();
+        if(year === ""){
+            year = 0;
+        }
+        if(category === ""){
+            category = 0;
+        }        
+        window.location.href = '/pre_1992_legislation/7/filter/'+year+'/'+category;
+    });
+
+    // FILTERING LAW JUDGMENTS-----------------------------------------------------------
+    /* For all Foreign Law Judgments */
+    $('#all_foreign_judgment_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".all_judgment_filter_year").val();
+        var country    = $(".all_judgment_filter_country").val();
+        if(year === ""){
+            year = 0;
+        }
+        if(country === ""){
+            country = 0;
+        }        
+        window.location.href = '/judgement/Foreign/filter/'+year+'/'+country;
+    });
+
+    /* For Africa Court */
+    $('#africa_court_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".africa_court_filter_year").val();
+        var country     = $(".africa_court_filter_country").val();
+        
+        if(year === ""){
+            year = 0;
+        }
+        if(country === ""){
+            country = 0;
+        }
+        window.location.href = '/judgement/1/africa-court/filter/'+year+'/'+country;
+    });
+
+    /* For Asia Court */
+    $('#asia_court_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".asia_court_filter_year").val();
+        var country     = $(".asia_court_filter_country").val();
+        
+        if(year === ""){
+            year = 0;
+        }
+        if(country === ""){
+            country = 0;
+        }
+        window.location.href = '/judgement/2/asia-court/filter/'+year+'/'+country;
+    });
+
+    /* For Europe Court */
+    $('#europe_court_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".europe_court_filter_year").val();
+        var country     = $(".europe_court_filter_country").val();
+        
+        if(year === ""){
+            year = 0;
+        }
+        if(country === ""){
+            country = 0;
+        }
+        window.location.href = '/judgement/3/europe-court/filter/'+year+'/'+country;
+    });
+
+    /* For North America */
+    $('#north_america_court_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".north_america_court_filter_year").val();
+        var country     = $(".north_america_court_filter_country").val();
+        
+        if(year === ""){
+            year = 0;
+        }
+        if(country === ""){
+            country = 0;
+        }
+        window.location.href = '/judgement/4/north-america-court/filter/'+year+'/'+country;
+    });
+
+    /* For South America */
+    $('#south_america_court_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".south_america_court_filter_year").val();
+        var country     = $(".south_america_court_filter_country").val();
+        
+        if(year === ""){
+            year = 0;
+        }
+        if(country === ""){
+            country = 0;
+        }
+        window.location.href = '/judgement/5/south-america-court/filter/'+year+'/'+country;
+    });
+
+
+    /* For all Ghana Law Judgments */
+    $('#all_ghana_judgment_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".all_judgment_filter_year").val();
+        var category    = $(".all_judgment_filter_category").val();
+        if(year === ""){
+            year = 0;
+        }
+        if(category === ""){
+             category = 0;
+        }        
+        window.location.href = '/judgement/Ghana/filter/'+year+'/'+category;
+    });
+
+    /* For Supreme Court */
+    $('#supreme_court_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".supreme_court_filter_year").val();
+        var category    = $(".supreme_court_filter_category").val();
+        
+        if(year === ""){
+            year = 0;
+        }
+        if(category === ""){
+             category = 0;
+        }
+        window.location.href = '/judgement/1/supreme-court/filter/'+year+'/'+category;
+    });
+
+    /* For High Court */
+    $('#high_court_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".high_court_filter_year").val();
+        var category    = $(".high_court_filter_category").val();
+         
+        if(year === ""){
+            year = 0;
+        }
+        if(category === ""){
+             category = 0;
+        }
+        window.location.href = '/judgement/2/high-court/filter/'+year+'/'+category;
+    });
+    /* Court of Appeal */
+    $('#court_of_appeal_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".court_of_appeal_filter_year").val();
+        var category    = $(".court_of_appeal_filter_category").val();
+         
+        if(year === ""){
+            year = 0;
+        }
+        if(category === ""){
+             category = 0;
+        }
+        window.location.href = '/judgement/3/court-of-appeal/filter/'+year+'/'+category;
+    });
+    /*Circuit Court*/
+    $('#circuit_court_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".circuit_court_filter_year").val();
+        var category    = $(".circuit_court_filter_category").val();
+         
+        if(year === ""){
+            year = 0;
+        }
+        if(category === ""){
+             category = 0;
+        }
+        window.location.href = '/judgement/4/circuit-court/filter/'+year+'/'+category;
+    });
+    /*District Court*/
+    $('#district_court_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".district_court_filter_year").val();
+        var category    = $(".district_court_filter_category").val();
+         
+        if(year === ""){
+            year = 0;
+        }
+        if(category === ""){
+             category = 0;
+        }
+        window.location.href = '/judgement/5/district-court/filter/'+year+'/'+category;
+    });
+    //------------------------------------------------------------------------------------------------------
+    
+    /* For Supreme Court 
+    $('#acts_of_parliament_filter').click(function(e){
+        e.preventDefault();
+        var year        = $(".acts_of_parliament_filter_year").val();
+        var id=1;
+        var category    = $(".act_filter_category").val();
+        if(year === ""){
+            year = 0;
+        }
+        if(category === ""){
+             category = 0;
+        }
+        window.location.href = '/post_1992_legislation/acts_of_parliament/'+id+'/'+year+'/'+category;
+    });
+    */
+    //------------------------------------------------------------------------------------------------------
+    /* For the amendment */
+    $('#amendment_filter').click(function(e){
+        e.preventDefault();
+        var year = $(".amendment_filter_year").val();
+        var category = $(".amendment_filter_category").val();
+        if(year === ""){
+            year = 0;
+        }
+        if(category === ""){
+             category = 0;
+        }
+       window.location.href = '/post_1992_legislation/amendments/'+year+'/'+category;
+    }); 
+});
+
+// FILTERING FOR LAW JUDGEMENTS
+    /* For all law judgements */
+    // $('#all_judgement').click(function(e){
+    //     e.preventDefault();
+    //     var year = $(".judgement_filter_year").val();
+    //     var category = $(".judgement_filter_category").val();
+    //     if(year === ""){
+    //         year = 0;
+    //     }
+    //     if(category === ""){
+    //          category = 0;
+    //     }
+    //     window.location.href = '/judgement/Ghana/filter/'+year+'/'+category;
+    // });
+
+// PAGINATION FOR THE ACCORDION
+/* pagination plugin */
+$.fn.pageMe = function(opts){
+    var $this = this,
+        defaults = {
+            perPage: 7,
+            showPrevNext: false,
+            numbersPerPage: 1,
+            hidePageNumbers: false
+        },
+        settings = $.extend(defaults, opts);
+    
+    var listElement = $this;
+    var perPage = settings.perPage; 
+    var children = listElement.children();
+    var pager = $('.pagination');
+    
+    if (typeof settings.childSelector!="undefined") {
+        children = listElement.find(settings.childSelector);
+    }
+    
+    if (typeof settings.pagerSelector!="undefined") {
+        pager = $(settings.pagerSelector);
+    }
+    
+    var numItems = children.size();
+    var numPages = Math.ceil(numItems/perPage);
+
+    var curr = 0;
+    pager.data("curr",curr);
+    
+    if (settings.showPrevNext){
+        $('<li><a href="#" class="prev_link">«</a></li>').appendTo(pager);
+    }
+    
+    while(numPages > curr && (settings.hidePageNumbers==false)){
+        $('<li><a href="#" class="page_link">'+(curr+1)+'</a></li>').appendTo(pager);
+        curr++;
+    }
+  
+    if (settings.numbersPerPage>1) {
+       $('.page_link').hide();
+       $('.page_link').slice(pager.data("curr"), settings.numbersPerPage).show();
+    }
+    
+    if (settings.showPrevNext){
+        $('<li><a href="#" class="next_link">»</a></li>').appendTo(pager);
+    }
+    
+    pager.find('.page_link:first').addClass('active');
+    pager.find('.prev_link').hide();
+    if (numPages<=1) {
+        pager.find('.next_link').hide();
+    }
+      pager.children().eq(0).addClass("active");
+    
+    children.hide();
+    children.slice(0, perPage).show();
+    
+    pager.find('li .page_link').click(function(){
+        var clickedPage = $(this).html().valueOf()-1;
+        goTo(clickedPage,perPage);
+        return false;
+    });
+    pager.find('li .prev_link').click(function(){
+        previous();
+        return false;
+    });
+    pager.find('li .next_link').click(function(){
+        next();
+        return false;
+    });
+    
+    function previous(){
+        var goToPage = parseInt(pager.data("curr")) - 1;
+        goTo(goToPage);
+    }
+     
+    function next(){
+        goToPage = parseInt(pager.data("curr")) + 1;
+        goTo(goToPage);
+    }
+    
+    function goTo(page){
+        var startAt = page * perPage,
+            endOn = startAt + perPage;
+        
+        children.css('display','none').slice(startAt, endOn).show();
+        
+        if (page>=1) {
+            pager.find('.prev_link').show();
+        }
+        else {
+            pager.find('.prev_link').hide();
+        }
+        
+        if (page<(numPages-1)) {
+            pager.find('.next_link').show();
+        }
+        else {
+            pager.find('.next_link').hide();
+        }
+        
+        pager.data("curr",page);
+       
+        if (settings.numbersPerPage>1) {
+               $('.page_link').hide();
+               $('.page_link').slice(page, settings.numbersPerPage+page).show();
+        }
+      
+          pager.children().removeClass("active");
+        pager.children().eq(page+1).addClass("active");
+    
+    }
+};
+
+/* end plugin */
+$(document).ready(function(){ 
+  $('#accordion').pageMe({pagerSelector:'#myPager',childSelector:'.panel',showPrevNext:true,hidePageNumbers:false,perPage:45});   
+});
+
+function newFunction() {
+    return '.panel-collapse';
+}
+

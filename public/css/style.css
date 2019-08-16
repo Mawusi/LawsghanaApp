@@ -1,0 +1,101 @@
+.templateux-cover{background-size:cover}
+.templateux-cover,.templateux-cover .row{min-height:180px}
+.templateux-cover .heading{font-size:30px;line-height:1.5;color:#000}
+@media (min-width:500px){.templateux-cover .heading{font-size:50px}}
+.templateux-cover .lead{color:#999999;line-height:1.8}
+.align-items-lg-center{-webkit-box-align:center!important;-ms-flex-align:center!important;align-items:center!important}
+.order-lg-1{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}
+.order-lg-2{-webkit-box-ordinal-group:3;-ms-flex-order:2;order:2}
+
+.row{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-15px;margin-left:-15px}
+.row-margin{
+    margin-bottom: 3em;
+}
+
+.templateux-block-play{display:inline-block;width:80px;height:80px;border:2px solid rgba(0, 0, 0, 0.1);position:relative;border-radius:50%;-webkit-transition:.2s all ease;-o-transition:.2s all ease;transition:.2s all ease;top:50%}
+@media (min-width:992px){.templateux-block-play{top:0}}
+
+.templateux-block-play span{top:50%;left:50%;margin-left:4px;font-size:40px;position:absolute;-webkit-transform:translate(-50%, -50%);-ms-transform:translate(-50%, -50%);transform:translate(-50%, -50%)}
+.templateux-block-play:active,.templateux-block-play:focus{outline:none}
+.templateux-block-play:hover{width:90px;height:90px}
+.templateux-section{padding:0.5em 0; margin-top:4em}
+.templateux-overlap{margin-top:-1em;background:#fff;padding-top:10px;padding-bottom:10px;border-radius:7px;-webkit-box-shadow:0 10px 20px -5px rgba(0, 0, 0, 0.2);box-shadow:0 10px 20px 5px rgba(0, 0, 0, 0.2)}@media (min-width:400px){.templateux-overlap{padding:15px}}
+
+.scroll_block{
+  height:70px;
+}
+
+.bounce{
+  /*position: absolute;*/
+  float: center;
+}
+
+.table-wrapper-scroll-acts {
+display: block;
+max-height: 380px;
+overflow-y: auto;
+-ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.table-wrapper-scroll-display {
+  background-color: #FFFFFF;
+  height: 400px;
+  overflow: scroll;
+}
+
+.expanded_view {
+  background-color: #eee;
+  height: 560px;
+  overflow: scroll;
+}
+
+.judgement_display {
+  background-color: #eee;
+  height: 100px;
+  overflow: scroll;
+  margin-bottom: 1em;
+  
+  /* display: block;
+  max-height: 450px;
+  overflow-y: scroll;
+  -ms-overflow-style: -ms-autohiding-scrollbar; */
+}
+
+.scroll-view-judgement {
+  display: block;
+  max-height: 500px;
+  width: 700px;
+  overflow-y: scroll;
+  overflow: scroll;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+
+.table-wrapper-scroll-view {
+display: block;
+max-height: 390px;
+width: 280px;
+overflow-y: scroll;
+overflow: scroll;
+-ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+        
+div.contain {
+width: 200px;
+padding: 20px 5px 75px 5px;
+box-sizing: border-box;
+}
+
+
+/*for pagination*/
+#myInput		{width:80px}
+#myInput:focus	{width:50%;}
+
+#mysearch   {width:70%;}
+#mysearch:focus  {width:110%;}
+
+
+
