@@ -39,6 +39,14 @@ class ConstitutionController extends Controller
         return view('constitution.ghana_constitution_expandedView', compact('ghana_act', 'ghanaArticles'));
     }
 
+    public function ghana_plain_view($id){
+        $ghana_act          = GhanaAct::find(['id' => $id])->toArray()[0];
+        $ghanaArticles1     = GhanaArticle::all();  
+        $unique            = $ghanaArticles1->sortBy('priority');
+        $ghanaArticles    = $unique;
+        return view('constitution.ghana_constitution_plainView', compact('ghana_act', 'ghanaArticles'));
+    }
+
 
     //GHANA'S CONSTITUTION AMENDED
     public function ghana_constitution_table_amended($id){

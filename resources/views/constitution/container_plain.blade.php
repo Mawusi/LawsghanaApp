@@ -22,7 +22,7 @@
               
         <label>View Whole Act</label>
         <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/constitution/Republic/expanded_view/{{ $ghana_act['id'] }}"><li>Expanded View</li></a>
-        <a href=""><li>Plain View</li></a>
+        <a href="/constitution/Republic/plain_view/{{ $ghana_act['id'] }}"><li>Plain View</li></a>
         <br>
 
       </div>

@@ -5,6 +5,10 @@
     <div class="container">
         <a class="btn btn-info btn-sm pull-right" href="javascript:history.back()">Back to Full View</a><br>
     </div>
+
+    <div class="container">
+        <center><h3><b>{{ $allPost1992Act['title'] }}</b></h3></center>
+    </div>
     
     <br>
     

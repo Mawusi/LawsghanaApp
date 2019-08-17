@@ -45,6 +45,8 @@ Route::get('/','WelcomePageController@index');
         Route::get('/constitution/Republic/constitution_preamble/{id}','ConstitutionController@ghana_constitution_preamble');
         Route::get('/constitution/Republic/constitution_content/{id}','ConstitutionController@ghana_constitution_content');
         Route::get('/constitution/Republic/expanded_view/{id}','ConstitutionController@ghana_expanded_view');
+        Route::get('/constitution/Republic/plain_view/{id}','ConstitutionController@ghana_plain_view');
+
 
     // Ghana Constitution(Amended)
     Route::get('/constitution_amended/Republic/Ghana/{id}', 'ConstitutionController@ghana_constitution_table_amended');
