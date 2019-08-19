@@ -26,15 +26,11 @@
         		        <input class="btn btn-primary btn-xs" type="button" name="go" value="Search" id="all_ghana_judgment_filter">
                         <br>
     		       </div>
-		    </div>
+		        </div>
 	        </div>
 	    </div> 
 	    
-	    <div class="row">
-	        <div class="col-md-12">
-                <button class="btn btn-primary" onclick="openSearch()">Keyword search</button>
-	        </div>
-	    </div>
+	    @include('extenders.case_law_main_search')
 
 	</div>
 

@@ -9,7 +9,7 @@
 		  <div class="panel-body">
 		    <label>By Year:</label>
 		    <input class="form-control all_judgment_filter_year" id="myInput" type="text" aria-label="Search" placeholder="eg. 2015...">
-		    <br><br><br>
+		    <br>
 		    
 			<label>By Countries:</label>
 			<select class="form-control browser-default custom-select all_judgment_filter_country" style="width: 149px;">
@@ -18,13 +18,13 @@
 				<option value="{{ $foreigncountry->name }}">{{ $foreigncountry->name }}</option>
                 @endforeach	
 			</select>
-		    <br><br>
+		    <br>
 		    
 		    <input class="btn btn-primary btn-xs" type="button" name="go" value="Search" id="all_foreign_judgment_filter">
 		    <br>
 		  </div>
-		  
 		</div>
+		@include('extenders.case_law_main_search')
 	</div>
 
 	{{-- Advertisement --}}

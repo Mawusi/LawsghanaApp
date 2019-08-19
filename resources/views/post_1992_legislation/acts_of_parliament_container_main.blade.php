@@ -9,7 +9,7 @@
 		  <div class="panel-body">
 		    <label>By Year:</label>
 		    <input class="form-control acts_of_parliament_filter_year" id="myInput" type="text" aria-label="Search" placeholder="eg. 2015...">
-		    <br><br><br>
+		    <br>
 		    
 			<label>By Categories:</label>
 			<select class="form-control browser-default custom-select acts_of_parliment_filter_category" style="width: 149px;">
@@ -18,13 +18,13 @@
 				<option value="{{ $actsOfParliamentCategory->name }}">{{ $actsOfParliamentCategory->name }}</option>
                 @endforeach
 			</select>
-		    <br><br>
+		    <br>
 		    
 		    <input class="btn btn-primary btn-xs" type="button" name="go" value="Search" id="acts_of_parliament_filter">
             <br>
-            
 		  </div>
 		</div>
+		@include('extenders.case_law_main_search')
 	</div>
 
 	{{-- Advertisement --}}

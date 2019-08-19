@@ -21,26 +21,37 @@
         </div>
         </center>
         
-        <br><br>
+        <br>
 
         {{-- Downloads --}}
-        <label>Downloads</label>
-            <a href=""><li>pdf icon (PDF)</li></a>
-            <a href=""><li>word icon (WORD)</li></a> 
-        <br><br>
-
-        {{-- Print Options --}}
-        <label>Print</label>
-            <a href=""><li>Case Law</li></a>
-        <br><br>
+          <center>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Downloads</label>
+              <div class="row">
+                
+                <a class="col-md-6" href=""><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" class="img-responsive" style="width:2em;">PDF</a>
+                <a class="col-md-6" href=""><img alt="Brand" src="{{ asset('/logo/word.png') }}" class="img-responsive" style="width:2em;">WORD</a>
+                
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-12">
+                  <!-- <label>Print</label> -->
+                  <button class="btn btn-primary btn-sm printLink"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;&nbsp;Print</button>
+                </div> 
+              </div>
+            </div>
+          </div>
+          </center> 
         
         {{-- View Options --}}
         <label>View</label>
             <a href=""><li>Plain View</li></a>
-        <br><br>
-
+        <br>
     </div>
   </div>
+  @include('extenders.case_law_main_search')
 </div>
 
 {{-- Advertisement --}}

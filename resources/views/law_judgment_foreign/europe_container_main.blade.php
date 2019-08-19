@@ -8,7 +8,7 @@
 		  <div class="panel-body">
 		    <label>By Year:</label>
 		    <input class="form-control europe_court_filter_year" id="myInput" type="text" aria-label="Search" placeholder="eg. 2015...">
-		    <br><br><br>
+		    <br>
 			<label>By Countries:</label>
 			<select class="form-control browser-default custom-select europe_court_filter_country" style="width: 149px;">
 				<option selected value="">Select Country</option>
@@ -18,11 +18,12 @@
                 @endforeach	
                 
 			</select>
-		    <br><br>
+		    <br>
 		    <input class="btn btn-primary btn-xs" type="button" name="go" value="Search" id="europe_court_filter">
             <br>
 		  </div>
 		</div>
+		@include('extenders.case_law_main_search')
 	</div>
 
 	{{-- Advertisement --}}

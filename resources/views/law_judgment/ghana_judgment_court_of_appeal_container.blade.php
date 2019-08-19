@@ -8,7 +8,7 @@
 		  <div class="panel-body">
 		    <label>By Year:</label>
 		    <input class="form-control court_of_appeal_filter_year" id="myInput" type="text" aria-label="Search" placeholder="eg. 2015...">
-		    <br><br><br>
+		    <br>
 
 			<label>By Categories:</label>
 			<select class="form-control browser-default custom-select court_of_appeal_filter_category" style="width: 149px;">
@@ -19,12 +19,13 @@
 				
 			</select>
 
-		    <br><br>
+		    <br>
 
 		    <input class="btn btn-primary btn-xs" type="button" name="go" value="Search" id="court_of_appeal_filter">
             <br>
 		  </div>
 		</div>
+		@include('extenders.case_law_main_search')
 	</div>
 
 	{{-- Advertisement --}}

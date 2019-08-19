@@ -19,49 +19,55 @@
                 
                 <a class="all_regulations_link" id="all_regulations_link_toggle" href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_regulations_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><li>View Regulations</li>
                 </a>
-                <br><br>
+                <br>
 
             <!-- 2. only amendments -->
             @elseif($amendedcount > 0)
                 <a class="all_amendments_link" id="all_amendments_link_toggle" href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_amended_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><li>View Amendents</li>
                 </a>
-                <br><br>
+                <br>
 
             <!-- 3. only regulations -->
             @elseif($regulationcount > 0)
                 <a class="all_regulations_link" id="all_regulations_link_toggle" href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_regulations_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><li>View Regulations</li>
                 </a>
-                <br><br>
+                <br>
                 
             @else
                 <!--None-->
                   <p style="text-decoration: none;">None</p>
-                  <br><br>
+                  <br>
           @endif
           
-          <label style="color: black;">Downloads (Whole Act)</label>
-              <!--<a href=""><li>Consolidated Act (PDF)</li></a>-->
-              <!--<a href=""><li>Original Act (PDF)</li></a>-->
-              <!--<a href=""><li>Draft Bill (PDF)</li></a>-->
-              <a href=""><li>pdf icon (PDF)</li></a>
-              <a href=""><li>word icon (WORD)</li></a>
-              <br><br>
-              
-          <label>Print</label>
-          <a href=""><li>Whole Act</li></a>
-          <br><br>
-              
+          {{-- Downloads --}}
+          <center>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Downloads</label>
+              <div class="row">
+                
+                <a class="col-md-6" href=""><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" class="img-responsive" style="width:2em;">PDF</a>
+                <a class="col-md-6" href=""><img alt="Brand" src="{{ asset('/logo/word.png') }}" class="img-responsive" style="width:2em;">WORD</a>
+                
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-md-12">
+                  <!-- <label>Print</label> -->
+                  <button class="btn btn-primary btn-sm printLink"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;&nbsp;Print</button>
+                </div> 
+              </div>
+            </div>
+          </div>
+          </center> 
+              <br>
           <label>View Whole Act</label>
           <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}"><li>Expanded View</li>
           </a>
           <a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/plain-view/{{ $allPost1992Act['id'] }}"><li>Plain View</li></a>
-          
-          <br>
-          
         </div>
-
     </div>
-
+    @include('extenders.case_law_main_search')
 </div>
 
 {{-- ADVERTISEMENT --}}
