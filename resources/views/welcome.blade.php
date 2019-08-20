@@ -146,7 +146,7 @@
                                 </ul>
                             </div>
                                 <input type="hidden" name="search_param" value="all" id="search_param">         
-                                <input type="text" class="form-control" name="x" placeholder="Search any law in Ghana"">
+                                <input type="text" class="form-control" name="x" placeholder="Search any law or case in Ghana"">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
                                 </span>
