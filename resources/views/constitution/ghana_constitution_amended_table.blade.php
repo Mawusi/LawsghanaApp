@@ -50,10 +50,10 @@
         .content {
           padding: 16px;
         }
-        <!--.accordion-content {-->
-        <!--height: 600px;-->
-        <!--overflow-y: scroll;-->
-        <!--}-->
+        .accordion-content {
+        height: 100px;
+        overflow-y: scroll;
+        }
 
 </style>
 @endsection

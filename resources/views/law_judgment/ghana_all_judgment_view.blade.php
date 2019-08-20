@@ -44,11 +44,11 @@
             </div>
           </div>
           </center> 
+          <br>
         
         {{-- View Options --}}
         <label>View</label>
             <a href=""><li>Plain View</li></a>
-        <br>
     </div>
   </div>
   @include('extenders.case_law_main_search')

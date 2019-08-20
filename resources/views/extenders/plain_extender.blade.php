@@ -27,6 +27,57 @@
                 padding-top: 30px;
                 height: 100vh;
             }
+
+            .search-form .form-group {
+                float: right !important;
+                transition: all 0.35s, border-radius 0s;
+                width: 32px;
+                height: 32px;
+                background-color: #fff;
+                box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+                border-radius: 25px;
+                border: 1px solid #ccc;
+            }
+                .search-form .form-group input.form-control {
+                padding-right: 20px;
+                border: 0 none;
+                background: transparent;
+                box-shadow: none;
+                display:block;
+            }
+                .search-form .form-group input.form-control::-webkit-input-placeholder {
+                display: none;
+            }
+                .search-form .form-group input.form-control:-moz-placeholder {
+                /* Firefox 18- */
+                display: none;
+            }
+                .search-form .form-group input.form-control::-moz-placeholder {
+                /* Firefox 19+ */
+                display: none;
+            }
+                .search-form .form-group input.form-control:-ms-input-placeholder {
+                display: none;
+            }
+                .search-form .form-group:hover,
+                .search-form .form-group.hover {
+                width: 100%;
+                border-radius: 4px 25px 25px 4px;
+            }
+                .search-form .form-group span.form-control-feedback {
+                position: absolute;
+                top: -1px;
+                right: -2px;
+                z-index: 2;
+                display: block;
+                width: 34px;
+                height: 34px;
+                line-height: 34px;
+                text-align: center;
+                color: #3596e0;
+                left: initial;
+                font-size: 14px;
+            }
             
         </style>
         
@@ -41,7 +92,7 @@
                      <!--logo-->
                      <div class="navbar-header">
                          <a href="/">
-                            <img alt="Brand" src="{{ asset('/logo/gh_flag.png') }}" class="img-responsive" style="width:3em;">
+                            <img alt="Brand" src="{{ asset('/logo/gh_flag.png') }}" class="img-responsive" style="width:3em; padding-top: 5px;">
                         </a>
                      </div>
                      
@@ -58,9 +109,12 @@
                     
                     <div class="collapse navbar-collapse container-fluid pull-right" id="bs-example-navbar-collapse-2">
                         {{ menu('main', 'bootstrap') }}
-                        <form class="navbar-form navbar-right">
-                            <!-- <i class="fas fa-search" aria-hidden="true"></i> -->
-                            <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search">
+                        <form action="" class="pull-right search-form" style="padding-top: 5px;">
+                            <div class="form-group has-feedback">
+                                <label for="search" class="sr-only">Search</label>
+                                <input type="text" class="form-control" name="search" id="search" placeholder="keyword search">
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                            </div>
                         </form>
                     </div>
                 </div>

@@ -122,13 +122,6 @@
                         LawsGhana
                     </div>
                 </div>
-                
-                <!-- <div class="row">
-                    <div class="col-md-8 col-md-offset-2" style="margin-bottom: 50px; margin-top: 50px;">
-                            <input type="text" class="form-control" aria-describedby="helpBlock" placeholder="Search any law in Ghana">
-                    </div>
-                </div> -->
-
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2" style="margin-bottom: 50px; margin-top: 50px;">
                         <div class="input-group">

@@ -93,7 +93,7 @@
                      <!--logo-->
                      <div class="navbar-header">
                          <a href="/">
-                            <img alt="Brand" src="{{ asset('/logo/gh_flag.png') }}" class="img-responsive" style="width:3em;">
+                            <img alt="Brand" src="{{ asset('/logo/gh_flag.png') }}" class="img-responsive" style="width:3em; padding-top: 5px;">
                         </a>
                      </div>
                      
@@ -113,7 +113,7 @@
                         <form action="" class="pull-right search-form" style="padding-top: 5px;">
                             <div class="form-group has-feedback">
                                 <label for="search" class="sr-only">Search</label>
-                                <input type="text" class="form-control" name="search" id="search" placeholder="">
+                                <input type="text" class="form-control" name="search" id="search" placeholder="What do you want?">
                                 <span class="glyphicon glyphicon-search form-control-feedback"></span>
                             </div>
                         </form>

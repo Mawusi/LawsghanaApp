@@ -149,15 +149,6 @@
                     </div>
                       @include('pre_1992_legislation.container_details_act_expanded')
                 </div>
-                {{--
-                <div class="row show">
-                    <div class="pager col-md-10 col-md-offset-6">
-                     <ul class="pager">
-                        <li><a href="#" id="previous_content_act">Previous</a></li>
-                        <li><a href="#" id="next_content_act">Next</a></li>
-                     </ul>
-                    </div>
-                </div>--}}
             </div>
             
     </div><!--end of row-->

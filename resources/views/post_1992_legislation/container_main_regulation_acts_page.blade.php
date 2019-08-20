@@ -16,7 +16,7 @@
              
                 <a class="all_amendments_link" id="all_amendments_link_toggle" href="/post_1992_legislation/{{$regulationAct['act_category']}}/all_amended_regulation_acts/{{$regulationAct['title']}}/{{ $regulationAct['id'] }}"><li> View Amendents</li>
                 </a>
-                <br><br>
+                <br>
                 
                 @else
                 <!--None-->
@@ -25,26 +25,35 @@
              
              @endif
         
-        <label style="color: black;">Downloads (Whole Regulations)</label>
-              <!--<a href=""><li>Consolidated Act (PDF)</li></a>-->
-              <!--<a href=""><li>Original Act (PDF)</li></a>-->
-              <!--<a href=""><li>Draft Bill (PDF)</li></a>-->
-              <a href=""><li>pdf icon (PDF)</li></a>
-              <a href=""><li>word icon (WORD)</li></a>
+             {{-- Downloads --}}
+          <center>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Downloads</label>
+              <div class="row">
+                
+                <a class="col-md-6" href=""><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" class="img-responsive" style="width:2em;">PDF</a>
+                <a class="col-md-6" href=""><img alt="Brand" src="{{ asset('/logo/word.png') }}" class="img-responsive" style="width:2em;">WORD</a>
+                
+              </div>
               <br>
-              
-        <label>Print</label>
-        <a href=""><li>Whole Regulation</li></a>
+              <div class="row">
+                <div class="col-md-12">
+                  <!-- <label>Print</label> -->
+                  <button class="btn btn-primary btn-sm printLink"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;&nbsp;Print</button>
+                </div> 
+              </div>
+            </div>
+          </div>
+          </center> 
         <br>
         
         <label>View Whole Regulation</label>
         <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/post_1992_legislation/regulation/expanded_view/{{$regulationAct['act_category']}}/{{$regulationAct['title']}}/{{$regulationAct['id']}}"><li>Expanded View</li></a>
         <a href=""><li>Plain View</li></a>
-        <br>
-    
-        
       </div>
     </div>
+    @include('extenders.case_law_main_search')
 </div>
 
 {{-- ADVERTISEMENT --}}

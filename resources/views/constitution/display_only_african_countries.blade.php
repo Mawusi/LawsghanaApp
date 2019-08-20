@@ -64,7 +64,7 @@
                     </table>
                 </div>
             </div>
-                            @include('constitution.africa_container_main')
+        @include('constitution.africa_container_main')
         </div>
     </div>
 

@@ -8,7 +8,7 @@
 		  <div class="panel-body">
 		    <label>By Year:</label>
 		    <input class="form-control asia_constitution_filter_year" id="myInput" type="text" aria-label="Search" placeholder="eg. 2015...">
-		    <br><br><br>
+		    <br>
 			<label>By Countries:</label>
 			<select class="form-control browser-default custom-select asia_constitution_filter_country" style="width: 149px;">
 				<option selected value="">Select Country</option>
@@ -17,11 +17,11 @@
 				<option value="{{ $asiaCountry->name }}">{{ $asiaCountry->name }}</option>
                 @endforeach	
 			</select>
-		    <br><br>
+		    <br>
 		    <input class="btn btn-primary btn-xs" type="button" name="go" value="Search" id="asia_constitution_filter">
-
 		  </div>
 		</div>
+		@include('extenders.case_law_main_search')
 	</div>
 
 	{{-- Advertisement --}}

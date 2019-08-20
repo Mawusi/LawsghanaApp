@@ -28,24 +28,35 @@
         </ul>
 
         {{-- Downloads --}}
-        <label>Downloads</label>
-            <a href=""><li>design icon (PDF)</li></a>
-            <a href=""><li>design icon (WORD)</li></a>
-        <br><br>
+        <center>
+        <div class="row">
+          <div class="col-md-12">
+            <label>Downloads</label>
+            <div class="row">
+              
+              <a class="col-md-6" href=""><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" class="img-responsive" style="width:2em;">PDF</a>
+              <a class="col-md-6" href=""><img alt="Brand" src="{{ asset('/logo/word.png') }}" class="img-responsive" style="width:2em;">WORD</a>
+              
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <!-- <label>Print</label> -->
+                <button class="btn btn-primary btn-sm printLink"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;&nbsp;Print</button>
+              </div> 
+            </div>
+          </div>
+        </div>
+        </center> 
+        <br>
         
-        <label>Print</label>
-            <!--<a href=""><li style="list-style: none;">Whole Act</li></a>-->
-            <a href=""  class="printLink"><li>Current Section</li></a>
-        <br><br>
-        
-        <label>View Whole Amendments</label>
+        <label>View</label>
             <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_2" href="/post_1992_legislation/amended_regulation_acts/expanded_view/{{$amendedRegulationAct['act_category']}}/{{$amendedRegulationAct['title']}}/{{$amendedRegulationAct['id']}}"><li>Expanded View</li>
             </a>
-            <a><li>Plain View</li></a>
-        <br>
-
+            <!-- <a><li>Plain View</li></a> -->
     </div>
   </div>
+  @include('extenders.case_law_main_search')
 </div>
 
 <!--{{-- ADS--}}-->

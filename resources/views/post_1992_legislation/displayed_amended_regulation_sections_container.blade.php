@@ -28,16 +28,28 @@
                 <li><a href="#" class="next_amendment_under_regulation">Next</a></li>
             </ul>
 
-        {{-- Downloads --}}
+            {{-- Downloads --}}
+        <center>
+        <div class="row">
+          <div class="col-md-12">
             <label>Downloads</label>
-                <a href=""><li>design icon (PDF)</li></a>
-            <a href=""><li>design icon (WORD)</li></a>
-            <br><br>
-    
-            <label>Print</label>
-                <a href=""><li>Whole Act</li></a>
-                <a href=""><li>Current Section</li></a>
+            <div class="row">
+              
+              <a class="col-md-6" href=""><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" class="img-responsive" style="width:2em;">PDF</a>
+              <a class="col-md-6" href=""><img alt="Brand" src="{{ asset('/logo/word.png') }}" class="img-responsive" style="width:2em;">WORD</a>
+              
+            </div>
             <br>
+            <div class="row">
+              <div class="col-md-12">
+                <!-- <label>Print</label> -->
+                <button class="btn btn-primary btn-sm printLink"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;&nbsp;Print</button>
+              </div> 
+            </div>
+          </div>
+        </div>
+        </center> 
+        <br>
 
     </div>
   </div>
