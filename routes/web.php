@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//Route::get('/customer/print-pdf', [ 'as' => 'customer.printpdf, 'uses' => 'CustomerController@printPDF']);
+//<a href="{{route('customer.printpdf')}}">Print PDF</a>
+
 //WELCOME PAGE
 Route::get('/','WelcomePageController@index');
 
@@ -188,9 +192,10 @@ Route::get('/post_1992_legislation','Post1992Controller@index');//display all ac
         Route::get('/post_1992_legislation/regulations_preamble/{id}','Post1992Controller@regulations_preamble');//regulations preamble
         Route::get('/post_1992_legislation/regulations_content/{id}','Post1992Controller@regulations_content');//regulations content
         Route::get('/post_1992_legislation/display_regulations_sections/{title}','Post1992Controller@display_regulations_sections_container');//display regulations sections in container
-
-
-
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                            //FOR PDF
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        Route::get('/post_1992_legislation/act_pdf/{id}', 'PDFController@post_act_pdf');
 
 
 // LAW JUDGMENTS

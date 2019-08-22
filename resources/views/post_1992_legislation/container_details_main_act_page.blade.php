@@ -37,30 +37,28 @@
             <label>Downloads</label>
             <div class="row">
               
-              <a class="col-md-6" href=""><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" class="img-responsive" style="width:2em;">PDF</a>
-              <a class="col-md-6" href=""><img alt="Brand" src="{{ asset('/logo/word.png') }}" class="img-responsive" style="width:2em;">WORD</a>
+              <a class="col-md-6 trigger_download" href="#"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" class="img-responsive" style="width:2em;">PDF</a>
+              <a class="col-md-6" href="#"><img alt="Brand" src="{{ asset('/logo/word.png') }}" class="img-responsive" style="width:2em;">WORD</a>
               
             </div>
             <br>
             <div class="row">
               <div class="col-md-12">
                 <!-- <label>Print</label> -->
-                <button class="btn btn-primary btn-sm printLink"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;&nbsp;Print</button>
+                <!-- <button class="btn btn-primary btn-sm printLink"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;&nbsp;Print</button> -->
+                <a class="btn btn-primary btn-sm" href="#"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;&nbsp;Print</a>
+
               </div> 
             </div>
           </div>
         </div>
         </center>    
-            <!--<a href=""><li style="list-style: none;">Whole Act</li></a>-->
-            <!-- <a href="#" class="printLink"><li>Current Selection</li></a> -->
-            <!-- <button type="button" class="btn btn-primary btn-sm printLink"> Print Section</button> -->
-            
-
         <br>
         
         <label>View</label>
         <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_2" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}"><li>Expanded View</li>
         </a>
+        <a class="trigger_plain_view" href="#"><li>Plain View</li></a>
         
         
         <!--<a href="/post_1992_legislation/plain_content/{{ $allPost1992Article->id }}"><li>Plain View</li></a>-->

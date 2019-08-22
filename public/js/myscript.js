@@ -18,10 +18,47 @@ $(document).ready(function(){
 
   $('.tabPanedHide_expanded_view').hide();
 
-  
-  $( ".printLink" ).click(function() {
-    $(".print-preview").printObject();
+  //the download pdf
+  $( ".trigger_download" ).on( "click", function(e) {
+    e.preventDefault();
+    alert("Download PDF" );
+    $( ".display_pdf" ).trigger( "click" );
   });
+
+  $(document).on('click','.display_pdf', function(e){
+    e.preventDefault();
+    var xhr = new XMLHttpRequest();
+    var link = $(this).attr("href");
+    xhr.open("GET", link, true);
+    xhr.onreadystatechange = function receiveUpdate(e) {
+        $("#show_pdf_view").html(this.responseText);
+        $("#show_pdf_view").show();
+    }
+    xhr.send();
+});
+
+//the plain_view
+//   $( ".trigger_plain_view" ).on( "click", function(e) {
+//     e.preventDefault();
+//     $( ".display_plain_view" ).trigger( "click" );
+//   });
+
+//   $(document).on('click','.display_plain_view', function(e){
+//     e.preventDefault();
+//     var xhr = new XMLHttpRequest();
+//     var link = $(this).attr("href");
+//     xhr.open("GET", link, true);
+//     xhr.onreadystatechange = function receiveUpdate(e) {
+//         $("#show_pdf_view").html(this.responseText);
+//         $("#show_pdf_view").show();
+        
+//     }
+//     xhr.send();
+// });
+
+//   $( ".printLink" ).click(function() {
+//     $(".print-preview").printObject();
+//   });
 
 //   $('.printLink').click(function() {
 //     window.print();
