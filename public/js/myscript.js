@@ -21,12 +21,13 @@ $(document).ready(function(){
   //the download pdf
   $( ".trigger_download" ).on( "click", function(e) {
     e.preventDefault();
-    alert("Download PDF" );
+    confirm("Download PDF" );
     $( ".display_pdf" ).trigger( "click" );
   });
 
   $(document).on('click','.display_pdf', function(e){
     e.preventDefault();
+    // confirm("Download PDF" );
     var xhr = new XMLHttpRequest();
     var link = $(this).attr("href");
     xhr.open("GET", link, true);

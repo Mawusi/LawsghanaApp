@@ -21,8 +21,10 @@
     
     <!-- <a class="btn btn-info btn-sm pull-right" href="/post_1992_legislation/plain_content/{{ $allPost1992Article['id'] }}">Plain View</a> -->
     
+    
     <div class="content">
-    <a class="btn btn-sm btn-primary pull-right display_plain" href="/post_1992_legislation/plain_content/{{ $allPost1992Article['id'] }}"><b>Plain View</b></a>
+        <!-- For the plain view -->
+    <a class="hidden btn btn-sm btn-primary pull-right display_plain" href="/post_1992_legislation/plain_content/{{ $allPost1992Article['id'] }}"><b></b></a>
         <p>{!! $allPost1992Article['content'] !!}</p>
     </div>
 </div>
