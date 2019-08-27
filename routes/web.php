@@ -109,6 +109,11 @@ Route::get('/post_1992_legislation','Post1992Controller@index');//display all ac
     Route::get('/post_1992_legislation/content/{id}','Post1992Controller@post_1992_legislation_content');//display act content
     Route::get('/post_1992_legislation/plain_content/{id}','Post1992Controller@post_1992_legislation_plain_content');//display plain act content
     Route::get('/post_1992_legislation/1/{group}/{title}/expanded-view/{id}','Post1992Controller@expanded_view');//display in expanded view
+
+    // Route::get('/post_1992_legislation/1/{group}/{title}/pdf_view/{id}','Post1992Controller@pdf_view');//display pdf
+    Route::get('/post_1992_legislation/pdf_content/{id}','Post1992Controller@post_1992_legislation_pdf_content');//display plain act content
+
+
     Route::get('/post_1992_legislation/1/{group}/{title}/plain-view/{id}','Post1992Controller@plain_view');//display in plain view
 
     Route::get('/post_1992_legislation/acts_table_of_content/{group}/{title}/{id}','Post1992Controller@post_1992_legislation_table_of_content');//display acts table of content
@@ -277,3 +282,7 @@ Route::get('/judgement/all-countries','JudgementController@all_countries_laws');
 Route::group(['prefix' => 'ajaxx'], function () {
     Voyager::routes();
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

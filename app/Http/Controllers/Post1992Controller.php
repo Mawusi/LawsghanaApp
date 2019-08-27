@@ -12,6 +12,7 @@ use App\RegulationTitle;
 use App\RegulationArticle;
 use App\AmendRegulationAct;
 use App\AmendRegulationArticle;
+use PDF;
 use App\Post1992LegislationGroup;
 
 class Post1992Controller extends Controller
@@ -86,6 +87,13 @@ class Post1992Controller extends Controller
         return view('post_1992_legislation.displayed_plain_content_view', compact('allPost1992Article'));
     }
 
+    //Display pdf Content
+    public function post_1992_legislation_pdf_content($id){
+        $allPost1992Article = Post1992Article::find(['id' => $id])->toArray()[0];
+        $pdf = PDF::loadView('post_1992_legislation.displayed_pdf_content_view', compact('allPost1992Article'));
+        return $pdf->download('Financial_Administration_Act.pdf');
+    }
+
     //Display Expanded-View
     public function expanded_view($id, $title, $group){
         $allPost1992Act              = Post1992Act::find(
@@ -99,6 +107,28 @@ class Post1992Controller extends Controller
         $allPost1992Articles         = $unique;
         return view('post_1992_legislation.displayed_expandedView', compact('allPost1992Act','allPost1992Articles'));
     }
+
+    //Display pdf-View
+//     public function pdf_view($id, $title, $group){
+//         $allPost1992Act              = Post1992Act::find(
+//             [
+//                 'id' => $id,
+//                 'post_group' => $group
+//             ])->toArray()[0];
+         
+//         $allPost1992Article = Post1992Article::find(['id' => $id])->toArray()[0];
+            
+//         $allPostArticles1            = Post1992Article::where(['post_act' => $title])->get();
+//         $unique                     = $allPostArticles1->unique()->sortBy('part')->sortBy('priority'); 
+//         $allPost1992Articles         = $unique;
+//         return view('post_1992_legislation.displayed_expandedView', compact('allPost1992Act','allPost1992Articles'));
+
+//         public function post_act_pdf($id){
+//        $allPost1992Article = Post1992Article::find(['id' => $id])->toArray()[0];
+//        $pdf = PDF::loadView('post_1992_legislation.displayed_content_view', compact('allPost1992Article'));
+//        return $pdf->download('Financial_Administration_Act.pdf');
+//    }
+//     }
     
      //Display Plain-View
     public function plain_view($id, $title, $group){

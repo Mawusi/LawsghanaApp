@@ -19,6 +19,11 @@ $(document).ready(function(){
   $('.tabPanedHide_expanded_view').hide();
 
   //the download pdf
+  $('.show_print_options').click(function (e) {
+    e.preventDefault();
+        $('.print_options_displayed').show();
+    });
+
   $( ".trigger_download" ).on( "click", function(e) {
     e.preventDefault();
     confirm("Download PDF" );

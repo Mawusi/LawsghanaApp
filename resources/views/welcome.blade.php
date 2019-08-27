@@ -23,7 +23,7 @@
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
-                height: 10vh;
+                height: 100vh;
                 
             }
 
@@ -69,7 +69,8 @@
             }
 
             .m-b-md {
-                margin-bottom: 100px;
+                margin-bottom: 30px;
+                margin-top: 200px;
             }
             
         </style>
@@ -93,14 +94,15 @@
         
         <div class="container">
             <a href="/" class="">
-                <img src="{{ asset('/logo/gh_flag.png') }}" class="img-responsive" style="width:3em;">
+                <img src="{{ asset('/logo/gh_flag.png') }}" class="img-responsive" style="width:3em; padding-top: 5px;">
             </a>
             <!--<h2>Animated Sidenav Example</h2>-->
             <!--<p>LawsGhana Tag.</p>-->
             <!--<span style="font-size:20px;cursor:pointer" onclick="openNav()">&#9776; Law by Categories</span>-->
         </div>
         
-        <div class="container flex-center position-ref full-height">
+        <!-- <div class="container flex-center position-ref full-height"> -->
+        <div class="container">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -114,8 +116,9 @@
                     @endauth
                 </div>
             @endif
+        </div>
 
-            <div class="container content m-b-md">
+        <div class="container content m-b-md">
                 
                 <div class="row">
                     <div class="title">
@@ -161,7 +164,6 @@
                 </div>
                 
             </div> <!--end of container-->
-        </div>
         
 <!--        <script>-->
 <!--function openNav() {-->
