@@ -18,58 +18,11 @@ $(document).ready(function(){
 
   $('.tabPanedHide_expanded_view').hide();
 
-  //the download pdf
-  $('.show_print_options').click(function (e) {
+  //click to show print options
+  $(document).on('click', '#print_options', function(e){
     e.preventDefault();
-        $('.print_options_displayed').show();
-    });
-
-  $( ".trigger_download" ).on( "click", function(e) {
-    e.preventDefault();
-    confirm("Download PDF" );
-    $( ".display_pdf" ).trigger( "click" );
+      $('.menu_options').toggle("slide");
   });
-
-  $(document).on('click','.display_pdf', function(e){
-    e.preventDefault();
-    // confirm("Download PDF" );
-    var xhr = new XMLHttpRequest();
-    var link = $(this).attr("href");
-    xhr.open("GET", link, true);
-    xhr.onreadystatechange = function receiveUpdate(e) {
-        $("#show_pdf_view").html(this.responseText);
-        $("#show_pdf_view").show();
-    }
-    xhr.send();
-});
-
-//the plain_view
-//   $( ".trigger_plain_view" ).on( "click", function(e) {
-//     e.preventDefault();
-//     $( ".display_plain_view" ).trigger( "click" );
-//   });
-
-//   $(document).on('click','.display_plain_view', function(e){
-//     e.preventDefault();
-//     var xhr = new XMLHttpRequest();
-//     var link = $(this).attr("href");
-//     xhr.open("GET", link, true);
-//     xhr.onreadystatechange = function receiveUpdate(e) {
-//         $("#show_pdf_view").html(this.responseText);
-//         $("#show_pdf_view").show();
-        
-//     }
-//     xhr.send();
-// });
-
-//   $( ".printLink" ).click(function() {
-//     $(".print-preview").printObject();
-//   });
-
-//   $('.printLink').click(function() {
-//     window.print();
-//   });
-
 
     //TOGGLE ALL AMENDMENTS AND REGULATION UNDER AN ACT
     //For all amendments
