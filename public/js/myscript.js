@@ -18,7 +18,7 @@ $(document).ready(function(){
 
   $('.tabPanedHide_expanded_view').hide();
 
-  //click to show print options
+  //To toggle print and view options
   $(document).on('click', '#print_options', function(e){
     e.preventDefault();
       $('.menu_options').toggle("slide");

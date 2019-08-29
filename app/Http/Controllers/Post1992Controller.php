@@ -94,6 +94,12 @@ class Post1992Controller extends Controller
         return $pdf->download('Financial_Administration_Act.pdf');
     }
 
+    //Display pdf Content
+    public function post_1992_legislation_print_content($id){
+        $allPost1992Article = Post1992Article::find(['id' => $id])->toArray()[0];
+        return view('post_1992_legislation.displayed_print_content_view', compact('allPost1992Article'));
+    }
+
     //Display Expanded-View
     public function expanded_view($id, $title, $group){
         $allPost1992Act              = Post1992Act::find(

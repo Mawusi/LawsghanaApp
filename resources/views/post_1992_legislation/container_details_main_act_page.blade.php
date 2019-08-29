@@ -30,7 +30,7 @@
             <li><a href="#" class="next_content_act">Next</a></li>
         </ul>
         
-        {{-- Downloads --}}
+        {{-- Downloads 
         <center>
         <div class="row">
           <div class="col-md-12">
@@ -54,14 +54,16 @@
         </div>
         </center>    
         <br>
+        --}}
         
+        <center>
         <label>View</label>
-        <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_2" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}"><li>Expanded View</li>
+        <a class="expanded_link" style="list-style:none;" id="expanded_link_toggle_all_pre1992_preview_2" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}"><li>Expanded View</li>
         </a>
-        <a class="trigger_plain_view" href="#"><li>Plain View</li></a>
+        <!-- <a class="trigger_plain_view" href="#"><li>Plain View</li></a> -->
+        <!-- <a href="/post_1992_legislation/plain_content/{{ $allPost1992Article->id }}"><li>Plain View</li></a> -->
+        </center>
         
-        
-        <!--<a href="/post_1992_legislation/plain_content/{{ $allPost1992Article->id }}"><li>Plain View</li></a>-->
         <!--<br>-->
         
     </div>
