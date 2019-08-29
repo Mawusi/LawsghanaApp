@@ -3,7 +3,6 @@
 @section('content')
     <div class="container">
         <a onclick="printpage()" id="printpagebutton" title="Print page"><span class="btn btn-info btn-sm pull-right print-preview glyphicon glyphicon-print" aria-hidden="true"></span></a><br>
-        <!-- <input class="btn btn-info btn-sm pull-right glyphicon glyphicon-print" id="printpagebutton" value="Print this page" onclick="printpage()"/>         -->
     <div class="print_this">
             <center>
             <h4>

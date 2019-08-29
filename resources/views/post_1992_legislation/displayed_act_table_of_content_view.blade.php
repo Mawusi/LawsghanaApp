@@ -172,7 +172,7 @@
          <!-- ACTS EXPANDED CONTENTS -->
         <div id="expandedTab" class="tab-pane fade">
                 <div class="row">
-                     <div class="col-md-7 expanded_view" style="background-color: #FFFFFF";>
+                     <div class="col-md-9 expanded_view" style="background-color: #FFFFFF";>
                         <div id="acts_expanded_view"></div> 
                     </div>
                      @include('post_1992_legislation.container_details_act_expanded')
