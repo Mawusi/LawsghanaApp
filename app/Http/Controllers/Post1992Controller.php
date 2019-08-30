@@ -94,7 +94,7 @@ class Post1992Controller extends Controller
         return $pdf->download('Financial_Administration_Act.pdf');
     }
 
-    //Display pdf Content
+    //Display print section Content
     public function post_1992_legislation_print_content($id){
         $allPost1992Article = Post1992Article::find(['id' => $id])->toArray()[0];
         return view('post_1992_legislation.displayed_print_content_view', compact('allPost1992Article'));
@@ -126,6 +126,35 @@ class Post1992Controller extends Controller
         $unique                     = $allPostArticles1->unique()->sortBy('part')->sortBy('priority'); 
         $allPost1992Articles         = $unique;
         return view('post_1992_legislation.displayed_plainView', compact('allPost1992Act','allPost1992Articles'));
+    }
+
+    //Display Print View for Expanded view
+    public function print_view($id, $title, $group){
+        $allPost1992Act              = Post1992Act::find(
+            [
+                'id' => $id,
+                'post_group' => $group
+            ])->toArray()[0];
+            
+        $allPostArticles1            = Post1992Article::where(['post_act' => $title])->get();
+        $unique                     = $allPostArticles1->unique()->sortBy('part')->sortBy('priority'); 
+        $allPost1992Articles         = $unique;
+        return view('post_1992_legislation.displayed_printView', compact('allPost1992Act','allPost1992Articles'));
+    }
+
+    //Display Print View for Expanded view
+    public function pdf_view($id, $title, $group){
+        $allPost1992Act              = Post1992Act::find(
+            [
+                'id' => $id,
+                'post_group' => $group
+            ])->toArray()[0];
+            
+        $allPostArticles1            = Post1992Article::where(['post_act' => $title])->get();
+        $unique                     = $allPostArticles1->unique()->sortBy('part')->sortBy('priority'); 
+        $allPost1992Articles         = $unique;
+        $pdf = PDF::loadView('post_1992_legislation.displayed_pdfView', compact('allPost1992Act','allPost1992Articles'));
+        return $pdf->download('Financial_Administration_Act.pdf');
     }
 
     //Display Acts of Parliament

@@ -13,9 +13,9 @@
                     data-scroll-focus="body"
                     data-scroll-speed="400"
                     data-scroll-offset="-60" href="#" class="next_content_act">Next Section</a></li>
-        <a class="btn btn-info btn-sm pull-right" href="javascript:history.back()">Back to Full View</a><br>
+        <!-- <a class="btn btn-info btn-sm pull-right" href="javascript:history.back()">Back to Full View</a><br> -->
          </ul>
-    
+        <br>
     
         <h4><b>{{ $allPost1992Article['section'] }}</b></h4>
         <div class="content">

@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container">
-        <a class="btn btn-info btn-sm pull-right" href="javascript:history.back()">Back to Full View</a><br>
+        <!-- <a class="btn btn-info btn-sm pull-right" href="javascript:history.back()">Back to Table of Contents</a><br> -->
     </div>
 
     <div class="container">
@@ -25,7 +25,7 @@
     </div>
     
     <div class="container">
-        <a class="btn btn-info btn-sm" href="javascript:history.back()">Back to Full View</a>
+        <!-- <a class="btn btn-info btn-sm" href="javascript:history.back()">Back to Table of Contents</a> -->
     </div>
     
 @endsection    

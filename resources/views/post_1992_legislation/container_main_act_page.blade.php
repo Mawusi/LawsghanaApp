@@ -10,26 +10,27 @@
       </div>
 
         <div class="panel-body">
-          <label style="color: black;">Amendments & Regulations</label><br>   
+        <center>
+          <label style="color: black;">Related Acts</label><br>   
           
           <!-- 1. both are true -->
           @if($amendedcount > 0 && $regulationcount > 0)
-                <a class="all_amendments_link" id="all_amendments_link_toggle" href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_amended_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><li>View Amendments</li>
+                <a class="all_amendments_link" id="all_amendments_link_toggle" href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_amended_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><li style="list-style:none;">View Amendments</li>
                 </a>
                 
-                <a class="all_regulations_link" id="all_regulations_link_toggle" href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_regulations_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><li>View Regulations</li>
+                <a class="all_regulations_link" id="all_regulations_link_toggle" href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_regulations_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><li style="list-style:none;">View Regulations</li>
                 </a>
                 <br>
 
             <!-- 2. only amendments -->
             @elseif($amendedcount > 0)
-                <a class="all_amendments_link" id="all_amendments_link_toggle" href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_amended_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><li>View Amendents</li>
+                <a class="all_amendments_link" id="all_amendments_link_toggle" href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_amended_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><li style="list-style:none;">View Amendents</li>
                 </a>
                 <br>
 
             <!-- 3. only regulations -->
             @elseif($regulationcount > 0)
-                <a class="all_regulations_link" id="all_regulations_link_toggle" href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_regulations_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><li>View Regulations</li>
+                <a class="all_regulations_link" id="all_regulations_link_toggle" href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_regulations_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><li style="list-style:none;">View Regulations</li>
                 </a>
                 <br>
                 
@@ -39,8 +40,8 @@
                   <br>
           @endif
           
-          {{-- Downloads --}}
-          <center>
+          {{-- Downloads
+          
           <div class="row">
             <div class="col-md-12">
               <label>Downloads</label>
@@ -59,13 +60,15 @@
               </div>
             </div>
           </div>
-          </center> 
-              <br>
-          <label>View Whole Act</label>
-          <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}"><li>Expanded View</li>
+           
+          --}}
+    
+          <label style="color: black;">View Options</label>
+          <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}"><li style="list-style:none;">Expanded View</li>
           </a>
-          <a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/plain-view/{{ $allPost1992Act['id'] }}"><li>Plain View</li></a>
+          <a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/plain-view/{{ $allPost1992Act['id'] }}"><li style="list-style:none;">Plain View</li></a>
         </div>
+        </center>
     </div>
     @include('extenders.case_law_main_search')
 </div>

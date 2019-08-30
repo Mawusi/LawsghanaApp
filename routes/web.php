@@ -112,11 +112,13 @@ Route::get('/post_1992_legislation','Post1992Controller@index');//display all ac
 
     // Route::get('/post_1992_legislation/1/{group}/{title}/pdf_view/{id}','Post1992Controller@pdf_view');//display pdf
     Route::get('/post_1992_legislation/pdf_content/{id}','Post1992Controller@post_1992_legislation_pdf_content');//display plain act content
-    Route::get('/post_1992_legislation/print_content/{id}','Post1992Controller@post_1992_legislation_print_content');//display plain act content
+    Route::get('/post_1992_legislation/print_section_content/{id}','Post1992Controller@post_1992_legislation_print_content');//display plain act content
 
 
 
-    Route::get('/post_1992_legislation/1/{group}/{title}/plain-view/{id}','Post1992Controller@plain_view');//display in plain view
+    Route::get('/post_1992_legislation/1/{group}/{title}/plain_view/{id}','Post1992Controller@plain_view');//display in plain view
+    Route::get('/post_1992_legislation/1/{group}/{title}/pdf_view/{id}','Post1992Controller@pdf_view');//display in plain view
+    Route::get('/post_1992_legislation/1/{group}/{title}/print_view/{id}','Post1992Controller@print_view');//display in print view
 
     Route::get('/post_1992_legislation/acts_table_of_content/{group}/{title}/{id}','Post1992Controller@post_1992_legislation_table_of_content');//display acts table of content
 

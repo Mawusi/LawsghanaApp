@@ -1,3 +1,4 @@
+
 <center>
 <p>
     <b>{{$allPost1992Article['post_act']}}</b>

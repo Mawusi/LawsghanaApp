@@ -3,20 +3,20 @@
 @section('content')
     <div class="container">
         <a onclick="printpage()" id="printpagebutton" title="Print page"><span class="btn btn-info btn-sm pull-right print-preview glyphicon glyphicon-print" aria-hidden="true"></span></a><br>
-        <div class="print_this">
-            <center>
-            <h4>
-                <b>{{$allPost1992Article['post_act']}}</b>
-            </h4>
-            </center>
-            <br>
-            <h4>
-                <b>{{ $allPost1992Article['section'] }}</b>
-            </h4>
+        <div class="container">
+            <center><h4><b>{{ $allPost1992Act['title'] }}</b></h4></center>
+        </div>
+        <br>
+        <div class="container">	
+        <h4><b>Preamble</b></h4><p>{!! $allPost1992Act['preamble'] !!}</p>
+        <hr>
+        @foreach($allPost1992Articles as $allPost1992Article)
+            
+                <h4><b>{{$allPost1992Article->section }}</b></h4>
+                {!! $allPost1992Article->content !!}
+                <hr><br>
 
-            <div class="content">
-                <p>{!! $allPost1992Article['content'] !!}</p>
-            </div>
+        @endforeach
         </div>
     </div>  
 @endsection 
@@ -37,4 +37,3 @@
 </script>
 
 @endsection
-
