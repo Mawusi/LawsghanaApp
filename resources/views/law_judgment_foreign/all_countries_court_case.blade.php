@@ -62,7 +62,7 @@
     {{-- <div class="container-fluid"><span style="color:red;">Foreign Law case: {{ $allCountriesJudgementLaw['country'] }}</span> / <b>{{ $allJudgementLaw['case_title'] }}</b></div> --}}
         <div class="container-fluid">
             <div class="row content">
-                <div class="col-md-7 judgement_display" style="height: 600px;">
+                <div class="col-md-9 judgement_display" style="height: 600px;">
                     <div id="display_content">
                         <div class="header_only">
                             <p><b>{{ $allCountriesJudgementLaw['case_title'] }}</b></p>
@@ -73,7 +73,22 @@
                     </div> 
                     <div id="display_view_all_section"></div>   
                 </div>
-                    @include('law_judgment_foreign.foreign_all_judgment_view')
+                    {{--@include('law_judgment_foreign.foreign_all_judgment_view')--}}
+                    {{-- Advertisement --}}
+                <div class="col-md-3">
+                @include('extenders.case_law_main_search')
+                <br>
+                        <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <p class="panel-title"><small>Advertisement</small></p>
+                        </div>
+                        <div class="panel-body">
+                            <div class="embed-responsive embed-responsive-4by3">
+                            <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>        
+                            </div>		  
+                        </div>
+                        </div>
+                </div>
             </div>
         </div>         
 @endsection
