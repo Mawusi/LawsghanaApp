@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <a onclick="printpage()" id="printpagebutton" title="Print page"><span class="btn btn-info btn-sm pull-right print-preview glyphicon glyphicon-print" aria-hidden="true"></span></a><br>
+        <a onclick="printpage()" id="printpagebutton" title="Print page"><span class="btn btn-info btn-sm pull-right glyphicon glyphicon-print" aria-hidden="true"></span></a><br>
         <div class="container">
             <center><h4><b>{{ $allPost1992Act['title'] }}</b></h4></center>
         </div>
@@ -17,6 +17,7 @@
                 <hr><br>
 
         @endforeach
+        @include('extenders.footer_caption')
         </div>
     </div>  
 @endsection 

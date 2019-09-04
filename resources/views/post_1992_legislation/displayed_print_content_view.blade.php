@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <a onclick="printpage()" id="printpagebutton" title="Print page"><span class="btn btn-info btn-sm pull-right print-preview glyphicon glyphicon-print" aria-hidden="true"></span></a><br>
+        <a onclick="printpage()" id="printpagebutton" title="Print page"><span class="btn btn-info btn-sm pull-right glyphicon glyphicon-print" aria-hidden="true"></span></a><br>
         <div class="print_this">
             <center>
             <h4>
@@ -16,6 +16,7 @@
 
             <div class="content">
                 <p>{!! $allPost1992Article['content'] !!}</p>
+                @include('extenders.footer_caption')
             </div>
         </div>
     </div>  

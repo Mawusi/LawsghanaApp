@@ -75,23 +75,10 @@ class Post1992Controller extends Controller
         return view('post_1992_legislation.displayed_preamble_view', compact('allPost1992Act'));   
      }
 
-     //Display Content
-     public function post_1992_legislation_content($id){
-        $allPost1992Article = Post1992Article::find(['id' => $id])->toArray()[0];
-        return view('post_1992_legislation.displayed_content_view', compact('allPost1992Article'));
-    }
-    
     //Display Plain Content
      public function post_1992_legislation_plain_content($id){
         $allPost1992Article = Post1992Article::find(['id' => $id])->toArray()[0];
         return view('post_1992_legislation.displayed_plain_content_view', compact('allPost1992Article'));
-    }
-
-    //Display pdf Content
-    public function post_1992_legislation_pdf_content($id){
-        $allPost1992Article = Post1992Article::find(['id' => $id])->toArray()[0];
-        $pdf = PDF::loadView('post_1992_legislation.displayed_pdf_content_view', compact('allPost1992Article'));
-        return $pdf->download('Financial_Administration_Act.pdf');
     }
 
     //Display print section Content
@@ -114,6 +101,12 @@ class Post1992Controller extends Controller
         return view('post_1992_legislation.displayed_expandedView', compact('allPost1992Act','allPost1992Articles'));
     }
 
+    //Display Content
+    public function post_1992_legislation_content($id){
+        $allPost1992Article = Post1992Article::find(['id' => $id])->toArray()[0];
+        return view('post_1992_legislation.displayed_content_view', compact('allPost1992Article'));
+    }
+   
      //Display Plain-View
     public function plain_view($id, $title, $group){
         $allPost1992Act              = Post1992Act::find(
@@ -142,7 +135,7 @@ class Post1992Controller extends Controller
         return view('post_1992_legislation.displayed_printView', compact('allPost1992Act','allPost1992Articles'));
     }
 
-    //Display Print View for Expanded view
+    //Display Pdf View for Expanded view
     public function pdf_view($id, $title, $group){
         $allPost1992Act              = Post1992Act::find(
             [
@@ -154,7 +147,19 @@ class Post1992Controller extends Controller
         $unique                     = $allPostArticles1->unique()->sortBy('part')->sortBy('priority'); 
         $allPost1992Articles         = $unique;
         $pdf = PDF::loadView('post_1992_legislation.displayed_pdfView', compact('allPost1992Act','allPost1992Articles'));
-        return $pdf->download('Financial_Administration_Act.pdf');
+        return $pdf->download($title.'.lawsghana.pdf');
+    }
+
+    //Display Pdf View for Content view
+    public function post_1992_legislation_pdf_content($id, $title){
+        //dd($id);
+        $allPost1992Article              = Post1992Article::find(
+            [
+                'id' => $id,
+                'post_act' => $title
+            ])->toArray()[0];
+        $pdf = PDF::loadView('post_1992_legislation.displayed_pdf_content_view', compact('allPost1992Article'));
+        return $pdf->download($id.'.lawsghana.pdf');
     }
 
     //Display Acts of Parliament
@@ -285,48 +290,6 @@ class Post1992Controller extends Controller
         $actsOfParliamentCategories   = Post1992Category::all();
         return view('post_1992_legislation.displayed_acts_of_parliament_view', compact('actsOfParliaments', 'actsOfParliamentCategories'));
     }
-
-
-
-
-
-
-
-
-
-    //Display Legislative Instruments
-    // public function legislative_instruments($group){
-    //     $legislativeInstruments         = Post1992Act::where(['post_group' => $group])->get();
-    //     $legislativeInstrumentsCategories   = Post1992Category::all();
-    //     return view('post_1992_legislation.displayed_legislative_instruments_view', compact('legislativeInstruments', 'legislativeInstrumentsCategories'));
-    // }
-
-    //LEGISLATIVE INSTRUMENT FILTERING
-    // public function legislative_instrument_filter($year, $category){
-
-    //     $name = "Legislative Instruments";
-    //     $bool = false;
-    //     $where = array();
-
-    //     if($year != "0"){   
-    //       $where['year'] = $year;
-    //       $bool = true;
-    //   }
-    //   if($category != "0"){   
-    //       $where['post_category'] = $category;
-    //       $bool = true;
-    //   }
-
-    //     $legislativeInstruments       = ($bool)?Post1992Act::where($where)->where(['post_group' => $name])->get():Pre1992LegislationAct::all();
-    //     $legislativeInstrumentsCategories   = Post1992Category::all();
-    //     return view('post_1992_legislation.displayed_legislative_instruments_view', compact('legislativeInstruments', 'legislativeInstrumentsCategories'));
-    // }
-
-
-
-
-
-
 
     //------------------------------------------------------------------------------------------------------------------------------
 
@@ -482,9 +445,6 @@ class Post1992Controller extends Controller
         return view('post_1992_legislation.displayed_regulation_act_expanded_view', compact('regulationAct','allRegulationArticles'));
     }
 
-
-
-
     //FOR REGULATION TAB ONLY
     //Display all Regulation Acts only 
 
@@ -544,111 +504,4 @@ class Post1992Controller extends Controller
                     }
     //-----------------------------------------------------------------------------------------------------------------------------------------
 
-     //Display All amendments under an act
-    //  public function all_amendedments_for_an_acts($id, $title, $group){
-    //     $allPost1992Act              = Post1992Act::find(
-    //         [
-    //             'id' => $id,
-    //             'post_group' => $group
-    //         ])->toArray()[0];
-
-    //     $amendedActs                 = AmendedTitle::where(['act_title' => $title])->get();
-
-    //     return view('post_1992_legislation.displayed_all_amended_titles', compact('allPost1992Act','amendedActs'));
-    // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //NOT IN USE
-    //Display Amendments
-    // public function amended_acts($group){
-    //     $amendedActs         = Post1992Act::where(['post_group' => $group])->get();
-    //     $amendedActsCategories   = Post1992Category::all();
-    //     return view('post_1992_legislation.displayed_amended_acts_view', compact('amendedActs', 'amendedActsCategories'));
-    // }
-
-    //AMENDMENTS FILTERING
-    // public function amendments_filter($year, $category){
-
-    //     $name = "Amended Acts";
-    //     $bool = false;
-    //     $where = array();
-
-    //     if($year != "0"){   
-    //        $where['year'] = $year;
-    //        $bool = true;
-    //    }
-    //    if($category != "0"){   
-    //        $where['post_category'] = $category;
-    //        $bool = true;
-    //    }
-
-    //     $amendedActs       = ($bool)?Post1992Act::where($where)->where(['post_group' => $name])->get():Pre1992LegislationAct::all();
-    //     $amendedActsCategories   = Post1992Category::all();
-    //     return view('post_1992_legislation.displayed_amended_acts_view', compact('amendedActs', 'amendedActsCategories'));
-    // }
-
-
-
-
-
-    //MADE ONLINE CHANGES
-    //Amendment Table of Content
-    // public function general_display_table_of_content($id, $title, $group){
-    //     $allPost1992Act    = Post1992Act::find(
-    //         [
-    //             'id' => $id,
-    //             'post_group' => $group
-    //         ])->toArray()[0];
-
-    //     $allPostArticles1      = Post1992Article::where(['post_act' => $title])->get();
-    //     $unique               = $allPostArticles1->sortBy('part')->sortBy('priority');
-    //     $allPost1992Articles   = $unique;
-
-    //     return view('post_1992_legislation.displayed_general_table_of_content_view', compact('allPost1992Act', 'allPost1992Articles'));
-    // }
-
-    //MADE ONLINE CHANGES
-    //Regulation Table of Content
-    // public function regulation_display_table_of_content($id, $title, $group){
-    //     $allPost1992Act    = Post1992Act::find(
-    //         [
-    //             'id' => $id,
-    //             'post_group' => $group
-    //         ])->toArray()[0];
-
-    //     $allPostArticles1      = Post1992Article::where(['post_act' => $title])->get();
-    //     $unique               = $allPostArticles1->sortBy('part')->sortBy('priority');
-    //     $allPost1992Articles   = $unique;
-
-    //     return view('post_1992_legislation.regulation_general_table_of_content_view', compact('allPost1992Act', 'allPost1992Articles'));
-    // }
 }
