@@ -64,7 +64,7 @@
 @endsection
 
     {{-- <div class="container-fluid"><span style="color:red;">{{ $highCourt['gh_law_judgment_group_name'] }} Case </span><b>{{ $highCourt['case_title'] }}</b></div> --}}
-    {{--<div class="container-fluid"><span style="color:red;">{{ $highCourt['gh_law_judgment_group_name'] }} Case </span></div>--}}
+    <div class="container-fluid"><span style="color:red;">{{ $highCourt['gh_law_judgment_group_name'] }} Case </span></div>
         <div class="container-fluid">
             <div class="row content">
                 <div class="col-md-9 judgement_display" style="height: 600px;">
@@ -79,10 +79,31 @@
                     <div id="display_view_all_section"></div>   
                 </div>
                     {{--@include('law_judgment.law_high_court_container')--}}
-                    {{-- Advertisement --}}
+                    
                 <div class="col-md-3">
-                @include('extenders.case_law_main_search')
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><center><p class="panel-title"><small>Quick Look on {{$highCourt['gh_law_judgment_group_name']}}</small></p></center></div>
+                        <div class="panel-body">
+                            {{-- View all sections --}}
+                            <center>
+                            <div class="btn-group" style="margin-bottom: 10px;">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <small>Preview Case Laws</small> <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu scroll-view-judgement dropdown-menu-right" style="width: 600px;">
+                                    @foreach($highCourts as $highCourt) 
+                                    <li>
+                                        <a class="view_all_section_link" href="/judgement/Ghana/Case-view/{{$highCourt->gh_law_judgment_group_name}}}/{{ $highCourt->id}}">{{$highCourt->case_title}}</a>
+                                    </li>
+                                @endforeach
+                                </ul>
+                            </div>
+                            </center>
+                            @include('extenders.case_law_main_search')
+                        </div>
+                    </div>        
                 <br>
+                        {{-- Advertisement --}}
                         <div class="panel panel-default">
                         <div class="panel-heading">
                             <p class="panel-title"><small>Advertisement</small></p>

@@ -62,10 +62,10 @@
     @include('law_judgment_foreign.foreign_judgment_menu_addon')
 @endsection
 
-    {{-- <div class="container-fluid"><span style="color:red;">{{ $africaJudgement['gh_law_judgment_group_name'] }} Case</div> --}}
+    <div class="container-fluid"><span style="color:red;">{{ $europeJudgement['country_name'] }} Case Laws</div>
         <div class="container-fluid">
             <div class="row content">
-                <div class="col-md-7 judgement_display" style="height: 600px;">
+                <div class="col-md-9 judgement_display" style="height: 600px;">
                     <div id="display_content">
                         <div class="header_only">
                             <p><b>{{ $europeJudgement['case_title'] }}</b></p>
@@ -76,7 +76,41 @@
                     </div> 
                     <div id="display_view_all_section"></div>   
                 </div>
-                    @include('law_judgment_foreign.europe_court_container_view')
+                    {{--@include('law_judgment_foreign.europe_court_container_view')--}}
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><center><p class="panel-title"><small>Quick Look on {{ $europeJudgement['country_name'] }} Case Laws</small></p></center></div>
+                        <div class="panel-body">
+                        {{-- View all sections --}}
+                                <center>
+                                <div class="btn-group" style="margin-bottom: 10px;">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <small>Preview Case Laws</small> <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu scroll-view-judgement dropdown-menu-right" style="width: 600px;">
+                                    @foreach($europeJudgements as $europeJudgement) 
+                                    <li><a class="view_all_section_link" href="/judgement/Case-view/{{ $europeJudgement->country_name }}/{{ $europeJudgement->id}}">{{$europeJudgement->case_title }}</a></li>
+                                    @endforeach
+                                    </ul>
+                                </div>
+                                </center>
+                                @include('extenders.case_law_main_search')
+                        </div>
+                    </div>
+                <br>    
+            
+                        {{-- Advertisement --}}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <p class="panel-title"><small>Advertisement</small></p>
+                            </div>
+                            <div class="panel-body">
+                                <div class="embed-responsive embed-responsive-4by3">
+                                <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>        
+                                </div>		  
+                            </div>
+                        </div>
+                </div>
             </div>
         </div>         
 @endsection
