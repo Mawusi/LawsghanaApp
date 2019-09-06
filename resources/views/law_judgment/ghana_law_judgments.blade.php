@@ -52,7 +52,7 @@
                         @foreach($ghlawjudgments as $ghlawjudgment)
                             <tr>
                                 <td>
-                                    <a href="/judgement/Ghana/{{ $ghlawjudgment->gh_law_judgment_group_name }}/{{ $ghlawjudgment->id}}"><li style="list-style: none;">{{ $ghlawjudgment->case_title }}</li></a>
+                                <a href="/judgement/Ghana/{{ $ghlawjudgment->gh_law_judgment_group_name }}/{{ $ghlawjudgment->id}}"><li style="list-style: none;">{{ $ghlawjudgment->case_title }}</li></a>
                                 </td>
                                 <td>{{ $ghlawjudgment->reference_number }}</td>
                                 <td>{{ $ghlawjudgment->year }}</td>

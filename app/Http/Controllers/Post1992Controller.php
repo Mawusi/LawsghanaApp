@@ -152,7 +152,7 @@ class Post1992Controller extends Controller
 
     //Display Pdf View for Content view
     public function post_1992_legislation_pdf_content($id, $title){
-        //dd($id);
+        // dd($id);
         $allPost1992Article              = Post1992Article::find(
             [
                 'id' => $id,

@@ -8,6 +8,7 @@ use App\GhLawJudgmentCategory;
 use App\GhLawJudgmentGroup;
 use App\ForeignLawJudgment;
 use App\Country;
+use PDF;
 
 class JudgementController extends Controller
 {
@@ -61,7 +62,8 @@ class JudgementController extends Controller
     //     return view('law_judgment.ghana_law_judgments', compact('ghlawjudgments'));
     // }
 
-    public function all_ghana_court_cases($id, $name){
+    public function all_ghana_court_cases($name, $id){
+        // dd($name);
         $allGhanaLaw = GhLawJudgment::find(
             [
                 'id' => $id,
@@ -72,6 +74,7 @@ class JudgementController extends Controller
         return view('law_judgment.ghana_all_court_case', compact('allGhanaLaws', 'allGhanaLaw'));
     }
 
+
     public function all_ghana_court_cases_view($id, $name){
         $allGhanaLaw = GhLawJudgment::find(
             ['
@@ -79,6 +82,30 @@ class JudgementController extends Controller
                 'gh_law_judgment_group_name' => $name
             ])->toArray()[0];
         return view('law_judgment.ghana_all_court_case_view', compact('allGhanaLaw'));
+    }
+
+    //Display print section Content
+    public function Ghana_all_print_preview($id){
+        $allGhanaLawprint = GhLawJudgment::find(['id' => $id])->toArray()[0];
+        return view('law_judgment.displayed_print_content_view', compact('allGhanaLawprint'));
+    }
+
+    //Display Plain Content
+    public function Ghana_all_plain_view($id){
+        $allGhanaLawPlainView = GhLawJudgment::find(['id' => $id])->toArray()[0];
+        return view('law_judgment.displayed_plain_content_view', compact('allGhanaLawPlainView'));
+    }
+
+    //Display Pdf View for Content view
+    public function Ghana_all_pdf_view($name, $id){
+        // dd($name);
+        $allGhanaLawpdf = GhLawJudgment::find(
+            [
+                'id' => $id,
+                'gh_law_judgment_group_name' => $name
+            ])->toArray()[0];
+        $pdf = PDF::loadView('law_judgment.displayed_pdf_content_view', compact('allGhanaLawpdf'));
+        return $pdf->download($name.'.case_law.pdf');
     }
 
 

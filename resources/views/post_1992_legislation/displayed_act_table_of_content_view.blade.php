@@ -148,7 +148,7 @@
                         <div id="display_preamble"></div>
                         <div id="display_view_all_section"></div>
                 </div>
-                <div id="show_pdf_view"></div>
+                <!-- <div id="show_pdf_view"></div> -->
                 @include('post_1992_legislation.container_details_main_act_page')
             </div>   
             
