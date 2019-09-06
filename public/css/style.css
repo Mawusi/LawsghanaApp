@@ -49,8 +49,18 @@ overflow-y: auto;
   overflow: scroll;
 }
 
+.header_only{
+  padding: 5px 1px 0.1px 1px;
+  background: #555;
+  color: #f1f1f1;
+  text-align: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
 .judgement_display {
-  background-color: #eee;
+  background-color: #FFFFFF;
   height: 100px;
   overflow: scroll;
   margin-bottom: 1em;
@@ -82,6 +92,7 @@ overflow: scroll;
 ::-webkit-scrollbar {
   width: 20px;
 }
+
         
 div.contain {
 width: 200px;
