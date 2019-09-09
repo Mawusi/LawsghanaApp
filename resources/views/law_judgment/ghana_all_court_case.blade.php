@@ -78,8 +78,44 @@
                                 <a href="/judgement/print_preview/{{$allGhanaLaw['id']}}" target="_blank"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print Preview</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </div>
 
-                        <div class="content">	
-                        <p>{!! $allGhanaLaw['content'] !!}</p>
+                        <div class="content">
+                            <!-- Court Name -->
+                            <center><h5><b>{!! $allGhanaLaw['court_name'] !!}</b></h5></center><br>
+
+                            <!-- Case Title -->
+                            <center>
+                                <b>
+                                    <h5 style="color:blue;"><b>{!! $allGhanaLaw['case_title_1'] !!}</b></h5>
+                                                <p>vs.</p>
+                                    <h5 style="color:blue;"><b>{!! $allGhanaLaw['case_title_2'] !!}</b></h5>
+                                </b>
+                            </center>
+                            <br>
+                            
+                                <div class="row">
+                                        <h5 style="color:blue;"><b>DATE:&nbsp;</b></h5><br>
+                                        <h5><b>{{$allGhanaLaw['date']}}</b></h5>
+                                </div>
+                                <div class="row">
+                                    <h5 style="color:blue;"><b>CASE NO:&nbsp;</b></h5>
+                                    <h5><b>{{$allGhanaLaw['reference_number']}}</b></h5>
+                                </div>
+                                
+                                <div class="row">
+                                    <h5 style="color:blue;"><b>CORAM:</b></h5>
+                                    <h5><b>{{$allGhanaLaw['coram']}}</b></h5>
+                                </div>
+                                
+                                <div class="row">
+                                    <h5 style="color:blue;"><b>COUNSELLORS:</b></h5><br>
+                                    <h5><b>{{$allGhanaLaw['counsellors']}}</b></h5>
+                                </div>
+                            
+                            
+                            <hr>
+                            
+                            {{--Body--}}   
+                            <p>{!! $allGhanaLaw['content'] !!}</p>
                         </div>
                     </div> 
                     <div id="display_view_all_section"></div>   
