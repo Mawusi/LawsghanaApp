@@ -1,5 +1,8 @@
 @extends('extenders.main')
 
+@section('meta_description', 'Asia legal binding laws and facts')
+@section('title', 'Asia Constitution')
+
 @section('assets')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <style type="text/css">

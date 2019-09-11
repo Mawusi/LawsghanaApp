@@ -1,5 +1,8 @@
 @extends('extenders.main')
 
+@section('meta_description', 'The legal binding authority of the republic of any country')
+@section('title', $allCountriesConstitution['country'].' Constitution')
+
 @section('assets')
     <style type="text/css">
 
@@ -49,7 +52,7 @@
             
             .content {
             padding: 0.1px;
-
+            }
     </style>
 
 @endsection
@@ -60,7 +63,7 @@
     @include('constitution.constitution_menu')
 @endsection
 
-    {{-- <div class="container-fluid"><span style="color:red;">Foreign Law case: {{ $allCountriesJudgementLaw['country'] }}</span> / <b>{{ $allJudgementLaw['case_title'] }}</b></div> --}}
+    <div class="container-fluid"><span style="color:red;">Constitution: {{ $allCountriesConstitution['country'] }}</span></div>
         <div class="container-fluid">
             <div class="row content">
                 <div class="col-md-7 judgement_display" style="height: 600px;">

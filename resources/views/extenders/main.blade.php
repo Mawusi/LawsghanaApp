@@ -3,9 +3,16 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- <meta name="google-site-verification" content="jas-VciTimEJrxn7M-3dFRyt1pNIDaMgvgrs8uEUXlU"/> -->
-        <title>{{ setting('site.title') }}</title>
-
+        <meta name="description" content="@yield('meta_description')"/>
+        
+        <title> 
+            @hasSection('title')
+                @yield('title') - {{ setting('site.title') }}
+            @else
+                {{ setting('site.title') }}
+            @endif
+        </title>
+        
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">

@@ -18,7 +18,7 @@
 
             <div class="row">
                     <h5><b style="color:blue;">DATE:&nbsp;</b>
-                    <b style="color:blue;">{{$allGhanaLawPlainView['date']}}</b></h5>
+                    <b style="color:black;">{{$allGhanaLawPlainView['date']}}</b></h5>
             </div>
             <div class="row">
                 <h5><b style="color:blue;">CASE NO:&nbsp;</b>

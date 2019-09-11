@@ -1,6 +1,9 @@
 
 @extends('extenders.main')
 
+@section('meta_description', 'All document on Ghana Constitution')
+@section('title', 'Ghana Constitution')
+
 @section('assets')
     <style type="text/css">
 

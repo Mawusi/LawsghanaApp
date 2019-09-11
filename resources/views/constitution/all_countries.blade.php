@@ -1,5 +1,8 @@
 @extends('extenders.main')
 
+@section('meta_description', 'The authority arbiter of any country')
+@section('title', 'All Constitution')
+
 @section('assets')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <style type="text/css">
