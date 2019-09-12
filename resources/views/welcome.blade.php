@@ -3,8 +3,15 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="The HUB of all laws, and legislation, and amendments. This website is managed by a an elite of professionals."/>
 
-        <title>LawsGhana</title>
+        <title> 
+            @hasSection('title')
+                @yield('title') - {{ setting('site.title') }}
+            @else
+                {{ setting('site.title') }}
+            @endif
+        </title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -132,6 +139,7 @@
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                     <span id="search_concept">Filter by</span> <span class="caret"></span>
                                 </button>
+                                {{--
                                 <ul class="dropdown-menu" role="menu">
                                 <li><a href="#contains">Contains</a></li>
                                 <li><a href="#its_equal">It's equal</a></li>
@@ -140,6 +148,7 @@
                                 <li class="divider"></li>
                                 <li><a href="#all">Anything</a></li>
                                 </ul>
+                                --}}
                             </div>
                                 <input type="hidden" name="search_param" value="all" id="search_param">         
                                 <input type="text" class="form-control" name="x" placeholder="Search any law or case in Ghana"">

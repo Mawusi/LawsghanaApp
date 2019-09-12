@@ -1,7 +1,7 @@
 @extends('extenders.main')
 
 @section('meta_description', 'The legal binding authority of the republic of any country')
-@section('title', $allCountriesConstitution['country'].' Constitution')
+@section('title', $allCountriesConstitution['title'])
 
 @section('assets')
     <style type="text/css">
