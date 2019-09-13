@@ -1,4 +1,5 @@
 @extends('extenders.main')
+@section('title', $africaJudgement['case_title'])
 
 @section('assets')
 

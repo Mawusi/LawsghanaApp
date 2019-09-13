@@ -1,5 +1,7 @@
 @extends('extenders.main')
 
+@section('title', $allPre1992Act['title'])
+
 @section('assets')
 
 <style type="text/css">

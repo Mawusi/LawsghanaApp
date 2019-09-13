@@ -1,5 +1,7 @@
 @extends('extenders.main')
 
+@section('title', 'First Republic')
+
 @section('assets')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <style type="text/css">

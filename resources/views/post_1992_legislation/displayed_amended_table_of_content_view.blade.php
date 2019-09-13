@@ -1,4 +1,5 @@
 @extends('extenders.main')
+@section('title', $amendedAct['title'])
 
 @section('assets')
 

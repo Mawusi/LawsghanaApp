@@ -1,6 +1,6 @@
-
 @extends('extenders.main')
 
+@section('title', 'Ghana Constitution(Amended) Constitution')
 @section('assets')
     <style type="text/css">
 

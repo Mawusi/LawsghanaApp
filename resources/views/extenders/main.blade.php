@@ -7,7 +7,7 @@
         
         <title> 
             @hasSection('title')
-                @yield('title') - {{ setting('site.title') }}
+                @yield('title')
             @else
                 {{ setting('site.title') }}
             @endif
