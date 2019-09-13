@@ -1,5 +1,6 @@
 @extends('extenders.main')
 
+@section('title', $supremeCourt['case_title'])
 @section('assets')
 
     <style type="text/css">

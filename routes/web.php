@@ -250,6 +250,13 @@ Route::get('/judgement/Ghana','JudgementController@index');
     Route::get('/judgement/view/5/{name}/{id}','JudgementController@district_court_cases');
     // Route::get('/judgement/district-court/case/{id}','JudgementController@district_court_cases_view');
 
+    //High Court (Tema)
+    Route::get('/judgement/6/{name}','JudgementController@high_court_tema');
+    // Route::get('/judgement/6/district-court/filter/{year}/{category}','JudgementController@district_court_filter'); //circuit court filtering 
+    Route::get('/judgement/view/6/{name}/{id}','JudgementController@high_court_tema_cases');
+
+
+
 
 // All Foreign Law Judgement routes
 Route::get('/judgement/all-countries','JudgementController@all_countries_laws');

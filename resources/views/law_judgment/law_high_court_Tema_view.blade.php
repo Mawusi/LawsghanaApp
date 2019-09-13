@@ -1,6 +1,6 @@
 @extends('extenders.main')
 
-@section('title', $districtCourt['case_title'])
+@section('title', $highCourtTema['case_title'])
 @section('assets')
 
     <style type="text/css">
@@ -63,13 +63,13 @@
     @include('law_judgment.ghana_judgement_menu_addon')
 @endsection
 
-    <div class="container-fluid"><span style="color:red;">{{ $districtCourt['gh_law_judgment_group_name'] }} Case</div>
+    <div class="container-fluid"><span style="color:red;">{{ $highCourtTema['gh_law_judgment_group_name'] }} Case</div>
         <div class="container-fluid">
             <div class="row content">
                 <div class="col-md-9 judgement_display" style="height: 600px;">
                     <div id="display_content">
                         <div class="header_only" style="margin-bottom: 5px;">
-                            <p><b>{{ $districtCourt['case_title'] }}</b></p>
+                            <p><b>{{ $highCourtTema['case_title'] }}</b></p>
                         </div>
 
                         <a id="print_options" href="#">Print & Download&raquo;</a>
@@ -80,7 +80,7 @@
                             </div>
 
                         <div class="content">	
-                        <p>{!! $districtCourt['content'] !!}</p>
+                        <p>{!! $highCourtTema['content'] !!}</p>
                         </div>
                     </div> 
                     <div id="display_view_all_section"></div>   
@@ -88,7 +88,7 @@
                     {{--@include('law_judgment.law_district_court_container')--}}
                     <div class="col-md-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><center><p class="panel-title"><small>Quick Look on {{$districtCourt['gh_law_judgment_group_name']}}</small></p></center></div>
+                    <div class="panel-heading"><center><p class="panel-title"><small>Quick Look on {{$highCourtTema['gh_law_judgment_group_name']}}</small></p></center></div>
                     <div class="panel-body">
                         {{-- View all sections --}}
                             <center>
@@ -97,9 +97,9 @@
                                     <small>Preview Case Laws</small> <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu scroll-view-judgement dropdown-menu-right" style="width: 600px;">
-                                @foreach($districtCourts as $districtCourt) 
+                                @foreach($highCourtTemas as $highCourtTema) 
                                     <li>
-                                        <a class="view_all_section_link" href="/judgement/Ghana/Case-view/{{$districtCourt->gh_law_judgment_group_name}}}/{{ $districtCourt->id}}">{{$districtCourt->case_title}}</a>
+                                        <a class="view_all_section_link" href="/judgement/Ghana/Case-view/{{$highCourtTema->gh_law_judgment_group_name}}}/{{ $highCourtTema->id}}">{{$highCourtTema->case_title}}</a>
                                     </li>
                                 @endforeach
                                 </ul>

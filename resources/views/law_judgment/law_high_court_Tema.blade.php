@@ -1,6 +1,6 @@
 @extends('extenders.main')
 
-@section('title', 'High Court (Commercial)')
+@section('title', 'High Court (Tema)')
 @section('assets')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <style type="text/css">
@@ -35,7 +35,7 @@
 
 @section('second_nav')
     @include('law_judgment.ghana_judgement_menu')
-@endsection    
+@endsection
 
     <div class="container-fluid content">
         <div class="row">
@@ -44,24 +44,24 @@
                     <table class="table table-striped table-condensed" id="datatable">
                         <thead>
                             <tr>
-                                <th>High Court (Commercial)</th>
+                                <th>High Court (Tema)</th>
                                 <th>Year</th>
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($highCourts as $highCourt)
+                        @foreach($high_Tema_Courts as $high_Tema_Court)
                             <tr>
                                 <td>
-                                    <a href="/judgement/view/2/{{ $highCourt->gh_law_judgment_group_name }}/{{ $highCourt->id}}"><li style="list-style: none;">{{ $highCourt->case_title }}</li></a>
+                                    <a href="/judgement/view/6/{{ $high_Tema_Court->gh_law_judgment_group_name }}/{{ $high_Tema_Court->id}}"><li style="list-style: none;">{{ $high_Tema_Court->case_title }}</li></a>
                                 </td> 
-                                <td>{{ $highCourt->year }}</td>
+                                <td>{{ $high_Tema_Court->year }}</td>
                             </tr>
                         @endforeach 
                         </tbody>
                     </table>
                 </div>
             </div>
-                            @include('law_judgment.ghana_judgment_high_court_container')
+                            @include('law_judgment.ghana_judgment_high_court__tema_container')
         </div>
     </div>
 

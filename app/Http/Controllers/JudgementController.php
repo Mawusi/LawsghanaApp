@@ -334,10 +334,23 @@ class JudgementController extends Controller
         return view('law_judgment.law_district_court_view', compact('districtCourt', 'districtCourts'));
     }
 
-    // public function district_court_cases_view($id){
-    //     $districtCourt = GhLawJudgment::find(['id' => $id])->toArray()[0];
-    //     return view('law_judgment.law_district_court_view_2', compact('districtCourt'));
-    // }
+     //HIGH COURT TEMA
+     public function high_court_tema($name){
+        $high_Tema_Courts = GhLawJudgment::where(['gh_law_judgment_group_name' => $name])->get();
+        $hightCourtTemacategories   = GhLawJudgmentCategory::all();
+        return view('law_judgment.law_high_court_Tema', compact('high_Tema_Courts', 'hightCourtTemacategories'));
+    }
+
+    public function high_court_tema_cases($id, $name){
+        $highCourtTema = GhLawJudgment::find(
+            [
+                'id' => $id,
+                'gh_law_judgment_group_name' => $name
+            ])->toArray()[0];
+
+        $highCourtTemas = GhLawJudgment::where(['gh_law_judgment_group_name' => $id])->get();
+        return view('law_judgment.law_high_court_Tema_view', compact('highCourtTemas', 'highCourtTema'));
+    }
 
 
     //------------------------------------------------------------------------------------------------------------------------

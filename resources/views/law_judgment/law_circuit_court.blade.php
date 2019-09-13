@@ -1,5 +1,6 @@
 @extends('extenders.main')
 
+@section('title', 'High Court (Fast Track)')
 @section('assets')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <style type="text/css">
@@ -43,7 +44,7 @@
                     <table class="table table-striped table-condensed" id="datatable">
                         <thead>
                             <tr>
-                                <th>Circuit Court</th>
+                                <th>High Court (Fast Track)</th>
                                 <th>Year</th>
                             </tr>
                         </thead>
