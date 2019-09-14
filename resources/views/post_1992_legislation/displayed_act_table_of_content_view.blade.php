@@ -1,5 +1,5 @@
 @extends('extenders.main')
-@section('title', $allPost1992Act['title'])
+@section('title', ucwords(strtolower($allPost1992Act['title'])))
 
 @section('assets')
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">

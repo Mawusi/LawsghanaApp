@@ -1,5 +1,5 @@
 @extends('extenders.main')
-@section('title', $amendedAct['title'])
+@section('title', ucwords(strtolower($amendedAct['title'])))
 
 @section('assets')
 

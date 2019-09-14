@@ -1,6 +1,6 @@
 @extends('extenders.main')
 
-@section('title', $regulationAct['title'])
+@section('title', ucwords(strtolower($regulationAct['title'])))
 @section('assets')
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
 <style type="text/css">
