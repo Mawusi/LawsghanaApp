@@ -263,6 +263,11 @@ Route::get('/judgement/all-countries','JudgementController@all_countries_laws');
     Route::get('/judgement/Foreign/filter/{year}/{country}','JudgementController@all_foreign_judgment_filter'); //all judgment filtering
     Route::get('/judgement/{country}/{id}','JudgementController@all_countries_court_case');
     Route::get('/judgement/Case-view/{country}/{id}','JudgementController@all_countries_court_cases_view');
+    Route::get('/judgement/print_preview/foreign/{id}','JudgementController@Foreign_all_print_preview');
+    Route::get('/judgement/plain_view/foreign/{id}','JudgementController@Foreign_all_plain_preview');
+    Route::get('/judgement/pdf_view/foreign/{country}/{id}','JudgementController@Foreign_all_pdf_preview');
+
+
 
     //Africa Law Judgements	
     Route::get('/judgement/all-countries/1/{name}','JudgementController@africa_court');

@@ -84,19 +84,19 @@ class JudgementController extends Controller
         return view('law_judgment.ghana_all_court_case_view', compact('allGhanaLaw'));
     }
 
-    //Display print section Content
+    //Display print section Content for Ghana
     public function Ghana_all_print_preview($id){
         $allGhanaLawprint = GhLawJudgment::find(['id' => $id])->toArray()[0];
         return view('law_judgment.displayed_print_content_view', compact('allGhanaLawprint'));
     }
 
-    //Display Plain Content
+    //Display Plain Content for Ghana
     public function Ghana_all_plain_view($id){
         $allGhanaLawPlainView = GhLawJudgment::find(['id' => $id])->toArray()[0];
         return view('law_judgment.displayed_plain_content_view', compact('allGhanaLawPlainView'));
     }
 
-    //Display Pdf View for Content view
+    //Display Pdf View for Content view for Ghana
     public function Ghana_all_pdf_view($name, $id){
         // dd($name);
         $allGhanaLawpdf = GhLawJudgment::find(
@@ -360,6 +360,30 @@ class JudgementController extends Controller
         $foreigncountries   = Country::all();
 
         return view('law_judgment_foreign.all_countries', compact('allCountriesJudgementLaws', 'foreigncountries'));
+    }
+
+    //Display print section Content for Foreign
+    public function Foreign_all_print_preview($id){
+        $allForeignLawprint = ForeignLawJudgment::find(['id' => $id])->toArray()[0];
+        return view('law_judgment_foreign.displayed_foreign_print_content_view', compact('allForeignLawprint'));
+    }
+
+    //Display Plain Content for Foreign
+    public function Foreign_all_plain_preview($id){
+        $allForeignLawplain = ForeignLawJudgment::find(['id' => $id])->toArray()[0];
+        return view('law_judgment_foreign.displayed_foreign_plain_content_view', compact('allForeignLawplain'));
+    }
+
+    //Display Pdf View for Content view for Foreign
+    public function Foreign_all_pdf_preview($country, $id){
+        // dd($name);
+        $allForeignLawpdf = ForeignLawJudgment::find(
+            [
+                'id' => $id,
+                'country_name' => $country
+            ])->toArray()[0];
+        $pdf = PDF::loadView('law_judgment_foreign.displayed_foreign_pdf_content_view', compact('allForeignLawpdf'));
+        return $pdf->download($country.'.case_law.pdf');
     }
 
     //ALL FOREIGN LAW JUDGMENT FILTERING
