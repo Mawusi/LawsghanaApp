@@ -2,7 +2,7 @@
 @extends('extenders.main')
 
 @section('meta_description', 'All document on Ghana Constitution')
-@section('title', 'Ghana Constitution')
+@section('title', ucwords(strtolower($ghana_act['title'])))
 
 @section('assets')
     <style type="text/css">

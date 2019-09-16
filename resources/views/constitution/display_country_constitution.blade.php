@@ -66,11 +66,19 @@
     <div class="container-fluid"><span style="color:red;">Constitution: {{ $allCountriesConstitution['country'] }}</span></div>
         <div class="container-fluid">
             <div class="row content">
-                <div class="col-md-7 judgement_display" style="height: 600px;">
+                <div class="col-md-9 judgement_display" style="height: 600px;">
                     <div id="display_content">
-                        <div class="header_only">
+                        <div class="header_only" style="margin-bottom: 5px;">
                             <p><b>{{ $allCountriesConstitution['title'] }}</b></p>
                         </div>
+
+                        <a id="print_options" href="#">Print & Download&raquo;</a>
+                            <div class="menu_options pull-right" style="display: none;">
+                                <a href=""><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
+                                <a href="" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp;
+                                <a href="" target="_blank"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print Preview</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </div>
+                        
                         <div class="content">
                             <p>{!! $allCountriesConstitution['preamble'] !!}
                                 <hr>
@@ -79,7 +87,44 @@
                     </div> 
                     <div id="display_view_all_section"></div>   
                 </div>
-                    @include('constitution.all_countries_container')
+                    {{--@include('constitution.all_countries_container')--}}
+                        <div class="col-md-3">
+                            <div class="panel panel-default">
+                                    <div class="panel-heading"><center><p class="panel-title"><small>Quick Look on Constitution</small></p></center></div>
+                                    <div class="panel-body">
+                                        <center>
+                                        <div class="btn-group" style="margin-bottom: 10px;">
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <small>Search by Country</small> <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu scroll-view-judgement dropdown-menu-left" style="width: 100px; height: 370px;">
+                                        
+                                            @foreach($allCountriesConstitutions as $allCountriesConstitution)
+                                      <li>
+                                        <a class="alt_section_link"  style="text-align: center;" href="/constitution/{{$allCountriesConstitution->country}}/{{$allCountriesConstitution->id}}">{{$allCountriesConstitution->country }}</a>
+                                      </li>
+                                            @endforeach
+                                            
+
+                                            </ul>
+                                        </div>
+                                        </center>
+                                        @include('extenders.case_law_main_search')
+                                </div>
+                            </div>
+                        <br>
+                                {{-- Advertisement --}}
+                                <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <p class="panel-title"><small>Advertisement</small></p>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="embed-responsive embed-responsive-4by3">
+                                    <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>        
+                                    </div>		  
+                                </div>
+                                </div>
+                        </div>
             </div>
         </div>         
 @endsection

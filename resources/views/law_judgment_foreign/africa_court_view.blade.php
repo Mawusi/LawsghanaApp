@@ -98,7 +98,8 @@
                                     </button>
                                     <ul class="dropdown-menu scroll-view-judgement dropdown-menu-right" style="width: 600px;">
                                     @foreach($africaJudgements as $africaJudgement) 
-                                    <li><a class="view_all_section_link" href="/judgement/Case-view/{{ $africaJudgement->country_name }}/{{ $africaJudgement->id}}">{{$africaJudgement->case_title }}</></li>
+                                    <!-- <li><a class="alt_section_link" href="/judgement/Case-view/{{ $africaJudgement->country_name }}/{{ $africaJudgement->id}}">{{$africaJudgement->case_title }}</></li> -->
+                                    <li><a class="alt_section_link" href="/judgement/all-countries/1/{{ $africaJudgement->country_name }}/{{ $africaJudgement->id}}">{{$africaJudgement->case_title }}</></li>
                                     @endforeach
                                     </ul>
                                 </div>

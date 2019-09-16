@@ -99,7 +99,7 @@
                                 <ul class="dropdown-menu scroll-view-judgement dropdown-menu-right" style="width: 600px;">
                                     @foreach($supremeCourts as $supremeCourt) 
                                     <li>
-                                        <a class="view_all_section_link" href="/judgement/Ghana/Case-view/{{$supremeCourt->gh_law_judgment_group_name}}}/{{ $supremeCourt->id}}">{{$supremeCourt->case_title}}</a>
+                                        <a class="alt_section_link" href="/judgement/view/1/{{ $supremeCourt->gh_law_judgment_group_name }}/{{ $supremeCourt->id}}">{{$supremeCourt->case_title}}</a>
                                     </li>
                                     @endforeach
                                 </ul>

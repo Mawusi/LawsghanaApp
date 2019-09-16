@@ -1,6 +1,6 @@
 @extends('extenders.main')
 
-@section('title', 'Ghana Constitution(Amended) Constitution')
+@section('title', ucwords(strtolower($ghana_act_amended['title'])))
 @section('assets')
     <style type="text/css">
 
