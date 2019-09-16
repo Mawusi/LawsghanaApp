@@ -3,7 +3,6 @@
     <div class="header" style="padding: 5px 1px 0.1px 1px;">
         <p>
             <b>{{ $constitutionContent['section'] }}</b>
-            <a class="btn btn-sm btn-primary pull-right hidden-print" href="/constitution/Republic/plain_content/{{ $constitutionContent['id'] }}"><b>Plain View</b></a>
         </p>
     </div>
 

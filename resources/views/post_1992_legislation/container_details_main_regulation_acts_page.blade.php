@@ -28,7 +28,7 @@
             <li><a href="#" class="next_content_regulation">Next</a></li>
         </ul>
 
-        {{-- Downloads --}}
+        {{-- Downloads
         <center>
         <div class="row">
           <div class="col-md-12">
@@ -50,10 +50,13 @@
         </div>
         </center> 
         <br>
-        
+        --}}
+
+        <center>
         <label>View</label>
-            <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_2" href="/post_1992_legislation/regulation/expanded_view/{{$regulationAct['act_category']}}/{{$regulationAct['title']}}/{{$regulationAct['id']}}"><li>Expanded View</li></a>
+            <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_2" href="/post_1992_legislation/regulation/expanded_view/{{$regulationAct['act_category']}}/{{$regulationAct['title']}}/{{$regulationAct['id']}}"><li style="list-style:none;">Expanded View</li></a>
             <!-- <a><li>Plain View</li></a> -->
+        </center>
     </div>
   </div>
   @include('extenders.case_law_main_search')

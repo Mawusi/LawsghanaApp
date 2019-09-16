@@ -9,8 +9,8 @@
         <p class="panel-title" style="color: black;"><small>Filters</small></p>
       </div>
 
+      <center>
         <div class="panel-body">
-        <center>
           <label style="color: black;">Related Acts</label><br>   
           
           <!-- 1. both are true -->

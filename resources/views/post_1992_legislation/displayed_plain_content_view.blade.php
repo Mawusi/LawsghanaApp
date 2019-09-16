@@ -1,5 +1,6 @@
 @extends('extenders.plain_extender')
 
+@section('title', 'Plain Preview Mode')
 @section('content')
 
 

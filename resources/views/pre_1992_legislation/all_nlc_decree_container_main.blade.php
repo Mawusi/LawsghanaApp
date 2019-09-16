@@ -1,6 +1,7 @@
 
 
-	<div class="col-md-2"> 
+	<div class="col-md-2" style="margin-top: 5em;"> 
+	@include('extenders.case_law_main_search')
 	{{--
 		<div class="panel panel-default">
 		  <div class="panel-heading">

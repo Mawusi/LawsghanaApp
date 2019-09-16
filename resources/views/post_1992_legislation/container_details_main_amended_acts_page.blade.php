@@ -27,8 +27,7 @@
             <li><a href="#" class="next_content_amendments">Next</a></li>
         </ul>
 
-        {{-- Downloads --}}
-        <center>
+        {{-- Downloads
         <div class="row">
           <div class="col-md-12">
             <label>Downloads</label>
@@ -46,13 +45,16 @@
               </div> 
             </div>
           </div>
-        </div>
-        </center> 
+        </div> 
         <br>
-        
+        --}}
+
+        <center>
         <label>View</label>
-            <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_2" href="/post_1992_legislation/amended_acts/expanded_view/{{$amendedAct['post_category']}}/{{$amendedAct['title']}}/{{$amendedAct['id']}}"><li>Expanded View</li>
+            <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_2" href="/post_1992_legislation/amended_acts/expanded_view/{{$amendedAct['post_category']}}/{{$amendedAct['title']}}/{{$amendedAct['id']}}"><li style="list-style:none;">Expanded View</li>
             </a>
+        </center> 
+
     </div>
   </div>
   @include('extenders.case_law_main_search')

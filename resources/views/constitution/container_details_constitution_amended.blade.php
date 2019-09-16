@@ -26,8 +26,7 @@
             <li><a href="#" class="next_content_constitution_amended_act">Next</a></li>
         </ul>
 
-        {{-- Downloads --}}
-        <center>
+        {{-- Downloads
         <div class="row">
           <div class="col-md-12">
             <label>Downloads</label>
@@ -46,11 +45,13 @@
             </div>
           </div>
         </div>
-        </center> 
-        <br>
+        --}}
+
+        <center>
         <label>View</label>
-        <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_2" href="/constitution_amended/Republic/expanded_view/{{ $ghana_act_amended['id'] }}"><li>Expanded View</li></a>
+        <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_2" href="/constitution_amended/Republic/expanded_view/{{ $ghana_act_amended['id'] }}"><li style="list-style:none;">Expanded View</li></a>
         <!-- <a><li>Plain View</li></a> -->
+        </center>
     </div>
   </div>
   @include('extenders.case_law_main_search')

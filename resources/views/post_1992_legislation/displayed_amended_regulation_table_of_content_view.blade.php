@@ -51,6 +51,10 @@
         .content {
           padding: 16px;
         }
+        .accordion-content {
+        height: 600px;
+        overflow-y: scroll;
+        }
 
 </style>
 
@@ -71,7 +75,7 @@
             <a href="#tableOfContentTab" data-toggle="tab">Table of Contents</a>
         </li>
         <li class="tabPanedHide_acts_content">
-            <a href="#contentTab" data-toggle="tab">Contents</a>
+            <a href="#contentTab" data-toggle="tab">Content</a>
         </li> 
         <!-- Expanded View -->
         <li class="tabPanedHide_expanded_view">
@@ -89,7 +93,10 @@
                      <!--<h5><b>{{ $amendedRegulationAct['title'] }}</b></h5>-->
                      <br>
                    <a class="preamble_link" id="preamble_link_toggle" href="/post_1992_legislation/amended_regulation_acts/preamble/{{ $amendedRegulationAct['id'] }}"><p>Introductory Text</p></a>
-                        @include('post_1992_legislation.displayed_amended_regulation_parts_sections')
+                  
+                   <div class="accordion-content">     
+                    @include('post_1992_legislation.displayed_amended_regulation_parts_sections')
+                   </div> 
 
                         <div class="col-md-12 text-center">
                             <!--<ul id="myPager" class="pagination"></ul>-->

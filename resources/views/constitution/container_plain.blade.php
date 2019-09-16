@@ -8,8 +8,7 @@
         <p class="panel-title" style="color: black;"><small>Filters</small></p>
       </div>
       <div class="panel-body">
-      {{-- Downloads --}}
-        <center>
+      {{-- Downloads
         <div class="row">
           <div class="col-md-12">
             <label>Downloads</label>
@@ -28,12 +27,13 @@
             </div>
           </div>
         </div>
+        --}}
+      
+        <center>         
+        <label style="color:black;">View Options</label>
+        <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/constitution/Republic/expanded_view/{{ $ghana_act['id'] }}"><li style="list-style:none;">Expanded View</li></a>
+        <a href="/constitution/Republic/plain_view/{{ $ghana_act['id'] }}"><li style="list-style:none;">Plain View</li></a>
         </center> 
-        <br>
-              
-        <label>View Whole Act</label>
-        <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/constitution/Republic/expanded_view/{{ $ghana_act['id'] }}"><li>Expanded View</li></a>
-        <a href="/constitution/Republic/plain_view/{{ $ghana_act['id'] }}"><li>Plain View</li></a>
       </div>
     </div>
     @include('extenders.case_law_main_search')

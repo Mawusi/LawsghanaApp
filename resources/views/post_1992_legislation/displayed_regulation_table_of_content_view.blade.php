@@ -75,7 +75,7 @@
             <a href="#tableOfContentTab" data-toggle="tab">Table of Contents</a>
         </li>
         <li class="tabPanedHide_acts_content">
-            <a href="#contentTab" data-toggle="tab">Contents</a>
+            <a href="#contentTab" data-toggle="tab">Content</a>
         </li> 
         <!-- Expanded View -->
         <li class="tabPanedHide_expanded_view">
@@ -153,7 +153,7 @@
          <!-- ACTS EXPANDED CONTENTS -->
          <div id="expandedTab" class="tab-pane fade">
                 <div class="row">
-                     <div class="col-md-7 expanded_view" style="background-color: #FFFFFF";>
+                     <div class="col-md-9 expanded_view" style="background-color: #FFFFFF;">
                         <div id="acts_expanded_view"></div> 
                     </div>
                      @include('post_1992_legislation.container_details_act_expanded_regulation')
@@ -166,7 +166,7 @@
                         <div class="col-md-7">
                             <div id="all_amendments" class="amended_act_toggle"></div> 
                         </div>
-                        @include('post_1992_legislation.container_main_amended_act_page')
+                        @include('post_1992_legislation.container_main_regulation_amended_act_page')
                 </div>
           </div>
 
@@ -177,7 +177,7 @@
                     <div id="amended_regulation_table_of_content" class="amended_act_toggle_content"></div>  
                     </div>
                     
-                    @include('post_1992_legislation.container_expanded_amended_act_page')
+                    @include('post_1992_legislation.container_expanded_regulation_amended_act_page')
 
                 </div>
           </div>

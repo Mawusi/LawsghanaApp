@@ -7,9 +7,9 @@
       <div class="panel-heading" style="background: #eeeeee;">
         <p class="panel-title" style="color: black;"><small>Filters</small></p>
       </div>
+      <center>
       <div class="panel-body">
-          
-      {{-- Downloads --}}
+      {{-- Downloads
         <center>
         <div class="row">
           <div class="col-md-12">
@@ -29,13 +29,13 @@
             </div>
           </div>
         </div>
-        </center> 
-        <br>
+        --}}
 
-        <label>View Whole Amended Act</label>
-        <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/post_1992_legislation/amended_acts/expanded_view/{{$amendedAct['post_category']}}/{{$amendedAct['title']}}/{{$amendedAct['id']}}"><li>Expanded View</li></a>
-        <a href=""><li>Plain View</li></a>
+        <label style="color: black;">View Options</label>
+        <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/post_1992_legislation/amended_acts/expanded_view/{{$amendedAct['post_category']}}/{{$amendedAct['title']}}/{{$amendedAct['id']}}"><li style="list-style: none;">Expanded View</li></a>
+        <a href=""><li style="list-style: none;">Plain View</li></a>
       </div>
+      </center>
     </div>
     @include('extenders.case_law_main_search')
 </div>

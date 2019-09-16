@@ -75,16 +75,28 @@ class Post1992Controller extends Controller
         return view('post_1992_legislation.displayed_preamble_view', compact('allPost1992Act'));   
      }
 
-    //Display Plain Content
+    //Display Plain Content for section
      public function post_1992_legislation_plain_content($id){
         $allPost1992Article = Post1992Article::find(['id' => $id])->toArray()[0];
         return view('post_1992_legislation.displayed_plain_content_view', compact('allPost1992Article'));
     }
 
-    //Display print section Content
+    //Display Plain Content for preamble
+    public function post_1992_legislation_plain_preamble_content($id){
+        $allPost1992Act = Post1992Act::find(['id' => $id])->toArray()[0];
+        return view('post_1992_legislation.displayed_plain_preamble_content_view', compact('allPost1992Act'));
+    }
+
+    //Display print section Content for section print
     public function post_1992_legislation_print_content($id){
         $allPost1992Article = Post1992Article::find(['id' => $id])->toArray()[0];
         return view('post_1992_legislation.displayed_print_content_view', compact('allPost1992Article'));
+    }
+
+    //Display print section Content for preamble print
+    public function post_1992_legislation_print_preamble_content($id){
+        $allPost1992Act = Post1992Act::find(['id' => $id])->toArray()[0];
+        return view('post_1992_legislation.displayed_print_preamble_content_view', compact('allPost1992Act'));
     }
 
     //Display Expanded-View
@@ -150,7 +162,7 @@ class Post1992Controller extends Controller
         return $pdf->download($title.'.lawsghana.pdf');
     }
 
-    //Display Pdf View for Content view
+    //Display Pdf View for section Content view
     public function post_1992_legislation_pdf_content($id, $title){
         // dd($id);
         $allPost1992Article              = Post1992Article::find(
@@ -160,6 +172,18 @@ class Post1992Controller extends Controller
             ])->toArray()[0];
         $pdf = PDF::loadView('post_1992_legislation.displayed_pdf_content_view', compact('allPost1992Article'));
         return $pdf->download($id.'.lawsghana.pdf');
+    }
+
+     //Display Pdf View for preamble Content view
+     public function post_1992_legislation_pdf_preamble_content($id, $title){
+        // dd($id);
+        $allPost1992Act              = Post1992Act::find(
+            [
+                'id' => $id,
+                'title' => $title
+            ])->toArray()[0];
+        $pdf = PDF::loadView('post_1992_legislation.displayed_pdf_preamble_content_view', compact('allPost1992Act'));
+        return $pdf->download($id.'.preamble.pdf');
     }
 
     //Display Acts of Parliament

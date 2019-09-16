@@ -3,13 +3,16 @@
 
 {{-- DOWNLOADS --}}
 <div class="col-md-2"> 
+  
     <div class="panel panel-default">
       <div class="panel-heading">
         <p class="panel-title"><small>Filters</small></p>
       </div>
       <div class="panel-body">
+
       {{-- Downloads --}}
         <center>
+          {{--
         <div class="row">
           <div class="col-md-12">
             <label>Downloads</label>
@@ -28,13 +31,19 @@
             </div>
           </div>
         </div>
+        --}}
+
+        <label style="color: black;">View Options</label>
+          <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}"><li style="list-style:none;">Expanded View</li>
+          </a>
+          <a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/plain_view/{{ $allPost1992Act['id'] }}" target="_blank"><li style="list-style:none;">Plain View</li></a>
         </center> 
-        <br>
         
         <!-- <label>Print</label>
         <a href=""><li>Whole Amendments</li></a> -->
       </div>
     </div>
+    
     @include('extenders.case_law_main_search')
 </div>
 

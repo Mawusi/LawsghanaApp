@@ -108,11 +108,15 @@ Route::get('/post_1992_legislation','Post1992Controller@index');//display all ac
     Route::get('/post_1992_legislation/preamble/{id}','Post1992Controller@post_1992_legislation_preamble');//display act preamble
     Route::get('/post_1992_legislation/content/{id}','Post1992Controller@post_1992_legislation_content');//display act content
     Route::get('/post_1992_legislation/plain_content/{id}','Post1992Controller@post_1992_legislation_plain_content');//display plain act content
+    Route::get('/post_1992_legislation/plain_preamble_content/{id}','Post1992Controller@post_1992_legislation_plain_preamble_content');//display plain act content
     Route::get('/post_1992_legislation/1/{group}/{title}/expanded-view/{id}','Post1992Controller@expanded_view');//display in expanded view
 
     // Route::get('/post_1992_legislation/1/{group}/{title}/pdf_view/{id}','Post1992Controller@pdf_view');//display pdf
     Route::get('/post_1992_legislation/pdf_content/{title}/{id}','Post1992Controller@post_1992_legislation_pdf_content');//display plain act content
+    Route::get('/post_1992_legislation/pdf_preamble_content/{title}/{id}','Post1992Controller@post_1992_legislation_pdf_preamble_content');//display plain act content
     Route::get('/post_1992_legislation/print_section_content/{id}','Post1992Controller@post_1992_legislation_print_content');//display plain act content
+    Route::get('/post_1992_legislation/print_preamble_content/{id}','Post1992Controller@post_1992_legislation_print_preamble_content');//display plain act content
+
 
 
 
