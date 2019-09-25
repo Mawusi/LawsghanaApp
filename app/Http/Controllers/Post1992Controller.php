@@ -135,6 +135,7 @@ class Post1992Controller extends Controller
 
     //Display Print View for Expanded view
     public function print_view($id, $title, $group){
+        // dd($id, $title, $group);
         $allPost1992Act              = Post1992Act::find(
             [
                 'id' => $id,

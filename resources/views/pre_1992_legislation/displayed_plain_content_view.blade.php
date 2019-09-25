@@ -5,7 +5,7 @@
 
 
      <div class="container">
-         <center><h4><b>{{ $allPost1992Article['post_act'] }}</b></h4></center>
+     <center><h4><b>{{ $allPre1992Act['pre_1992_act'] }}</b></h4></center>
          <ul class="pager">
                 <li><a data-scroll-to="body"
                     data-scroll-focus="body"
@@ -19,9 +19,9 @@
          </ul>
         <br>
     
-        <h4><b>{{ $allPost1992Article['section'] }}</b></h4>
+        <h4><b>{{ $allPre1992Act['section'] }}</b></h4>
         <div class="content">
-            <p>{!! $allPost1992Article['content'] !!}</p>
+            <p>{!! $allPre1992Act['content'] !!}</p>
         </div>
         
     </div>    

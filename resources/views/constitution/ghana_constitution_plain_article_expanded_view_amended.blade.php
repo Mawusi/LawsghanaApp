@@ -8,19 +8,19 @@
     </div>
 
     <div class="container">
-        <center><h3><b>{{ $allPost1992Act['title'] }}</b></h3></center>
+        <center><h3><b>{{ $ghana_act_amended['title'] }}</b></h3></center>
     </div>
     
     <br>
     
     <div class="container">	
-        <h4><b>Preamble</b></h4><p>{!! $allPost1992Act['preamble'] !!}</p>
+        <h4><b>Preamble</b></h4><p>{!! $ghana_act_amended['preamble'] !!}</p>
         <hr>
-        @foreach($allPost1992Articles as $allPost1992Article)
+        @foreach($ghana_act_amendeds as $ghana_act_amended)
             
-                <center><h4><b>{{$allPost1992Article->part }}</b></h4></center><br>
-                <h4><b>{{$allPost1992Article->section }}</b></h4>
-                {!! $allPost1992Article->content !!}
+                <center><h4><b>{{$ghana_act_amended->chapter }}</b></h4></center><br>
+                <h4><b>{{$ghana_act_amended->section }}</b></h4>
+                {!! $ghana_act_amended->articles !!}
                 <hr><br>
 
         @endforeach

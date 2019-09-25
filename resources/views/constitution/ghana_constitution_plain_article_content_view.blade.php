@@ -5,23 +5,22 @@
 
 
      <div class="container">
-         <center><h4><b>{{ $allPost1992Article['post_act'] }}</b></h4></center>
          <ul class="pager">
                 <li><a data-scroll-to="body"
                     data-scroll-focus="body"
                     data-scroll-speed="400"
-                    data-scroll-offset="-60" href="#" class="previous_content_act">Previous Section</a></li>
+                    data-scroll-offset="-60" href="#" class="previous_content_act">Previous Article</a></li>
                 <li><a data-scroll-to="body"
                     data-scroll-focus="body"
                     data-scroll-speed="400"
-                    data-scroll-offset="-60" href="#" class="next_content_act">Next Section</a></li>
+                    data-scroll-offset="-60" href="#" class="next_content_act">Next Article</a></li>
         <!-- <a class="btn btn-info btn-sm pull-right" href="javascript:history.back()">Back to Full View</a><br> -->
          </ul>
         <br>
     
-        <h4><b>{{ $allPost1992Article['section'] }}</b></h4>
+        <h4><b>{{ $ghana_act['section'] }}</b></h4>
         <div class="content">
-            <p>{!! $allPost1992Article['content'] !!}</p>
+            <p>{!! $ghana_act['articles'] !!}</p>
         </div>
         
     </div>    

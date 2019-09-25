@@ -9,6 +9,7 @@ use App\GhanaAct;
 use App\GhanaArticle;
 use App\GhAmendedAct;
 use App\GhAmendedArticle;
+use PDF;
 
 class ConstitutionController extends Controller
 {
@@ -19,6 +20,30 @@ class ConstitutionController extends Controller
         $unique                   = $constitutionContent1->sortBy('chapter')->sortBy('priority');
         $constitutionContents     = $unique;
         return view('constitution.ghana_constitution_table', compact('ghana_act', 'constitutionContents'));
+    }
+
+    //Display print section Content for article print
+    public function print_constitution_content($id){
+        $country_act = AllConstitution::find(['id' => $id])->toArray()[0];
+        return view('constitution.country_constitution_print_article_content_view', compact('country_act'));
+    }
+
+    //Display Plain Content for articles
+    public function plain_constitution_content($id){
+        $country_act = AllConstitution::find(['id' => $id])->toArray()[0];
+        return view('constitution.country_constitution_plain_article_content_view', compact('country_act'));
+    }
+
+    //Display Pdf View for article Content view
+    public function pdf_constitution_content($id, $title){
+        // dd($id, $title);
+        $country_act              = AllConstitution::find(
+            [
+                'id' => $id,
+                'title' => $title
+            ])->toArray()[0];
+        $pdf = PDF::loadView('constitution.country_constitution_pdf_article_content_view', compact('country_act'));
+        return $pdf->download($id.'.lawsghana.pdf');
     }
 
     public function ghana_constitution_preamble($id){
@@ -52,6 +77,99 @@ class ConstitutionController extends Controller
         return view('constitution.ghana_constitution_plainView', compact('ghana_act', 'ghanaArticles'));
     }
 
+    //Display print section Content for preamble print
+    public function print_preamble_content($id){
+        $ghana_act = GhanaAct::find(['id' => $id])->toArray()[0];
+        return view('constitution.ghana_constitution_print_preamble_content_view', compact('ghana_act'));
+    }
+
+     //Display print section Content for article print
+     public function print_article_content($id){
+        $ghana_act = GhanaArticle::find(['id' => $id])->toArray()[0];
+        return view('constitution.ghana_constitution_print_article_content_view', compact('ghana_act'));
+    }
+
+    //Display Print View for Expanded view
+    public function print_expanded_article_content($id, $title, $group){
+        dd($id, $title, $group);
+        
+        $ghana_act              = GhanaAct::find(
+            [
+                'id' => $id,
+                'gh_group' => $group
+            ])->toArray()[0];
+            
+        $ghana_acts1            = GhanaArticle::where(['gh_title' => $title])->get();
+        $unique                     = $ghana_acts1->unique()->sortBy('chapter')->sortBy('priority'); 
+        $ghana_acts         = $unique;
+        return view('constitution.ghana_constitution_print_article_content_expanded_view', compact('ghana_act','ghana_acts'));
+    }
+
+    //Display Plain Content for preamble
+    public function plain_preamble_content($id){
+        $ghana_act = GhanaAct::find(['id' => $id])->toArray()[0];
+        return view('constitution.ghana_constitution_plain_preamble_content_view', compact('ghana_act'));
+    }
+
+    //Display Plain Content for articles
+    public function plain_article_content($id){
+        $ghana_act = GhanaArticle::find(['id' => $id])->toArray()[0];
+        return view('constitution.ghana_constitution_plain_article_content_view', compact('ghana_act'));
+    }
+
+    //Display Plain-View for expanded view
+    public function plain_expanded_article_content($id, $title, $group){
+        $ghana_act              = GhanaAct::find(
+            [
+                'id' => $id,
+                'gh_group' => $group
+            ])->toArray()[0];
+            
+        $ghana_acts1            = GhanaArticle::where(['gh_title' => $title])->get();
+        $unique                     = $ghana_acts1->unique()->sortBy('chapter')->sortBy('priority'); 
+        $ghana_acts         = $unique;
+        return view('constitution.ghana_constitution_plain_article_expanded_view', compact('ghana_act','ghana_acts'));
+    }
+
+    //Display Pdf View for preamble Content view
+    public function pdf_preamble_content($id, $title){
+        // dd($id);
+        $ghana_act              = GhanaAct::find(
+            [
+                'id' => $id,
+                'title' => $title
+            ])->toArray()[0];
+        $pdf = PDF::loadView('constitution.ghana_constitution_pdf_preamble_content_view', compact('ghana_act'));
+        return $pdf->download($id.'.preamble.pdf');
+    }
+
+    //Display Pdf View for article Content view
+    public function pdf_article_content($id, $title){
+        // dd($id);
+        $ghana_act              = GhanaArticle::find(
+            [
+                'id' => $id,
+                'chapter' => $title
+            ])->toArray()[0];
+        $pdf = PDF::loadView('constitution.ghana_constitution_pdf_article_content_view', compact('ghana_act'));
+        return $pdf->download($id.'.lawsghana.pdf');
+    }
+
+    //Display Pdf View for Expanded view
+    public function pdf_expanded_article_content($id, $title, $group){
+        $ghana_act              = GhanaAct::find(
+            [
+                'id' => $id,
+                'gh_group' => $group
+            ])->toArray()[0];
+            
+        $ghana_acts1            = GhanaArticle::where(['gh_title' => $title])->get();
+        $unique                 = $ghana_acts1->unique()->sortBy('chapter')->sortBy('priority'); 
+        $ghana_acts             = $unique;
+        $pdf = PDF::loadView('constitution.ghana_constitution_pdf_article_expanded_view', compact('ghana_act','ghana_acts'));
+        return $pdf->download($title.'.lawsghana.pdf');
+    }
+
 
     //GHANA'S CONSTITUTION AMENDED
     public function ghana_constitution_table_amended($id){
@@ -60,6 +178,101 @@ class ConstitutionController extends Controller
         $unique                          = $constitutionContentAmended1->sortBy('chapter')->sortBy('priority');
         $constitutionContentAmendeds      = $unique;
         return view('constitution.ghana_constitution_amended_table', compact('ghana_act_amended', 'constitutionContentAmendeds'));
+    }
+
+    //Display print section Content for amended preamble print
+    public function print_preamble_content_amended($id){
+        $ghana_act_amended = GhAmendedAct::find(['id' => $id])->toArray()[0];
+        return view('constitution.ghana_constitution_print_preamble_content_view_amended', compact('ghana_act_amended'));
+    }
+
+     //Display print section Content for article print
+     public function print_article_content_amended($id){
+        $ghana_act_amended = GhAmendedArticle::find(['id' => $id])->toArray()[0];
+        return view('constitution.ghana_constitution_print_article_content_view_amended', compact('ghana_act_amended'));
+    }
+
+    //Display Print View for Expanded view
+    public function print_expanded_article_content_amended($id, $title, $group){
+        // ($id, $title, $group);
+        
+        $ghana_act_amended              = GhAmendedAct::find(
+            [
+                'id' => $id,
+                'gh_group' => $group
+            ])->toArray()[0];
+            
+        $ghana_acts1            = GhAmendedArticle::where(['gh_title' => $title])->get();
+        $unique                     = $ghana_acts1->unique()->sortBy('chapter')->sortBy('priority'); 
+        $ghana_act_amendeds         = $unique;
+        return view('constitution.ghana_constitution_print_article_content_expanded_view_amended', compact('ghana_act_amended','ghana_act_amendeds'));
+    }
+
+     
+
+    //Display Plain Content for amended preamble
+    public function plain_preamble_content_amended($id){
+        $ghana_act_amended = GhAmendedAct::find(['id' => $id])->toArray()[0];
+        return view('constitution.ghana_constitution_plain_preamble_content_view_amended', compact('ghana_act_amended'));
+    }
+
+     //Display Plain Content for articles
+     public function plain_article_content_amended($id){
+        $ghana_act_amended = GhAmendedArticle::find(['id' => $id])->toArray()[0];
+        return view('constitution.ghana_constitution_plain_article_content_view_amended', compact('ghana_act_amended'));
+    }
+
+     //Display Plain-View for expanded view
+     public function plain_expanded_article_content_amended($id, $title, $group){
+        $ghana_act_amended              = GhAmendedAct::find(
+            [
+                'id' => $id,
+                'gh_group' => $group
+            ])->toArray()[0];
+            
+        $ghana_acts1            = GhAmendedArticle::where(['gh_title' => $title])->get();
+        $unique                     = $ghana_acts1->unique()->sortBy('chapter')->sortBy('priority'); 
+        $ghana_act_amendeds         = $unique;
+        return view('constitution.ghana_constitution_plain_article_expanded_view_amended', compact('ghana_act_amended','ghana_act_amendeds'));
+    }
+
+     //Display Pdf View for amended preamble Content view
+     public function pdf_preamble_content_amended($id, $title){
+        // dd($id);
+        $ghana_act_amended              = GhAmendedAct::find(
+            [
+                'id' => $id,
+                'title' => $title
+            ])->toArray()[0];
+        $pdf = PDF::loadView('constitution.ghana_constitution_pdf_preamble_content_view_amended', compact('ghana_act_amended'));
+        return $pdf->download($id.'.preamble.pdf');
+    }
+
+    //Display Pdf View for article Content view
+    public function pdf_article_content_amended($id, $title){
+        // dd($id, $title);
+        $ghana_act_amended              = GhAmendedArticle::find(
+            [
+                'id' => $id,
+                'chapter' => $title
+            ])->toArray()[0];
+        $pdf = PDF::loadView('constitution.ghana_constitution_pdf_article_content_view_amended', compact('ghana_act_amended'));
+        return $pdf->download($id.'.lawsghana.pdf');
+    }
+
+    //Display Pdf View for Expanded view
+    public function pdf_expanded_article_content_amended($id, $title, $group){
+        $ghana_act_amended              = GhAmendedAct::find(
+            [
+                'id' => $id,
+                'gh_group' => $group
+            ])->toArray()[0];
+            
+        $ghana_acts1            = GhAmendedArticle::where(['gh_title' => $title])->get();
+        $unique                 = $ghana_acts1->unique()->sortBy('chapter')->sortBy('priority'); 
+        $ghana_act_amendeds             = $unique;
+        $pdf = PDF::loadView('constitution.ghana_constitution_pdf_article_expanded_view_amended', compact('ghana_act_amended','ghana_act_amendeds'));
+        return $pdf->download($title.'.lawsghana.pdf');
     }
 
     public function ghana_constitution_preamble_amended($id){

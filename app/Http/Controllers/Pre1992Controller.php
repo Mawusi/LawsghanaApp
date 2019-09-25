@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Pre1992LegislationAct;
 use App\Pre1992LegislationArticle;
 use App\Pre1992LegislationCategory;
+use PDF;
 use App\Pre1992LegislationGroup;
+
+
 
 
 
@@ -59,6 +62,54 @@ class Pre1992Controller extends Controller
         return view('pre_1992_legislation.displayed_preamble_view', compact('allPre1992Act'));   
      }
 
+     //Display print section Content for preamble print
+    public function pre_1992_legislation_print_preamble_content($id){
+        $allPre1992Act = Pre1992LegislationAct::find(['id' => $id])->toArray()[0];
+        return view('pre_1992_legislation.displayed_print_preamble_content_view', compact('allPre1992Act'));
+    }
+
+    //Display print section Content for section print
+    public function pre_1992_legislation_print_content($id){
+        $allPre1992Act = Pre1992LegislationArticle::find(['id' => $id])->toArray()[0];
+        return view('pre_1992_legislation.displayed_print_content_view', compact('allPre1992Act'));
+    }
+
+    //Display Pdf View for preamble Content view
+     public function pre_1992_legislation_pdf_preamble_content($id, $title){
+        // dd($id, $title);
+        $allPre1992Act              = Pre1992LegislationAct::find(
+            [
+                'id' => $id,
+                'title' => $title
+            ])->toArray()[0];
+        $pdf = PDF::loadView('pre_1992_legislation.displayed_pdf_preamble_content_view', compact('allPre1992Act'));
+        return $pdf->download($id.'.preamble.pdf');
+    }
+
+    //Display Pdf View for section Content view
+    public function pre_1992_legislation_pdf_content($id, $title){
+        // dd($id);
+        $allPre1992Act              = Pre1992LegislationArticle::find(
+            [
+                'id' => $id,
+                'pre_1992_act' => $title
+            ])->toArray()[0];
+        $pdf = PDF::loadView('pre_1992_legislation.displayed_pdf_content_view', compact('allPre1992Act'));
+        return $pdf->download($id.'.lawsghana.pdf');
+    }
+
+    //Display Plain Content for preamble
+    public function pre_1992_legislation_plain_preamble_content($id){
+        $allPre1992Act = Pre1992LegislationAct::find(['id' => $id])->toArray()[0];
+        return view('pre_1992_legislation.displayed_plain_preamble_content_view', compact('allPre1992Act'));
+    }
+
+    //Display Plain Content for section
+    public function pre_1992_legislation_plain_content($id){
+        $allPre1992Act = Pre1992LegislationArticle::find(['id' => $id])->toArray()[0];
+        return view('pre_1992_legislation.displayed_plain_content_view', compact('allPre1992Act'));
+    }
+
     //Display Content
      public function pre_1992_legislation_content($id){
         $allPre1992Article = Pre1992LegislationArticle::find(['id' => $id])->toArray()[0];
@@ -77,6 +128,50 @@ class Pre1992Controller extends Controller
         $unique                     = $allPreArticles1->unique()->sortBy('part')->sortBy('priority'); 
         $allPre1992Articles         = $unique;
         return view('pre_1992_legislation.displayed_expandedView', compact('allPre1992Act','allPre1992Articles'));
+    }
+
+    //Display Print View for Expanded view
+    public function pre_1992_legislation_print_expanded_content($id, $title, $group){
+        // dd($id, $title, $group);
+        $allPre1992Act              = Pre1992LegislationAct::find(
+            [
+                'id' => $id,
+                'pre_1992_group' => $group
+            ])->toArray()[0];
+            
+        $allPreArticles1            = Pre1992LegislationArticle::where(['pre_1992_act' => $title])->get();
+        $unique                     = $allPreArticles1->unique()->sortBy('part')->sortBy('priority'); 
+        $allPre1992Articles         = $unique;
+        return view('pre_1992_legislation.displayed_printView', compact('allPre1992Act','allPre1992Articles'));
+    }
+
+    //Display Plain-View
+    public function pre_1992_legislation_plain_expanded_content($id, $title, $group){
+        $allPre1992Act              = Pre1992LegislationAct::find(
+            [
+                'id' => $id,
+                'pre_1992_group' => $group
+            ])->toArray()[0];
+            
+        $allPreArticles1            = Pre1992LegislationArticle::where(['pre_1992_act' => $title])->get();
+        $unique                     = $allPreArticles1->unique()->sortBy('part')->sortBy('priority'); 
+        $allPre1992Articles         = $unique;
+        return view('pre_1992_legislation.displayed_plainView', compact('allPre1992Act','allPre1992Articles'));
+    }
+
+    //Display Pdf View for Expanded view
+    public function pre_1992_legislation_pdf_expanded_content($id, $title, $group){
+        $allPre1992Act              = Pre1992LegislationAct::find(
+            [
+                'id' => $id,
+                'pre_1992_group' => $group
+            ])->toArray()[0];
+            
+        $allPreArticles1            = Pre1992LegislationArticle::where(['pre_1992_act' => $title])->get();
+        $unique                     = $allPreArticles1->unique()->sortBy('part')->sortBy('priority'); 
+        $allPre1992Articles         = $unique;
+        $pdf = PDF::loadView('pre_1992_legislation.displayed_pdfView', compact('allPre1992Act','allPre1992Articles'));
+        return $pdf->download($title.'.lawsghana.pdf');
     }
 
     //Display First Republic Acts

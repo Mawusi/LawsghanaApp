@@ -102,7 +102,7 @@ class JudgementController extends Controller
         $allGhanaLawpdf = GhLawJudgment::find(
             [
                 'id' => $id,
-                'gh_law_judgment_group_name' => $name
+                'case_title' => $name
             ])->toArray()[0];
         $pdf = PDF::loadView('law_judgment.displayed_pdf_content_view', compact('allGhanaLawpdf'));
         return $pdf->download($name.'.case_law.pdf');

@@ -21,8 +21,12 @@ Route::get('/','WelcomePageController@index');
 
     //All Countries Constitution
     Route::get('/constitution/all_countries','ConstitutionController@all_countries_constitution');//display all countries constitution
-    Route::get('/constitution/filter/{year}/{country}','ConstitutionController@all_countries_constitution_filter'); //all constitution filtering
-    Route::get('/constitution/{country}/{id}','ConstitutionController@display_country_constitution');
+        Route::get('/constitution/filter/{year}/{country}','ConstitutionController@all_countries_constitution_filter'); //all constitution filtering
+        Route::get('/constitution/{country}/{id}','ConstitutionController@display_country_constitution');
+        Route::get('/constitution/print/content/{id}','ConstitutionController@print_constitution_content');//display plain act content
+        Route::get('/constitution/plain/content/{id}','ConstitutionController@plain_constitution_content');//display plain act content
+        Route::get('/constitution/pdf/content/{title}/{id}','ConstitutionController@pdf_constitution_content');//display plain act content
+
 
         //AFRICA
         Route::get('/constitution/all-countries/1/{continent}','ConstitutionController@africa_constitution');
@@ -52,6 +56,18 @@ Route::get('/','WelcomePageController@index');
         Route::get('/constitution/Republic/expanded_view/{id}','ConstitutionController@ghana_expanded_view');
         Route::get('/constitution/Republic/plain_view/{id}','ConstitutionController@ghana_plain_view');
 
+        Route::get('/constitution/Republic/print_preamble_content/{id}','ConstitutionController@print_preamble_content');//display plain act content
+        Route::get('/constitution/Republic/print_article_content/{id}','ConstitutionController@print_article_content');//display plain act content
+        Route::get('/constitution/Republic/{group}/{title}/print_view/{id}','ConstitutionController@print_expanded_article_content');//display in print view
+
+        Route::get('/constitution/Republic/plain_preamble_content/{id}','ConstitutionController@plain_preamble_content');//display plain act content
+        Route::get('/constitution/Republic/plain_article_content/{id}','ConstitutionController@plain_article_content');//display plain act content
+        Route::get('/constitution/Republic/{group}/{title}/plain_view/{id}','ConstitutionController@plain_expanded_article_content');//display in print view
+
+        Route::get('/constitution/Republic/pdf_preamble_content/{title}/{id}','ConstitutionController@pdf_preamble_content');//display plain act content
+        Route::get('/constitution/Republic/pdf_article_content/{title}/{id}','ConstitutionController@pdf_article_content');//display plain act content
+        Route::get('/constitution/Republic/{group}/{title}/pdf_view/{id}','ConstitutionController@pdf_expanded_article_content');//display in print view
+
 
     // Ghana Constitution(Amended)
     Route::get('/constitution_amended/Republic/Ghana/{id}', 'ConstitutionController@ghana_constitution_table_amended');
@@ -59,6 +75,18 @@ Route::get('/','WelcomePageController@index');
     Route::get('/constitution_amended/Republic/constitution_content/{id}','ConstitutionController@ghana_constitution_content_amended');
     Route::get('/constitution_amended/Republic/expanded_view/{id}','ConstitutionController@ghana_expanded_view_amended');
 
+        Route::get('/constitution_amended/Republic/print_preamble_content/{id}','ConstitutionController@print_preamble_content_amended');//display plain act content
+        Route::get('/constitution_amended/Republic/print_article_content/{id}','ConstitutionController@print_article_content_amended');//display plain act content
+        Route::get('/constitution_amended/Republic/print/expanded_content/{group}/{title}/{id}','ConstitutionController@print_expanded_article_content_amended');//display in print view
+
+
+        Route::get('/constitution_amended/Republic/plain_preamble_content/{id}','ConstitutionController@plain_preamble_content_amended');//display plain act content
+        Route::get('/constitution_amended/Republic/plain_article_content/{id}','ConstitutionController@plain_article_content_amended');//display plain act content
+        Route::get('/constitution_amended/Republic/plain/expanded_content/{group}/{title}/{id}','ConstitutionController@plain_expanded_article_content_amended');//display in print view
+
+        Route::get('/constitution_amended/Republic/pdf_preamble_content/{title}/{id}','ConstitutionController@pdf_preamble_content_amended');//display plain act content
+        Route::get('/constitution_amended/Republic/pdf_article_content/{title}/{id}','ConstitutionController@pdf_article_content_amended');//display plain act content
+        Route::get('/constitution_amended/Republic/pdf/expanded_content/{group}/{title}/{id}','ConstitutionController@pdf_expanded_article_content_amended');//display in print view
 
 
 //PRE_1992_LEGISLATION
@@ -68,6 +96,21 @@ Route::get('/pre_1992_legislation','Pre1992Controller@index');//display all acts
     Route::get('/pre_1992_legislation/preamble/{id}','Pre1992Controller@pre_1992_legislation_preamble');//display act preamble
     Route::get('/pre_1992_legislation/content/{id}','Pre1992Controller@pre_1992_legislation_content');//display act content
     Route::get('/pre_1992_legislation/1/{group}/{title}/expanded-view/{id}','Pre1992Controller@expanded_view');//display in expanded view
+
+    Route::get('/pre_1992_legislation/print_preamble_content/{id}','Pre1992Controller@pre_1992_legislation_print_preamble_content');//display plain act content
+    Route::get('/pre_1992_legislation/print_section_content/{id}','Pre1992Controller@pre_1992_legislation_print_content');//display plain act content
+    Route::get('/pre_1992_legislation/1/{group}/{title}/print_view/{id}','Pre1992Controller@pre_1992_legislation_print_expanded_content');//display in print view
+
+    Route::get('/pre_1992_legislation/plain_preamble_content/{id}','Pre1992Controller@pre_1992_legislation_plain_preamble_content');//display plain act content
+    Route::get('/pre_1992_legislation/plain_content/{id}','Pre1992Controller@pre_1992_legislation_plain_content');//display plain act content
+    Route::get('/pre_1992_legislation/1/{group}/{title}/plain_view/{id}','Pre1992Controller@pre_1992_legislation_plain_expanded_content');//display in plain view
+
+
+    Route::get('/pre_1992_legislation/pdf/preamble_content/{title}/{id}','Pre1992Controller@pre_1992_legislation_pdf_preamble_content');//display plain act content
+    Route::get('/pre_1992_legislation/pdf/content/{title}/{id}','Pre1992Controller@pre_1992_legislation_pdf_content');//display plain act content
+    Route::get('/pre_1992_legislation/1/{group}/{title}/pdf_view/{id}','Pre1992Controller@pre_1992_legislation_pdf_expanded_content');//display in plain view
+
+
 
     //First Republic
     Route::get('/pre_1992_legislation/1/{group}','Pre1992Controller@first_republic');
@@ -111,7 +154,7 @@ Route::get('/post_1992_legislation','Post1992Controller@index');//display all ac
     Route::get('/post_1992_legislation/plain_preamble_content/{id}','Post1992Controller@post_1992_legislation_plain_preamble_content');//display plain act content
     Route::get('/post_1992_legislation/1/{group}/{title}/expanded-view/{id}','Post1992Controller@expanded_view');//display in expanded view
 
-    // Route::get('/post_1992_legislation/1/{group}/{title}/pdf_view/{id}','Post1992Controller@pdf_view');//display pdf
+    
     Route::get('/post_1992_legislation/pdf_content/{title}/{id}','Post1992Controller@post_1992_legislation_pdf_content');//display plain act content
     Route::get('/post_1992_legislation/pdf_preamble_content/{title}/{id}','Post1992Controller@post_1992_legislation_pdf_preamble_content');//display plain act content
     Route::get('/post_1992_legislation/print_section_content/{id}','Post1992Controller@post_1992_legislation_print_content');//display plain act content

@@ -32,7 +32,7 @@
         <center>         
         <label style="color:black;">View Options</label>
         <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/constitution/Republic/expanded_view/{{ $ghana_act['id'] }}"><li style="list-style:none;">Expanded View</li></a>
-        <a href="/constitution/Republic/plain_view/{{ $ghana_act['id'] }}"><li style="list-style:none;">Plain View</li></a>
+        <a href="/constitution/Republic/{{$ghana_act['gh_group']}}/{{$ghana_act['title']}}/plain_view/{{ $ghana_act['id'] }}" target="_blank"><li style="list-style:none;">Plain View</li></a>
         </center> 
       </div>
     </div>

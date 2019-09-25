@@ -134,23 +134,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2" style="margin-bottom: 50px; margin-top: 50px;">
-                        <div class="input-group">
-                            <div class="input-group-btn search-panel">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                    <span id="search_concept">Filter by</span> <span class="caret"></span>
-                                </button>
-                                {{--
-                                <ul class="dropdown-menu" role="menu">
-                                <li><a href="#contains">Contains</a></li>
-                                <li><a href="#its_equal">It's equal</a></li>
-                                <li><a href="#greather_than">Greather than ></a></li>
-                                <li><a href="#less_than">Less than < </a></li>
-                                <li class="divider"></li>
-                                <li><a href="#all">Anything</a></li>
-                                </ul>
-                                --}}
-                            </div>
-                                <input type="hidden" name="search_param" value="all" id="search_param">         
+                        <div class="input-group">         
                                 <input type="text" class="form-control" name="x" placeholder="Search any law or case in Ghana"">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
@@ -163,7 +147,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-xs-offset-0 col-sm-12 col-sm-offset-0 col-md-12 col-md-offset-0 links">
                         
-                            <a href="/constitution/all_countries">Constitution</a>
+                            <a href="/constitution/Republic/Ghana/1">Constitution</a>
                             <a href="/pre_1992_legislation">Pre 4th Republic Laws</a>
                             <a href="/post_1992_legislation">4th Republic Laws</a>
                             <a href="/judgement/Ghana">Case Laws</a>
