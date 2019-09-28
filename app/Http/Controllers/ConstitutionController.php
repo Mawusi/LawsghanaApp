@@ -91,7 +91,7 @@ class ConstitutionController extends Controller
 
     //Display Print View for Expanded view
     public function print_expanded_article_content($id, $title, $group){
-        dd($id, $title, $group);
+        //dd($id, $title, $group);
         
         $ghana_act              = GhanaAct::find(
             [

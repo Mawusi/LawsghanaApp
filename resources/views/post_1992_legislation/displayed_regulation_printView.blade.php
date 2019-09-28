@@ -4,21 +4,22 @@
 @section('content')
     <div class="container">
         <a onclick="printpage()" id="printpagebutton" title="Print page"><span class="btn btn-info btn-sm pull-right glyphicon glyphicon-print" aria-hidden="true"></span></a><br>
-        <div class="print_this">
-            <center>
-            <h4>
-                <b>{{ $allPost1992Act['title'] }}</b>
-            </h4>
-            <h4>
-                <b>Introductory Text</b>
-            </h4>
-            </center>
-            <br>
+        <div class="container">
+            <center><h4><b>{{ $regulationtitle['title'] }}</b></h4></center>
+        </div>
+        <br>
+        <div class="container">	
+        <h4><b>Preamble</b></h4><p>{!! $regulationtitle['preamble'] !!}</p>
+        <hr>
+        @foreach($ActsRegulationArticles as $ActsRegulationArticle)
             
-            <div class="content">
-                <p>{!! $allPost1992Act['preamble'] !!}</p>
-                @include('extenders.footer_caption')
-            </div>
+                <center><h4><b>{{$ActsRegulationArticle->part }}</b></h4></center><br>
+                <h4><b>{{$ActsRegulationArticle->section }}</b></h4>
+                {!! $ActsRegulationArticle->content !!}
+                <hr><br>
+
+        @endforeach
+        @include('extenders.footer_caption')
         </div>
     </div>  
 @endsection 
@@ -39,4 +40,3 @@
 </script>
 
 @endsection
-

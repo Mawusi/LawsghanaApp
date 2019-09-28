@@ -1,6 +1,6 @@
 @extends('extenders.general_extenders')
 
-@section('title', 'Print Preview Mode')
+@section('title', 'Print View Mode')
 @section('content')
     <div class="container">
         <a onclick="printpage()" id="printpagebutton" title="Print page"><span class="btn btn-info btn-sm pull-right glyphicon glyphicon-print" aria-hidden="true"></span></a><br>

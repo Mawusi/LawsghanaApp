@@ -7,16 +7,16 @@
         <div class="print_this">
             <center>
             <h4>
-                <b>{{ $allPost1992Act['title'] }}</b>
-            </h4>
-            <h4>
-                <b>Introductory Text</b>
+                <b>{{$amendedAct['act_title']}}</b>
             </h4>
             </center>
             <br>
-            
+            <h4>
+                <b>{{ $amendedAct['section'] }}</b>
+            </h4>
+
             <div class="content">
-                <p>{!! $allPost1992Act['preamble'] !!}</p>
+                <p>{!! $amendedAct['content'] !!}</p>
                 @include('extenders.footer_caption')
             </div>
         </div>

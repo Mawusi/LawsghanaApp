@@ -30,6 +30,11 @@
   float: center;
 }
 
+.plain-accordion {
+  height: 600px;
+  overflow-y: scroll;
+  }
+
 .table-wrapper-scroll-acts {
 display: block;
 max-height: 380px;

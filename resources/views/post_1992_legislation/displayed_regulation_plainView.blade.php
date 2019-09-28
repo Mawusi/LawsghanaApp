@@ -54,12 +54,24 @@
 @endsection
 
 @section('content')
-    <div class="container">
 
-        <div class="content">
-            <p>{!! $allForeignLawplain['content'] !!}</p>
-        </div>
-        
-    </div>    
+            <div class="container">
+                <center><h3><b>{{ $regulationtitle['title'] }}</b></h3></center>
+            </div>
+            
+            <br>
+            
+            <div class="container">	
+                <h4><b>Preamble</b></h4><p>{!! $regulationtitle['preamble'] !!}</p>
+                <hr>
+                @foreach($ActsRegulationArticles as $ActsRegulationArticle)
+                    
+                        <center><h4><b>{{$ActsRegulationArticle->part }}</b></h4></center><br>
+                        <h4><b>{{$ActsRegulationArticle->section }}</b></h4>
+                        {!! $ActsRegulationArticle->content !!}
+                        <hr><br>
 
-@endsection
+                @endforeach
+            </div>  
+    
+@endsection    

@@ -7,7 +7,7 @@
         <div class="print_this">
             <center>
             <h4>
-                <b>{{ $allPost1992Act['title'] }}</b>
+                <b>{{ $regulationAct['title'] }}</b>
             </h4>
             <h4>
                 <b>Introductory Text</b>
@@ -16,7 +16,7 @@
             <br>
             
             <div class="content">
-                <p>{!! $allPost1992Act['preamble'] !!}</p>
+                <p>{!! $regulationAct['preamble'] !!}</p>
                 @include('extenders.footer_caption')
             </div>
         </div>

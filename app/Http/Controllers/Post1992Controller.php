@@ -243,7 +243,54 @@ class Post1992Controller extends Controller
                             return view('post_1992_legislation.displayed_amended_sections_container', compact('amendedContents'));
                         }
 
+                         //Display print section Content for amended preamble print
+                        public function post_1992_legislation_print_amended_preamble_content($id){
+                            $amendedAct = AmendedTitle::find(['id' => $id])->toArray()[0];
+                            return view('post_1992_legislation.displayed_print_amended_preamble_content_view', compact('amendedAct'));
+                        }
 
+                        //Display print section Content for amended section print
+                        public function post_1992_legislation_print_amended_content_section($id){
+                            $amendedAct = AmendedArticle::find(['id' => $id])->toArray()[0];
+                            return view('post_1992_legislation.displayed_print_amended_content_view', compact('amendedAct'));
+                        }
+
+                        //Display Plain Content for amended preamble
+                        public function post_1992_legislation_plain_amended_preamble_content($id){
+                            $amendedAct = AmendedTitle::find(['id' => $id])->toArray()[0];
+                            return view('post_1992_legislation.displayed_plain_amended_preamble_content_view', compact('amendedAct'));
+                        }
+
+                        //Display Plain Content for section
+                        public function post_1992_legislation_plain_amended_content_section($id){
+                            $amendedAct = AmendedArticle::find(['id' => $id])->toArray()[0];
+                            return view('post_1992_legislation.displayed_plain_amended_content_view', compact('amendedAct'));
+                        }
+
+                        //Display Pdf View for preamble Content view
+                        public function post_1992_legislation_pdf_amended_preamble_content($id, $title){
+                            // dd($id, $title);
+                            $amendedAct              = AmendedTitle::find(
+                                [
+                                    'id' => $id,
+                                    'title' => $title
+                                ])->toArray()[0];
+                            $pdf = PDF::loadView('post_1992_legislation.displayed_pdf_amended_preamble_content_view', compact('amendedAct'));
+                            return $pdf->download($id.'.preamble.pdf');
+                        }
+
+                        //Display Pdf View for section Content view
+                        public function post_1992_legislation_pdf_amended_content_section($id, $title){
+                            // dd($id, $title);
+                            $amendedAct              = AmendedArticle::find(
+                                [
+                                    'id' => $id,
+                                    'act_title' => $title
+                                ])->toArray()[0];
+                            $pdf = PDF::loadView('post_1992_legislation.displayed_pdf_amended_content_view', compact('amendedAct'));
+                            return $pdf->download($id.'.lawsghana.pdf');
+                        }
+                        //------------------------------------------------------------------------------------------------------------------------------------------
                         //ALL REGULATIONS FOR A SPECIFIC ACT
 
                         //Display All amendments under an act
@@ -290,6 +337,99 @@ class Post1992Controller extends Controller
                             $unique                 = $regulationsContents1->sortBy('part')->sortBy('priority');
                             $regulationsContents        = $unique;
                             return view('post_1992_legislation.displayed_regulations_sections_container', compact('regulationsContents'));
+                        }
+
+                        //Display amended regulation preamble print
+                        public function post_1992_legislation_print_regulation_act_preamble_content($id){
+                            // dd($id);
+                            $ActsRegulationPreamble = RegulationTitle::find(['id' => $id])->toArray()[0];
+                            return view('post_1992_legislation.displayed_regulation_act_print_preamble_content_view', compact('ActsRegulationPreamble'));
+                        }
+
+                        //Display print section Content for section print
+                        public function post_1992_legislation_print_regulation_act_content_section($id){
+                            $ActsRegulationArticle = RegulationArticle::find(['id' => $id])->toArray()[0];
+                            return view('post_1992_legislation.displayed_print_regulation_act_content_view', compact('ActsRegulationArticle'));
+                        }
+
+                        //Display Print View for Expanded view
+                        public function post_1992_legislation_print_regulation_expanded($id, $title, $category){
+                            // dd($id, $title, $category);
+                            $regulationtitle              = RegulationTitle::find(
+                                [
+                                    'id' => $id,
+                                    'act_category' => $category
+                                ])->toArray()[0];
+                                
+                            $ActsRegulationArticles1            = RegulationArticle::where(['regulation_title' => $title])->get();
+                            $unique                     = $ActsRegulationArticles1->unique()->sortBy('part')->sortBy('priority'); 
+                            $ActsRegulationArticles         = $unique;
+                            return view('post_1992_legislation.displayed_regulation_printView', compact('regulationtitle','ActsRegulationArticles'));
+                        }
+
+                        //Display Plain Content for preamble
+                        public function post_1992_legislation_plain_regulation_act_preamble_content($id){
+                            $ActsRegulationPreamble = RegulationTitle::find(['id' => $id])->toArray()[0];
+                            return view('post_1992_legislation.displayed_regulation_act_plain_preamble_content_view', compact('ActsRegulationPreamble'));
+                        }
+
+                        //Display Plain Content for section
+                        public function post_1992_legislation_plain_regulation_act_content_section($id){
+                            $ActsRegulationArticle = RegulationArticle::find(['id' => $id])->toArray()[0];
+                            return view('post_1992_legislation.displayed_regulation_act_plain_content_view', compact('ActsRegulationArticle'));
+                        }
+
+                        //Display Plain-View
+                        public function post_1992_legislation_plain_regulation_expanded($id, $title, $category){
+                            $regulationtitle              = RegulationTitle::find(
+                                [
+                                    'id' => $id,
+                                    'act_category' => $category
+                                ])->toArray()[0];
+                                
+                            $ActsRegulationArticles1            = RegulationArticle::where(['regulation_title' => $title])->get();
+                            $unique                     = $ActsRegulationArticles1->unique()->sortBy('part')->sortBy('priority'); 
+                            $ActsRegulationArticles         = $unique;
+                            return view('post_1992_legislation.displayed_regulation_plainView', compact('regulationtitle','ActsRegulationArticles'));
+                        }
+
+                         //Display Pdf View for preamble Content view
+                        public function post_1992_legislation_pdf_regulation_act_preamble_content($id, $title){
+                            // dd($id,$title);
+                            $ActsRegulationPreamble              = RegulationTitle::find(
+                                [
+                                    'id' => $id,
+                                    'title' => $title
+                                ])->toArray()[0];
+                            $pdf = PDF::loadView('post_1992_legislation.displayed_pdf_regulation_act_preamble_content_view', compact('ActsRegulationPreamble'));
+                            return $pdf->download($id.'.preamble.pdf');
+                        }
+
+                        //Display Pdf View for section Content view
+                        public function post_1992_legislation_pdf_regulation_act_content_section($id, $title){
+                            // dd($id);
+                            $ActsRegulationArticle              = RegulationArticle::find(
+                                [
+                                    'id' => $id,
+                                    'regulation_title' => $title
+                                ])->toArray()[0];
+                            $pdf = PDF::loadView('post_1992_legislation.displayed_pdf_regulation_act_content_view', compact('ActsRegulationArticle'));
+                            return $pdf->download($id.'.lawsghana.pdf');
+                        }
+
+                         //Display Pdf View for Expanded view
+                        public function post_1992_legislation_pdf_regulation_expanded($id, $title, $category){
+                            $regulationtitle              = RegulationTitle::find(
+                                [
+                                    'id' => $id,
+                                    'act_category' => $category
+                                ])->toArray()[0];
+                                
+                            $ActsRegulationArticles1            = RegulationArticle::where(['regulation_title' => $title])->get();
+                            $unique                     = $ActsRegulationArticles1->unique()->sortBy('part')->sortBy('priority'); 
+                            $ActsRegulationArticles         = $unique;
+                            $pdf = PDF::loadView('post_1992_legislation.displayed_regulation_pdfView', compact('regulationtitle','ActsRegulationArticles'));
+                            return $pdf->download($title.'.lawsghana.pdf');
                         }
 
                        
@@ -341,6 +481,7 @@ class Post1992Controller extends Controller
         $amendedAct = AmendedTitle::find(['id' => $id])->toArray()[0];
         return view('post_1992_legislation.displayed_amended_preamble', compact('amendedAct'));
     }
+
 
     //Amendment Act Content
     public function amended_acts_content($id){
@@ -442,6 +583,54 @@ class Post1992Controller extends Controller
 
 
         return view('post_1992_legislation.displayed_regulation_table_of_content_view', compact('regulationAct', 'allRegulationArticles', 'amendedregulationcount'));
+    }
+
+    //Display print section Content for preamble print
+    public function post_1992_legislation_print_regulation_preamble($id){
+        $regulationAct = RegulationTitle::find(['id' => $id])->toArray()[0];
+        return view('post_1992_legislation.displayed_regulation_print_preamble_content_view', compact('regulationAct'));
+    }
+
+    //Display print section Content for section print
+    public function post_1992_legislation_print_regulation_content_section($id){
+        $regulationAct = RegulationArticle::find(['id' => $id])->toArray()[0];
+        return view('post_1992_legislation.displayed_regulation_print_content_view', compact('regulationAct'));
+    }
+
+    //Display Plain Content for preamble
+    public function post_1992_legislation_plain_regulation_preamble($id){
+        $regulationAct = RegulationTitle::find(['id' => $id])->toArray()[0];
+        return view('post_1992_legislation.displayed_regulation_plain_preamble_content_view', compact('regulationAct'));
+    }
+
+     //Display Plain Content for section
+     public function post_1992_legislation_plain_regulation_content_section($id){
+        $regulationAct = RegulationArticle::find(['id' => $id])->toArray()[0];
+        return view('post_1992_legislation.displayed_regulation_plain_content_view', compact('regulationAct'));
+    }
+
+    //Display Pdf View for preamble Content view
+    public function post_1992_legislation_pdf_regulation_preamble($id, $title){
+        // dd($id);
+        $regulationAct              = RegulationTitle::find(
+            [
+                'id' => $id,
+                'title' => $title
+            ])->toArray()[0];
+        $pdf = PDF::loadView('post_1992_legislation.displayed_regulation_pdf_preamble_content_view', compact('regulationAct'));
+        return $pdf->download($id.'.preamble.pdf');
+    }
+
+    //Display Pdf View for section Content view
+    public function post_1992_legislation_pdf_regulation_content_section($id, $title){
+        // dd($id);
+        $regulationAct              = RegulationArticle::find(
+            [
+                'id' => $id,
+                'post_act' => $title
+            ])->toArray()[0];
+        $pdf = PDF::loadView('post_1992_legislation.displayed_regulation_pdf_content_view', compact('regulationAct'));
+        return $pdf->download($id.'.lawsghana.pdf');
     }
 
     //Regulation Act Preamble
