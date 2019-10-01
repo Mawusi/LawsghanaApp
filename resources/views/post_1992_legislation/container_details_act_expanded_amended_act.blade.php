@@ -1,12 +1,11 @@
 
-{{-- DOWNLOADS AND PRINT OPTIONS --}}
+{{-- DOWNLOADS AND PRINT OPTIONS
 <div class="col-md-2"> 
     <div class="panel panel-default">
       <div class="panel-heading">
         <center><p class="panel-title"><small>Print and Downloads</small></p></center>
       </div>
       <div class="panel-body">
-      {{-- Downloads --}}
         <center>
         <div class="row">
           <div class="col-md-12">
@@ -35,9 +34,12 @@
   </div>
   @include('extenders.case_law_main_search')
 </div>
+--}}
 
 {{-- ADVERTISEMENT--}}
 <div class="col-md-3">
+@include('extenders.case_law_main_search')
+<br>
     <div class="panel panel-default">
       <div class="panel-heading">
         <p class="panel-title"><small>Advertisement</small></p>
