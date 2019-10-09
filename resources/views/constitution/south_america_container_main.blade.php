@@ -13,8 +13,8 @@
 			<select class="form-control browser-default custom-select south_america_constitution_filter_country" style="width: 149px;">
 				<option selected value="">Select Country</option>
                 
-				@foreach($south_americaCountries as $south_americaCountry)
-				<option value="{{ $south_americaCountry->name }}">{{ $south_americaCountry->name }}</option>
+				@foreach($south_americaConstitutions as $south_americaCountry)
+				<option value="{{ $south_americaCountry->country }}">{{ $south_americaCountry->country }}</option>
                 @endforeach	
 			</select>
 		    <br>

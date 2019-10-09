@@ -13,8 +13,8 @@
 			<select class="form-control browser-default custom-select asia_constitution_filter_country" style="width: 149px;">
 				<option selected value="">Select Country</option>
                 
-				@foreach($asiaCountries as $asiaCountry)
-				<option value="{{ $asiaCountry->name }}">{{ $asiaCountry->name }}</option>
+				@foreach($asiaConstitutions as $asiaCountry)
+				<option value="{{ $asiaCountry->country }}">{{ $asiaCountry->country }}</option>
                 @endforeach	
 			</select>
 		    <br>

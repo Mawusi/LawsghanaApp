@@ -15,9 +15,10 @@
 			<select class="form-control browser-default custom-select all_constitution_filter_country" style="width: 149px;">
 				<option selected value="">Select Country</option>
                 
-				@foreach($allCountries as $allCountry)
-				<option value="{{ $allCountry->name }}">{{ $allCountry->name }}</option>
-                @endforeach	
+				@foreach($allCountriesConstitutions as $allCountry)
+				<option value="{{ $allCountry->country }}">{{ $allCountry->country }}</option>
+				@endforeach
+					
 			</select>
 		    <br>
 		    <input class="btn btn-primary btn-xs" type="button" name="go" value="Search" id="all_constitution_filter">

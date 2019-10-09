@@ -13,10 +13,16 @@
 			<label>By Countries:</label>
 			<select class="form-control browser-default custom-select africa_constitution_filter_country" style="width: 149px;">
 				<option selected value="">Select Country</option>
-                
+				
+				@foreach($africaConstitutions as $africanCountry)
+				<option value="{{ $africanCountry->country }}">{{ $africanCountry->country }}</option>
+				@endforeach	
+
+				{{--
 				@foreach($africanCountries as $africanCountry)
 				<option value="{{ $africanCountry->name }}">{{ $africanCountry->name }}</option>
-                @endforeach	
+				@endforeach	
+				--}}
 			</select>
 		    <br>
 		    <input class="btn btn-primary btn-xs" type="button" name="go" value="Search" id="africa_constitution_filter">

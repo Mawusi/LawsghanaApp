@@ -470,6 +470,34 @@ $(document).ready(function(){
     //-----------------------------------------------------------------------------------------------------------------
     
     // PREVIOUS AND NEXT BUTTON FOR ACTS
+
+     //previous for post act
+     $(document).on('click','.plain_previous_content_act', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#first_content_display").html("");
+            // $("#next_content_display").html(this.responseText);
+        }
+        xhr.send();
+    });
+    
+     //previous for post act
+     $(document).on('click','.plain_next_content_act', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+    
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#first_content_display").html("");
+            // $("#next_content_display").html(this.responseText);
+        }
+        xhr.send();
+    });
     
     //previous for post act
     $(document).on('click','.previous_content_act', function(e){
@@ -485,7 +513,8 @@ $(document).ready(function(){
         }
         xhr.send();
     });
-    
+
+
      //previous for pre act
     $(document).on('click','.previous_content_pre_act', function(e){
         e.preventDefault();

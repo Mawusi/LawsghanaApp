@@ -14,8 +14,8 @@
 			<select class="form-control browser-default custom-select europe_constitution_filter_country" style="width: 149px;">
 				<option selected value="">Select Country</option>
                 
-				@foreach($europeCountries as $europeCountry)
-				<option value="{{ $europeCountry->name }}">{{ $europeCountry->name }}</option>
+				@foreach($europeConstitutions as $europeCountry)
+				<option value="{{ $europeCountry->country }}">{{ $europeCountry->country }}</option>
                 @endforeach	
 			</select>
 		    <br>
