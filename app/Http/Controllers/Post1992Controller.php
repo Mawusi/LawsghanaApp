@@ -62,7 +62,7 @@ class Post1992Controller extends Controller
         $unique               = $allPostArticles1->sortBy('part')->sortBy('priority');
         $allPost1992Articles   = $unique;
 
-        //Amendments under an act
+        //Amendments and Regulations under an act
         $amendedcount             = AmendedTitle::where(['act_title' => "$title"])->count();
         $regulationcount          = RegulationTitle::where(['act_title' => "$title"])->count();
 
@@ -76,9 +76,22 @@ class Post1992Controller extends Controller
      }
 
     //Display Plain Content for section
-     public function post_1992_legislation_plain_content($id){
-        $allPost1992Article = Post1992Article::find(['id' => $id])->toArray()[0];
-        return view('post_1992_legislation.displayed_plain_content_view', compact('allPost1992Article'));
+     public function post_1992_legislation_plain_content($title, $content_id){
+        //dd($title, $id, $content_id);
+        // $allPost1992Act    = Post1992Act::find(
+        //     [
+        //         'id' => $id,
+        //         'title' => $title
+
+        //     ])->toArray()[0];
+
+        $allPostArticles1      = Post1992Article::where(['post_act' => $title])->get();
+        $unique                = $allPostArticles1->sortBy('part')->sortBy('priority');
+        $allPost1992Articles   = $unique;    
+
+        $allPost1992Article    = Post1992Article::find(['id' => $content_id])->toArray()[0];
+
+        return view('post_1992_legislation.displayed_plain_content_view', compact('allPost1992Article','allPost1992Articles'));
     }
 
     //Display Plain Content for preamble
@@ -115,8 +128,23 @@ class Post1992Controller extends Controller
 
     //Display Content
     public function post_1992_legislation_content($id){
+        // dd($act_id, $title, $id);
+
+        // $allPost1992Act    = Post1992Act::find(
+        //     [
+        //         'id' => $act_id,
+        //         'title' => $title
+        // <a href="/post_1992_legislation/{{ $allPost1992Act['title'] }}/{{ $allPost1992Act['id'] }}/plain_content/{{ $allPost1992Article['id'] }}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp; -->
+
+        //     ])->toArray()[0];
+
         $allPost1992Article = Post1992Article::find(['id' => $id])->toArray()[0];
-        return view('post_1992_legislation.displayed_content_view', compact('allPost1992Article'));
+        return view('post_1992_legislation.displayed_content_view', compact('allPost1992Article','allPost1992Act'));
+    }
+
+    public function post_1992_legislation_p_pre_next_content($id){
+        $allPost1992Article = Post1992Article::find(['id' => $id])->toArray()[0];
+        return view('post_1992_legislation.displayed_p_pre_next_content_view', compact('allPost1992Article','allPost1992Act'));
     }
    
      //Display Plain-View

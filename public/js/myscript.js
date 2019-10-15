@@ -470,34 +470,6 @@ $(document).ready(function(){
     //-----------------------------------------------------------------------------------------------------------------
     
     // PREVIOUS AND NEXT BUTTON FOR ACTS
-
-     //previous for post act
-     $(document).on('click','.plain_previous_content_act', function(e){
-        e.preventDefault();
-        var xhr = new XMLHttpRequest();
-        var link = $(this).attr("href");
-        
-        xhr.open("GET", link, true);
-        xhr.onreadystatechange = function receiveUpdate(e) {
-            $("#first_content_display").html("");
-            // $("#next_content_display").html(this.responseText);
-        }
-        xhr.send();
-    });
-    
-     //previous for post act
-     $(document).on('click','.plain_next_content_act', function(e){
-        e.preventDefault();
-        var xhr = new XMLHttpRequest();
-        var link = $(this).attr("href");
-    
-        xhr.open("GET", link, true);
-        xhr.onreadystatechange = function receiveUpdate(e) {
-            $("#first_content_display").html("");
-            // $("#next_content_display").html(this.responseText);
-        }
-        xhr.send();
-    });
     
     //previous for post act
     $(document).on('click','.previous_content_act', function(e){
@@ -509,7 +481,21 @@ $(document).ready(function(){
         xhr.onreadystatechange = function receiveUpdate(e) {
             $("#display_preamble").html("");
             $("#display_view_all_section").html("");
+            $("#plain_content_display").html("");
             $("#display_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+
+    $(document).on('click','.plain_previous_content_act', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        setPrevNext(psid);
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#plain_content_display").html("");
+            $("#next_previous_content_display").html(this.responseText);
         }
         xhr.send();
     });
@@ -652,6 +638,22 @@ $(document).ready(function(){
         }
         xhr.send();
     });
+
+    $(document).on('click','.plain_next_content_act', function(e){
+        e.preventDefault();
+       var ids = $('#act_contents').val();
+
+       var xhr = new XMLHttpRequest();
+       var link = $(this).attr("href");
+       setPrevNext(nsid);
+
+       xhr.open("GET", link, true);
+       xhr.onreadystatechange = function receiveUpdate(e) {
+           $("#plain_content_display").html("");
+           $("#next_previous_content_display").html(this.responseText);
+       }
+       xhr.send();
+   });
     
      //next for pre act
     $(document).on('click','.next_content_pre_act', function(e){
@@ -813,7 +815,7 @@ $(document).ready(function(){
         var previous = '', next = '';
         //find index of sid in ids array
         var aay = JSON.parse(ids);
-        
+    
         var arrayLength = aay.length;
         var index = 0;
         for (var i = 0; i < arrayLength; i++) {
@@ -830,9 +832,17 @@ $(document).ready(function(){
         
         var pLink = '/post_1992_legislation/content/'+aay[previous];
         var nLink = '/post_1992_legislation/content/'+aay[next];
-        
+
         $('.previous_content_act').attr('href', pLink);
         $('.next_content_act').attr('href', nLink);
+
+        // for the plain view
+
+        var p_Link = '/post_1992_legislation/plain-content/'+aay[previous];
+        var n_Link = '/post_1992_legislation/plain-content/'+aay[next];
+        
+        $('.plain_previous_content_act').attr('href', p_Link);
+        $('.plain_next_content_act').attr('href', n_Link);
 
     }
     

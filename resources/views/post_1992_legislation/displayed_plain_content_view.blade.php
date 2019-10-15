@@ -50,6 +50,10 @@
         .content {
           padding: 16px;
         }
+        .accordion-content {
+        height: 100px;
+        overflow-y: scroll;
+        }
 </style>
 @endsection
 
@@ -57,9 +61,10 @@
 
 
      <div class="container">
-
-     
          <center><h4><b>{{ $allPost1992Article['post_act'] }}</b></h4></center>
+         <div class="accordion-content">
+          @include('post_1992_legislation.displayed_previous_next')
+         </div>
          <ul class="pager">
                 <li><a data-scroll-to="body"
                     data-scroll-focus="body"
@@ -71,16 +76,15 @@
                     data-scroll-offset="-60" href="#" class="plain_next_content_act">Next Section</a></li>
         <!-- <a class="btn btn-info btn-sm pull-right" href="javascript:history.back()">Back to Full View</a><br> -->
          </ul>
-        <br>
-    
-        <div id="next_content_display"></div>
+        <!-- plain_previous_content_act plain_next_content_act -->
+        <div id="next_previous_content_display"></div>
 
-        <div id="first_content_display">
+        <div id="plain_content_display">
           <h4><b>{{ $allPost1992Article['section'] }}</b></h4>
           <div class="content">
               <p>{!! $allPost1992Article['content'] !!}</p>
           </div>
-        </div>  
+        </div> 
         
     </div>    
 

@@ -32,7 +32,7 @@
                                 data-scroll-offset="-60" class="content_link list-group-item" style="line-height: 0.1cm;" sid="{{ $allPost1992Article->id }}"  href="/post_1992_legislation/content/{{ $allPost1992Article->id }}">
                                 <li style="list-style: none;">{{ $allPost1992Article->section }}</li>
                                 </a>    
-                                
+                                <!-- post_1992_legislation/content/{{ $allPost1992Act['id'] }}/{{ $allPost1992Act['title'] }}/{{ $allPost1992Article->id }} -->
             
             @endforeach 
                     <input type="hidden" id="act_contents" value="<?php echo json_encode($ids); ?>" /> 
