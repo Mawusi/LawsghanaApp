@@ -500,6 +500,22 @@ $(document).ready(function(){
         xhr.send();
     });
 
+    $(document).on('click','.displayed_previous_next', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+
+        var psid = $(this).attr("sid");
+        setPrevNext(psid);
+        
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#plain_content_display").html("");
+            $("#next_previous_content_display").html(this.responseText);
+        }
+        xhr.send();
+    });
+
 
      //previous for pre act
     $(document).on('click','.previous_content_pre_act', function(e){
