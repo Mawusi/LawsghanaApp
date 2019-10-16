@@ -79,12 +79,12 @@
         <!-- plain_previous_content_act plain_next_content_act -->
         <div id="next_previous_content_display"></div>
 
-        <!-- <div id="plain_content_display">
+        <div id="plain_content_display">
           <h4><b>{{ $allPost1992Article['section'] }}</b></h4>
           <div class="content">
               <p>{!! $allPost1992Article['content'] !!}</p>
           </div>
-        </div>  -->
+        </div> 
         
     </div>    
 

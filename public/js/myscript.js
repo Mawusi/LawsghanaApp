@@ -507,7 +507,7 @@ $(document).ready(function(){
 
         var psid = $(this).attr("sid");
         setPrevNext(psid);
-        
+
         xhr.open("GET", link, true);
         xhr.onreadystatechange = function receiveUpdate(e) {
             $("#plain_content_display").html("");
