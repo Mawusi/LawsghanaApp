@@ -6,6 +6,7 @@ $(document).ready(function(){
     var gsid = 0; 
     var psid = 0, nsid = 0;
 
+  $('.previous_next_hidden_show').hide();
   $('.tabPanedHide_amendments').hide();
   $('.tabPanedHide_amendments_table').hide();
   $('.tabPanedHide_amendments_content').hide();
@@ -481,7 +482,6 @@ $(document).ready(function(){
         xhr.onreadystatechange = function receiveUpdate(e) {
             $("#display_preamble").html("");
             $("#display_view_all_section").html("");
-            $("#plain_content_display").html("");
             $("#display_content").html(this.responseText);
         }
         xhr.send();
@@ -494,8 +494,8 @@ $(document).ready(function(){
         setPrevNext(psid);
         xhr.open("GET", link, true);
         xhr.onreadystatechange = function receiveUpdate(e) {
-            $("#plain_content_display").html("");
-            $("#next_previous_content_display").html(this.responseText);
+            $(".plain_content_display").html("");
+            $(".next_previous_content_display").html(this.responseText);
         }
         xhr.send();
     });
@@ -510,12 +510,15 @@ $(document).ready(function(){
 
         xhr.open("GET", link, true);
         xhr.onreadystatechange = function receiveUpdate(e) {
-            $("#plain_content_display").html("");
-            $("#next_previous_content_display").html(this.responseText);
+            $(".plain_content_display").html("");
+            $(".hide_sections").hide();
+            $('.previous_next_hidden_show').show();
+            $(".next_previous_content_display").html(this.responseText);
         }
         xhr.send();
     });
 
+    
 
      //previous for pre act
     $(document).on('click','.previous_content_pre_act', function(e){
@@ -657,7 +660,7 @@ $(document).ready(function(){
 
     $(document).on('click','.plain_next_content_act', function(e){
         e.preventDefault();
-       var ids = $('#act_contents').val();
+       var ids = $('#act_contplain_next_content_actents').val();
 
        var xhr = new XMLHttpRequest();
        var link = $(this).attr("href");
@@ -665,8 +668,8 @@ $(document).ready(function(){
 
        xhr.open("GET", link, true);
        xhr.onreadystatechange = function receiveUpdate(e) {
-           $("#plain_content_display").html("");
-           $("#next_previous_content_display").html(this.responseText);
+           $(".plain_content_display").html("");
+           $(".next_previous_content_display").html(this.responseText);
        }
        xhr.send();
    });
@@ -854,6 +857,9 @@ $(document).ready(function(){
 
         // for the plain view
 
+        // var p_Link = '/post_1992_legislation/plain-content/'+aay[previous];
+        // var n_Link = '/post_1992_legislation/plain-content/'+aay[next];
+
         var p_Link = '/post_1992_legislation/plain-content/'+aay[previous];
         var n_Link = '/post_1992_legislation/plain-content/'+aay[next];
         
@@ -861,6 +867,7 @@ $(document).ready(function(){
         $('.plain_next_content_act').attr('href', n_Link);
 
     }
+
     
     // BUILDING THE PREVIOUS AND NEXT--------the process for the pre act
     function preSetPrevNext(gsid2){

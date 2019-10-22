@@ -51,7 +51,7 @@
           padding: 16px;
         }
         .accordion-content {
-        height: 100px;
+        height: 330px;
         overflow-y: scroll;
         }
 </style>
@@ -62,10 +62,39 @@
 
      <div class="container">
          <center><h4><b>{{ $allPost1992Article['post_act'] }}</b></h4></center>
-         <div class="accordion-content">
-          @include('post_1992_legislation.displayed_previous_next')
+
+         <div class="hide_sections">
+            <div class="accordion-content">
+              @include('post_1992_legislation.displayed_previous_next')
+            </div>
+
+            <hr>
+
+            <div class="row">
+              <div class="col-xs-6 col-md-3">
+                <a href="#" class="thumbnail" style="height: 150px">
+                  <img src="..." alt="...">
+                </a>
+              </div>
+              <div class="col-xs-6 col-md-3">
+                <a href="#" class="thumbnail" style="height: 150px">
+                  <img src="..." alt="...">
+                </a>
+              </div>
+              <div class="col-xs-6 col-md-3">
+                <a href="#" class="thumbnail" style="height: 150px">
+                  <img src="..." alt="...">
+                </a>
+              </div>
+              <div class="col-xs-6 col-md-3">
+                <a href="#" class="thumbnail" style="height: 150px">
+                  <img src="..." alt="...">
+                </a>
+              </div>
+            </div>
          </div>
-         <ul class="pager">
+         
+         <ul class="pager previous_next_hidden_show">
                 <li><a data-scroll-to="body"
                     data-scroll-focus="body"
                     data-scroll-speed="400"
@@ -74,12 +103,14 @@
                     data-scroll-focus="body"
                     data-scroll-speed="400"
                     data-scroll-offset="-60" href="#" class="plain_next_content_act">Next Section</a></li>
-        <!-- <a class="btn btn-info btn-sm pull-right" href="javascript:history.back()">Back to Full View</a><br> -->
-         </ul>
+        <a class="btn btn-info btn-sm pull-right" onClick="window.location.reload();">Back to Full View</a><br>
+         
+          </ul>
         <!-- plain_previous_content_act plain_next_content_act -->
-        <div id="next_previous_content_display"></div>
 
-        <div id="plain_content_display">
+        <div class="next_previous_content_display"></div>
+
+        <div class="plain_content_display hidden">
           <h4><b>{{ $allPost1992Article['section'] }}</b></h4>
           <div class="content">
               <p>{!! $allPost1992Article['content'] !!}</p>
@@ -87,5 +118,12 @@
         </div> 
         
     </div>    
+
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+    
+</script>
 
 @endsection

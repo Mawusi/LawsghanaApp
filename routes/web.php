@@ -154,7 +154,7 @@ Route::get('/post_1992_legislation','Post1992Controller@index');//display all ac
     Route::get('/post_1992_legislation/plain-content/{id}','Post1992Controller@post_1992_legislation_p_pre_next_content');//display act content
 
     Route::get('/post_1992_legislation/plain_content/{title}/{content_id}','Post1992Controller@post_1992_legislation_plain_content');//display plain act content
-
+    
     // Route::get('/post_1992_legislation/content/{act_id}/{title}/{id}','Post1992Controller@post_1992_legislation_content');//display act content
     // Route::get('/post_1992_legislation/{title}/{id}/plain_content/{content_id}','Post1992Controller@post_1992_legislation_plain_content');//display plain act content
     Route::get('/post_1992_legislation/plain_preamble_content/{id}','Post1992Controller@post_1992_legislation_plain_preamble_content');//display plain act content

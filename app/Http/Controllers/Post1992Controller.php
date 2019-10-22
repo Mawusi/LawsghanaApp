@@ -77,7 +77,7 @@ class Post1992Controller extends Controller
 
     //Display Plain Content for section
      public function post_1992_legislation_plain_content($title, $content_id){
-        //dd($title, $id, $content_id);
+        // dd($title, $content_id);
         // $allPost1992Act    = Post1992Act::find(
         //     [
         //         'id' => $id,
@@ -85,7 +85,11 @@ class Post1992Controller extends Controller
 
         //     ])->toArray()[0];
 
-        $allPostArticles1      = Post1992Article::where(['post_act' => $title])->get();
+        $allPostArticles1      = Post1992Article::where(
+            [
+                'post_act' => $title
+                ])->get();
+
         $unique                = $allPostArticles1->sortBy('part')->sortBy('priority');
         $allPost1992Articles   = $unique;    
 
@@ -143,6 +147,7 @@ class Post1992Controller extends Controller
     }
 
     public function post_1992_legislation_p_pre_next_content($id){
+        // dd($title, $id);
         $allPost1992Article = Post1992Article::find(['id' => $id])->toArray()[0];
         return view('post_1992_legislation.displayed_p_pre_next_content_view', compact('allPost1992Article','allPost1992Act'));
     }
