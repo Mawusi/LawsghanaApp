@@ -418,7 +418,12 @@ Route::get('/judgement/all-countries','JudgementController@all_countries_laws');
     Route::get('/judgement/all-countries/5/{name}/{id}','JudgementController@south_america_court_cases');
 
 //NEWS
-Route::get('/News','NewsController@index');//display homepage of news
+Route::get('/Ghana-News','NewsController@ghana_index');//display homepage of Ghana News
+Route::get('/Africa-News','NewsController@africa_index');//display homepage of Africa News
+Route::get('/Europe-News','NewsController@europe_index');//display homepage of Europe News
+Route::get('/America-News','NewsController@america_index');//display homepage of America News
+Route::get('/Asia-News','NewsController@asia_index');//display homepage of Asia News
+
 
 
 
