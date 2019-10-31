@@ -69,7 +69,7 @@
             </div>
 
             <hr>
-
+            <p class="moding">Lat</p>
             <div class="row">
               <div class="col-xs-6 col-md-3">
                 <a href="#" class="thumbnail" style="height: 150px">
@@ -109,6 +109,10 @@
         <!-- plain_previous_content_act plain_next_content_act -->
 
         <div class="next_previous_content_display"></div>
+
+        <!-- <div id="box">
+        <h2>Click button to load new content inside DIV box</h2>
+        </div> -->
 
         <div class="plain_content_display hidden">
           <h4><b>{{ $allPost1992Article['section'] }}</b></h4>

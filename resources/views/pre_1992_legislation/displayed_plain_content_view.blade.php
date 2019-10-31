@@ -6,17 +6,22 @@
 
      <div class="container">
      <center><h4><b>{{ $allPre1992Act['pre_1992_act'] }}</b></h4></center>
-         <ul class="pager">
-                <li><a data-scroll-to="body"
-                    data-scroll-focus="body"
-                    data-scroll-speed="400"
-                    data-scroll-offset="-60" href="#" class="previous_content_act">Previous Section</a></li>
-                <li><a data-scroll-to="body"
-                    data-scroll-focus="body"
-                    data-scroll-speed="400"
-                    data-scroll-offset="-60" href="#" class="next_content_act">Next Section</a></li>
-        <!-- <a class="btn btn-info btn-sm pull-right" href="javascript:history.back()">Back to Full View</a><br> -->
-         </ul>
+
+     <div class="accordion-content hidden">
+              @include('pre_1992_legislation.displayed_previous_next')
+    </div>
+
+    <ul class="pager">
+        <li><a data-scroll-to="body"
+            data-scroll-focus="body"
+            data-scroll-speed="400"
+            data-scroll-offset="-60" href="#" class="previous_content_pre_act">Previous Section</a></li>
+        <li><a data-scroll-to="body"
+            data-scroll-focus="body"
+            data-scroll-speed="400"
+            data-scroll-offset="-60" href="#" class="next_content_pre_act">Next Section</a></li>
+<!-- <a class="btn btn-info btn-sm pull-right" href="javascript:history.back()">Back to Full View</a><br> -->
+    </ul>
         <br>
     
         <h4><b>{{ $allPre1992Act['section'] }}</b></h4>

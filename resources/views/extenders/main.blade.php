@@ -120,13 +120,13 @@
                     
                     <div class="collapse navbar-collapse container-fluid pull-right" id="bs-example-navbar-collapse-2">
                         {{ menu('main', 'bootstrap') }}
-                        <form action="" class="pull-right search-form" style="padding-top: 5px;">
+                        <!-- <form action="" class="pull-right search-form" style="padding-top: 5px;">
                             <div class="form-group has-feedback">
                                 <label for="search" class="sr-only">Search</label>
                                 <input type="text" class="form-control" name="search" id="search" placeholder="What do you want?">
                                 <span class="glyphicon glyphicon-search form-control-feedback"></span>
                             </div>
-                        </form>
+                        </form> -->
                     </div>
                 </div>
                 @yield('second_nav')

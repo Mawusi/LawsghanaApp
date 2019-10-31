@@ -102,7 +102,7 @@ Route::get('/pre_1992_legislation','Pre1992Controller@index');//display all acts
     Route::get('/pre_1992_legislation/1/{group}/{title}/print_view/{id}','Pre1992Controller@pre_1992_legislation_print_expanded_content');//display in print view
 
     Route::get('/pre_1992_legislation/plain_preamble_content/{id}','Pre1992Controller@pre_1992_legislation_plain_preamble_content');//display plain act content
-    Route::get('/pre_1992_legislation/plain_content/{id}','Pre1992Controller@pre_1992_legislation_plain_content');//display plain act content
+    Route::get('/pre_1992_legislation/plain/content/{title}/{id}','Pre1992Controller@pre_1992_legislation_plain_content');//display plain act content
     Route::get('/pre_1992_legislation/1/{group}/{title}/plain_view/{id}','Pre1992Controller@pre_1992_legislation_plain_expanded_content');//display in plain view
 
 
@@ -153,7 +153,7 @@ Route::get('/post_1992_legislation','Post1992Controller@index');//display all ac
     Route::get('/post_1992_legislation/content/{id}','Post1992Controller@post_1992_legislation_content');//display act content
     Route::get('/post_1992_legislation/plain-content/{id}','Post1992Controller@post_1992_legislation_p_pre_next_content');//display act content
 
-    Route::get('/post_1992_legislation/plain_content/{title}/{content_id}','Post1992Controller@post_1992_legislation_plain_content');//display plain act content
+    Route::get('/post_1992_legislation/plain-content/{title}/{content_id}','Post1992Controller@post_1992_legislation_plain_content');//display plain act content
     
     // Route::get('/post_1992_legislation/content/{act_id}/{title}/{id}','Post1992Controller@post_1992_legislation_content');//display act content
     // Route::get('/post_1992_legislation/{title}/{id}/plain_content/{content_id}','Post1992Controller@post_1992_legislation_plain_content');//display plain act content
@@ -417,8 +417,8 @@ Route::get('/judgement/all-countries','JudgementController@all_countries_laws');
     Route::get('/judgement/5/south-america-court/filter/{year}/{country}','JudgementController@south_america_court_filter'); //south-america court filtering
     Route::get('/judgement/all-countries/5/{name}/{id}','JudgementController@south_america_court_cases');
 
-
-
+//NEWS
+Route::get('/News','NewsController@index');//display homepage of news
 
 
 

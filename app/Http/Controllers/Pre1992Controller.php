@@ -105,9 +105,17 @@ class Pre1992Controller extends Controller
     }
 
     //Display Plain Content for section
-    public function pre_1992_legislation_plain_content($id){
+    public function pre_1992_legislation_plain_content($title, $id){
+        $allPreArticles1      = Pre1992LegislationArticle::where(
+            [
+                'pre_1992_act' => $title
+                ])->get();
+
+        $unique                = $allPreArticles1->sortBy('part')->sortBy('priority');
+        $allPre1992Articles   = $unique; 
+
         $allPre1992Act = Pre1992LegislationArticle::find(['id' => $id])->toArray()[0];
-        return view('pre_1992_legislation.displayed_plain_content_view', compact('allPre1992Act'));
+        return view('pre_1992_legislation.displayed_plain_content_view', compact('allPre1992Act','allPre1992Articles'));
     }
 
     //Display Content

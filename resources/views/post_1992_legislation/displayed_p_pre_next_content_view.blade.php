@@ -2,7 +2,6 @@
 <div style="margin-top: 0.1em;">
     
         <h4><b>{{ $allPost1992Article['section'] }}</b></h4>
-    
 
     <a id="print_options" href="#">Print & Download&raquo;</a>
     <div class="menu_options pull-right" style="display: none;">
