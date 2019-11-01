@@ -37,7 +37,7 @@
 @endsection
 
 @section('content')
-    Ghana
+    Ghana is the main home
     
 
 @endsection
