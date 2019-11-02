@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <style type="text/css">
         .navbar {
-          min-height: 5px;
+          min-height: 1px;
         }
         .navbar-brand {
           padding-top: 17px;
@@ -20,9 +20,9 @@
         @media (min-width: 768px) {
           .navbar-nav > li > a {
             /* (80px - line-height of 27px) / 2 = 26.5px */
-            padding-top: 17px;
-            padding-bottom: 17px;
-            line-height: 15px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            line-height: 10px;
           }
         }
         .content {
