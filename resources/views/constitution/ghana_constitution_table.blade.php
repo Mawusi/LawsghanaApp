@@ -7,6 +7,28 @@
 @section('assets')
     <style type="text/css">
 
+        .navbar {
+          min-height: 1px;
+        }
+        .navbar-brand {
+          padding-top: 17px;
+          padding-top: 17px;
+          line-height: 15px;
+        }
+        .navbar-toggle {
+          /* (80px - button height 34px) / 2 = 23px */
+          margin-top: 23px;
+          padding: 9px 10px !important;
+        }
+        @media (min-width: 768px) {
+          .navbar-nav > li > a {
+            /* (80px - line-height of 27px) / 2 = 26.5px */
+            padding-top: 10px;
+            padding-bottom: 10px;
+            line-height: 10px;
+          }
+        }
+
         .header {
           background: #888888;
           color: #f1f1f1;
