@@ -36,7 +36,7 @@
                 color: black;
                 font-family: Arial;
                 font-size: 12px;
-                padding-top: 62px;
+                padding-top: 48px;
                 height: 100vh;
             }
             .search-form .form-group {

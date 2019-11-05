@@ -24,7 +24,7 @@
 		</div>
 		@include('extenders.case_law_main_search')
 	</div>
-
+	
 	{{-- Advertisement --}}
 	<div class="col-md-3">
 		<div class="panel panel-default">

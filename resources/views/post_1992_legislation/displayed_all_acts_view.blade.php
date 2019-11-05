@@ -34,13 +34,17 @@
 
 @section('content')
 
+{{--
 @section('second_nav')
     @include('post_1992_legislation.post_1992_legislation_menu')
 @endsection
+--}}
 
     <div class="container-fluid content">
         <div class="row">
+        
             <div class="col-md-7">
+            @include('post_1992_legislation.post_1992_legislation_menu')
                 <div class="list-group">
                     <table class="table table-striped table-condensed" id="datatable">
                         <thead>

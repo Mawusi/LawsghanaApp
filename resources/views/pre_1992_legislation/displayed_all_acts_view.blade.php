@@ -32,15 +32,21 @@
     </style>
 @endsection
 
+{{--
 @section('second_nav')
         @include('pre_1992_legislation.pre_1992_legislation_menu')
 @endsection
+--}}
 
 @section('content')
+
     
     <div class="container-fluid content">
         <div class="row">
+        
+        @include('pre_1992_legislation.pre_1992_legislation_menu')
             <div class="col-md-7">
+            
                 <div class="list-group">
                     <table class="table table-striped table-condensed" id="datatable">
                         <thead>

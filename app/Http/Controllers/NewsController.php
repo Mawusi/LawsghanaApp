@@ -8,7 +8,7 @@ class NewsController extends Controller
 {
     //Display Ghana News
     public function ghana_index(){
-        return view('news.ghana_news_homepage');
+        return view('news.ghana_news_homepage_testing');
     }
 
     //Display Ghana News
