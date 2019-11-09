@@ -11,7 +11,7 @@ class NewsController extends Controller
     public function ghana_index(){
         $newsCategories        = NewsCategory::all();
         $latestNewsContents    = NewsContent::all();
-        $newsContents          = NewsContent::paginate(5);
+        $newsContents          = NewsContent::paginate(4);
         return view('news.ghana_news_homepage', compact('newsCategories','newsContents','latestNewsContents'));
     }
 
@@ -21,7 +21,7 @@ class NewsController extends Controller
         if($request->ajax()){
             
             $newsCategories        = NewsCategory::all();
-            $newsContents          = NewsContent::paginate(5);
+            $newsContents          = NewsContent::paginate(4);
             return view('news.displayed_all_ghana_news', compact('newsCategories','newsContents'))->render();
         }
     }
@@ -29,7 +29,7 @@ class NewsController extends Controller
     public function news_content($category, $title, $id){
         //dd($category, $title, $id);
         $newsCategories         = NewsCategory::all();
-        $newsContents          = NewsContent::paginate(5);
+        $newsContents          = NewsContent::paginate(4);
         $newsContent            = NewsContent::find(
             [
                 'id' => $id,
