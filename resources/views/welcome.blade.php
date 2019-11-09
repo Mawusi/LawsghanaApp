@@ -152,6 +152,7 @@
                             <a href="/post_1992_legislation">4th Republic Laws</a>
                             <a href="/judgement/Ghana">Case Laws</a>
                             <a href="/Ghana-News">News</a>
+                            <!-- <a href="/news-testing">News-Testing</a> -->
                         
                     </div>
                 </div>

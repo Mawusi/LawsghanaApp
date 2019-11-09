@@ -115,6 +115,8 @@
     
     </div>
 
+    <!-- MAIN CONTENT -->
+
     <div class="site-section py-0">
       <div class="owl-carousel hero-slide owl-style">
 
@@ -160,6 +162,7 @@
 
       </div>
     </div>
+    <!-- end of content 1 -->
   
 
     <div class="site-section">

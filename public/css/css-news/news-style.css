@@ -73,12 +73,24 @@ html {
     background: #000; }
   
   .site-section {
-    padding: 2.5em 0; }
+    padding: 4em 0; }
     @media (min-width: 768px) {
       .site-section {
-        padding: 7em 0; } }
+        padding: 4em 0; }
+       }
+
     .site-section.site-section-sm {
       padding: 4em 0; }
+
+      .site-section-content {
+        padding: 7em 0; }
+        @media (min-width: 768px) {
+          .site-section-content {
+            padding: 7em 0; }
+           }
+
+        .site-section-bottom {
+          padding-top: 3em; }
   
   .site-section-heading {
     padding-bottom: 20px;
@@ -791,7 +803,7 @@ html {
   
   .section-title {
     color: #000;
-    margin-bottom: 50px; }
+    margin-bottom: 20px; }
     .section-title h2 {
       font-size: 20px;
       font-weight: 400;
@@ -1107,9 +1119,9 @@ html {
   
   .post-entry-1, .post-entry-2 {
     font-size: .9rem;
-    margin-bottom: 30px; }
+    margin-bottom: 20px; }
     .post-entry-1 img, .post-entry-2 img {
-      margin-bottom: 30px; }
+      margin-bottom: 10px; }
     .post-entry-1 h2, .post-entry-2 h2 {
       font-size: 20px; }
       .post-entry-1 h2 a, .post-entry-2 h2 a {
@@ -1122,10 +1134,12 @@ html {
       background-position: center;
       width: 30%; }
     .post-entry-2 .contents {
-      width: 70%;
+      width: 100%;
       padding: 10px 20px; }
       .post-entry-2 .contents h2 {
-        font-size: 15px; }
+        font-size: 25px; }
+      .post-entry-2 .contents h3 {
+          font-size: 15px; }
   
   .trend-entry {
     margin-bottom: 30px; }
