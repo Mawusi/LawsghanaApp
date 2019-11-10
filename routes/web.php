@@ -420,7 +420,7 @@ Route::get('/judgement/all-countries','JudgementController@all_countries_laws');
 //NEWS
 Route::get('/Ghana-News','NewsController@ghana_index');//display homepage of Ghana News
 Route::get('/Ghana-News/fetch_data','NewsController@fetch_data');//display homepage of Ghana News
-Route::get('/{category}/{title}/{id}','NewsController@news_content');//display homepage of Ghana News
+Route::get('/News/{category}/{title}/{id}','NewsController@news_content');//display homepage of Ghana News
 
 
 
