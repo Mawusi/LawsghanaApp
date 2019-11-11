@@ -11,7 +11,7 @@ class NewsController extends Controller
     public function ghana_index(){
         $newsCategories        = NewsCategory::all();
         $latestNewsContents    = NewsContent::all();
-        $newsContents          = NewsContent::paginate(4);
+        $newsContents          = NewsContent::paginate(5);
         return view('news.ghana_news_homepage', compact('newsCategories','newsContents','latestNewsContents'));
     }
 
@@ -21,7 +21,7 @@ class NewsController extends Controller
         if($request->ajax()){
             
             $newsCategories        = NewsCategory::all();
-            $newsContents          = NewsContent::paginate(4);
+            $newsContents          = NewsContent::paginate(5);
             return view('news.displayed_all_ghana_news', compact('newsCategories','newsContents'))->render();
         }
     }
@@ -29,7 +29,7 @@ class NewsController extends Controller
     public function news_content($category, $title, $id){
         //dd($category, $title, $id);
         $newsCategories         = NewsCategory::all();
-        $newsContents          = NewsContent::paginate(4);
+        $newsContents          = NewsContent::paginate(5);
         $newsContent            = NewsContent::find(
             [
                 'id' => $id,
@@ -40,7 +40,7 @@ class NewsController extends Controller
         return view('news.news_content', compact('newsContent','newsContents','newsCategories'));
     }
 
-    //Display Ghana News
+    //Display Africa News
     public function africa_index(){
         $newsCategories        = NewsCategory::all();
         return view('news.africa_news_homepage', compact('newsCategories'));

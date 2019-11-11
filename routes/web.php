@@ -440,3 +440,4 @@ Route::group(['prefix' => 'ajaxx'], function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+//storage/*.key
