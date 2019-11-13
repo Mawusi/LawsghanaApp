@@ -1,6 +1,6 @@
 @extends('extenders.news-main')
 
-@section('title', ucwords(strtolower($newsContent['title'])))
+@section('title', ucwords(strtolower($newsContent['news_category'])))
 
 @section('assets')
     
@@ -174,43 +174,10 @@
               </div>
             </div>
             @endforeach
-            {{--
-            <div class="trend-entry d-flex">
-              <div class="number align-self-start">02</div>
-              <div class="trend-contents">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="trend-entry d-flex">
-              <div class="number align-self-start">03</div>
-              <div class="trend-contents">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
-
-            <div class="trend-entry d-flex pl-0">
-              <div class="number align-self-start">04</div>
-              <div class="trend-contents">
-                <h2><a href="blog-single.html">News Needs to Meet Its Audiences Where They Are</a></h2>
-                <div class="post-meta">
-                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
-                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
-              </div>
-            </div>
-            --}}
-            <p>
+            
+            <!-- <p>
               <a href="#" class="more">See All Popular <span class="icon-keyboard_arrow_right"></span></a>
-            </p>
+            </p> -->
           </div>
 
 
@@ -223,22 +190,22 @@
 
 @section('scripts')
 <script>
-        $(document).ready(function(){
-            $(document).on('click', '.pagination a', function(event){
-              event.preventDefault();
-              var page = $(this).attr('href').split('page=')[1];
-              fetch_data(page);
-            });
+        // $(document).ready(function(){
+        //     $(document).on('click', '.pagination a', function(event){
+        //       event.preventDefault();
+        //       var page = $(this).attr('href').split('page=')[1];
+        //       fetch_data(page);
+        //     });
 
-            function fetch_data(page){
-              $.ajax({
-                url:"/Ghana-News/fetch_data?page="+page,
-                success:function(data){
-                    $('#table_data').html(data);
-                }
-              });
-            }
-        });
+        //     function fetch_data(page){
+        //       $.ajax({
+        //         url:"/Ghana-News/fetch_data?page="+page,
+        //         success:function(data){
+        //             $('#table_data').html(data);
+        //         }
+        //       });
+        //     }
+        // });
 </script>
 @endsection
     

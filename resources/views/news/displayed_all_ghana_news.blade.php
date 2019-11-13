@@ -1,6 +1,6 @@
   
 <div class="container">
-    @foreach($newsContents as $newsContent)
+    @foreach($newsSelectors as $newsContent)
     <div class="post-entry-2 d-flex">
         <div class="thumbnail" style="background-image: url('{{ asset('logo/images.jpg')}}');"></div>
         &nbsp;&nbsp;
@@ -14,7 +14,9 @@
         </div>
     </div>
     @endforeach
-    <div class="col-12 d-flex justify-content-center pt-4">
-        {!! $newsContents->links() !!}
-    </div>
+        <div class="col-12 d-flex justify-content-center pt-4">    
+        {!! $newsSelectors->links() !!}
+        </div>
 </div>
+
+

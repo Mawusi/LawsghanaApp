@@ -8,28 +8,33 @@ use App\NewsContent;
 
 class NewsController extends Controller
 {
-    public function ghana_index(){
+    public function ghana_index($category, $id){
+        // dd($category, $id);
         $newsCategories        = NewsCategory::all();
-        $latestNewsContents    = NewsContent::all();
-        $newsContents          = NewsContent::paginate(5);
-        return view('news.ghana_news_homepage', compact('newsCategories','newsContents','latestNewsContents'));
+        $newscategory          = NewsCategory::find(['id' => $id])->toArray()[0];
+
+        //for the 3 diplayed below the carousel
+        $latestNewsContents    = NewsContent::where(['news_category' => $category])->orderBy('created_at', 'asc')->paginate(3);
+        // for both the carousel and the last part
+        // $newsContents          = NewsContent::where(['news_category' => $category])->orderBy('created_at', 'desc')->paginate(5); 
+        $newsSelectors         = NewsContent::where(['news_category' => $category])->orderBy('created_at', 'desc')->paginate(5);
+        return view('news.ghana_news_homepage', compact('newsCategories','newsContents','latestNewsContents','newsSelectors','newscategory'));
     }
 
     // Ajax Pagination
-    public function fetch_data(Request $request){
+    public function fetch_data(Request $request, $category){
 
         if($request->ajax()){
-            
-            $newsCategories        = NewsCategory::all();
-            $newsContents          = NewsContent::paginate(5);
-            return view('news.displayed_all_ghana_news', compact('newsCategories','newsContents'))->render();
+            $newsSelectors     = NewsContent::where(['news_category' => $category])->orderBy('created_at', 'desc')->paginate(5);          
+            return view('news.displayed_all_ghana_news', compact('newsSelectors'))->render();
         }
     }
 
+    //Display of News_Content
     public function news_content($category, $title, $id){
         //dd($category, $title, $id);
         $newsCategories         = NewsCategory::all();
-        $newsContents          = NewsContent::paginate(5);
+        $newsContents           = NewsContent::where(['news_category' => $category])->orderBy('created_at', 'desc')->paginate(6);
         $newsContent            = NewsContent::find(
             [
                 'id' => $id,
@@ -40,27 +45,5 @@ class NewsController extends Controller
         return view('news.news_content', compact('newsContent','newsContents','newsCategories'));
     }
 
-    //Display Africa News
-    public function africa_index(){
-        $newsCategories        = NewsCategory::all();
-        return view('news.africa_news_homepage', compact('newsCategories'));
-    }
-
-    //Display Ghana News
-    public function europe_index(){
-        $newsCategories        = NewsCategory::all();
-        return view('news.europe_news_homepage', compact('newsCategories'));
-    }
-
-    //Display Ghana News
-    public function america_index(){
-        $newsCategories        = NewsCategory::all();
-        return view('news.america_news_homepage', compact('newsCategories'));
-    }
-
-    //Display Ghana News
-    public function asia_index(){
-        $newsCategories        = NewsCategory::all();
-        return view('news.asia_news_homepage', compact('newsCategories'));
-    }
+    
 }

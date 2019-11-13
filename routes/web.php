@@ -418,13 +418,13 @@ Route::get('/judgement/all-countries','JudgementController@all_countries_laws');
     Route::get('/judgement/all-countries/5/{name}/{id}','JudgementController@south_america_court_cases');
 
 //NEWS
-Route::get('/Ghana-News','NewsController@ghana_index');//display homepage of Ghana News
-Route::get('/Ghana-News/fetch_data','NewsController@fetch_data');//display homepage of Ghana News
+Route::get('/News/{category}/{id}','NewsController@ghana_index');//display homepage of Ghana News
+Route::get('/News/Next/{category}/fetch_data','NewsController@fetch_data');//display homepage of Ghana News
 Route::get('/News/{category}/{title}/{id}','NewsController@news_content');//display homepage of Ghana News
 
 
 
-Route::get('/Africa-News','NewsController@africa_index');//display homepage of Africa News
+// Route::get('News/{category}','NewsController@africa_index');//display homepage of Africa News
 Route::get('/Europe-News','NewsController@europe_index');//display homepage of Europe News
 Route::get('/America-News','NewsController@america_index');//display homepage of America News
 Route::get('/Asia-News','NewsController@asia_index');//display homepage of Asia News
