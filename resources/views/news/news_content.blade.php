@@ -16,7 +16,8 @@
             {{ $newsContent['title'] }}
             </h1>
             <p class="mb-5">
-              <img src="{{ asset('/logo/page1.jpg') }}" alt="Image" class="img-fluid">
+              <!-- <img src="{{ asset('/logo/page1.jpg') }}" alt="Image" class="img-fluid"> -->
+              <img src="{{ url('storage/'.$newsContent['picture']) }}" alt="Image" class="img-fluid" />
             </p>  
             <!-- <div class="post-meta d-flex mb-5">
               <div class="bio-pic mr-3">

@@ -18,7 +18,9 @@
         <div class="site-section">
           <div class="container">
             <div class="half-post-entry d-block d-lg-flex">
-              <div class="img-bg" style="background-image: url('{{ asset('logo/gh_flag.png')}}');"></div>
+              <!-- <div class="img-bg" style="background-image: url('storage/'.$newsContent->picture);"></div> -->
+              <div class="img-bg" style="background-image: url('storage/'.{{$newsContent->picture}}');"></div>
+              <!-- <img src="{{ url('storage/'.$newsContent->picture) }}" alt="Image" class="img-bg"> -->
               <div class="contents bg-light">
                 <span class="caption">Editor's Pick</span>
                 <h2><a href="/News/{{ $newsContent->news_category }}/{{ $newsContent->title }}/{{ $newsContent->id }}">{{ $newsContent->title }}</a></h2>
@@ -54,7 +56,7 @@
             <div class="row">
               <div class="col-md-5">
                 <div class="post-entry-1">
-                  <a href="post-single.html"><img src="{{ asset('/logo/images.jpg') }}" alt="Image" class="img-thumbnail img-fluid" width="100%"></a>
+                  <a href="post-single.html"><img src="{{ url('storage/'.$newsContent->picture) }}" alt="Image" class="img-thumbnail img-fluid" width="100%"></a>
                   <h2><a href="/News/{{ $newsContent->news_category }}/{{ $newsContent->title }}/{{ $newsContent->id }}">{{ $newsContent->title }}</a></h2>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</p>
                   <div class="post-meta">
@@ -68,6 +70,7 @@
               @foreach($latestNewsContents as $latestNewsContent)
                 <div class="post-entry-2 d-flex">
                   <div class="thumbnail" style="background-image: url('{{ asset('logo/images.jpg')}}');"></div>
+                  <!-- <div class="thumbnail" style="background-image: url('./$latestNewsContent->picture');"></div> -->
                   &nbsp;&nbsp;
                   <div class="contents bg-light">
                     <h3><a href="/News/{{ $latestNewsContent->news_category }}/{{ $latestNewsContent->title }}/{{ $latestNewsContent->id }}">{{ $latestNewsContent->title }}</a></h3>
@@ -92,6 +95,7 @@
     </div>
     <!-- END OF PART 2 -->
 
+    
     <!-- PART 3 -->
     <div class="site-section">
       <div class="container">
