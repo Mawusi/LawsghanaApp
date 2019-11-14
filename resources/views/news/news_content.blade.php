@@ -18,15 +18,15 @@
             <p class="mb-5">
               <img src="{{ asset('/logo/page1.jpg') }}" alt="Image" class="img-fluid">
             </p>  
-            <div class="post-meta d-flex mb-5">
+            <!-- <div class="post-meta d-flex mb-5">
               <div class="bio-pic mr-3">
                 <img src="{{ asset('/logo/images.jpg') }}" alt="Image" class="img-fluid">
               </div>
-              <!-- <div class="vcard">
+              <div class="vcard">
                 <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
                 <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-              </div> -->
-            </div>
+              </div>
+            </div> -->
                 {!! $newsContent['content'] !!}
 
                 {{--
