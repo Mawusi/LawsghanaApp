@@ -73,14 +73,14 @@ html {
     background: #000; }
   
   .site-section {
-    padding: 4em 0; }
+    padding: 2em 0; }
     @media (min-width: 768px) {
       .site-section {
-        padding: 4em 0; }
+        padding: 2em 0; }
        }
 
     .site-section.site-section-sm {
-      padding: 4em 0; }
+      padding: 2em 0; }
 
       .site-section-content {
         padding: 7em 0; }
@@ -1119,7 +1119,7 @@ html {
   
   .post-entry-1, .post-entry-2 {
     font-size: .9rem;
-    margin-bottom: 20px; }
+    margin-bottom: 10px; }
     .post-entry-1 img, .post-entry-2 img {
       margin-bottom: 10px; }
     .post-entry-1 h2, .post-entry-2 h2 {
@@ -1132,7 +1132,8 @@ html {
     .post-entry-2 .thumbnail {
       background-size: cover;
       background-position: center;
-      width: 30%; }
+      width: 10%;
+    height: 5%; }
     .post-entry-2 .contents {
       width: 100%;
       padding: 10px 20px; }

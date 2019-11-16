@@ -13,32 +13,30 @@
     <!-- The Carousel Part 1 -->
     <div class="site-section py-0">
       <div class="owl-carousel hero-slide owl-style">
-
       @foreach($newsSelectors as $newsContent)
         <div class="site-section">
           <div class="container">
-            <div class="half-post-entry d-block d-lg-flex">
-              <!-- <div class="img-bg" style="background-image: url('storage/'.$newsContent->picture);"></div> -->
-              <div class="img-bg" style="background-image: url('storage/'.{{$newsContent->picture}}');"></div>
-              <!-- <img src="{{ url('storage/'.$newsContent->picture) }}" alt="Image" class="img-bg"> -->
-              <div class="contents bg-light">
-                <span class="caption">Editor's Pick</span>
+            <div class="half-post-entry d-block d-lg-flex bg-light">
+            <div class="img-bg">
+            <a href="/News/{{ $newsContent->news_category }}/{{ $newsContent->title }}/{{ $newsContent->id }}"><img src="{{ url('storage/'.$newsContent->picture) }}"/></a>
+            </div>
+              <div class="contents">
+                <!-- <span class="caption">Editor's Pick</span> -->
                 <h2><a href="/News/{{ $newsContent->news_category }}/{{ $newsContent->title }}/{{ $newsContent->id }}">{{ $newsContent->title }}</a></h2>
                 <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate vero obcaecati natus adipisci necessitatibus eius, enim vel sit ad reiciendis. Enim praesentium magni delectus cum, tempore deserunt aliquid quaerat culpa nemo veritatis, iste adipisci excepturi consectetur doloribus aliquam accusantium beatae?</p>
-                <div class="post-meta">
+                <!-- <div class="post-meta">
                   <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">Food</a></span>
                   <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
         </div>
       @endforeach  
-
       </div>
     </div>
     <!-- End of The Carousel Part 1 -->
-  
+    <br>
 
     <!-- PART 2 -->
     <div class="site-section">
@@ -46,39 +44,38 @@
       <div class="row">
         <!-- the news part -->
           <div class="col-lg-10">
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-12">
                 <div class="section-title">
                   <h2>The latest News Entry shows here</h2>
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class="row">
               <div class="col-md-5">
                 <div class="post-entry-1">
-                  <a href="post-single.html"><img src="{{ url('storage/'.$newsContent->picture) }}" alt="Image" class="img-thumbnail img-fluid" width="100%"></a>
+                  <a href="/News/{{ $newsContent->news_category }}/{{ $newsContent->title }}/{{ $newsContent->id }}"><img src="{{ url('storage/'.$newsContent->picture) }}" alt="Image" class="img-thumbnail img-fluid" height="30px" width="100%"></a>
                   <h2><a href="/News/{{ $newsContent->news_category }}/{{ $newsContent->title }}/{{ $newsContent->id }}">{{ $newsContent->title }}</a></h2>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</p>
-                  <div class="post-meta">
+                  <!-- <div class="post-meta">
                     <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
                     <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                  </div>
+                  </div> -->
                 </div>
               </div>
               
               <div class="col-md-7">
               @foreach($latestNewsContents as $latestNewsContent)
                 <div class="post-entry-2 d-flex">
-                  <div class="thumbnail" style="background-image: url('{{ asset('logo/images.jpg')}}');"></div>
-                  <!-- <div class="thumbnail" style="background-image: url('./$latestNewsContent->picture');"></div> -->
+                <img src="{{ url('storage/'.$latestNewsContent->picture) }}" alt="Image" class="thumbnail">
                   &nbsp;&nbsp;
                   <div class="contents bg-light">
                     <h3><a href="/News/{{ $latestNewsContent->news_category }}/{{ $latestNewsContent->title }}/{{ $latestNewsContent->id }}">{{ $latestNewsContent->title }}</a></h3>
                     <span class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</span>
-                    <div class="post-meta">
+                    <!-- <div class="post-meta">
                       <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
                       <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               @endforeach
