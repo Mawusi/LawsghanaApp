@@ -44,6 +44,7 @@
             </div> 
 
             <div class="header-top">
+            {{--
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-12 col-lg-6 d-flex">
@@ -55,7 +56,7 @@
                                 class="icon-menu h3"></span></a>
                         </div>
                         <div class="col-12 col-lg-6 ml-auto d-flex">
-                        {{--
+                        
                             <div class="ml-md-auto top-social d-none d-lg-inline-block">
                                 <a href="#" class="d-inline-block p-3"><span class="icon-facebook"></span></a>
                                 <a href="#" class="d-inline-block p-3"><span class="icon-twitter"></span></a>
@@ -68,11 +69,12 @@
                                     <button type="submit" class="btn btn-secondary" ><span class="icon-search"></span></button>
                                 </div>
                             </form>
-                        --}}
+                        
                         </div>
                         <div class="col-6 d-block d-lg-none text-right"></div>
                     </div>
                 </div>
+                --}}
     
                 <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
                     <div class="container">
@@ -100,9 +102,9 @@
                 <!-- end of news header -->  
             </div> 
             <!-- End of top header -->
-            <div class="container-fluid">
+            <!-- <div class="container-fluid"> -->
                 @yield('content')
-            </div>
+            <!-- </div> -->
 
             <!-- Newsletter Subcribe -->
             <div class="site-section-bottom subscribe bg-light">

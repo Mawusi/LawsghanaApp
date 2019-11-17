@@ -13,11 +13,32 @@
     <!-- The Carousel Part 1 -->
     <div class="site-section py-0">
       <div class="owl-carousel hero-slide owl-style">
+      
+        @foreach($newsSelectors as $newsContent)
+        <div class="site-section">
+          <div class="container-fluid">
+            <div class="half-post-entry d-block d-lg-flex" style="height: 500px;">
+              <!-- <div class="img-bg" style='background-image: url("/storage/$newsContent->picture");'></div> -->
+              <img src="{{ url('storage/'.$newsContent->picture) }}" />
+              <div class="contents bg-light">
+                <span class="caption">Editor's Pick</span>
+                <h2><a href="/News/{{ $newsContent->news_category }}/{{ $newsContent->title }}/{{ $newsContent->id }}">{{ $newsContent->title }}</a></h2>
+                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate vero obcaecati natus adipisci necessitatibus eius, enim vel sit ad reiciendis. Enim praesentium magni delectus cum, tempore deserunt aliquid quaerat culpa nemo veritatis, iste adipisci excepturi consectetur doloribus aliquam accusantium beatae?</p>
+                <div class="post-meta">
+                  <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">Food</a></span>
+                  <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      @endforeach  
+        {{--
       @foreach($newsSelectors as $newsContent)
         <div class="site-section">
-          <div class="container">
+          <div class="container-fluid">
             <div class="half-post-entry d-block d-lg-flex bg-light">
-            <div class="img-bg">
+            <div class="thumbnail">
             <a href="/News/{{ $newsContent->news_category }}/{{ $newsContent->title }}/{{ $newsContent->id }}"><img src="{{ url('storage/'.$newsContent->picture) }}"/></a>
             </div>
               <div class="contents">
@@ -32,15 +53,25 @@
             </div>
           </div>
         </div>
-      @endforeach  
+      @endforeach
+      --}}
       </div>
     </div>
     <!-- End of The Carousel Part 1 -->
-    <br>
+
+    <!-- Advertisement -->
+    <div class="site-section">
+      <div class="container-fluid">
+          <div class="col-lg-12 bg-light" style="height: 120px;">
+          
+          </div>
+      </div>
+    </div>
+    
 
     <!-- PART 2 -->
     <div class="site-section">
-      <div class="container">
+      <div class="container-fluid">
       <div class="row">
         <!-- the news part -->
           <div class="col-lg-10">
@@ -54,7 +85,7 @@
             <div class="row">
               <div class="col-md-5">
                 <div class="post-entry-1">
-                  <a href="/News/{{ $newsContent->news_category }}/{{ $newsContent->title }}/{{ $newsContent->id }}"><img src="{{ url('storage/'.$newsContent->picture) }}" alt="Image" class="img-thumbnail img-fluid" height="30px" width="100%"></a>
+                  <a href="/News/{{ $newsContent->news_category }}/{{ $newsContent->title }}/{{ $newsContent->id }}"><img src="{{ url('storage/'.$newsContent->picture) }}" alt="Image" class="" height="400" width="100%"></a>
                   <h2><a href="/News/{{ $newsContent->news_category }}/{{ $newsContent->title }}/{{ $newsContent->id }}">{{ $newsContent->title }}</a></h2>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</p>
                   <!-- <div class="post-meta">
@@ -92,12 +123,22 @@
     </div>
     <!-- END OF PART 2 -->
 
+    <!-- Advertisement -->
+    <div class="site-section">
+      <div class="container-fluid">
+          <div class="col-lg-12 bg-light" style="height: 120px;">
+
+          </div>
+      </div>
+    </div>
+
     
     <!-- PART 3 -->
     <div class="site-section">
-      <div class="container">
+      <div class="container-fluid">
         <div class="row">
-          <div class="col-lg-10">
+        <div class="col-lg-2 bg-light"></div>
+          <div class="col-lg-8">
             <div id="table_data">
                 @include('news.displayed_all_ghana_news')
             </div>

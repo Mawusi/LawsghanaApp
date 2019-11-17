@@ -73,10 +73,10 @@ html {
     background: #000; }
   
   .site-section {
-    padding: 2em 0; }
+    padding: 4em 0; }
     @media (min-width: 768px) {
       .site-section {
-        padding: 2em 0; }
+        padding: 1em 0; }
        }
 
     .site-section.site-section-sm {
@@ -516,7 +516,7 @@ html {
       -webkit-transition: .3s all ease;
       -o-transition: .3s all ease;
       transition: .3s all ease;
-      border-bottom: 1px solid #efefef; }
+      border-bottom: 2px solid #efefef; }
       .sticky-wrapper .site-navbar .site-logo a {
         color: #000; }
       .sticky-wrapper .site-navbar .site-menu > li {
@@ -537,8 +537,8 @@ html {
       .sticky-wrapper.is-sticky .site-navbar .site-menu > li.active > a {
         color: #000; }
     .sticky-wrapper .shrink {
-      padding-top: 10px !important;
-      padding-bottom: 10px !important; }
+      padding-top: .1px !important;
+      padding-bottom: .1px !important; }
   
   /* Blocks */
   .intro-section {
@@ -580,8 +580,8 @@ html {
   .owl-slide-3, .owl-slide, .owl-style {
     position: relative; }
     .owl-slide-3 .owl-stage, .owl-slide .owl-stage, .owl-style .owl-stage {
-      padding-top: 30px;
-      padding-bottom: 30px; }
+      padding-top: 65px;
+      padding-bottom: 10px; }
     .owl-slide-3 .owl-nav .owl-prev,
     .owl-slide-3 .owl-nav .owl-next, .owl-slide .owl-nav .owl-prev,
     .owl-slide .owl-nav .owl-next, .owl-style .owl-nav .owl-prev,
