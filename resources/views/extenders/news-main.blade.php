@@ -15,8 +15,8 @@
 
         <link href="https://fonts.googleapis.com/css?family=B612+Mono|Cabin:400,700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('css/css-news/icomoon-style.css') }}">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <!-- <link rel="stylesheet" href="{{ asset('css/css-news/bootstrap.min.css') }}"> -->
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="{{ asset('css/css-news/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/css-news/jquery-ui.css') }}">
         <link rel="stylesheet" href="{{ asset('css/css-news/owl.carousel.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/css-news/owl.theme.default.min.css') }}">
@@ -44,40 +44,22 @@
             </div> 
 
             <div class="header-top">
-            {{--
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-12 col-lg-6 d-flex">
-                            <a href="index.html" class="site-logo">
-                                LawsGhana News
+                            <a href="#" class="ml-auto d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black">
+                                <span class="icon-menu h3"></span>
                             </a>
-
-                            <a href="#" class="ml-auto d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
-                                class="icon-menu h3"></span></a>
                         </div>
-                        <div class="col-12 col-lg-6 ml-auto d-flex">
-                        
-                            <div class="ml-md-auto top-social d-none d-lg-inline-block">
-                                <a href="#" class="d-inline-block p-3"><span class="icon-facebook"></span></a>
-                                <a href="#" class="d-inline-block p-3"><span class="icon-twitter"></span></a>
-                                <a href="#" class="d-inline-block p-3"><span class="icon-instagram"></span></a>
-                            </div>
-                            
-                            <form action="#" class="search-form d-inline-block">
-                                <div class="d-flex">
-                                    <input type="email" class="form-control" placeholder="Search...">
-                                    <button type="submit" class="btn btn-secondary" ><span class="icon-search"></span></button>
-                                </div>
-                            </form>
-                        
-                        </div>
+                       
                         <div class="col-6 d-block d-lg-none text-right"></div>
+                        
                     </div>
                 </div>
-                --}}
+                
     
                 <div class="site-navbar py-2 js-sticky-header site-navbar-target d-none pl-0 d-lg-block" role="banner">
-                    <div class="container">
+                    <div class="container-fluid">
                         <div class="d-flex align-items-center">
                             <div class="mr-auto">
                                 <nav class="site-navigation position-relative text-right" role="navigation">

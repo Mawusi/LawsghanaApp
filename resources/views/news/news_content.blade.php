@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <div class="site-section-content">
+    <div class="site-section-content" style="margin-top:70px; margin-bottom:45px;">
       <div class="container">
         <div class="row">
           <div class="col-lg-9 single-content">
@@ -163,7 +163,8 @@
             @foreach($newsContents as $newsContent)
             <div class="trend-entry d-flex">
             <div class="bio-pic mr-3">
-                <img src="{{ asset('/logo/images.jpg') }}" alt="Image" class="img-fluid">
+                  <img src="{{ url('storage/'.$newsContent->picture) }}" alt="Image" class="img-fluid" />
+                <!-- <img src="{{ asset('/logo/images.jpg') }}" alt="Image" class="img-fluid"> -->
             </div>
               <!-- <div class="number align-self-start">{{ $newsContent->id }}</div> -->
               <div class="trend-contents">
