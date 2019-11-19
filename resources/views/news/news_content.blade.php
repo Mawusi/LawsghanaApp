@@ -29,6 +29,8 @@
               </div>
             </div> -->
                 {!! $newsContent['content'] !!}
+                <!-- {!! str_limit($newsContent['content'], $limit = 256, $end = '...') !!} -->
+
 
                 {{--
                   <div class="pt-5">

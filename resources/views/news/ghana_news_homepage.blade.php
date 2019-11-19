@@ -11,9 +11,11 @@
 @section('content')
 
     <!-- The Carousel Part 1 -->
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-lg-9">
     <div class="site-section py-0">
       <div class="owl-carousel hero-slide owl-style">
-      
         @foreach($carouselSelectors as $newsContent)
         <div class="site-section">
           <div class="container-fluid">
@@ -23,18 +25,23 @@
               <div class="contents bg-light">
                 <!-- <span class="caption">Editor's Pick</span> -->
                 <h2><a href="/News/{{ $newsContent->news_category }}/{{ $newsContent->title }}/{{ $newsContent->id }}">{{ $newsContent->title }}</a></h2>
-                <p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate vero obcaecati natus adipisci necessitatibus eius, enim vel sit ad reiciendis. Enim praesentium magni delectus cum, tempore deserunt aliquid quaerat culpa nemo veritatis, iste adipisci excepturi consectetur doloribus aliquam accusantium beatae?</p>
-                <div class="post-meta">
+                <p class="mb-3">
+                <!-- {!! str_limit($newsContent['content'], $limit = 406, $end = '...') !!} -->
+                </p>
+                <!-- <div class="post-meta">
                   <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">Food</a></span>
                   <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
         </div>
       @endforeach  
-        
       </div>
+    </div>
+    </div>
+    <div class="col-lg-3 bg-light"></div>
+    </div>
     </div>
     <!-- End of The Carousel Part 1 -->
 
@@ -66,13 +73,15 @@
                 <div class="post-entry-1">
                   <a href="/News/{{ $newsContent->news_category }}/{{ $newsContent->title }}/{{ $newsContent->id }}"><img src="{{ url('storage/'.$newsContent->picture) }}" alt="Image" class="img-fluid" height="1px" width="100%"></a>
                   <h2><a href="/News/{{ $newsContent->news_category }}/{{ $newsContent->title }}/{{ $newsContent->id }}">{{ $newsContent->title }}</a></h2>
+                  {{--
                   <span>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.
                   </span>
-                  <!-- <div class="post-meta">
+                  <div class="post-meta">
                     <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
                     <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                  </div> -->
+                  </div>
+                  --}}
                 </div>
               </div>
               
@@ -86,12 +95,15 @@
                   &nbsp;&nbsp;
                   <div class="contents bg-light">
                     <h2><a href="/News/{{ $latestNewsContent->news_category }}/{{ $latestNewsContent->title }}/{{ $latestNewsContent->id }}">{{ $latestNewsContent->title }}</a></h2>
+                    {{--
                     <span>
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.
-                    </span>                    <!-- <div class="post-meta">
+                    </span>                    
+                    <div class="post-meta">
                       <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
                       <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                    </div> -->
+                    </div>
+                    --}}
                   </div>
                 </div>
               @endforeach

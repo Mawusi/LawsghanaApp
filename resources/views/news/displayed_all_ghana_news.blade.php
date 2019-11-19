@@ -10,7 +10,7 @@
         &nbsp;&nbsp;
         <div class="contents bg-light">
         <h2><a href="/News/{{ $newsContent->news_category }}/{{ $newsContent->title }}/{{ $newsContent->id }}">{{ $newsContent->title }}</a></h2>
-        <span class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</span>
+        <!-- <span class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.</span> -->
         <!-- <div class="post-meta">
             <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
             <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
