@@ -17,7 +17,7 @@
             </h1>
             <p class="mb-5">
               <!-- <img src="{{ asset('/logo/page1.jpg') }}" alt="Image" class="img-fluid"> -->
-              <img src="{{ url('storage/'.$newsContent['picture']) }}" alt="Image" class="img-fluid" />
+              <img src="{{ url('storage/'.$newsContent['image']) }}" alt="Image" class="img-fluid" />
             </p>  
             <!-- <div class="post-meta d-flex mb-5">
               <div class="bio-pic mr-3">
@@ -165,7 +165,7 @@
             @foreach($newsContents as $newsContent)
             <div class="trend-entry d-flex">
             <div class="bio-pic mr-3">
-                  <img src="{{ url('storage/'.$newsContent->picture) }}" alt="Image" class="img-fluid" />
+                  <img src="{{ url('storage/'.$newsContent->image) }}" alt="Image" class="img-fluid" />
                 <!-- <img src="{{ asset('/logo/images.jpg') }}" alt="Image" class="img-fluid"> -->
             </div>
               <!-- <div class="number align-self-start">{{ $newsContent->id }}</div> -->

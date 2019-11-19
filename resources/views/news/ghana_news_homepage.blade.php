@@ -21,12 +21,12 @@
           <div class="container-fluid">
             <div class="half-post-entry d-block d-lg-flex" style="height: 410px;">
               <!-- <div class="img-bg" style='background-image: url("/storage/$newsContent->picture");'></div> -->
-              <img src="{{ url('storage/'.$newsContent->picture) }}" />
+              <img src="{{ url('storage/'.$newsContent->image) }}" />
               <div class="contents bg-light">
                 <!-- <span class="caption">Editor's Pick</span> -->
                 <h2><a href="/News/{{ $newsContent->news_category }}/{{ $newsContent->title }}/{{ $newsContent->id }}">{{ $newsContent->title }}</a></h2>
                 <p class="mb-3">
-                <!-- {!! str_limit($newsContent['content'], $limit = 406, $end = '...') !!} -->
+                {{ Str::limit($newsContent->extract, 200, ' ...') }}                
                 </p>
                 <!-- <div class="post-meta">
                   <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">Food</a></span>
@@ -71,12 +71,13 @@
             <div class="row">
               <div class="col-md-5">
                 <div class="post-entry-1">
-                  <a href="/News/{{ $newsContent->news_category }}/{{ $newsContent->title }}/{{ $newsContent->id }}"><img src="{{ url('storage/'.$newsContent->picture) }}" alt="Image" class="img-fluid" height="1px" width="100%"></a>
+                  <a href="/News/{{ $newsContent->news_category }}/{{ $newsContent->title }}/{{ $newsContent->id }}"><img src="{{ url('storage/'.$newsContent->image) }}" alt="Image" class="img-fluid" height="1px" width="100%"></a>
                   <h2><a href="/News/{{ $newsContent->news_category }}/{{ $newsContent->title }}/{{ $newsContent->id }}">{{ $newsContent->title }}</a></h2>
+                  
+                  
+                  {{ Str::limit($newsContent->extract, 170, ' ...') }} 
+                  
                   {{--
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.
-                  </span>
                   <div class="post-meta">
                     <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
                     <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
@@ -90,15 +91,15 @@
                 <div class="post-entry-2 d-flex">
                 <!-- <img src="{{ url('storage/'.$latestNewsContent->picture) }}" alt="Image" class="thumbnail"> -->
                 <!-- <div class="thumbnail" style="background-image: url('./$latestNewsContent->picture');"></div> -->
-                <img src="{{ url('storage/'.$latestNewsContent->picture) }}" alt="Image" class="thumbnail" style="height: 40px; width: 40px;">
+                <img src="{{ url('storage/'.$latestNewsContent->image) }}" alt="Image" class="thumbnail" style="height: 40px; width: 40px;">
                 <!-- <div class="img-bg" style="background-image: url('storage/'.$latestNewsContent->picture);"  style="height: 50px; width: 50px;"></div> -->
                   &nbsp;&nbsp;
                   <div class="contents bg-light">
                     <h2><a href="/News/{{ $latestNewsContent->news_category }}/{{ $latestNewsContent->title }}/{{ $latestNewsContent->id }}">{{ $latestNewsContent->title }}</a></h2>
-                    {{--
                     <span>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi temporibus praesentium neque, voluptatum quam quibusdam.
-                    </span>                    
+                    {{ Str::limit($latestNewsContent->extract, 170, ' ...') }}                   
+                    </span>
+                    {{--                    
                     <div class="post-meta">
                       <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
                       <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
@@ -132,7 +133,7 @@
     
     <!-- PART 3 -->
     <div class="site-section">
-      <div class="container-fluid">
+      <div class="container">
         <div class="row">
         <div class="col-lg-2 bg-light"></div>
           <div class="col-lg-8">
