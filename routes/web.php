@@ -461,8 +461,30 @@ Route::get('/home', 'HomeController@index')->name('home');
 |->High Court (Human Right) route: /judgement/5/District-Court
 |->High Court (Tema) route: /judgement/6/High-Court-Tema
 |
-|
-|
+|<div class="row">
+|           <div class="col-md-12">
+|             <label>Downloads</label>
+|             <div class="row">
+|                
+|                <a class="col-md-6" href=""><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" class="img-responsive" style="width:2em;">PDF</a>
+|                <a class="col-md-6" href=""><img alt="Brand" src="{{ asset('/logo/word.png') }}" class="img-responsive" style="width:2em;">WORD</a>
+|                
+|              </div>
+|              <br>
+|              <div class="row">
+|                <div class="col-md-12">
+|                  <!-- <label>Print</label> -->
+|                  <button class="btn btn-primary btn-sm printLink"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;&nbsp;Print</button>
+|                </div> 
+|              </div>
+|            </div>
+|</div>
+
+|<label style="color: black;">View Options</label>
+          <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}">
+            <li style="list-style:none;">Expanded View</li>
+          </a>
+          <a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/plain_view/{{ $allPost1992Act['id'] }}" target="_blank"><li style="list-style:none;">Plain View</li></a>
 |
 |
 */

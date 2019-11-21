@@ -7,6 +7,15 @@
         .navbar {
           min-height: 1px;
         }
+        .nav>li>a {
+            position: relative;
+            display: block;
+            padding: 10px 14px;
+            color: white;
+            }
+        .nav>li>a:hover {
+            color: #004353;
+        }
         .navbar-brand {
           padding-top: 17px;
           padding-top: 17px;
@@ -76,6 +85,68 @@
         height: 600px;
         overflow-y: scroll;
         }
+        .bg-header-color{
+            background-color: #004353;
+        }
+        .bg-header-color-tabs{
+            background-color: #989898;
+        }
+        .form-group-customised{
+            margin-bottom: .1px;
+        }
+        .search-form{
+          padding-right: 5px;
+      }
+      .search-form .form-group {
+          float: right !important;
+          transition: all 0.35s, border-radius 0s;
+          width: 32px;
+          height: 32px;
+          background-color: #fff;
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+          border-radius: 25px;
+          border: 1px solid #ccc;
+      }
+          .search-form .form-group input.form-control {
+          padding-right: 20px;
+          border: 0 none;
+          background: transparent;
+          box-shadow: none;
+          display:block;
+      }
+          .search-form .form-group input.form-control::-webkit-input-placeholder {
+          display: none;
+      }
+          .search-form .form-group input.form-control:-moz-placeholder {
+          /* Firefox 18- */
+          display: none;
+      }
+          .search-form .form-group input.form-control::-moz-placeholder {
+          /* Firefox 19+ */
+          display: none;
+      }
+          .search-form .form-group input.form-control:-ms-input-placeholder {
+          display: none;
+      }
+          .search-form .form-group:hover,
+          .search-form .form-group.hover {
+          width: 100%;
+          border-radius: 4px 25px 25px 4px;
+      }
+          .search-form .form-group span.form-control-feedback {
+          position: absolute;
+          top: -1px;
+          right: -2px;
+          z-index: 2;
+          display: block;
+          width: 34px;
+          height: 34px;
+          line-height: 34px;
+          text-align: center;
+          color: #3596e0;
+          left: initial;
+          font-size: 14px;
+      }
 
 </style>
 
@@ -83,257 +154,272 @@
 
 @section('content')
 
+{{--
 @section('second_nav')
     @include('post_1992_legislation.post_1992_legislation_menu')
 @endsection
+--}}
 
 <div class="container-fluid"> 
-    <p style="font-size:20px;"><b class="small">{{ $allPost1992Act['title'] }}</b></p>
+    <div class="row">
+        <div class="col-md-9">
+            @include('post_1992_legislation.post_1992_legislation_menu')
 
-    {{-- Nav tabs --}}
-    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                    <p style="font-size:20px;"><b class="small">{{ $allPost1992Act['title'] }}</b></p>
 
-        <!--Acts -->
-        <li class="active">
-            <a href="#tableOfContentTab" data-toggle="tab">Table of Contents</a>
-        </li>
-        <li class="tabPanedHide_acts_content">
-            <a href="#contentTab" data-toggle="tab">Content</a>
-        </li>
+                    {{-- Nav tabs -- for the tab Panel--}}
+                    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                        <!--Acts -->
+                        <li class="active">
+                            <a href="#tableOfContentTab" data-toggle="tab" class="bg-header-color-tabs">Table of Contents</a>
+                        </li>
+                        <li class="tabPanedHide_acts_content">
+                            <a href="#contentTab" data-toggle="tab" class="bg-header-color-tabs">Content</a>
+                        </li>
 
-        <!-- Expanded View -->
-        <li class="tabPanedHide_expanded_view">
-                <a href="#expandedTab" data-toggle="tab">Expanded View</a>
-        </li>  
+                        <!-- Expanded View -->
+                        <li class="tabPanedHide_expanded_view">
+                                <a href="#expandedTab" data-toggle="tab" class="bg-header-color-tabs">Expanded View</a>
+                        </li>  
 
-        <!-- Amendments -->
-        <li class="tabPanedHide_amendments">
-                <a href="#all_amendmentsTab" data-toggle="tab">Amendments</a>
-        </li>
-        <li class="tabPanedHide_amendments_table">
-            <a href="#amended_table_of_Content_Tab" data-toggle="tab">Amendments Table of Contents</a>
-        </li>
-        <li class="tabPanedHide_amendments_content">
-                <a href="#amendmentcontentTab" data-toggle="tab">Amended Content</a>
-        </li>
+                        <!-- Amendments -->
+                        <li class="tabPanedHide_amendments">
+                                <a href="#all_amendmentsTab" data-toggle="tab" class="bg-header-color-tabs">Amendments</a>
+                        </li>
+                        <li class="tabPanedHide_amendments_table">
+                            <a href="#amended_table_of_Content_Tab" data-toggle="tab" class="bg-header-color-tabs">Amendments Table of Contents</a>
+                        </li>
+                        <li class="tabPanedHide_amendments_content">
+                                <a href="#amendmentcontentTab" data-toggle="tab" class="bg-header-color-tabs">Amended Content</a>
+                        </li>
 
-        <!-- Regulations -->
-        <li class="tabPanedHide_regulations">
-                <a href="#all_regulationsTab" data-toggle="tab">Regulations</a>
-            </li>
-            <li class="tabPanedHide_regulations_table">
-                <a href="#regulated_table_of_Content_Tab" data-toggle="tab">Regulations Table of Contents</a>
-            </li>
-            <li class="tabPanedHide_regulations_content">
-                <a href="#regulatedcontentTab" data-toggle="tab">Regulation Content</a>
-            </li>
+                        <!-- Regulations -->
+                        <li class="tabPanedHide_regulations">
+                                <a href="#all_regulationsTab" data-toggle="tab" class="bg-header-color-tabs">Regulations</a>
+                        </li>
+                            <li class="tabPanedHide_regulations_table">
+                                <a href="#regulated_table_of_Content_Tab" data-toggle="tab" class="bg-header-color-tabs">Regulations Table of Contents</a>
+                            </li>
+                            <li class="tabPanedHide_regulations_content">
+                                <a href="#regulatedcontentTab" data-toggle="tab" class="bg-header-color-tabs">Regulation Content</a>
+                            </li>
+                    </ul>
+                    {{-- ------------------------------------------------------End of Nav tab for the panels----------------------------------------------------------- --}}
 
-    </ul>
 
-    {{-- tab panes content --}}
-    <div id="my-tab-content" class="tab-content">
 
-        {{-- table of Contents --}}
-        <div id="tableOfContentTab" class="tab-pane fade in active">
+                    {{-- tab panes content --}}
+                    <div id="my-tab-content" class="tab-content">
 
-            <div class="row">
-                <div class="col-md-7">
-                   {{--<h5><b>{{ $allPost1992Act['title'] }}</b></h5>--}}
-                    <br>
-                    
-                   <a class="preamble_link" id="preamble_link_toggle" href="/post_1992_legislation/preamble/{{ $allPost1992Act['id'] }}">
-                      <p>Introductory Text</p>
-                   </a>
-                        <div class="accordion-content">
-                            @include('post_1992_legislation.displayed_parts_sections')
+                        {{-- table of Contents --}}
+                        <div id="tableOfContentTab" class="tab-pane fade in active">
+
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <br>
+                                    
+                                <a class="preamble_link" id="preamble_link_toggle" href="/post_1992_legislation/preamble/{{ $allPost1992Act['id'] }}">
+                                    <p>Introductory Text</p>
+                                </a>
+                                        <div class="accordion-content">
+                                            @include('post_1992_legislation.displayed_parts_sections')
+                                        </div>
+                                            
+                                        <div class="col-md-12 text-center">
+                                            <!--<ul id="myPager" class="pagination"></ul>-->
+                                            <p><a data-scroll-to="body"
+                                            data-scroll-focus="body"
+                                            data-scroll-speed="400"
+                                            data-scroll-offset="-60" href="#" data-scroll-to="body">Move to Top</button></p>
+                                        </div>
+                                    
+                                </div> 
+                                    @include('post_1992_legislation.container_main_act_page')
+                            </div> 
                         </div>
+                        {{-- -------------------------------------------------------End of table of Contents---------------------------------------------------------------- --}}
+
+
+
+                        {{-- Contents --}}
+                        <div id="contentTab" class="tab-pane fade">
+                            <div class="row">
+                                <div class="col-md-9 table-wrapper-scroll-display" style="height: 600px;">
+                                        <div id="display_content"></div>
+                                        <div id="display_preamble"></div>
+                                        <div id="display_view_all_section"></div>
+                                </div>
+                                @include('post_1992_legislation.container_details_main_act_page')
+                            </div>   
                             
-                        <div class="col-md-12 text-center">
-                            <!--<ul id="myPager" class="pagination"></ul>-->
-                            <p><a data-scroll-to="body"
-                            data-scroll-focus="body"
-                            data-scroll-speed="400"
-                            data-scroll-offset="-60" href="#" data-scroll-to="body">Move to Top</button></p>
+                            <div class="row show">
+                                <div class="col-md-9">
+                                    <ul class="pager">
+                                        <li><a data-scroll-to="body"
+                                            data-scroll-focus="body"
+                                            data-scroll-speed="400"
+                                            data-scroll-offset="-60" href="#" class="previous_content_act">Previous Section</a></li>
+                                        <li><a data-scroll-to="body"
+                                            data-scroll-focus="body"
+                                            data-scroll-speed="400"
+                                            data-scroll-offset="-60" href="#" class="next_content_act">Next Section</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                        </div> 
+                        {{-- -------------------------------------------------------End of Contents---------------------------------------------------------------- --}}
+
+                        
+                        <!-- ACTS EXPANDED CONTENTS -->
+                        <div id="expandedTab" class="tab-pane fade">
+                                <div class="row">
+                                    <div class="col-md-12 expanded_view" style="background-color: #FFFFFF;">
+                                        <div id="acts_expanded_view"></div> 
+                                    </div>
+                                    {{--@include('post_1992_legislation.container_details_act_expanded')--}}
+                                </div>
                         </div>
-                    
-                </div> 
-                    @include('post_1992_legislation.container_main_act_page')
-            </div> 
+                        {{-- -------------------------------------------------------End of Expanded View Content---------------------------------------------------------------- --}}
+
+
+                        <!-- ALL AMENDMENTS LISTS -->
+                        <div id="all_amendmentsTab" class="tab-pane fade">
+                                <div class="row">
+                                        <div class="col-md-7">
+                                            <div id="all_amendments" class="amended_act_toggle"></div>
+                                        </div>
+                                        @include('post_1992_legislation.container_main_amended_act_page')
+                                </div>
+                        </div>
+
+                        <!-- AMENDMENTS TABLE OF CONTENTS -->
+                        <div id="amended_table_of_Content_Tab" class="tab-pane fade">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div id="amended_table_of_content" class="amended_act_toggle_content"></div>   
+                                    </div>
+                                    
+                                    @include('post_1992_legislation.container_expanded_amended_act_page')
+
+                                </div>
+                        </div>
+
+                        <!-- AMENDMENTS CONTENT -->
+                        <div id="amendmentcontentTab" class="tab-pane fade">
+                                <div class="row">
+                                    <div class="col-md-7 table-wrapper-scroll-display" style="height: 600px;">
+                                        <div id="single_preamble_amended_content"></div>
+                                        <div id="single_amended_content"></div>
+                                        <div id="single_view_all_sections_amend"></div> 
+                                    </div>
+                                    
+                                    <div class="col-md-2">
+                                        <div id="single_container_details_amend"></div>
+                                    </div>
+                                    
+                                    {{-- ADVERTISEMENT --}}
+                                    <div class="col-md-3">
+                                        <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <p class="panel-title"><small>Advertisement</small></p>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="embed-responsive embed-responsive-4by3">
+                                                <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>       
+                                            </div>        
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                    <div class="row show">
+                                        <div class="col-md-7">
+                                        <ul class="pager">
+                                            <li><a data-scroll-to="body"
+                                                data-scroll-focus="body"
+                                                data-scroll-speed="400"
+                                                data-scroll-offset="-60" href="#" class="previous_amended_under_act">Previous Section</a></li>
+                                            <li><a data-scroll-to="body"
+                                                data-scroll-focus="body"
+                                                data-scroll-speed="400"
+                                                data-scroll-offset="-60" href="#" class="next_amended_under_act">Next Section</a></li>
+                                        </ul>
+                                        </div>
+                                    </div>
+                                
+                        </div>
+
+                        <!--ALL REGULATION LIST -->
+                        <div id="all_regulationsTab" class="tab-pane fade">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div id="all_regulations" class="regulation_act_toggle"></div>  
+                                    </div>
+                                    @include('post_1992_legislation.container_main_regulations_act_page')
+                                </div>
+                            </div>
+
+                            <!-- REGULATIONS TABLE OF CONTENTS -->
+                            <div id="regulated_table_of_Content_Tab" class="tab-pane fade">
+                                <div class="row">
+                                        <div class="col-md-7">
+                                        <div id="regulated_table_of_content" class="regulation_act_toggle_content"></div>   
+                                        </div>
+                                        @include('post_1992_legislation.container_expanded__regulation_page')
+                                </div>
+                            </div>
+
+                            <!-- REGULATIONS CONTENTS -->
+                            <div id="regulatedcontentTab" class="tab-pane fade">
+                                <div class="row">
+                                    <div class="col-md-7 table-wrapper-scroll-display" style="height: 600px;">
+                                        <div id="single_preamble_regulation_content"></div>
+                                        <div id="single_regulation_content"></div>
+                                        <div id="single_view_all_sections_regulation"></div> 
+                                    </div>
+                                    
+                                    <div class="col-md-2">
+                                        <div id="single_container_details_regulation"></div>
+                                    </div>
+
+                                    {{-- ADVERTISEMENT --}}
+                                    <div class="col-md-3">
+                                        <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <p class="panel-title"><small>Advertisement</small></p>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="embed-responsive embed-responsive-4by3">
+                                                <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>       
+                                            </div>        
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row show">
+                                        <div class="col-md-7">
+                                        <ul class="pager">
+                                            <li><a data-scroll-to="body"
+                                                data-scroll-focus="body"
+                                                data-scroll-speed="400"
+                                                data-scroll-offset="-60" href="#" class="previous_regulation_under_act">Previous Regulation</a></li>
+                                            <li><a data-scroll-to="body"
+                                                data-scroll-focus="body"
+                                                data-scroll-speed="400"
+                                                data-scroll-offset="-60" href="#" class="next_regulation_under_act">Next Regulation</a></li>
+                                        </ul>
+                                        </div>
+                                </div>
+                                
+                            </div>
+                            
+                    </div><!--end of row-->
         </div>
-
-
-        {{-- Contents --}}
-        <div id="contentTab" class="tab-pane fade">
-            <div class="row">
-                <div class="col-md-7 table-wrapper-scroll-display" style="height: 600px;">
-                        <div id="display_content"></div>
-                        <div id="display_preamble"></div>
-                        <div id="display_view_all_section"></div>
-                </div>
-                <!-- <div id="show_pdf_view"></div> -->
-                @include('post_1992_legislation.container_details_main_act_page')
-            </div>   
-            
-            <div class="row show">
-                <div class="col-md-7">
-                 <ul class="pager">
-                    <li><a data-scroll-to="body"
-                        data-scroll-focus="body"
-                        data-scroll-speed="400"
-                        data-scroll-offset="-60" href="#" class="previous_content_act">Previous Section</a></li>
-                    <li><a data-scroll-to="body"
-                        data-scroll-focus="body"
-                        data-scroll-speed="400"
-                        data-scroll-offset="-60" href="#" class="next_content_act">Next Section</a></li>
-                 </ul>
-                </div>
-            </div>
-            
-        </div> 
-         
-         <!-- ACTS EXPANDED CONTENTS -->
-        <div id="expandedTab" class="tab-pane fade">
-                <div class="row">
-                     <div class="col-md-9 expanded_view" style="background-color: #FFFFFF;">
-                        <div id="acts_expanded_view"></div> 
-                    </div>
-                     @include('post_1992_legislation.container_details_act_expanded')
-                </div>
-        </div>
-
-          <!-- ALL AMENDMENTS LISTS -->
-          <div id="all_amendmentsTab" class="tab-pane fade">
-                <div class="row">
-                        <div class="col-md-7">
-                            <div id="all_amendments" class="amended_act_toggle"></div>
-                        </div>
-                        @include('post_1992_legislation.container_main_amended_act_page')
-                </div>
-          </div>
-
-          <!-- AMENDMENTS TABLE OF CONTENTS -->
-          <div id="amended_table_of_Content_Tab" class="tab-pane fade">
-                <div class="row">
-                    <div class="col-md-7">
-                        <div id="amended_table_of_content" class="amended_act_toggle_content"></div>   
-                    </div>
-                    
-                    @include('post_1992_legislation.container_expanded_amended_act_page')
-
-                </div>
-          </div>
-
-          <!-- AMENDMENTS CONTENT -->
-          <div id="amendmentcontentTab" class="tab-pane fade">
-                <div class="row">
-                    <div class="col-md-7 table-wrapper-scroll-display" style="height: 600px;">
-                        <div id="single_preamble_amended_content"></div>
-                        <div id="single_amended_content"></div>
-                        <div id="single_view_all_sections_amend"></div> 
-                    </div>
-                    
-                    <div class="col-md-2">
-                        <div id="single_container_details_amend"></div>
-                    </div>
-                    
-                    {{-- ADVERTISEMENT --}}
-                    <div class="col-md-3">
-                        <div class="panel panel-default">
-                          <div class="panel-heading">
-                            <p class="panel-title"><small>Advertisement</small></p>
-                          </div>
-                          <div class="panel-body">
-                            <div class="embed-responsive embed-responsive-4by3">
-                                <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>       
-                            </div>        
-                          </div>
-                        </div>
-                    </div>
-                </div>
-                
-                    <div class="row show">
-                        <div class="col-md-7">
-                         <ul class="pager">
-                            <li><a data-scroll-to="body"
-                                data-scroll-focus="body"
-                                data-scroll-speed="400"
-                                data-scroll-offset="-60" href="#" class="previous_amended_under_act">Previous Section</a></li>
-                            <li><a data-scroll-to="body"
-                                data-scroll-focus="body"
-                                data-scroll-speed="400"
-                                data-scroll-offset="-60" href="#" class="next_amended_under_act">Next Section</a></li>
-                         </ul>
-                        </div>
-                    </div>
-                
-          </div>
-
-          <!--ALL REGULATION LIST -->
-          <div id="all_regulationsTab" class="tab-pane fade">
-                <div class="row">
-                     <div class="col-md-7">
-                        <div id="all_regulations" class="regulation_act_toggle"></div>  
-                    </div>
-                    @include('post_1992_legislation.container_main_regulations_act_page')
-                </div>
-            </div>
-
-            <!-- REGULATIONS TABLE OF CONTENTS -->
-            <div id="regulated_table_of_Content_Tab" class="tab-pane fade">
-                <div class="row">
-                        <div class="col-md-7">
-                        <div id="regulated_table_of_content" class="regulation_act_toggle_content"></div>   
-                        </div>
-                        @include('post_1992_legislation.container_expanded__regulation_page')
-                </div>
-            </div>
-
-            <!-- REGULATIONS CONTENTS -->
-            <div id="regulatedcontentTab" class="tab-pane fade">
-                <div class="row">
-                    <div class="col-md-7 table-wrapper-scroll-display" style="height: 600px;">
-                        <div id="single_preamble_regulation_content"></div>
-                        <div id="single_regulation_content"></div>
-                        <div id="single_view_all_sections_regulation"></div> 
-                    </div>
-                    
-                    <div class="col-md-2">
-                        <div id="single_container_details_regulation"></div>
-                    </div>
-
-                    {{-- ADVERTISEMENT --}}
-                    <div class="col-md-3">
-                        <div class="panel panel-default">
-                          <div class="panel-heading">
-                            <p class="panel-title"><small>Advertisement</small></p>
-                          </div>
-                          <div class="panel-body">
-                            <div class="embed-responsive embed-responsive-4by3">
-                                <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>       
-                            </div>        
-                          </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row show">
-                        <div class="col-md-7">
-                         <ul class="pager">
-                            <li><a data-scroll-to="body"
-                                data-scroll-focus="body"
-                                data-scroll-speed="400"
-                                data-scroll-offset="-60" href="#" class="previous_regulation_under_act">Previous Regulation</a></li>
-                            <li><a data-scroll-to="body"
-                                data-scroll-focus="body"
-                                data-scroll-speed="400"
-                                data-scroll-offset="-60" href="#" class="next_regulation_under_act">Next Regulation</a></li>
-                         </ul>
-                        </div>
-                </div>
-                
-            </div>
-            
-    </div><!--end of row-->
+        <!-- for the ads -->
+        @include('extenders.ads')
+    </div>
 </div><!--end of container-fluid-->
 
 @endsection
