@@ -221,7 +221,7 @@ class Post1992Controller extends Controller
     }
 
     //Display Acts of Parliament
-    public function acts_of_parliament($group){
+    public function acts_of_parliament_tab($group){
         $actsOfParliaments         = Post1992Act::where(['post_group' => $group])->get();
         $actsOfParliamentCategories   = Post1992Category::all();
         return view('post_1992_legislation.displayed_acts_of_parliament_view', compact('actsOfParliaments', 'actsOfParliamentCategories'));

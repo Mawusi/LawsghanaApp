@@ -37,9 +37,10 @@
                 color: black;
                 font-family: Arial;
                 font-size: 12px;
-                padding-top: 48px;
-                height: 100vh;
+                padding-top: 27px;
+                height: 80vh;
             }
+            
             .search-form .form-group {
                 float: right !important;
                 transition: all 0.35s, border-radius 0s;
@@ -130,7 +131,7 @@
                         </form> -->
                     </div>
                 </div>
-                @yield('second_nav')
+                {{--@yield('second_nav')--}}
             </div>
             @yield('content')
         </div>

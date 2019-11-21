@@ -9,6 +9,15 @@
         .navbar {
           min-height: 1px;
         }
+        .nav>li>a {
+            position: relative;
+            display: block;
+            padding: 10px 14px;
+            color: white;
+            }
+        .nav>li>a:hover {
+            color: #004353;
+        }
         .navbar-brand {
           padding-top: 17px;
           padding-top: 17px;
@@ -30,44 +39,61 @@
         .content {
             padding: 0.1px;
         }
+        .bg-header-color{
+            background-color: #004353;
+        }
+        .form-group-customised{
+            margin-bottom: .1px;
+        }
     </style>
 @endsection
 
 @section('content')
 
+{{--
 @section('second_nav')
     @include('constitution.constitution_menu')
 @endsection
+--}}
 
     <div class="container-fluid content">
         <div class="row">
-            <div class="col-md-7">
-                <div class="list-group">
-                    <table class="table table-striped table-condensed" id="datatable">
-                        <thead>
-                            <tr>
-                                <th>Name of Country</th>
-                                <th>Constitution Title</th>
-                                <th>Year</th>
-                            </tr>
-                        </thead>
-                        <tbody> 
-                    
-                        @foreach($allCountriesConstitutions as $allCountriesConstitution)
-                            <tr>
-                                <td>{{ $allCountriesConstitution->country }}</td>
-                                <td>
-                                    <a href="/constitution/{{ $allCountriesConstitution->country }}/{{ $allCountriesConstitution->id}}"><li style="list-style: none;">{{ $allCountriesConstitution->title }}</li></a>
-                                </td> 
-                                <td>{{ $allCountriesConstitution->year }}</td>  
-                            </tr>
-                        @endforeach
-                        
-                        </tbody>
-                    </table>
+            <div class="col-md-9">
+            @include('constitution.constitution_menu')
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="list-group">
+                            <table class="table table-striped table-condensed" id="datatable">
+                                <thead>
+                                    <tr>
+                                        <th>Name of Country</th>
+                                        <th>Constitution Title</th>
+                                        <th>Year</th>
+                                    </tr>
+                                </thead>
+                                <tbody> 
+                            
+                                @foreach($allCountriesConstitutions as $allCountriesConstitution)
+                                    <tr>
+                                        <td>{{ $allCountriesConstitution->country }}</td>
+                                        <td>
+                                            <a href="/constitution/{{ $allCountriesConstitution->country }}/{{ $allCountriesConstitution->id}}"><li style="list-style: none;">{{ $allCountriesConstitution->title }}</li></a>
+                                        </td> 
+                                        <td>{{ $allCountriesConstitution->year }}</td>  
+                                    </tr>
+                                @endforeach
+                                
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- for the filter -->
+                    @include('constitution.all_countries_container_main')
                 </div>
+
             </div>
-                            @include('constitution.all_countries_container_main')
+                    <!-- for the ads -->
+                    @include('extenders.ads')
         </div>
     </div>
 

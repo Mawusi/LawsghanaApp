@@ -177,7 +177,7 @@ Route::get('/post_1992_legislation','Post1992Controller@index');//display all ac
 
 
     //For All Acts of Parliament only
-    Route::get('/post_1992_legislation/1/{group}','Post1992Controller@acts_of_parliament');
+    Route::get('/post_1992_legislation/1/{group}','Post1992Controller@acts_of_parliament_tab');
     Route::get('/post_1992_legislation/1/filter/{year}/{category}','Post1992Controller@acts_of_parliament_filter'); //acts of parliament filtering
 
 
@@ -440,4 +440,29 @@ Route::group(['prefix' => 'ajaxx'], function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-//storage/*.key
+
+/*
+|--------------------------------------------------------------------------
+| Adjustment and others to work on
+|--------------------------------------------------------------------------
+|1 
+|Remove Foreign Case Laws from the main tab
+|->Africa /judgement/all-countries/1/Africa
+|->Asia /judgement/all-countries/2/Asia
+|->Europe /judgement/all-countries/3/Europe
+|->North America /judgement/all-countries/4/North America
+|->South America /judgement/all-countries/5/South America
+|
+|
+|
+|2.
+|->High Court (Commerical) route: /judgement/2/High-Court
+|->High Court (Fast Track) route: /judgement/4/Circuit-Court
+|->High Court (Human Right) route: /judgement/5/District-Court
+|->High Court (Tema) route: /judgement/6/High-Court-Tema
+|
+|
+|
+|
+|
+*/

@@ -7,6 +7,15 @@
         .navbar {
           min-height: 1px;
         }
+        .nav>li>a {
+            position: relative;
+            display: block;
+            padding: 10px 14px;
+            color: white;
+            }
+        .nav>li>a:hover {
+            color: #004353;
+        }
         .navbar-brand {
           padding-top: 17px;
           padding-top: 17px;
@@ -28,42 +37,54 @@
         .content {
             padding: 0.1px;
         }
+        .bg-header-color{
+            background-color: #004353;
+        }
+        .form-group-customised{
+            margin-bottom: .1px;
+        }
     </style>
 @endsection
 
 @section('content')
 
+{{--
 @section('second_nav')
     @include('pre_1992_legislation.pre_1992_legislation_menu')
 @endsection
-
+--}}
     <div class="container-fluid content">
         <div class="row">
-            <div class="col-md-7">
-                <div class="list-group">
-                    <table class="table table-striped table-condensed" id="datatable">
-                        <thead>
-                            <tr>
-                                <th>Third Republic Legislation</th>
-                                <th>Year</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                    
-                        @foreach($thirdRepublicActs as $thirdRepublicAct)
-                            <tr>
-                                <td>
-                                    <a href="/pre_1992_legislation/{{$thirdRepublicAct->pre_1992_group}}/{{ $thirdRepublicAct->title }}/{{ $thirdRepublicAct->id}}"><li style="list-style: none;">{{ $thirdRepublicAct->title }}</li></a>
-                                </td> 
-                                <td>{{ $thirdRepublicAct->year }}</td>
-                            </tr>
-                        @endforeach 
-                        
-                        </tbody>
-                    </table>
-                </div>
+            <div class="col-md-9">
+            @include('pre_1992_legislation.pre_1992_legislation_menu')
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="list-group">
+                            <table class="table table-striped table-condensed" id="datatable">
+                                <thead>
+                                    <tr>
+                                        <th>Third Republic Legislation</th>
+                                        <th>Year</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($thirdRepublicActs as $thirdRepublicAct)
+                                    <tr>
+                                        <td>
+                                            <a href="/pre_1992_legislation/{{$thirdRepublicAct->pre_1992_group}}/{{ $thirdRepublicAct->title }}/{{ $thirdRepublicAct->id}}"><li style="list-style: none;">{{ $thirdRepublicAct->title }}</li></a>
+                                        </td> 
+                                        <td>{{ $thirdRepublicAct->year }}</td>
+                                    </tr>
+                                @endforeach 
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    @include('pre_1992_legislation.all_third_republic_legislation_container_main')
+                </div>  
             </div>
-                            @include('pre_1992_legislation.all_third_republic_legislation_container_main')
+            <!-- for the ads -->
+            @include('extenders.ads')
         </div>
     </div>
 

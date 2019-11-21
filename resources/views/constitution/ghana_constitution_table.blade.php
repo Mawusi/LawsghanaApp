@@ -83,11 +83,14 @@
 </style>
 @endsection
 
+
 @section('content')
 
+{{--
 @section('second_nav')
     @include('constitution.constitution_menu')
 @endsection
+--}}
 
     <div class="container-fluid">
     <p style="font-size:20px;"><b class="small">{{ $ghana_act['title'] }}</b></p>

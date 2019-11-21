@@ -1,12 +1,21 @@
 @extends('extenders.main')
 
-
 @section('title', 'Foreign Case Laws')
+
 @section('assets')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <style type="text/css">
         .navbar {
           min-height: 1px;
+        }
+        .nav>li>a {
+            position: relative;
+            display: block;
+            padding: 10px 14px;
+            color: white;
+            }
+        .nav>li>a:hover {
+            color: #004353;
         }
         .navbar-brand {
           padding-top: 17px;
@@ -29,42 +38,58 @@
         .content {
             padding: 0.1px;
         }
+        .bg-header-color{
+            background-color: #004353;
+        }
+        .form-group-customised{
+            margin-bottom: .1px;
+        }
     </style>
 @endsection
 
 @section('content')
 
+{{--
 @section('second_nav')
     @include('law_judgment_foreign.foreign_judgement_menu')
 @endsection
+--}}
 
     <div class="container-fluid content">
         <div class="row">
-            <div class="col-md-7">
-                <div class="list-group">
-                    <table class="table table-striped table-condensed" id="datatable">
-                        <thead>
-                            <tr>
-                                <th>Country</th>
-                                <th>Case Laws Title</th>
-                                <th>Year</th>
-                            </tr>
-                        </thead>
-                        <tbody> 
-                        @foreach($allCountriesJudgementLaws as $allCountriesJudgementLaw)
-                            <tr>
-                                <td>{{ $allCountriesJudgementLaw->country_name }}</td>
-                                <td>
-                                    <a href="/judgement/{{ $allCountriesJudgementLaw->country_name }}/{{ $allCountriesJudgementLaw->id}}"><li style="list-style: none;">{{ $allCountriesJudgementLaw->case_title }}</li></a>
-                                </td> 
-                                <td>{{ $allCountriesJudgementLaw->year }}</td>  
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+            <div class="col-md-9">
+            @include('law_judgment_foreign.foreign_judgement_menu')
+                <div class="row">
+                        <div class="col-md-9">
+                            <div class="list-group">
+                                <table class="table table-striped table-condensed" id="datatable">
+                                    <thead>
+                                        <tr>
+                                            <th>Country</th>
+                                            <th>Case Laws Title</th>
+                                            <th>Year</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody> 
+                                    @foreach($allCountriesJudgementLaws as $allCountriesJudgementLaw)
+                                        <tr>
+                                            <td>{{ $allCountriesJudgementLaw->country_name }}</td>
+                                            <td>
+                                                <a href="/judgement/{{ $allCountriesJudgementLaw->country_name }}/{{ $allCountriesJudgementLaw->id}}"><li style="list-style: none;">{{ $allCountriesJudgementLaw->case_title }}</li></a>
+                                            </td> 
+                                            <td>{{ $allCountriesJudgementLaw->year }}</td>  
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- for the filter -->
+                        @include('law_judgment_foreign.foreign_all_judgment_container_main')
                 </div>
             </div>
-                            @include('law_judgment_foreign.foreign_all_judgment_container_main')
+                        <!-- for the ads -->
+                        @include('extenders.ads')
         </div>
     </div>
 
