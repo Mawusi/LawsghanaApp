@@ -130,7 +130,7 @@
       }
           .search-form .form-group:hover,
           .search-form .form-group.hover {
-          width: 100%;
+          width: 200%;
           border-radius: 4px 25px 25px 4px;
       }
           .search-form .form-group span.form-control-feedback {
@@ -286,17 +286,19 @@
                         <!-- ALL AMENDMENTS LISTS -->
                         <div id="all_amendmentsTab" class="tab-pane fade">
                                 <div class="row">
-                                        <div class="col-md-7">
+                                        <div class="col-md-9">
                                             <div id="all_amendments" class="amended_act_toggle"></div>
                                         </div>
                                         @include('post_1992_legislation.container_main_amended_act_page')
                                 </div>
                         </div>
+                        {{-- -------------------------------------------------------End of All Amendments Lists---------------------------------------------------------------- --}}
+
 
                         <!-- AMENDMENTS TABLE OF CONTENTS -->
                         <div id="amended_table_of_Content_Tab" class="tab-pane fade">
                                 <div class="row">
-                                    <div class="col-md-7">
+                                    <div class="col-md-9">
                                         <div id="amended_table_of_content" class="amended_act_toggle_content"></div>   
                                     </div>
                                     
@@ -304,21 +306,23 @@
 
                                 </div>
                         </div>
+                        {{-- -------------------------------------------------------End of Amendments table of contents---------------------------------------------------------------- --}}
+
 
                         <!-- AMENDMENTS CONTENT -->
                         <div id="amendmentcontentTab" class="tab-pane fade">
                                 <div class="row">
-                                    <div class="col-md-7 table-wrapper-scroll-display" style="height: 600px;">
+                                    <div class="col-md-9 table-wrapper-scroll-display" style="height: 600px;">
                                         <div id="single_preamble_amended_content"></div>
                                         <div id="single_amended_content"></div>
                                         <div id="single_view_all_sections_amend"></div> 
                                     </div>
                                     
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <div id="single_container_details_amend"></div>
                                     </div>
                                     
-                                    {{-- ADVERTISEMENT --}}
+                                    {{-- ADVERTISEMENT
                                     <div class="col-md-3">
                                         <div class="panel panel-default">
                                         <div class="panel-heading">
@@ -331,10 +335,11 @@
                                         </div>
                                         </div>
                                     </div>
+                                    --}}
                                 </div>
                                 
                                     <div class="row show">
-                                        <div class="col-md-7">
+                                        <div class="col-md-9">
                                         <ul class="pager">
                                             <li><a data-scroll-to="body"
                                                 data-scroll-focus="body"
@@ -349,41 +354,46 @@
                                     </div>
                                 
                         </div>
+                        {{-- -------------------------------------------------------End of Amendments contents---------------------------------------------------------------- --}}
+
 
                         <!--ALL REGULATION LIST -->
                         <div id="all_regulationsTab" class="tab-pane fade">
                                 <div class="row">
-                                    <div class="col-md-7">
+                                    <div class="col-md-9">
                                         <div id="all_regulations" class="regulation_act_toggle"></div>  
                                     </div>
                                     @include('post_1992_legislation.container_main_regulations_act_page')
                                 </div>
-                            </div>
+                        </div>
+                        {{-- -------------------------------------------------------End of Regulation List---------------------------------------------------------------- --}}
+
 
                             <!-- REGULATIONS TABLE OF CONTENTS -->
                             <div id="regulated_table_of_Content_Tab" class="tab-pane fade">
                                 <div class="row">
-                                        <div class="col-md-7">
+                                        <div class="col-md-9">
                                         <div id="regulated_table_of_content" class="regulation_act_toggle_content"></div>   
                                         </div>
                                         @include('post_1992_legislation.container_expanded__regulation_page')
                                 </div>
                             </div>
+                            {{-- -------------------------------------------------------End of Regulation Table of Content---------------------------------------------------------------- --}}
 
                             <!-- REGULATIONS CONTENTS -->
                             <div id="regulatedcontentTab" class="tab-pane fade">
                                 <div class="row">
-                                    <div class="col-md-7 table-wrapper-scroll-display" style="height: 600px;">
+                                    <div class="col-md-9 table-wrapper-scroll-display" style="height: 600px;">
                                         <div id="single_preamble_regulation_content"></div>
                                         <div id="single_regulation_content"></div>
                                         <div id="single_view_all_sections_regulation"></div> 
                                     </div>
                                     
-                                    <div class="col-md-2">
+                                    <div class="col-md-3">
                                         <div id="single_container_details_regulation"></div>
                                     </div>
 
-                                    {{-- ADVERTISEMENT --}}
+                                    {{-- ADVERTISEMENT
                                     <div class="col-md-3">
                                         <div class="panel panel-default">
                                         <div class="panel-heading">
@@ -396,10 +406,11 @@
                                         </div>
                                         </div>
                                     </div>
+                                    --}}
                                 </div>
                                 
                                 <div class="row show">
-                                        <div class="col-md-7">
+                                        <div class="col-md-9">
                                         <ul class="pager">
                                             <li><a data-scroll-to="body"
                                                 data-scroll-focus="body"
@@ -414,6 +425,8 @@
                                 </div>
                                 
                             </div>
+                            {{-- -------------------------------------------------------End of Regulation Content---------------------------------------------------------------- --}}
+
                             
                     </div><!--end of row-->
         </div>

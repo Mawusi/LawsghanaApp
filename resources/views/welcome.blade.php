@@ -129,7 +129,7 @@
                 
                 <div class="row">
                     <div class="title">
-                        LawsGhana
+                        Coming Soon
                     </div>
                 </div>
                 <div class="row">

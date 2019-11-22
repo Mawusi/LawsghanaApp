@@ -1,7 +1,3 @@
-
-{{--CONTAINER DETAIL --}}
-
-{{-- DOWNLOADS AND PRINT OPTIONS --}}
 <div class="panel panel-default">
           <div class="panel-heading">
             <center><p class="panel-title"><small>Views and Downloads</small></p></center>
@@ -36,9 +32,9 @@
       
       </center>
         
-    
+      @include('extenders.case_law_main_search')
         </div>
 </div>
 
-@include('extenders.case_law_main_search')
+
 

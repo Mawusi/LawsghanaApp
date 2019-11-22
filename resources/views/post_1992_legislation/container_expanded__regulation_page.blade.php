@@ -1,8 +1,4 @@
-
-{{-- CONTAINER PLAIN --}}
-
-{{-- DOWNLOADS --}}
-<div class="col-md-2"> 
+<div class="col-md-3"> 
     <div class="panel panel-default">
       <div class="panel-heading">
         <p class="panel-title"><small>Filters</small></p>
@@ -36,24 +32,12 @@
           </a>
           <a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/plain_view/{{ $allPost1992Act['id'] }}" target="_blank"><li style="list-style:none;">Plain View</li></a>
         </center> 
+        <hr>
+        @include('extenders.case_law_main_search')
       </div>
     </div>
-    @include('extenders.case_law_main_search')
 </div>
 
-{{-- ADVERTISEMENT --}}
-<div class="col-md-3">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <p class="panel-title"><small>Advertisement</small></p>
-      </div>
-      <div class="panel-body">
-        <div class="embed-responsive embed-responsive-4by3">
-        <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>       
-       </div>        
-      </div>
-    </div>
-</div>
     
 
     

@@ -8,6 +8,15 @@
         .navbar {
           min-height: 1px;
         }
+        .nav>li>a {
+            position: relative;
+            display: block;
+            padding: 10px 14px;
+            color: white;
+            }
+        .nav>li>a:hover {
+            color: #004353;
+        }
         .navbar-brand {
           padding-top: 17px;
           padding-top: 17px;
@@ -77,100 +86,178 @@
         height: 100px;
         overflow-y: scroll;
         }
+        .bg-header-color{
+            background-color: #004353;
+        }
+        .bg-header-color-tabs{
+            background-color: #989898;
+        }
+        .form-group-customised{
+            margin-bottom: .1px;
+        }
+        .search-form{
+          padding-right: 5px;
+      }
+      .search-form .form-group {
+          float: right !important;
+          transition: all 0.35s, border-radius 0s;
+          width: 32px;
+          height: 32px;
+          background-color: #fff;
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+          border-radius: 25px;
+          border: 1px solid #ccc;
+      }
+          .search-form .form-group input.form-control {
+          padding-right: 20px;
+          border: 0 none;
+          background: transparent;
+          box-shadow: none;
+          display:block;
+      }
+          .search-form .form-group input.form-control::-webkit-input-placeholder {
+          display: none;
+      }
+          .search-form .form-group input.form-control:-moz-placeholder {
+          /* Firefox 18- */
+          display: none;
+      }
+          .search-form .form-group input.form-control::-moz-placeholder {
+          /* Firefox 19+ */
+          display: none;
+      }
+          .search-form .form-group input.form-control:-ms-input-placeholder {
+          display: none;
+      }
+          .search-form .form-group:hover,
+          .search-form .form-group.hover {
+          width: 200%;
+          border-radius: 4px 25px 25px 4px;
+      }
+          .search-form .form-group span.form-control-feedback {
+          position: absolute;
+          top: -1px;
+          right: -2px;
+          z-index: 2;
+          display: block;
+          width: 34px;
+          height: 34px;
+          line-height: 34px;
+          text-align: center;
+          color: #3596e0;
+          left: initial;
+          font-size: 14px;
+      }
 </style>
 
 @endsection
 
 @section('content')
 
+{{--
 @section('second_nav')
     @include('post_1992_legislation.post_1992_legislation_menu')
 @endsection
+--}}
 
-<div class="container-fluid"> 
-    <p style="font-size:20px;"><b class="small">{{ $amendedAct['title'] }}</b></p>
+<div class="container-fluid">
+  <div class="row">
+        <div class="col-md-9"> 
+        @include('post_1992_legislation.post_1992_legislation_menu')
+              <p style="font-size:20px;"><b class="small">{{ $amendedAct['title'] }}</b></p>
 
-    {{-- Nav tabs --}}
-    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-        <li class="active">
-            <a href="#tableOfContentTab" data-toggle="tab">Table of Contents</a>
-        </li>
-        <li class="tabPanedHide_acts_content">
-            <a href="#contentTab" data-toggle="tab">Contents</a>
-        </li> 
-        <!-- Expanded View -->
-        <li class="tabPanedHide_expanded_view">
-                <a href="#expandedTab" data-toggle="tab">Expanded View</a>
-        </li>   
-    </ul>
+              {{-- Nav tabs --}}
+              <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+                  <li class="active">
+                      <a href="#tableOfContentTab" data-toggle="tab" class="bg-header-color-tabs">Table of Contents</a>
+                  </li>
+                  <li class="tabPanedHide_acts_content">
+                      <a href="#contentTab" data-toggle="tab" class="bg-header-color-tabs">Contents</a>
+                  </li> 
+                  <!-- Expanded View -->
+                  <li class="tabPanedHide_expanded_view">
+                          <a href="#expandedTab" data-toggle="tab" class="bg-header-color-tabs">Expanded View</a>
+                  </li>   
+              </ul>
+              {{-- ------------------------------------------------------End of Nav tab for the panels----------------------------------------------------------- --}}
 
-    {{-- tab panes content --}}
-    <div id="my-tab-content" class="tab-content">
 
-    {{-- table of Contents --}}
-        <div id="tableOfContentTab" class="tab-pane fade in active">
-            <div class="row">
-                <div class="col-md-7">
-                     {{--<h5><b>{{ $amendedAct['title'] }}</b></h5>--}}
-                     <br>
-                   <a class="preamble_link" id="preamble_link_toggle" href="/post_1992_legislation/amended_acts/preamble/{{ $amendedAct['id'] }}"><p>Introductory Text</p></a>
-                   
-                        <div class="accordion-content">
-                            @include('post_1992_legislation.displayed_amended_parts_sections')
-                        </div>
-                        
-                        <div class="col-md-12 text-center">
-                            <!--<ul id="myPager" class="pagination"></ul>-->
-                            <p><a data-scroll-to="body"
-                            data-scroll-focus="body"
-                            data-scroll-speed="400"
-                            data-scroll-offset="-60" href="#" data-scroll-to="body">Move to Top</button></p>
-                        </div>
-                </div> 
-                        @include('post_1992_legislation.container_main_amended_acts_page')
-            </div>
+              {{-- tab panes content --}}
+              <div id="my-tab-content" class="tab-content">
 
-        </div>
+              {{-- table of Contents --}}
+                  <div id="tableOfContentTab" class="tab-pane fade in active">
+                      <div class="row">
+                          <div class="col-md-9">
+                              {{--<h5><b>{{ $amendedAct['title'] }}</b></h5>--}}
+                              <br>
+                            <a class="preamble_link" id="preamble_link_toggle" href="/post_1992_legislation/amended_acts/preamble/{{ $amendedAct['id'] }}"><p>Introductory Text</p></a>
+                            
+                                  <div class="accordion-content">
+                                      @include('post_1992_legislation.displayed_amended_parts_sections')
+                                  </div>
+                                  
+                                  <div class="col-md-12 text-center">
+                                      <!--<ul id="myPager" class="pagination"></ul>-->
+                                      <p><a data-scroll-to="body"
+                                      data-scroll-focus="body"
+                                      data-scroll-speed="400"
+                                      data-scroll-offset="-60" href="#" data-scroll-to="body">Move to Top</button></p>
+                                  </div>
+                          </div> 
+                                  @include('post_1992_legislation.container_main_amended_acts_page')
+                      </div>
 
-        {{-- Contents --}}
-        <div id="contentTab" class="tab-pane fade">
-          <div class="row">
-            <div class="col-md-7 table-wrapper-scroll-display" style="height: 600px;">
-                <div id="display_content"></div>
-                <div id="display_preamble"></div>
-                <div id="display_view_all_section"></div>
-            </div>
-                        @include('post_1992_legislation.container_details_main_amended_acts_page')
-          </div>
-          
-            <div class="row show">
-                <div class="col-md-7">
-                 <ul class="pager">
-                    <li><a data-scroll-to="body"
-                        data-scroll-focus="body"
-                        data-scroll-speed="400"
-                        data-scroll-offset="-60" href="#" class="previous_content_amendments">Previous Section</a></li>
-                    <li><a data-scroll-to="body"
-                        data-scroll-focus="body"
-                        data-scroll-speed="400"
-                        data-scroll-offset="-60" href="#" class="next_content_amendments">Next Section</a></li>
-                 </ul>
-                </div>
-            </div>
-          
-        </div>
+                  </div>
+                  {{-- -------------------------------------------------------End of table of Contents---------------------------------------------------------------- --}}
 
-         <!-- ACTS EXPANDED CONTENTS -->
-         <div id="expandedTab" class="tab-pane fade">
-                <div class="row">
-                     <div class="col-md-9 expanded_view" style="background-color: #FFFFFF;">
-                        <div id="acts_expanded_view"></div> 
+                  {{-- Contents --}}
+                  <div id="contentTab" class="tab-pane fade">
+                    <div class="row">
+                      <div class="col-md-9 table-wrapper-scroll-display" style="height: 600px;">
+                          <div id="display_content"></div>
+                          <div id="display_preamble"></div>
+                          <div id="display_view_all_section"></div>
+                      </div>
+                                  @include('post_1992_legislation.container_details_main_amended_acts_page')
                     </div>
-                     @include('post_1992_legislation.container_details_act_expanded_amended_act')
-                </div>
-        </div>
+                    
+                      <div class="row show">
+                          <div class="col-md-9">
+                          <ul class="pager">
+                              <li><a data-scroll-to="body"
+                                  data-scroll-focus="body"
+                                  data-scroll-speed="400"
+                                  data-scroll-offset="-60" href="#" class="previous_content_amendments">Previous Section</a></li>
+                              <li><a data-scroll-to="body"
+                                  data-scroll-focus="body"
+                                  data-scroll-speed="400"
+                                  data-scroll-offset="-60" href="#" class="next_content_amendments">Next Section</a></li>
+                          </ul>
+                          </div>
+                      </div>
+                    
+                  </div>
+                  {{-- -------------------------------------------------------End of Contents---------------------------------------------------------------- --}}
 
-    </div>    
+
+                  <!-- ACTS EXPANDED CONTENTS -->
+                  <div id="expandedTab" class="tab-pane fade">
+                          <div class="row">
+                              <div class="col-md-12 expanded_view" style="background-color: #FFFFFF;">
+                                  <div id="acts_expanded_view"></div> 
+                              </div>
+                              {{--@include('post_1992_legislation.container_details_act_expanded_amended_act')--}}
+                          </div>
+                  </div>
+                  {{-- -------------------------------------------------------End of Expanded View Content---------------------------------------------------------------- --}}
+
+
+              </div>
+        </div>
+        <!-- for the ads -->
+        @include('extenders.ads')
+  </div>    
 </div><!--end of container-fluid-->
 
 @endsection

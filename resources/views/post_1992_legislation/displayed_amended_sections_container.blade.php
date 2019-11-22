@@ -36,9 +36,8 @@
         <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_2" href=""><li style="list-style:none;">Expanded View</li></a>
       
       </center>
-      
-
+      <hr>
+      @include('extenders.case_law_main_search')
         </div>
 </div>
 
-@include('extenders.case_law_main_search')

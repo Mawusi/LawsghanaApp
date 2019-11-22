@@ -63,6 +63,7 @@ $(document).ready(function(){
         $('.tabPanedHide_amendments_content').hide();
         $('.tabPanedHide_regulations').show();
     });
+    
    $('.all_regulations_link').click(function(e){
     e.preventDefault();
     var xhr = new XMLHttpRequest();
