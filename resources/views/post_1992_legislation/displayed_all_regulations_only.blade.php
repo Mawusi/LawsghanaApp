@@ -18,6 +18,7 @@
     <div class="container-fluid content">
         <div class="row">
             <div class="col-md-9">
+                <div class="well">
             @include('post_1992_legislation.post_1992_legislation_menu')
                     <div class="row">
                         <div class="col-md-9">
@@ -46,6 +47,7 @@
                         </div> 
                         @include('post_1992_legislation.all_regulations_only_container_main')
                     </div> 
+                </div>
             </div>
             @include('extenders.ads')
         </div>

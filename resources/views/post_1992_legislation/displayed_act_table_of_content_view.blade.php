@@ -10,7 +10,7 @@
         .nav>li>a {
             position: relative;
             display: block;
-            padding: 10px 14px;
+            padding: 5px 14px;
             color: white;
             }
         .nav>li>a:hover {
@@ -81,6 +81,9 @@
         .content {
           padding: 16px;
         }
+        .content-fluid{
+            padding: 0.1px;
+        }
         .accordion-content {
         height: 600px;
         overflow-y: scroll;
@@ -89,7 +92,8 @@
             background-color: #004353;
         }
         .bg-header-color-tabs{
-            background-color: #989898;
+            background-color: #539bad;
+            /* #539bad,#989898 */
         }
         .form-group-customised{
             margin-bottom: .1px;
@@ -160,12 +164,14 @@
 @endsection
 --}}
 
-<div class="container-fluid"> 
+<div class="container-fluid content-fluid"> 
     <div class="row">
         <div class="col-md-9">
+            <div class="well">
             @include('post_1992_legislation.post_1992_legislation_menu')
-
-                    <p style="font-size:20px;"><b class="small">{{ $allPost1992Act['title'] }}</b></p>
+                    <center>
+                    <p style="font-size:18px;"><b class="small">{{ $allPost1992Act['title'] }}</b></p>
+                    </center>
 
                     {{-- Nav tabs -- for the tab Panel--}}
                     <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
@@ -243,6 +249,7 @@
 
                         {{-- Contents --}}
                         <div id="contentTab" class="tab-pane fade">
+                        <span style="padding: .2em;">
                             <div class="row">
                                 <div class="col-md-9 table-wrapper-scroll-display" style="height: 600px;">
                                         <div id="display_content"></div>
@@ -273,6 +280,7 @@
                         
                         <!-- ACTS EXPANDED CONTENTS -->
                         <div id="expandedTab" class="tab-pane fade">
+                        <span style="padding: .2em;">
                                 <div class="row">
                                     <div class="col-md-12 expanded_view" style="background-color: #FFFFFF;">
                                         <div id="acts_expanded_view"></div> 
@@ -429,6 +437,7 @@
 
                             
                     </div><!--end of row-->
+        </div>
         </div>
         <!-- for the ads -->
         @include('extenders.ads')

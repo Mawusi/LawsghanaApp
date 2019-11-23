@@ -1,4 +1,5 @@
 <div style="margin-top: 0.1em;">
+
     <div class="header_only" style="margin-bottom: 5px;">
         <!--<p>{{$regulationContent['regulation_title']}}</p>-->
         <p><b>{{ $regulationContent['section'] }}</b></p>

@@ -15,11 +15,13 @@
 @section('second_nav')
     @include('post_1992_legislation.post_1992_legislation_menu')
 @endsection
+style="padding-left:1em;"
 --}}
 
     <div class="container-fluid content">
         <div class="row">
             <div class="col-md-9">
+                <div class="well">
             @include('post_1992_legislation.post_1992_legislation_menu')                    
                     <div class="row">
                         <div class="col-md-9">
@@ -80,6 +82,7 @@
                         <!-- for the filter -->
                         @include('post_1992_legislation.filter_post_home')
                     </div>
+                </div>
             </div>
                         <!-- for the ads -->
                         @include('extenders.ads')

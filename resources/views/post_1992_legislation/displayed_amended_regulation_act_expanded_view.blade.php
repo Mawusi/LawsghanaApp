@@ -1,9 +1,10 @@
 
 <div style="margin-top: 0.1em;">
-
+{{--
 <div class="header_only" style="margin-bottom: 5px;">
     <p><b>{{ $amendedRegulationAct['title'] }}</b></p>
 </div>
+--}}
 
 <a id="print_options" href="#">Print & Download&raquo;</a>
     <div class="menu_options pull-right" style="display: none;">

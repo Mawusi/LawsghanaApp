@@ -1,9 +1,10 @@
 
-<div style="margin-top: 0.1em;">
+<div>
+{{--
     <div class="header_only" style="margin-bottom: 5px;">
         <p><b>{{ $allPost1992Act['title'] }}</b></p>
     </div>
-
+    --}}
     <a id="print_options" href="#">Print & Download&raquo;</a>
     <div class="menu_options pull-right" style="display: none;">
         <a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/pdf_view/{{ $allPost1992Act['id'] }}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
@@ -26,7 +27,7 @@
             <hr><br>
         @endforeach
     </div>
-</div
+</div>
 
 
 

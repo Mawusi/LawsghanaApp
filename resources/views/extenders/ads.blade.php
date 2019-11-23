@@ -1,5 +1,5 @@
 {{-- Advertisement 
-	<div class="col-md-3">
+	<div class="col-md-2">
 		<div class="panel panel-default">
 		  <div class="panel-heading">
 		    <p class="panel-title"><small>Advertisement</small></p>
