@@ -42,9 +42,9 @@
             }
            
             #footer_div {
-                padding-top: 18px;
+                padding-top: 10px;
                 text-align: center;
-                font-size: 14px;
+                font-size: 12px;
             }
             #footer_ul{
                 display: inline-block; 

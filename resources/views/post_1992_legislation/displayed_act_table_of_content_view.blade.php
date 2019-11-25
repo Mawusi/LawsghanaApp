@@ -94,7 +94,7 @@
         .bg-header-color-tabs{
             /* background-color: #539bad; */
             /* #539bad,#989898 */
-            background-color: #004353;
+            background-color: #8DD8CA;
         }
         .form-group-customised{
             margin-bottom: .1px;
@@ -178,38 +178,38 @@
                     <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
                         <!--Acts -->
                         <li class="active">
-                            <a href="#tableOfContentTab" data-toggle="tab" style="background-color: #004353; color:white;">Table of Contents</a>
+                            <a href="#tableOfContentTab" data-toggle="tab" class=" tabPaned_color_table_of_table">Table of Contents</a>
                         </li>
                         <li class="tabPanedHide_acts_content">
-                            <a href="#contentTab" data-toggle="tab" class="bg-header-color-tabs">Content</a>
+                            <a href="#contentTab" data-toggle="tab" class="bg-color-content">Content</a>
                         </li>
 
                         <!-- Expanded View -->
                         <li class="tabPanedHide_expanded_view">
-                                <a href="#expandedTab" data-toggle="tab" class="bg-header-color-tabs">Expanded View</a>
+                            <a href="#expandedTab" data-toggle="tab" class="bg-color-expanded">Expanded View</a>
                         </li>  
 
                         <!-- Amendments -->
                         <li class="tabPanedHide_amendments">
-                                <a href="#all_amendmentsTab" data-toggle="tab" class="bg-header-color-tabs">Amendments</a>
+                            <a href="#all_amendmentsTab" data-toggle="tab" class="bg-color-amendments">Amendments</a>
                         </li>
                         <li class="tabPanedHide_amendments_table">
-                            <a href="#amended_table_of_Content_Tab" data-toggle="tab" class="bg-header-color-tabs">Amendments Table of Contents</a>
+                            <a href="#amended_table_of_Content_Tab" data-toggle="tab">Amendments Table of Contents</a>
                         </li>
                         <li class="tabPanedHide_amendments_content">
-                                <a href="#amendmentcontentTab" data-toggle="tab" class="bg-header-color-tabs">Amended Content</a>
+                            <a href="#amendmentcontentTab" data-toggle="tab">Amended Content</a>
                         </li>
 
                         <!-- Regulations -->
                         <li class="tabPanedHide_regulations">
-                                <a href="#all_regulationsTab" data-toggle="tab" class="bg-header-color-tabs">Regulations</a>
+                            <a href="#all_regulationsTab" data-toggle="tab" class="bg-color-regulations">Regulations</a>
                         </li>
-                            <li class="tabPanedHide_regulations_table">
-                                <a href="#regulated_table_of_Content_Tab" data-toggle="tab" class="bg-header-color-tabs">Regulations Table of Contents</a>
-                            </li>
-                            <li class="tabPanedHide_regulations_content">
-                                <a href="#regulatedcontentTab" data-toggle="tab" class="bg-header-color-tabs">Regulation Content</a>
-                            </li>
+                        <li class="tabPanedHide_regulations_table">
+                            <a href="#regulated_table_of_Content_Tab" data-toggle="tab">Regulations Table of Contents</a>
+                        </li>
+                        <li class="tabPanedHide_regulations_content">
+                            <a href="#regulatedcontentTab" data-toggle="tab">Regulation Content</a>
+                        </li>
                     </ul>
                     {{-- ------------------------------------------------------End of Nav tab for the panels----------------------------------------------------------- --}}
 

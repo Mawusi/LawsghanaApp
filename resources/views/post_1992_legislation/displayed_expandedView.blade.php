@@ -5,8 +5,12 @@
         <p><b>{{ $allPost1992Act['title'] }}</b></p>
     </div>
     --}}
-    <a id="print_options" href="#">Print & Download&raquo;</a>
-    <div class="menu_options pull-right" style="display: none;">
+    <div class="content pull-right" style="padding-top:5px;" >
+        <a id="print_options" href="#">Prints & Download&raquo;</a>
+    </div>
+    
+
+    <div class="menu_options pull-right" style="display: none; padding-top:5px;">
         <a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/pdf_view/{{ $allPost1992Act['id'] }}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
         <a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/plain_view/{{ $allPost1992Act['id'] }}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp;
         <a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/print_view/{{ $allPost1992Act['id'] }}" target="_blank"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print Preview</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

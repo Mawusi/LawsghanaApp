@@ -38,13 +38,12 @@
 <div class="col-md-12" style="background-color: white; height:100px; margin-top:20px;"></div>
 
 <!-- for the footer -->
-<div id="footer_div" class="col-md-12" style="background-color: #004353; height:55px;">
+<div id="footer_div" class="col-md-12" style="background-color: #004353; height:33px;">
     <ul id="footer_ul">
-        <li style="display: inline-block"><a style="color: #ffffff;border-right: 1px solid #ffffff;padding: 5px 15px 5px 15px;" href="#">Who we are</a></li>
-        <li style="display: inline-block"><a style="color: #ffffff;border-right: 1px solid #ffffff;padding: 5px 15px 5px 15px;" href="#">Team</a></li>
-        <li style="display: inline-block"><a style="color: #ffffff;border-right: 1px solid #ffffff;padding: 5px 15px 5px 15px;" href="#">Service</a></li>
-        <li style="display: inline-block"><a style="color: #ffffff;border-right: 1px solid #ffffff;padding: 5px 15px 5px 15px;" href="#">Pricing</a></li>
-        <li style="display: inline-block"><a style="color: #ffffff;border-right: 1px solid #ffffff;padding: 5px 15px 5px 15px;" href="#">Contact Us</a></li>
-
+        <li style="display: inline-block"><a style="color: #ffffff;" href="#">Who we are</a></li>&nbsp;&nbsp;|&nbsp;
+        <li style="display: inline-block"><a style="color: #ffffff;" href="#">Team</a></li>&nbsp;&nbsp;|&nbsp;
+        <li style="display: inline-block"><a style="color: #ffffff;" href="#">Services</a></li>&nbsp;&nbsp;|&nbsp;
+        <li style="display: inline-block"><a style="color: #ffffff;" href="#">Contact Us</a></li>&nbsp;&nbsp;|&nbsp;
+        <li style="display: inline-block"><a style="color: #ffffff;" href="#">Pricing</a></li>
     </ul>
 </div>

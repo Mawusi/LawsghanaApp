@@ -51,6 +51,7 @@
                   <br>
           @endif
           
+          {{--
           <div class="dropdown">
               <button class="btn btn-sm btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 Related Acts
@@ -67,6 +68,7 @@
                   <p style="text-decoration: none;" class="hidden">None</p>
           @endif
           </div>
+          --}}
           <br>
 
           <div class="dropdown">
