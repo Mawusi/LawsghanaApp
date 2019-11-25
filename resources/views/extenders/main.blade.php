@@ -40,6 +40,59 @@
                 padding-top: 27px;
                 height: 80vh;
             }
+           
+            #footer_div {
+                padding-top: 18px;
+                text-align: center;
+                font-size: 14px;
+            }
+            #footer_ul{
+                display: inline-block; 
+            }
+            
+            ul li {
+                /* display: block; */
+                /* position: relative;
+                float: left;
+                text-align: center; */
+            }
+
+            li ul {
+                /* display: none; */
+            }
+
+            ul li a {
+            /* display: block; */
+            /* text-decoration: none;
+            color: #ffffff;
+            border-top: 1px solid #ffffff;
+            padding: 5px 15px 5px 15px;
+            background: #1e7c9a; a little blue
+            margin-left: 1px;
+            white-space: nowrap; */
+            }
+
+            ul li a:hover {
+                /* background: #3b3b3b; for the footer*/
+            }
+
+            li:hover ul {
+            display: block;
+            position: absolute;
+            }
+
+            li:hover li {
+            float: none;
+            font-size: 12px;
+            }
+
+            li:hover a {
+            /* background: #3b3b3b; for the main tab*/ 
+            }
+
+            li:hover li a:hover {
+            background: #1e7c9a;
+            }
         </style>
         
     </head>
@@ -53,7 +106,9 @@
                      <!--logo-->
                      <div class="navbar-header">
                          <a href="/">
-                            <img alt="Brand" src="{{ asset('/logo/gh_flag.png') }}" class="img-responsive" style="width:3em; padding-top: 5px;">
+                            <!-- <img alt="Brand" src="{{ asset('/logo/gh_flag.png') }}" class="img-responsive" style="width:3em; padding-top: 5px;"> -->
+                            <img alt="Brand" src="{{ asset('/logo/lawsghlog.png') }}" class="img-responsive" style="width:12em; padding-top: 5px; padding-bottom:5px;">
+
                         </a>
                      </div>
                      
@@ -84,7 +139,9 @@
             @yield('content')
         </div>
 
-        <div class="container"> 
+        <!-- ads and footer -->
+        <div class="container-fluid"> 
+        @yield('assets')
             @include('extenders.footer')
         </div>
             

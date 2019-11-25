@@ -486,5 +486,5 @@ Route::get('/home', 'HomeController@index')->name('home');
           </a>
           <a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/plain_view/{{ $allPost1992Act['id'] }}" target="_blank"><li style="list-style:none;">Plain View</li></a>
 |
-|
+|http://jsfiddle.net/tU8R5/4/ : It is an important note
 */

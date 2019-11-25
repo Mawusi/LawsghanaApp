@@ -92,8 +92,9 @@
             background-color: #004353;
         }
         .bg-header-color-tabs{
-            background-color: #539bad;
+            /* background-color: #539bad; */
             /* #539bad,#989898 */
+            background-color: #004353;
         }
         .form-group-customised{
             margin-bottom: .1px;
@@ -177,7 +178,7 @@
                     <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
                         <!--Acts -->
                         <li class="active">
-                            <a href="#tableOfContentTab" data-toggle="tab" class="bg-header-color-tabs">Table of Contents</a>
+                            <a href="#tableOfContentTab" data-toggle="tab" style="background-color: #004353; color:white;">Table of Contents</a>
                         </li>
                         <li class="tabPanedHide_acts_content">
                             <a href="#contentTab" data-toggle="tab" class="bg-header-color-tabs">Content</a>
@@ -249,7 +250,7 @@
 
                         {{-- Contents --}}
                         <div id="contentTab" class="tab-pane fade">
-                        <span style="padding: .2em;">
+                        <!-- <span style="padding: .2em;"> -->
                             <div class="row">
                                 <div class="col-md-9 table-wrapper-scroll-display" style="height: 600px;">
                                         <div id="display_content"></div>
@@ -280,7 +281,7 @@
                         
                         <!-- ACTS EXPANDED CONTENTS -->
                         <div id="expandedTab" class="tab-pane fade">
-                        <span style="padding: .2em;">
+                        <!-- <span style="padding: .2em;"> -->
                                 <div class="row">
                                     <div class="col-md-12 expanded_view" style="background-color: #FFFFFF;">
                                         <div id="acts_expanded_view"></div> 

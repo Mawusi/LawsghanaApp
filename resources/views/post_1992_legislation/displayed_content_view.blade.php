@@ -1,6 +1,6 @@
 
 <div>
-    <div class="header_only" style="margin-bottom: 5px;">
+    <div class="header_only">
         <p><b>{{ $allPost1992Article['section'] }}</b></p>
     </div>
 

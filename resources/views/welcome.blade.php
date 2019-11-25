@@ -101,7 +101,8 @@
         
         <div class="container">
             <a href="/" class="">
-                <img src="{{ asset('/logo/gh_flag.png') }}" class="img-responsive" style="width:3em; padding-top: 5px;">
+            <img src="{{ asset('/logo/lawsghlog.png') }}" class="img-responsive" style="width:12em; padding-top: 25px;">    
+            <!-- <img src="{{ asset('/logo/gh_flag.png') }}" class="img-responsive" style="width:3em; padding-top: 5px;"> -->
             </a>
             <!--<h2>Animated Sidenav Example</h2>-->
             <!--<p>LawsGhana Tag.</p>-->

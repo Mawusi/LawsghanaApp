@@ -1,4 +1,4 @@
-<footer style="text-align: center;">
+{{--<footer style="text-align: center;">
     <div class="row" style="display: inline-block;">
         <div class="col-md-4">
             <ul style="list-style: none;">
@@ -32,3 +32,19 @@
         </div>
     </div>
 </footer>
+--}}
+
+<!-- for the ads -->
+<div class="col-md-12" style="background-color: white; height:100px; margin-top:20px;"></div>
+
+<!-- for the footer -->
+<div id="footer_div" class="col-md-12" style="background-color: #004353; height:55px;">
+    <ul id="footer_ul">
+        <li style="display: inline-block"><a style="color: #ffffff;border-right: 1px solid #ffffff;padding: 5px 15px 5px 15px;" href="#">Who we are</a></li>
+        <li style="display: inline-block"><a style="color: #ffffff;border-right: 1px solid #ffffff;padding: 5px 15px 5px 15px;" href="#">Team</a></li>
+        <li style="display: inline-block"><a style="color: #ffffff;border-right: 1px solid #ffffff;padding: 5px 15px 5px 15px;" href="#">Service</a></li>
+        <li style="display: inline-block"><a style="color: #ffffff;border-right: 1px solid #ffffff;padding: 5px 15px 5px 15px;" href="#">Pricing</a></li>
+        <li style="display: inline-block"><a style="color: #ffffff;border-right: 1px solid #ffffff;padding: 5px 15px 5px 15px;" href="#">Contact Us</a></li>
+
+    </ul>
+</div>

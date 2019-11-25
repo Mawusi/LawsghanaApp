@@ -13,13 +13,10 @@ $(document).ready(function(){
   $('.tabPanedHide_amendments').hide();
   $('.tabPanedHide_amendments_table').hide();
   $('.tabPanedHide_amendments_content').hide();
-
   $('.tabPanedHide_regulations').hide();
   $('.tabPanedHide_regulations_table').hide();
   $('.tabPanedHide_regulations_content').hide();
-
   $('.tabPanedHide_acts_content').hide();
-
   $('.tabPanedHide_expanded_view').hide();
 
   //To toggle print and view options
