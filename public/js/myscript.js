@@ -20,51 +20,57 @@ $(document).ready(function(){
   $('.tabPanedHide_expanded_view').hide();
 
   //For thetable of content tab color on document ready
-  $('.tabPaned_color_table_of_table').css("background-color","#8DD8CA");
-  $('.tabPaned_color_table_of_table').css("color","white");
+  $('.tabPaned_color_table_of_table').css("background-color","#f5f5f5");
+  $('.tabPaned_color_table_of_table').css("border-color","#ddd");
+  $('.tabPaned_color_table_of_table').css("color","black");
 
   //Click to change color for Table of Content
   $(".tabPaned_color_table_of_table").click(function(){
-    $('.tabPaned_color_table_of_table').css("background-color","#8DD8CA");
-    $('.tabPaned_color_table_of_table').css("color","white");
+    $('.tabPaned_color_table_of_table').css("background-color","#f5f5f5");
+    $('.tabPaned_color_table_of_table').css("color","black");
     //changes in the contents
-    $('.bg-color-content, .bg-color-expanded, .bg-color-amendments, .bg-color-regulations').css({"backgroundColor" : "white"});
+    $('.bg-color-content, .bg-color-expanded, .bg-color-amendments, .bg-color-regulations').css("background-color","white");
+    $('.bg-color-content, .bg-color-expanded, .bg-color-amendments, .bg-color-regulations').css("border-color","#ddd");
     $('.bg-color-content, .bg-color-expanded, .bg-color-amendments, .bg-color-regulations').css({"color" : "black"});
   });
 
   //Click to change color for Content
   $(".content_link, .tabPanedHide_acts_content").click(function(){
-    $('.bg-color-content').css({"backgroundColor" : "#8DD8CA"});
-    $('.bg-color-content').css({"color" : "white"});
+    $('.bg-color-content').css({"backgroundColor" : "#f5f5f5"});
+    $('.bg-color-content').css({"color" : "black"});
     //changes in table of content
     $('.tabPaned_color_table_of_table, .bg-color-expanded, .bg-color-amendments, .bg-color-regulations').css("background-color","white");
+    $('.tabPaned_color_table_of_table, .bg-color-expanded, .bg-color-amendments, .bg-color-regulations').css("border-color","#ddd");
     $('.tabPaned_color_table_of_table, .bg-color-expanded, .bg-color-amendments, .bg-color-regulations').css("color","black");
   });
 
    //Click to change color for Expanded View
    $(".expanded_link, .tabPanedHide_expanded_view").click(function(){
-    $('.bg-color-expanded').css({"backgroundColor" : "#8DD8CA"});
-    $('.bg-color-expanded').css({"color" : "white"});
+    $('.bg-color-expanded').css({"backgroundColor" : "#f5f5f5"});
+    $('.bg-color-expanded').css({"color" : "black"});
     //changes in table of content
     $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-amendments, .bg-color-regulations').css("background-color","white");
+    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-amendments, .bg-color-regulations').css("border-color","#ddd");
     $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-amendments, .bg-color-regulations').css("color","black");
   });
 
   //Click to change color for Amendments
   $(".all_amendments_link, .tabPanedHide_amendments").click(function(){
-    $('.bg-color-amendments').css({"backgroundColor" : "#8DD8CA"});
-    $('.bg-color-amendments').css({"color" : "white"});
+    $('.bg-color-amendments').css({"backgroundColor" : "#f5f5f5"});
+    $('.bg-color-amendments').css({"color" : "black"});
     //changes in table of content
     $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations').css("background-color","white");
+    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations').css("border-color","#ddd");
     $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations').css("color","black");
   });
 
   //Click to change color for Regulation
   $(".all_regulations_link, .tabPanedHide_regulations").click(function(){
-    $('.bg-color-regulations').css({"backgroundColor" : "#8DD8CA"});
-    $('.bg-color-regulations').css({"color" : "white"});
+    $('.bg-color-regulations').css({"backgroundColor" : "#f5f5f5"});
+    $('.bg-color-regulations').css({"color" : "black"});
     //changes in table of content
     $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-amendments').css("background-color","white");
+    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-amendments').css("border-color","#ddd");
     $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-amendments').css("color","black");
   });
 

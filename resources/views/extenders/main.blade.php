@@ -37,7 +37,7 @@
                 color: black;
                 font-family: Arial;
                 font-size: 12px;
-                padding-top: 27px;
+                padding-top: 30px;
                 height: 80vh;
             }
            
@@ -91,7 +91,14 @@
             }
 
             li:hover li a:hover {
-            background: #1e7c9a;
+            background: #ddd;
+            }
+            .navbar-default{
+                border-color: black;
+            }
+            .navbar-default .navbar-nav>li>a{
+                color: black;
+                font-size: 13px;
             }
         </style>
         
@@ -107,7 +114,7 @@
                      <div class="navbar-header">
                          <a href="/">
                             <!-- <img alt="Brand" src="{{ asset('/logo/gh_flag.png') }}" class="img-responsive" style="width:3em; padding-top: 5px;"> -->
-                            <img alt="Brand" src="{{ asset('/logo/lawsghlog.png') }}" class="img-responsive" style="width:12em; padding-top: 5px; padding-bottom:5px;">
+                            <img alt="Brand" src="{{ asset('/logo/lawsghlog.png') }}" class="img-responsive" style="width:12em; padding-top: 9px; padding-bottom:5px;">
 
                         </a>
                      </div>
@@ -123,15 +130,8 @@
                       <!--<a class="navbar-brand"><strong>Pre-1992-Legislation</strong></a>-->
                     </div>
                     
-                    <div class="collapse navbar-collapse container-fluid pull-right" id="bs-example-navbar-collapse-2">
+                    <div class="collapse navbar-collapse container-fluid pull-right" style="padding-top:9px; color:red;" id="bs-example-navbar-collapse-2">
                         {{ menu('main', 'bootstrap') }}
-                        <!-- <form action="" class="pull-right search-form" style="padding-top: 5px;">
-                            <div class="form-group has-feedback">
-                                <label for="search" class="sr-only">Search</label>
-                                <input type="text" class="form-control" name="search" id="search" placeholder="What do you want?">
-                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                            </div>
-                        </form> -->
                     </div>
                 </div>
                 {{--@yield('second_nav')--}}

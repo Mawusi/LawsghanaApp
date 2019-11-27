@@ -10,8 +10,8 @@
 	      </div>
 		</div>
 	</div>
---}}
-<div class="col-md-3" style="background-color: #F5F5F5;"></div>
 
+<div class="col-md-3" style="background-color: #F5F5F5;"></div>
+--}}
 	
 

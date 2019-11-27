@@ -1,6 +1,6 @@
 
 <div>
-	<div class="header_only" style="margin-bottom: 5px;">
+	<div class="header_only" style="border: .1px solid #ddd;">
         <p><b>Introductory Text</b></p>
 	 </div>
 	 
