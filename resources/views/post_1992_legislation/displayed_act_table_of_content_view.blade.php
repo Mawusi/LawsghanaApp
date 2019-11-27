@@ -152,7 +152,9 @@
           left: initial;
           font-size: 14px;
       }
-
+      .panel-title{
+          font-size: 14px;
+      }
 </style>
 
 @endsection

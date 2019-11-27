@@ -1,7 +1,7 @@
 
 <div>
     <div class="header_only" style="border: .1px solid #ddd;">
-        <p style="padding-top: 7px; padding-bottom: .1px;"><b>&nbsp;&nbsp;&nbsp;&nbsp;{{ $allPost1992Article['section'] }}</b></p>
+        <p style="padding-top: 7px; padding-bottom: .1px; padding-left: 16px;"><b>{{ $allPost1992Article['section'] }}</b></p>
     </div>
 
     <a class="pull-right" id="print_options" style="padding-top:2px; padding-bottom: 2px;" href="#">Print Options</a>

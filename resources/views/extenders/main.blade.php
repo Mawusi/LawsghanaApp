@@ -95,7 +95,6 @@
             }
             .navbar-default{
                 border-color: black;
-                background-color: white;
             }
             .navbar-default .navbar-nav>li>a{
                 color: black;
