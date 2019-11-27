@@ -1,4 +1,4 @@
-	<div class="col-md-3"> 
+	<div class="col-md-3" style="padding-top: 5.5em;"> 
 		<div class="panel panel-default">
 		  <div class="panel-heading">
 		    <center><p class="panel-title"><small>Filter</small></p></center>

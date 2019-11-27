@@ -151,6 +151,9 @@
           left: initial;
           font-size: 14px;
       }
+      .panel-title{
+          font-size: 14px;
+      }
 
 </style>
 
@@ -167,7 +170,7 @@
 <div class="container-fluid content-fluid"> 
   <div class="row">
         <div class="col-md-9">
-          <div class="well">
+          <div style="background-color: white;">
         @include('post_1992_legislation.post_1992_legislation_menu')
               <center><p style="font-size:18px;"><b class="small">{{ $amendedRegulationAct['title'] }}</b></p></center>
 

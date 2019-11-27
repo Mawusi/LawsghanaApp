@@ -4,7 +4,7 @@
         <p style="padding-top: 7px; padding-bottom: .1px; padding-left: 16px;"><b>Introductory Text</b></p>
 	 </div>
 	 
-	 <a id="print_options" href="#">Print & Download&raquo;</a>
+	 <a class="pull-right" id="print_options" style="padding-top:2px; padding-bottom: 3px;" href="#">Print & Download&raquo;</a>
     <div class="menu_options pull-right" style="display: none;">
         <a href="/post_1992_legislation/pdf_preamble_content/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
         <a href="/post_1992_legislation/plain_preamble_content/{{ $allPost1992Act['id'] }}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp;

@@ -149,6 +149,9 @@
           left: initial;
           font-size: 14px;
       }
+      .panel-title{
+          font-size: 14px;
+      }
 
 </style>
 
@@ -165,7 +168,7 @@
 <div class="container-fluid content-fluid">
   <div class="row">
     <div class="col-md-9">
-        <div class="well">
+        <div style="background-color: white;">
     @include('post_1992_legislation.post_1992_legislation_menu')
                   <center><p style="font-size:18px;"><b class="small">{{ $regulationAct['title'] }}</b></p></center>
 
@@ -229,7 +232,6 @@
 
                       {{-- Contents --}}
                       <div id="contentTab" class="tab-pane fade">
-                      <span style="padding: .2em;">
                         <div class="row">
                           <div class="col-md-9 table-wrapper-scroll-display" style="height: 600px;">
                               <div id="display_content"></div>

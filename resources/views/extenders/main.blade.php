@@ -37,7 +37,7 @@
                 color: black;
                 font-family: Arial;
                 font-size: 12px;
-                padding-top: 30px;
+                padding-top: 35px;
                 height: 80vh;
             }
            
@@ -94,11 +94,21 @@
             background: #ddd;
             }
             .navbar-default{
-                border-color: black;
+                /* border-color: black; */
             }
             .navbar-default .navbar-nav>li>a{
                 color: black;
                 font-size: 13px;
+            }
+            .navbar-custom {
+                background-color:white;
+                color:black;
+                border-radius:0;
+                /* border-color: black; */
+            }
+            .navbar-custom .navbar-nav > li > a {
+            color:black;
+            font-size: 12px;
             }
         </style>
         
@@ -107,14 +117,14 @@
     <!-- <body style="background-color: #F8F8F8;"> -->
     <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
         <div class="container-fluid">
-            <div class="navbar navbar-default navbar-fixed-top clearfix">
+            <div class="navbar navbar-custom navbar-fixed-top clearfix">
                 <div class="container-fluid">
                      
                      <!--logo-->
                      <div class="navbar-header">
                          <a href="/">
                             <!-- <img alt="Brand" src="{{ asset('/logo/gh_flag.png') }}" class="img-responsive" style="width:3em; padding-top: 5px;"> -->
-                            <img alt="Brand" src="{{ asset('/logo/lawsghlog.png') }}" class="img-responsive" style="width:12em; padding-top: 9px; padding-bottom:5px;">
+                            <img alt="Brand" src="{{ asset('/logo/lawsghlog.png') }}" class="img-responsive" style="width:20em; padding-top: 10px; padding-bottom:10px;padding-left:50px;">
 
                         </a>
                      </div>
@@ -130,7 +140,7 @@
                       <!--<a class="navbar-brand"><strong>Pre-1992-Legislation</strong></a>-->
                     </div>
                     
-                    <div class="collapse navbar-collapse container-fluid pull-right" style="padding-top:9px; color:red;" id="bs-example-navbar-collapse-2">
+                    <div class="collapse navbar-collapse container-fluid pull-right" style="padding-top:10px; color:red;" id="bs-example-navbar-collapse-2">
                         {{ menu('main', 'bootstrap') }}
                     </div>
                 </div>

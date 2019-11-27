@@ -38,7 +38,7 @@
 <div class="col-md-12" style="background-color: white; height:100px; margin-top:20px;"></div>
 
 <!-- for the footer -->
-<div id="footer_div" class="col-md-12" style="background-color: #004353; height:33px;">
+<div id="footer_div" class="col-md-12" style="background-color: #004353; height:37px;">
     <ul id="footer_ul">
         <li style="display: inline-block"><a style="color: #ffffff;" href="#">Who we are</a></li>&nbsp;&nbsp;|&nbsp;
         <li style="display: inline-block"><a style="color: #ffffff;" href="#">Team</a></li>&nbsp;&nbsp;|&nbsp;

@@ -23,22 +23,23 @@
         @media (min-width: 768px) {
           .navbar-nav > li > a {
             /* (80px - line-height of 27px) / 2 = 26.5px */
-            padding-top: 10px;
-            padding-bottom: 10px;
-            line-height: 10px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            line-height: 24px;
           }
         }
         .content {
-            padding: 0.1px;
+            padding: 1px;
         }
         .bg-header-color{
             background-color: #004353;
         }
         .form-group-customised{
-            margin-bottom: .1px;
+            margin-bottom: 11px;
         }
         .search-form{
-          padding-right: 5px;
+          padding-right: 15px;
+          padding-top: 10px;
       }
       .search-form .form-group {
           float: right !important;

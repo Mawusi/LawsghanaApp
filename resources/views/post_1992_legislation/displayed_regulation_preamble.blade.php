@@ -1,11 +1,10 @@
 
-<div style="margin-top: 0.1em;">
-	<div class="header_only" style="margin-bottom: 5px;">
-		<!--<p><b>{{$regulationAct['title']}}</b></p>-->
-        <p><b>Introductory Text</b></p>
+<div>
+	<div class="header_only" style="border: .1px solid #ddd;">
+        <p style="padding-top: 7px; padding-bottom: .1px; padding-left: 16px;"><b>Introductory Text</b></p>
 	 </div>
 	 
-	 <a id="print_options" href="#">Print & Download&raquo;</a>
+	 <a class="pull-right" id="print_options" style="padding-top:2px; padding-bottom: 2px;" href="#">Print & Download&raquo;</a>
     <div class="menu_options pull-right" style="display: none;">
         <a href="/post_1992_legislation/pdf/regulation/preamble/{{$regulationAct['title']}}/{{ $regulationAct['id'] }}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
         <a href="/post_1992_legislation/plain/regulation/preamble/{{ $regulationAct['id'] }}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp;
