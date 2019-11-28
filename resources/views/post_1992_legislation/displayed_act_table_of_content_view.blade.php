@@ -180,7 +180,7 @@
                     <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
                         <!--Acts -->
                         <li class="active">
-                            <a href="#tableOfContentTab" data-toggle="tab" class=" tabPaned_color_table_of_table">Table of Contents</a>
+                            <a href="#tableOfContentTab" data-toggle="tab" class="tabPaned_color_table_of_table">Table of Contents</a>
                         </li>
                         <li class="tabPanedHide_acts_content">
                             <a href="#contentTab" data-toggle="tab" class="bg-color-content">Content</a>
@@ -283,7 +283,7 @@
                         
                         <!-- ACTS EXPANDED CONTENTS -->
                         <div id="expandedTab" class="tab-pane fade">
-                        <!-- <span style="padding: .2em;"> -->
+                        <span style="padding: .2em;">
                                 <div class="row">
                                     <div class="col-md-12 expanded_view" style="background-color: #FFFFFF;">
                                         <div id="acts_expanded_view"></div> 

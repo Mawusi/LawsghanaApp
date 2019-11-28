@@ -11,7 +11,7 @@
                     ?>
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="heading{{$c}}">
-                    <p style="white-space:normal; line-height: 0.3cm;" class="panel-title"> 
+                    <p style="white-space:normal; line-height: 0.4cm;" class="panel-title"> 
                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_{{ $c }}" aria-expanded="true" aria-controls="collapse_{{$c}}"> <b class="small">{{($allPost1992Article->part == '')? 'SECTIONS':$allPost1992Article->part}}</b>
                     </a>
                     </p>
@@ -25,7 +25,7 @@
                                 <a data-scroll-to="body"
                                 data-scroll-focus="body"
                                 data-scroll-speed="400"
-                                data-scroll-offset="-60" class="content_link list-group-item" style="white-space:normal; line-height: 0.3cm;" sid="{{ $allPost1992Article->id }}"  href="/post_1992_legislation/content/{{ $allPost1992Article->id }}">
+                                data-scroll-offset="-60" class="content_link list-group-item" style="white-space:normal; line-height: 0.4cm;" sid="{{ $allPost1992Article->id }}"  href="/post_1992_legislation/content/{{ $allPost1992Article->id }}">
                                 {{ $allPost1992Article->section }}
                                 </a>
                                            

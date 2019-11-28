@@ -86,14 +86,14 @@
             padding: 0.1px;
         }
         .accordion-content {
-        height: 600px;
+        height: 500px;
         overflow-y: scroll;
         }
         .bg-header-color{
             background-color: #004353;
         }
         .bg-header-color-tabs{
-            background-color: #539bad;
+            background-color: #8DD8CA;
         }
         .form-group-customised{
             margin-bottom: .1px;
@@ -177,14 +177,14 @@
               {{-- Nav tabs --}}
               <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
                   <li class="active">
-                      <a href="#tableOfContentTab" data-toggle="tab" class="bg-header-color-tabs">Table of Contents</a>
+                      <a href="#tableOfContentTab" data-toggle="tab" class="tabPaned_color_table_of_table">Table of Contents</a>
                   </li>
                   <li class="tabPanedHide_acts_content">
-                      <a href="#contentTab" data-toggle="tab" class="bg-header-color-tabs">Content</a>
+                      <a href="#contentTab" data-toggle="tab" class="bg-color-content">Content</a>
                   </li> 
                   <!-- Expanded View -->
                   <li class="tabPanedHide_expanded_view">
-                          <a href="#expandedTab" data-toggle="tab" class="bg-header-color-tabs">Expanded View</a>
+                          <a href="#expandedTab" data-toggle="tab" class="bg-color-expanded">Expanded View</a>
                   </li>   
               </ul>
               {{-- ------------------------------------------------------End of Nav tab for the panels----------------------------------------------------------- --}}
@@ -222,7 +222,7 @@
 
                   {{-- Contents --}}
                   <div id="contentTab" class="tab-pane fade">
-                  <span style="padding: .2em;">
+                  <!-- <span style="padding: .2em;"> -->
                     <div class="row">
                       <div class="col-md-9 table-wrapper-scroll-display" style="height: 600px;">
                           <div id="display_content"></div>

@@ -35,7 +35,7 @@ $(document).ready(function(){
   });
 
   //Click to change color for Content
-  $(".content_link, .tabPanedHide_acts_content").click(function(){
+  $(".content_link, .amendments_content_link, .regulation_content_link, .amended_regulation_content_link, .tabPanedHide_acts_content, .preamble_link").click(function(){
     $('.bg-color-content').css({"backgroundColor" : "#f5f5f5"});
     $('.bg-color-content').css({"color" : "black"});
     //changes in table of content

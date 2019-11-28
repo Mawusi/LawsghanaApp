@@ -84,14 +84,14 @@
             padding: 0.1px;
         }
         .accordion-content {
-        height: 300px;
+        height: 500px;
         overflow-y: scroll;
         }
         .bg-header-color{
             background-color: #004353;
         }
         .bg-header-color-tabs{
-            background-color: #539bad;
+            background-color: #8DD8CA;
         }
         .form-group-customised{
             margin-bottom: .1px;
@@ -175,25 +175,25 @@
                   {{-- Nav tabs --}}
                   <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
                       <li class="active">
-                          <a href="#tableOfContentTab" data-toggle="tab" class="bg-header-color-tabs">Table of Contents</a>
+                          <a href="#tableOfContentTab" data-toggle="tab" class="tabPaned_color_table_of_table">Table of Contents</a>
                       </li>
                       <li class="tabPanedHide_acts_content">
-                          <a href="#contentTab" data-toggle="tab" class="bg-header-color-tabs">Content</a>
+                          <a href="#contentTab" data-toggle="tab" class="bg-color-content">Content</a>
                       </li> 
                       <!-- Expanded View -->
                       <li class="tabPanedHide_expanded_view">
-                              <a href="#expandedTab" data-toggle="tab" class="bg-header-color-tabs">Expanded View</a>
+                              <a href="#expandedTab" data-toggle="tab" class="bg-color-expanded">Expanded View</a>
                       </li> 
 
                       <!-- Amendments -->
                       <li class="tabPanedHide_amendments">
-                              <a href="#all_amendmentsTab" data-toggle="tab" class="bg-header-color-tabs">Amendments</a>
+                              <a href="#all_amendmentsTab" data-toggle="tab" class="bg-color-amendments">Amendments</a>
                       </li>
                       <li class="tabPanedHide_amendments_table">
-                          <a href="#amended_table_of_Content_Tab" data-toggle="tab" class="bg-header-color-tabs">Amendments Table of Contents</a>
+                          <a href="#amended_table_of_Content_Tab" data-toggle="tab" class="">Amendments Table of Contents</a>
                       </li>
                       <li class="tabPanedHide_amendments_content">
-                              <a href="#amendmentcontentTab" data-toggle="tab" class="bg-header-color-tabs">Amended Content</a>
+                              <a href="#amendmentcontentTab" data-toggle="tab" class="">Amended Content</a>
                       </li>  
                   </ul>
                   {{-- ------------------------------------------------------End of Nav tab for the panels----------------------------------------------------------- --}}
