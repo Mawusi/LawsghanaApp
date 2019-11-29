@@ -18,11 +18,12 @@
 style="padding-left:1em;"
 --}}
 
-    <div class="container-fluid content">
-        <div class="row">
-            <div class="col-md-9">
-                <div style="background-color: white;">
-            @include('post_1992_legislation.post_1992_legislation_menu')                    
+<div class="container-fluid content">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="shadow-background">
+                <div style="padding: 15px;">
+                @include('post_1992_legislation.post_1992_legislation_menu')                    
                     <div class="row">
                         <div class="col-md-9">
                             <div class="list-group">
@@ -84,10 +85,11 @@ style="padding-left:1em;"
                     </div>
                 </div>
             </div>
-                        <!-- for the ads -->
-                        @include('extenders.ads')
         </div>
+                    <!-- for the ads -->
+                    @include('extenders.ads')
     </div>
+</div>
 
 @endsection
 

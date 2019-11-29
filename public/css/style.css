@@ -45,7 +45,7 @@ overflow-y: auto;
 .table-wrapper-scroll-display {
   background-color: #FFFFFF;
   height: 400px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .expanded_view {

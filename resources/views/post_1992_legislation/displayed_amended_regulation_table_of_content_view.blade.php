@@ -30,8 +30,8 @@
         @media (min-width: 768px) {
           .navbar-nav > li > a {
             /* (80px - line-height of 27px) / 2 = 26.5px */
-            padding-top: 10px;
-            padding-bottom: 10px;
+            padding-top: 14px;
+            padding-bottom: 14px;
             line-height: 10px;
           }
         }
@@ -87,7 +87,7 @@
         }
         .accordion-content {
         height: 500px;
-        overflow-y: scroll;
+        overflow-y: auto;
         }
         .bg-header-color{
             background-color: #004353;
@@ -99,7 +99,8 @@
             margin-bottom: .1px;
         }
         .search-form{
-          padding-right: 5px;
+          padding-right: 10px;
+          padding-top: 3px;
       }
       .search-form .form-group {
           float: right !important;
@@ -154,6 +155,10 @@
       .panel-title{
           font-size: 14px;
       }
+      .shadow-background{
+        box-shadow: 0 1px 5px #e0e0e0;
+        background-color: #FFFFFF;
+      }
 
 </style>
 
@@ -170,7 +175,8 @@
 <div class="container-fluid content-fluid"> 
   <div class="row">
         <div class="col-md-9">
-          <div style="background-color: white;">
+          <div class="shadow-background">
+          <div style="padding: 15px;">
         @include('post_1992_legislation.post_1992_legislation_menu')
               <center><p style="font-size:18px;"><b class="small">{{ $amendedRegulationAct['title'] }}</b></p></center>
 
@@ -271,7 +277,7 @@
                   </div>
                   {{-- -------------------------------------------------------End of Expanded View Content---------------------------------------------------------------- --}}
                   </div>
-
+          </div>
               </div> 
         </div>
         <!-- for the ads -->

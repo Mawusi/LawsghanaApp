@@ -19,7 +19,8 @@
     <div class="container-fluid content">
         <div class="row">
             <div class="col-md-9">
-                <div style="background-color: white;">
+                <div class="shadow-background">
+                <div style="padding: 15px;">
             @include('post_1992_legislation.post_1992_legislation_menu')
                 <div class="row">
                     <div class="col-md-9">
@@ -58,6 +59,7 @@
                     </div> 
                     @include('post_1992_legislation.all_amendments_only_container_main')
                 </div> 
+                </div>
                 </div>
             </div>
             @include('extenders.ads')

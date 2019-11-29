@@ -1,5 +1,5 @@
 .navbar {
-          min-height: 1px;
+         min-height: 1px;
         }
         .nav>li>a {
             position: relative;
@@ -23,9 +23,9 @@
         @media (min-width: 768px) {
           .navbar-nav > li > a {
             /* (80px - line-height of 27px) / 2 = 26.5px */
-            padding-top: 15px;
-            padding-bottom: 15px;
-            line-height: 24px;
+            padding-top: 14px;
+            padding-bottom: 14px;
+            line-height: 10px;
           }
         }
         .content {
@@ -35,11 +35,11 @@
             background-color: #004353;
         }
         .form-group-customised{
-            margin-bottom: 11px;
+            margin-bottom: .1px;
         }
         .search-form{
-          padding-right: 15px;
-          padding-top: 10px;
+          padding-right: 10px;
+          padding-top: 3px;
       }
       .search-form .form-group {
           float: right !important;
@@ -90,4 +90,8 @@
           color: #3596e0;
           left: initial;
           font-size: 14px;
+      }
+      .shadow-background{
+        box-shadow: 0 1px 5px #e0e0e0;
+        background-color: #FFFFFF;
       }

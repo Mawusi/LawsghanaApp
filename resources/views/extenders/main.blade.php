@@ -33,11 +33,11 @@
         
         <style>
             html, body {
-                background-color: #fff;
+                background-color: #f8f8f8;
                 color: black;
                 font-family: Arial;
                 font-size: 12px;
-                padding-top: 35px;
+                padding-top: 40px;
                 height: 80vh;
             }
            
@@ -105,6 +105,7 @@
                 color:black;
                 border-radius:0;
                 /* border-color: black; */
+                box-shadow: 0 1px 5px #e0e0e0;
             }
             .navbar-custom .navbar-nav > li > a {
             color:black;
@@ -140,7 +141,7 @@
                       <!--<a class="navbar-brand"><strong>Pre-1992-Legislation</strong></a>-->
                     </div>
                     
-                    <div class="collapse navbar-collapse container-fluid pull-right" style="padding-top:10px; color:red;" id="bs-example-navbar-collapse-2">
+                    <div class="collapse navbar-collapse container-fluid pull-right" style="padding-top:10px;" id="bs-example-navbar-collapse-2">
                         {{ menu('main', 'bootstrap') }}
                     </div>
                 </div>
