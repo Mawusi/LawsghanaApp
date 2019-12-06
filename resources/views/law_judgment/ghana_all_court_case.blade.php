@@ -90,9 +90,11 @@
             <div class="row content">
                 <div class="col-md-9 judgement_display" style="height: 600px;">
                     <div id="display_content">
-                        <div class="header_only" style="margin-bottom: 5px;">
-                            <p><b>{{ $allGhanaLaw['case_title'] }}</b></p>
-                        </div>
+                        
+                            <div class="header_only" style="margin-bottom: 5px;">
+                                <p><b>{{ $allGhanaLaw['case_title'] }}</b></p>
+                            </div>
+                            
 
                         <a id="print_options" href="#">Print & Download&raquo;</a>
                             <div class="menu_options pull-right" style="display: none;">
@@ -103,8 +105,14 @@
 
                         <div class="content">
                             <!-- Court Name -->
-                            <center><h5><b>{!! $allGhanaLaw['court_name'] !!}</b></h5></center><br>
-
+                            <center>
+                                <ul>
+                                    <li style="list-style: none;">
+                                    <h4><b>{!! $allGhanaLaw['court_name'] !!}</b></h4><br>
+                                    </li>
+                                </ul>
+                            </center>
+                            
                             <!-- Case Title -->
                             <center>
                                 <b>
@@ -114,7 +122,8 @@
                                 </b>
                             </center>
                             <br>
-                            
+
+                            <div style="padding: 15px;">
                                 <div class="row">
                                         <h5><b style="color:blue;">DATE:&nbsp;</b>
                                         <b style="color:black;">{{$allGhanaLaw['date']}}</b></h5>
@@ -131,10 +140,9 @@
                                 
                                 <div class="row">
                                     <h5><b style="color:blue;">COUNSELLORS:&nbsp;</b>
-                                    <b style="color:black;">{{$allGhanaLaw['counsellors']}}</b></h5>
+                                    <b style="color:black;">{!! $allGhanaLaw['counsellors'] !!}</b></h5>
                                 </div>
-                            
-                            
+                            </div>
                             <hr>
                             
                             {{--Body--}}   

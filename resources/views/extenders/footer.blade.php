@@ -40,10 +40,10 @@
 <!-- for the footer -->
 <div id="footer_div" class="col-md-12 bg-header-color" style="height:37px;">
     <ul id="footer_ul">
-        <li style="display: inline-block"><a style="color: #ffffff;" href="#">Who we are</a></li>&nbsp;&nbsp;|&nbsp;
-        <li style="display: inline-block"><a style="color: #ffffff;" href="#">Team</a></li>&nbsp;&nbsp;|&nbsp;
-        <li style="display: inline-block"><a style="color: #ffffff;" href="#">Services</a></li>&nbsp;&nbsp;|&nbsp;
-        <li style="display: inline-block"><a style="color: #ffffff;" href="#">Contact Us</a></li>&nbsp;&nbsp;|&nbsp;
-        <li style="display: inline-block"><a style="color: #ffffff;" href="#">Pricing</a></li>
+        
+        @foreach($footer_notes as $caption)
+        |&nbsp;&nbsp;<li style="display: inline-block"><a style="color: #ffffff;" href="/caption/{{$caption->name}}/{{$caption->id}}">{{ $caption->name }}</a></li>&nbsp;&nbsp;
+        @endforeach
+        
     </ul>
 </div>

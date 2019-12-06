@@ -9,6 +9,7 @@ use App\GhLawJudgmentGroup;
 use App\ForeignLawJudgment;
 use App\Country;
 use PDF;
+use App\FooterNote;
 
 class JudgementController extends Controller
 {
@@ -16,7 +17,8 @@ class JudgementController extends Controller
     public function index(){
         $ghlawjudgments = GhLawJudgment::all();
         $ghcategories   = GhLawJudgmentCategory::all();
-        return view('law_judgment.ghana_law_judgments', compact('ghlawjudgments', 'ghcategories'));
+        $footer_notes           = FooterNote::all();
+        return view('law_judgment.ghana_law_judgments', compact('footer_notes','ghlawjudgments', 'ghcategories'));
     }
     
     
@@ -71,7 +73,8 @@ class JudgementController extends Controller
             ])->toArray()[0];
 
         $allGhanaLaws = GhLawJudgment::all();
-        return view('law_judgment.ghana_all_court_case', compact('allGhanaLaws', 'allGhanaLaw'));
+        $footer_notes           = FooterNote::all();
+        return view('law_judgment.ghana_all_court_case', compact('footer_notes','allGhanaLaws', 'allGhanaLaw'));
     }
 
 
@@ -114,7 +117,8 @@ class JudgementController extends Controller
     public function supreme_court($name){
         $supremeCourts = GhLawJudgment::where(['gh_law_judgment_group_name' => $name])->get();
         $supremecategories   = GhLawJudgmentCategory::all();
-        return view('law_judgment.law_supreme_court', compact('supremeCourts', 'supremecategories'));
+        $footer_notes           = FooterNote::all();
+        return view('law_judgment.law_supreme_court', compact('footer_notes','supremeCourts', 'supremecategories'));
     }
 
     //SUPREME COURT FILTERING
@@ -146,7 +150,8 @@ class JudgementController extends Controller
             ])->toArray()[0];
 
         $supremeCourts = GhLawJudgment::where(['gh_law_judgment_group_name'=> $id])->get();
-        return view('law_judgment.law_supreme_court_view', compact('supremeCourt', 'supremeCourts'));
+        $footer_notes           = FooterNote::all();
+        return view('law_judgment.law_supreme_court_view', compact('footer_notes','supremeCourt', 'supremeCourts'));
     }
 
     // public function supreme_court_cases_view($id){
@@ -160,7 +165,8 @@ class JudgementController extends Controller
     public function high_court($name){
         $highCourts = GhLawJudgment::where(['gh_law_judgment_group_name' => $name])->get();
         $highcategories   = GhLawJudgmentCategory::all();
-        return view('law_judgment.law_high_court', compact('highCourts', 'highcategories'));
+        $footer_notes           = FooterNote::all();
+        return view('law_judgment.law_high_court', compact('footer_notes','highCourts', 'highcategories'));
     }
 
     //HIGH COURT FILTERING
@@ -192,7 +198,8 @@ class JudgementController extends Controller
             ])->toArray()[0];
 
         $highCourts = GhLawJudgment::where(['gh_law_judgment_group_name' => $id])->get();
-        return view('law_judgment.law_high_court_view', compact('highCourt', 'highCourts'));
+        $footer_notes           = FooterNote::all();
+        return view('law_judgment.law_high_court_view', compact('footer_notes','highCourt', 'highCourts'));
     }
 
     // public function high_court_cases_view($id){
@@ -206,7 +213,8 @@ class JudgementController extends Controller
     public function court_of_appeal($name){
         $courtOfAppeals = GhLawJudgment::where(['gh_law_judgment_group_name' => $name])->get();
         $courtOfAppealcategories   = GhLawJudgmentCategory::all();
-        return view('law_judgment.law_court_of_appeal', compact('courtOfAppeals', 'courtOfAppealcategories'));
+        $footer_notes           = FooterNote::all();
+        return view('law_judgment.law_court_of_appeal', compact('footer_notes','courtOfAppeals', 'courtOfAppealcategories'));
     }
 
     //COURT OF APPEAL FILTERING
@@ -238,7 +246,8 @@ class JudgementController extends Controller
                 ])->toArray()[0];
 
         $courtOfAppeals = GhLawJudgment::where(['gh_law_judgment_group_name' => $id])->get();
-        return view('law_judgment.law_court_of_appeal_view', compact('courtOfAppeal', 'courtOfAppeals'));
+        $footer_notes           = FooterNote::all();
+        return view('law_judgment.law_court_of_appeal_view', compact('footer_notes','courtOfAppeal', 'courtOfAppeals'));
     }
 
     // public function court_of_appeal_cases_view($id){

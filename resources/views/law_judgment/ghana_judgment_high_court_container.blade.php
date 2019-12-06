@@ -22,7 +22,7 @@
 
 					<hr>
 					@include('extenders.case_law_main_search')
-					{{--<input class="btn btn-primary btn-xs" type="button" name="go" value="Search" id="high_court_filter">--}
+					{{--<input class="btn btn-primary btn-xs" type="button" name="go" value="Search" id="high_court_filter">--}}
 					<br>
 				</div>
 				</div>
