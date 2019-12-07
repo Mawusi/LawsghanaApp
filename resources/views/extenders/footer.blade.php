@@ -38,11 +38,11 @@
 <div class="col-md-12" style="background-color: white; height:100px; margin-top:20px;"></div>
 
 <!-- for the footer -->
-<div id="footer_div" class="col-md-12 bg-header-color" style="height:37px;">
+<div id="footer_div" class="col-md-12 bg-header-color" style="height:36px;">
     <ul id="footer_ul">
         
-        @foreach($footer_notes as $key_caption)
-        |&nbsp;&nbsp;<li style="display: inline-block"><a style="color: #ffffff;" href="/caption/{{$key_caption->name}}/{{$key_caption->id}}">{{ $key_caption->name }}</a></li>&nbsp;&nbsp;
+        @foreach($footer_notes as $caption)
+        |&nbsp;&nbsp;<li style="display: inline-block"><a style="color: #ffffff;" href="/caption/{{$caption->name}}/{{$caption->id}}">{{ $caption->name }}</a></li>&nbsp;&nbsp;
         @endforeach
         
     </ul>
