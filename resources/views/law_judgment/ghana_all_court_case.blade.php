@@ -228,8 +228,8 @@
                         
                                 <div class="judgement_display" style="height: 600px;">
                                     <div id="display_content">
-                                            <div class="header_only" style="margin-bottom: 5px;">
-                                                <p><b>{{ $allGhanaLaw['case_title'] }}</b></p>
+                                            <div class="header_only" style="margin-bottom: 5px;border: .1px solid #ddd;">
+                                                <p style="padding-top: .1px; padding-bottom: 0px; padding-left: 16px; padding-right: 16px;"><b>{{ $allGhanaLaw['case_title'] }}</b></p>
                                             </div>
                                             
 
