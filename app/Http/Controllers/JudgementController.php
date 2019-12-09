@@ -23,7 +23,6 @@ class JudgementController extends Controller
     
     
     //ALL GHANA LAW JUDGMENT FILTERING
-    
     public function all_judgment_filter($year, $category){
         
         $bool = false;

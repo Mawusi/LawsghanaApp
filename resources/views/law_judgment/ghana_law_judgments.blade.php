@@ -20,34 +20,38 @@
     <div class="container-fluid content">
         <div class="row">
             <div class="col-md-9">
+                    <div class="shadow-background">
+                        <div style="padding: 15px;">
             @include('law_judgment.ghana_judgement_menu')
-                <div class="row">
-                    <div class="col-md-9">
-                        <div class="list-group">
-                            <table class="table table-striped table-condensed" id="datatable">
-                                <thead>
-                                    <tr>
-                                        <th>Case Laws Title</th>
-                                        <th>Ref No.</th>
-                                        <th>Year</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($ghlawjudgments as $ghlawjudgment)
-                                    <tr>
-                                        <td>
-                                        <a href="/judgement/Ghana/{{ $ghlawjudgment->gh_law_judgment_group_name }}/{{ $ghlawjudgment->id}}"><li style="list-style: none;">{{ $ghlawjudgment->case_title }}</li></a>
-                                        </td>
-                                        <td>{{ $ghlawjudgment->reference_number }}</td>
-                                        <td>{{ $ghlawjudgment->year }}</td>
-                                    </tr>
-                                @endforeach 
-                                </tbody>
-                            </table>
-                        </div>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="list-group">
+                                        <table class="table table-striped table-condensed" id="datatable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Case Laws Title</th>
+                                                    <th>Ref No.</th>
+                                                    <th>Year</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($ghlawjudgments as $ghlawjudgment)
+                                                <tr>
+                                                    <td>
+                                                    <a href="/judgement/Ghana/{{ $ghlawjudgment->gh_law_judgment_group_name }}/{{ $ghlawjudgment->id}}"><li style="list-style: none;">{{ $ghlawjudgment->case_title }}</li></a>
+                                                    </td>
+                                                    <td>{{ $ghlawjudgment->reference_number }}</td>
+                                                    <td>{{ $ghlawjudgment->year }}</td>
+                                                </tr>
+                                            @endforeach 
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- for the filter -->
+                                @include('law_judgment.ghana_all_judgment_container_main')
+                            </div>
                     </div>
-                    <!-- for the filter -->
-                    @include('law_judgment.ghana_all_judgment_container_main')
                 </div>
 
             </div>

@@ -1,7 +1,7 @@
-	<div class="col-md-3">
+	<div class="col-md-3" style="padding-top: 5.5em;">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-			<p class="panel-title"><small>Filters</small></p>
+			<center><p class="panel-title"><small>Filter</small></p></center>
 			</div>
 		
 			<div class="panel-body">

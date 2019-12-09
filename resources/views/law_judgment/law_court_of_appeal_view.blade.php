@@ -101,7 +101,49 @@
                                 <a href="/judgement/print_preview/{{$courtOfAppeal['id']}}" target="_blank"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print Preview</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </div>
 
-                        <div class="content">	
+                        <div class="content">
+                            <!-- Court Name -->
+                                <center>
+                                    <ul>
+                                        <li style="list-style: none;">
+                                        <h4><b>{!! $courtOfAppeal['court_name'] !!}</b></h4><br>
+                                        </li>
+                                    </ul>
+                                </center>
+                                
+                                <!-- Case Title -->
+                                <center>
+                                    <b>
+                                        <h5 style="color:blue;"><b>{!! $courtOfAppeal['case_title_1'] !!}</b></h5>
+                                        <label>vs.</label>
+                                        <h5 style="color:blue;"><b>{!! $courtOfAppeal['case_title_2'] !!}</b></h5>
+                                    </b>
+                                </center>
+                                <br>
+    
+                                <div style="padding: 15px;">
+                                    <div class="row">
+                                            <h5><b style="color:blue;">DATE:&nbsp;</b>
+                                            <b style="color:black;">{{$courtOfAppeal['date']}}</b></h5>
+                                    </div>
+                                    <div class="row">
+                                        <h5><b style="color:blue;">CASE NO:&nbsp;</b>
+                                        <b style="color:black;">{{$courtOfAppeal['reference_number']}}</b></h5>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <h5><b style="color:blue;">JUDGES:&nbsp;</b>
+                                        <b style="color:black;">{{$courtOfAppeal['coram']}}</b></h5>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <h5><b style="color:blue;">LAWYERS:&nbsp;</b>
+                                        <b style="color:black;">{!! $courtOfAppeal['counsellors'] !!}</b></h5>
+                                    </div>
+                                </div>
+                                <h4><b style="color:blue;">JUDGEMENT</b></h4>
+                                <hr>
+                        {{-- Body	 --}}
                         <p>{!! $courtOfAppeal['content'] !!}</p>
                         </div>
                     </div> 
@@ -138,7 +180,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="embed-responsive embed-responsive-4by3">
-                            <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>        
+                            <iframe width="420" height="345" src=""></iframe>        
                             </div>		  
                         </div>
                         </div>
