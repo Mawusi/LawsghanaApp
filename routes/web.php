@@ -446,7 +446,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 |->North America /judgement/all-countries/4/North America
 |->South America /judgement/all-countries/5/South America
 |
-|
+|https://www.pair.com/support/kb/how-to-use-jquery-to-generate-modal-pop-up-when-clicked/
 |
 |2.
 |->High Court (Commerical) route: /judgement/2/High-Court

@@ -9,6 +9,14 @@ $(document).ready(function(){
     var gsid = 0; 
     var psid = 0, nsid = 0;
 
+    $(".open").on("click", function() {
+        $(".popup-overlay").addClass("active");
+      });
+
+    $(".close").on("click", function() {
+        $(".popup-overlay").removeClass("active");
+    });
+
   $('.previous_next_hidden_show').hide();
   $('.tabPanedHide_amendments').hide();
   $('.tabPanedHide_amendments_table').hide();

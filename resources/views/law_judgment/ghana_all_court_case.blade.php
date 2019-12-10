@@ -150,57 +150,19 @@
             background-color: #FFFFFF;
             }
             
+            .popup-overlay {
+            /*Hides pop-up when there is no "active" class*/
+            visibility: hidden;
+            position: absolute;
+            width: 80%;
+            left: 1.5%;
+            }
 
-            .overlay {
-  position: absolute;
-  top: 0;
-  bottom: 10;
-  left: 0;
-  right: 20;
-  /* background: rgba(0, 0, 0, 0.7); */
-  transition: opacity 500ms;
-  visibility: hidden;
-  opacity: 0;
-}
-.overlay:target {
-  visibility: visible;
-  opacity: 1;
-}
-
-.popup {
-  margin: 5px auto;
-  padding-top:70px;
-  padding-bottom:50px;
-  /* background: #fff; */
-  /* border-radius: 5px; */
-  width: 100%;
-  position: relative;
-  transition: all 5s ease-in-out;
-}
-
-.popup h2 {
-  margin-top: 10;
-  color: #333;
-  font-family: Tahoma, Arial, sans-serif;
-}
-.popup .close {
-  position: absolute;
-  top: 77px;
-  right: 10px;
-  transition: all 200ms;
-  font-size: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #004353;
-}
-.popup .close:hover {
-  color: #004353;
-}
-.popup .content {
-  max-height: 40%;
-  overflow: auto;
-}
-
+            .popup-overlay.active {
+            /*displays pop-up when "active" class is present*/
+            visibility: visible;
+            text-align: center;
+            }
     </style>
 
 @endsection
@@ -219,20 +181,18 @@
                     <div class="shadow-background">
                         <div style="padding: 15px;">
                                 @include('law_judgment.ghana_judgement_menu')
-                            
+                                
                                 <div class="text-right" style="margin-bottom: 5px;">
-                                    <a href="#popup1" class="btn btn-default btn-xs">
+                                    <button class="btn btn-default btn-xs open">
                                             <span class="glyphicon glyphicon-tasks"></span> Filter
-                                    </a>
+                                    </button>
                                 </div>
-                        
+                    
                                 <div class="judgement_display" style="height: 600px;">
                                     <div id="display_content">
                                             <div class="header_only" style="margin-bottom: 5px;border: .1px solid #ddd;">
                                                 <p style="padding-top: .1px; padding-bottom: 0px; padding-left: 16px; padding-right: 16px;"><b>{{ $allGhanaLaw['case_title'] }}</b></p>
                                             </div>
-                                            
-
                                         <a class="pull-right" id="print_options" href="#">Print & Download&nbsp;</a>
                                             <div class="menu_options pull-right" style="display: none;">
                                                 <a href="/judgement/pdf_view/{{ $allGhanaLaw['case_title'] }}/{{$allGhanaLaw['id']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
@@ -333,19 +293,9 @@
                 --}}
                 <!-- for the ads -->
                 <div class="col-md-3">
-                    {{-- <div id="popup1" class="overlay">
-                            <div class="popup">
-                                <h2>Here i am</h2>
-                                <a class="close" href="#">&times;</a>
-                                <div class="content">
-                                    Thank to pop me out of that button, but now i'm done so you can close this window.
-                                </div>
-                            </div>
-                    </div> --}}
-                    <div id="popup1" class="overlay">
-                            <div class="popup">
-                                <a class="close" href="#">&times;</a>
-                                <div class="panel panel-default">
+                    <div class="popup-overlay" style="padding-top: 75px;">
+                            <div class="panel panel-default">
+                                    <a class="close" href="#">&times;</a>
                                     <div class="panel-heading"><center><p class="panel-title"><small>Quick Look on Case Laws</small></p></center></div>
                                         <div class="panel-body">
                                             <center>
@@ -353,7 +303,7 @@
                                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <small>Preview Case Laws</small> <span class="caret"></span>
                                                 </button>
-                                                <ul class="dropdown-menu scroll-view-judgement dropdown-menu-right" style="width: 600px;">
+                                                <ul class="dropdown-menu scroll-view-judgement dropdown-menu-right" style=" height: 370px; width: 600px;">
                                                     @foreach($allGhanaLaws as $allGhanaLaw) 
                                                     <!-- <li><a class="view_all_section_link" href="/judgement/all-cases/{{ $allGhanaLaw->id}}">{{$allGhanaLaw->case_title}}</a></li> -->
                                                     <li><a class="alt_section_link" href="/judgement/Ghana/{{$allGhanaLaw->gh_law_judgment_group_name}}/{{ $allGhanaLaw->id}}">{{$allGhanaLaw->case_title}}</a></li>
@@ -361,13 +311,13 @@
                                                 </ul>
                                             </div>
                                             </center>
-                                            @include('extenders.case_law_main_search')
+                                            <br>
+                                            <input style="padding: 15px;" class="form-control" type="text" placeholder="Keyword Search" aria-label="Search">
                                         </div>
-                                </div>
-                            </div>
+                            </div>    
                     </div>
                 </div>
-            {{-- @include('extenders.ads') --}}
+
             </div>
         </div>         
 @endsection
