@@ -11,7 +11,7 @@
           
           <div class="dropdown hidden">
               <button class="btn btn-sm btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Related Acts
+                Related
                 <span class="caret"></span>
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -65,14 +65,15 @@
                       
                       <!-- 2. only amendments -->
                       @elseif($amendedcount > 0)
-                      <li><a class="all_amendments_link" id="all_amendments_link_toggle" href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_amended_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><span class="small">Amendments</span></a></li>
-
+                        <li><a class="all_amendments_link" id="all_amendments_link_toggle" href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_amended_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><span class="small">Amendments</span></a></li>
+                      
                       <!-- 3. only regulations -->
                       @elseif($regulationcount > 0)
-                      <li><a class="all_regulations_link" id="all_regulations_link_toggle" href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_regulations_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><span class="small">Regulations</span></a></li>
+                        <li><a class="all_regulations_link" id="all_regulations_link_toggle" href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_regulations_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><span class="small">Regulations</span></a></li>
                   
                       @else
                       <!--None-->
+                      
                       @section('scripts')
                         <script>
                         $( ".no_list" ).hide();

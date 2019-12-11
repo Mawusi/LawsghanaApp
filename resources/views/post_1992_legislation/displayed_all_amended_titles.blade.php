@@ -1,4 +1,3 @@
-
 <table class="table table-striped table-condensed" id="amend_datatable">
     <thead>
         <tr>
