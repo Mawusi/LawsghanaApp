@@ -1,4 +1,5 @@
 
+{{--
 <div class="row">
 	        <div class="col-md-12">
 				<div class="input-group">
@@ -10,3 +11,6 @@
 				</div>       
 			</div>
 </div>
+--}}
+
+<input style="padding: 15px;" class="form-control" type="text" placeholder="Keyword Search" aria-label="Search">
