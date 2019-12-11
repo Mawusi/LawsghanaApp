@@ -234,7 +234,17 @@
                                     <br>
                                     
                                 <a class="preamble_link" id="preamble_link_toggle" href="/post_1992_legislation/preamble/{{ $allPost1992Act['id'] }}">
-                                    <p>Introductory Text</p>
+                                    
+                                    @if($allPost1992Act['preamble'] != null)
+                                        <p class="preamble_hide">Introductory Text</p>
+                                        @else
+                                            @section('scripts')
+                                                <script>
+                                                $( ".preamble_hide" ).hide();
+                                                </script>
+                                            @endsection
+                                            
+                                    @endif
                                 </a>
                                         <div class="accordion-content">
                                             @include('post_1992_legislation.displayed_parts_sections')
