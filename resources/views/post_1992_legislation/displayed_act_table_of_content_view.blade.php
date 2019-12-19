@@ -160,6 +160,7 @@
         box-shadow: 0 1px 5px #e0e0e0;
         background-color: #FFFFFF;
       }
+      
 </style>
 
 @endsection

@@ -146,6 +146,7 @@ Route::get('/pre_1992_legislation','Pre1992Controller@index');//display all acts
 
 //POST_1992_LEGISLATION
 //For all Post Legislation
+Route::get('/keyword-search','Post1992Controller@keyword_search');
 Route::get('/post_1992_legislation','Post1992Controller@index');//display all acts
     Route::get('/post_1992_legislation/filter/{year}/{category}','Post1992Controller@all_post_1992_legislation_filter'); //all post-1992 filtering
     Route::get('/post_1992_legislation/preamble/{id}','Post1992Controller@post_1992_legislation_preamble');//display act preamble
@@ -445,10 +446,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 |->Europe /judgement/all-countries/3/Europe
 |->North America /judgement/all-countries/4/North America
 |->South America /judgement/all-countries/5/South America
-|
+|https://madewithlove.be/how-to-integrate-elasticsearch-in-your-laravel-app-2019-edition/
 |https://www.pair.com/support/kb/how-to-use-jquery-to-generate-modal-pop-up-when-clicked/
-|
+|https://scotch.io/tutorials/build-search-functionality-with-laravel-scout-and-vue-js
+https://www.expertsphp.com/highlight-keywords-in-search-results-with-laravel/
+https://www.youtube.com/watch?v=JvFNpddspMM......sitemap
+
+https://www.itsolutionstuff.com/post/jquery-highlight-search-text-in-div-using-highlight-js-with-exampleexample.html
 |2.
+
+https://www.jqueryscript.net/tags.php?/search/
 |->High Court (Commerical) route: /judgement/2/High-Court
 |->High Court (Fast Track) route: /judgement/4/Circuit-Court
 |->High Court (Human Right) route: /judgement/5/District-Court

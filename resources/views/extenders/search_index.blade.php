@@ -1,6 +1,6 @@
-@extends('extenders.plain_extender')
+@extends('extenders.main')
 
-@section('title', 'Plain View Mode')
+@section('title', 'Search Results')
 
 @section('assets')
 <style type="text/css">
@@ -55,23 +55,25 @@
 
 @section('content')
 
-            <div class="container">
-                <center><h3><b>{{ $allPost1992Act['title'] }}</b></h3></center>
-            </div>
-            
-            <br>
-            
-            <div class="container">	
-                <h4 style="color:blue;">Preamble</h4><p>{!! $allPost1992Act['preamble'] !!}</p>
-                <hr>
-                @foreach($allPost1992Articles as $allPost1992Article)
-                    
-                        <h4>{{$allPost1992Article->part }}</h4>
-                        <h4 style="color: blue;">{{$allPost1992Article->section }}</h4>
-                        {!! $allPost1992Article->content !!}
-                        <hr><br>
-
-                @endforeach
-            </div>  
+    {{-- <div class="container">
+        <center><h3><b>{{ $allPost1992Act['title'] }}</b></h3></center>
+    </div> --}}
+    <div class="container">
+        <u><h5><b>Searched Results</b></h5></u>
+    </div>
+    <br>
     
-@endsection    
+    <div class="container">	                
+            @foreach ($posts as $post )
+                <h4>{{$post->part }}</h4>
+                <h4 style="color:blue;">{{ $post->section }}</h4>
+                {!! $post->content !!}<hr><br>
+            @endforeach
+            {{-- <div class="col-md-12">    
+                <center>{!! $posts->links() !!}</center>
+            </div> --}}
+    </div> 
+         
+@endsection  
+
+

@@ -19,6 +19,17 @@ use App\FooterContent;
 
 class Post1992Controller extends Controller
 {
+    public function keyword_search(Request $request){
+        $footer_notes           = FooterNote::all();
+        $query = $request->get('q');
+        $posts = Post1992Article::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")
+        ->orderBy('section', 'ASC')->get();
+
+        if(count($posts) > 0)
+            return view('extenders.search_index', compact('posts','footer_notes'));
+        else return view ('extenders.search_not_found');
+    }
+
     //Display all Acts
     public function index(){
         $allPost1992Acts        = Post1992Act::all();

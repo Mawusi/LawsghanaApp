@@ -14,3 +14,14 @@
 --}}
 
 <input style="padding: 15px;" class="form-control" type="text" placeholder="Keyword Search" aria-label="Search">
+{{-- <div class="input-group">
+	<input type="search" class="form-control search" placeholder="Keyword search">
+	<span class="input-group-btn">
+	  <button class="btn btn-default" type="button">Go!</button>
+	</span>
+</div> --}}
+
+{{-- <input type="text" id="keyword_search" placeholder="Keyword search"> --}}
+
+{{-- <input type="text" id="searchtxt" />
+  <input type="button" value="search" onClick="replaceText();" id="highlightButton" /> --}}

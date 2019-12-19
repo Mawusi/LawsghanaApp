@@ -13,7 +13,7 @@
         </div>
     </div>
 
-    <div class="content">
+    <div class="content">            
         <p>{!! $allPost1992Article['content'] !!}</p>
     </div>
 

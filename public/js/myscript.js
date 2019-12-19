@@ -3,9 +3,6 @@
 // TOGGLE DISPLAY BETWEEN REGULATION PREAMBLE AND REGULATION CONTENT
 $(document).ready(function(){
 
-    // document.getElementById('#section_id').click();
-    // $('#titleee').find('span').trigger('click');
-
     var gsid = 0; 
     var psid = 0, nsid = 0;
 
