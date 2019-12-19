@@ -20,14 +20,22 @@ use App\FooterContent;
 class Post1992Controller extends Controller
 {
     public function keyword_search(Request $request){
-        $footer_notes           = FooterNote::all();
-        $query = $request->get('q');
-        $posts = Post1992Article::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")
-        ->orderBy('section', 'ASC')->get();
+        $footer_notes   = FooterNote::all();
+        $query          = $request->get('q');
 
-        if(count($posts) > 0)
-            return view('extenders.search_index', compact('posts','footer_notes'));
-        else return view ('extenders.search_not_found');
+        $posts          = Post1992Article::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('post_act','LIKE', "%$query%")
+                                ->orderBy('post_act', 'ASC')->get();
+        $regulations    = RegulationArticle::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('regulation_title','LIKE', "%$query%")
+                                ->orderBy('regulation_title', 'ASC')->get();
+        $amends         = AmendedArticle::where('section', 'LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('act_title','LIKE', "%$query%")
+                                ->orderBy('act_title', 'ASC')->get();
+        $amends_regs    = AmendRegulationArticle::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('title','LIKE', "%$query%")
+                                ->orderBy('title', 'ASC')->get();
+
+        if(count($posts) > 0 or count($regulations) > 0 or count($amends) > 0 or count($amends_regs) > 0 )
+            return view('extenders.search_index', compact('posts','regulations', 'amends','amends_regs','footer_notes'));
+        else 
+            return view ('extenders.search_not_found', compact('footer_notes'));
     }
 
     //Display all Acts

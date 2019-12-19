@@ -61,13 +61,36 @@
     <div class="container">
         <u><h5><b>Searched Results</b></h5></u>
     </div>
-    <br>
     
     <div class="container">	                
             @foreach ($posts as $post )
-                <h4>{{$post->part }}</h4>
-                <h4 style="color:blue;">{{ $post->section }}</h4>
-                {!! $post->content !!}<hr><br>
+                <h5 style="color:blue;"><b>{{ $post->post_act }}</b></h5>
+                <h5>{{$post->part }}</h5>
+                <h5>{{ $post->section }}</h5>
+                {!!$post->content!!}
+                <hr>
+            @endforeach
+            
+            @foreach ($regulations as $regulation )
+                <h5 style="color:blue;"><b>{{ $regulation->regulation_title }}</b></h5>
+                <h5>{{$regulation->part }}</h5>
+                <h5>{{ $regulation->section }}</h5>
+                {!!$regulation->content!!}
+                <hr>
+            @endforeach
+
+            @foreach ($amends as $amend )
+                <h5 style="color:blue;"><b>{{ $amend->act_title }}</b></h5>
+                <h5>{{ $amend->section }}</h5>
+                {!!$amend->content!!}
+                <hr>
+            @endforeach
+
+            @foreach ($amends_regs as $amends_reg )
+                <h5 style="color:blue;"><b>{{ $amends_reg->title }}</b></h5>
+                <h5>{{ $amends_reg->part }}</h5>
+                <h5>{{ $amends_reg->section }}</h5>
+                {!!$amends_reg->content!!}
             @endforeach
             {{-- <div class="col-md-12">    
                 <center>{!! $posts->links() !!}</center>

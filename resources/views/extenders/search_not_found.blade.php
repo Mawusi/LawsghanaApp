@@ -1,4 +1,4 @@
-@extends('extenders.plain_extender')
+@extends('extenders.main')
 
 @section('title', 'Search Results')
 
