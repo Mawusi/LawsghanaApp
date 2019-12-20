@@ -35,6 +35,8 @@ class Post1992Controller extends Controller
         if(count($posts) > 0 or count($regulations) > 0 or count($amends) > 0 or count($amends_regs) > 0 )
             return view('extenders.search_index', compact('posts','regulations', 'amends','amends_regs','footer_notes'));
         else 
+                // Session::flash('no_id', 'ID does not exist!');
+                // return redirect()->back();
             return view ('extenders.search_not_found', compact('footer_notes'));
     }
 

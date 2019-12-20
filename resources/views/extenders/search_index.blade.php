@@ -63,34 +63,41 @@
     </div>
     
     <div class="container">	                
-            @foreach ($posts as $post )
+            @foreach ($posts as $post)
                 <h5 style="color:blue;"><b>{{ $post->post_act }}</b></h5>
-                <h5>{{$post->part }}</h5>
-                <h5>{{ $post->section }}</h5>
-                {!!$post->content!!}
+                <a href="/post_1992_legislation/content/{{$post->id}}" target="_blank"><b>{{ $post->section }}</b></a>
+                <br><br>
+                {{-- {!!$post->content!!} --}}
+                {{ Str::limit($post->content, 470, '...') }}
                 <hr>
             @endforeach
             
-            @foreach ($regulations as $regulation )
+            @foreach ($regulations as $regulation)
                 <h5 style="color:blue;"><b>{{ $regulation->regulation_title }}</b></h5>
-                <h5>{{$regulation->part }}</h5>
-                <h5>{{ $regulation->section }}</h5>
-                {!!$regulation->content!!}
+                {{-- <h5>{{$regulation->part }}</h5> --}}
+                <a href="/post_1992_legislation/regulation_act/content/{{$regulation->id}}" target="_blank"><b>{{ $regulation->section }}</b></a>
+                <br><br>
+                {{-- {!!$regulation->content!!} --}}
+                {{ Str::limit($regulation->content, 470, '...') }}
                 <hr>
             @endforeach
 
-            @foreach ($amends as $amend )
+            @foreach ($amends as $amend)
                 <h5 style="color:blue;"><b>{{ $amend->act_title }}</b></h5>
-                <h5>{{ $amend->section }}</h5>
-                {!!$amend->content!!}
+                <a href="/post_1992_legislation/amended_acts/content/{{$amend->id}}" target="_blank"><b>{{ $amend->section }}</b></a>
+                <br><br>
+                {{-- {!!$amend->content!!} --}}
+                {{ Str::limit($amend->content, 470, '...') }}
                 <hr>
             @endforeach
 
-            @foreach ($amends_regs as $amends_reg )
+            @foreach ($amends_regs as $amends_reg)
                 <h5 style="color:blue;"><b>{{ $amends_reg->title }}</b></h5>
-                <h5>{{ $amends_reg->part }}</h5>
-                <h5>{{ $amends_reg->section }}</h5>
-                {!!$amends_reg->content!!}
+                {{-- <h5>{{ $amends_reg->part }}</h5> --}}
+                <a href="/post_1992_legislation/amended_regulation_acts/content/{{$amends_reg->id}}" target="_blank"><b>{{ $amends_reg->section }}</b></a>
+                <br><br>
+                {{-- {!!$amends_reg->content!!} --}}
+                {{ Str::limit($amends_reg->content, 470, '...') }}
             @endforeach
             {{-- <div class="col-md-12">    
                 <center>{!! $posts->links() !!}</center>

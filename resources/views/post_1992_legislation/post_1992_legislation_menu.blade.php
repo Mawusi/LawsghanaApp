@@ -1,7 +1,7 @@
     <div class="navbar bg-header-color">
         {{ menu('post_1992_legislation_menu', 'bootstrap') }}
 
-        <form action="/keyword-search" method="GET" class="pull-right search-form" target="_blank" style="padding-top: 5px;">
+        <form action="/keyword-search" method="GET" class="pull-right search-form" style="padding-top: 5px;">
             {{ csrf_field() }}
             <div class="form-group has-feedback">
                 <label for="search" class="sr-only">Search</label>
