@@ -14,7 +14,11 @@
             <a href="/post_1992_legislation/regulations_preamble/{{ $regulationsAct['id'] }}" class="single_preamble_regulation_link"><p>Introductory Text</p>
             </a>
         </div>
+
+            <div style="height: 600px; overflow-y: auto;">
                 @include('post_1992_legislation.displayed_regulations_parts_section')
+            </div>
+
                 <div class="col-md-12 text-center">
                             <!--<ul id="myPager" class="pagination"></ul>-->
                             <p><a data-scroll-to="body"

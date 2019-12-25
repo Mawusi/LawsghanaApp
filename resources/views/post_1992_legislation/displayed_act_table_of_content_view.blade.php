@@ -203,10 +203,10 @@
                             <a href="#all_amendmentsTab" data-toggle="tab" class="bg-color-amendments">Amendments</a>
                         </li>
                         <li class="tabPanedHide_amendments_table">
-                            <a href="#amended_table_of_Content_Tab" data-toggle="tab">Amendments Table of Contents</a>
+                            <a href="#amended_table_of_Content_Tab" data-toggle="tab" class="bg-color-amendments-table">Amendments Table of Contents</a>
                         </li>
                         <li class="tabPanedHide_amendments_content">
-                            <a href="#amendmentcontentTab" data-toggle="tab">Amended Content</a>
+                            <a href="#amendmentcontentTab" data-toggle="tab" class="bg-color-amendments-contents">Amended Content</a>
                         </li>
 
                         <!-- Regulations -->
@@ -214,10 +214,10 @@
                             <a href="#all_regulationsTab" data-toggle="tab" class="bg-color-regulations">Regulations</a>
                         </li>
                         <li class="tabPanedHide_regulations_table">
-                            <a href="#regulated_table_of_Content_Tab" data-toggle="tab">Regulations Table of Contents</a>
+                            <a href="#regulated_table_of_Content_Tab" data-toggle="tab" class="bg-color-regulations-table">Regulations Table of Contents</a>
                         </li>
                         <li class="tabPanedHide_regulations_content">
-                            <a href="#regulatedcontentTab" data-toggle="tab">Regulation Content</a>
+                            <a href="#regulatedcontentTab" data-toggle="tab" class="bg-color-regulations-contents">Regulation Content</a>
                         </li>
                     </ul>
                     {{-- ------------------------------------------------------End of Nav tab for the panels----------------------------------------------------------- --}}
@@ -310,11 +310,11 @@
                                         <li><a data-scroll-to="body"
                                             data-scroll-focus="body"
                                             data-scroll-speed="400"
-                                            data-scroll-offset="-60" href="#" class="previous_content_act">Previous Section</a></li>
+                                            data-scroll-offset="-60" href="#" class="previous_content_act">&laquo;&nbsp;Previous Section</a></li>
                                         <li><a data-scroll-to="body"
                                             data-scroll-focus="body"
                                             data-scroll-speed="400"
-                                            data-scroll-offset="-60" href="#" class="next_content_act">Next Section</a></li>
+                                            data-scroll-offset="-60" href="#" class="next_content_act">Next Section&nbsp;&raquo;</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -397,11 +397,11 @@
                                             <li><a data-scroll-to="body"
                                                 data-scroll-focus="body"
                                                 data-scroll-speed="400"
-                                                data-scroll-offset="-60" href="#" class="previous_amended_under_act">Previous Section</a></li>
+                                                data-scroll-offset="-60" href="#" class="previous_amended_under_act">&laquo;&nbsp;Previous Section</a></li>
                                             <li><a data-scroll-to="body"
                                                 data-scroll-focus="body"
                                                 data-scroll-speed="400"
-                                                data-scroll-offset="-60" href="#" class="next_amended_under_act">Next Section</a></li>
+                                                data-scroll-offset="-60" href="#" class="next_amended_under_act">Next Section&nbsp;&raquo;</a></li>
                                         </ul>
                                         </div>
                                     </div>
@@ -468,11 +468,11 @@
                                             <li><a data-scroll-to="body"
                                                 data-scroll-focus="body"
                                                 data-scroll-speed="400"
-                                                data-scroll-offset="-60" href="#" class="previous_regulation_under_act">Previous Regulation</a></li>
+                                                data-scroll-offset="-60" href="#" class="previous_regulation_under_act">&laquo;&nbsp;Previous Regulation</a></li>
                                             <li><a data-scroll-to="body"
                                                 data-scroll-focus="body"
                                                 data-scroll-speed="400"
-                                                data-scroll-offset="-60" href="#" class="next_regulation_under_act">Next Regulation</a></li>
+                                                data-scroll-offset="-60" href="#" class="next_regulation_under_act">Next Regulation&nbsp;&raquo;</a></li>
                                         </ul>
                                         </div>
                                 </div>

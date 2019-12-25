@@ -147,14 +147,14 @@ Route::get('/pre_1992_legislation','Pre1992Controller@index');//display all acts
 //POST_1992_LEGISLATION
 //For all Post Legislation
 Route::get('/keyword-search','Post1992Controller@keyword_search');
-Route::get('/post_1992_legislation','Post1992Controller@index');//display all acts
-    Route::get('/post_1992_legislation/filter/{year}/{category}','Post1992Controller@all_post_1992_legislation_filter'); //all post-1992 filtering
-    Route::get('/post_1992_legislation/preamble/{id}','Post1992Controller@post_1992_legislation_preamble');//display act preamble
+Route::get('post_1992_legislation','Post1992Controller@index');//display all acts
+    Route::get('post_1992_legislation/filter/{year}/{category}','Post1992Controller@all_post_1992_legislation_filter'); //all post-1992 filtering
+    Route::get('post_1992_legislation/preamble/{id}','Post1992Controller@post_1992_legislation_preamble');//display act preamble
     
-    Route::get('/post_1992_legislation/content/{id}','Post1992Controller@post_1992_legislation_content');//display act content
-    Route::get('/post_1992_legislation/plain-content/{id}','Post1992Controller@post_1992_legislation_p_pre_next_content');//display act content
+    Route::get('post_1992_legislation/content/{id}','Post1992Controller@post_1992_legislation_content');//display act content
+    Route::get('post_1992_legislation/plain-content/{id}','Post1992Controller@post_1992_legislation_p_pre_next_content');//display act content
 
-    Route::get('/post_1992_legislation/plain-content/{title}/{content_id}','Post1992Controller@post_1992_legislation_plain_content');//display plain act content
+    Route::get('post_1992_legislation/plain-content/{title}/{content_id}','Post1992Controller@post_1992_legislation_plain_content');//display plain act content
     
     // Route::get('/post_1992_legislation/content/{act_id}/{title}/{id}','Post1992Controller@post_1992_legislation_content');//display act content
     // Route::get('/post_1992_legislation/{title}/{id}/plain_content/{content_id}','Post1992Controller@post_1992_legislation_plain_content');//display plain act content

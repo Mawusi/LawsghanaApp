@@ -107,7 +107,9 @@ class Post1992Controller extends Controller
 
     //Display Preamble
     public function post_1992_legislation_preamble($id){
-        $allPost1992Act = Post1992Act::find(['id' => $id])->toArray()[0];
+        // $allPost1992Act = Post1992Act::find(['id' => $id])->toArray()[0];
+        //alternatively to find();
+        $allPost1992Act = Post1992Act::find($id);
         return view('post_1992_legislation.displayed_preamble_view', compact('allPost1992Act'));   
      }
 

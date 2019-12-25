@@ -1,7 +1,7 @@
 <div class="col-md-3"> 
     <div class="panel panel-default">
       <div class="panel-heading">
-        <p class="panel-title"><small>Filters</small></p>
+        <center><p class="panel-title"><small>Filter</small></p></center>
       </div>
       <div class="panel-body">
       {{-- Downloads --}}
@@ -27,14 +27,26 @@
         </div>
         --}}
 
-        <label style="color: black;">View Options</label>
-          <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}"><li style="list-style:none;">Expanded View</li>
+        {{-- <label style="color: black;">View Options</label> --}}
+          {{-- <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}"><li style="list-style:none;">Expanded View</li>
           </a>
-          <a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/plain_view/{{ $allPost1992Act['id'] }}" target="_blank"><li style="list-style:none;">Plain View</li></a>
-        </center> 
+          <a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/plain_view/{{ $allPost1992Act['id'] }}" target="_blank"><li style="list-style:none;">Plain View</li></a>  --}}
+        
+        <div class="dropdown">
+            <button style="background-color:white; border-color:black;" class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              View Options
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <li><a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href=""><span class="small"><center>Expanded View</center></span></a></li>
+              <li><a href="" target="_blank"><span class="small"><center>Plain View</center></span></a></li>
+            </ul>
+        </div>
+
         <hr>
         @include('extenders.case_law_main_search')
       </div>
+    </center>
     </div>
 </div>
 

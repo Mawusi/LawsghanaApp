@@ -34,9 +34,9 @@ $(document).ready(function(){
     $('.tabPaned_color_table_of_table').css("background-color","#f5f5f5");
     $('.tabPaned_color_table_of_table').css("color","black");
     //changes in the contents
-    $('.bg-color-content, .bg-color-expanded, .bg-color-amendments, .bg-color-regulations').css("background-color","white");
-    $('.bg-color-content, .bg-color-expanded, .bg-color-amendments, .bg-color-regulations').css("border-color","#ddd");
-    $('.bg-color-content, .bg-color-expanded, .bg-color-amendments, .bg-color-regulations').css({"color" : "black"});
+    $('.bg-color-content, .bg-color-expanded, .bg-color-amendments, .bg-color-regulations, .bg-color-amendments-table, .bg-color-amendments-contents, .bg-color-regulations-table, .bg-color-regulations-contents').css("background-color","white");
+    $('.bg-color-content, .bg-color-expanded, .bg-color-amendments, .bg-color-regulations, .bg-color-amendments-table, .bg-color-amendments-contents, .bg-color-regulations-table, .bg-color-regulations-contents').css("border-color","#ddd");
+    $('.bg-color-content, .bg-color-expanded, .bg-color-amendments, .bg-color-regulations, .bg-color-amendments-table, .bg-color-amendments-contents, .bg-color-regulations-table, .bg-color-regulations-contents').css({"color" : "black"});
   });
 
   //Click to change color for Content
@@ -44,9 +44,9 @@ $(document).ready(function(){
     $('.bg-color-content').css({"backgroundColor" : "#f5f5f5"});
     $('.bg-color-content').css({"color" : "black"});
     //changes in table of content
-    $('.tabPaned_color_table_of_table, .bg-color-expanded, .bg-color-amendments, .bg-color-regulations').css("background-color","white");
-    $('.tabPaned_color_table_of_table, .bg-color-expanded, .bg-color-amendments, .bg-color-regulations').css("border-color","#ddd");
-    $('.tabPaned_color_table_of_table, .bg-color-expanded, .bg-color-amendments, .bg-color-regulations').css("color","black");
+    $('.tabPaned_color_table_of_table, .bg-color-expanded, .bg-color-amendments, .bg-color-regulations, .bg-color-amendments-table').css("background-color","white");
+    $('.tabPaned_color_table_of_table, .bg-color-expanded, .bg-color-amendments, .bg-color-regulations, .bg-color-amendments-table').css("border-color","#ddd");
+    $('.tabPaned_color_table_of_table, .bg-color-expanded, .bg-color-amendments, .bg-color-regulations, .bg-color-amendments-table').css("color","black");
   });
 
    //Click to change color for Expanded View
@@ -54,9 +54,9 @@ $(document).ready(function(){
     $('.bg-color-expanded').css({"backgroundColor" : "#f5f5f5"});
     $('.bg-color-expanded').css({"color" : "black"});
     //changes in table of content
-    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-amendments, .bg-color-regulations').css("background-color","white");
-    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-amendments, .bg-color-regulations').css("border-color","#ddd");
-    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-amendments, .bg-color-regulations').css("color","black");
+    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-amendments, .bg-color-regulations, .bg-color-amendments-table, .bg-color-amendments-contents, .bg-color-regulations-contents').css("background-color","white");
+    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-amendments, .bg-color-regulations, .bg-color-amendments-table, .bg-color-amendments-contents, .bg-color-regulations-contents').css("border-color","#ddd");
+    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-amendments, .bg-color-regulations, .bg-color-amendments-table, .bg-color-amendments-contents, .bg-color-regulations-contents').css("color","black");
   });
 
   //Click to change color for Amendments
@@ -64,9 +64,29 @@ $(document).ready(function(){
     $('.bg-color-amendments').css({"backgroundColor" : "#f5f5f5"});
     $('.bg-color-amendments').css({"color" : "black"});
     //changes in table of content
-    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations').css("background-color","white");
-    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations').css("border-color","#ddd");
-    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations').css("color","black");
+    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-amendments-table, .bg-color-amendments-contents').css("background-color","white");
+    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-amendments-table, .bg-color-amendments-contents').css("border-color","#ddd");
+    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-amendments-table, .bg-color-amendments-contents').css("color","black");
+  });
+
+  //Click to change color for Amendments Table of Contents
+  $(".tabPanedHide_amendments_table").click(function(){
+    $('.bg-color-amendments-table').css({"backgroundColor" : "#f5f5f5"});
+    $('.bg-color-amendments-table').css({"color" : "black"});
+    //changes in table of content
+    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-amendments, .bg-color-amendments-contents').css("background-color","white");
+    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-amendments, .bg-color-amendments-contents').css("border-color","#ddd");
+    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-amendments, .bg-color-amendments-contents').css("color","black");
+  });
+
+  //Click to change color for Amended Contents
+  $(".tabPanedHide_amendments_content").click(function(){
+    $('.bg-color-amendments-contents').css({"backgroundColor" : "#f5f5f5"});
+    $('.bg-color-amendments-contents').css({"color" : "black"});
+    //changes in table of content
+    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-amendments, .bg-color-amendments-table').css("background-color","white");
+    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-amendments, .bg-color-amendments-table').css("border-color","#ddd");
+    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-amendments, .bg-color-amendments-table').css("color","black");
   });
 
   //Click to change color for Regulation
@@ -74,9 +94,29 @@ $(document).ready(function(){
     $('.bg-color-regulations').css({"backgroundColor" : "#f5f5f5"});
     $('.bg-color-regulations').css({"color" : "black"});
     //changes in table of content
-    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-amendments').css("background-color","white");
-    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-amendments').css("border-color","#ddd");
-    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-amendments').css("color","black");
+    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations-table, .bg-color-regulations-contents').css("background-color","white");
+    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations-table, .bg-color-regulations-contents').css("border-color","#ddd");
+    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations-table, .bg-color-regulations-contents').css("color","black");
+  });
+
+  //Click to change color for Regulation table of contents
+  $(".tabPanedHide_regulations_table").click(function(){
+    $('.bg-color-regulations-table').css({"backgroundColor" : "#f5f5f5"});
+    $('.bg-color-regulations-table').css({"color" : "black"});
+    //changes in table of content
+    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations, .bg-color-regulations-contents').css("background-color","white");
+    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations, .bg-color-regulations-contents').css("border-color","#ddd");
+    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations, .bg-color-regulations-contents').css("color","black");
+  });
+
+  //Click to change color for Regulations Contents
+  $(".tabPanedHide_regulations_content").click(function(){
+    $('.bg-color-regulations-contents').css({"backgroundColor" : "#f5f5f5"});
+    $('.bg-color-regulations-contents').css({"color" : "black"});
+    //changes in table of content
+    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations, .bg-color-regulations-table').css("background-color","white");
+    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations, .bg-color-regulations-table').css("border-color","#ddd");
+    $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations, .bg-color-regulations-table').css("color","black");
   });
 
 
@@ -178,6 +218,14 @@ $(document).ready(function(){
             $("#single_amended_content").html("");
             $("#single_view_all_sections_amend").html("");
             $("#single_container_details_amend").hide();
+
+            $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations, .bg-color-amendments').css("background-color","white");
+            $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations, .bg-color-amendments').css("border-color","#ddd");
+            $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations, .bg-color-amendments').css("color","black");
+
+            $('.bg-color-amendments-table').css({"backgroundColor" : "#f5f5f5"});
+            $('.bg-color-amendments-table').css({"color" : "black"});
+
             $("#amended_table_of_content").html(this.responseText);
         }
     xhr.send();
@@ -212,6 +260,14 @@ $(document).ready(function(){
             $("#single_regulation_content").html("");
             $("#single_view_all_sections_regulation").html("");
             $("#single_container_details_regulation").hide();
+
+            $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations').css("background-color","white");
+            $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations').css("border-color","#ddd");
+            $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations').css("color","black");
+
+            $('.bg-color-regulations-table').css({"backgroundColor" : "#f5f5f5"});
+            $('.bg-color-regulations-table').css({"color" : "black"});
+
             $("#regulated_table_of_content").html(this.responseText);
         }
     xhr.send();
@@ -225,6 +281,14 @@ $(document).ready(function(){
         var link = $(this).attr("href");
         xhr.open("GET", link, true);
         xhr.onreadystatechange = function receiveUpdate(e) {
+
+            $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations, .bg-color-amendments, .bg-color-amendments-table').css("background-color","white");
+            $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations, .bg-color-amendments, .bg-color-amendments-table').css("border-color","#ddd");
+            $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations, .bg-color-amendments, .bg-color-amendments-table').css("color","black");
+            
+            $('.bg-color-amendments-contents').css({"backgroundColor" : "#f5f5f5"});
+            $('.bg-color-amendments-contents').css({"color" : "black"});
+
             $("#single_preamble_amended_content").html(this.responseText); 
             $("#single_amended_content").html("");
             $("#single_view_all_sections_amend").html("");
@@ -1318,7 +1382,15 @@ $(document).ready(function(){
         
         xhr.open("GET", link, true);
         xhr.onreadystatechange = function receiveUpdate(e) {
-            $("#single_preamble_amended_content").html(""); 
+            $("#single_preamble_amended_content").html("");
+
+            $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-amendments-table').css("background-color","white");
+            $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-amendments-table').css("border-color","#ddd");
+            $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-amendments-table').css("color","black");
+            
+            $('.bg-color-amendments-contents').css({"backgroundColor" : "#f5f5f5"});
+            $('.bg-color-amendments-contents').css({"color" : "black"});
+
             $("#single_amended_content").html(this.responseText);
             $("#single_view_all_sections_amend").html("");
             $('.single_container_details_link_amend').trigger("click");
@@ -1364,6 +1436,14 @@ $(document).ready(function(){
         xhr.open("GET", link, true);
         xhr.onreadystatechange = function receiveUpdate(e) {
             $("#single_preamble_regulation_content").html(""); 
+
+            $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations-table').css("background-color","white");
+            $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations-table').css("border-color","#ddd");
+            $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations-table').css("color","black");
+
+            $('.bg-color-regulations-contents').css({"backgroundColor" : "#f5f5f5"});
+            $('.bg-color-regulations-contents').css({"color" : "black"});
+
             $("#single_regulation_content").html(this.responseText);
             $("#single_view_all_sections_regulation").html("");
             $('.single_container_details_link_regulation').trigger("click");

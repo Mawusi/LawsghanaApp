@@ -15,7 +15,10 @@
             <a href="/post_1992_legislation/amended_preamble/{{ $amendedAct['id'] }}" class="single_preamble_amended_link"><p>Introductory Text</p>
             </a>
         </div>
-                @include('post_1992_legislation.displayed_amended_act_parts_section')
+
+        <div style="height: 600px; overflow-y: auto;">
+            @include('post_1992_legislation.displayed_amended_act_parts_section')
+        </div>
 
                 <div class="col-md-12 text-center">
                             <!--<ul id="myPager" class="pagination"></ul>-->
