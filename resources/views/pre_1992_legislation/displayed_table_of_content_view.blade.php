@@ -9,6 +9,15 @@
         .navbar {
           min-height: 1px;
         }
+        .nav>li>a {
+            position: relative;
+            display: block;
+            padding: 5px 14px;
+            color: white;
+            }
+        .nav>li>a:hover {
+            color: #004353;
+        }
         .navbar-brand {
           padding-top: 17px;
           padding-top: 17px;
@@ -22,8 +31,8 @@
         @media (min-width: 768px) {
           .navbar-nav > li > a {
             /* (80px - line-height of 27px) / 2 = 26.5px */
-            padding-top: 10px;
-            padding-bottom: 10px;
+            padding-top: 14px;
+            padding-bottom: 14px;
             line-height: 10px;
           }
         }
@@ -74,10 +83,85 @@
         .content {
           padding: 16px;
         }
+        .content-fluid{
+            padding: 0.1px;
+        }
         .accordion-content {
         height: 600px;
-        overflow-y: scroll;
+        overflow-y: auto;
         }
+        .bg-header-color{
+            background-color: #004353;
+        }
+        .bg-header-color-tabs{
+            /* background-color: #539bad; */
+            /* #539bad,#989898 */
+            background-color: #8DD8CA;
+        }
+        .form-group-customised{
+            margin-bottom: .1px;
+        }
+        .search-form{
+          padding-right: 10px;
+          padding-top: 3px;
+      }
+      .search-form .form-group {
+          float: right !important;
+          transition: all 0.35s, border-radius 0s;
+          width: 32px;
+          height: 32px;
+          background-color: #fff;
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+          border-radius: 25px;
+          border: 1px solid #ccc;
+      }
+          .search-form .form-group input.form-control {
+          padding-right: 20px;
+          border: 0 none;
+          background: transparent;
+          box-shadow: none;
+          display:block;
+      }
+          .search-form .form-group input.form-control::-webkit-input-placeholder {
+          display: none;
+      }
+          .search-form .form-group input.form-control:-moz-placeholder {
+          /* Firefox 18- */
+          display: none;
+      }
+          .search-form .form-group input.form-control::-moz-placeholder {
+          /* Firefox 19+ */
+          display: none;
+      }
+          .search-form .form-group input.form-control:-ms-input-placeholder {
+          display: none;
+      }
+          .search-form .form-group:hover,
+          .search-form .form-group.hover {
+          width: 200%;
+          border-radius: 4px 25px 25px 4px;
+      }
+          .search-form .form-group span.form-control-feedback {
+          position: absolute;
+          top: -1px;
+          right: -2px;
+          z-index: 2;
+          display: block;
+          width: 34px;
+          height: 34px;
+          line-height: 34px;
+          text-align: center;
+          color: #3596e0;
+          left: initial;
+          font-size: 14px;
+      }
+      .panel-title{
+          font-size: 14px;
+      }
+      .shadow-background{
+        box-shadow: 0 1px 5px #e0e0e0;
+        background-color: #FFFFFF;
+      }
 
 </style>
 
@@ -85,31 +169,39 @@
 
 @section('content')
 
-@section('second_nav')
+{{-- @section('second_nav')
     @include('pre_1992_legislation.pre_1992_legislation_menu')
-@endsection
+@endsection --}}
 
-<div class="container-fluid"> 
-    <p style="font-size:20px;"><b class="small">{{ $allPre1992Act['title'] }}</b></p>
-        
+<div class="container-fluid content-fluid"> 
+  <div class="row">
+    <div class="col-md-9">
+        <div class="shadow-background">
+            <div style="padding: 15px;">
+    @include('pre_1992_legislation.pre_1992_legislation_menu')
+    <center>  
+    <p style="font-size:18px;"><b class="small">{{ $allPre1992Act['title'] }}</b></p>
+    </center>   
     {{-- Nav tabs --}}
     <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
 
         <!-- ACTS TABLE OF CONTENT -->
         <li class="active">
-            <a href="#tableOfContentTab" data-toggle="tab">Table of Contents</a>
+            <a href="#tableOfContentTab" data-toggle="tab" class="tabPaned_color_table_of_table">Table of Contents</a>
         </li>
 
         <!-- ACTS CONTENTS -->
         <li class="tabPanedHide_acts_content">
-            <a href="#contentTab" data-toggle="tab">Contents</a>
+            <a href="#contentTab" data-toggle="tab" class="bg-color-content">Content</a>
         </li>
 
         <!-- ACTS EXPANDED CONTENTS -->
         <li class="tabPanedHide_expanded_view">
-                <a href="#expandedTab" data-toggle="tab">Expanded View</a>
+                <a href="#expandedTab" data-toggle="tab" class="bg-color-expanded">Expanded View</a>
         </li>  
     </ul>
+    {{-- ------------------------------------------------------End of Nav tab for the panels----------------------------------------------------------- --}}
+
 
     {{-- tab panes content --}}
     <div id="my-tab-content" class="tab-content">
@@ -118,7 +210,7 @@
         <div id="tableOfContentTab" class="tab-pane fade in active">
 
             <div class="row">
-                <div class="col-md-7">
+                <div class="col-md-9">
                    <br>
                    
                    <a class="preamble_link" id="preamble_link_toggle" href="/pre_1992_legislation/preamble/{{ $allPre1992Act['id'] }}">
@@ -150,12 +242,13 @@
                     @include('pre_1992_legislation.container_main_act_page')
             </div> 
         </div>
+        {{-- -------------------------------------------------------End of table of Contents---------------------------------------------------------------- --}}
 
 
         <!-- ACTS CONTENTS -->
         <div id="contentTab" class="tab-pane fade">
             <div class="row">
-                <div class="col-md-7 table-wrapper-scroll-display" style="height: 600px;">
+                <div class="col-md-9 table-wrapper-scroll-display" style="height: 600px;">
                     <div id="display_content"></div>
                     <div id="display_preamble"></div>
                     <div id="display_view_all_section"></div>
@@ -182,15 +275,22 @@
          
          <!-- ACTS EXPANDED CONTENTS -->
          <div id="expandedTab" class="tab-pane fade">
+          <span style="padding: .2em;"></span>
                 <div class="row">
-                     <div class="col-md-9 expanded_view" style="background-color: #FFFFFF";>
+                     <div class="col-md-12 expanded_view" style="background-color: #FFFFFF";>
                         <div id="acts_expanded_view"></div> 
                     </div>
-                      @include('pre_1992_legislation.container_details_act_expanded')
+                      {{-- @include('pre_1992_legislation.container_details_act_expanded') --}}
                 </div>
             </div>
             
     </div><!--end of row-->
+  </div>
+</div>
+</div>
+<!-- for the ads -->
+@include('extenders.ads')
+</div>
 </div><!--end of container-fluid-->
 
 @endsection

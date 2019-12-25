@@ -3,46 +3,8 @@
 
 @section('assets')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="{{ asset('css/second_nav.css') }}">
     <style type="text/css">
-        .navbar {
-          min-height: 1px;
-        }
-        .nav>li>a {
-            position: relative;
-            display: block;
-            padding: 10px 14px;
-            color: white;
-            }
-        .nav>li>a:hover {
-            color: #004353;
-        }
-        .navbar-brand {
-          padding-top: 17px;
-          padding-top: 17px;
-          line-height: 15px;
-        }
-        .navbar-toggle {
-          /* (80px - button height 34px) / 2 = 23px */
-          margin-top: 23px;
-          padding: 9px 10px !important;
-        }
-        @media (min-width: 768px) {
-          .navbar-nav > li > a {
-            /* (80px - line-height of 27px) / 2 = 26.5px */
-            padding-top: 10px;
-            padding-bottom: 10px;
-            line-height: 10px;
-          }
-        }
-        .content {
-            padding: 0.1px;
-        }
-        .bg-header-color{
-            background-color: #004353;
-        }
-        .form-group-customised{
-            margin-bottom: .1px;
-        }
     </style>
 @endsection
 
@@ -56,6 +18,8 @@
     <div class="container-fluid content">
         <div class="row">
             <div class="col-md-9">
+                <div class="shadow-background">
+                    <div style="padding: 15px;">
             @include('pre_1992_legislation.pre_1992_legislation_menu')
                 <div class="row">
                         <div class="col-md-9">
@@ -83,7 +47,9 @@
                             </div>
                         </div>
                         @include('pre_1992_legislation.all_pndc_law_container_main')
-                </div>      
+                </div>  
+                    </div>
+                </div>    
             </div>
                         @include('extenders.ads')
         </div>

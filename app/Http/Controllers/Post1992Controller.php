@@ -19,6 +19,7 @@ use App\FooterContent;
 
 class Post1992Controller extends Controller
 {
+
     public function keyword_search(Request $request){
         $footer_notes   = FooterNote::all();
         $query          = $request->get('q');
@@ -40,17 +41,7 @@ class Post1992Controller extends Controller
             return view ('extenders.search_not_found', compact('footer_notes'));
     }
 
-    //Display all Acts
-    public function index(){
-        $allPost1992Acts        = Post1992Act::all();
-        $allPostsAmends         = AmendedTitle::all();
-        $allPostsAmendsOnRegulations = AmendRegulationAct::all();
-        $allPostRegulations     = RegulationTitle::all();
-        $allPost1992ategories   = Post1992Category::all();
-        $footer_notes           = FooterNote::all();
-        return view('post_1992_legislation.displayed_all_acts_view', compact('footer_notes','allPost1992Acts','allPost1992ategories','allPostsAmends', 'allPostRegulations', 'allPostsAmendsOnRegulations'));
-    }
-
+    //Footer
     public function footer_content($caption, $id){
         // dd($caption, $id);
         $footer_notes           = FooterNote::all();
@@ -61,6 +52,17 @@ class Post1992Controller extends Controller
             ])->toArray()[0];
 
         return view('extenders.displayed_footer', compact('footer_note', 'footer_notes'));
+    }
+
+    //Display all Acts
+    public function index(){
+        $allPost1992Acts        = Post1992Act::all();
+        $allPostsAmends         = AmendedTitle::all();
+        $allPostsAmendsOnRegulations = AmendRegulationAct::all();
+        $allPostRegulations     = RegulationTitle::all();
+        $allPost1992ategories   = Post1992Category::all();
+        $footer_notes           = FooterNote::all();
+        return view('post_1992_legislation.displayed_all_acts_view', compact('footer_notes','allPost1992Acts','allPost1992ategories','allPostsAmends', 'allPostRegulations', 'allPostsAmendsOnRegulations'));
     }
 
     //ALL POST 1992 LEGISLATION FILTERING

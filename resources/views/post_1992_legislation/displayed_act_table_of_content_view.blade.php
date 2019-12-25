@@ -325,7 +325,7 @@
                         
                         <!-- ACTS EXPANDED CONTENTS -->
                         <div id="expandedTab" class="tab-pane fade">
-                        <span style="padding: .2em;">
+                        <span style="padding: .2em;"></span>
                                 <div class="row">
                                     <div class="col-md-12 expanded_view" style="background-color: #FFFFFF;">
                                         <div id="acts_expanded_view"></div> 

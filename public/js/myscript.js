@@ -24,7 +24,7 @@ $(document).ready(function(){
   $('.tabPanedHide_acts_content').hide();
   $('.tabPanedHide_expanded_view').hide();
 
-  //For thetable of content tab color on document ready
+  //For the table of content tab color on document ready
   $('.tabPaned_color_table_of_table').css("background-color","#f5f5f5");
   $('.tabPaned_color_table_of_table').css("border-color","#ddd");
   $('.tabPaned_color_table_of_table').css("color","black");
@@ -40,7 +40,7 @@ $(document).ready(function(){
   });
 
   //Click to change color for Content
-  $(".content_link, .amendments_content_link, .regulation_content_link, .amended_regulation_content_link, .tabPanedHide_acts_content, .preamble_link").click(function(){
+  $(".pre_content_link, .content_link, .amendments_content_link, .regulation_content_link, .amended_regulation_content_link, .tabPanedHide_acts_content, .preamble_link").click(function(){
     $('.bg-color-content').css({"backgroundColor" : "#f5f5f5"});
     $('.bg-color-content').css({"color" : "black"});
     //changes in table of content
