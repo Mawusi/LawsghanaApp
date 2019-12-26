@@ -21,6 +21,8 @@
     <div class="container-fluid content">
         <div class="row">
             <div class="col-md-9">
+                <div class="shadow-background">
+                    <div style="padding: 15px;">
             @include('constitution.constitution_menu')
                     <div class="row">
                         <div class="col-md-9">
@@ -51,6 +53,8 @@
                         </div>
                         @include('constitution.asia_container_main')
                     </div> 
+                    </div>
+                </div>
             </div>
             @include('extenders.ads')
         </div>

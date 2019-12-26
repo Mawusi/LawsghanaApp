@@ -6,6 +6,15 @@
         .navbar {
           min-height: 1px;
         }
+        .nav>li>a {
+            position: relative;
+            display: block;
+            padding: 5px 14px;
+            color: white;
+            }
+        .nav>li>a:hover {
+            color: #004353;
+        }
         .navbar-brand {
           padding-top: 17px;
           padding-top: 17px;
@@ -19,8 +28,8 @@
         @media (min-width: 768px) {
           .navbar-nav > li > a {
             /* (80px - line-height of 27px) / 2 = 26.5px */
-            padding-top: 10px;
-            padding-bottom: 10px;
+            padding-top: 14px;
+            padding-bottom: 14px;
             line-height: 10px;
           }
         }
@@ -71,10 +80,85 @@
         .content {
           padding: 16px;
         }
-        .accordion-content {
-        height: 100px;
-        overflow-y: scroll;
+        .content-fluid{
+            padding: 0.1px;
         }
+        .accordion-content {
+        height: 600px;
+        overflow-y: auto;
+        }
+        .bg-header-color{
+            background-color: #004353;
+        }
+        .bg-header-color-tabs{
+            /* background-color: #539bad; */
+            /* #539bad,#989898 */
+            background-color: #8DD8CA;
+        }
+        .form-group-customised{
+            margin-bottom: .1px;
+        }
+        .search-form{
+          padding-right: 10px;
+          padding-top: 3px;
+      }
+      .search-form .form-group {
+          float: right !important;
+          transition: all 0.35s, border-radius 0s;
+          width: 32px;
+          height: 32px;
+          background-color: #fff;
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+          border-radius: 25px;
+          border: 1px solid #ccc;
+      }
+          .search-form .form-group input.form-control {
+          padding-right: 20px;
+          border: 0 none;
+          background: transparent;
+          box-shadow: none;
+          display:block;
+      }
+          .search-form .form-group input.form-control::-webkit-input-placeholder {
+          display: none;
+      }
+          .search-form .form-group input.form-control:-moz-placeholder {
+          /* Firefox 18- */
+          display: none;
+      }
+          .search-form .form-group input.form-control::-moz-placeholder {
+          /* Firefox 19+ */
+          display: none;
+      }
+          .search-form .form-group input.form-control:-ms-input-placeholder {
+          display: none;
+      }
+          .search-form .form-group:hover,
+          .search-form .form-group.hover {
+          width: 200%;
+          border-radius: 4px 25px 25px 4px;
+      }
+          .search-form .form-group span.form-control-feedback {
+          position: absolute;
+          top: -1px;
+          right: -2px;
+          z-index: 2;
+          display: block;
+          width: 34px;
+          height: 34px;
+          line-height: 34px;
+          text-align: center;
+          color: #3596e0;
+          left: initial;
+          font-size: 14px;
+      }
+      .panel-title{
+          font-size: 14px;
+      }
+      .shadow-background{
+        box-shadow: 0 1px 5px #e0e0e0;
+        background-color: #FFFFFF;
+      }
 
 </style>
 @endsection
@@ -85,8 +169,13 @@
     @include('constitution.constitution_menu')
 @endsection
 
-    <div class="container-fluid">
-    <p style="font-size:20px;"><b class="small">{{ $ghana_act_amended['title'] }}</b></p> 
+    <div class="container-fluid content-fluid">
+      <div class="row">
+        <div class="col-md-9">
+            <div class="shadow-background">
+                <div style="padding: 15px;">
+                @include('constitution.constitution_menu')
+    <center><p style="font-size:18px;"><b class="small">{{ $ghana_act_amended['title'] }}</b></p> </center>
         {{-- Nav tabs --}}
         <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
             <!-- Acts -->
@@ -110,7 +199,7 @@
             <!-- ACTS TABLE OF CONTENT -->
             <div id="tableOfContentTab" class="tab-pane fade in active">
                 <div class="row">
-                    <div class="col-md-7">
+                    <div class="col-md-9">
                         <br>
                         <a class="preamble_link" id="preamble_link_toggle" href="/constitution_amended/Republic/constitution_preamble/{{ $ghana_act_amended['id'] }}"><p>Introductory Text</p>
                         </a>
@@ -185,5 +274,11 @@
             </div>
 
         </div>
+      </div>
+    </div>
+    </div>
+    <!-- for the ads -->
+    @include('extenders.ads')
+</div>
     </div><!--end of container-fluid-->
 @endsection

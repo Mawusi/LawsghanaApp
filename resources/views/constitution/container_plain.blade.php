@@ -2,12 +2,25 @@
 {{-- CONTAINER PLAIN --}}
 
 {{-- DOWNLOADS --}}
-<div class="col-md-2"> 
+<div class="col-md-3" style="padding-top: 3.7em;"> 
     <div class="panel panel-default">
       <div class="panel-heading" style="background: #eeeeee;">
-        <p class="panel-title" style="color: black;"><small>Filters</small></p>
+        <center><p class="panel-title" style="color: black;"><small>Filter</small></p></center>
       </div>
       <div class="panel-body">
+        <div class="dropdown hidden">
+          <button class="btn btn-sm btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Related
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+      </div>
       {{-- Downloads
         <div class="row">
           <div class="col-md-12">
@@ -30,29 +43,27 @@
         --}}
       
         <center>         
-        <label style="color:black;">View Options</label>
+        {{-- <label style="color:black;">View Options</label>
         <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/constitution/Republic/expanded_view/{{ $ghana_act['id'] }}"><li style="list-style:none;">Expanded View</li></a>
-        <a href="/constitution/Republic/{{$ghana_act['gh_group']}}/{{$ghana_act['title']}}/plain_view/{{ $ghana_act['id'] }}" target="_blank"><li style="list-style:none;">Plain View</li></a>
+        <a href="/constitution/Republic/{{$ghana_act['gh_group']}}/{{$ghana_act['title']}}/plain_view/{{ $ghana_act['id'] }}" target="_blank"><li style="list-style:none;">Plain View</li></a> --}}
+        
+        <div class="dropdown">
+          <button style="background-color:white; border-color:black;" class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            View Options
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <li><a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/constitution/Republic/expanded_view/{{ $ghana_act['id'] }}"><span class="small"><center>Expanded View</center></span></a></li>
+            <li><a href="/constitution/Republic/{{$ghana_act['gh_group']}}/{{$ghana_act['title']}}/plain_view/{{ $ghana_act['id'] }}" target="_blank"><span class="small"><center>Plain View</center></span></a></li>
+          </ul>
+        </div>
+        
+        <hr>
+        @include('extenders.case_law_main_search')
+      </div>
         </center> 
-      </div>
     </div>
-    @include('extenders.case_law_main_search')
-</div>
-
-{{-- ADVERTISEMENT --}}
-<div class="col-md-3">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <p class="panel-title"><small>Advertisement</small></p>
-      </div>
-      <div class="panel-body">
-        <div class="embed-responsive embed-responsive-4by3">
-        {{--<iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>--}}         
-       </div>        
-      </div>
-    </div>
-</div>
-    
+</div>   
 
     
 

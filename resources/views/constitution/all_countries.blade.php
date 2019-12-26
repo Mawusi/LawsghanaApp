@@ -21,6 +21,8 @@
     <div class="container-fluid content">
         <div class="row">
             <div class="col-md-9">
+                <div class="shadow-background">
+                    <div style="padding: 15px;">
             @include('constitution.constitution_menu')
                 <div class="row">
                     <div class="col-md-9">
@@ -52,7 +54,8 @@
                     <!-- for the filter -->
                     @include('constitution.all_countries_container_main')
                 </div>
-
+                    </div>
+                </div>
             </div>
                     <!-- for the ads -->
                     @include('extenders.ads')
