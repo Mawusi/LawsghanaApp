@@ -180,14 +180,14 @@
         <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
             <!-- Acts -->
             <li class="active">
-                <a href="#tableOfContentTab" data-toggle="tab">Table of Contents</a>
+                <a href="#tableOfContentTab" data-toggle="tab" class="tabPaned_color_table_of_table">Table of Contents</a>
             </li>
             <li class="tabPanedHide_acts_content">
-                <a href="#contentTab" data-toggle="tab">Content</a>
+                <a href="#contentTab" data-toggle="tab" class="bg-color-content">Content</a>
             </li>
             <!-- Expanded View -->
             <li class="tabPanedHide_expanded_view">
-                    <a href="#expandedTab" data-toggle="tab">Expanded View</a>
+                    <a href="#expandedTab" data-toggle="tab" class="bg-color-expanded">Expanded View</a>
             </li>
         </ul>
 
@@ -229,7 +229,7 @@
             <!-- ACTS CONTENTS -->
             <div id="contentTab" class="tab-pane fade">
                 <div class="row">
-                     <div class="col-md-7 table-wrapper-scroll-display" style="height: 600px;">
+                     <div class="col-md-9 table-wrapper-scroll-display" style="height: 600px;">
                         <div id="display_content"></div>
                         <div id="display_preamble"></div>
                         <div id="display_view_all_section"></div>  
@@ -238,7 +238,7 @@
                 </div>
                 
                 <div class="row show">
-                    <div class="col-md-7">
+                    <div class="col-md-9">
                          <ul class="pager">
                             <li><a data-scroll-to="body"
                                 data-scroll-focus="body"
@@ -257,10 +257,10 @@
             <!-- ACTS EXPANDED CONTENTS -->
             <div id="expandedTab" class="tab-pane fade">
                 <div class="row">
-                     <div class="col-md-9 expanded_view" style="background-color: #FFFFFF";>
+                     <div class="col-md-12 expanded_view" style="background-color: #FFFFFF";>
                         <div id="acts_expanded_view"></div> 
                     </div>
-                    @include('constitution.container_details_act_expanded_amended')
+                    {{-- @include('constitution.container_details_act_expanded_amended') --}}
                 </div>
                 {{--
                 <div class="row show">
