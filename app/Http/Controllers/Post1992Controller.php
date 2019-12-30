@@ -15,6 +15,7 @@ use App\AmendRegulationArticle;
 use PDF;
 use App\FooterNote;
 use App\FooterContent;
+use Illuminate\Support\Str;
 
 
 class Post1992Controller extends Controller
@@ -26,6 +27,7 @@ class Post1992Controller extends Controller
 
         $posts          = Post1992Article::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('post_act','LIKE', "%$query%")
                                 ->orderBy('post_act', 'ASC')->get();
+        
         $regulations    = RegulationArticle::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('regulation_title','LIKE', "%$query%")
                                 ->orderBy('regulation_title', 'ASC')->get();
         $amends         = AmendedArticle::where('section', 'LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('act_title','LIKE', "%$query%")
@@ -34,11 +36,9 @@ class Post1992Controller extends Controller
                                 ->orderBy('title', 'ASC')->get();
 
         if(count($posts) > 0 or count($regulations) > 0 or count($amends) > 0 or count($amends_regs) > 0 )
-            return view('extenders.search_index', compact('posts','regulations', 'amends','amends_regs','footer_notes'));
+            return view('extenders.search_page_index', compact('posts','regulations', 'amends','amends_regs','footer_notes'));
         else 
-                // Session::flash('no_id', 'ID does not exist!');
-                // return redirect()->back();
-            return view ('extenders.search_not_found', compact('footer_notes'));
+            return view ('extenders.search_page_not_found', compact('footer_notes'));
     }
 
     //Footer

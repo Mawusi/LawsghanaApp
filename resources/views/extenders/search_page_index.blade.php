@@ -67,8 +67,9 @@
                 <h5 style="color:blue;"><b>{{ $post->post_act }}</b></h5>
                 <a href="/post_1992_legislation/content/{{$post->id}}" target="_blank"><b>{{ $post->section }}</b></a>
                 <br><br>
-                {{-- {!!$post->content!!} --}}
-                {{ Str::limit($post->content, 470, '...') }}
+                {!! $post->content !!}
+                {{-- {{Str::limit($post->content, 20)}} --}}
+                {{-- {{ Str::limit($post->content, 470, '...') }} --}}
                 <hr>
             @endforeach
             

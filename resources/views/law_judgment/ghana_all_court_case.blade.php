@@ -227,7 +227,7 @@
                                                         <b style="color:black;">{{$allGhanaLaw['date']}}</b></h5>
                                                 </div>
                                                 <div class="row">
-                                                    <h5><b style="color:blue;">CASE NO:&nbsp;</b>
+                                                    <h5><b style="color:blue;">{{$allGhanaLaw['case_type_name']}}:&nbsp;</b>
                                                     <b style="color:black;">{{$allGhanaLaw['reference_number']}}</b></h5>
                                                 </div>
                                                 
@@ -241,7 +241,7 @@
                                                     <b style="color:black;">{!! $allGhanaLaw['counsellors'] !!}</b></h5>
                                                 </div>
                                             </div>
-                                            <h4><b style="color:blue;">JUDGEMENT</b></h4>
+                                            <h5><b style="color:blue;">{{$allGhanaLaw['judgement_type']}}</b></h5>
                                             <hr>
                                             
                                             {{--Body--}}   
