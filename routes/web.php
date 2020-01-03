@@ -146,7 +146,11 @@ Route::get('/pre_1992_legislation','Pre1992Controller@index');//display all acts
 
 //POST_1992_LEGISLATION
 //For all Post Legislation
-Route::get('/keyword-search','Post1992Controller@keyword_search');
+// Route::get('/keyword-search','Post1992Controller@keyword_search');
+Route::get('index_search','SearchController@search');
+Route::get('/acts/search/{key}','SearchController@keyword_search');
+Route::view('scan', 'scan');
+
 Route::get('post_1992_legislation','Post1992Controller@index');//display all acts
     Route::get('post_1992_legislation/filter/{year}/{category}','Post1992Controller@all_post_1992_legislation_filter'); //all post-1992 filtering
     Route::get('post_1992_legislation/preamble/{id}','Post1992Controller@post_1992_legislation_preamble');//display act preamble

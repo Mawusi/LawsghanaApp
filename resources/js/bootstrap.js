@@ -1,5 +1,7 @@
 window._ = require('lodash');
 
+import InstantSearch from 'vue-instantsearch';
+
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -18,6 +20,10 @@ try {
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
+
+window.Vue = require('vue');
+
+Vue.use(InstantSearch);
 
 window.axios = require('axios');
 
