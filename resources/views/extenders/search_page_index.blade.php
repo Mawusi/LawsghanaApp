@@ -50,7 +50,14 @@
         .content {
           padding: 16px;
         }
-        .search-well{
+        .search-well-filter{
+          background-color: #ffffff;
+          border: 1px solid #e2e2e2;
+          border-radius: 6px;
+          box-shadow: 0 1px 5px #e0e0e0;
+          padding: 25px 25px;
+          font-size: 14px;
+        }.search-well{
           background-color: #ffffff;
           border: 1px solid #e2e2e2;
           border-radius: 6px;
@@ -64,9 +71,10 @@
 .sidebar {
   border: 5px solid $color-dark;
   background-color: $color-background;
-  border-radius: 10px;
+  border-radius: 2px;
   color: $color-dark;
-  padding: 15px;
+  padding: .1px;
+  /* margin-top: 20px; */
 }.main {
   width: 80%;
   /* height: 200vh; */
@@ -74,10 +82,14 @@
   display: flex;
   flex-direction: column;
 }.sidebar {
-  width: 25%;
-  height: 50vh;
+  /* width: 25%; */
+  /* height: 50vh; */
   /* min-height: 200px; */
   overflow: auto;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 15%;
+}.make_stick{
   position: -webkit-sticky;
   position: sticky;
   top: 10%;
@@ -90,35 +102,49 @@
 <div class="container-fluid">
 
   <div class="row">
-    <div class="wrapper">
+      <div class="col-md-3" style="margin-top:10px;">
+        <h4>Filter</h4>
+      </div>
+      
+      <div class="col-md-offset-1 col-md-6" style="margin-top:10px;">
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+      </div>
+      <div class="col-md-2" style="margin-top:25px;">
+        <p><b>Search Results:</b></p>
+      </div>
+    
+  </div>
 
-      {{-- <div class="col-md-3"> --}}
+  <div class="row">
+    {{-- <div class="wrapper"> --}}
+
+      <div class="col-md-3">
         <div class="sidebar">
-          <h3>Filter sidebar</h3>
-          <div class="search-well">
+          <div class="search-well-filter">
             <form>
               <div class="checkbox">
-                <label><input type="checkbox" value="">Constitution</label>
+                <label><input type="checkbox" value="">All 4th Republic Laws</label>
               </div>
+              <br>
               <div class="checkbox">
-                <label><input type="checkbox" value="">Pre 4th Republic Laws</label>
+                <label><input type="checkbox" value="">Acts of Parliament</label>
               </div>
+              <br>
               <div class="checkbox">
-                <label><input type="checkbox" value="" disabled>4th Republic Laws</label>
+                <label><input type="checkbox" value="" disabled>Legislative Instruments</label>
               </div>
+              <br>
               <div class="checkbox">
-                <label><input type="checkbox" value="" disabled>Case Laws</label>
+                <label><input type="checkbox" value="" disabled>Amendments</label>
               </div>
+              <br><br><br><br>
             </form>
           </div>
-          {{-- <p>I will follow you!</p>
-          <p><a href="https://caniuse.com/#search=sticky">caniuse stats</a> --}}
         </div>
-      {{-- </div> --}}
+      </div>
 
-      {{-- <div class="col-md-9"> --}}
-        <div class="main">
-          <u><h5><b>Searched Results</b></h5></u>
+      <div class="col-md-9">
+        <div class="">
             @foreach ($posts as $post)
             <div class="search-well">
               <h5 style="color:blue;"><b>{{ $post->post_act }}</b></h5>
@@ -129,9 +155,9 @@
             <br>
             @endforeach
         </div>
-      {{-- </div> --}}
+      </div>
 
-    </div>
+    {{-- </div> --}}
   </div>
 
 </div>
