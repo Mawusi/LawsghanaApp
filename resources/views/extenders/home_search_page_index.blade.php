@@ -132,22 +132,22 @@
             <form>
               <div class="custom-control custom-radio">
                 <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                <label class="custom-control-label" for="defaultChecked">All 4th Republic Laws</label>
+                <label class="custom-control-label" for="defaultChecked">Constitution</label>
               </div>
               <br>
               <div class="custom-control custom-radio">
                 <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                <label class="custom-control-label" for="defaultUnchecked">Acts of Parliament</label>
+                <label class="custom-control-label" for="defaultUnchecked">Pre 4th Republic Laws</label>
               </div>
               <br>
               <div class="custom-control custom-radio">
                 <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                <label class="custom-control-label" for="defaultUnchecked">Legislative Instruments</label>
+                <label class="custom-control-label" for="defaultUnchecked">4th Republic Laws</label>
               </div>
               <br>
               <div class="custom-control custom-radio">
                 <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                <label class="custom-control-label" for="defaultUnchecked">Amendments</label>
+                <label class="custom-control-label" for="defaultUnchecked">Case Laws</label>
               </div>
               <br><br><br><br>
             </form>
