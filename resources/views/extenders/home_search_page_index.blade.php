@@ -118,7 +118,7 @@
         </form>       
       </div>
       <div class="col-md-2" style="margin-top:25px;">
-        <p><b>Search Results: 7000 results</b></p>
+        <p><b>Search Results: 9000 results</b></p>
       </div>
     
   </div>
