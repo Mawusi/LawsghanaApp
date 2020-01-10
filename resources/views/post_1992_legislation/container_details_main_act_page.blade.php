@@ -64,7 +64,10 @@
         </center>
         
         <!--<br>-->
-        @include('extenders.case_law_main_search')
+        {{-- @include('extenders.case_law_main_search') --}}
+        <form>
+          <p>Highlight keywords as you type: <input id="keywords" size="24"></p>
+        </form>
     </div>
     
   </div>

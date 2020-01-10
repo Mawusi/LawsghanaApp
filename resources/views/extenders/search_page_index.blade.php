@@ -103,7 +103,7 @@
 
   <div class="row">
       <div class="col-md-3" style="margin-top:10px;">
-        <h4>Filter</h4>
+        {{-- <h4>Filter</h4> --}}
       </div>
       
       <div class="col-md-offset-1 col-md-6" style="margin-top:10px;">
@@ -118,7 +118,7 @@
         </form>       
       </div>
       <div class="col-md-2" style="margin-top:25px;">
-        <p><b>Search Results: 7000 results</b></p>
+      <p style="color:blue;"><b>Found: {{$total_count}} Results</b></p>
       </div>
     
   </div>
@@ -130,6 +130,7 @@
         <div class="sidebar">
           <div class="search-well-filter">
             <form>
+              <p style="color:blue;">Filter Options</p>
               <div class="custom-control custom-radio">
                 <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
                 <label class="custom-control-label" for="defaultChecked">All 4th Republic Laws</label>
@@ -147,25 +148,39 @@
               <br>
               <div class="custom-control custom-radio">
                 <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                <label class="custom-control-label" for="defaultUnchecked">Amendments</label>
+                <label class="custom-control-label" for="defaultUnchecked">Amended Acts</label>
+              </div>
+              <br>
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
+                <label class="custom-control-label" for="defaultUnchecked">Amended Regulations</label>
               </div>
               <br><br><br><br>
             </form>
+            {{-- <p class="filters">
+              <label>
+                <input type="radio" name="filter" value="*" checked="checked" /> show all
+              </label>
+              <br>
+              <label>
+                <input type="radio" name="filter" value=".metal" /> metal
+              </label>
+              <br>
+              <label>
+                <input type="radio" name="filter" value=".transition" /> transition
+              </label>
+              <br>
+              <label>
+                <input type="radio" name="filter" value=".alkali, .alkaline-earth" /> alkali &amp; alkaline-earth
+              </label>
+            </p> --}}
           </div>
         </div>
       </div>
 
       <div class="col-md-9">
-        <div class="">
-            @foreach ($posts as $post)
-            <div class="search-well">
-              <h5 style="color:blue;"><b>{{ $post->post_act }}</b></h5>
-              <a href="/post_1992_legislation/content/{{$post->id}}" target="_blank"><b>{{ $post->section }}</b></a>
-              <br><br>
-              {!! $post->content !!}
-            </div>
-            <br>
-            @endforeach
+        <div id="paginate_data">
+          @include('extenders.search_paginate')
         </div>
       </div>
 
@@ -175,6 +190,30 @@
 </div>
     
 @endsection 
+
+@section('scripts')
+<script>
+        $(document).ready(function(){
+            $(document).on('click', '.pagination a', function(event){
+              event.preventDefault();
+              var page = $(this).attr('href').split('page=')[1];
+              fetch_data(page);
+            });
+
+            function fetch_data(page){
+              $.ajax({
+                url:"/Search/Next/{{$query}}/fetch_data/?page="+page,
+                success:function(data){
+                    $('#paginate_data').html(data);
+                }
+              }).fail(function(jqXHR, ajaxOptions, thrownError){
+              alert('No response from server');
+              });
+            }
+        });
+</script>
+
+@endsection
 
     {{-- <div class="container">
         <center><h3><b>{{ $allPost1992Act['title'] }}</b></h3></center>

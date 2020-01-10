@@ -1,25 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
+<h1>Hellow</h1>
     
-<template>
-    <ais-instant-search index-name="demo_ecommerce" :search-client="searchClient">
-      <div class="left-panel">
-        <ais-clear-refinements />
-        <h2>Brands</h2>
-        <ais-refinement-list attribute="brand" searchable />
-        <ais-configure :hitsPerPage="8" />
-      </div>
-      <div class="right-panel">
-        <ais-search-box />
-        <ais-hits>
-          <div slot="item" slot-scope="{ item }">
-            <h2>{{ item.name }}</h2>
-          </div>
-        </ais-hits>
-        <ais-pagination />
-      </div>
-    </ais-instant-search>
-  </template>
+<ais-index
+    app-id="latency"
+    api-key="3d9875e51fbd20c7754e65422f7ce5e1"
+    index-name="bestbuy"
+  >
+    <ais-search-box></ais-search-box>
+    <ais-results>
+      <template scope="{ result }">
+        <h2>
+          <ais-highlight :result="result" attribute-name="name"></ais-highlight>
+        </h2>
+        <p>Helloe</p>
+      </template>
+    </ais-results>
+  </ais-index>
 
   @endsection

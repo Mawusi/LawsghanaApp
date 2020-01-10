@@ -103,7 +103,7 @@
 
   <div class="row">
       <div class="col-md-3" style="margin-top:10px;">
-        <h4>Filter</h4>
+        {{-- <h4>Filter</h4> --}}
       </div>
       
       <div class="col-md-offset-1 col-md-6" style="margin-top:10px;">
@@ -118,7 +118,7 @@
         </form>       
       </div>
       <div class="col-md-2" style="margin-top:25px;">
-        <p><b>Search Results: 9000 results</b></p>
+      <p style="color:blue;"><b>Found: {{$total_count}} Results</b></p>
       </div>
     
   </div>
@@ -129,52 +129,172 @@
       <div class="col-md-3">
         <div class="sidebar">
           <div class="search-well-filter">
-            <form>
+
+            <p style="color:blue;">Temporary Side bar</p>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input all1" id="defaultChecked" name="act-type" value="All" checked>
+              <label class="custom-control-label" for="defaultChecked">All 4th Republic Laws</label>
+            </div>
+            <br>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input post1" id="defaultUnchecked" name="act-type" value="Post">
+              <label class="custom-control-label" for="defaultUnchecked">Acts of Parliament</label>
+            </div>
+            <br>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input reg1" id="defaultUnchecked" name="act-type" value="Regulation">
+              <label class="custom-control-label" for="defaultUnchecked">Legislative Instruments</label>
+            </div>
+            <br>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input amend_act1" id="defaultUnchecked" name="act-type" value="Amend_Act">
+              <label class="custom-control-label" for="defaultUnchecked">Amended Acts</label>
+            </div>
+            <br>
+
               <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                <label class="custom-control-label" for="defaultChecked">Constitution</label>
-              </div>
-              <br>
-              <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                <label class="custom-control-label" for="defaultUnchecked">Pre 4th Republic Laws</label>
-              </div>
-              <br>
-              <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                <label class="custom-control-label" for="defaultUnchecked">4th Republic Laws</label>
-              </div>
-              <br>
-              <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                <label class="custom-control-label" for="defaultUnchecked">Case Laws</label>
+                <input type="radio" class="custom-control-input amend_reg1" id="defaultUnchecked" name="act-type" value="Amend_Regulation">
+                <label class="custom-control-label" for="defaultUnchecked">Amended Regulations</label>
               </div>
               <br><br><br><br>
-            </form>
+
           </div>
         </div>
       </div>
 
       <div class="col-md-9">
         <div class="">
+          <div class="move_here hidden  top_here"><br></div>
             @foreach ($posts as $post)
-            <div class="search-well">
-              <h5 style="color:blue;"><b>{{ $post->post_act }}</b></h5>
-              <a href="/post_1992_legislation/content/{{$post->id}}" target="_blank"><b>{{ $post->section }}</b></a>
+            <div class="search-well only_post">
+              <h5 style="color:blue;"><b>{!! $post->post_act !!}</b></h5>
+              <a href="/post_1992_legislation/content/{{$post->id}}" target="_blank"><b>{!! $post->section !!}</b></a>
               <br><br>
               {!! $post->content !!}
             </div>
             <br>
             @endforeach
+
+            @foreach ($regulations as $regulation)
+              <div class="search-well only_regulation">
+                <h5 style="color:blue;"><b>{!! $regulation->regulation_title !!}</b></h5>
+                <a href="/post_1992_legislation/content/{{$post->id}}" target="_blank"><b>{!! $regulation->section !!}</b></a>
+                <br><br>
+                {!! $regulation->content !!}
+              </div>
+              <br>
+            @endforeach
+
+            @foreach ($amends as $amend)
+            <div class="search-well only_amend_acts">
+              <h5 style="color:blue;"><b>{{ $amend->act_title }}</b></h5>
+              <a href="/post_1992_legislation/amended_acts/content/{{$amend->id}}" target="_blank"><b>{!! $amend->section !!}</b></a>
+              <br><br>
+              {!! $amend->content !!}
+            </div>
+            <br>
+            @endforeach
+
+            @foreach ($amends_regs as $amends_reg)
+            <div class="search-well only_amend_reg">
+              <h5 style="color:blue;"><b>{!! $amends_reg->title !!}</b></h5>
+              <a href="/post_1992_legislation/amended_regulation_acts/content/{{$amends_reg->id}}" target="_blank"><b>{!! $amends_reg->section !!}</b></a>
+              <br><br>
+              {!! $amends_reg->content !!}
+            </div>
+            @endforeach 
         </div>
       </div>
 
-    {{-- </div> --}}
+    </div>
   </div>
 
 </div>
     
 @endsection 
+
+@section('scripts')
+<script>
+    $(function () {
+      // $('.only_amend_acts').fadeIn();
+      // $('.only_post').fadeOut();
+      // $('.only_regulation').fadeOut();
+      // $('.only_amend_reg').fadeOut();
+
+      $("input[name=act-type]:radio").click(function () {
+        
+          if ($('input[name=act-type]:checked').val() == "All") {
+            $('.all1').click(function() {
+
+            $('html, body').animate({
+              scrollTop: $("body").offset().top
+            }, 1000)
+            });
+            $('.only_post').fadeIn();
+            $('.only_amend_acts').fadeIn();
+            $('.only_regulation').fadeIn();
+            $('.only_amend_reg').fadeIn();
+
+          } else if ($('input[name=act-type]:checked').val() == "Post") {
+            $('.post1').click(function() {
+
+            $('html, body').animate({
+              scrollTop: $("body").offset().top
+            }, 1000)
+            });
+
+            $('.only_post').fadeIn().insertAfter( ".move_here" );
+            $('.only_amend_acts').fadeOut();
+            $('.only_regulation').fadeOut();
+            $('.only_amend_reg').fadeOut();
+
+          }
+          else if ($('input[name=act-type]:checked').val() == "Regulation") {
+            // $('.only_regulation').fadeIn().insertAfter( ".move_here" ).scrollTo('.top_here');
+            $('.reg1').click(function() {
+
+              $('html, body').animate({
+                scrollTop: $("body").offset().top
+              }, 1000)
+            });
+
+              $('.only_regulation').fadeIn().insertAfter( ".move_here" );
+              $('.only_post').fadeOut();
+              $('.only_amend_acts').fadeOut();
+              $('.only_amend_reg').fadeOut();
+          }
+          else if ($('input[name=act-type]:checked').val() == "Amend_Act") {
+            $('.amend_act1').click(function() {
+
+            $('html, body').animate({
+              scrollTop: $("body").offset().top
+            }, 1000)
+            });
+
+            $('.only_amend_acts').fadeIn().insertAfter( ".move_here" );
+            $('.only_post').fadeOut();
+            $('.only_regulation').fadeOut();
+            $('.only_amend_reg').fadeOut();
+
+          }
+          else if ($('input[name=act-type]:checked').val() == "Amend_Regulation") {
+            $('.amend_reg1').click(function() {
+
+            $('html, body').animate({
+              scrollTop: $("body").offset().top
+            }, 1000)
+            });
+
+            $('.only_amend_reg').fadeIn().insertAfter( ".move_here" );
+            $('.only_post').fadeOut();
+            $('.only_amend_acts').fadeOut();
+            $('.only_regulation').fadeOut();
+
+          }
+      });
+    });
+</script>
+@endsection
 
     {{-- <div class="container">
         <center><h3><b>{{ $allPost1992Act['title'] }}</b></h3></center>

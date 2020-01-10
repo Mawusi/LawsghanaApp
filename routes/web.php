@@ -150,7 +150,7 @@ Route::get('/pre_1992_legislation','Pre1992Controller@index');//display all acts
 Route::get('index_search','SearchController@search');
 Route::get('home_index_search','SearchController@home_search');
 Route::get('/acts/search/{key}','SearchController@keyword_search');
-Route::view('scan', 'scan');
+Route::view('/scan', 'scan');
 
 Route::get('post_1992_legislation','Post1992Controller@index');//display all acts
     Route::get('post_1992_legislation/filter/{year}/{category}','Post1992Controller@all_post_1992_legislation_filter'); //all post-1992 filtering
@@ -427,6 +427,9 @@ Route::get('/judgement/all-countries','JudgementController@all_countries_laws');
 Route::get('/News/{category}/{id}','NewsController@news_index');//display homepage of Ghana News
 Route::get('/News/Next/{category}/fetch_data','NewsController@news_ajax_display');//display homepage of Ghana News
 Route::get('/News/{category}/{title}/{id}','NewsController@news_content');//display homepage of Ghana News
+
+Route::get('/Search/Next/{query}/fetch_data','SearchController@acts_ajax_display');//display homepage of Ghana News
+
 
 //FOOTER
 Route::get('/caption/{caption_name}/{id}','Post1992Controller@footer_content');

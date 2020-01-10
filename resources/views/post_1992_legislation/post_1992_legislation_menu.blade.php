@@ -2,11 +2,17 @@
     <div class="navbar bg-header-color">
         {{ menu('post_1992_legislation_menu', 'bootstrap') }}
 
+        {{-- <form action="{{ url('index_search') }}" method="get">
+            {{ csrf_field() }}
+            <input  name="search_text" type="text"/>
+            <input type="submit"/>
+        </form> --}}
+
         <form action="{{ url('index_search') }}" method="GET" class="pull-right search-form">
             {{ csrf_field() }}
             <div class="form-group form-group-customised has-feedback">
                 <label for="search" class="sr-only">Search</label>
-                <input type="search" class="form-control" name="search" id="search" placeholder="keyword search">
+                <input type="search" class="form-control" name="search_text" id="search" placeholder="keyword search">
                 <span class="glyphicon glyphicon-search form-control-feedback"></span>
             </div>
         </form>
