@@ -8,7 +8,7 @@
             <input type="submit"/>
         </form> --}}
 
-        <form action="{{ url('index_search') }}" method="GET" class="pull-right search-form">
+        <form action="{{ url('post_index_search') }}" method="GET" class="pull-right search-form">
             {{ csrf_field() }}
             <div class="form-group form-group-customised has-feedback">
                 <label for="search" class="sr-only">Search</label>

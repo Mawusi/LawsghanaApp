@@ -21,7 +21,7 @@
             <div class="input-group">         
                   <input type="text" class="form-control" name="search" placeholder="Search any law or case in Ghana"">
                   <span class="input-group-btn">
-                      <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                      <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
                   </span>
             </div>
           </form>       

@@ -9,7 +9,7 @@
     <br>
     @endforeach
 
-    @foreach ($regulations as $regulation)
+    {{-- @foreach ($regulations as $regulation)
     <div class="search-well">
       <h5 style="color:blue;"><b>{!! $regulation->regulation_title !!}</b></h5>
       <a href="/post_1992_legislation/content/{{$post->id}}" target="_blank"><b>{!! $regulation->section !!}</b></a>
@@ -36,7 +36,7 @@
       <br><br>
       {!! $amends_reg->content !!}
     </div>
-    @endforeach 
+    @endforeach  --}}
 
     <center><div>{!! $posts->links() !!}</div></center>
 </div>

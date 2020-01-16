@@ -65,9 +65,11 @@
         
         <!--<br>-->
         {{-- @include('extenders.case_law_main_search') --}}
-        <form>
-          <p>Highlight keywords as you type: <input id="keywords" size="24"></p>
-        </form>
+        
+          <input type="text" id="search_text">
+          <input type="button" value="search" id="search">
+        
+
     </div>
     
   </div>

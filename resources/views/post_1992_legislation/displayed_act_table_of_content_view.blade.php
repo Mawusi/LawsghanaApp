@@ -3,6 +3,7 @@
 
 @section('assets')
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css"> --}}
 <style type="text/css">
         .navbar {
           min-height: 1px;
@@ -159,7 +160,10 @@
       .shadow-background{
         box-shadow: 0 1px 5px #e0e0e0;
         background-color: #FFFFFF;
-      }
+      }.highlight
+{
+ color:blue;
+ text-decoration:underline;}
       
 </style>
 
@@ -493,7 +497,11 @@
 @endsection
 
 @section('scripts')
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<script>
+    
+</script>
+
+    {{-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script> --}}
 @endsection
 
 
