@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post1992Article;
+use App\Post1992Act;
 use App\RegulationArticle;
 use App\FooterNote;
 use App\AmendedArticle;
@@ -180,6 +181,29 @@ class PostSearchController extends Controller
         //     return view('extenders.search_page_index', compact('posts', 'footer_notes'));
         // else 
         //     return view ('extenders.search_page_not_found', compact('footer_notes'));
+    }
+
+
+    public function post_index_acts_search(Request $request, $title, $id){
+        // dd($title, $id);
+        $footer_notes   = FooterNote::all();
+        $query=request('search_text');
+
+        $acts_title = Post1992Act::find($id);
+    
+        $single_post_acts = Post1992Article::where(['post_act' => $title])
+        ->where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")
+        ->orderBy('priority')
+        ->get()
+        ->map(function ($row) use ($query) {
+            $row->content   = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
+            return $row;
+        });
+
+        $single_post_acts_count = Post1992Article::where(['post_act' => $title])
+        ->where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->count();
+        
+        return view ('extenders.single_act_search_page_index', compact('query','acts_title','single_post_acts','single_post_acts_count','footer_notes'));
     }
 
     public function acts_ajax_display(Request $request, $query){

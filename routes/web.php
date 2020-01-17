@@ -148,6 +148,8 @@ Route::get('/pre_1992_legislation','Pre1992Controller@index');//display all acts
 //For all Post Legislation
 // Route::get('/keyword-search','Post1992Controller@keyword_search');
 Route::get('post_index_search','PostSearchController@post_index_search');
+Route::get('post_index_search/{title}/{id}','PostSearchController@post_index_acts_search');
+
 Route::get('cases_index_search','CasesSearchController@cases_index_search');
 Route::get('home_index_search','HomeSearchController@home_search');
 Route::get('/acts/search/{key}','SearchController@keyword_search');

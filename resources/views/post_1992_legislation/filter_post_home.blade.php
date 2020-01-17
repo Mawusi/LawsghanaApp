@@ -36,8 +36,12 @@
 					</select>
 					</center>
 					<hr>
-					@include('extenders.case_law_main_search')
+					{{-- @include('extenders.case_law_main_search') --}}
 					{{-- <input class="btn btn-primary btn-xs" type="button" name="go" value="Search" id="all_post_1992_legislation_filter"> --}}
+					<form action="{{ url('post_index_search') }}" method="GET">
+						{{ csrf_field() }}
+							<input style="padding: 15px;" class="form-control" name="search_text" type="text" placeholder="Search word in Acts" aria-label="Search">
+					</form>
 			</div>
 		</div>
 	</div>

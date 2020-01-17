@@ -12,7 +12,7 @@
             {{ csrf_field() }}
             <div class="form-group form-group-customised has-feedback">
                 <label for="search" class="sr-only">Search</label>
-                <input type="search" class="form-control" name="search_text" id="search" placeholder="keyword search">
+                <input type="search" class="form-control" name="search_text" id="search" placeholder="Search Any Word">
                 <span class="glyphicon glyphicon-search form-control-feedback"></span>
             </div>
         </form>

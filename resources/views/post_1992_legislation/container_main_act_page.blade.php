@@ -99,7 +99,12 @@
           </div>
 
           <hr>
-          @include('extenders.case_law_main_search')
+          {{-- @include('extenders.case_law_main_search') --}}
+          <form action="/post_index_search/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}" method="GET">
+            {{ csrf_field() }}
+                <input style="padding: 15px;" class="form-control" name="search_text" type="text" placeholder="Search word in section" aria-label="Search">
+          </form>
+
 
         </div>
         </center>
