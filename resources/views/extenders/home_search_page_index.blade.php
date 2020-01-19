@@ -93,8 +93,6 @@
   position: -webkit-sticky;
   position: sticky;
   top: 10%;
-}#title{
-color: green;
 }
 </style>
 @endsection
@@ -109,10 +107,10 @@ color: green;
       </div>
       
       <div class="col-md-offset-1 col-md-6" style="margin-top:10px; margin-bottom: 10px;">
-        <form action="{{ url('home_index_search') }}" method="GET">
+        <form action="{{ url('main_home_search') }}" method="GET">
           {{ csrf_field() }}
           <div class="input-group">         
-                <input type="text" class="form-control" name="search" placeholder="Search any law or case in Ghana"">
+                <input type="text" class="form-control" name="search_text" placeholder="Search any law or case in Ghana"">
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
@@ -120,7 +118,7 @@ color: green;
         </form>       
       </div>
       <div class="col-md-2" style="margin-top:25px;">
-      <p style="color:blue;"><b class="hidden">Found: {{$total_count}} Results</b></p>
+      <p style="color:blue;"><b class="hidden">Found: {{$all_total_count}} Results</b></p>
       </div>
     
   </div>
@@ -131,99 +129,47 @@ color: green;
       <div class="col-md-3">
         <div class="sidebar">
           <div class="search-well-filter">
-            <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($total_count)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p><hr>
-            <p style="color:blue;">Temporary Side bar</p>
+            <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($all_total_count)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p><hr>
+            <p style="color:blue;">Filter Options</p>
             <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input all1" id="defaultChecked" name="act-type" value="All" checked>
-              <label class="custom-control-label" for="defaultChecked">All 4th Republic Laws</label>&nbsp;<span class="badge">{{$total_count}}</span>
+              <input type="radio" class="custom-control-input all1" id="all_laws" name="act-type" value="All" checked>
+              <label class="custom-control-label" for="defaultChecked">All</label>&nbsp;<span class="badge">{{$all_total_count}}</span>
             </div>
             <br>
             <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input post1" id="defaultUnchecked" name="act-type" value="Post">
-              <label class="custom-control-label" for="defaultUnchecked">Acts of Parliament</label>&nbsp;<span class="badge">{{$posts_count}}</span>
+              <input type="radio" class="custom-control-input consti_ghana1" id="consti_ghana" name="act-type" value="Constitution_Ghana">
+              <label class="custom-control-label" for="defaultUnchecked">Constitution(Ghana)</label>&nbsp;<span class="badge">0</span>
             </div>
             <br>
             <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input reg1" id="defaultUnchecked" name="act-type" value="Regulation">
-              <label class="custom-control-label" for="defaultUnchecked">Legislative Instruments</label>&nbsp;<span class="badge">{{$regulations_count}}</span>
+              <input type="radio" class="custom-control-input consti_others1" id="consti_others" name="act-type" value="Constitution_Others">
+              <label class="custom-control-label" for="defaultUnchecked">Constitution(Countries)</label>&nbsp;<span class="badge">0</span>
             </div>
             <br>
             <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input amend_act1" id="defaultUnchecked" name="act-type" value="Amend_Act">
-              <label class="custom-control-label" for="defaultUnchecked">Amended Acts</label>&nbsp;<span class="badge">{{$amends_count}}</span>
+              <input type="radio" class="custom-control-input pre_4th1" id="pre_4th" name="act-type" value="Pre_4th_Republic">
+              <label class="custom-control-label" for="defaultUnchecked">Pre 4th Republic Laws</label>&nbsp;<span class="badge">0</span>
             </div>
             <br>
-
-              <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input amend_reg1" id="defaultUnchecked" name="act-type" value="Amend_Regulation">
-                <label class="custom-control-label" for="defaultUnchecked">Amended Regulations</label>&nbsp;<span class="badge">{{$amends_regs_count}}</span>
-              </div>
-              <br>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input 4th_rep1" id="4th_rep" name="act-type" value="4th_Republic">
+              <label class="custom-control-label" for="defaultUnchecked">4th Republic Laws</label>&nbsp;<span class="badge">{{$posts_total_count}}</span>
+            </div>
+            <br>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input cases1" id="case_laws" name="act-type" value="Case_Laws">
+              <label class="custom-control-label" for="defaultUnchecked">Case Laws</label>&nbsp;<span class="badge">{{$cases_total_count}}</span>
+            </div>
+            <br>
 
           </div>
         </div>
       </div>
 
       <div class="col-md-9">
-        <div class="">
           <div class="move_here hidden  top_here"><br></div>
-            @foreach ($posts as $post)
-            <div class="search-well only_post">
-              <h5 style="color:blue;"><b>{!! $post->post_act !!}</b></h5>
-              <a href="/post_1992_legislation/content/{{$post->id}}" target="_blank"><b>{!! $post->section !!}</b></a>
-              <br><br>
-
-                {{-- {!! strrpos($post->content, $query) !!} --}}
-                {{-- {{str_limit(strip_tags($post->content),100, $query)}} --}}
-                {{-- {!!substr($post->content, strpos($post->content, $query) + 1)!!} --}}
-                {{-- {!!substr($post->content, (strpos($post->content, $query) ?: -1) + 1)!!} --}}
-                
-            
-              
-              {{-- {!! str_limit(strip_tags(strstr($post->content,  $query, false)),600, '...' ) !!} --}}
-              
-            
-            {!! $post->content !!}
-
-                
-                {{-- {!! strrpos($post->content, $query) !!} --}}
-
-                {{-- show all queries in string --}}
-                {{-- {!! substr_count($post->content, $query) !!}  --}}
-                
-            </div>
-            <br>
-            @endforeach
-
-            {{-- @foreach ($regulations as $regulation)
-              <div class="search-well only_regulation">
-                <h5 style="color:blue;"><b>{!! $regulation->regulation_title !!}</b></h5>
-                <a href="/post_1992_legislation/content/{{$regulation->id}}" target="_blank"><b>{!! $regulation->section !!}</b></a>
-                <br><br>
-                {!! $regulation->content !!}
-              </div>
-              <br>
-            @endforeach
-
-            @foreach ($amends as $amend)
-            <div class="search-well only_amend_acts">
-              <h5 style="color:blue;"><b>{{ $amend->act_title }}</b></h5>
-              <a href="/post_1992_legislation/amended_acts/content/{{$amend->id}}" target="_blank"><b>{!! $amend->section !!}</b></a>
-              <br><br>
-              {!! $amend->content !!}
-            </div>
-            <br>
-            @endforeach
-
-            @foreach ($amends_regs as $amends_reg)
-            <div class="search-well only_amend_reg">
-              <h5 style="color:blue;"><b>{!! $amends_reg->title !!}</b></h5>
-              <a href="/post_1992_legislation/amended_regulation_acts/content/{{$amends_reg->id}}" target="_blank"><b>{!! $amends_reg->section !!}</b></a>
-              <br><br>
-              {!! $amends_reg->content !!}
-            </div>
-            @endforeach  --}}
-        </div>
+          @include('extenders.main_query_on_4th_Rep_Laws')
+          @include('extenders.main_query_case_Laws')            
       </div>
 
     </div>
@@ -234,14 +180,26 @@ color: green;
 @endsection 
 
 @section('scripts')
+<script>
+  if ( {{$all_total_count}} == 0 ) {
+    document.getElementById("all_laws").disabled = true;
+    document.getElementById("consti_ghana").disabled = true;
+    document.getElementById("consti_others").disabled = true;
+    document.getElementById("pre_4th").disabled = true;
+    document.getElementById("4th_rep").disabled = true;
+    document.getElementById("case_laws").disabled = true;   
+  }
+  
+  if ( {{$posts_total_count}} == 0 ) {
+    document.getElementById("4th_rep").disabled = true;   
+  }
+  if ( {{$cases_total_count}} == 0 ) {
+    document.getElementById("case_laws").disabled = true;   
+  }
+</script>
 
 <script>
     $(function () {
-      // $('.only_amend_acts').fadeIn();
-      // $('.only_post').fadeOut();
-      // $('.only_regulation').fadeOut();
-      // $('.only_amend_reg').fadeOut();
-
       $("input[name=act-type]:radio").click(function () {
         
           if ($('input[name=act-type]:checked').val() == "All") {
@@ -251,12 +209,14 @@ color: green;
               scrollTop: $("body").offset().top
             }, 1000)
             });
-            $('.only_post').fadeIn();
-            $('.only_amend_acts').fadeIn();
-            $('.only_regulation').fadeIn();
-            $('.only_amend_reg').fadeIn();
+            $('.only_constitution_ghana').fadeIn();
+            $('.only_constitution_others').fadeIn();
+            $('.only_pre_4th_republic').fadeIn();
+            $('.only_4th_republic').fadeIn();
+            $('.only_cases').fadeIn();
 
-          } else if ($('input[name=act-type]:checked').val() == "Post") {
+
+          } else if ($('input[name=act-type]:checked').val() == "Constitution_Ghana") {
             $('.post1').click(function() {
 
             $('html, body').animate({
@@ -270,7 +230,7 @@ color: green;
             $('.only_amend_reg').fadeOut();
 
           }
-          else if ($('input[name=act-type]:checked').val() == "Regulation") {
+          else if ($('input[name=act-type]:checked').val() == "Constitution_Others") {
             // $('.only_regulation').fadeIn().insertAfter( ".move_here" ).scrollTo('.top_here');
             $('.reg1').click(function() {
 
@@ -284,7 +244,7 @@ color: green;
               $('.only_amend_acts').fadeOut();
               $('.only_amend_reg').fadeOut();
           }
-          else if ($('input[name=act-type]:checked').val() == "Amend_Act") {
+          else if ($('input[name=act-type]:checked').val() == "Pre_4th_Republic") {
             $('.amend_act1').click(function() {
 
             $('html, body').animate({
@@ -298,18 +258,33 @@ color: green;
             $('.only_amend_reg').fadeOut();
 
           }
-          else if ($('input[name=act-type]:checked').val() == "Amend_Regulation") {
-            $('.amend_reg1').click(function() {
+          else if ($('input[name=act-type]:checked').val() == "4th_Republic") {
+            $('.4th_rep1').click(function() {
 
             $('html, body').animate({
               scrollTop: $("body").offset().top
             }, 1000)
             });
 
-            $('.only_amend_reg').fadeIn().insertAfter( ".move_here" );
-            $('.only_post').fadeOut();
-            $('.only_amend_acts').fadeOut();
-            $('.only_regulation').fadeOut();
+            $('.only_4th_republic').fadeIn().insertAfter( ".move_here" );
+            $('.only_cases').fadeOut();
+            $('.only_constitution_ghana').fadeOut();
+            $('.only_constitution_others').fadeOut();
+            $('.only_pre_4th_republic').fadeOut();
+          }
+          else if ($('input[name=act-type]:checked').val() == "Case_Laws") {
+            $('.cases1').click(function() {
+
+            $('html, body').animate({
+              scrollTop: $("body").offset().top
+            }, 1000)
+            });
+
+            $('.only_cases').fadeIn().insertAfter( ".move_here" );
+            $('.only_constitution_ghana').fadeOut();
+            $('.only_constitution_others').fadeOut();
+            $('.only_pre_4th_republic').fadeOut();
+            $('.only_4th_republic').fadeOut();
 
           }
       });

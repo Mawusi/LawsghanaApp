@@ -109,10 +109,10 @@ color: green;
       </div>
       
       <div class="col-md-offset-1 col-md-6" style="margin-top:10px; margin-bottom: 10px;">
-        <form action="{{ url('home_index_search') }}" method="GET">
+        <form action="{{ url('main_home_search') }}" method="GET">
           {{ csrf_field() }}
           <div class="input-group">         
-                <input type="text" class="form-control" name="search" placeholder="Search any law or case in Ghana"">
+                <input type="text" class="form-control" name="search_text" placeholder="Search any law or case in Ghana"">
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
@@ -132,25 +132,29 @@ color: green;
         <div class="sidebar">
           <div class="search-well-filter">
             <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($total_cases)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p><hr>
-            <p style="color:blue;">Temporary Side bar</p>
+            <p style="color:blue;">Filter Options</p>
             <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input all1" id="defaultChecked" name="act-type" value="All" checked>
+              <input type="radio" class="custom-control-input all1" id="all_cases" name="act-type" value="All" checked>
             <label class="custom-control-label" for="defaultChecked">Case Laws</label>&nbsp;<span class="badge">{{$total_cases}}</span>
             </div>
             <br>
             <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input post1" id="defaultUnchecked" name="act-type" value="Post">
+              <input type="radio" class="custom-control-input supreme1" id="supreme_court" name="act-type" value="Supreme">
               <label class="custom-control-label" for="defaultUnchecked">Supreme Court</label>&nbsp;<span class="badge">{{$supreme_court_cases_count}}</span>
             </div>
             <br>
+
+            
             <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input reg1" id="defaultUnchecked" name="act-type" value="Regulation">
-              <label class="custom-control-label" for="defaultUnchecked">Court of Appeal</label>&nbsp;<span class="badge">{{$court_of_appeal_cases_count}}</span>
+              <input type="radio" class="custom-control-input appeal1" id="court_of_appeal" name="act-type" value="Appeal">
+            <label class="custom-control-label" for="defaultUnchecked">Court of Appeal</label>&nbsp;<span class="badge">{{$court_of_appeal_cases_count}}</span>
             </div>
             <br>
+            
+
             <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input amend_act1" id="defaultUnchecked" name="act-type" value="Amend_Act">
-              <label class="custom-control-label" for="defaultUnchecked">High Court</label>&nbsp;<span class="badge">{{$high_court_cases_count}}</span>
+              <input type="radio" class="custom-control-input high1" id="high_court" name="act-type" value="High">
+            <label class="custom-control-label" for="defaultUnchecked">High Court</label>&nbsp;<span class="badge">{{$high_court_cases_count}}</span>
             </div>
             <br>
           </div>
@@ -160,19 +164,7 @@ color: green;
       <div class="col-md-9">
         <div class="">
           <div class="move_here hidden  top_here"><br></div>
-            @foreach ($supreme_court_cases as $supreme_court_case)
-            <div class="search-well only_post">
-            <a href="/judgement/plain_view/{{$supreme_court_case->id}}" target="_blank"><h5 style="color:blue;"><b>{!! $supreme_court_case->case_title !!}</b></h5></a>
-              <b>{!! $supreme_court_case->gh_law_judgment_group_name !!} | {!! $supreme_court_case->reference_number !!}</b>
-              <br><br>
-                {{-- {!! $case->content !!}  --}}
-                {{-- {!! $supreme_court_case->content !!} --}}
-                {!! str_limit(strip_tags(strstr($supreme_court_case->content,  $query, false)),450, '...' ) !!}
-
-            </div>
-            <br>
-            @endforeach
-            
+            @include('extenders.query_case_Laws')            
         </div>
       </div>
 
@@ -184,8 +176,27 @@ color: green;
 @endsection 
 
 @section('scripts')
+<script>
+  if ( {{$total_cases}} == 0 ) {
+    document.getElementById("all_cases").disabled = true;
+    document.getElementById("supreme_court").disabled = true;
+    document.getElementById("court_of_appeal").disabled = true;
+    document.getElementById("high_court").disabled = true;   
+  }
+  if ( {{$supreme_court_cases_count}} == 0 ) {
+    document.getElementById("supreme_court").disabled = true;   
+  }
+  if ( {{$court_of_appeal_cases_count}} == 0 ) {
+    document.getElementById("court_of_appeal").disabled = true;   
+  }
+  if ( {{$high_court_cases_count}} == 0 ) {
+    document.getElementById("high_court").disabled = true;   
+  }
+</script>
 
 <script>
+  
+
     $(function () {
       $("input[name=act-type]:radio").click(function () {
         
@@ -196,66 +207,46 @@ color: green;
               scrollTop: $("body").offset().top
             }, 1000)
             });
-            $('.only_post').fadeIn();
-            $('.only_amend_acts').fadeIn();
-            $('.only_regulation').fadeIn();
-            $('.only_amend_reg').fadeIn();
+            $('.only_supreme').fadeIn();
+            $('.only_appeal').fadeIn();
+            $('.only_high').fadeIn();
 
-          } else if ($('input[name=act-type]:checked').val() == "Post") {
-            $('.post1').click(function() {
+          } else if ($('input[name=act-type]:checked').val() == "Supreme") {
+            $('.supreme1').click(function() {
 
             $('html, body').animate({
               scrollTop: $("body").offset().top
             }, 1000)
             });
 
-            $('.only_post').fadeIn().insertAfter( ".move_here" );
-            $('.only_amend_acts').fadeOut();
-            $('.only_regulation').fadeOut();
-            $('.only_amend_reg').fadeOut();
-
+            $('.only_supreme').fadeIn().insertAfter( ".move_here" );
+            $('.only_appeal').fadeOut();
+            $('.only_high').fadeOut();
           }
-          else if ($('input[name=act-type]:checked').val() == "Regulation") {
+          else if ($('input[name=act-type]:checked').val() == "Appeal") {
             // $('.only_regulation').fadeIn().insertAfter( ".move_here" ).scrollTo('.top_here');
-            $('.reg1').click(function() {
+            $('.appeal1').click(function() {
 
               $('html, body').animate({
                 scrollTop: $("body").offset().top
               }, 1000)
             });
 
-              $('.only_regulation').fadeIn().insertAfter( ".move_here" );
-              $('.only_post').fadeOut();
-              $('.only_amend_acts').fadeOut();
-              $('.only_amend_reg').fadeOut();
+              $('.only_appeal').fadeIn().insertAfter( ".move_here" );
+              $('.only_supreme').fadeOut();
+              $('.only_high').fadeOut();
           }
-          else if ($('input[name=act-type]:checked').val() == "Amend_Act") {
-            $('.amend_act1').click(function() {
+          else if ($('input[name=act-type]:checked').val() == "High") {
+            $('.high1').click(function() {
 
             $('html, body').animate({
               scrollTop: $("body").offset().top
             }, 1000)
             });
 
-            $('.only_amend_acts').fadeIn().insertAfter( ".move_here" );
-            $('.only_post').fadeOut();
-            $('.only_regulation').fadeOut();
-            $('.only_amend_reg').fadeOut();
-
-          }
-          else if ($('input[name=act-type]:checked').val() == "Amend_Regulation") {
-            $('.amend_reg1').click(function() {
-
-            $('html, body').animate({
-              scrollTop: $("body").offset().top
-            }, 1000)
-            });
-
-            $('.only_amend_reg').fadeIn().insertAfter( ".move_here" );
-            $('.only_post').fadeOut();
-            $('.only_amend_acts').fadeOut();
-            $('.only_regulation').fadeOut();
-
+            $('.only_high').fadeIn().insertAfter( ".move_here" );
+            $('.only_supreme').fadeOut();
+            $('.only_appeal').fadeOut();
           }
       });
     });

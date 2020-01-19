@@ -106,11 +106,11 @@
         {{-- <h4>Filter</h4> --}}
       </div>
       
-      <div class="col-md-offset-1 col-md-6" style="margin-top:10px;">
-        <form action="{{ url('home_index_search') }}" method="GET">
+      <div class="col-md-offset-1 col-md-6" style="margin-top:10px; margin-bottom: 10px;">
+        <form action="{{ url('main_home_search') }}" method="GET">
           {{ csrf_field() }}
           <div class="input-group">         
-                <input type="text" class="form-control" name="search" placeholder="Search any law or case in Ghana"">
+                <input type="text" class="form-control" name="search_text" placeholder="Search any law or case in Ghana"">
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
@@ -118,7 +118,7 @@
         </form>       
       </div>
       <div class="col-md-2" style="margin-top:25px;">
-      <p style="color:blue;"><b>Found: {{$total_count}} Results</b></p>
+      <p style="color:blue;"><b class="hidden">Found: {{$total_count}} Results</b></p>
       </div>
     
   </div>
@@ -129,51 +129,33 @@
       <div class="col-md-3">
         <div class="sidebar">
           <div class="search-well-filter">
-            <form>
+            <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($total_count)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p><hr>
               <p style="color:blue;">Filter Options</p>
               <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked>
-                <label class="custom-control-label" for="defaultChecked">All 4th Republic Laws</label>
+                <input type="radio" class="custom-control-input all1" id="all_posts" name="act-type" value="All" checked>
+                <label class="custom-control-label" for="defaultChecked">All</label>&nbsp;<span class="badge">{{$total_count}}</span>
               </div>
               <br>
               <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                <label class="custom-control-label" for="defaultUnchecked">Acts of Parliament</label>
+                <input type="radio" class="custom-control-input post1" id="for_post" name="act-type" value="Post">
+                <label class="custom-control-label" for="defaultUnchecked">Acts of Parliament</label>&nbsp;<span class="badge">{{$posts_count}}</span>
               </div>
               <br>
               <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                <label class="custom-control-label" for="defaultUnchecked">Legislative Instruments</label>
+                <input type="radio" class="custom-control-input reg1" id="for_regulations" name="act-type" value="Regulation">
+                <label class="custom-control-label" for="defaultUnchecked">Legislative Instruments</label>&nbsp;<span class="badge">{{$regulations_count}}</span>
               </div>
               <br>
               <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                <label class="custom-control-label" for="defaultUnchecked">Amended Acts</label>
+                <input type="radio" class="custom-control-input amend_act1" id="for_amended_acts" name="act-type" value="Amend_Act">
+                <label class="custom-control-label" for="defaultUnchecked">Amended Acts</label>&nbsp;<span class="badge">{{$amends_count}}</span>
               </div>
               <br>
               <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios">
-                <label class="custom-control-label" for="defaultUnchecked">Amended Regulations</label>
+                <input type="radio" class="custom-control-input amend_reg1" id="for_amended_regulation" name="act-type" value="Amend_Regulation">
+                <label class="custom-control-label" for="defaultUnchecked">Amended Regulations</label>&nbsp;<span class="badge">{{$amends_regs_count}}</span>
               </div>
               <br><br><br><br>
-            </form>
-            {{-- <p class="filters">
-              <label>
-                <input type="radio" name="filter" value="*" checked="checked" /> show all
-              </label>
-              <br>
-              <label>
-                <input type="radio" name="filter" value=".metal" /> metal
-              </label>
-              <br>
-              <label>
-                <input type="radio" name="filter" value=".transition" /> transition
-              </label>
-              <br>
-              <label>
-                <input type="radio" name="filter" value=".alkali, .alkaline-earth" /> alkali &amp; alkaline-earth
-              </label>
-            </p> --}}
           </div>
         </div>
       </div>
@@ -193,7 +175,104 @@
 
 @section('scripts')
 <script>
+  if ( {{$total_count}} == 0 ) {
+    document.getElementById("all_posts").disabled = true;
+    document.getElementById("for_post").disabled = true;
+    document.getElementById("for_regulations").disabled = true;
+    document.getElementById("for_amended_acts").disabled = true; 
+    document.getElementById("for_amended_regulation").disabled = true;     
+  }
+  if ( {{$posts_count}} == 0 ) {
+    document.getElementById("for_post").disabled = true;   
+  }
+  if ( {{$regulations_count}} == 0 ) {
+    document.getElementById("for_regulations").disabled = true;   
+  }
+  if ( {{$amends_count}} == 0 ) {
+    document.getElementById("for_amended_acts").disabled = true;   
+  }
+  if ( {{$amends_regs_count}} == 0 ) {
+    document.getElementById("for_amended_regulation").disabled = true;   
+  }
+</script>
+
+<script>
         $(document).ready(function(){
+
+          $(function () {
+    $("input[name=act-type]:radio").click(function () {
+      
+        if ($('input[name=act-type]:checked').val() == "All") {
+          $('.all1').click(function() {
+
+          $('html, body').animate({
+            scrollTop: $("body").offset().top
+          }, 1000)
+          });
+          $('.only_post').show();
+          $('.only_amend_acts').show();
+          $('.only_regulation').show();
+          $('.only_amend_reg').show();
+
+        } else if ($('input[name=act-type]:checked').val() == "Post") {
+          $('.post1').click(function() {
+
+          $('html, body').animate({
+            scrollTop: $("body").offset().top
+          }, 1000)
+          });
+
+          $('.only_post').show().insertAfter( ".move_here" );
+          $('.only_amend_acts').hide();
+          $('.only_regulation').hide();
+          $('.only_amend_reg').hide();
+
+        }
+        else if ($('input[name=act-type]:checked').val() == "Regulation") {
+          // $('.only_regulation').fadeIn().insertAfter( ".move_here" ).scrollTo('.top_here');
+          $('.reg1').click(function() {
+
+            $('html, body').animate({
+              scrollTop: $("body").offset().top
+            }, 1000)
+          });
+
+            $('.only_regulation').show().insertAfter( ".move_here" );
+            $('.only_post').hide();
+            $('.only_amend_acts').hide();
+            $('.only_amend_reg').hide();
+        }
+        else if ($('input[name=act-type]:checked').val() == "Amend_Act") {
+          $('.amend_act1').click(function() {
+
+          $('html, body').animate({
+            scrollTop: $("body").offset().top
+          }, 1000)
+          });
+
+          $('.only_amend_acts').show().insertAfter( ".move_here" );
+          $('.only_post').hide();
+          $('.only_regulation').hide();
+          $('.only_amend_reg').hide();
+
+        }
+        else if ($('input[name=act-type]:checked').val() == "Amend_Regulation") {
+          $('.amend_reg1').click(function() {
+
+          $('html, body').animate({
+            scrollTop: $("body").offset().top
+          }, 1000)
+          });
+
+          $('.only_amend_reg').show().insertAfter( ".move_here" );
+          $('.only_post').hide();
+          $('.only_amend_acts').hide();
+          $('.only_regulation').hide();
+
+        }
+    });
+  });
+
             $(document).on('click', '.pagination a', function(event){
               event.preventDefault();
               var page = $(this).attr('href').split('page=')[1];

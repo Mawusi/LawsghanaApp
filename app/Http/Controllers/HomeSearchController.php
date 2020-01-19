@@ -9,24 +9,16 @@ use App\FooterNote;
 use App\AmendedArticle;
 use App\AmendRegulationArticle;
 
+use App\GhLawJudgment;
+
 class HomeSearchController extends Controller
 {
-    //
-    public function home_search(Request $request){
+    
+    public function main_home_search(Request $request){
 
+        //--------------------------------------------------------------------- HOME SEARCH: 4TH REPUBLIC LAWS------------------------------------------------
         $footer_notes   = FooterNote::all();
-
-
-    	// if($request->has('search')){
-    	// 	$posts = Post1992Article::search($request->get('search'))->get();	
-    	// }else{
-    	// 	$posts = Post1992Article::get();
-        // }
-        $query=request('search');
-        // dd($query);
-        
-        $query_match= "<font color='blue'>".$query."</font>";
-        // dd($query_match);
+        $query=request('search_text');
 
         $posts          = Post1992Article::select('*')
                         ->where('part', 'LIKE', "%$query%")
@@ -34,10 +26,6 @@ class HomeSearchController extends Controller
                         ->orderBy('post_act')
                         ->orderBy('priority')
                         ->get()
-                        // ->map(function ($row1) use ($query) {
-                        //     $row1->post_act = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row1->post_act);
-                        //     return $row1;
-                        // })
                         ->map(function ($row2) use ($query) {
                             $row2->section = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row2->section);
                             return $row2;
@@ -53,10 +41,6 @@ class HomeSearchController extends Controller
                         ->orderBy('regulation_title')
                         ->orderBy('priority')
                         ->get()
-                        // ->map(function ($row) use ($query) {
-                        //     $row->regulation_title = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->regulation_title);
-                        //     return $row;
-                        // })
                         ->map(function ($row1) use ($query) {
                             $row1->section = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row1->section);
                             return $row1;
@@ -72,10 +56,6 @@ class HomeSearchController extends Controller
                         ->orderBy('act_title')
                         ->orderBy('priority')
                         ->get()
-                        // ->map(function ($row) use ($query) {
-                        //     $row->act_title = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->act_title);
-                        //     return $row;
-                        // })
                         ->map(function ($row1) use ($query) {
                             $row1->section = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row1->section);
                             return $row1;
@@ -110,11 +90,67 @@ class HomeSearchController extends Controller
                         $amends_regs_count    = AmendRegulationArticle::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('title','LIKE', "%$query%")
                         ->count();
 
-        $total_count    =  $posts_count + $regulations_count + $amends_count + $amends_regs_count;              
+        $posts_total_count    =  $posts_count + $regulations_count + $amends_count + $amends_regs_count; 
         
-        if(count($posts) > 0 or count($regulations) > 0 or count($amends) > 0 or count($amends_regs) > 0 )
-            return view('extenders.home_search_page_index', compact('query', 'query_match','posts', 'total_count', 'regulations', 'amends', 'amends_regs', 'footer_notes','posts_count', 'regulations_count', 'amends_count', 'amends_regs_count'));
+        
+        //--------------------------------------------------------------------- HOME SEARCH: CASE LAWS------------------------------------------------
+        $supreme = "Supreme-Court";
+        $court_of_appeal = "Court-of-Appeal";
+        $high_court = "High-Court";
+
+        $supreme_court_cases         = GhLawJudgment::where(['gh_law_judgment_group_name' => $supreme])                                    
+                                     ->where('content', 'LIKE', "%$query%")
+                                     ->get()
+                                     ->map(function ($row3) use ($query) {
+                                       $row3->content = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row3->content);
+                                       return $row3;
+                                      });
+        $supreme_court_cases_count     = $supreme_court_cases->count();
+                                    
+                                     
+        $court_of_appeal_cases        = GhLawJudgment::where(['gh_law_judgment_group_name' => $court_of_appeal])
+                                      ->where('content','LIKE', "%$query%")
+                                      ->get()
+                                      ->map(function ($row3) use ($query) {
+                                        $row3->content = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row3->content);
+                                        return $row3;
+                                       });
+        $court_of_appeal_cases_count  = $court_of_appeal_cases->count();
+
+
+         $high_court_cases            = GhLawJudgment::where(['gh_law_judgment_group_name' => $high_court])
+                                       ->where('content','LIKE', "%$query%")
+                                       ->get()
+                                       ->map(function ($row3) use ($query) {
+                                       $row3->content = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row3->content);
+                                       return $row3;
+                                       });
+         $high_court_cases_count      = $high_court_cases->count();
+
+
+        $cases_total_count                    = $supreme_court_cases_count + $court_of_appeal_cases_count + $high_court_cases_count; 
+
+
+
+        $all_total_count                =  $posts_total_count + $cases_total_count;           
+        
+        if
+            (
+            count($posts) > 0 or 
+            count($regulations) > 0 or 
+            count($amends) > 0 or 
+            count($amends_regs) > 0 or 
+            count($supreme_court_cases) > 0 or 
+            count($court_of_appeal_cases) > 0 or 
+            count($high_court_cases) > 0 
+            )
+            return view('extenders.home_search_page_index', compact('query','footer_notes', 'all_total_count','posts_total_count','cases_total_count',
+                                                                    'posts','regulations', 'amends', 'amends_regs', 
+                                                                    'supreme_court_cases','court_of_appeal_cases','high_court_cases'));
         else 
             return view ('extenders.search_page_not_found', compact('footer_notes', 'total_count'));
     }
+    
+    
+    
 }

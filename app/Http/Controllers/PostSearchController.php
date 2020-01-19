@@ -164,7 +164,7 @@ class PostSearchController extends Controller
         $total_count    =  $posts_count + $regulations_count + $amends_count + $amends_regs_count;
 
         if(count($posts) > 0 or count($regulations) > 0 or count($amends) > 0 or count($amends_regs) > 0 )
-            return view('extenders.post_search_page_index',compact('posts', 'total_count','regulations', 'amends', 'amends_regs', 'query', 'footer_notes'));
+            return view('extenders.post_search_page_index',compact('posts_count','regulations_count','amends_count','amends_regs_count','posts', 'total_count','regulations', 'amends', 'amends_regs', 'query', 'footer_notes'));
         else
             return view ('extenders.search_page_not_found', compact('footer_notes', 'total_count'));
 
@@ -184,15 +184,15 @@ class PostSearchController extends Controller
     }
 
 
-    public function post_index_acts_search(Request $request, $title, $id){
-        // dd($title, $id);
+    public function post_index_acts_search(Request $request, $id, $title){
+        // dd($id, $title);
         $footer_notes   = FooterNote::all();
         $query=request('search_text');
 
         $acts_title = Post1992Act::find($id);
-    
-        $single_post_acts = Post1992Article::where(['post_act' => $title])
-        ->where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")
+        $single_post_acts = Post1992Article::where(['post_act' => $id])
+        ->where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('post_act','LIKE', "%$query%")
+        ->orderBy('post_act')
         ->orderBy('priority')
         ->get()
         ->map(function ($row) use ($query) {
