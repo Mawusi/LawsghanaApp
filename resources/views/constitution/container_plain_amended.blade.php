@@ -59,7 +59,11 @@
           </div>
         
           <hr>
-        @include('extenders.case_law_main_search')
+        {{-- @include('extenders.case_law_main_search') --}}
+        <form action="{{ url('search_ghana_amended_constitution') }}" method="GET">
+          {{ csrf_field() }}
+              <input style="padding: 15px;" class="form-control" name="search_text" type="text" placeholder="Search word in article" aria-label="Search">
+        </form>
       </div>
         </center>
     </div>

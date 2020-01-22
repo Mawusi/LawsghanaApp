@@ -296,7 +296,7 @@ class ConstitutionController extends Controller
         return view('constitution.ghana_constitution_amended_expandedView', compact('ghana_act_amended', 'ghanaArticlesAmendeds'));
     }
 
-
+    //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //ALL COUNTRIES CONSTITUTION
     public function all_countries_constitution(){
         $allCountriesConstitutions = AllConstitution::all();

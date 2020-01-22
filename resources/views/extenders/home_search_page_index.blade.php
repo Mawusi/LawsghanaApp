@@ -138,17 +138,17 @@
             <br>
             <div class="custom-control custom-radio">
               <input type="radio" class="custom-control-input consti_ghana1" id="consti_ghana" name="act-type" value="Constitution_Ghana">
-              <label class="custom-control-label" for="defaultUnchecked">Constitution(Ghana)</label>&nbsp;<span class="badge">0</span>
+              <label class="custom-control-label" for="defaultUnchecked">Constitution(Ghana)</label>&nbsp;<span class="badge">{{$total_constitution_articles_count}}</span>
             </div>
             <br>
             <div class="custom-control custom-radio">
               <input type="radio" class="custom-control-input consti_others1" id="consti_others" name="act-type" value="Constitution_Others">
-              <label class="custom-control-label" for="defaultUnchecked">Constitution(Countries)</label>&nbsp;<span class="badge">0</span>
+              <label class="custom-control-label" for="defaultUnchecked">Constitution(Countries)</label>&nbsp;<span class="badge">{{$total_constitution_countries}}</span>
             </div>
             <br>
             <div class="custom-control custom-radio">
               <input type="radio" class="custom-control-input pre_4th1" id="pre_4th" name="act-type" value="Pre_4th_Republic">
-              <label class="custom-control-label" for="defaultUnchecked">Pre 4th Republic Laws</label>&nbsp;<span class="badge">0</span>
+              <label class="custom-control-label" for="defaultUnchecked">Pre 4th Republic Laws</label>&nbsp;<span class="badge">{{$pre_total_count}}</span>
             </div>
             <br>
             <div class="custom-control custom-radio">
@@ -169,7 +169,10 @@
       <div class="col-md-9">
           <div class="move_here hidden  top_here"><br></div>
           @include('extenders.main_query_on_4th_Rep_Laws')
-          @include('extenders.main_query_case_Laws')            
+          @include('extenders.main_query_on_pre_4th_Rep_Laws')
+          @include('extenders.main_query_case_Laws')  
+          @include('extenders.main_query_country_constitution')  
+          @include('extenders.main_query_ghana_constitution')                                          
       </div>
 
     </div>
@@ -196,6 +199,15 @@
   if ( {{$cases_total_count}} == 0 ) {
     document.getElementById("case_laws").disabled = true;   
   }
+  if ( {{$pre_total_count}} == 0 ) {
+    document.getElementById("pre_4th").disabled = true;   
+  }
+  if ( {{$total_constitution_countries}} == 0 ) {
+    document.getElementById("consti_others").disabled = true;   
+  }
+  if ( {{$total_constitution_articles_count}} == 0 ) {
+    document.getElementById("consti_ghana").disabled = true;   
+  }
 </script>
 
 <script>
@@ -210,52 +222,56 @@
             }, 1000)
             });
             $('.only_constitution_ghana').fadeIn();
-            $('.only_constitution_others').fadeIn();
             $('.only_pre_4th_republic').fadeIn();
             $('.only_4th_republic').fadeIn();
             $('.only_cases').fadeIn();
-
+            $('.only_country_constitution').fadeIn();
+            $('.all_specific').fadeIn();
 
           } else if ($('input[name=act-type]:checked').val() == "Constitution_Ghana") {
-            $('.post1').click(function() {
+            $('.consti_ghana1').click(function() {
 
             $('html, body').animate({
               scrollTop: $("body").offset().top
             }, 1000)
             });
 
-            $('.only_post').fadeIn().insertAfter( ".move_here" );
-            $('.only_amend_acts').fadeOut();
-            $('.only_regulation').fadeOut();
-            $('.only_amend_reg').fadeOut();
+            $('.only_constitution_ghana').fadeIn().insertAfter( ".move_here" );
+            $('.only_pre_4th_republic').fadeOut();
+            $('.only_cases').fadeOut();
+            $('.only_4th_republic').fadeOut();
+            $('.only_country_constitution').fadeOut();
 
           }
           else if ($('input[name=act-type]:checked').val() == "Constitution_Others") {
             // $('.only_regulation').fadeIn().insertAfter( ".move_here" ).scrollTo('.top_here');
-            $('.reg1').click(function() {
+            $('.consti_others1').click(function() {
 
               $('html, body').animate({
                 scrollTop: $("body").offset().top
               }, 1000)
             });
 
-              $('.only_regulation').fadeIn().insertAfter( ".move_here" );
-              $('.only_post').fadeOut();
-              $('.only_amend_acts').fadeOut();
-              $('.only_amend_reg').fadeOut();
+              $('.only_country_constitution').fadeIn().insertAfter( ".move_here" );
+              $('.only_pre_4th_republic').fadeOut();
+              $('.only_cases').fadeOut();
+              $('.only_4th_republic').fadeOut();
+              $('.only_constitution_ghana').fadeOut();
           }
           else if ($('input[name=act-type]:checked').val() == "Pre_4th_Republic") {
-            $('.amend_act1').click(function() {
+            $('.pre_4th1').click(function() {
 
             $('html, body').animate({
               scrollTop: $("body").offset().top
             }, 1000)
             });
 
-            $('.only_amend_acts').fadeIn().insertAfter( ".move_here" );
-            $('.only_post').fadeOut();
-            $('.only_regulation').fadeOut();
-            $('.only_amend_reg').fadeOut();
+            $('.only_pre_4th_republic').fadeIn().insertAfter( ".move_here" );
+            $('.all_specific').fadeIn();
+            $('.only_cases').fadeOut();
+            $('.only_constitution_ghana').fadeOut();
+            $('.only_4th_republic').fadeOut();
+            $('.only_country_constitution').fadeOut();
 
           }
           else if ($('input[name=act-type]:checked').val() == "4th_Republic") {
@@ -267,10 +283,11 @@
             });
 
             $('.only_4th_republic').fadeIn().insertAfter( ".move_here" );
+            $('.all_specific').fadeIn();
             $('.only_cases').fadeOut();
             $('.only_constitution_ghana').fadeOut();
-            $('.only_constitution_others').fadeOut();
             $('.only_pre_4th_republic').fadeOut();
+            $('.only_country_constitution').fadeOut();
           }
           else if ($('input[name=act-type]:checked').val() == "Case_Laws") {
             $('.cases1').click(function() {
@@ -281,10 +298,11 @@
             });
 
             $('.only_cases').fadeIn().insertAfter( ".move_here" );
+            $('.all_specific').fadeOut();
             $('.only_constitution_ghana').fadeOut();
-            $('.only_constitution_others').fadeOut();
             $('.only_pre_4th_republic').fadeOut();
             $('.only_4th_republic').fadeOut();
+            $('.only_country_constitution').fadeOut();
 
           }
       });
@@ -292,85 +310,4 @@
 </script>
 @endsection
 
-    {{-- <div class="container">
-        <center><h3><b>{{ $allPost1992Act['title'] }}</b></h3></center>
-    </div> --}}
-    {{-- <div class="container">
-        <u><h5><b>Searched Results</b></h5></u>
-    </div> --}}
     
-    {{-- <div class="container-fluid">	
-
-      <div class="row">
-
-        <div class="col-md-3"> --}}
-              {{-- <div class="filter-side search-sidebar">
-                <div class="right-sidebar-toggle">
-                    <a href="#" class="filter-link">
-                        <i class="fa fa-filter" aria-hidden="true"></i>
-                        <span>FILTER</span>
-                    </a>
-                </div>
-                <div class="search-sidebar-scroll" style="overflow: hidden; width: auto; height: 100%;">
-                    <div class="filters-header">
-                        <h4>Filter</h4>
-                        <div id="btnClearFilter" class="reset-filters"><a href="#/"><i class="os-icon-close os-icon"></i><span>Clear All </span></a></div>
-                    </div>
-                    <div id="court" class="filter-w"></div>
-                    <div id="benchresult" class="filter-w collapsed"></div>
-                    <div id="yearfilter" class="filter-w collapsed"></div>
-                    <div id="decision" class="filter-w collapsed"></div>
-                    <div id="partyfilter" class="filter-w collapsed"></div>
-                    <div id="sectionfilter" class="filter-w"></div>
-                  </div>
-              </div> --}}
-        {{-- </div> --}}
-
-        {{-- <div class="col-md-9">
-          <u><h5><b>Searched Results</b></h5></u>
-            @foreach ($posts as $post)
-            <div class="search-well">
-              <h5 style="color:blue;"><b>{{ $post->post_act }}</b></h5>
-              <a href="/post_1992_legislation/content/{{$post->id}}" target="_blank"><b>{{ $post->section }}</b></a>
-              <br><br>
-              {!! $post->content !!}
-            </div>
-            <br>
-            @endforeach
-        </div>
-         
-      </div>        
-
-    </div>  --}}
-         
- 
-
-
-
-
-
-
-
-
-{{-- @foreach ($regulations as $regulation)
-                <h5 style="color:blue;"><b>{{ $regulation->regulation_title }}</b></h5>
-                <a href="/post_1992_legislation/regulation_act/content/{{$regulation->id}}" target="_blank"><b>{{ $regulation->section }}</b></a>
-                <br><br>
-                {{ Str::limit($regulation->content, 470, '...') }}
-                <hr>
-            @endforeach
-
-            @foreach ($amends as $amend)
-                <h5 style="color:blue;"><b>{{ $amend->act_title }}</b></h5>
-                <a href="/post_1992_legislation/amended_acts/content/{{$amend->id}}" target="_blank"><b>{{ $amend->section }}</b></a>
-                <br><br>
-                {{ Str::limit($amend->content, 470, '...') }}
-                <hr>
-            @endforeach
-
-            @foreach ($amends_regs as $amends_reg)
-                <h5 style="color:blue;"><b>{{ $amends_reg->title }}</b></h5>
-                <a href="/post_1992_legislation/amended_regulation_acts/content/{{$amends_reg->id}}" target="_blank"><b>{{ $amends_reg->section }}</b></a>
-                <br><br>
-                {{ Str::limit($amends_reg->content, 470, '...') }}
-            @endforeach --}}

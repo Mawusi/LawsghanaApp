@@ -135,7 +135,7 @@ color: green;
             <p style="color:blue;">Filter Options</p>
             <div class="custom-control custom-radio">
               <input type="radio" class="custom-control-input all1" id="all_cases" name="act-type" value="All" checked>
-            <label class="custom-control-label" for="defaultChecked">Case Laws</label>&nbsp;<span class="badge">{{$total_cases}}</span>
+            <label class="custom-control-label" for="defaultChecked">All</label>&nbsp;<span class="badge">{{$total_cases}}</span>
             </div>
             <br>
             <div class="custom-control custom-radio">

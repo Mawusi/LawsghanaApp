@@ -133,12 +133,12 @@ color: green;
           <div class="search-well-filter">
             <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($single_post_acts_count)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p>
             
-            @foreach ($single_post_acts as $single_post_act)
+            {{-- @foreach ()
                 <div class="custom-control custom-radio">
                     <input type="radio" class="custom-control-input all1" id="defaultChecked" name="act-type" value="All" checked>
                     <span class="small"><label class="custom-control-label" for="defaultChecked">{!! $single_post_act->post_act !!}</label>&nbsp;<span class="badge"></span></span>
                 </div>
-            @endforeach
+            @endforeach --}}
             {{-- <p style="color:blue;">Temporary Side bar</p>
             <div class="custom-control custom-radio">
               <input type="radio" class="custom-control-input all1" id="defaultChecked" name="act-type" value="All" checked>

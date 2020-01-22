@@ -17,6 +17,32 @@
 //WELCOME PAGE
 Route::get('/','WelcomePageController@index');
 
+//For all Post Legislation
+// Route::get('/keyword-search','Post1992Controller@keyword_search');
+
+//Search for Main Home Page
+Route::get('main_home_search','HomeSearchController@main_home_search');
+
+// Search for 4th Republic
+Route::get('post_index_search','PostSearchController@post_index_search');//main search at the top
+Route::get('post_index_search/{title}/{id}','PostSearchController@post_index_acts_search');//search within an act
+Route::get('/Search/Next/{query}/fetch_data','PostSearchController@acts_ajax_display');//pagination
+
+//Search for the Pre 4th Republic
+Route::get('pre_4th_index_search','PreSearchController@pre_index_search');
+
+//Search for Case Laws
+Route::get('cases_index_search','CasesSearchController@cases_index_search');
+
+//Search for Constitution
+Route::get('all_constitution_index_search','ConstitutionCountriesSearchController@countries_index_search');//for countries
+Route::get('search_ghana_constitution','ConstitutionGhanaSearchController@index_search');//for ghana
+Route::get('search_ghana_amended_constitution','ConstitutionGhanaAmendedSearchController@index_search_amendment');//for ghana_amended
+
+Route::get('/acts/search/{key}','SearchController@keyword_search');
+Route::view('/scan', 'scan');
+
+
 //CONSTITUTION
 
     //All Countries Constitution
@@ -145,25 +171,6 @@ Route::get('/pre_1992_legislation','Pre1992Controller@index');//display all acts
         // Route::get('/pre_1992_legislation/7/filter/{year}/{category}','Pre1992Controller@smc_decree_filter'); //smc filtering
 
 //POST_1992_LEGISLATION
-//For all Post Legislation
-// Route::get('/keyword-search','Post1992Controller@keyword_search');
-
-//Search for Main Home Page
-Route::get('main_home_search','HomeSearchController@main_home_search');
-Route::get('home_index_search','HomeSearchController@home_search');
-
-// Search for 4th Republic
-Route::get('post_index_search','PostSearchController@post_index_search');
-Route::get('post_index_search/{title}/{id}','PostSearchController@post_index_acts_search');
-Route::get('/Search/Next/{query}/fetch_data','PostSearchController@acts_ajax_display');//display homepage of Ghana News
-
-
-//Search for Case Laws
-Route::get('cases_index_search','CasesSearchController@cases_index_search');
-
-Route::get('/acts/search/{key}','SearchController@keyword_search');
-Route::view('/scan', 'scan');
-
 Route::get('post_1992_legislation','Post1992Controller@index');//display all acts
     Route::get('post_1992_legislation/filter/{year}/{category}','Post1992Controller@all_post_1992_legislation_filter'); //all post-1992 filtering
     Route::get('post_1992_legislation/preamble/{id}','Post1992Controller@post_1992_legislation_preamble');//display act preamble
