@@ -35,7 +35,7 @@
 --}}
 
 <!-- for the ads -->
-<div class="col-md-12" style="background-color:#ffffff; height:100px; margin-top:50px;"></div>
+<div class="col-md-12" style="background-color:#ffffff; height:100px; margin-top:80px;"></div>
 
 <!-- for the footer -->
 <div id="footer_div" class="col-md-12 bg-header-color" style="height:36px;">

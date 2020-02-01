@@ -4,6 +4,8 @@
 @section('title', $allCountriesConstitution['title'])
 
 @section('assets')
+<link rel="stylesheet" href="{{ asset('css/pre_second_nav.css') }}">
+
     <style type="text/css">
         .navbar {
           min-height: 1px;

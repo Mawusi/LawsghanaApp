@@ -13,7 +13,7 @@
         <hr>
         @foreach($allPost1992Articles as $allPost1992Article)
             
-                <center><h4><b>{{$allPost1992Article->part }}</b></h4></center><br>
+                {{-- <center><h4><b>{{$allPost1992Article->part }}</b></h4></center><br> --}}
                 <h4><b>{{$allPost1992Article->section }}</b></h4>
                 {!! $allPost1992Article->content !!}
                 <hr><br>

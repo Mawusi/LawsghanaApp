@@ -525,7 +525,7 @@ class Post1992Controller extends Controller
            $bool = true;
        }
 
-        $actsOfParliaments       = ($bool)?Post1992Act::where($where)->where(['post_group' => $name])->get():Pre1992LegislationAct::all();
+        $actsOfParliaments       = ($bool)?Post1992Act::where($where)->where(['post_group' => $name])->get():Post1992Act::all();
         $actsOfParliamentCategories   = Post1992Category::all();
         return view('post_1992_legislation.displayed_acts_of_parliament_view', compact('actsOfParliaments', 'actsOfParliamentCategories'));
     }

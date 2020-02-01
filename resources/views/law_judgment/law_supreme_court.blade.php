@@ -3,7 +3,7 @@
 @section('title', 'Supreme Court')
 @section('assets')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-    <link rel="stylesheet" href="{{ asset('css/second_nav.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/pre_second_nav.css') }}">
     <style type="text/css">
     </style>
 @endsection
@@ -36,7 +36,8 @@
                                             @foreach($supremeCourts as $supremeCourt)
                                                 <tr>
                                                     <td>
-                                                        <a href="/judgement/view/1/{{ $supremeCourt->gh_law_judgment_group_name }}/{{ $supremeCourt->id}}"><li style="list-style: none;">{{ $supremeCourt->case_title }}</li></a>
+                                                        <a href="/judgement/Ghana/{{ $supremeCourt->gh_law_judgment_group_name }}/{{ $supremeCourt->id}}"><li style="list-style: none;">{{ $supremeCourt->case_title }}</li></a>
+                                                        {{-- <a href="/judgement/view/1/{{ $supremeCourt->gh_law_judgment_group_name }}/{{ $supremeCourt->id}}"><li style="list-style: none;">{{ $supremeCourt->case_title }}</li></a> --}}
                                                     </td> 
                                                     <td>{{ $supremeCourt->year }}</td>
                                                 </tr>

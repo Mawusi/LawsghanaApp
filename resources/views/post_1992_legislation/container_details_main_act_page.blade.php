@@ -11,7 +11,7 @@
         <center>
         <div class="btn-group">
               <button style="background-color:white; border-color:black;" type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <small>View All Sections</small></small> <span class="caret"></span>
+                <small>Select Sections</small></small> <span class="caret"></span>
               </button>
               <ul class="dropdown-menu table-wrapper-scroll-view" style="width: 520px;">
                   @foreach($allPost1992Articles as $allPost1992Article)
@@ -20,7 +20,7 @@
               </ul>
         </div>
         </center>
-
+        <br>
         <ul class="pager show">
             <li><a href="#" class="previous_content_act">&laquo;&nbsp;Previous</a></li>
             <li><a href="#" class="next_content_act">Next&nbsp;&raquo;</a></li>
@@ -52,11 +52,14 @@
         <br>
         --}}
         
-        <center>
+        
         {{-- <label>View</label> --}}
-        <button style="background-color:white; border-color:black;" class="btn btn-xs expanded_link" id="expanded_link_toggle_all_pre1992_preview_2" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}"><li style="list-style:none;">Expanded View</li>
-        </button>
+        
         <hr>
+        <br>
+        <center>
+        <button class="btn btn-sm btn-default expanded_link" id="expanded_link_toggle_all_pre1992_preview_2" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}"><li style="list-style:none;">Expanded View</li>
+        </button>
 
         {{-- <a href="/post_1992_legislation/plain_content/{{ $allPost1992Article['post_act'] }}/{{ $allPost1992Article['id'] }}" target="_blank">Sections Plain View</a>
         <a class="trigger_plain_view" href="#"><li>Plain View</li></a>
@@ -66,8 +69,8 @@
         <!--<br>-->
         {{-- @include('extenders.case_law_main_search') --}}
         
-          <input type="text" id="search_text">
-          <input type="button" value="search" id="search">
+          {{-- <input type="text" id="search_text">
+          <input type="button" value="search" id="search"> --}}
         
 
     </div>

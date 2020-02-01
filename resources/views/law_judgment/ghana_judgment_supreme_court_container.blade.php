@@ -11,15 +11,14 @@
 						<input class="form-control supreme_court_filter_year" id="myInput" type="text" aria-label="Search" placeholder="eg. 2015...">
 						<br>
 						--}}
-						<label>By Category</label>
+						<center>
 						<select class="form-control browser-default custom-select supreme_court_filter_category" style="width: 149px;">
 							<option selected value="">Select Category</option>
 							@foreach($supremecategories as $supremecategory)
-							<option value="{{ $supremecategory->name }}">{{ $supremecategory->name }}</option>
+							{{-- <option value="{{ $supremecategory->name }}">{{ $supremecategory->name }}</option> --}}
 							@endforeach
-							
 						</select>
-
+						</center>
 						<hr>
 						@include('extenders.case_law_main_search')
 						{{--<input class="btn btn-primary btn-xs" type="button" name="go" value="Search" id="supreme_court_filter">--}}

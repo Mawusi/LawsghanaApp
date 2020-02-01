@@ -23,16 +23,6 @@ class NewsController extends Controller
         // return view('news.news_category', compact('newsCategories','newsContents','latestNewsContents','newsSelectors','newscategory'));
     }
 
-    // Ajax Pagination
-    public function news_ajax_display(Request $request, $category){
-
-        if($request->ajax()){
-            $newsSelectors     = NewsContent::where(['news_category' => $category])->orderBy('created_at', 'desc')->paginate(7);          
-            return view('news.displayed_all_ghana_news', compact('newsSelectors'))->render();
-            //return view('news.news_ajax_display', compact('newsSelectors'))->render();
-        }
-    }
-
     //Display of News_Content
     public function news_content($category, $title, $id){
         //dd($category, $title, $id);
@@ -50,7 +40,14 @@ class NewsController extends Controller
         // return view('news.news_contents', compact('newsContent','newsContents','newsCategories'));
     }
 
-    
+    // Ajax Pagination
+    public function news_ajax_display(Request $request, $category){
 
+        if($request->ajax()){
+            $newsSelectors     = NewsContent::where(['news_category' => $category])->orderBy('created_at', 'desc')->paginate(7);          
+            return view('news.displayed_all_ghana_news', compact('newsSelectors'))->render();
+            //return view('news.news_ajax_display', compact('newsSelectors'))->render();
+        }
+    }
     
 }

@@ -118,6 +118,10 @@ class HomeSearchController extends Controller
                         ->orderBy('post_act')
                         ->orderBy('priority')
                         ->get()
+                        ->map(function ($row) use ($query) {
+                            $row->post_act = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->post_act);
+                            return $row;
+                        })
                         ->map(function ($row2) use ($query) {
                             $row2->section = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row2->section);
                             return $row2;
@@ -374,7 +378,8 @@ class HomeSearchController extends Controller
                                                                     'total_constitution_countries',
                                                                     'ghana_articles', 'ghana_amended_articles', 'total_constitution_articles_count'));
         else 
-            return view ('extenders.search_page_not_found', compact('footer_notes', 'total_count'));
+            return view ('extenders.home_search_page_not_found', compact('query','footer_notes', 'total_count', 'all_total_count','total_constitution_articles_count',
+                                                                        'total_constitution_countries','pre_total_count','posts_total_count','cases_total_count'));
     }
     
     

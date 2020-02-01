@@ -3,7 +3,7 @@
 
 @section('assets')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-    <link rel="stylesheet" href="{{ asset('css/second_nav.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/pre_second_nav.css') }}">
     <style type="text/css">
     </style>
 @endsection

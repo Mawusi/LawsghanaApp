@@ -88,7 +88,7 @@ overflow-y: auto;
 
 .table-wrapper-scroll-view {
 display: block;
-max-height: 390px;
+max-height: 340px;
 width: 280px;
 overflow-y: scroll;
 overflow: scroll;

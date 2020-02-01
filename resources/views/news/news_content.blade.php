@@ -171,10 +171,10 @@
               <!-- <div class="number align-self-start">{{ $newsContent->id }}</div> -->
               <div class="trend-contents">
                 <h2><a href="/News/{{ $newsContent->news_category }}/{{ $newsContent->title }}/{{ $newsContent->id }}">{{ $newsContent->title }}</a></h2>
-                <div class="post-meta">
+                {{-- <div class="post-meta">
                   <span class="d-block"><a href="#">Dave Rogers</a> in <a href="#">News</a></span>
                   <span class="date-read">Jun 14 <span class="mx-1">&bullet;</span> 3 min read <span class="icon-star2"></span></span>
-                </div>
+                </div> --}}
               </div>
             </div>
             @endforeach

@@ -13,6 +13,11 @@
             @endif
         </title>
 
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('logo/favicon/apple-touch-icon.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('logo/favicon/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('logo/favicon/favicon-16x16.png') }}">
+        <link rel="manifest" href="{{ asset('logo/favicon/site.webmanifest') }}">
+
         <link href="https://fonts.googleapis.com/css?family=B612+Mono|Cabin:400,700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('css/css-news/icomoon-style.css') }}">
         <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
@@ -64,8 +69,10 @@
                             <div class="mr-auto">
                                 <nav class="site-navigation position-relative text-right" role="navigation">
                                     <ul class="site-menu main-menu js-clone-nav mr-auto d-none pl-0 d-lg-block">
-                                        <span class="lead" style="padding: 70px;">
-                                            <a href="/" class="nav-link text-left">LawsGhana</a>
+                                        <span >
+                                            <a href="/" class="">
+                                                <img src="{{ asset('/logo/lawsghlog.png') }}" class="img-responsive" style="width:17em; padding-top: 5px; padding-bottom:5px;padding-left:50px;"> 
+                                            </a>
                                         </span>
                                         <!-- <li class="invisible">
                                             <a href="/Asia-News" class="nav-link text-left">Asia News</a>

@@ -1,15 +1,15 @@
 <div class="col-md-3"> 
     <div class="panel panel-default">
       <div class="panel-heading">
-        <center><p class="panel-title"><small>Views and Downloads</small></p></center>
+        <center><p class="panel-title"><small>Filter</small></p></center>
       </div>
       <div class="panel-body">
           
         {{-- View all regulations --}}
         <center>
         <div class="btn-group">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <small>View All Regulations</small></small> <span class="caret"></span>
+              <button style="background-color:white; border-color:black;" type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <small>Select Regulations</small></small> <span class="caret"></span>
               </button>
               <ul class="dropdown-menu table-wrapper-scroll-view" style="width: 520px;">
                   @foreach($allRegulationArticles as $allRegulationArticle)
@@ -18,10 +18,10 @@
               </ul>
         </div>
         </center>
-        
+        <br>
         <ul class="pager show">
-            <li><a href="#" class="previous_content_regulation">Previous</a></li>
-            <li><a href="#" class="next_content_regulation">Next</a></li>
+            <li><a href="#" class="previous_content_regulation">&laquo;&nbsp;Previous</a></li>
+            <li><a href="#" class="next_content_regulation">Next&nbsp;&raquo;</a></li>
         </ul>
 
         {{-- Downloads
@@ -47,14 +47,15 @@
         </center> 
         <br>
         --}}
-
+        <hr>
+        <br>
         <center>
-        <label>View</label>
-            <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_2" href="/post_1992_legislation/regulation/expanded_view/{{$regulationAct['act_category']}}/{{$regulationAct['title']}}/{{$regulationAct['id']}}"><li style="list-style:none;">Expanded View</li></a>
+            <button class="btn btn-sm btn-default expanded_link" id="expanded_link_toggle_all_pre1992_preview_2" href="/post_1992_legislation/regulation/expanded_view/{{$regulationAct['act_category']}}/{{$regulationAct['title']}}/{{$regulationAct['id']}}"><li style="list-style:none;">Expanded View</li>
+            </button>
             <!-- <a><li>Plain View</li></a> -->
         </center>
-        <hr>
-        @include('extenders.case_law_main_search')
+        {{-- <hr>
+        @include('extenders.case_law_main_search') --}}
     </div>
   </div>
  

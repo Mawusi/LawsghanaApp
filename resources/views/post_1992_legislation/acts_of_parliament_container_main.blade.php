@@ -14,7 +14,7 @@
 			<select class="form-control browser-default custom-select acts_of_parliment_filter_category" style="width: 149px;">
                 <option selected value="">Select Category</option>
 				@foreach($actsOfParliamentCategories as $actsOfParliamentCategory)
-				<option value="{{ $actsOfParliamentCategory->name }}">{{ $actsOfParliamentCategory->name }}</option>
+				{{-- <option value="{{ $actsOfParliamentCategory->name }}">{{ $actsOfParliamentCategory->name }}</option> --}}
                 @endforeach
 			</select>
 			</center>

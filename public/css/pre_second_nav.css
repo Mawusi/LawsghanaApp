@@ -1,0 +1,170 @@
+.navbar {
+         min-height: 1px;
+        }
+        .nav>li>a {
+            position: relative;
+            display: block;
+            padding: 10px 14px;
+            color: white;
+            }
+        .nav>li>a:hover {
+            color: #004353;
+        }
+        .navbar-brand {
+          padding-top: 17px;
+          padding-top: 17px;
+          line-height: 15px;
+        }
+        .navbar-toggle {
+          /* (80px - button height 34px) / 2 = 23px */
+          margin-top: 23px;
+          padding: 9px 10px !important;
+        }
+        @media (min-width: 768px) {
+          .navbar-nav > li > a {
+            /* (80px - line-height of 27px) / 2 = 26.5px */
+            padding-top: 14px;
+            padding-bottom: 14px;
+            line-height: 10px;
+          }
+        }
+        .content {
+            padding: 1px;
+        }
+        .bg-header-color{
+            background-color: #004353;
+        }
+        .form-group-customised{
+            margin-bottom: .1px;
+        }
+        .search-form{
+          padding-right: 10px;
+          padding-top: 3px;
+      }
+      .search-form .form-group {
+          float: right !important;
+          transition: all 0.35s, border-radius 0s;
+          width: 32px;
+          height: 32px;
+          background-color: #fff;
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+          border-radius: 25px;
+          border: 1px solid #ccc;
+      }
+          .search-form .form-group input.form-control {
+          padding-right: 20px;
+          border: 0 none;
+          background: transparent;
+          box-shadow: none;
+          display:block;
+      }
+          .search-form .form-group input.form-control::-webkit-input-placeholder {
+          display: none;
+      }
+          .search-form .form-group input.form-control:-moz-placeholder {
+          /* Firefox 18- */
+          display: none;
+      }
+          .search-form .form-group input.form-control::-moz-placeholder {
+          /* Firefox 19+ */
+          display: none;
+      }
+          .search-form .form-group input.form-control:-ms-input-placeholder {
+          display: none;
+      }
+          .search-form .form-group:hover,
+          .search-form .form-group.hover {
+          width: 200%;
+          border-radius: 4px 25px 25px 4px;
+      }
+          .search-form .form-group span.form-control-feedback {
+          position: absolute;
+          top: -1px;
+          right: -2px;
+          z-index: 2;
+          display: block;
+          width: 34px;
+          height: 34px;
+          line-height: 34px;
+          text-align: center;
+          color: #3596e0;
+          left: initial;
+          font-size: 14px;
+      }
+      .shadow-background{
+        box-shadow: 0 1px 5px #e0e0e0;
+        background-color: #FFFFFF;
+      }
+      .box{
+        /* margin: 100px auto; */
+        width: 95px;
+        /* height: 1px; */
+      }
+      
+      .container-2{
+        width: 300px;
+        vertical-align: middle;
+        white-space: nowrap;
+        position: relative;
+      }
+      
+      .container-2 input#search{
+        width: 30px;
+        height: 38px;
+        background: #FFFFFF;
+        border: none;
+        font-size: 10pt;
+        float: right;
+        color: #FFFFFF;
+        padding-left: 6px;
+        margin-right: 205px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        color: #004353;
+       
+        -webkit-transition: width .55s ease;
+        -moz-transition: width .55s ease;
+        -ms-transition: width .55s ease;
+        -o-transition: width .55s ease;
+        transition: width .55s ease;
+      }
+      
+      .container-2 input#search::-webkit-input-placeholder {
+         color: #004353;
+      }
+       
+      .container-2 input#search:-moz-placeholder { /* Firefox 18- */
+         color: #004353;  
+      }
+       
+      .container-2 input#search::-moz-placeholder {  /* Firefox 19+ */
+         color: #004353;  
+      }
+       
+      .container-2 input#search:-ms-input-placeholder {  
+         color: #004353;  
+      }
+      
+      .container-2 .icon{
+        position: absolute;
+        top: 70%;
+        margin-left: 75px;
+        margin-top: 12px;
+        z-index: 1;
+        color: #004353;
+      }
+      
+      .container-2 input#search:focus, .container-2 input#search:active{
+        outline:none;
+        width: 350px;
+      }
+       
+      .container-2:hover input#search{
+      width: 350px;
+      /* float: right; */
+      }
+       
+      .container-2:hover .icon{
+        color: #93a2ad;
+      }

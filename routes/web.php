@@ -43,8 +43,7 @@ Route::get('/acts/search/{key}','SearchController@keyword_search');
 Route::view('/scan', 'scan');
 
 
-//CONSTITUTION
-
+//-------------------------------------------------------------------------------CONSTITUTION-----------------------------------------------------------------------------------------------
     //All Countries Constitution
     Route::get('/constitution/all_countries','ConstitutionController@all_countries_constitution');//display all countries constitution
         Route::get('/constitution/filter/{year}/{country}','ConstitutionController@all_countries_constitution_filter'); //all constitution filtering
@@ -115,7 +114,7 @@ Route::view('/scan', 'scan');
         Route::get('/constitution_amended/Republic/pdf/expanded_content/{group}/{title}/{id}','ConstitutionController@pdf_expanded_article_content_amended');//display in print view
 
 
-//PRE_1992_LEGISLATION
+//------------------------------------------------------------------------------------PRE_1992_LEGISLATION------------------------------------------------------------------------------------
 Route::get('/pre_1992_legislation','Pre1992Controller@index');//display all acts
     Route::get('/pre_1992_legislation/filter/{year}/{category}','Pre1992Controller@all_pre_1992_legislation_filter'); //all pre-1992 filtering
     Route::get('/pre_1992_legislation/{group}/{title}/{id}','Pre1992Controller@pre_1992_legislation_table_of_content');//display acts table of content
@@ -170,7 +169,9 @@ Route::get('/pre_1992_legislation','Pre1992Controller@index');//display all acts
     Route::get('/pre_1992_legislation/8/{group}','Pre1992Controller@afrc_decree');
         // Route::get('/pre_1992_legislation/7/filter/{year}/{category}','Pre1992Controller@smc_decree_filter'); //smc filtering
 
-//POST_1992_LEGISLATION
+
+
+//-----------------------------------------------------------------------------POST_1992_LEGISLATION-------------------------------------------------------------------------------------
 Route::get('post_1992_legislation','Post1992Controller@index');//display all acts
     Route::get('post_1992_legislation/filter/{year}/{category}','Post1992Controller@all_post_1992_legislation_filter'); //all post-1992 filtering
     Route::get('post_1992_legislation/preamble/{id}','Post1992Controller@post_1992_legislation_preamble');//display act preamble

@@ -2,6 +2,7 @@
 
 @section('title', ucwords(strtolower($allGhanaLaw['case_title'])))
 @section('assets')
+<link rel="stylesheet" href="{{ asset('css/pre_second_nav.css') }}">
 
     <style type="text/css">
 
