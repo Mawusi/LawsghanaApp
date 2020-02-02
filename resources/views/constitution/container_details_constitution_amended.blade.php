@@ -11,7 +11,7 @@
         <center>
         <div class="btn-group">
               <button style="background-color:white; border-color:black;" type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <small>View All Sections</small></small> <span class="caret"></span>
+                <small>Select Sections</small></small> <span class="caret"></span>
               </button>
               <ul class="dropdown-menu table-wrapper-scroll-view" style="width: 520px;">
                    @foreach($constitutionContentAmendeds as $constitutionContentAmended)
@@ -20,6 +20,7 @@
               </ul>
         </div>
         </center>
+        <br>
         
         <ul class="pager show">
             <li><a href="#" class="previous_content_constitution_amended_act">&laquo;&nbsp;Previous</a></li>
@@ -46,18 +47,18 @@
           </div>
         </div>
         --}}
-
+        <hr>
+        <br>
         <center>
         {{-- <label>View</label>
         <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_2" href="/constitution_amended/Republic/expanded_view/{{ $ghana_act_amended['id'] }}"><li style="list-style:none;">Expanded View</li></a> --}}
         <!-- <a><li>Plain View</li></a> -->
 
-        <button style="background-color:white; border-color:black;" class="btn btn-xs expanded_link" id="expanded_link_toggle_all_pre1992_preview_2" href="/constitution_amended/Republic/expanded_view/{{ $ghana_act_amended['id'] }}"><li style="list-style:none;">Expanded View</li>
+        <button class="btn btn-sm btn-default expanded_link" id="expanded_link_toggle_all_pre1992_preview_2" href="/constitution_amended/Republic/expanded_view/{{ $ghana_act_amended['id'] }}"><li style="list-style:none;">Expanded View</li>
         </button>
-        <hr>
 
         </center>
-        @include('extenders.case_law_main_search')
+        {{-- @include('extenders.case_law_main_search') --}}
     </div>
   </div>
 </div>

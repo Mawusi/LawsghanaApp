@@ -22,7 +22,7 @@
             <div class="box pull-right">
                 <div class="container-2">
                     <span class="icon"><i class="fa fa-search"></i></span>
-                    <input type="search" id="search" name="search_text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search Any Word..." />
+                    <input type="search" id="search" name="search_text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search Any Word..." />
                     {{-- <span class="glyphicon glyphicon-search form-control-feedback"></span> --}}
                 </div>
             </div>

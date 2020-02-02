@@ -216,7 +216,37 @@
                               <div class="col-md-9">
                                   {{--<h5><b>{{ $regulationAct['title'] }}</b></h5>--}}
                                   <br>
-                                <a class="preamble_link" id="preamble_link_toggle" href="/post_1992_legislation/regulation/preamble/{{ $regulationAct['id'] }}"><p>Introductory Text</p></a>
+                                <a class="preamble_link" id="preamble_link_toggle" href="/post_1992_legislation/regulation/preamble/{{ $regulationAct['id'] }}">
+                                 
+                                  @if($regulationAct['preamble'] != null)
+                                    <p class="preamble_hide">Introductory Text</p>
+
+                                    @elseif($regulationAct['preamble'] == null  && ($amendedregulationcount < 0))
+                                      @section('scripts')
+                                          <script>
+                                          $( ".preamble_hide" ).hide();
+                                          $( ".no_list" ).hide();
+                                          </script>
+                                      @endsection
+
+                                    @elseif($regulationAct['preamble'] == null  && ($amendedregulationcount > 0))
+                                      @section('scripts')
+                                          <script>
+                                          $( ".preamble_hide" ).hide();
+                                          $( ".no_list" ).show();
+                                          </script>
+                                      @endsection
+
+                                    @else
+                                      @section('scripts')
+                                          <script>
+                                          $( ".preamble_hide" ).hide();
+                                          $( ".no_list" ).hide();
+                                          </script>
+                                      @endsection
+
+                                  @endif
+                                </a>
                                 
                                       <div class="accordion-content">
                                           @include('post_1992_legislation.displayed_regulation_parts_sections')

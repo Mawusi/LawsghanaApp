@@ -283,7 +283,7 @@
                     
                         <form action="{{ url('main_home_search') }}" method="GET">
                             {{ csrf_field() }}
-                            <div class="input-group" style="border: 1px solid black; box-shadow: 5px 5px 5px black;">         
+                            <div class="input-group" style="border: 1px solid black; box-shadow: 1px 1px 1px black;">         
                                     <input style="font-size:14pt;height:50px;" type="text" class="form-control" name="search_text" placeholder="Search any law or case in Ghana"">
                                     <span class="input-group-btn">
                                         <button style="font-size:14pt;height:50px;" class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
@@ -301,7 +301,7 @@
 
                         <form action="{{ url('main_home_search') }}" method="GET">
                             {{ csrf_field() }}
-                            <div class="input-group">         
+                            <div class="input-group" style="border: 1px solid black; box-shadow: 1px 1px 1px black;">         
                                     {{-- <input type="text" class="form-control" name="search_text" placeholder="Search any law or case in Ghana""> --}}
                                     <input style="font-size:14pt;height:50px;" type="text" class="form-control" name="search_text" placeholder="Search any law or case in Ghana"">
                                     <span class="input-group-btn">
@@ -320,7 +320,7 @@
 
                         <form action="{{ url('main_home_search') }}" method="GET">
                             {{ csrf_field() }}
-                            <div class="input-group">         
+                            <div class="input-group" style="border: 1px solid black; box-shadow: 1px 1px 1px black;">         
                                     {{-- <input type="text" class="form-control" name="search_text" placeholder="Search any law or case in Ghana""> --}}
                                     <input style="font-size:14pt;height:50px;" type="text" class="form-control" name="search_text" placeholder="Search any law or case in Ghana"">
                                     <span class="input-group-btn">
@@ -339,7 +339,7 @@
 
                         <form action="{{ url('main_home_search') }}" method="GET">
                             {{ csrf_field() }}
-                            <div class="input-group">         
+                            <div class="input-group" style="border: 1px solid black; box-shadow: 1px 1px 1px black;">         
                                     <input style="font-size:14pt;height:50px;" type="text" class="form-control" name="search_text" placeholder="Search any law or case in Ghana"">
                                     <span class="input-group-btn">
                                         <button style="font-size:14pt;height:50px;" class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
