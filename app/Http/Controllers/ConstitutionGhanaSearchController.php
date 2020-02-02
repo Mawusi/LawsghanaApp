@@ -23,10 +23,15 @@ class ConstitutionGhanaSearchController extends Controller
                                     $row->articles = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->articles);
                                     return $row;
                                 });
-        $ghana_articles_count   = $ghana_articles->count();                
-                                
+        $ghana_articles_count   = $ghana_articles->count(); 
+        
+        if
+            (
+            count($ghana_articles) > 0
+            )                              
         return view('extenders.ghana_constitution_search_page_index', compact('query','footer_notes','ghana_articles','ghana_articles_count'));
+        else 
+        return view ('extenders.ghana_constitution_search_page_not_found', compact('query','footer_notes', 'ghana_articles_count'));
     }
 
-    
 }
