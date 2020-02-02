@@ -364,9 +364,6 @@ class HomeSearchController extends Controller
             count($north_america_countries_constitutions) > 0 or
             count($ghana_articles) > 0 or
             count($ghana_amended_articles) > 0
-            
-
-
             )
             return view('extenders.home_search_page_index', compact('query','footer_notes', 'all_total_count',
                                                                     'posts','regulations', 'amends', 'amends_regs','posts_total_count', 
@@ -378,7 +375,7 @@ class HomeSearchController extends Controller
                                                                     'total_constitution_countries',
                                                                     'ghana_articles', 'ghana_amended_articles', 'total_constitution_articles_count'));
         else 
-            return view ('extenders.home_search_page_not_found', compact('query','footer_notes', 'total_count', 'all_total_count','total_constitution_articles_count',
+            return view ('extenders.home_search_page_not_found', compact('query','footer_notes', 'all_total_count','total_constitution_articles_count',
                                                                         'total_constitution_countries','pre_total_count','posts_total_count','cases_total_count'));
     }
     

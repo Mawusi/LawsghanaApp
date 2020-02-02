@@ -75,14 +75,23 @@ class ConstitutionCountriesSearchController extends Controller
         $total_constitution_countries           = $africa_countries_constitution_count + $europe_countries_constitution_count + $asia_countries_constitution_count
                                                 + $north_america_countries_constitutions_count + $south_america_countries_constitutions_count;                            
 
-        
+        if
+            (
+            count($africa_countries_constitutions) > 0 or 
+            count($asia_countries_constitutions) > 0 or 
+            count($europe_countries_constitutions) > 0 or 
+            count($north_america_countries_constitutions) > 0 or 
+            count($south_america_countries_constitutions) > 0 
+            )
         return view('extenders.constitution_countries_search_page_index', compact('footer_notes', 'query', 'total_constitution_countries',
                                                                                   'africa_countries_constitutions','africa_countries_constitution_count',
                                                                                   'europe_countries_constitutions','europe_countries_constitution_count',
                                                                                   'asia_countries_constitutions','asia_countries_constitution_count',
                                                                                   'north_america_countries_constitutions','north_america_countries_constitutions_count',
                                                                                   'south_america_countries_constitutions','south_america_countries_constitutions_count'));
-
+        else 
+            return view ('extenders.constitution_countries_search_page_not_found', compact('query','footer_notes', 'total_constitution_countries','africa_countries_constitution_count',
+                                                                        'europe_countries_constitution_count','asia_countries_constitution_count','north_america_countries_constitutions_count','south_america_countries_constitutions_count'));
 
     }
 }
