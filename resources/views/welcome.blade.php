@@ -143,7 +143,7 @@
             .carousel-fade .carousel-inner .item{
                 opacity: 0;
                 transition-property: opacity;
-                height: 69.5vh;
+                height: 72.5vh;
             }
 
             .carousel-fade .carousel-inner .active{
@@ -232,6 +232,19 @@
             }
         </style>
     </head>
+            <!--Start of Tawk.to Script-->
+            <script type="text/javascript">
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/5e398d16298c395d1ce62ab4/default';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+            })();
+            </script>
+            <!--End of Tawk.to Script-->
     <body>
         
         <div class="container-fluid">
@@ -283,7 +296,7 @@
                     
                         <form action="{{ url('main_home_search') }}" method="GET">
                             {{ csrf_field() }}
-                            <div class="input-group" style="border: 1px solid black; box-shadow: 1px 1px 1px black;">         
+                            <div class="input-group" style="border: 1px solid black; box-shadow: .1px .1px .1px black;">         
                                     <input style="font-size:14pt;height:50px;" type="text" class="form-control" name="search_text" placeholder="Search any law or case in Ghana"">
                                     <span class="input-group-btn">
                                         <button style="font-size:14pt;height:50px;" class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
@@ -361,7 +374,7 @@
                                 <p><b>Access constitution of Ghana along with constitution of over 100 countries in Africa, Asia, America and Europe</b></p>
                                 <div class="icon">
                                     <a href="#efficiency-section">
-                                        <img src="/Content/newtheme/img/dk-grey-icon-short-circle-arrow-dsk.png" class="img-fluid" alt="">
+                                        {{-- <img src="/Content/newtheme/img/dk-grey-icon-short-circle-arrow-dsk.png" class="img-fluid" alt=""> --}}
                                     </a>
                                 </div>
                             </div>
@@ -372,7 +385,7 @@
                                 <p><b>Access over 200 Ghanaian laws and enactments before the Fourth Republic</b></p>
                                 <div class="icon">
                                     <a href="#efficiency-section">
-                                        <img src="/Content/newtheme/img/dk-grey-icon-short-circle-arrow-dsk.png" class="img-fluid" alt="">
+                                        {{-- <img src="/Content/newtheme/img/dk-grey-icon-short-circle-arrow-dsk.png" class="img-fluid" alt=""> --}}
                                     </a>
                                 </div>
                             </div>
@@ -383,7 +396,7 @@
                                 <p><b>Access over 200 consolidated laws of Ghana including Acts, Regulations and Amendments in the Fourth Republic</b></p>
                                 <div class="icon">
                                     <a href="#efficiency-section">
-                                        <img src="/Content/newtheme/img/dk-grey-icon-short-circle-arrow-dsk.png" class="img-fluid" alt="">
+                                        {{-- <img src="/Content/newtheme/img/dk-grey-icon-short-circle-arrow-dsk.png" class="img-fluid" alt=""> --}}
                                     </a>
                                 </div>
                             </div>
@@ -394,7 +407,7 @@
                                 <p><b>Access  several decided cases in Ghana including Supreme Court, High Court and Court of Appeal cases.</b></p>
                                 <div class="icon">
                                     <a href="#efficiency-section">
-                                        <img src="/Content/newtheme/img/dk-grey-icon-short-circle-arrow-dsk.png" class="img-fluid" alt="">
+                                        {{-- <img src="/Content/newtheme/img/dk-grey-icon-short-circle-arrow-dsk.png" class="img-fluid" alt=""> --}}
                                     </a>
                                 </div>
                             </div>
@@ -405,7 +418,7 @@
                                 <p><b>Access relevant legal and business news content in Ghana, Africa, Asia, Europe and America</b></p>
                                 <div class="icon">
                                     <a href="#efficiency-section">
-                                        <img src="/Content/newtheme/img/dk-grey-icon-short-circle-arrow-dsk.png" class="img-fluid" alt="">
+                                        {{-- <img src="/Content/newtheme/img/dk-grey-icon-short-circle-arrow-dsk.png" class="img-fluid" alt=""> --}}
                                     </a>
                                 </div>
                             </div>
