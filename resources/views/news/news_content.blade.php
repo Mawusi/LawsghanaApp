@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <div class="site-section-content" style="margin-top:70px; margin-bottom:45px;">
+    <div class="site-section-content" style="margin-top:90px; margin-bottom:45px;">
       <div class="container">
         <div class="row">
           <div class="col-lg-9 single-content">

@@ -194,7 +194,7 @@
                                             <div class="header_only" style="margin-bottom: 5px;border: .1px solid #ddd;">
                                                 <p style="padding-top: .1px; padding-bottom: 0px; padding-left: 16px; padding-right: 16px;"><b>{{ $allGhanaLaw['case_title'] }}</b></p>
                                             </div>
-                                        <a class="pull-right" id="print_options" href="#">Print Options&nbsp;</a>
+                                        {{-- <a class="pull-right" id="print_options" href="#">Print Options&nbsp;</a> --}}
                                             <div class="menu_options pull-right" style="display: none;">
                                                 <a href="/judgement/pdf_view/{{ $allGhanaLaw['case_title'] }}/{{$allGhanaLaw['id']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
                                                 <a href="/judgement/plain_view/{{$allGhanaLaw['id']}}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp;
@@ -300,6 +300,7 @@
                                     <div class="panel-heading"><center><p class="panel-title"><small>Quick Look on Case Laws</small></p></center></div>
                                         <div class="panel-body">
                                             <center>
+                                                <br>
                                             <div class="btn-group" style="margin-bottom: 10px;">
                                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <small>Preview Case Laws</small> <span class="caret"></span>
@@ -313,7 +314,7 @@
                                             </div>
                                             </center>
                                             <br>
-                                            @include('extenders.case_law_main_search')
+                                            {{-- @include('extenders.case_law_main_search') --}}
                                         </div>
                             </div>    
                     </div>
