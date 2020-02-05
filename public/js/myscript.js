@@ -3,6 +3,11 @@
 // TOGGLE DISPLAY BETWEEN REGULATION PREAMBLE AND REGULATION CONTENT
 $(document).ready(function(){
 
+    document.addEventListener('copy', function (e){
+        e.preventDefault();
+        e.clipboardData.setData("text/plain", "Copy disabled temporary");
+    })
+
     var gsid = 0; 
     var psid = 0, nsid = 0;
 

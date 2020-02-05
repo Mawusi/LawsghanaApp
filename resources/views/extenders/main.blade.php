@@ -186,7 +186,7 @@
         </script>
         <script src="{{ asset('js/myscript.js') }}"></script>
         
- 
+        
         
         @yield('scripts')
 

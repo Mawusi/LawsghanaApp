@@ -500,7 +500,10 @@
 
 @section('scripts')
 <script>
-    
+document.addEventListener('copy', function (e){
+    e.preventDefault();
+    e.clipboardData.setData("text/plain", "Do not copy this site's content!");
+})
 </script>
 
     {{-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script> --}}
