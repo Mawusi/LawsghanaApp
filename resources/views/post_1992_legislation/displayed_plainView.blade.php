@@ -66,7 +66,7 @@
                 <hr>
                 @foreach($allPost1992Articles as $allPost1992Article)
                     
-                        <h4>{{$allPost1992Article->part }}</h4>
+                        {{-- <h4>{{$allPost1992Article->part }}</h4> --}}
                         <h4 style="color: blue;">{{$allPost1992Article->section }}</h4>
                         {!! $allPost1992Article->content !!}
                         <hr><br>

@@ -5,16 +5,16 @@
     <div class="container">
         <a onclick="printpage()" id="printpagebutton" title="Print page"><span class="btn btn-info btn-sm pull-right glyphicon glyphicon-print" aria-hidden="true"></span></a><br>
         <div class="container">
-            <center><h4><b>{{ $allPost1992Act['title'] }}</b></h4></center>
+            <center><h3><b>{{ $allPost1992Act['title'] }}</b></h3></center>
         </div>
         <br>
         <div class="container">	
-        <h4><b>Preamble</b></h4><p>{!! $allPost1992Act['preamble'] !!}</p>
+        <h4 style="color:blue;">Preamble</h4><p>{!! $allPost1992Act['preamble'] !!}</p>
         <hr>
         @foreach($allPost1992Articles as $allPost1992Article)
             
                 {{-- <center><h4><b>{{$allPost1992Article->part }}</b></h4></center><br> --}}
-                <h4><b>{{$allPost1992Article->section }}</b></h4>
+                <h4 style="color:blue;">{{$allPost1992Article->section }}</h4>
                 {!! $allPost1992Article->content !!}
                 <hr><br>
 

@@ -98,7 +98,7 @@
                      <!--logo-->
                      <div class="navbar-header">
                          <a href="/">
-                            <img alt="Brand" src="{{ asset('/logo/gh_flag.png') }}" class="img-responsive" style="width:3em; padding-top: 5px;">
+                            <img alt="Brand" src="{{ asset('/logo/lawsghlog.png') }}" class="img-responsive" style="width:20em; padding-top: 10px; padding-bottom:10px;padding-left:50px;">
                         </a>
                      </div>
                      
@@ -115,14 +115,14 @@
                     
                     <div class="collapse navbar-collapse container-fluid pull-right" id="bs-example-navbar-collapse-2">
                         {{ menu('main', 'bootstrap') }}
-                        <form action="/keyword-search" method="GET" class="pull-right search-form" target="_blank" style="padding-top: 5px;">
+                        {{-- <form action="/keyword-search" method="GET" class="pull-right search-form" target="_blank" style="padding-top: 5px;">
                             {{ csrf_field() }}
                             <div class="form-group has-feedback">
                                 <label for="search" class="sr-only">Search</label>
                                 <input type="search" class="form-control" name="q" id="search" placeholder="keyword search">
                                 <span class="glyphicon glyphicon-search form-control-feedback"></span>
                             </div>
-                        </form>
+                        </form> --}}
                         
                     </div>
                 </div>
@@ -140,6 +140,20 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
         </script>
         <script src="{{ asset('js/myscript.js') }}"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //Disable full page
+                $('body').bind('cut copy paste', function (e) {
+                    e.preventDefault();
+                });
+                
+                //Disable part of page
+                $('#id').bind('cut copy paste', function (e) {
+                    e.preventDefault();
+                });
+            });
+        </script>
         
         @yield('scripts')
 

@@ -56,6 +56,20 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
         </script>
         <script src="{{ asset('js/myscript.js') }}"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //Disable full page
+                $('body').bind('cut copy paste', function (e) {
+                    e.preventDefault();
+                });
+                
+                //Disable part of page
+                $('#id').bind('cut copy paste', function (e) {
+                    e.preventDefault();
+                });
+            });
+        </script>
         
         @yield('scripts')
 
