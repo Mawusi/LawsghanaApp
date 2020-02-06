@@ -131,7 +131,7 @@ color: green;
       <div class="col-md-3">
         <div class="sidebar">
           <div class="search-well-filter">
-            <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($ghana_amended_articles_count)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p>
+            <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($asia_countries_constitution_count)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p>
             
             {{-- @foreach ()
                 <div class="custom-control custom-radio">
@@ -148,13 +148,13 @@ color: green;
         <div class="">
           <div class="move_here hidden  top_here"><br></div>
 
-            @foreach ($ghana_amended_articles as $ghana_amended_article)
+            @foreach ($asia_countries_constitutions as $asia_countries_constitution)
             <div class="search-well">
-                <h4><b>{!! $ghana_amended_article->chapter !!}</b></h4>
-                <h5 style="color:blue;"><b>{!! $ghana_amended_article->section !!}</b></h5>
+                <h4 style="color:blue;"><b>{!! $asia_countries_constitution->title !!}</b></h4>
+                {{-- <h5 style="color:blue;"><b>{!! $africa_countries_constitution->section !!}</b></h5> --}}
               {{-- <a href="/post_1992_legislation/content/{{$single_post_act->id}}" target="_blank"><b>{!! $single_post_act->section !!}</b></a> --}}
-              <br><br>
-            {!! $ghana_amended_article->articles !!}
+              <br>
+            {!! $asia_countries_constitution->content !!}
             </div>
             <br>
             @endforeach

@@ -26,7 +26,11 @@
 			</select>
 			</center>
 			<hr>
-			@include('extenders.case_law_main_search')
+			<form action="{{ url('africa_constitution_index_search') }}" method="GET">
+				{{ csrf_field() }}
+					<input style="padding: 15px;" class="form-control" name="search_text" type="text" placeholder="Search word in article" aria-label="Search">
+			</form>
+			{{-- @include('extenders.case_law_main_search') --}}
 		    {{--<input class="btn btn-primary btn-xs" type="button" name="go" value="Search" id="africa_constitution_filter">--}}
 		  </div>
 		</div>

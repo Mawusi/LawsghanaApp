@@ -153,13 +153,6 @@
 @endsection 
 
 @section('scripts')
-<script>
-  if ( {{$ghana_articles_count}} == 0 ) {
-    document.getElementById("all_countries").disabled = true;   
-  }
-  
-</script>
-
 
 @endsection
 

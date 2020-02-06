@@ -94,4 +94,84 @@ class ConstitutionCountriesSearchController extends Controller
                                                                         'europe_countries_constitution_count','asia_countries_constitution_count','north_america_countries_constitutions_count','south_america_countries_constitutions_count'));
 
     }
+
+    public function africa_index_search(){
+
+        $query=request('search_text');
+        $footer_notes   = FooterNote::all();
+        $africa         = "Africa";
+
+        $africa_countries_constitutions         = AllConstitution::where(['continent' => $africa])
+                                                ->where('content', 'LIKE', "%$query%")
+                                                ->get()
+                                                ->map(function ($row) use ($query) {
+                                                $row->content = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
+                                                return $row;
+                                                });
+
+        $africa_countries_constitution_count    = $africa_countries_constitutions->count(); 
+
+        //dd($africa_countries_constitution_count);
+        
+        if
+            (
+            count($africa_countries_constitutions) > 0
+            )                              
+        return view('extenders.africa_constitution_search_page_index', compact('query','footer_notes','africa_countries_constitutions','africa_countries_constitution_count'));
+        else 
+        return view ('extenders.africa_constitution_search_page_index_not_found', compact('query','footer_notes', 'africa_countries_constitution_count'));
+
+    }
+
+    public function asia_index_search(){
+
+        $query=request('search_text');
+        $footer_notes   = FooterNote::all();
+        $asia         = "Asia";
+
+        $asia_countries_constitutions           = AllConstitution::where(['continent' => $asia])
+                                                ->where('content', 'LIKE', "%$query%")
+                                                ->get()
+                                                ->map(function ($row) use ($query) {
+                                                $row->content = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
+                                                return $row;
+                                                });
+
+        $asia_countries_constitution_count      = $asia_countries_constitutions->count(); 
+        
+        if
+            (
+            count($asia_countries_constitutions) > 0
+            )                              
+        return view('extenders.asia_constitution_search_page_index', compact('query','footer_notes','asia_countries_constitutions','asia_countries_constitution_count'));
+        else 
+        return view ('extenders.asia_constitution_search_page_index_not_found', compact('query','footer_notes', 'asia_countries_constitution_count'));
+
+    }
+
+    public function europe_index_search(){
+
+        $query=request('search_text');
+        $footer_notes   = FooterNote::all();
+        $europe         = "Europe";
+
+        $europe_countries_constitutions         = AllConstitution::where(['continent' => $europe])
+                                                ->where('content', 'LIKE', "%$query%")
+                                                ->get()
+                                                ->map(function ($row) use ($query) {
+                                                $row->content = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
+                                                return $row;
+                                                });
+
+        $europe_countries_constitution_count    = $europe_countries_constitutions->count(); 
+        
+        if
+            (
+            count($europe_countries_constitutions) > 0
+            )                              
+        return view('extenders.europe_constitution_search_page_index', compact('query','footer_notes','europe_countries_constitutions','europe_countries_constitution_count'));
+        else 
+        return view ('extenders.europe_constitution_search_page_index_not_found', compact('query','footer_notes', 'europe_countries_constitution_count'));
+
+    }
 }

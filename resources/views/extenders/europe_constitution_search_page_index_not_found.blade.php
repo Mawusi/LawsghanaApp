@@ -93,8 +93,6 @@
   position: -webkit-sticky;
   position: sticky;
   top: 10%;
-}#title{
-color: green;
 }
 </style>
 @endsection
@@ -120,7 +118,7 @@ color: green;
         </form>       
       </div>
       <div class="col-md-2" style="margin-top:25px;">
-      <p style="color:blue;"><b class="hidden">Found: Results</b></p>
+      <p style="color:blue;"><b class="hidden">Found: {{$europe_countries_constitution_count}} Results</b></p>
       </div>
     
   </div>
@@ -131,35 +129,20 @@ color: green;
       <div class="col-md-3">
         <div class="sidebar">
           <div class="search-well-filter">
-            <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($ghana_amended_articles_count)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p>
-            
-            {{-- @foreach ()
-                <div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input all1" id="defaultChecked" name="act-type" value="All" checked>
-                    <span class="small"><label class="custom-control-label" for="defaultChecked">{!! $single_post_act->post_act !!}</label>&nbsp;<span class="badge"></span></span>
-                </div>
-            @endforeach --}}
-            
+            <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($europe_countries_constitution_count)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p>
           </div>
         </div>
       </div>
 
       <div class="col-md-9">
-        <div class="">
-          <div class="move_here hidden  top_here"><br></div>
-
-            @foreach ($ghana_amended_articles as $ghana_amended_article)
-            <div class="search-well">
-                <h4><b>{!! $ghana_amended_article->chapter !!}</b></h4>
-                <h5 style="color:blue;"><b>{!! $ghana_amended_article->section !!}</b></h5>
-              {{-- <a href="/post_1992_legislation/content/{{$single_post_act->id}}" target="_blank"><b>{!! $single_post_act->section !!}</b></a> --}}
-              <br><br>
-            {!! $ghana_amended_article->articles !!}
-            </div>
-            <br>
-            @endforeach
-
+        <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-6" style="background-color: white; padding: 10px; margin-top: 150px; border: 1px solid; box-shadow: 5px 5px 5px grey">
+            <center><h4>Results for <span style="color:red;">"{{$query}}"</span> not found</h4></center>    
+          <div class="col-md-4"></div>                                 
+          </div>
         </div>
+        
       </div>
 
     </div>
@@ -170,16 +153,7 @@ color: green;
 @endsection 
 
 @section('scripts')
-    
+
 @endsection
 
     
-         
- 
-
-
-
-
-
-
-

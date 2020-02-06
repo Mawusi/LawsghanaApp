@@ -36,6 +36,10 @@ Route::get('cases_index_search','CasesSearchController@cases_index_search');
 
 //Search for Constitution
 Route::get('all_constitution_index_search','ConstitutionCountriesSearchController@countries_index_search');//for countries
+Route::get('africa_constitution_index_search','ConstitutionCountriesSearchController@africa_index_search');//for ghana
+Route::get('asia_constitution_index_search','ConstitutionCountriesSearchController@asia_index_search');//for ghana
+Route::get('europe_constitution_index_search','ConstitutionCountriesSearchController@europe_index_search');//for ghana
+
 Route::get('search_ghana_constitution','ConstitutionGhanaSearchController@index_search');//for ghana
 Route::get('search_ghana_amended_constitution','ConstitutionGhanaAmendedSearchController@index_search_amendment');//for ghana_amended
 

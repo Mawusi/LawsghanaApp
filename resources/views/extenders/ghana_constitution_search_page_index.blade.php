@@ -109,10 +109,10 @@ color: green;
       </div>
       
       <div class="col-md-offset-1 col-md-6" style="margin-top:10px; margin-bottom: 10px;">
-        <form action="{{ url('home_index_search') }}" method="GET">
+        <form action="{{ url('main_home_search') }}" method="GET">
           {{ csrf_field() }}
           <div class="input-group">         
-                <input type="text" class="form-control" name="search" placeholder="Search any law or case in Ghana"">
+                <input type="text" class="form-control" name="search_text" placeholder="Search any law or case in Ghana"">
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
