@@ -20,7 +20,11 @@
 					</select>
 					</center>
 					<hr>
-					@include('extenders.case_law_main_search')
+					<form action="{{ url('high_court_index_search') }}" method="GET">
+						{{ csrf_field() }}
+							<input style="padding: 15px;" class="form-control" name="search_text" type="text" placeholder="Search word in Cases" aria-label="Search">
+					</form>
+					{{-- @include('extenders.case_law_main_search') --}}
 					{{--<input class="btn btn-primary btn-xs" type="button" name="go" value="Search" id="high_court_filter">--}}
 					<br>
 				</div>

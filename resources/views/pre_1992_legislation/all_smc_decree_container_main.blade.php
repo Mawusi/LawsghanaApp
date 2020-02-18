@@ -21,8 +21,12 @@
                 	
 			</select>
 			</center>
-		    <hr>
-			@include('extenders.case_law_main_search')
+			<hr>
+			<form action="{{ url('smc_decree_index_search') }}" method="GET">
+				{{ csrf_field() }}
+					<input style="padding: 15px;" class="form-control" name="search_text" type="text" placeholder="Search word in act" aria-label="Search">
+			</form>
+			{{-- @include('extenders.case_law_main_search') --}}
 		    {{--<input class="btn btn-primary btn-xs" type="button" name="go" value="Search" id="smc_decree_filter">--}}
 
 		  </div>

@@ -118,7 +118,7 @@
         </form>       
       </div>
       <div class="col-md-2" style="margin-top:25px;">
-      <p style="color:blue;"><b class="hidden">Found: {{$total_count}} Results</b></p>
+      <p style="color:blue;"><b class="hidden">Found: {{$total_posts_count}} Results</b></p>
       </div>
     
   </div>
@@ -129,11 +129,11 @@
       <div class="col-md-3">
         <div class="sidebar">
           <div class="search-well-filter">
-            <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($total_count)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p><hr>
+            <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($total_posts_count)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p><hr>
               <p style="color:blue;">Filter Options</p>
               <div class="custom-control custom-radio">
                 <input type="radio" class="custom-control-input all1" id="all_posts" name="act-type" value="All" checked>
-                <label class="custom-control-label" for="defaultChecked">All</label>&nbsp;<span class="badge">{{$total_count}}</span>
+                <label class="custom-control-label" for="defaultChecked">All</label>&nbsp;<span class="badge">{{$total_posts_count}}</span>
               </div>
               <br>
               <div class="custom-control custom-radio">
@@ -175,7 +175,7 @@
 
 @section('scripts')
 <script>
-  if ( {{$total_count}} == 0 ) {
+  if ( {{$total_posts_count}} == 0 ) {
     document.getElementById("all_posts").disabled = true;
     document.getElementById("for_post").disabled = true;
     document.getElementById("for_regulations").disabled = true;

@@ -91,7 +91,8 @@ class ConstitutionCountriesSearchController extends Controller
                                                                                   'south_america_countries_constitutions','south_america_countries_constitutions_count'));
         else 
             return view ('extenders.constitution_countries_search_page_not_found', compact('query','footer_notes', 'total_constitution_countries','africa_countries_constitution_count',
-                                                                        'europe_countries_constitution_count','asia_countries_constitution_count','north_america_countries_constitutions_count','south_america_countries_constitutions_count'));
+                                                                        'europe_countries_constitution_count','asia_countries_constitution_count','north_america_countries_constitutions_count',
+                                                                        'south_america_countries_constitutions_count'));
 
     }
 
@@ -172,6 +173,58 @@ class ConstitutionCountriesSearchController extends Controller
         return view('extenders.europe_constitution_search_page_index', compact('query','footer_notes','europe_countries_constitutions','europe_countries_constitution_count'));
         else 
         return view ('extenders.europe_constitution_search_page_index_not_found', compact('query','footer_notes', 'europe_countries_constitution_count'));
+
+    }
+
+    public function north_america_index_search(){
+
+        $query=request('search_text');
+        $footer_notes   = FooterNote::all();
+        $north_america  = "North-America";
+
+        $north_america_countries_constitutions  = AllConstitution::where(['continent' => $north_america])
+                                                ->where('content', 'LIKE', "%$query%")
+                                                ->get()
+                                                ->map(function ($row) use ($query) {
+                                                $row->content = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
+                                                return $row;
+                                                });
+
+        $north_america_countries_constitutions_count    = $north_america_countries_constitutions->count(); 
+        
+        if
+            (
+            count($north_america_countries_constitutions) > 0
+            )                              
+        return view('extenders.north_america_constitution_search_page_index', compact('query','footer_notes','north_america_countries_constitutions','north_america_countries_constitutions_count'));
+        else 
+        return view ('extenders.north_america_constitution_search_page_index_not_found', compact('query','footer_notes', 'north_america_countries_constitutions_count'));
+
+    }
+
+    public function south_america_index_search(){
+
+        $query=request('search_text');
+        $footer_notes   = FooterNote::all();
+        $south_america  = "South-America";
+
+        $south_america_countries_constitutions  = AllConstitution::where(['continent' => $south_america])
+                                                ->where('content', 'LIKE', "%$query%")
+                                                ->get()
+                                                ->map(function ($row) use ($query) {
+                                                $row->content = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
+                                                return $row;
+                                                });
+
+        $south_america_countries_constitutions_count    = $south_america_countries_constitutions->count(); 
+        
+        if
+            (
+            count($south_america_countries_constitutions) > 0
+            )                              
+        return view('extenders.south_america_constitution_search_page_index', compact('query','footer_notes','south_america_countries_constitutions','south_america_countries_constitutions_count'));
+        else 
+        return view ('extenders.south_america_constitution_search_page_index_not_found', compact('query','footer_notes', 'south_america_countries_constitutions_count'));
 
     }
 }

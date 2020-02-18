@@ -18,8 +18,12 @@
                 @endforeach
 			</select>
 			</center>
-		    <hr>
-			@include('extenders.case_law_main_search')
+			<hr>
+			<form action="{{ url('acts_of_parliament_index_search') }}" method="GET">
+				{{ csrf_field() }}
+					<input style="padding: 15px;" class="form-control" name="search_text" type="text" placeholder="Search word in Acts" aria-label="Search">
+			</form>
+			{{-- @include('extenders.case_law_main_search') --}}
 		    {{--<input class="btn btn-primary btn-xs" type="button" name="go" value="Search" id="acts_of_parliament_filter">--}}
 		  </div>
 		</div>

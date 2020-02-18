@@ -20,28 +20,49 @@ Route::get('/','WelcomePageController@index');
 //For all Post Legislation
 // Route::get('/keyword-search','Post1992Controller@keyword_search');
 
+//-------------------------------------------------------------------------------SEARCH ENGINE-----------------------------------------------------------------------------------------------
+
 //Search for Main Home Page
 Route::get('main_home_search','HomeSearchController@main_home_search');
 
-// Search for 4th Republic
-Route::get('post_index_search','PostSearchController@post_index_search');//main search at the top
-Route::get('post_index_search/{title}/{id}','PostSearchController@post_index_acts_search');//search within an act
-Route::get('/Search/Next/{query}/fetch_data','PostSearchController@acts_ajax_display');//pagination
-
-//Search for the Pre 4th Republic
-Route::get('pre_4th_index_search','PreSearchController@pre_index_search');
-
-//Search for Case Laws
-Route::get('cases_index_search','CasesSearchController@cases_index_search');
-
 //Search for Constitution
+Route::get('search_ghana_constitution','ConstitutionGhanaSearchController@index_search');//for ghana
+Route::get('search_ghana_amended_constitution','ConstitutionGhanaAmendedSearchController@index_search_amendment');//for ghana_amended
 Route::get('all_constitution_index_search','ConstitutionCountriesSearchController@countries_index_search');//for countries
 Route::get('africa_constitution_index_search','ConstitutionCountriesSearchController@africa_index_search');//for ghana
 Route::get('asia_constitution_index_search','ConstitutionCountriesSearchController@asia_index_search');//for ghana
 Route::get('europe_constitution_index_search','ConstitutionCountriesSearchController@europe_index_search');//for ghana
+Route::get('north_america_constitution_index_search','ConstitutionCountriesSearchController@north_america_index_search');//for ghana
+Route::get('south_america_constitution_index_search','ConstitutionCountriesSearchController@south_america_index_search');//for ghana
 
-Route::get('search_ghana_constitution','ConstitutionGhanaSearchController@index_search');//for ghana
-Route::get('search_ghana_amended_constitution','ConstitutionGhanaAmendedSearchController@index_search_amendment');//for ghana_amended
+//Search for the Pre 4th Republic
+Route::get('pre_4th_index_search','PreSearchController@pre_index_search');
+Route::get('first_republic_index_search','PreSearchController@first_rep_index_search');
+Route::get('second_republic_index_search','PreSearchController@second_rep_index_search');
+Route::get('third_republic_index_search','PreSearchController@third_rep_index_search');
+Route::get('nlc_decree_index_search','PreSearchController@nlc_decree_index_search');
+Route::get('nrc_decree_index_search','PreSearchController@nrc_decree_index_search');
+Route::get('smc_decree_index_search','PreSearchController@smc_decree_index_search');
+Route::get('afrc_decree_index_search','PreSearchController@afrc_decree_index_search');
+Route::get('pndc_law_index_search','PreSearchController@pndc_law_index_search');
+
+
+//Search for 4th Republic
+Route::get('post_index_search','PostSearchController@post_index_search');//main search at the top
+Route::get('acts_of_parliament_index_search','PostSearchController@acts_of_parliament_index_search');//main search at the top
+Route::get('only_regulations_index_search','PostSearchController@only_regulations_index_search');//main search at the top
+Route::get('only_amendments_index_search','PostSearchController@only_amendments_index_search');//main search at the top
+
+Route::get('post_index_search/{title}/{id}','PostSearchController@post_index_acts_search');//search within an act
+Route::get('/Search/Next/{query}/fetch_data','PostSearchController@acts_ajax_display');//pagination
+
+//Search for Case Laws
+Route::get('cases_index_search','CasesSearchController@cases_index_search');
+Route::get('supreme_court_index_search','CasesSearchController@supreme_court_index_search');
+Route::get('court_of_appeal_index_search','CasesSearchController@court_of_appeal_index_search');
+Route::get('high_court_index_search','CasesSearchController@high_court_index_search');
+
+//-------------------------------------------------------------------------------END OF SEARCH ENGINE-----------------------------------------------------------------------------------------------
 
 Route::get('/acts/search/{key}','SearchController@keyword_search');
 Route::view('/scan', 'scan');
