@@ -9,6 +9,7 @@ use App\RegulationArticle;
 use App\FooterNote;
 use App\AmendedArticle;
 use App\AmendRegulationArticle;
+use Illuminate\Support\Facades\DB;
 
 class PostSearchController extends Controller
 {
@@ -188,26 +189,27 @@ class PostSearchController extends Controller
     }
 
 
-    public function post_index_acts_search(Request $request, $id, $title){
+    public function post_index_acts_search(Request $request, $title, $id){
         // dd($id, $title);
         $footer_notes   = FooterNote::all();
         $query=request('search_text');
 
-        $acts_title = Post1992Act::find($id);
-        $single_post_acts = Post1992Article::where(['post_act' => $id])
-        ->where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('post_act','LIKE', "%$query%")
-        ->orderBy('post_act')
-        ->orderBy('priority')
-        ->get()
-        ->map(function ($row) use ($query) {
-            $row->content   = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
-            return $row;
-        });
+        $single_post_acts = DB::table('post1992_acts')
+            ->leftJoin('post1992_articles', 'post1992_acts.title', '=', 'post1992_articles.post_act')
+            ->where(['title' => $title])
+            ->where('content', 'LIKE', "%$query%")
+            ->get()
+            ->map(function ($row) use ($query) {
+                $row->content = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
+                return $row;
+                });
+    
+        $single_post_acts_count = $single_post_acts->count();
 
-        $single_post_acts_count = Post1992Article::where(['post_act' => $title])
-        ->where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->count();
-        
-        return view ('extenders.single_act_search_page_index', compact('query','acts_title','single_post_acts','single_post_acts_count','footer_notes'));
+        if(count($single_post_acts) > 0)
+            return view ('extenders.single_act_search_page_index', compact('query','single_post_acts','single_post_acts_count','footer_notes'));
+        else
+            return view ('extenders.single_act_search_page_not_found', compact('footer_notes', 'single_post_acts_count','query'));
     }
 
     public function acts_ajax_display(Request $request, $query){
