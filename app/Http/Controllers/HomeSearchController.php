@@ -297,7 +297,7 @@ class HomeSearchController extends Controller
         $pndc_laws_count     = $pndc_laws->count();
 
         $pre_total_count            = $first_republic_laws_count + $second_republic_laws_count + $third_republic_laws_count + 
-                                     $nlc_decree_laws_count +$nrc_decree_laws_count + $smc_decree_laws_count + $afrc_decree_laws_count + $pndc_laws_count;
+                                     $nlc_decree_laws_count + $nrc_decree_laws_count + $smc_decree_laws_count + $afrc_decree_laws_count + $pndc_laws_count;
 
 
         //--------------------------------------------------------------------- HOME SEARCH: CASE LAWS------------------------------------------------
