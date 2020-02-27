@@ -15,6 +15,8 @@
                     @endif
 
                     You are logged in!
+                    <br>
+                    <a href="/">Access LawsGhana</a>
                 </div>
             </div>
         </div>

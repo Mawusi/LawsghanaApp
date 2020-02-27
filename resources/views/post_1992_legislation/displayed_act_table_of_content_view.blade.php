@@ -506,6 +506,24 @@ document.addEventListener('copy', function (e){
 })
 </script>
 
+<script>
+    $(document).ready(function() {
+        $('.clickme').click(function(e) {
+            e.preventDefault();
+            
+            boxh = $('#popup').height();
+            windowh = $(window).height();
+            
+            $('#popup').css('margin-top', windowh/2 - boxh/2);
+
+            $('#popup').fadeIn();
+        });
+        $('.clicktoclose').click(function() {
+            $('#popup').fadeOut;
+        });
+    });
+</script>
+
     {{-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script> --}}
 @endsection
 

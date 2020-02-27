@@ -82,7 +82,7 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: white;
                 padding: 0 30px;
                 font-size: 15px;
                 font-weight: 800;
@@ -257,21 +257,23 @@
         <!-- <div class="container flex-center position-ref full-height"> -->
         <div class="container">
             <p class="top-left">It's a new experience,&nbsp;<span style="color:red;" id="target"><b>Coming Soon...</b></span></p>
-            <p class="top-left-enquiry">For further enquires, kindly contact <span style="color:red;"><b>0209534818</b></span></p>
+            {{-- <p class="top-left-enquiry">For further enquires, kindly contact <span style="color:red;"><b>0209534818</b></span></p> --}}
             
-            {{-- @if (Route::has('login'))
+            @if (Route::has('login'))
                 <div class="top-right links">
+                    
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ url('/home') }}">{{ Auth::user()->name }}</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
+                        @else
+                            <a class="btn btn-sm btn-primary" href="{{ route('login') }}">Login</a>
+
+                            @if (Route::has('register'))
+                                <a class="btn btn-sm btn-primary" href="{{ route('register') }}">Register</a>
+                            @endif
                     @endauth
                 </div>
-            @endif --}}
+            @endif
         </div>
 
         {{-- <div class="container content m-b-md"> --}}

@@ -33,7 +33,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">        
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-        
+        {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+
         @yield('assets') 
         
         <style>
@@ -116,6 +117,13 @@
             color:black;
             font-size: 12px;
             }
+
+            .dropdown-item{display:block;width:100%;padding:.25rem 1.5rem;clear:both;font-weight:400;color:#212529;text-align:inherit;white-space:nowrap;background-color:transparent;border:0}
+            .dropdown-item:focus,.dropdown-item:hover{color:#16181b;text-decoration:none;background-color:#f8f9fa}
+            .dropdown-item.active,.dropdown-item:active{color:#fff;text-decoration:none;background-color:#3490dc}
+            .dropdown-item.disabled,.dropdown-item:disabled{color:#6c757d;background-color:transparent}
+
+            .dropdown{position:relative}
         </style>
         
     </head>
@@ -161,8 +169,78 @@
                     </div>
                     
                     <div class="collapse navbar-collapse container-fluid pull-right" style="padding-top:10px;" id="bs-example-navbar-collapse-2">
-                        {{ menu('main', 'bootstrap') }}
+                        {{ menu('main', 'bootstrap') }} 
+                    
+
+                        <div class="pull-right" style="margin-top: 10px;">
+
+                        {{-- @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest --}}
+
+
+                            @if (Route::has('login'))
+                                    <div class="top-right links">
+                                        
+                                        @auth
+                                            {{-- <a href="{{ url('/home') }}" style="text-decoration: none;" >
+                                                {{ Auth::user()->name }} <span class="caret"></span>
+                                            </a> --}}
+                                            <a style="text-decoration: none;"  id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                {{ Auth::user()->name }} <span class="caret"></span>
+                                            </a>
+
+                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                                   onclick="event.preventDefault();
+                                                                 document.getElementById('logout-form').submit();">
+                                                    {{ __('Logout') }}
+                                                </a>
+            
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                </form>
+                                            </div>
+
+                                            @else
+                                                <a class="btn btn-sm btn-primary" href="{{ route('login') }}">Login</a>
+
+                                                @if (Route::has('register'))
+                                                    <a class="btn btn-sm btn-primary" href="{{ route('register') }}">Register</a>
+                                                @endif
+                                        @endauth
+                                    </div>
+                            @endif
+                        </div>
+                            
                     </div>
+
+                        
                 </div>
                 {{--@yield('second_nav')--}}
             </div>
