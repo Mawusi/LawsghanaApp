@@ -57,6 +57,7 @@
 
 
      <div class="container">
+       <br>
          <center><h4><b>{{ $regulationAct['regulation_title'] }}</b></h4></center>
          <ul class="pager">
                 <li><a data-scroll-to="body"
