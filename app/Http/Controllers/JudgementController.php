@@ -64,14 +64,14 @@ class JudgementController extends Controller
     // }
 
     public function all_ghana_court_cases($name, $id){
-        // dd($name);
+        //dd($name);
         $allGhanaLaw = GhLawJudgment::find(
             [
                 'id' => $id,
                 'gh_law_judgment_group_name' => $name
             ])->toArray()[0];
 
-        $allGhanaLaws = GhLawJudgment::all();
+        $allGhanaLaws = GhLawJudgment::where(['gh_law_judgment_group_name' => $name])->get();
         $footer_notes           = FooterNote::all();
         return view('law_judgment.ghana_all_court_case', compact('footer_notes','allGhanaLaws', 'allGhanaLaw'));
     }

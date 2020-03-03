@@ -196,9 +196,35 @@
                                             </div>
                                         <a class="pull-right" id="print_options" href="#">Print Options&nbsp;</a>
                                             <div class="menu_options pull-right" style="display: none;">
-                                                <a href="/judgement/pdf_view/{{ $allGhanaLaw['case_title'] }}/{{$allGhanaLaw['id']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
-                                                <a href="/judgement/plain_view/{{$allGhanaLaw['id']}}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp;
-                                                <a href="/judgement/print_preview/{{$allGhanaLaw['id']}}" target="_blank"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print Preview</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                @if (Route::has('login'))
+                                                    @auth
+                                                        <a href="/judgement/pdf_view/{{ $allGhanaLaw['case_title'] }}/{{$allGhanaLaw['id']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
+                                                        <a href="/judgement/plain_view/{{$allGhanaLaw['id']}}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp;
+                                                        <a href="/judgement/print_preview/{{$allGhanaLaw['id']}}" target="_blank"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        
+                                                        @else
+
+                                                        <a href="" data-toggle="modal" data-target=".bs-example-modal-lg"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
+                                                        <a href="/judgement/plain_view/{{$allGhanaLaw['id']}}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp;
+                                                        <a href="" data-toggle="modal" data-target=".bs-example-modal-lg"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                                        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                                                            <div class="modal-dialog modal-lg" role="document">
+                                                                <div class="modal-content">
+                                                                    <br>
+                                                                    <div class="container">
+                                                                        <h3>Kindly <span style="color:blue;"><b>Log In</b></span> or <span style="color:blue;"><b>Register</b></span> to Create An Account</h3>
+                                                                        <br>
+                                                                        <a class="btn btn-sm btn-primary" href="{{ route('login') }}">Login</a>
+                                                                        <a class="btn btn-sm btn-primary" href="{{ route('register') }}">Register</a>
+                                                                    </div>
+                                                                    <br>
+                                                                </div>
+                                                            </div>
+                                                        </div>    
+                                                    
+                                                    @endauth
+                                                @endif
                                             </div>
                                             <br>
 
@@ -297,19 +323,19 @@
                     <div class="popup-overlay" style="padding-top: 75px;">
                             <div class="panel panel-default">
                                     <a class="close" href="#">&times;</a>
-                                    <div class="panel-heading"><center><p class="panel-title"><small>Quick Look on Case Laws</small></p></center></div>
+                                    <div class="panel-heading"><center><p class="panel-title"><small><b>Quick Look on Cases</b></small></p></center></div>
                                         <div class="panel-body">
                                             <center>
                                                 <br>
                                             <div class="btn-group" style="margin-bottom: 10px;">
                                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <small>Preview Case Laws</small> <span class="caret"></span>
+                                                    <small>Select <b>{{$allGhanaLaw['gh_law_judgment_group_name']}}</b> Cases</small> <span class="caret"></span>
                                                 </button>
                                                 <ul class="dropdown-menu scroll-view-judgement dropdown-menu-right" style=" height: 370px; width: 600px;">
                                                     @foreach($allGhanaLaws as $allGhanaLaw) 
                                                     <!-- <li><a class="view_all_section_link" href="/judgement/all-cases/{{ $allGhanaLaw->id}}">{{$allGhanaLaw->case_title}}</a></li> -->
-                                                    <li><a class="alt_section_link" href="/judgement/Ghana/{{$allGhanaLaw->gh_law_judgment_group_name}}/{{ $allGhanaLaw->id}}">{{$allGhanaLaw->case_title}}</a></li>
-                                                @endforeach
+                                                        <li><a class="alt_section_link" href="/judgement/Ghana/{{$allGhanaLaw->gh_law_judgment_group_name}}/{{ $allGhanaLaw->id}}">{{$allGhanaLaw->case_title}}</a></li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                             </center>
