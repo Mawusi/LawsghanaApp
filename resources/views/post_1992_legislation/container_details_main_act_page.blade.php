@@ -5,7 +5,7 @@
         <center><p class="panel-title"><small>Filter</small></p></center>
       </div>
       <div class="panel-body">
-          
+  
          {{-- View all acts --}}
          
         <center>
@@ -60,6 +60,7 @@
         <center>
         <button class="btn btn-sm btn-default expanded_link" id="expanded_link_toggle_all_pre1992_preview_2" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}"><li style="list-style:none;">Expanded View</li>
         </button>
+
 
         {{-- <a href="/post_1992_legislation/plain_content/{{ $allPost1992Article['post_act'] }}/{{ $allPost1992Article['id'] }}" target="_blank">Sections Plain View</a>
         <a class="trigger_plain_view" href="#"><li>Plain View</li></a>
