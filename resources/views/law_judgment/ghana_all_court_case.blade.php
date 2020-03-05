@@ -164,6 +164,17 @@
             visibility: visible;
             text-align: center;
             }
+
+            .btn-primary_3{
+                color:#fff;
+                background-color:#3490dc;
+                border-color:#3490dc;
+            }
+            .btn-primary_3:hover{
+                color:#fff;
+                background-color:#227dc7;
+                border-color:#2176bd;
+            }
     </style>
 
 @endsection
@@ -213,11 +224,11 @@
                                                               <div class="modal-content">
                                                                 <div class="modal-header">
                                                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                                  <h4 class="modal-title" id="myModalLabel">Kindly <span style="color:blue;"><b>Log In</b></span> or <span style="color:blue;"><b>Register</b></span> to Create An Account</h4>
+                                                                  <h4 class="modal-title" id="myModalLabel">Kindly <span style="color:#3490dc;">Log In</span> or <span style="color:#3490dc;">Register</span> to Create An Account</h4>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <a class="btn btn-sm btn-primary" href="{{ route('login') }}">Login</a>
-                                                                    <a class="btn btn-sm btn-primary" href="{{ route('register') }}">Register</a>                            
+                                                                    <a class="btn btn-sm btn-primary_3" href="{{ route('login') }}">Login</a>
+                                                                    <a class="btn btn-sm btn-primary_3" href="{{ route('register') }}">Register</a>                            
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>

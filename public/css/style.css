@@ -106,6 +106,18 @@ padding: 20px 5px 75px 5px;
 box-sizing: border-box;
 }
 
+.btn-primarys{
+  color:#fff;
+  background-color:#3490dc;
+  border-color:#3490dc;
+}
+
+.btn-primarys:hover{
+  color:#fff;
+  background-color:#227dc7;
+  border-color:#2176bd;
+}
+
 
 /*for pagination*/
 #myInput		{width:80px}

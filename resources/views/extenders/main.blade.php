@@ -41,8 +41,8 @@
             html, body {
                 background-color: #f8f8f8;
                 color: black;
-                font-family: Arial;
-                font-size: 12px;
+                font-family: 'Nunito', sans-serif;
+                font-size: 13px;
                 padding-top: 40px;
                 height: 80vh;
             }
@@ -124,6 +124,28 @@
             .dropdown-item.disabled,.dropdown-item:disabled{color:#6c757d;background-color:transparent}
 
             .dropdown{position:relative}
+
+            .btn-primarys{
+                color:#fff;
+                background-color:#3490dc;
+                border-color:#3490dc;
+            }
+            .btn-primarys:hover{
+                color:#fff;
+                background-color:#227dc7;
+                border-color:#2176bd;
+            }
+            .links > a {
+                color: white;
+                padding: 0 30px;
+                font-size: 15px;
+                font-weight: 600;
+                /* letter-spacing: .2rem; */
+                text-decoration: none;
+                line-height: 2em;
+                
+                /* text-transform: uppercase; */
+            }
         </style>
         
     </head>
@@ -205,13 +227,13 @@
 
 
                             @if (Route::has('login'))
-                                    <div class="">
+                                    <div class="links">
                                         
                                         @auth
                                             {{-- <a href="{{ url('/home') }}" style="text-decoration: none;" >
                                                 {{ Auth::user()->name }} <span class="caret"></span>
                                             </a> --}}
-                                            <a style="text-decoration: none;"  id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            <a style="text-decoration: none; color: blue;"  id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                 {{ Auth::user()->name }} <span class="caret"></span>
                                             </a>
 
@@ -228,10 +250,10 @@
                                             </div>
 
                                             @else
-                                                <a class="btn btn-sm btn-primary" href="{{ route('login') }}">Login</a>
+                                                <a class="btn btn-sm btn-primarys" href="{{ route('login') }}">Login</a>
 
                                                 @if (Route::has('register'))
-                                                    <a class="btn btn-sm btn-primary" href="{{ route('register') }}">Register</a>
+                                                    <a class="btn btn-sm btn-primarys" href="{{ route('register') }}">Register</a>
                                                 @endif
                                         @endauth
                                     </div>

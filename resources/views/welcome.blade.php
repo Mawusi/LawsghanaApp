@@ -34,7 +34,7 @@
                 background-color: #fff;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
-                font-weight: 200;
+                font-size: 13px;
                 height: 100vh;
                 
             }
@@ -86,7 +86,7 @@
                 padding: 0 30px;
                 font-size: 15px;
                 font-weight: 800;
-                letter-spacing: .2rem;
+                /* letter-spacing: .2rem; */
                 text-decoration: none;
                 line-height: 2em;
                 
@@ -230,6 +230,16 @@
                     color: #005aaa;
                 }
             }
+            .btn-primarys{
+                color:#fff;
+                background-color:#3490dc;
+                border-color:#3490dc;
+            }
+            .btn-primarys:hover{
+                color:#fff;
+                background-color:#227dc7;
+                border-color:#2176bd;
+            }
         </style>
     </head>
             <!--Start of Tawk.to Script-->
@@ -280,10 +290,10 @@
                         </div>
 
                         @else
-                            <a class="btn btn-sm btn-primary" href="{{ route('login') }}">Login</a>
+                            <a class="btn btn-sm btn-primarys" href="{{ route('login') }}">Login</a>
 
                             @if (Route::has('register'))
-                                <a class="btn btn-sm btn-primary" href="{{ route('register') }}">Register</a>
+                                <a class="btn btn-sm btn-primarys" href="{{ route('register') }}">Register</a>
                             @endif
                     @endauth
                 </div>
