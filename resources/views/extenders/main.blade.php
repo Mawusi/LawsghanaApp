@@ -140,7 +140,7 @@
                 color: white;
                 padding: 0 30px;
                 font-size: 15px;
-                font-weight: 600;
+                font-weight: 800;
                 /* letter-spacing: .2rem; */
                 text-decoration: none;
                 line-height: 2em;
@@ -234,7 +234,7 @@
                                             {{-- <a href="{{ url('/home') }}" style="text-decoration: none;" >
                                                 {{ Auth::user()->name }} <span class="caret"></span>
                                             </a> --}}
-                                            <a style="text-decoration: none; color: blue;"  id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            <a style="text-decoration: none; color: blue; font-family: 'Nunito', sans-serif;"  id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                 {{ Auth::user()->name }} <span class="caret"></span>
                                             </a>
 
