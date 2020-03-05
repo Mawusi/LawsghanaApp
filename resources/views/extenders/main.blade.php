@@ -41,8 +41,9 @@
             html, body {
                 background-color: #f8f8f8;
                 color: black;
-                font-family: 'Nunito', sans-serif;
-                font-size: 13px;
+                /* font-family: 'Nunito', sans-serif; */
+                font-family: Arial;
+                font-size: 12px;
                 padding-top: 40px;
                 height: 80vh;
             }
