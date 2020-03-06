@@ -139,8 +139,8 @@
             .links > a {
                 color: white;
                 padding: 0 30px;
-                font-size: 15px;
-                font-weight: 800;
+                font-size: 13px;
+                font-weight: 550;
                 /* letter-spacing: .2rem; */
                 text-decoration: none;
                 line-height: 2em;
@@ -191,11 +191,11 @@
                       <!--<a class="navbar-brand"><strong>Pre-1992-Legislation</strong></a>-->
                     </div>
                     
-                    <div class="collapse navbar-collapse container-fluid pull-right" style="padding-top:10px;" id="bs-example-navbar-collapse-2">
+                    <div class="collapse navbar-collapse container-fluid pull-right" style="padding-top:13px;" id="bs-example-navbar-collapse-2">
                         {{ menu('main', 'bootstrap') }} 
                     
 
-                        <div class="pull-right" style="margin-top: 10px;">
+                        <div class="pull-right" style="margin-top: 7px;">
 
                         {{-- @guest
                             <li class="nav-item">
@@ -242,7 +242,7 @@
                                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                                    onclick="event.preventDefault();
                                                                  document.getElementById('logout-form').submit();">
-                                                    {{ __('Logout') }}
+                                                    <span style="font-family: 'Nunito', sans-serif;">{{ __('Logout') }}</span>
                                                 </a>
             
                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
