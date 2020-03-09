@@ -278,15 +278,47 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a style="text-decoration: none;" class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                                &nbsp;&nbsp;&nbsp;{{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                @csrf
-                            </form>
+                            <div class="profile-usermenu">
+                                <ul class="nav">
+                                    <li>
+                                        <a href="#">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                        Profile </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                        <i class="glyphicon glyphicon-cog"></i>
+                                        Manage Accounts </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" target="_blank">
+                                        <i class="glyphicon glyphicon-bookmark"></i>
+                                        My Bookmarks </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                        <i class="glyphicon glyphicon-cloud-download"></i>
+                                        My Downloads </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                        <i class="glyphicon glyphicon-credit-card"></i>
+                                        Subscriptions </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                      document.getElementById('logout-form').submit();">
+                                         <i class="glyphicon glyphicon-off"></i>
+                                         {{ __('Logout') }}
+                                        </a>
+ 
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>      
                         </div>
 
                         @else

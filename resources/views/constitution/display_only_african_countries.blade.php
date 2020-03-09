@@ -40,7 +40,7 @@
                                         <tr>
                                             <td>{{ $africaConstitution->country }}</td>
                                             <td>
-                                                <a href="/constitution/{{ $africaConstitution->country }}/{{ $africaConstitution->id}}"><li style="list-style: none;">{{ $africaConstitution->title }}</li></a>
+                                                <a href="/constitution/1/{{ $africaConstitution->continent }}/{{ $africaConstitution->country }}/{{ $africaConstitution->id}}"><li style="list-style: none;">{{ $africaConstitution->title }}</li></a>
                                             </td> 
                                             <td>{{ $africaConstitution->year }}</td>  
                                         </tr>

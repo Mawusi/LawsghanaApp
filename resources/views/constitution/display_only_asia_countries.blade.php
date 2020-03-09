@@ -41,7 +41,7 @@
                                         <tr>
                                             <td>{{ $asiaConstitution->country }}</td>
                                             <td>
-                                                <a href="/constitution/{{ $asiaConstitution->country }}/{{ $asiaConstitution->id}}"><li style="list-style: none;">{{ $asiaConstitution->title }}</li></a>
+                                                <a href="/constitution/1/{{ $asiaConstitution->continent }}/{{ $asiaConstitution->country }}/{{ $asiaConstitution->id}}"><li style="list-style: none;">{{ $asiaConstitution->title }}</li></a>
                                             </td> 
                                             <td>{{ $asiaConstitution->year }}</td>  
                                         </tr>

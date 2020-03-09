@@ -72,7 +72,7 @@ Route::view('/scan', 'scan');
     //All Countries Constitution
     Route::get('/constitution/all_countries','ConstitutionController@all_countries_constitution');//display all countries constitution
         Route::get('/constitution/filter/{year}/{country}','ConstitutionController@all_countries_constitution_filter'); //all constitution filtering
-        Route::get('/constitution/{country}/{id}','ConstitutionController@display_country_constitution');
+        Route::get('/constitution/1/{continent}/{country}/{id}','ConstitutionController@display_country_constitution');
         Route::get('/constitution/print/content/{id}','ConstitutionController@print_constitution_content');//display plain act content
         Route::get('/constitution/plain/content/{id}','ConstitutionController@plain_constitution_content');//display plain act content
         Route::get('/constitution/pdf/content/{title}/{id}','ConstitutionController@pdf_constitution_content');//display plain act content

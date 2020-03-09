@@ -325,14 +325,15 @@ class ConstitutionController extends Controller
         return view('constitution.all_countries', compact('allCountriesConstitutions', 'allCountries'));
     }
 
-    public function display_country_constitution($id, $country){
+    public function display_country_constitution($continent, $country, $id){
+        // dd($continent, $country, $id);
         $allCountriesConstitution = AllConstitution::find(
             [
                 'id' => $id,
                 'country' => $country
             ])->toArray()[0];
 
-        $allCountriesConstitutions = AllConstitution::all();
+        $allCountriesConstitutions = AllConstitution::where(['continent' => $continent])->get();
         $footer_notes           = FooterNote::all();
         return view('constitution.display_country_constitution', compact('footer_notes','allCountriesConstitutions', 'allCountriesConstitution'));
     }

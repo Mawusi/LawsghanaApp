@@ -217,24 +217,25 @@
                             <div class="popup-overlay" style="padding-top: 75px;">
                                 <div class="panel panel-default">
                                         <a class="close" href="#">&times;</a>
-                                        <div class="panel-heading"><center><p class="panel-title"><small>Quick Look on Constitution</small></p></center></div>
+                                        <div class="panel-heading"><center><p class="panel-title"><small><b>Quick Look on Constitution</b></small></p></center></div>
                                             <div class="panel-body">
                                                 <center>
+                                                    <br>
                                                 <div class="btn-group" style="margin-bottom: 10px;">
                                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <small>Search by Country</small> <span class="caret"></span>
+                                                        <small>Select Country in <b>{{$allCountriesConstitution['continent']}}</b> </small> <span class="caret"></span>
                                                     </button>
                                                     <ul class="dropdown-menu scroll-view-judgement dropdown-menu-left" style=" height: 370px; width: 100px;">
                                                         @foreach($allCountriesConstitutions as $allCountriesConstitution) 
                                                         <li>
-                                                            <a class="alt_section_link"  style="text-align: center;" href="/constitution/{{$allCountriesConstitution->country}}/{{$allCountriesConstitution->id}}">{{$allCountriesConstitution->country }}</a>
+                                                            <a class="alt_section_link"  style="text-align: center;" href="/constitution/1/{{$allCountriesConstitution->continent}}/{{$allCountriesConstitution->country}}/{{$allCountriesConstitution->id}}">{{$allCountriesConstitution->country }}</a>
                                                         </li>                                                       
                                                         @endforeach
                                                     </ul>
                                                 </div>
                                                 </center>
                                                 <br>
-                                                @include('extenders.case_law_main_search')
+                                                {{-- @include('extenders.case_law_main_search') --}}
                                             </div>
                                 </div>    
                             </div>

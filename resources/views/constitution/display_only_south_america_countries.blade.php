@@ -40,7 +40,7 @@
                                         <tr>
                                             <td>{{ $south_americaConstitution->country }}</td>
                                             <td>
-                                                <a href="/constitution/{{ $south_americaConstitution->country }}/{{ $south_americaConstitution->id}}"><li style="list-style: none;">{{ $south_americaConstitution->title }}</li></a>
+                                                <a href="/constitution/1/{{ $south_americaConstitution->continent }}/{{ $south_americaConstitution->country }}/{{ $south_americaConstitution->id}}"><li style="list-style: none;">{{ $south_americaConstitution->title }}</li></a>
                                             </td> 
                                             <td>{{ $south_americaConstitution->year }}</td>  
                                         </tr>
