@@ -231,23 +231,53 @@
                                     <div class="links">
                                         
                                         @auth
-                                            {{-- <a href="{{ url('/home') }}" style="text-decoration: none;" >
-                                                {{ Auth::user()->name }} <span class="caret"></span>
-                                            </a> --}}
+                                            
                                             <a style="text-decoration: none; color: blue; font-family: 'Nunito', sans-serif;"  id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                 {{ Auth::user()->name }} <span class="caret"></span>
                                             </a>
 
                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                                   onclick="event.preventDefault();
-                                                                 document.getElementById('logout-form').submit();">
-                                                    <span style="font-family: 'Nunito', sans-serif;">{{ __('Logout') }}</span>
-                                                </a>
-            
-                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                    @csrf
-                                                </form>
+                                                <div class="profile-usermenu">
+                                                    <ul class="nav">
+                                                        <li>
+                                                            <a href="#">
+                                                            <i class="glyphicon glyphicon-user"></i>
+                                                            Profile </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                            <i class="glyphicon glyphicon-cog"></i>
+                                                            Manage Accounts </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" target="_blank">
+                                                            <i class="glyphicon glyphicon-bookmark"></i>
+                                                            My Bookmarks </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                            <i class="glyphicon glyphicon-cloud-download"></i>
+                                                            My Downloads </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                            <i class="glyphicon glyphicon-credit-card"></i>
+                                                            Subscriptions </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                                            onclick="event.preventDefault();
+                                                                          document.getElementById('logout-form').submit();">
+                                                             <i class="glyphicon glyphicon-off"></i>
+                                                             {{ __('Logout') }}
+                                                            </a>
+                     
+                                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                                @csrf
+                                                            </form>
+                                                        </li>
+                                                    </ul>
+                                                </div>      
                                             </div>
 
                                             @else
