@@ -20,6 +20,8 @@
 						{{ csrf_field() }}
 							<input style="padding: 15px;" class="form-control" name="search_text" type="text" placeholder="Search word in Acts" aria-label="Search">
 					</form>
+					<p class="tooltips hidden" title="This is my span's tooltip message!">come</p>
+
 			</div>
 		</div>
 	</div>

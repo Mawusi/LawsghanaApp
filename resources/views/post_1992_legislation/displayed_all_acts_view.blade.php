@@ -83,6 +83,7 @@ style="padding-left:1em;"
                     </div>
                         <!-- for the filter -->
                         @include('post_1992_legislation.filter_post_home')
+
                     </div>
                 </div>
             </div>

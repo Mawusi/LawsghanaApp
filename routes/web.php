@@ -17,6 +17,8 @@
 //WELCOME PAGE
 Route::get('/','WelcomePageController@index');
 
+Route::get('/accounts/dashboard','UserDashBoardController@dashboard');
+
 //For all Post Legislation
 // Route::get('/keyword-search','Post1992Controller@keyword_search');
 

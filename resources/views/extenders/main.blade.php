@@ -26,6 +26,8 @@
         <link rel="stylesheet" href="{{ asset('css/print.css') }}" type="text/css" media="print">
         <link rel="stylesheet" href="{{ asset('css/print-preview.css') }}" type="text/css" media="screen">
 
+        <link rel="stylesheet" href="{{ asset('css/tooltipster.bundle.min.css') }}" type="text/css">
+
         <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         
@@ -34,6 +36,8 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+
+        {{-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.0.min.js"></script> --}}
 
         @yield('assets') 
         
@@ -148,6 +152,12 @@
                 /* text-transform: uppercase; */
             }
         </style>
+
+        <script>
+            $(document).ready(function() {
+                $('.tooltips').tooltipster();
+            });
+        </script>
         
     </head>
         <!--Start of Tawk.to Script-->
@@ -240,6 +250,11 @@
                                                 <div class="profile-usermenu">
                                                     <ul class="nav">
                                                         <li>
+                                                            <a href="/accounts/dashboard">
+                                                            <i class="glyphicon glyphicon-dashboard"></i>
+                                                            Dashboard </a>
+                                                        </li>
+                                                        <li>
                                                             <a href="#">
                                                             <i class="glyphicon glyphicon-user"></i>
                                                             Profile </a>
@@ -312,8 +327,9 @@
 
         <!--scripts-->
         <script src="{{ asset('js/jquery.min.js') }}"></script>
-        <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-        <!--<script src="{{ asset('js/bootstrap.min.js') }}"></script>-->
+        {{-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> --}}
+        {{--<script src="{{ asset('js/bootstrap.min.js') }}"></script>--}}
+        <script src="{{ asset('js/tooltipster.bundle.min.js') }}"></script>
         <script src="{{ asset('js/print-preview.js') }}"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
         </script>

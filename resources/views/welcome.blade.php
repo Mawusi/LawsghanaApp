@@ -281,6 +281,11 @@
                             <div class="profile-usermenu">
                                 <ul class="nav">
                                     <li>
+                                        <a href="/accounts/dashboard">
+                                        <i class="glyphicon glyphicon-dashboard"></i>
+                                        Dashboard </a>
+                                    </li>
+                                    <li>
                                         <a href="#">
                                         <i class="glyphicon glyphicon-user"></i>
                                         Profile </a>

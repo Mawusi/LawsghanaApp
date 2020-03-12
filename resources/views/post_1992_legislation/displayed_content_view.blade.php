@@ -1,7 +1,26 @@
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <link rel="stylesheet" href="{{ asset('css/tooltipster.bundle.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/tooltipster-sideTip-borderless.min.css') }}" type="text/css">    
+</head>
 
-<div>
+<body>
+
+
     <div class="header_only" style="border: .1px solid #ddd;">
-        <p style="padding-top: 7px; padding-bottom: .1px; padding-left: 16px; padding-right: 16px;"><b>{{ $allPost1992Article['section'] }}</b></p>
+        <p style="padding-top: 7px; padding-bottom: .1px; padding-left: 16px; padding-right: 16px;"><b>{{ $allPost1992Article['section'] }}</b>
+            
+            @if (Route::has('login'))
+                @auth
+                   
+                    <a href="#"><i title="Bookmark this section" style="color:blue;" class="tooltips glyphicon glyphicon-bookmark pull-right"></i></button></a>
+                        @else
+                        <i style="color:blue;" class="glyphicon glyphicon-bookmark hidden"></i>
+                @endauth
+            @endif
+        </p>
+        
     </div>
 
     <div style="margin-bottom: 5px;">
@@ -55,14 +74,19 @@
         <p>{!! $allPost1992Article['content'] !!}</p>
     </div>
 
-</div>
+{{-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.0.min.js"></script>
+<script src="{{ asset('js/tooltipster.bundle.min.js') }}"></script> --}}
+<script>
+    $('.tooltips').tooltipster({
+        theme: 'tooltipster-borderless'
+    });
+</script>
 
 
 
+</body>
 
-
-
-
+</html>
 
    
 
