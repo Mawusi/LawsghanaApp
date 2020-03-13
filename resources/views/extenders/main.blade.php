@@ -2,7 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {{-- <meta name="viewport" content="width=device-width, initial-scale=1"> --}}
+        <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
         <meta name="description" content="@yield('meta_description')"/>
         
         <title> 
@@ -184,7 +185,7 @@
                      <!--logo-->
                      <div class="navbar-header">
                          <a href="/">
-                            <!-- <img alt="Brand" src="{{ asset('/logo/gh_flag.png') }}" class="img-responsive" style="width:3em; padding-top: 5px;"> -->
+                            {{-- <img alt="Brand" src="{{ asset('/logo/gh_flag.png') }}" class="img-responsive" style="width:3em; padding-top: 5px;"> --}}
                             <img alt="Brand" src="{{ asset('/logo/lawsghlog.png') }}" class="img-responsive" style="width:20em; padding-top: 10px; padding-bottom:10px;padding-left:50px;">
 
                         </a>
@@ -265,14 +266,14 @@
                                                             Manage Accounts </a>
                                                         </li>
                                                         <li>
-                                                            <a href="#" target="_blank">
+                                                            <a href="/accounts/bookmarks">
                                                             <i class="glyphicon glyphicon-bookmark"></i>
-                                                            My Bookmarks </a>
+                                                            Bookmarks </a>
                                                         </li>
                                                         <li>
-                                                            <a href="#">
+                                                            <a href="/accounts/downloads">
                                                             <i class="glyphicon glyphicon-cloud-download"></i>
-                                                            My Downloads </a>
+                                                            Downloads </a>
                                                         </li>
                                                         <li>
                                                             <a href="#">

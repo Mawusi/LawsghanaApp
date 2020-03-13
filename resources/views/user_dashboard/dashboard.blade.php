@@ -23,7 +23,6 @@ The above copyright notice and this permission notice shall be included in all c
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
-  {{-- <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" /> --}}
   <link rel="stylesheet" href="{{ asset('css/material-dashboard.css?v=2.1.2') }}">
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
@@ -37,14 +36,15 @@ The above copyright notice and this permission notice shall be included in all c
 
         Tip 2: you can also add an image using data-image tag
     -->
-      <div class="logo"><a href="/" class="simple-text logo-normal">
-          LawsGhana
+      <div class="logo">
+        <a href="/" class="simple-text logo-normal">
+          <img alt="Brand" src="{{ asset('/logo/lawsghlog.png') }}" class="img-responsive" style="width:10em;">
         </a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item active  ">
-            <a class="nav-link" href="./dashboard.html">
+            <a class="nav-link" href="/accounts/dashboard">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
@@ -52,25 +52,25 @@ The above copyright notice and this permission notice shall be included in all c
           <li class="nav-item ">
             <a class="nav-link" href="./user.html">
               <i class="material-icons">person</i>
-              <p>User Profile</p>
+              <p>Profile</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./tables.html">
+            <a class="nav-link" href="./typography.html">
               <i class="material-icons">settings</i>
               <p>Manage Accounts</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
+            <a class="nav-link" href="/accounts/bookmarks">
               <i class="material-icons">bookmarks</i>
-              <p>My Bookmarks</p>
+              <p>Bookmarks</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
+            <a class="nav-link" href="/accounts/downloads">
               <i class="material-icons">cloud_download</i>
-              <p>My Downloads</p>
+              <p>Downloads</p>
             </a>
           </li>
           <li class="nav-item ">
@@ -114,7 +114,7 @@ The above copyright notice and this permission notice shall be included in all c
             <span class="navbar-toggler-icon icon-bar"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end">
-            <form class="navbar-form">
+            {{-- <form class="navbar-form">
               <div class="input-group no-border">
                 <input type="text" value="" class="form-control" placeholder="Search...">
                 <button type="submit" class="btn btn-white btn-round btn-just-icon">
@@ -122,17 +122,17 @@ The above copyright notice and this permission notice shall be included in all c
                   <div class="ripple-container"></div>
                 </button>
               </div>
-            </form>
+            </form> --}}
             <ul class="navbar-nav">
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a class="nav-link" href="javascript:;">
                   <i class="material-icons">dashboard</i>
                   <p class="d-lg-none d-md-block">
                     Stats
                   </p>
                 </a>
-              </li>
-              <li class="nav-item dropdown">
+              </li> --}}
+              {{-- <li class="nav-item dropdown">
                 <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">notifications</i>
                   <span class="notification">5</span>
@@ -147,7 +147,7 @@ The above copyright notice and this permission notice shall be included in all c
                   <a class="dropdown-item" href="#">Another Notification</a>
                   <a class="dropdown-item" href="#">Another One</a>
                 </div>
-              </li>
+              </li> --}}
               <li class="nav-item dropdown">
                 <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">person</i>

@@ -18,6 +18,8 @@
 Route::get('/','WelcomePageController@index');
 
 Route::get('/accounts/dashboard','UserDashBoardController@dashboard');
+Route::get('/accounts/bookmarks','UserDashBoardController@bookmarks');
+Route::get('/accounts/downloads','UserDashBoardController@downloads');
 
 //For all Post Legislation
 // Route::get('/keyword-search','Post1992Controller@keyword_search');

@@ -2,7 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {{-- <meta name="viewport" content="width=device-width, initial-scale=1"> --}}
+        <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
         <meta name="description" content="The HUB of all laws, and legislation, and amendments. This website is managed by a an elite of professionals."/>
 
         <title> 
@@ -296,14 +297,14 @@
                                         Manage Accounts </a>
                                     </li>
                                     <li>
-                                        <a href="#" target="_blank">
+                                        <a href="/accounts/bookmarks">
                                         <i class="glyphicon glyphicon-bookmark"></i>
-                                        My Bookmarks </a>
+                                        Bookmarks </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="/accounts/downloads">
                                         <i class="glyphicon glyphicon-cloud-download"></i>
-                                        My Downloads </a>
+                                        Downloads </a>
                                     </li>
                                     <li>
                                         <a href="#">
