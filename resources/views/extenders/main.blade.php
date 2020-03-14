@@ -251,7 +251,7 @@
                                                 <div class="profile-usermenu">
                                                     <ul class="nav">
                                                         <li>
-                                                            <a href="/accounts/dashboard">
+                                                            <a href="">
                                                             <i class="glyphicon glyphicon-dashboard"></i>
                                                             Dashboard </a>
                                                         </li>
@@ -266,12 +266,12 @@
                                                             Manage Accounts </a>
                                                         </li>
                                                         <li>
-                                                            <a href="/accounts/bookmarks">
+                                                            <a href="">
                                                             <i class="glyphicon glyphicon-bookmark"></i>
                                                             Bookmarks </a>
                                                         </li>
                                                         <li>
-                                                            <a href="/accounts/downloads">
+                                                            <a href="">
                                                             <i class="glyphicon glyphicon-cloud-download"></i>
                                                             Downloads </a>
                                                         </li>
