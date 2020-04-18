@@ -263,10 +263,16 @@
             <img src="{{ asset('/logo/lawsghlog.png') }}" class="img-responsive" style="width:18em; padding-top: 5px; padding-bottom:5px;padding-left:50px;"> 
             </a>
         </div>
+        
+            
+            
+            
+        
 
         
         <!-- <div class="container flex-center position-ref full-height"> -->
         <div class="container">
+            
             <p class="top-left">It's a new experience,&nbsp;<span style="color:red;" id="target"><b>Coming Soon...</b></span></p>
             {{-- <p class="top-left-enquiry">For further enquires, kindly contact <span style="color:red;"><b>0209534818</b></span></p> --}}
             
@@ -281,23 +287,23 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <div class="profile-usermenu">
                                 <ul class="nav">
-                                    <li>
-                                        <a href="">
+                                    {{-- <li>
+                                        <a href="#">
                                         <i class="glyphicon glyphicon-dashboard"></i>
                                         Dashboard </a>
-                                    </li>
+                                    </li> --}}
                                     <li>
-                                        <a href="#">
+                                        <a href="/accounts/profile/{{ Auth::user()->id }}">
                                         <i class="glyphicon glyphicon-user"></i>
                                         Profile </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="/accounts/manage-password">
                                         <i class="glyphicon glyphicon-cog"></i>
                                         Manage Accounts </a>
                                     </li>
                                     <li>
-                                        <a href="">
+                                        <a href="/accounts/bookmarks/{{ Auth::user()->id }}">
                                         <i class="glyphicon glyphicon-bookmark"></i>
                                         Bookmarks </a>
                                     </li>
@@ -337,6 +343,16 @@
                 </div>
             @endif
         </div>
+
+        {{-- <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4" id="app">
+                @include('flash-message')
+                @yield('content')
+            </div>
+            <div class="col-md-4"></div>
+        </div> --}}
+        
 
         {{-- <div class="container content m-b-md"> --}}
 
@@ -445,7 +461,7 @@
                         </a>
                         <a href="/pre_1992_legislation" style="text-decoration: none;">
                             <div class="intro-block">
-                                <h4><b><u>PRE 4TH REPUBLIC LAWS</u></b></h4>
+                                <h4><b><u>OLD LAWS</u></b></h4>
                                 <p><b>Access over 200 Ghanaian laws and enactments before the Fourth Republic</b></p>
                                 <div class="icon">
                                     <a href="#efficiency-section">
@@ -456,7 +472,7 @@
                         </a>
                         <a href="/post_1992_legislation" style="text-decoration: none;">
                             <div class="intro-block">
-                                <h4><b><u>4TH REPUBLIC LAWS</u></b></h4>
+                                <h4><b><u>NEW LAWS</u></b></h4>
                                 <p><b>Access over 200 consolidated laws of Ghana including Acts, Regulations and Amendments in the Fourth Republic</b></p>
                                 <div class="icon">
                                     <a href="#efficiency-section">

@@ -2,7 +2,7 @@
 
 // TOGGLE DISPLAY BETWEEN REGULATION PREAMBLE AND REGULATION CONTENT
 $(document).ready(function(){
-    
+        
     var gsid = 0; 
     var psid = 0, nsid = 0;
 

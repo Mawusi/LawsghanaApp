@@ -26,6 +26,7 @@
             <li><a href="#" class="next_content_act">Next&nbsp;&raquo;</a></li>
         </ul>
         
+        
         {{-- Downloads 
         <center>
         <div class="row">

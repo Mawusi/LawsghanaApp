@@ -188,7 +188,7 @@
                     <center>
                     <p style="font-size:18px;"><b class="small">{{ $allPost1992Act['title'] }}</b></p>
                     </center>
-
+                    @include('flash-message')
                     {{-- Nav tabs -- for the tab Panel--}}
                     <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
                         <!--Acts -->
@@ -499,6 +499,9 @@
 @endsection
 
 @section('scripts')
+{{-- <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script> --}}
+{{-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> --}}
+
 <script>
 document.addEventListener('copy', function (e){
     e.preventDefault();
@@ -510,12 +513,9 @@ document.addEventListener('copy', function (e){
     $(document).ready(function() {
         $('.clickme').click(function(e) {
             e.preventDefault();
-            
             boxh = $('#popup').height();
             windowh = $(window).height();
-            
             $('#popup').css('margin-top', windowh/2 - boxh/2);
-
             $('#popup').fadeIn();
         });
         $('.clicktoclose').click(function() {
@@ -523,6 +523,7 @@ document.addEventListener('copy', function (e){
         });
     });
 </script>
+
 
     {{-- <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script> --}}
 @endsection

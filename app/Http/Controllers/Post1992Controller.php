@@ -181,6 +181,8 @@ class Post1992Controller extends Controller
         // <a href="/post_1992_legislation/{{ $allPost1992Act['title'] }}/{{ $allPost1992Act['id'] }}/plain_content/{{ $allPost1992Article['id'] }}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp; -->
 
         //     ])->toArray()[0];
+        // $add_section_user = DB::table('user_bookmarks')->select("*", DB::raw("CONCAT(user_bookmarks.user_id,' ',user_bookmarks.act_section) AS user_section"))
+        // ->get();
 
         $allPost1992Article = Post1992Article::find(['id' => $id])->toArray()[0];
         return view('post_1992_legislation.displayed_content_view', compact('allPost1992Article','allPost1992Act'));

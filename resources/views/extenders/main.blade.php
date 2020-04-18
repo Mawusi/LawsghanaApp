@@ -250,23 +250,23 @@
                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                                 <div class="profile-usermenu">
                                                     <ul class="nav">
-                                                        <li>
-                                                            <a href="">
+                                                        {{-- <li>
+                                                            <a href="#">
                                                             <i class="glyphicon glyphicon-dashboard"></i>
                                                             Dashboard </a>
-                                                        </li>
+                                                        </li> --}}
                                                         <li>
-                                                            <a href="#">
+                                                            <a href="/accounts/profile/{{ Auth::user()->id }}">
                                                             <i class="glyphicon glyphicon-user"></i>
                                                             Profile </a>
                                                         </li>
                                                         <li>
-                                                            <a href="#">
+                                                            <a href="/accounts/manage-password">
                                                             <i class="glyphicon glyphicon-cog"></i>
                                                             Manage Accounts </a>
                                                         </li>
                                                         <li>
-                                                            <a href="">
+                                                            <a href="/accounts/bookmarks/{{ Auth::user()->id }}">
                                                             <i class="glyphicon glyphicon-bookmark"></i>
                                                             Bookmarks </a>
                                                         </li>

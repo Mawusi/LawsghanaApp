@@ -15,15 +15,18 @@ The above copyright notice and this permission notice shall be included in all c
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>
-    Dashboard
+    Bookmarks
   </title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
-  <link rel="stylesheet" href="{{ asset('css/material-dashboard.css?v=2.1.2') }}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  {{-- <link rel="stylesheet" href="{{ asset('css/material-dashboard.css?v=2.1.2') }}"> --}}
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>
@@ -43,42 +46,42 @@ The above copyright notice and this permission notice shall be included in all c
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active  ">
-            <a class="nav-link" href="/accounts/dashboard">
-              <i class="material-icons">dashboard</i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./user.html">
-              <i class="material-icons">person</i>
-              <p>Profile</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
-              <i class="material-icons">settings</i>
-              <p>Manage Accounts</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="/accounts/bookmarks">
-              <i class="material-icons">bookmarks</i>
-              <p>Bookmarks</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="/accounts/downloads">
-              <i class="material-icons">cloud_download</i>
-              <p>Downloads</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./map.html">
-              <i class="material-icons">shopping_cart</i>
-              <p>Subscriptions</p>
-            </a>
-          </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/accounts/dashboard">
+                  <i class="material-icons">dashboard</i>
+                  <p>Dashboard</p>
+                </a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="./user.html">
+                  <i class="material-icons">person</i>
+                  <p>Profile</p>
+                </a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="./typography.html">
+                  <i class="material-icons">settings</i>
+                  <p>Manage Accounts</p>
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/accounts/bookmarks">
+                  <i class="material-icons">bookmarks</i>
+                  <p>Bookmarks</p>
+                </a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/accounts/downloads">
+                  <i class="material-icons">cloud_download</i>
+                  <p>Downloads</p>
+                </a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="./map.html">
+                  <i class="material-icons">shopping_cart</i>
+                  <p>Subscriptions</p>
+                </a>
+              </li>
           {{-- <li class="nav-item ">
             <a class="nav-link" href="./notifications.html">
               <i class="material-icons">notifications</i>
@@ -105,7 +108,7 @@ The above copyright notice and this permission notice shall be included in all c
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:;">Dashboard</a>
+            <a class="navbar-brand" href="javascript:;">My Bookmarks</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -168,7 +171,6 @@ The above copyright notice and this permission notice shall be included in all c
                   </div>
                 </li>
               @endauth
-
             </ul>
           </div>
         </div>
@@ -176,66 +178,160 @@ The above copyright notice and this permission notice shall be included in all c
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
-          
-          {{-- selected starts here --}}
           <div class="row">
-            <div class="col-md-4">
-              <div class="card card-chart">
-                {{-- <div class="card-header card-header-success">
-                  <div class="ct-chart" id="dailySalesChart"></div>
+            <div class="col-md-12">
+              <div class="card">
+                {{-- <div class="card-header card-header-primary">
+                  <h4 class="card-title ">Saved Bookmarks</h4>
+                  <p class="card-category">Manage My Bookmarks</p>
                 </div> --}}
                 <div class="card-body">
-                  <h4 class="card-title">Bookmarks</h4>
-                  {{-- <p class="card-category"><span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p> --}}
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">access_time</i> updated 4 minutes ago
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card card-chart">
-                {{-- <div class="card-header card-header-warning">
-                  <div class="ct-chart" id="websiteViewsChart"></div>
-                </div> --}}
-                <div class="card-body">
-                  <h4 class="card-title">Downloads</h4>
-                  {{-- <p class="card-category">Last Campaign Performance</p> --}}
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">access_time</i> updated 4 minutes ago
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card card-chart">
-                {{-- <div class="card-header card-header-danger">
-                  <div class="ct-chart" id="completedTasksChart"></div>
-                </div> --}}
-                <div class="card-body">
-                  <h4 class="card-title">Subscriptions</h4>
-                  {{-- <p class="card-category">Last Campaign Performance</p> --}}
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">access_time</i> updated 4 minutes ago
+                  <div class="table-responsive">
+                    <table id="datatable" class="table">
+                      <thead class=" text-primary">
+                        <th>Article</th>
+                        <th>Date Added</th>
+                        <th>Actions</th>
+                      </thead>
+                      <tbody>
+                            @foreach($display_bookmarks as $display_bookmark)
+                              <tr>
+                                <td><a href="/">{{$display_bookmark->act_section}}</a><br>{{$display_bookmark->act_title}}</td>
+                                <td>{{ date("F j, Y, g:i a", strtotime($display_bookmark->created_at)) }}</td>
+                                <td class="text-primary">
+                                  <a href="">
+                                    <button class="btn btn-primary btn-fab btn-fab-mini btn-round">
+                                      <i class="material-icons">visibility</i>
+                                    </button>
+                                  </a>
+                              
+                                    {{-- <button class="btn btn-primary btn-fab btn-fab-mini btn-round" id="deleteBookmark" data-id="{{ $display_bookmark->id }}">
+                                      <i class="material-icons">clear</i>
+                                    </button> --}}
+                                    <button class="deleteProduct" data-id="{{ $display_bookmark->id }}" data-token="{{ csrf_token() }}" >Delete Task</button>                                  
+                                  
+                                </td>
+                              </tr>
+                            @endforeach
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          {{-- selected ends here --}}
-          
         </div>
       </div>
+
+      
+      
+     
+
+      {{-- <footer class="footer">
+        <div class="container-fluid">
+          <nav class="float-left">
+            <ul>
+              <li>
+                <a href="https://www.creative-tim.com">
+                  Creative Tim
+                </a>
+              </li>
+              <li>
+                <a href="https://creative-tim.com/presentation">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="http://blog.creative-tim.com">
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a href="https://www.creative-tim.com/license">
+                  Licenses
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="copyright float-right">
+            &copy;
+            <script>
+              document.write(new Date().getFullYear())
+            </script>, made with <i class="material-icons">favorite</i> by
+            <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+          </div>
+        </div>
+      </footer> --}}
     </div>
   </div>
-  
+  {{-- <div class="fixed-plugin">
+    <div class="dropdown show-dropdown">
+      <a href="#" data-toggle="dropdown">
+        <i class="fa fa-cog fa-2x"> </i>
+      </a>
+      <ul class="dropdown-menu">
+        <li class="header-title"> Sidebar Filters</li>
+        <li class="adjustments-line">
+          <a href="javascript:void(0)" class="switch-trigger active-color">
+            <div class="badge-colors ml-auto mr-auto">
+              <span class="badge filter badge-purple" data-color="purple"></span>
+              <span class="badge filter badge-azure" data-color="azure"></span>
+              <span class="badge filter badge-green" data-color="green"></span>
+              <span class="badge filter badge-warning" data-color="orange"></span>
+              <span class="badge filter badge-danger" data-color="danger"></span>
+              <span class="badge filter badge-rose active" data-color="rose"></span>
+            </div>
+            <div class="clearfix"></div>
+          </a>
+        </li>
+        <li class="header-title">Images</li>
+        <li class="active">
+          <a class="img-holder switch-trigger" href="javascript:void(0)">
+            <img src="../assets/img/sidebar-1.jpg" alt="">
+          </a>
+        </li>
+        <li>
+          <a class="img-holder switch-trigger" href="javascript:void(0)">
+            <img src="../assets/img/sidebar-2.jpg" alt="">
+          </a>
+        </li>
+        <li>
+          <a class="img-holder switch-trigger" href="javascript:void(0)">
+            <img src="../assets/img/sidebar-3.jpg" alt="">
+          </a>
+        </li>
+        <li>
+          <a class="img-holder switch-trigger" href="javascript:void(0)">
+            <img src="../assets/img/sidebar-4.jpg" alt="">
+          </a>
+        </li>
+        <li class="button-container">
+          <a href="https://www.creative-tim.com/product/material-dashboard" target="_blank" class="btn btn-primary btn-block">Free Download</a>
+        </li>
+        
+        <li class="button-container">
+          <a href="https://demos.creative-tim.com/material-dashboard/docs/2.1/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block">
+            View Documentation
+          </a>
+        </li>
+        <li class="button-container github-star">
+          <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+        </li>
+        <li class="header-title">Thank you for 95 shares!</li>
+        <li class="button-container text-center">
+          <button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot; 45</button>
+          <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50</button>
+          <br>
+          <br>
+        </li>
+      </ul>
+    </div>
+  </div> --}}
   <!--   Core JS Files   -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
@@ -278,8 +374,22 @@ The above copyright notice and this permission notice shall be included in all c
   <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+  <script>
+    $(document).ready(function(){
+        $('#datatable').DataTable();
+    });
+  </script>
+
+
+
   <script>
     $(document).ready(function() {
+
+
+      
+
       $().ready(function() {
         $sidebar = $('.sidebar');
 
@@ -446,13 +556,15 @@ The above copyright notice and this permission notice shall be included in all c
           }, 1000);
 
         });
+
+
+        
+
+
+
       });
-    });
-  </script>
-  <script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets/js/demos.js
-      md.initDashboardPageCharts();
+
+      
 
     });
   </script>

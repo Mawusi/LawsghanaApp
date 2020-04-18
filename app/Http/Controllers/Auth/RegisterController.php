@@ -50,8 +50,14 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'lname' => ['required', 'string', 'max:255'],
+            'country' => ['nullable', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phone' => ['nullable','numeric', 'digits_between:10,14','unique:users']
+
+            // 'phone' => 'required|regex:/(01)[0-9]{9}/'
+            // This will check the input starts with 01 and is followed by 9 numbers. By using regex you don't need the numeric or size validation rules.
         ]);
     }
 
@@ -65,8 +71,12 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'lname' => $data['lname'],
+            'country' => $data['country'],
             'email' => $data['email'],
+            'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
+            'phone' => $data['phone']
         ]);
     }
 }

@@ -17,15 +17,28 @@
 //WELCOME PAGE
 Route::get('/','WelcomePageController@index');
 
+//-------------------------------------------------------DASHBOARD-----------------------------------
 Route::get('/accounts/dashboard','UserDashBoardController@dashboard');
-Route::get('/accounts/bookmarks','UserDashBoardController@bookmarks');
+
+//-------------------------------------------------------PROFILE-------------------------------------
+Route::get('/accounts/profile/{user_id}',  ['as' => 'users.edit', 'uses' => 'ProfileController@edit']);
+// Route::get('/accounts/profile/{user_id}','UserDashBoardController@show_user_profile'); //Bookmarks page.........shows all list of bookmarks
+Route::patch('profile/{user}/update',  ['as' => 'users.update', 'uses' => 'ProfileController@update']);
+
+//------------------------------------------------------MANAGE ACCOUNTS-------------------------------------
+Route::get('/accounts/manage-password', 'ChangePasswordController@index');
+Route::post('/accounts/manage-password', 'ChangePasswordController@store')->name('change.password');
+
+// -----------------------------------------------------BOOKMARKS-------------------------------------
+Route::get('/accounts/bookmarks/{user_id}','UserDashBoardController@show_user_bookmarks'); //Bookmarks page.........shows all list of bookmarks
+Route::get('/bookmarks/{act}/{sections}/{section_id}/{user_name}/{user_id}/{user_section}/{group}/{act_id}','UserDashBoardController@save_bookmark_article'); //To Bookmark from a section
+Route::resource('/bookmarks', 'BookmarkController'); //To delete a record of bookmark
+
+// -----------------------------------------------------DOWNLOADS-------------------------------------
 Route::get('/accounts/downloads','UserDashBoardController@downloads');
 
-//For all Post Legislation
-// Route::get('/keyword-search','Post1992Controller@keyword_search');
 
 //-------------------------------------------------------------------------------SEARCH ENGINE-----------------------------------------------------------------------------------------------
-
 //Search for Main Home Page
 Route::get('main_home_search','HomeSearchController@main_home_search');
 
