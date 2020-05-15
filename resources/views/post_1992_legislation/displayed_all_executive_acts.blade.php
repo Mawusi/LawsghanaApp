@@ -1,6 +1,6 @@
 @extends('extenders.main')
-@section('title', 'Acts of Parliament')
 
+@section('title', 'Executive Instruments')
 @section('assets')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <link rel="stylesheet" href="{{ asset('css/pre_second_nav.css') }}">
@@ -9,12 +9,6 @@
 @endsection
 
 @section('content')
-
-{{--
-@section('second_nav')
-    @include('post_1992_legislation.post_1992_legislation_menu')
-@endsection
---}}
 
     <div class="container-fluid content">
         <div class="row">
@@ -28,27 +22,26 @@
                             <table class="table table-striped table-condensed" id="datatable">
                                 <thead>
                                     <tr>
-                                        <th>Acts of Parliament</th>
+                                        <th>Executive Instruments</th>
                                         <th>Year</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                            
-                                @foreach($actsOfParliaments as $actsOfParliaments)
+                                <!-- Amendments for Acts -->
+                                @foreach($allExecutiveActs as $allExecutiveAct)
                                     <tr>
                                         <td>
-                                            <a href="/post-1992-legislation/table-of-content/{{$actsOfParliaments->post_group}}/{{ $actsOfParliaments->title }}/{{ $actsOfParliaments->id}}"><li style="list-style: none;">{{ $actsOfParliaments->title }}</li></a>
+                                            <a href="/post_1992_legislation/amended_acts_table_of_content/{{$allExecutiveAct->post_category}}/{{ $allExecutiveAct->title }}/{{ $allExecutiveAct->id}}"><li style="list-style: none;">{{ $allExecutiveAct->title }}</li></a>
                                         </td> 
-                                        <td>{{ $actsOfParliaments->year }}</td>
+                                        <td>{{ $allExecutiveAct->year }}</td>
                                     </tr>
-                                @endforeach 
-                                
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                    @include('post_1992_legislation.acts_of_parliament_container_main') 
-                </div>
+                    </div> 
+                    @include('post_1992_legislation.all_amendments_only_container_main')
+                </div> 
                 </div>
                 </div>
             </div>

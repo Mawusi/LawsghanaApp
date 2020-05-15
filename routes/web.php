@@ -30,12 +30,16 @@ Route::get('/accounts/manage-password', 'ChangePasswordController@index');
 Route::post('/accounts/manage-password', 'ChangePasswordController@store')->name('change.password');
 
 // -----------------------------------------------------BOOKMARKS-------------------------------------
-Route::get('/accounts/bookmarks/{user_id}','UserDashBoardController@show_user_bookmarks'); //Bookmarks page.........shows all list of bookmarks
 Route::get('/bookmarks/{act}/{sections}/{section_id}/{user_name}/{user_id}/{user_section}/{group}/{act_id}','UserDashBoardController@save_bookmark_article'); //To Bookmark from a section
+Route::get('/accounts/bookmarks/{user_id}','UserDashBoardController@show_user_bookmarks'); //Bookmarks page.........shows all list of bookmarks
 Route::resource('/bookmarks', 'BookmarkController'); //To delete a record of bookmark
 
 // -----------------------------------------------------DOWNLOADS-------------------------------------
-Route::get('/accounts/downloads','UserDashBoardController@downloads');
+Route::get('/section_downloads/{act}/{sections}/{section_id}/{user_name}/{user_id}/{user_section}/{group}/{act_id}','DownloadsController@save_download_section'); //To Download from section
+// Route::get('/constitutional_act/section_downloads/{act}/{sections}/{section_id}/{user_name}/{user_id}/{user_section}/{group}/{act_id}','DownloadsController@save_download_section'); //To Download from section
+Route::get('/acts-downloads/{act_title}/{user_name}/{user_id}/{act_group}/{act_id}/{user_title}','DownloadsController@save_download_act'); //To Download from section
+Route::get('/accounts/downloads/{user_id}','DownloadsController@show_user_downloads'); //Download page.........shows all list of downloads
+Route::resource('/downloads', 'DownloadsController'); //To delete a record of bookmark
 
 
 //-------------------------------------------------------------------------------SEARCH ENGINE-----------------------------------------------------------------------------------------------
@@ -65,12 +69,15 @@ Route::get('pndc_law_index_search','PreSearchController@pndc_law_index_search');
 
 
 //Search for 4th Republic
-Route::get('post_index_search','PostSearchController@post_index_search');//main search at the top
-Route::get('acts_of_parliament_index_search','PostSearchController@acts_of_parliament_index_search');//main search at the top
+Route::get('post_index_search','PostSearchController@all_posts_search');//main search at the top
+Route::get('acts_of_parliament_index_search','PostSearchController@only_acts_of_parliament_search');//main search at the top
 Route::get('only_regulations_index_search','PostSearchController@only_regulations_index_search');//main search at the top
+Route::get('constitutional_instruments_index_search','PostSearchController@only_constitutional_intruments_search');//main search at the top
 Route::get('only_amendments_index_search','PostSearchController@only_amendments_index_search');//main search at the top
 
-Route::get('post_index_search/{title}/{id}','PostSearchController@post_index_acts_search');//search within an act
+Route::get('/acts-of-parliament-act-search/{title}/{id}','PostSearchController@acts_of_parliament_act_search');//search within an act
+Route::get('/constitutional-instrument-act-search/{title}/{id}','PostSearchController@constitutional_instruments_act_search');//search within an act
+
 Route::get('/Search/Next/{query}/fetch_data','PostSearchController@acts_ajax_display');//pagination
 
 //Search for Case Laws
@@ -81,7 +88,7 @@ Route::get('high_court_index_search','CasesSearchController@high_court_index_sea
 
 //-------------------------------------------------------------------------------END OF SEARCH ENGINE-----------------------------------------------------------------------------------------------
 
-Route::get('/acts/search/{key}','SearchController@keyword_search');
+// Route::get('/acts/search/{key}','SearchController@keyword_search');
 Route::view('/scan', 'scan');
 
 
@@ -157,6 +164,7 @@ Route::view('/scan', 'scan');
 
 
 //------------------------------------------------------------------------------------PRE_1992_LEGISLATION------------------------------------------------------------------------------------
+
 Route::get('/pre_1992_legislation','Pre1992Controller@index');//display all acts
     Route::get('/pre_1992_legislation/filter/{year}/{category}','Pre1992Controller@all_pre_1992_legislation_filter'); //all pre-1992 filtering
     Route::get('/pre_1992_legislation/{group}/{title}/{id}','Pre1992Controller@pre_1992_legislation_table_of_content');//display acts table of content
@@ -212,40 +220,52 @@ Route::get('/pre_1992_legislation','Pre1992Controller@index');//display all acts
         // Route::get('/pre_1992_legislation/7/filter/{year}/{category}','Pre1992Controller@smc_decree_filter'); //smc filtering
 
 
+//-----------------------------------------------------------------------------CONSTITUTIONAL INSTRUMENTS-------------------------------------------------------------------------------------
+Route::get('/post-1992-legislation/Constitutional-Intruments','ConstitutionalActController@only_constitutional_acts');
+    Route::get('/post-1992-legislation/constitutional-acts-table-of-content/{group}/{title}/{id}','ConstitutionalActController@table_of_content');//display acts table of content
+    Route::get('/post_1992_legislation/constitutional-acts/preamble/{id}','ConstitutionalActController@preamble_content');//display act preamble
+    Route::get('/post_1992_legislation/constitutional-acts/content/{id}','ConstitutionalActController@section_content');//display act content
+    Route::get('/post-1992-legislation/constitutional-acts/expanded-view/{group}/{title}/{id}','ConstitutionalActController@expanded_view');//display in expanded view
+    Route::get('/post_1992_legislation/constitutional-acts/plain-view/{group}/{title}/{id}','ConstitutionalActController@plain_view');//display in plain view
+    Route::get('/post_1992_legislation/constitutional-acts/print_section_content/{id}','ConstitutionalActController@print_content');//print content
+    Route::get('/post_1992_legislation/constitutional-acts/print_preamble_content/{id}','ConstitutionalActController@print_preamble_content');//display plain act content
+    Route::get('/post_1992_legislation/constitutional-acts/print_view/{group}/{title}/{id}','ConstitutionalActController@print_full_act');//display in print view
+    Route::get('/post_1992_legislation/constitutional-acts/pdf_preamble_content/{title}/{id}','ConstitutionalActController@pdf_preamble_content');//display plain act content
+    Route::get('/post-1992-legislation/constitutional-acts/pdf-section-content/{title}/{id}','ConstitutionalActController@pdf_section_content');//display plain act content
+    Route::get('/post-1992-legislation/constitutional-acts/pdf-full-act-content/{group}/{title}/{id}','ConstitutionalActController@pdf_full_act_content');//display in plain view
+//-----------------------------------------------------------------------------EXECUTIVE INSTRUMENTS-------------------------------------------------------------------------------------
+Route::get('/post-1992-legislation/Executive-Intruments','ExecutiveActController@only_executive_acts');
 
 //-----------------------------------------------------------------------------POST_1992_LEGISLATION-------------------------------------------------------------------------------------
-Route::get('post_1992_legislation','Post1992Controller@index');//display all acts
-    Route::get('post_1992_legislation/filter/{year}/{category}','Post1992Controller@all_post_1992_legislation_filter'); //all post-1992 filtering
-    Route::get('post_1992_legislation/preamble/{id}','Post1992Controller@post_1992_legislation_preamble');//display act preamble
-    
-    Route::get('post_1992_legislation/content/{id}','Post1992Controller@post_1992_legislation_content');//display act content
-    Route::get('post_1992_legislation/plain-content/{id}','Post1992Controller@post_1992_legislation_p_pre_next_content');//display act content
 
-    Route::get('post_1992_legislation/plain-content/{title}/{content_id}','Post1992Controller@post_1992_legislation_plain_content');//display plain act content
+Route::get('/post-1992-legislation','Post1992Controller@index');//display all acts
+    Route::get('/post_1992_legislation/filter/{year}/{category}','Post1992Controller@all_post_1992_legislation_filter'); //all post-1992 filtering
+    Route::get('/post_1992_legislation/preamble/{id}','Post1992Controller@post_1992_legislation_preamble');//display act preamble
+    
+    Route::get('/post_1992_legislation/content/{id}','Post1992Controller@post_1992_legislation_content');//display act content
+    Route::get('/post_1992_legislation/plain-content/{id}','Post1992Controller@post_1992_legislation_p_pre_next_content');//display act content
+
+    Route::get('/post_1992_legislation/plain-content/{title}/{content_id}','Post1992Controller@post_1992_legislation_plain_content');//display plain act content
     
     // Route::get('/post_1992_legislation/content/{act_id}/{title}/{id}','Post1992Controller@post_1992_legislation_content');//display act content
     // Route::get('/post_1992_legislation/{title}/{id}/plain_content/{content_id}','Post1992Controller@post_1992_legislation_plain_content');//display plain act content
     Route::get('/post_1992_legislation/plain_preamble_content/{id}','Post1992Controller@post_1992_legislation_plain_preamble_content');//display plain act content
     Route::get('/post_1992_legislation/1/{group}/{title}/expanded-view/{id}','Post1992Controller@expanded_view');//display in expanded view
-
     
-    Route::get('/post_1992_legislation/pdf_content/{title}/{id}','Post1992Controller@post_1992_legislation_pdf_content');//display plain act content
+    Route::get('/post-1992-legislation/pdf-content/{title}/{id}','Post1992Controller@post_1992_legislation_pdf_content');//display plain act content
     Route::get('/post_1992_legislation/pdf_preamble_content/{title}/{id}','Post1992Controller@post_1992_legislation_pdf_preamble_content');//display plain act content
     Route::get('/post_1992_legislation/print_section_content/{id}','Post1992Controller@post_1992_legislation_print_content');//display plain act content
     Route::get('/post_1992_legislation/print_preamble_content/{id}','Post1992Controller@post_1992_legislation_print_preamble_content');//display plain act content
 
-
-
-
     Route::get('/post_1992_legislation/1/{group}/{title}/plain_view/{id}','Post1992Controller@plain_view');//display in plain view
-    Route::get('/post_1992_legislation/1/{group}/{title}/pdf_view/{id}','Post1992Controller@pdf_view');//display in plain view
+    Route::get('/post-1992-legislation/1/{group}/{title}/pdf-view/{id}','Post1992Controller@pdf_view');//display in plain view
     Route::get('/post_1992_legislation/1/{group}/{title}/print_view/{id}','Post1992Controller@print_view');//display in print view
 
-    Route::get('/post_1992_legislation/acts_table_of_content/{group}/{title}/{id}','Post1992Controller@post_1992_legislation_table_of_content');//display acts table of content
+    Route::get('/post-1992-legislation/table-of-content/{act_group}/{title}/{id}','Post1992Controller@post_1992_legislation_table_of_content');//display acts table of content
 
 
     //For All Acts of Parliament only
-    Route::get('/post_1992_legislation/1/{group}','Post1992Controller@acts_of_parliament_tab');
+    Route::get('/post-1992-legislation/1/{group}','Post1992Controller@acts_of_parliament_tab');
     Route::get('/post_1992_legislation/1/filter/{year}/{category}','Post1992Controller@acts_of_parliament_filter'); //acts of parliament filtering
 
 
@@ -262,7 +282,7 @@ Route::get('post_1992_legislation','Post1992Controller@index');//display all act
         
         //New Amendments for only Amendments Tab
         //For All Amendments only
-        Route::get('/post_1992_legislation/only_amendments','Post1992Controller@only_amendments_acts_tab');
+        Route::get('/post-1992-legislation/only-amendments','Post1992Controller@only_amendments_acts_tab');
 
         //----------------------------------------------------------------------------------Regulations Amendments------------------------------------------------------------------------
         Route::get('/post_1992_legislation/print_regulation_amends_act/preamble_content/{id}','Post1992Controller@post_1992_legislation_print_regulation_amends_act_preamble_content');//display plain act content
@@ -317,7 +337,7 @@ Route::get('post_1992_legislation','Post1992Controller@index');//display all act
  
          //New Regulations for only Regulations Tab
          //For All Regulations only
-         Route::get('/post_1992_legislation/only_regulations','Post1992Controller@only_regulations_acts_tab');
+         Route::get('/post-1992-legislation/only-regulations','Post1992Controller@only_regulations_acts_tab');
 
             Route::get('/post_1992_legislation/print/regulation/preamble/{id}','Post1992Controller@post_1992_legislation_print_regulation_preamble');//display plain act content
             Route::get('/post_1992_legislation/print/regulation/content_section/{id}','Post1992Controller@post_1992_legislation_print_regulation_content_section');//display plain act content

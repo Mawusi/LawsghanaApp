@@ -9,10 +9,10 @@
 
     {{-- For the bookmark --}}
     <div class="header_only" style="border: .1px solid #ddd;">
-        <p style="padding-top: 7px; padding-bottom: .1px; padding-left: 16px; padding-right: 16px;"><b>{{ $allPost1992Article['section'] }}</b>
+        <p style="padding-top: 7px; padding-bottom: .1px; padding-left: 16px; padding-right: 16px;"><b>{{ $allConstitutionalAct['section'] }}</b>
             @if (Route::has('login'))
                 @auth                        
-                        <a class="bookmarking" href="javascript:;" rel="/bookmarks/{{$allPost1992Article['post_act']}}/{{$allPost1992Article['section']}}/{{$allPost1992Article['id']}}/{{ Auth::user()->name }}/{{ Auth::user()->id }}/{{ Auth::user()->id }}{{$allPost1992Article['section']}}/{{$allPost1992Article['act_group']}}/{{$allPost1992Article['act_id']}}">
+                        <a class="bookmarking" href="javascript:;" rel="/bookmarks/{{$allConstitutionalAct['constitutional_act']}}/{{$allConstitutionalAct['section']}}/{{$allConstitutionalAct['id']}}/{{ Auth::user()->name }}/{{ Auth::user()->id }}/{{ Auth::user()->id }}{{$allConstitutionalAct['section']}}/{{$allConstitutionalAct['consti_group']}}/{{$allConstitutionalAct['consti_act_id']}}">
                             <i title="Bookmark this section" style="color:blue;" id="bookmarked" class="tooltips glyphicon glyphicon-bookmark pull-right"></i>
                         </a>
                     @else
@@ -27,10 +27,9 @@
         <div class="menu_options pull-right" style="display: none;">
             @if (Route::has('login'))
                 @auth
-                    <a class="download_link" href="javascript:;" rel="/post-1992-legislation/pdf-content/{{$allPost1992Article['post_act']}}/{{ $allPost1992Article['id'] }}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
-                    <a class="hidden section_id" href="javascript:;" rel="/section_downloads/{{$allPost1992Article['post_act']}}/{{$allPost1992Article['section']}}/{{$allPost1992Article['id']}}/{{ Auth::user()->name }}/{{ Auth::user()->id }}/{{ Auth::user()->id }}{{$allPost1992Article['section']}}/{{$allPost1992Article['act_group']}}/{{$allPost1992Article['act_id']}}">Testing</a>
-                    {{-- <a href="/post_1992_legislation/plain-content/{{ $allPost1992Article['post_act'] }}/{{ $allPost1992Article['id'] }}" class="checking_link" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp; --}}
-                    <a href="/post_1992_legislation/print_section_content/{{ $allPost1992Article['id'] }}" target="_blank"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="download_link" href="javascript:;" rel="/post-1992-legislation/constitutional-acts/pdf-section-content/{{$allConstitutionalAct['constitutional_act']}}/{{ $allConstitutionalAct['id'] }}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
+                    <a class="hidden section_id" href="javascript:;" rel="/section_downloads/{{$allConstitutionalAct['constitutional_act']}}/{{$allConstitutionalAct['section']}}/{{$allConstitutionalAct['id']}}/{{ Auth::user()->name }}/{{ Auth::user()->id }}/{{ Auth::user()->id }}{{$allConstitutionalAct['section']}}/{{$allConstitutionalAct['consti_group']}}/{{$allConstitutionalAct['consti_act_id']}}">Testing</a>
+                    <a href="/post_1992_legislation/constitutional-acts/print_section_content/{{ $allConstitutionalAct['id'] }}" target="_blank"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     
                     @else
 
@@ -71,7 +70,7 @@
     </div>
 
     <div class="content">            
-        <p>{!! $allPost1992Article['content'] !!}</p>
+        <p>{!! $allConstitutionalAct['content'] !!}</p>
     </div>
 
 {{-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.0.min.js"></script> --}}

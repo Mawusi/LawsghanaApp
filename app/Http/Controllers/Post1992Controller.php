@@ -12,6 +12,8 @@ use App\RegulationTitle;
 use App\RegulationArticle;
 use App\AmendRegulationAct;
 use App\AmendRegulationArticle;
+use App\ConstitutionalAct;
+use App\ExecutiveAct;
 use PDF;
 use App\FooterNote;
 use App\FooterContent;
@@ -56,13 +58,15 @@ class Post1992Controller extends Controller
 
     //Display all Acts
     public function index(){
-        $allPost1992Acts        = Post1992Act::all();
-        $allPostsAmends         = AmendedTitle::all();
-        $allPostsAmendsOnRegulations = AmendRegulationAct::all();
-        $allPostRegulations     = RegulationTitle::all();
-        $allPost1992ategories   = Post1992Category::all();
-        $footer_notes           = FooterNote::all();
-        return view('post_1992_legislation.displayed_all_acts_view', compact('footer_notes','allPost1992Acts','allPost1992ategories','allPostsAmends', 'allPostRegulations', 'allPostsAmendsOnRegulations'));
+        $allPost1992Acts                = Post1992Act::all();
+        $allConstitutionalActs          = ConstitutionalAct::all();
+        $allExecutiveActs               = ExecutiveAct::all();
+        $allPostsAmends                 = AmendedTitle::all();
+        $allPostsAmendsOnRegulations    = AmendRegulationAct::all();
+        $allPostRegulations             = RegulationTitle::all();
+        $allPost1992ategories           = Post1992Category::all();
+        $footer_notes                   = FooterNote::all();
+        return view('post_1992_legislation.displayed_all_acts_view', compact('footer_notes','allPost1992Acts', 'allConstitutionalActs', 'allExecutiveActs', 'allPost1992ategories','allPostsAmends', 'allPostRegulations', 'allPostsAmendsOnRegulations'));
     }
 
     //ALL POST 1992 LEGISLATION FILTERING
@@ -85,7 +89,7 @@ class Post1992Controller extends Controller
         return view('post_1992_legislation.displayed_all_acts_view', compact('allPost1992Acts','allPost1992ategories'));
     }
 
-    //Display Table of Content
+    //Display Table of Content for Acts of Parliament,ie Legislation
     public function post_1992_legislation_table_of_content($id, $title, $group){
         //dd($id, $title, $group);
         
@@ -185,7 +189,7 @@ class Post1992Controller extends Controller
         // ->get();
 
         $allPost1992Article = Post1992Article::find(['id' => $id])->toArray()[0];
-        return view('post_1992_legislation.displayed_content_view', compact('allPost1992Article','allPost1992Act'));
+        return view('post_1992_legislation.displayed_content_view', compact('allPost1992Article'));
     }
 
     public function post_1992_legislation_p_pre_next_content($id){
@@ -239,15 +243,15 @@ class Post1992Controller extends Controller
     }
 
     //Display Pdf View for section Content view
-    public function post_1992_legislation_pdf_content($id, $title){
-        // dd($id);
+    public function post_1992_legislation_pdf_content($title, $id){
+        // dd($title, $id);
         $allPost1992Article              = Post1992Article::find(
             [
                 'id' => $id,
                 'post_act' => $title
             ])->toArray()[0];
         $pdf = PDF::loadView('post_1992_legislation.displayed_pdf_content_view', compact('allPost1992Article'));
-        return $pdf->download($id.'.lawsghana.pdf');
+        return $pdf->download($title.'.lawsghana.pdf');
     }
 
      //Display Pdf View for preamble Content view

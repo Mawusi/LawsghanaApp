@@ -22,7 +22,7 @@
           <li class="breadcrumb-item"><a href="/accounts/profile/{{ Auth::user()->id }}">Profile</a></li>
           <li class="breadcrumb-item"><a href="/accounts/manage-password">Manage Accounts</a></li>
           <li class="breadcrumb-item"><a href="/accounts/bookmarks/{{ Auth::user()->id }}">Bookmarks</a></li>
-          <li class="breadcrumb-item"><a href="#">Downloads</a></li>
+          <li class="breadcrumb-item"><a href="/accounts/downloads/{{ Auth::user()->id }}">Downloads</a></li>
           <li class="breadcrumb-item"><a href="#">Subscriptions</a></li>
           {{-- <li class="breadcrumb-item active" aria-current="page">Data</li> --}}
         </ol>

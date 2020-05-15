@@ -11,7 +11,7 @@
 <div>
 {{--
     <div class="header_only" style="margin-bottom: 5px;">
-        <p><b>{{ $allPost1992Act['title'] }}</b></p>
+        <p><b>{{ $allConstitutionalAct['title'] }}</b></p>
     </div>
     --}}
     <div style="margin-bottom:5px;">
@@ -19,15 +19,15 @@
         <div class="menu_options pull-right" style="display: none;">
             @if (Route::has('login'))
                 @auth
-                    <a class="act_download_link" href="javascript:;" rel="/post-1992-legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/pdf-view/{{ $allPost1992Act['id'] }}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
-                    <a class="act_id hidden" href="javascript:;" rel="/acts-downloads/{{$allPost1992Act['title']}}/{{ Auth::user()->name }}/{{ Auth::user()->id }}/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['id']}}/{{ Auth::user()->id }}{{$allPost1992Act['title']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>
-                    <a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/plain_view/{{ $allPost1992Act['id'] }}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp;
-                    <a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/print_view/{{ $allPost1992Act['id'] }}" target="_blank"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="act_download_link" href="javascript:;" rel="/post-1992-legislation/constitutional-acts/pdf-full-act-content/{{$allConstitutionalAct['constitutional_group']}}/{{$allConstitutionalAct['title']}}/{{ $allConstitutionalAct['id'] }}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
+                    <a class="act_id hidden" href="javascript:;" rel="/acts-downloads/{{$allConstitutionalAct['title']}}/{{ Auth::user()->name }}/{{ Auth::user()->id }}/{{$allConstitutionalAct['constitutional_group']}}/{{$allConstitutionalAct['id']}}/{{ Auth::user()->id }}{{$allConstitutionalAct['title']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>
+                    <a href="/post_1992_legislation/constitutional-acts/plain-view/{{$allConstitutionalAct['constitutional_group']}}/{{$allConstitutionalAct['title']}}/{{ $allConstitutionalAct['id'] }}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp;
+                    <a href="/post_1992_legislation/constitutional-acts/print_view/{{$allConstitutionalAct['constitutional_group']}}/{{$allConstitutionalAct['title']}}/{{ $allConstitutionalAct['id'] }}" target="_blank"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                     @else
 
                     <a href="" data-toggle="modal" data-target="#myModal"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
-                    <a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/plain_view/{{ $allPost1992Act['id'] }}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp;
+                    <a href="/post_1992_legislation/constitutional-acts/plain-view/{{$allConstitutionalAct['constitutional_group']}}/{{$allConstitutionalAct['title']}}/{{ $allConstitutionalAct['id'] }}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp;
                     <a href="" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                     {{-- <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
@@ -70,17 +70,17 @@
     </div>
 
     <div class="content">	
-        <h5><b>Introductory Text</b></h5> <p>{!! $allPost1992Act['preamble'] !!}</p>
+        <h5><b>Introductory Text</b></h5> <p>{!! $allConstitutionalAct['preamble'] !!}</p>
         <hr>
-        @foreach($allPost1992Articles as $allPost1992Article)
+        @foreach($allConstitutionalArticles as $allConstitutionalArticle)
             <!--<center>-->
             <!--    <h4>-->
-            <!--        <b>{{ $allPost1992Article->part }}</b>-->
+            <!--        <b>{{ $allConstitutionalArticle->part }}</b>-->
             <!--    </h4>-->
             <!--</center>-->
             
-            <h5><b>{{$allPost1992Article->section }}</b></h5>
-                {!! $allPost1992Article->content !!}
+            <h5><b>{{$allConstitutionalArticle->section }}</b></h5>
+                {!! $allConstitutionalArticle->content !!}
             <hr><br>
         @endforeach
     </div>

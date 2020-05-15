@@ -147,6 +147,11 @@
               </div>
               <br>
               <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input consti1" id="for_constitutional" name="act-type" value="Constitutional">
+                <label class="custom-control-label" for="defaultUnchecked">Constitutional Instruments</label>&nbsp;<span class="badge">{{$constitutional_count}}</span>
+              </div>
+              <br>
+              <div class="custom-control custom-radio">
                 <input type="radio" class="custom-control-input amend_act1" id="for_amended_acts" name="act-type" value="Amend_Act">
                 <label class="custom-control-label" for="defaultUnchecked">Amended Acts</label>&nbsp;<span class="badge">{{$amends_count}}</span>
               </div>
@@ -179,6 +184,7 @@
     document.getElementById("all_posts").disabled = true;
     document.getElementById("for_post").disabled = true;
     document.getElementById("for_regulations").disabled = true;
+    document.getElementById("for_constitutional").disabled = true;
     document.getElementById("for_amended_acts").disabled = true; 
     document.getElementById("for_amended_regulation").disabled = true;     
   }
@@ -187,6 +193,9 @@
   }
   if ( {{$regulations_count}} == 0 ) {
     document.getElementById("for_regulations").disabled = true;   
+  }
+  if ( {{$constitutional_count}} == 0 ) {
+    document.getElementById("for_constitutional").disabled = true;   
   }
   if ( {{$amends_count}} == 0 ) {
     document.getElementById("for_amended_acts").disabled = true;   
@@ -212,6 +221,7 @@
           $('.only_post').show();
           $('.only_amend_acts').show();
           $('.only_regulation').show();
+          $('.only_constitutional').show();
           $('.only_amend_reg').show();
 
         } else if ($('input[name=act-type]:checked').val() == "Post") {
@@ -226,6 +236,8 @@
           $('.only_amend_acts').hide();
           $('.only_regulation').hide();
           $('.only_amend_reg').hide();
+          $('.only_constitutional').hide();
+
 
         }
         else if ($('input[name=act-type]:checked').val() == "Regulation") {
@@ -241,6 +253,21 @@
             $('.only_post').hide();
             $('.only_amend_acts').hide();
             $('.only_amend_reg').hide();
+            $('.only_constitutional').hide();
+        }
+        else if ($('input[name=act-type]:checked').val() == "Constitutional") {
+          $('.consti1').click(function() {
+
+            $('html, body').animate({
+              scrollTop: $("body").offset().top
+            }, 1000)
+          });
+
+            $('.only_constitutional').show().insertAfter( ".move_here" );
+            $('.only_post').hide();
+            $('.only_regulation').hide();
+            $('.only_amend_acts').hide();
+            $('.only_amend_reg').hide();
         }
         else if ($('input[name=act-type]:checked').val() == "Amend_Act") {
           $('.amend_act1').click(function() {
@@ -254,6 +281,8 @@
           $('.only_post').hide();
           $('.only_regulation').hide();
           $('.only_amend_reg').hide();
+          $('.only_constitutional').hide();
+
 
         }
         else if ($('input[name=act-type]:checked').val() == "Amend_Regulation") {
@@ -268,6 +297,8 @@
           $('.only_post').hide();
           $('.only_amend_acts').hide();
           $('.only_regulation').hide();
+          $('.only_constitutional').hide();
+
 
         }
     });

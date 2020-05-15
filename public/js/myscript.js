@@ -129,7 +129,7 @@ $(document).ready(function(){
     //TOGGLE ALL AMENDMENTS AND REGULATION UNDER AN ACT
     //For all amendments
     function all_amendments_link_toggle() {
-        $('.tabPanedHide_regulations').hide();
+            $('.tabPanedHide_regulations').hide();
             $('.tabPanedHide_regulations_table').hide();
             $('.tabPanedHide_regulations_content').hide();
             $('.tabPanedHide_amendments_table').hide();
@@ -443,6 +443,26 @@ $(document).ready(function(){
         }
         xhr.send();
     });
+
+    // General View all section links for constitutional
+    $('.constitutional_view_all_section_link_with_prev_next').click(function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        
+        var psid = $(this).attr("sid");
+        setPrevNext(psid);
+        
+       console.log("this is activated when all section dropdown is clicked");
+       
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_content").html("");
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html(this.responseText);   
+        }
+        xhr.send();
+    });
     
     // General View all section links for pre
     $('.pre_view_all_section_link_with_prev_next').click(function(e){
@@ -613,6 +633,21 @@ $(document).ready(function(){
         xhr.send();
     });
 
+    //previous for constitutional instruments
+    $(document).on('click','.previous_constitutional_acts', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        constitutionalSetPrevNext(psid);
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+
     $(document).on('click','.plain_previous_content_act', function(e){
         e.preventDefault();
         var xhr = new XMLHttpRequest();
@@ -771,7 +806,7 @@ $(document).ready(function(){
         xhr.send();
     });
     //-------------------------------------------END OF PREVIOUS BUTTON---------------------------------
-     //next for post act
+    //next for post act
     $(document).on('click','.next_content_act', function(e){
          e.preventDefault();
         var ids = $('#act_contents').val();
@@ -788,6 +823,24 @@ $(document).ready(function(){
         }
         xhr.send();
     });
+
+    //next for constitutional instruments
+    $(document).on('click','.next_constitutional_acts', function(e){
+        e.preventDefault();
+       var ids = $('#constitutional_act_contents').val();
+
+       var xhr = new XMLHttpRequest();
+       var link = $(this).attr("href");
+       constitutionalSetPrevNext(nsid);
+
+       xhr.open("GET", link, true);
+       xhr.onreadystatechange = function receiveUpdate(e) {
+           $("#display_preamble").html("");
+           $("#display_view_all_section").html("");
+           $("#display_content").html(this.responseText);
+       }
+       xhr.send();
+   });
 
     $(document).on('click','.plain_next_content_act', function(e){
         e.preventDefault();
@@ -991,11 +1044,42 @@ $(document).ready(function(){
         // var p_Link = '/post_1992_legislation/plain-content/'+aay[previous];
         // var n_Link = '/post_1992_legislation/plain-content/'+aay[next];
 
-        var p_Link = '/post_1992_legislation/plain-content/'+aay[previous];
-        var n_Link = '/post_1992_legislation/plain-content/'+aay[next];
+        // var p_Link = '/post_1992_legislation/plain-content/'+aay[previous];
+        // var n_Link = '/post_1992_legislation/plain-content/'+aay[next];
         
-        $('.plain_previous_content_act').attr('href', p_Link);
-        $('.plain_next_content_act').attr('href', n_Link);
+        // $('.plain_previous_content_act').attr('href', p_Link);
+        // $('.plain_next_content_act').attr('href', n_Link);
+
+    }
+
+    // BUILDING THE PREVIOUS AND NEXT--------the process for the pre act
+    function constitutionalSetPrevNext(gsid11){
+        var sid = gsid11;       
+        var ids = $('#constitutional_act_contents').val();
+        console.log('ids', JSON.parse(ids)); //showing all ids
+        var previous = '', next = '';
+        //find index of sid in ids array
+        var aay = JSON.parse(ids);
+        
+        var arrayLength = aay.length;
+        var index = 0;
+        for (var i = 0; i < arrayLength; i++) {
+            if(aay[i] == sid){
+                index = i;
+            }
+        }
+
+        console.log('index', index); // showing the clicked index
+        previous = (index > 0) ? index - 1: 0;
+        next = (index == arrayLength-1)?arrayLength-1:index + 1;
+        console.log('previous', aay[previous], 'next',aay[next]); //showing the next and previous ids
+        psid = aay[previous]; nsid = aay[next];
+        
+        var pLink = '/post_1992_legislation/constitutional-acts/content/'+aay[previous];
+        var nLink = '/post_1992_legislation/constitutional-acts/content/'+aay[next];
+        
+        $('.previous_constitutional_acts').attr('href', pLink);
+        $('.next_constitutional_acts').attr('href', nLink);
 
     }
 
@@ -1267,6 +1351,25 @@ $(document).ready(function(){
         }
         xhr.send();
     });
+
+    //FOR POST
+    $(document).on('click','.constitutional_content_link', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");        
+        //set previous and next function
+        gsid = $(this).attr("sid"); 
+        constitutionalSetPrevNext(gsid);
+        
+        xhr.open("GET", link, true);
+
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+        }
+        xhr.send();
+    });
     
     //PREVIOUS AND NEXT FOR THE PARTS AND SECTION
     //FOR PRE
@@ -1524,6 +1627,21 @@ $(document).ready(function(){
     //GENERAL CONTENT LINK
     // General content link: Click and go to Display section at Content for post 
     $('.content_link').click(function(e){
+        e.preventDefault();
+        act_content_link_toggle();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+            
+        }
+        xhr.send();
+    });
+
+    $('.constitutional_content_link').click(function(e){
         e.preventDefault();
         act_content_link_toggle();
         var xhr = new XMLHttpRequest();

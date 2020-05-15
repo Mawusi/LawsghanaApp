@@ -1,5 +1,5 @@
 <div class="only_4th_republic">
-    @foreach ($posts as $post)
+        @foreach ($posts as $post)
         <div class="search-well">
         <h5 class="all_specific"><b>Acts of Parliament</b></h5>
         <h5 style="color:blue;"><b>{!! $post->post_act !!}</b></h5>
@@ -17,6 +17,17 @@
             <a href="/post_1992_legislation/content/{{$regulation->id}}" target="_blank"><b>{!! $regulation->section !!}</b></a>
             <br><br>
             {!! $regulation->content !!}
+        </div>
+        <br>
+        @endforeach
+
+        @foreach ($constitutionals as $constitutional)
+        <div class="search-well">
+        <h5 class="all_specific"><b>Acts of Parliament</b></h5>
+        <h5 style="color:blue;"><b>{!! $constitutional->constitutional_act !!}</b></h5>
+        <a href="/post_1992_legislation/content/{{$constitutional->id}}" target="_blank"><b>{!! $constitutional->section !!}</b></a>
+        <br><br>
+            {!! $constitutional->content !!}
         </div>
         <br>
         @endforeach

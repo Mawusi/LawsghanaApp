@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post1992Article;
 use App\RegulationArticle;
+use App\ConstitutionalArticle;
 use App\FooterNote;
 use App\AmendedArticle;
 use App\AmendRegulationArticle;
@@ -49,7 +50,7 @@ class HomeSearchController extends Controller
         //--------------------------------------------------------------------HOME SEARCH: OTHER COUNTRIES CONSTITUTION---------------------------------------------------------------------
 
         $africa         = "Africa";
-        $asia           ="Asia";
+        $asia           = "Asia";
         $europe         = "Europe";
         $north_america  = "North-America";
         $south_america  = "South-America";
@@ -146,6 +147,25 @@ class HomeSearchController extends Controller
                             return $row2;
                         });
 
+        $constitutionals = ConstitutionalArticle::select('*')
+                        ->where('part', 'LIKE', "%$query%")
+                        ->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('constitutional_act','LIKE', "%$query%")
+                        ->orderBy('constitutional_act')
+                        ->orderBy('priority')
+                        ->get()
+                        ->map(function ($row) use ($query) {
+                            $row->constitutional_act = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->constitutional_act);
+                            return $row;
+                        })
+                        ->map(function ($row2) use ($query) {
+                            $row2->section = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row2->section);
+                            return $row2;
+                        })
+                        ->map(function ($row) use ($query) {
+                            $row->content   = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
+                            return $row;
+                        });
+
         $amends         = AmendedArticle::select('*')
                         ->where('section', 'LIKE', "%$query%")
                         ->orWhere('content','LIKE', "%$query%")->orWhere('act_title','LIKE', "%$query%")
@@ -185,8 +205,9 @@ class HomeSearchController extends Controller
                         ->count();
                         $amends_regs_count    = AmendRegulationArticle::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('title','LIKE', "%$query%")
                         ->count();
-
-        $posts_total_count    =  $posts_count + $regulations_count + $amends_count + $amends_regs_count; 
+                        $constitutionals_count = $constitutionals->count();
+ 
+        $posts_total_count    =  $posts_count + $regulations_count + $constitutionals_count + $amends_count + $amends_regs_count; 
         
         //--------------------------------------------------------------------- HOME SEARCH: PRE 4TH REPUBLIC LAWS------------------------------------------------
 
@@ -345,6 +366,7 @@ class HomeSearchController extends Controller
             (
             count($posts) > 0 or 
             count($regulations) > 0 or 
+            count($constitutionals) > 0 or
             count($amends) > 0 or 
             count($amends_regs) > 0 or 
             count($supreme_court_cases) > 0 or 
@@ -361,12 +383,13 @@ class HomeSearchController extends Controller
             count($africa_countries_constitutions) > 0 or
             count($asia_countries_constitutions) > 0 or
             count($europe_countries_constitutions) > 0 or
-            count($north_america_countries_constitutions) > 0 or
+            count($north_america_countries_constitutions) > 0 or 
+            count($south_america_countries_constitutions) > 0 or   
             count($ghana_articles) > 0 or
             count($ghana_amended_articles) > 0
             )
             return view('extenders.home_search_page_index', compact('query','footer_notes', 'all_total_count',
-                                                                    'posts','regulations', 'amends', 'amends_regs','posts_total_count', 
+                                                                    'posts','regulations', 'constitutionals', 'amends', 'amends_regs','posts_total_count', 
                                                                     'supreme_court_cases','court_of_appeal_cases','high_court_cases','cases_total_count',
                                                                     'first_republic_laws','second_republic_laws', 'third_republic_laws','nlc_decree_laws',
                                                                     'nrc_decree_laws', 'smc_decree_laws', 'afrc_decree_laws','pndc_laws','pre_total_count',

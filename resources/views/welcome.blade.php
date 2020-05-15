@@ -308,7 +308,7 @@
                                         Bookmarks </a>
                                     </li>
                                     <li>
-                                        <a href="">
+                                        <a href="/accounts/downloads/{{ Auth::user()->id }}">
                                         <i class="glyphicon glyphicon-cloud-download"></i>
                                         Downloads </a>
                                     </li>
@@ -470,7 +470,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="/post_1992_legislation" style="text-decoration: none;">
+                        <a href="/post-1992-legislation" style="text-decoration: none;">
                             <div class="intro-block">
                                 <h4><b><u>NEW LAWS</u></b></h4>
                                 <p><b>Access over 200 consolidated laws of Ghana including Acts, Regulations and Amendments in the Fourth Republic</b></p>

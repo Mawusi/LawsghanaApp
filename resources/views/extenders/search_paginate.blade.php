@@ -1,6 +1,6 @@
 
 <div class="move_here hidden  top_here"><br></div>
-<div class=" only_post">
+<div class="only_post">
   @foreach ($posts as $post)
   <div class="search-well">
     <h5 style="color:blue;"><b>{!! $post->post_act !!}</b></h5>
@@ -12,13 +12,25 @@
   @endforeach
 </div>
     
-<div class=" only_regulation">
+<div class="only_regulation">
   @foreach ($regulations as $regulation)
   <div class="search-well">
     <h5 style="color:blue;"><b>{!! $regulation->regulation_title !!}</b></h5>
     <a href="/post_1992_legislation/content/{{$regulation->id}}" target="_blank"><b>{!! $regulation->section !!}</b></a>
     <br><br>
     {!! $regulation->content !!}
+  </div>
+  <br>
+  @endforeach
+</div>
+
+<div class="only_constitutional">
+  @foreach ($constitutionals as $constitutional)
+  <div class="search-well">
+    <h5 style="color:blue;"><b>{!! $constitutional->constitutional_act !!}</b></h5>
+    <a href="/post_1992_legislation/content/{{$constitutional->id}}" target="_blank"><b>{!! $constitutional->section !!}</b></a>
+    <br><br>
+    {!! $constitutional->content !!}
   </div>
   <br>
   @endforeach

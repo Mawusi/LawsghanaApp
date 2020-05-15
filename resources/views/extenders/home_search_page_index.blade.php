@@ -236,7 +236,7 @@
             }, 1000)
             });
 
-            $('.only_constitution_ghana').fadeIn().insertAfter( ".move_here" );
+            $('.only_constitution_ghana').fadeIn().insertAfter(".move_here");
             $('.only_pre_4th_republic').fadeOut();
             $('.only_cases').fadeOut();
             $('.only_4th_republic').fadeOut();
@@ -252,7 +252,7 @@
               }, 1000)
             });
 
-              $('.only_country_constitution').fadeIn().insertAfter( ".move_here" );
+              $('.only_country_constitution').fadeIn().insertAfter(".move_here");
               $('.only_pre_4th_republic').fadeOut();
               $('.only_cases').fadeOut();
               $('.only_4th_republic').fadeOut();

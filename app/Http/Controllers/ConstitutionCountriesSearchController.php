@@ -15,7 +15,7 @@ class ConstitutionCountriesSearchController extends Controller
         $footer_notes   = FooterNote::all();
 
         $africa         = "Africa";
-        $asia           ="Asia";
+        $asia           = "Asia";
         $europe         = "Europe";
         $north_america  = "North-America";
         $south_america  = "South-America";

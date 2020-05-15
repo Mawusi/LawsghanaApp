@@ -41,9 +41,29 @@ style="padding-left:1em;"
                                     @foreach($allPost1992Acts as $allPost1992Act)
                                         <tr>
                                             <td>
-                                                <a href="/post_1992_legislation/acts_table_of_content/{{$allPost1992Act->post_group}}/{{ $allPost1992Act->title }}/{{ $allPost1992Act->id}}"><li style="list-style: none;">{{ $allPost1992Act->title }}</li></a>
+                                                <a href="/post-1992-legislation/table-of-content/{{$allPost1992Act->post_group}}/{{ $allPost1992Act->title }}/{{ $allPost1992Act->id}}"><li style="list-style: none;">{{ $allPost1992Act->title }}</li></a>
                                             </td> 
                                             <td>{{ $allPost1992Act->year }}</td>
+                                        </tr>
+                                    @endforeach
+
+                                    <!-- Constitutional Instruments -->
+                                    @foreach($allConstitutionalActs as $allConstitutionalAct)
+                                        <tr>
+                                            <td>
+                                                <a href="/post-1992-legislation/constitutional-acts-table-of-content/{{$allConstitutionalAct->constitutional_group}}/{{ $allConstitutionalAct->title }}/{{ $allConstitutionalAct->id}}"><li style="list-style: none;">{{ $allConstitutionalAct->title }}</li></a>
+                                            </td> 
+                                            <td>{{ $allConstitutionalAct->year }}</td>
+                                        </tr>
+                                    @endforeach
+
+                                    <!-- Executive Instruments -->
+                                    @foreach($allExecutiveActs as $allExecutiveAct)
+                                        <tr>
+                                            <td>
+                                                <a href="/post-1992-legislation/table-of-content/{{$allExecutiveAct->executive_group}}/{{ $allExecutiveAct->title }}/{{ $allExecutiveAct->id}}"><li style="list-style: none;">{{ $allExecutiveAct->title }}</li></a>
+                                            </td> 
+                                            <td>{{ $allExecutiveAct->year }}</td>
                                         </tr>
                                     @endforeach
 
