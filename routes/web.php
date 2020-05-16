@@ -223,8 +223,8 @@ Route::get('/pre_1992_legislation','Pre1992Controller@index');//display all acts
 //-----------------------------------------------------------------------------CONSTITUTIONAL INSTRUMENTS-------------------------------------------------------------------------------------
 Route::get('/post-1992-legislation/Constitutional-Intruments','ConstitutionalActController@only_constitutional_acts');
     Route::get('/post-1992-legislation/constitutional-acts-table-of-content/{group}/{title}/{id}','ConstitutionalActController@table_of_content');//display acts table of content
-    Route::get('/post_1992_legislation/constitutional-acts/preamble/{id}','ConstitutionalActController@preamble_content');//display act preamble
-    Route::get('/post_1992_legislation/constitutional-acts/content/{id}','ConstitutionalActController@section_content');//display act content
+    Route::get('/post-1992-legislation/constitutional-acts/preamble/{id}','ConstitutionalActController@preamble_content');//display act preamble
+    Route::get('/post-1992-legislation/constitutional-acts/content/{id}','ConstitutionalActController@section_content');//display act content
     Route::get('/post-1992-legislation/constitutional-acts/expanded-view/{group}/{title}/{id}','ConstitutionalActController@expanded_view');//display in expanded view
     Route::get('/post_1992_legislation/constitutional-acts/plain-view/{group}/{title}/{id}','ConstitutionalActController@plain_view');//display in plain view
     Route::get('/post_1992_legislation/constitutional-acts/print_section_content/{id}','ConstitutionalActController@print_content');//print content

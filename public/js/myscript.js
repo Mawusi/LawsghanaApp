@@ -1075,8 +1075,8 @@ $(document).ready(function(){
         console.log('previous', aay[previous], 'next',aay[next]); //showing the next and previous ids
         psid = aay[previous]; nsid = aay[next];
         
-        var pLink = '/post_1992_legislation/constitutional-acts/content/'+aay[previous];
-        var nLink = '/post_1992_legislation/constitutional-acts/content/'+aay[next];
+        var pLink = '/post-1992-legislation/constitutional-acts/content/'+aay[previous];
+        var nLink = '/post-1992-legislation/constitutional-acts/content/'+aay[next];
         
         $('.previous_constitutional_acts').attr('href', pLink);
         $('.next_constitutional_acts').attr('href', nLink);
