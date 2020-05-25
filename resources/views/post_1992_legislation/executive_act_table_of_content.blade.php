@@ -1,5 +1,5 @@
 @extends('extenders.main')
-@section('title', ucwords(strtolower($allConstitutionalAct['title'])))
+@section('title', ucwords(strtolower($allExecutiveAct['title'])))
 
 @section('assets')
 <link rel="stylesheet" href="{{ asset('css/pre_second_nav.css') }}">
@@ -178,7 +178,7 @@
           <div class="shadow-background">
           <div style="padding: 15px;">
         @include('post_1992_legislation.post_1992_legislation_menu')
-              <center><p style="font-size:18px;"><b class="small">{{ $allConstitutionalAct['title'] }}</b></p></center>
+              <center><p style="font-size:18px;"><b class="small">{{ $allExecutiveAct['title'] }}</b></p></center>
 
               {{-- Nav tabs --}}
               <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
@@ -205,9 +205,9 @@
                           <div class="col-md-9">
                               {{--<h5><b>{{ $amendedAct['title'] }}</b></h5>--}}
                               <br>
-                            <a class="preamble_link" id="preamble_link_toggle" href="/post-1992-legislation/constitutional-acts/preamble/{{ $allConstitutionalAct['id'] }}">
+                            <a class="preamble_link" id="preamble_link_toggle" href="/post-1992-legislation/executive-acts/preamble/{{ $allExecutiveAct['id'] }}">
                                 
-                                @if($allConstitutionalAct['preamble'] != null)
+                                @if($allExecutiveAct['preamble'] != null)
                                     <p class="preamble_hide">Introductory Text</p>
 
                                     @else
@@ -221,7 +221,7 @@
                             </a>
                             
                                   <div class="accordion-content">
-                                      @include('post_1992_legislation.displayed_constitutional_parts_sections')
+                                      @include('post_1992_legislation.displayed_executive_parts_sections')
                                   </div>
                                   
                                   <div class="col-md-12 text-center">
@@ -232,7 +232,7 @@
                                       data-scroll-offset="-60" href="#" data-scroll-to="body">Move to Top</button></p>
                                   </div>
                           </div> 
-                                  @include('post_1992_legislation.container_main_constitutional_acts_page')
+                                  @include('post_1992_legislation.container_main_executive_acts_page')
                       </div>
 
                   </div>
@@ -246,7 +246,7 @@
                           <div id="display_preamble"></div>
                           <div id="display_view_all_section"></div>
                       </div>
-                                  @include('post_1992_legislation.container_details_main_constitutional_acts_page')
+                                  @include('post_1992_legislation.container_details_main_executive_acts_page')
                     </div>
                     
                       <div class="row show">
@@ -255,11 +255,11 @@
                               <li><a data-scroll-to="body"
                                   data-scroll-focus="body"
                                   data-scroll-speed="400"
-                                  data-scroll-offset="-60" href="#" class="previous_constitutional_acts">&laquo;&nbsp;Previous Section</a></li>
+                                  data-scroll-offset="-60" href="#" class="previous_executive_acts">&laquo;&nbsp;Previous Section</a></li>
                               <li><a data-scroll-to="body"
                                   data-scroll-focus="body"
                                   data-scroll-speed="400"
-                                  data-scroll-offset="-60" href="#" class="next_constitutional_acts">Next Section&nbsp;&raquo;</a></li>
+                                  data-scroll-offset="-60" href="#" class="next_executive_acts">Next Section&nbsp;&raquo;</a></li>
                           </ul>
                           </div>
                       </div>

@@ -35,6 +35,18 @@
   <br>
   @endforeach
 </div>
+
+<div class="only_executive">
+  @foreach ($executives as $executive)
+  <div class="search-well">
+    <h5 style="color:blue;"><b>{!! $executive->executive_act !!}</b></h5>
+    <a href="/post_1992_legislation/content/{{$executive->id}}" target="_blank"><b>{!! $executive->section !!}</b></a>
+    <br><br>
+    {!! $executive->content !!}
+  </div>
+  <br>
+  @endforeach
+</div>
   
 <div class="only_amend_acts">
   @foreach ($amends as $amend)

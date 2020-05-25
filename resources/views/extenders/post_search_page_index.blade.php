@@ -130,7 +130,7 @@
         <div class="sidebar">
           <div class="search-well-filter">
             <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($total_posts_count)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p><hr>
-              <p style="color:blue;">Filter Options</p>
+              <p style="color:blue;">Filter Option</p>
               <div class="custom-control custom-radio">
                 <input type="radio" class="custom-control-input all1" id="all_posts" name="act-type" value="All" checked>
                 <label class="custom-control-label" for="defaultChecked">All</label>&nbsp;<span class="badge">{{$total_posts_count}}</span>
@@ -149,6 +149,11 @@
               <div class="custom-control custom-radio">
                 <input type="radio" class="custom-control-input consti1" id="for_constitutional" name="act-type" value="Constitutional">
                 <label class="custom-control-label" for="defaultUnchecked">Constitutional Instruments</label>&nbsp;<span class="badge">{{$constitutional_count}}</span>
+              </div>
+              <br>
+              <div class="custom-control custom-radio">
+                <input type="radio" class="custom-control-input exe1" id="for_executive" name="act-type" value="Executive">
+                <label class="custom-control-label" for="defaultUnchecked">Executive Instruments</label>&nbsp;<span class="badge">{{$executives_count}}</span>
               </div>
               <br>
               <div class="custom-control custom-radio">
@@ -185,6 +190,7 @@
     document.getElementById("for_post").disabled = true;
     document.getElementById("for_regulations").disabled = true;
     document.getElementById("for_constitutional").disabled = true;
+    document.getElementById("for_executive").disabled = true;
     document.getElementById("for_amended_acts").disabled = true; 
     document.getElementById("for_amended_regulation").disabled = true;     
   }
@@ -196,6 +202,9 @@
   }
   if ( {{$constitutional_count}} == 0 ) {
     document.getElementById("for_constitutional").disabled = true;   
+  }
+  if ( {{$executives_count}} == 0 ) {
+    document.getElementById("for_executive").disabled = true;   
   }
   if ( {{$amends_count}} == 0 ) {
     document.getElementById("for_amended_acts").disabled = true;   
@@ -222,6 +231,7 @@
           $('.only_amend_acts').show();
           $('.only_regulation').show();
           $('.only_constitutional').show();
+          $('.only_executive').show();
           $('.only_amend_reg').show();
 
         } else if ($('input[name=act-type]:checked').val() == "Post") {
@@ -237,6 +247,7 @@
           $('.only_regulation').hide();
           $('.only_amend_reg').hide();
           $('.only_constitutional').hide();
+          $('.only_executive').hide();
 
 
         }
@@ -254,6 +265,7 @@
             $('.only_amend_acts').hide();
             $('.only_amend_reg').hide();
             $('.only_constitutional').hide();
+            $('.only_executive').hide();
         }
         else if ($('input[name=act-type]:checked').val() == "Constitutional") {
           $('.consti1').click(function() {
@@ -268,6 +280,22 @@
             $('.only_regulation').hide();
             $('.only_amend_acts').hide();
             $('.only_amend_reg').hide();
+            $('.only_executive').hide();
+        }
+        else if ($('input[name=act-type]:checked').val() == "Executive") {
+          $('.exe1').click(function() {
+
+            $('html, body').animate({
+              scrollTop: $("body").offset().top
+            }, 1000)
+          });
+
+            $('.only_executive').show().insertAfter( ".move_here" );
+            $('.only_post').hide();
+            $('.only_regulation').hide();
+            $('.only_amend_acts').hide();
+            $('.only_amend_reg').hide();
+            $('.only_constitutional').hide();
         }
         else if ($('input[name=act-type]:checked').val() == "Amend_Act") {
           $('.amend_act1').click(function() {
@@ -282,6 +310,7 @@
           $('.only_regulation').hide();
           $('.only_amend_reg').hide();
           $('.only_constitutional').hide();
+          $('.only_executive').hide();
 
 
         }
@@ -298,6 +327,7 @@
           $('.only_amend_acts').hide();
           $('.only_regulation').hide();
           $('.only_constitutional').hide();
+          $('.only_executive').hide();
 
 
         }

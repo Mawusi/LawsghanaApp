@@ -23,11 +23,22 @@
 
         @foreach ($constitutionals as $constitutional)
         <div class="search-well">
-        <h5 class="all_specific"><b>Acts of Parliament</b></h5>
+        <h5 class="all_specific"><b>Constitutional Instruments</b></h5>
         <h5 style="color:blue;"><b>{!! $constitutional->constitutional_act !!}</b></h5>
         <a href="/post_1992_legislation/content/{{$constitutional->id}}" target="_blank"><b>{!! $constitutional->section !!}</b></a>
         <br><br>
             {!! $constitutional->content !!}
+        </div>
+        <br>
+        @endforeach
+
+        @foreach ($executives as $executive)
+        <div class="search-well">
+        <h5 class="all_specific"><b>Executive Instruments</b></h5>
+        <h5 style="color:blue;"><b>{!! $executive->executive_act !!}</b></h5>
+        <a href="/post_1992_legislation/content/{{$executive->id}}" target="_blank"><b>{!! $executive->section !!}</b></a>
+        <br><br>
+            {!! $executive->content !!}
         </div>
         <br>
         @endforeach

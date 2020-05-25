@@ -49,6 +49,7 @@ class ConstitutionalActController extends Controller
         $allConstitutionalAct       = ConstitutionalArticle::find(['id' => $id])->toArray()[0];
         return view('post_1992_legislation.displayed_constitutional_act_content', compact('allConstitutionalAct'));
     }
+    
     //For expanded view
     public function expanded_view($group, $title, $id){
         // dd($group, $title, $id);
@@ -64,8 +65,8 @@ class ConstitutionalActController extends Controller
         return view('post_1992_legislation.displayed_constitutional_act_expanded_view', compact('allConstitutionalAct','allConstitutionalArticles'));
     }
 
-     //Display Plain-View
-     public function plain_view($group, $title, $id){
+    //Display Plain-View for full act
+    public function plain_view($group, $title, $id){
         //  dd($group, $title, $id);
         $allConstitutionalAct                  = ConstitutionalAct::find(
             [
@@ -85,8 +86,8 @@ class ConstitutionalActController extends Controller
         return view('post_1992_legislation.displayed_constitutional_act_print_preamble_content', compact('allConstitutionalAct'));
     }
 
-     //Display print section
-     public function print_content($id){
+    //Display print section
+    public function print_content($id){
         //  dd($id);
         $allConstitutionalArticle = ConstitutionalArticle::find(['id' => $id])->toArray()[0];
         return view('post_1992_legislation.displayed_constitutional_act_print_section_content', compact('allConstitutionalArticle'));

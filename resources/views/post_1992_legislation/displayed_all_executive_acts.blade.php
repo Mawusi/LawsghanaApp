@@ -31,7 +31,7 @@
                                 @foreach($allExecutiveActs as $allExecutiveAct)
                                     <tr>
                                         <td>
-                                            <a href="/post_1992_legislation/amended_acts_table_of_content/{{$allExecutiveAct->post_category}}/{{ $allExecutiveAct->title }}/{{ $allExecutiveAct->id}}"><li style="list-style: none;">{{ $allExecutiveAct->title }}</li></a>
+                                            <a href="/post-1992-legislation/executive-acts-table-of-content/{{$allExecutiveAct->executive_group}}/{{ $allExecutiveAct->title }}/{{ $allExecutiveAct->id}}"><li style="list-style: none;">{{ $allExecutiveAct->title }}</li></a>
                                         </td> 
                                         <td>{{ $allExecutiveAct->year }}</td>
                                     </tr>
@@ -40,7 +40,7 @@
                             </table>
                         </div>
                     </div> 
-                    @include('post_1992_legislation.all_amendments_only_container_main')
+                    @include('post_1992_legislation.executive_container_main')
                 </div> 
                 </div>
                 </div>

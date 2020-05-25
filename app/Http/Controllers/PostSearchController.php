@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post1992Article;
 use App\ConstitutionalArticle;
+use App\ExecutiveArticle;
 use App\RegulationArticle;
 use App\FooterNote;
 use App\AmendedArticle;
@@ -108,6 +109,30 @@ class PostSearchController extends Controller
                             return $row;
                                 })
                         );
+
+        $executives     = ExecutiveArticle::select('*')
+                        ->where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('executive_act','LIKE', "%$query%")
+                        ->orderBy('executive_act')
+                        ->orderBy('priority')
+                        ->paginate(5);
+
+                        $executives->setCollection(
+                            $executives->getCollection()
+                                ->map(function($row) use ($query)
+                                {
+                                    $row->section = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->section);
+                            return $row;
+                                })
+                        );
+
+                        $executives->setCollection(
+                            $executives->getCollection()
+                                ->map(function($row) use ($query)
+                                {
+                                    $row->content = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
+                            return $row;
+                                })
+                        );
                         
         $amends         = AmendedArticle::select('*')
                         ->where('section', 'LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('act_title','LIKE', "%$query%")
@@ -182,23 +207,26 @@ class PostSearchController extends Controller
                         ->count();
                         $constitutional_count = ConstitutionalArticle::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('constitutional_act','LIKE', "%$query%")
                         ->count();
+                        $executives_count = ExecutiveArticle::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('executive_act','LIKE', "%$query%")
+                        ->count();
                         $amends_count = AmendedArticle::where('section', 'LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('act_title','LIKE', "%$query%")
                         ->count();
                         $amends_regs_count    = AmendRegulationArticle::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('title','LIKE', "%$query%")
                         ->count();
                         
 
-        $total_posts_count    =  $posts_count + $regulations_count + $constitutional_count + $amends_count + $amends_regs_count;
+        $total_posts_count    =  $posts_count + $regulations_count + $constitutional_count + $executives_count + $amends_count + $amends_regs_count;
 
         if(count($posts) > 0 or
           count($regulations) > 0 or
           count($constitutionals) > 0 or 
+          count($executives) > 0 or
           count($amends) > 0 or 
           count($amends_regs) > 0 
           )
-            return view('extenders.post_search_page_index',compact('posts_count','regulations_count','constitutional_count','amends_count','amends_regs_count','posts', 'total_posts_count','regulations','constitutionals', 'amends', 'amends_regs', 'query', 'footer_notes'));
+            return view('extenders.post_search_page_index',compact('posts_count','regulations_count','constitutional_count', 'executives_count','amends_count','amends_regs_count','posts', 'total_posts_count','regulations','constitutionals', 'executives', 'amends', 'amends_regs', 'query', 'footer_notes'));
         else
-            return view ('extenders.post_search_page_not_found', compact('footer_notes', 'total_posts_count','posts_count','regulations_count','constitutional_count','amends_count','amends_regs_count','query'));
+            return view ('extenders.post_search_page_not_found', compact('footer_notes', 'total_posts_count','posts_count','regulations_count','constitutional_count', 'executives_count','amends_count','amends_regs_count','query'));
 
     }
 
@@ -282,7 +310,7 @@ class PostSearchController extends Controller
                         ->orderBy('priority')
                         ->get()
                         ->map(function ($row) use ($query) {
-                            $row->post_act = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->constitutional_act);
+                            $row->constitutional_act = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->constitutional_act);
                             return $row;
                         })
                         ->map(function ($row2) use ($query) {
@@ -303,6 +331,42 @@ class PostSearchController extends Controller
         return view('extenders.constitutional_instruments_search_page_index', compact('query','footer_notes','constitutionals','constitutional_count'));
         else 
         return view ('extenders.constitutional_instruments_search_page_index_not_found', compact('query','footer_notes', 'constitutional_count'));
+
+    }
+
+    public function only_executive_intruments_search(Request $request){
+
+        $footer_notes   = FooterNote::all();
+        $query=request('search_text');
+
+        $executives = ExecutiveArticle::select('*')
+                        ->where('part', 'LIKE', "%$query%")
+                        ->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('executive_act','LIKE', "%$query%")
+                        ->orderBy('executive_act')
+                        ->orderBy('priority')
+                        ->get()
+                        ->map(function ($row) use ($query) {
+                            $row->executive_act = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->executive_act);
+                            return $row;
+                        })
+                        ->map(function ($row2) use ($query) {
+                            $row2->section = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row2->section);
+                            return $row2;
+                        })
+                        ->map(function ($row) use ($query) {
+                            $row->content   = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
+                            return $row;
+                        });
+
+        $executive_count     = $executives->count();
+
+        if
+            (
+            count($executives) > 0
+            )                              
+        return view('extenders.executive_instruments_search_page_index', compact('query','footer_notes','executives','executive_count'));
+        else 
+        return view ('extenders.executive_instruments_search_page_index_not_found', compact('query','footer_notes', 'executive_count'));
 
     }
 
@@ -405,6 +469,29 @@ class PostSearchController extends Controller
             return view ('extenders.single_consti_instruments_search_page_index', compact('query','single_constitutional_instruments','single_constitutional_instrument_count','footer_notes'));
         else
             return view ('extenders.single_consti_instruments_search_page_not_found', compact('footer_notes', 'single_constitutional_instrument_count','query'));
+    }
+
+    public function executive_instruments_act_search(Request $request, $title, $id){
+        // dd($title, $id);
+        $footer_notes   = FooterNote::all();
+        $query=request('search_text');
+
+        $single_executive_instruments = DB::table('executive_acts')
+            ->leftJoin('executive_articles', 'executive_acts.title', '=', 'executive_articles.executive_act')
+            ->where(['title' => $title])
+            ->where('content', 'LIKE', "%$query%")
+            ->get()
+            ->map(function ($row) use ($query) {
+                $row->content = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
+                return $row;
+                });
+    
+        $single_executive_instrument_count = $single_executive_instruments->count();
+
+        if(count($single_executive_instruments) > 0)
+            return view ('extenders.single_executive_instruments_search_page_index', compact('query','single_executive_instruments','single_executive_instrument_count','footer_notes'));
+        else
+            return view ('extenders.single_executive_instruments_search_page_not_found', compact('footer_notes', 'single_executive_instrument_count','query'));
     }
 
 

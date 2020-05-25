@@ -169,7 +169,7 @@
                                                         <br>{{$order_by_section->act_title}}
 
                                                     @else
-                                                        <a href="/post-1992-legislation/table-of-content/{{$order_by_section->act_group}}/{{$order_by_section->act_title}}/{{$order_by_section->act_id}}" target="_blank">{{$order_by_section->act_section}}</a>
+                                                        <a href="/post-1992-legislation/executive-acts-table-of-content/{{$order_by_section->act_group}}/{{$order_by_section->act_title}}/{{$order_by_section->act_id}}" target="_blank">{{$order_by_section->act_section}}</a>
                                                         <br>{{$order_by_section->act_title}}
 
                                                 @endif
@@ -191,7 +191,7 @@
                                                         </a>
 
                                                     @else
-                                                        <a href="/post-1992-legislation/constitutional-acts/pdf-section-content/{{$order_by_section->act_title}}/{{$order_by_section->section_id}}" class="btn btn-sm btn-outline-secondary">
+                                                        <a href="/post-1992-legislation/executive-acts/pdf-section-content/{{$order_by_section->act_title}}/{{$order_by_section->section_id}}" class="btn btn-sm btn-outline-secondary">
                                                             <i class="fa fa-cloud-download" aria-hidden="true"></i>
                                                         </a>
 
@@ -208,7 +208,7 @@
                                                         </a>
 
                                                     @else
-                                                        <a href="/post-1992-legislation/table-of-content/{{$order_by_section->act_group}}/{{$order_by_section->act_title}}/{{$order_by_section->act_id}}" target="_blank"" class="btn btn-sm btn-outline-secondary">
+                                                        <a href="/post-1992-legislation/executive-acts-table-of-content/{{$order_by_section->act_group}}/{{$order_by_section->act_title}}/{{$order_by_section->act_id}}" target="_blank"" class="btn btn-sm btn-outline-secondary">
                                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                                         </a>
                                                 @endif
@@ -254,7 +254,7 @@
                                                         <a href="/post-1992-legislation/table-of-content/{{$order_by_act->act_group}}/{{$order_by_act->act_title}}/{{$order_by_act->act_id}}" target="_blank">{{$order_by_act->act_title}}</a>
                                                     
                                                     @else
-                                                        <a href="/post-1992-legislation/table-of-content/{{$order_by_act->act_group}}/{{$order_by_act->act_title}}/{{$order_by_act->act_id}}" target="_blank">{{$order_by_act->act_title}}</a>
+                                                        <a href="/post-1992-legislation/executive-acts-table-of-content/{{$order_by_act->act_group}}/{{$order_by_act->act_title}}/{{$order_by_act->act_id}}" target="_blank">{{$order_by_act->act_title}}</a>
 
                                                 @endif
                                             </td>
@@ -271,7 +271,7 @@
                                                         </a>
 
                                                     @else
-                                                        <a href="/post-1992-legislation/1/{{$order_by_act->act_group}}/{{$order_by_act->act_title}}/pdf-view/{{$order_by_act->act_id}}" class="btn btn-sm btn-outline-secondary">
+                                                        <a href="/post-1992-legislation/executive-acts/pdf-full-act-content/{{$order_by_act->act_group}}/{{$order_by_act->act_title}}/{{$order_by_act->act_id}}" class="btn btn-sm btn-outline-secondary">
                                                             <i class="fa fa-cloud-download" aria-hidden="true"></i>
                                                         </a>
 
@@ -288,7 +288,7 @@
                                                         </a>
 
                                                     @else
-                                                        <a href="/post-1992-legislation/table-of-content/{{$order_by_act->act_group}}/{{$order_by_act->act_title}}/{{$order_by_act->act_id}}" target="_blank"" class="btn btn-sm btn-outline-secondary">
+                                                        <a href="/post-1992-legislation/executive-acts-table-of-content/{{$order_by_act->act_group}}/{{$order_by_act->act_title}}/{{$order_by_act->act_id}}" target="_blank"" class="btn btn-sm btn-outline-secondary">
                                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                                         </a>
                                                 @endif

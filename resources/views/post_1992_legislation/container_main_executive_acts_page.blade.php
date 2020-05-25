@@ -51,14 +51,14 @@
             <span class="caret"></span>
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <li><a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/post-1992-legislation/constitutional-acts/expanded-view/{{$allConstitutionalAct['constitutional_group']}}/{{$allConstitutionalAct['title']}}/{{$allConstitutionalAct['id']}}"><span class="small"><center>Expanded View</center></span></a></li>
-            <li><a href="/post_1992_legislation/constitutional-acts/plain-view-full-act-content/{{$allConstitutionalAct['constitutional_group']}}/{{$allConstitutionalAct['title']}}/{{ $allConstitutionalAct['id'] }}" target="_blank"><span class="small"><center>Plain View</center></span></a></li>
+            <li><a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/post-1992-legislation/executive-acts/expanded-view/{{$allExecutiveAct['executive_group']}}/{{$allExecutiveAct['title']}}/{{$allExecutiveAct['id']}}"><span class="small"><center>Expanded View</center></span></a></li>
+            <li><a href="/post_1992_legislation/executive-acts/plain-view-full-act-content/{{$allExecutiveAct['executive_group']}}/{{$allExecutiveAct['title']}}/{{ $allExecutiveAct['id'] }}" target="_blank"><span class="small"><center>Plain View</center></span></a></li>
           </ul>
       </div>
 
         <hr>
         {{-- @include('extenders.case_law_main_search') --}}
-        <form action="/constitutional-instrument-act-search/{{$allConstitutionalAct['title']}}/{{ $allConstitutionalAct['id'] }}" method="GET">
+        <form action="/executive-instrument-act-search/{{$allExecutiveAct['title']}}/{{ $allExecutiveAct['id'] }}" method="GET">
           {{ csrf_field() }}
               <input style="padding: 5px;" class="form-control" name="search_text" type="text" placeholder="Search word in section" aria-label="Search">
         </form>

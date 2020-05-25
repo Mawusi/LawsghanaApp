@@ -451,7 +451,27 @@ $(document).ready(function(){
         var link = $(this).attr("href");
         
         var psid = $(this).attr("sid");
-        setPrevNext(psid);
+        constitutionalSetPrevNext(psid);
+        
+       console.log("this is activated when all section dropdown is clicked");
+       
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_content").html("");
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html(this.responseText);   
+        }
+        xhr.send();
+    });
+
+    // General View all section links for executive
+    $('.executive_view_all_section_link_with_prev_next').click(function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        
+        var psid = $(this).attr("sid");
+        executiveSetPrevNext(psid);
         
        console.log("this is activated when all section dropdown is clicked");
        
@@ -648,6 +668,21 @@ $(document).ready(function(){
         xhr.send();
     });
 
+    //previous for executive instruments
+    $(document).on('click','.previous_executive_acts', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        executiveSetPrevNext(psid);
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+
     $(document).on('click','.plain_previous_content_act', function(e){
         e.preventDefault();
         var xhr = new XMLHttpRequest();
@@ -827,8 +862,7 @@ $(document).ready(function(){
     //next for constitutional instruments
     $(document).on('click','.next_constitutional_acts', function(e){
         e.preventDefault();
-       var ids = $('#constitutional_act_contents').val();
-
+    //    var ids = $('#constitutional_act_contents').val();
        var xhr = new XMLHttpRequest();
        var link = $(this).attr("href");
        constitutionalSetPrevNext(nsid);
@@ -841,6 +875,23 @@ $(document).ready(function(){
        }
        xhr.send();
    });
+
+    //next for executive instruments
+    $(document).on('click','.next_executive_acts', function(e){
+        e.preventDefault();
+        // var ids = $('#executive_act_contents').val();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        executiveSetPrevNext(nsid);
+
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+        }
+        xhr.send();
+    });
 
     $(document).on('click','.plain_next_content_act', function(e){
         e.preventDefault();
@@ -1083,6 +1134,37 @@ $(document).ready(function(){
 
     }
 
+     // BUILDING THE PREVIOUS AND NEXT--------the process for the pre act
+     function executiveSetPrevNext(gsid12){
+        var sid = gsid12;       
+        var ids = $('#executive_act_contents').val();
+        console.log('ids', JSON.parse(ids)); //showing all ids
+        var previous = '', next = '';
+        //find index of sid in ids array
+        var aay = JSON.parse(ids);
+        
+        var arrayLength = aay.length;
+        var index = 0;
+        for (var i = 0; i < arrayLength; i++) {
+            if(aay[i] == sid){
+                index = i;
+            }
+        }
+
+        console.log('index', index); // showing the clicked index
+        previous = (index > 0) ? index - 1: 0;
+        next = (index == arrayLength-1)?arrayLength-1:index + 1;
+        console.log('previous', aay[previous], 'next',aay[next]); //showing the next and previous ids
+        psid = aay[previous]; nsid = aay[next];
+        
+        var pLink = '/post-1992-legislation/executive-acts/content/'+aay[previous];
+        var nLink = '/post-1992-legislation/executive-acts/content/'+aay[next];
+        
+        $('.previous_executive_acts').attr('href', pLink);
+        $('.next_executive_acts').attr('href', nLink);
+
+    }
+    
     
     // BUILDING THE PREVIOUS AND NEXT--------the process for the pre act
     function preSetPrevNext(gsid2){
@@ -1352,7 +1434,7 @@ $(document).ready(function(){
         xhr.send();
     });
 
-    //FOR POST
+    //FOR Constitutional Instruments
     $(document).on('click','.constitutional_content_link', function(e){
         e.preventDefault();
         var xhr = new XMLHttpRequest();
@@ -1360,6 +1442,25 @@ $(document).ready(function(){
         //set previous and next function
         gsid = $(this).attr("sid"); 
         constitutionalSetPrevNext(gsid);
+        
+        xhr.open("GET", link, true);
+
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+        }
+        xhr.send();
+    });
+
+    //FOR Executive Instruments
+    $(document).on('click','.executive_content_link', function(e){
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");        
+        //set previous and next function
+        gsid = $(this).attr("sid"); 
+        executiveSetPrevNext(gsid);
         
         xhr.open("GET", link, true);
 
@@ -1642,6 +1743,21 @@ $(document).ready(function(){
     });
 
     $('.constitutional_content_link').click(function(e){
+        e.preventDefault();
+        act_content_link_toggle();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#display_preamble").html("");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+            
+        }
+        xhr.send();
+    });
+
+    $('.executive_content_link').click(function(e){
         e.preventDefault();
         act_content_link_toggle();
         var xhr = new XMLHttpRequest();

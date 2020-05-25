@@ -73,10 +73,14 @@ Route::get('post_index_search','PostSearchController@all_posts_search');//main s
 Route::get('acts_of_parliament_index_search','PostSearchController@only_acts_of_parliament_search');//main search at the top
 Route::get('only_regulations_index_search','PostSearchController@only_regulations_index_search');//main search at the top
 Route::get('constitutional_instruments_index_search','PostSearchController@only_constitutional_intruments_search');//main search at the top
+Route::get('executive_instruments_index_search','PostSearchController@only_executive_intruments_search');//main search at the top
+
 Route::get('only_amendments_index_search','PostSearchController@only_amendments_index_search');//main search at the top
 
 Route::get('/acts-of-parliament-act-search/{title}/{id}','PostSearchController@acts_of_parliament_act_search');//search within an act
 Route::get('/constitutional-instrument-act-search/{title}/{id}','PostSearchController@constitutional_instruments_act_search');//search within an act
+Route::get('/executive-instrument-act-search/{title}/{id}','PostSearchController@executive_instruments_act_search');//search within an act
+
 
 Route::get('/Search/Next/{query}/fetch_data','PostSearchController@acts_ajax_display');//pagination
 
@@ -223,18 +227,47 @@ Route::get('/pre_1992_legislation','Pre1992Controller@index');//display all acts
 //-----------------------------------------------------------------------------CONSTITUTIONAL INSTRUMENTS-------------------------------------------------------------------------------------
 Route::get('/post-1992-legislation/Constitutional-Intruments','ConstitutionalActController@only_constitutional_acts');
     Route::get('/post-1992-legislation/constitutional-acts-table-of-content/{group}/{title}/{id}','ConstitutionalActController@table_of_content');//display acts table of content
+    
+    // contents
     Route::get('/post-1992-legislation/constitutional-acts/preamble/{id}','ConstitutionalActController@preamble_content');//display act preamble
     Route::get('/post-1992-legislation/constitutional-acts/content/{id}','ConstitutionalActController@section_content');//display act content
     Route::get('/post-1992-legislation/constitutional-acts/expanded-view/{group}/{title}/{id}','ConstitutionalActController@expanded_view');//display in expanded view
-    Route::get('/post_1992_legislation/constitutional-acts/plain-view/{group}/{title}/{id}','ConstitutionalActController@plain_view');//display in plain view
-    Route::get('/post_1992_legislation/constitutional-acts/print_section_content/{id}','ConstitutionalActController@print_content');//print content
+    
+    // plain view
+    Route::get('/post_1992_legislation/constitutional-acts/plain-view-full-act-content/{group}/{title}/{id}','ConstitutionalActController@plain_view');//display in plain view
+    
+    // print
     Route::get('/post_1992_legislation/constitutional-acts/print_preamble_content/{id}','ConstitutionalActController@print_preamble_content');//display plain act content
+    Route::get('/post_1992_legislation/constitutional-acts/print_section_content/{id}','ConstitutionalActController@print_content');//print content
     Route::get('/post_1992_legislation/constitutional-acts/print_view/{group}/{title}/{id}','ConstitutionalActController@print_full_act');//display in print view
+    
+    // pdf
     Route::get('/post_1992_legislation/constitutional-acts/pdf_preamble_content/{title}/{id}','ConstitutionalActController@pdf_preamble_content');//display plain act content
     Route::get('/post-1992-legislation/constitutional-acts/pdf-section-content/{title}/{id}','ConstitutionalActController@pdf_section_content');//display plain act content
     Route::get('/post-1992-legislation/constitutional-acts/pdf-full-act-content/{group}/{title}/{id}','ConstitutionalActController@pdf_full_act_content');//display in plain view
+
+    
 //-----------------------------------------------------------------------------EXECUTIVE INSTRUMENTS-------------------------------------------------------------------------------------
 Route::get('/post-1992-legislation/Executive-Intruments','ExecutiveActController@only_executive_acts');
+    Route::get('/post-1992-legislation/executive-acts-table-of-content/{group}/{title}/{id}','ExecutiveActController@table_of_content');//display acts table of content
+    
+    // contents
+    Route::get('/post-1992-legislation/executive-acts/preamble/{id}','ExecutiveActController@preamble_content');//display act preamble
+    Route::get('/post-1992-legislation/executive-acts/content/{id}','ExecutiveActController@section_content');//display act content
+    Route::get('/post-1992-legislation/executive-acts/expanded-view/{group}/{title}/{id}','ExecutiveActController@expanded_view');//display in expanded view
+
+    //plain view
+    Route::get('/post_1992_legislation/executive-acts/plain-view-full-act-content/{group}/{title}/{id}','ExecutiveActController@plain_view');//display in plain view
+
+    // print
+    Route::get('/post_1992_legislation/executive-acts/print_preamble_content/{id}','ExecutiveActController@print_preamble_content');//display plain act content
+    Route::get('/post_1992_legislation/executive-acts/print_section_content/{id}','ExecutiveActController@print_content');//print content
+    Route::get('/post_1992_legislation/executive-acts/print_view/{group}/{title}/{id}','ExecutiveActController@print_full_act');//display in print view
+
+    // pdf
+    Route::get('/post_1992_legislation/executive-acts/pdf_preamble_content/{title}/{id}','ExecutiveActController@pdf_preamble_content');//display plain act content
+    Route::get('/post-1992-legislation/executive-acts/pdf-section-content/{title}/{id}','ExecutiveActController@pdf_section_content');//display plain act content
+    Route::get('/post-1992-legislation/executive-acts/pdf-full-act-content/{group}/{title}/{id}','ExecutiveActController@pdf_full_act_content');//display in plain view
 
 //-----------------------------------------------------------------------------POST_1992_LEGISLATION-------------------------------------------------------------------------------------
 

@@ -158,7 +158,7 @@
                                                         <br>{{$order_by_date->act_title}}
 
                                                     @else
-                                                        <a href="/post-1992-legislation/constitutional-acts-table-of-content/{{$order_by_date->act_group}}/{{$order_by_date->act_title}}/{{$order_by_date->act_id}}" target="_blank">{{$order_by_date->act_section}}</a>
+                                                        <a href="/post-1992-legislation/executive-acts-table-of-content/{{$order_by_date->act_group}}/{{$order_by_date->act_title}}/{{$order_by_date->act_id}}" target="_blank">{{$order_by_date->act_section}}</a>
                                                         <br>{{$order_by_date->act_title}}
 
                                                 @endif
@@ -177,7 +177,7 @@
                                                         </a>
 
                                                     @else
-                                                        <a href="/post-1992-legislation/table-of-content/{{$order_by_date->act_group}}/{{$order_by_date->act_title}}/{{$order_by_date->act_id}}" target="_blank"" class="btn btn-sm btn-outline-secondary">
+                                                        <a href="/post-1992-legislation/executive-acts-table-of-content/{{$order_by_date->act_group}}/{{$order_by_date->act_title}}/{{$order_by_date->act_id}}" target="_blank"" class="btn btn-sm btn-outline-secondary">
                                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                                         </a>
 

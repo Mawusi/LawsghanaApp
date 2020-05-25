@@ -27,7 +27,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <!-- Amendments for Acts -->
+                                <!-- Constitutional Acts -->
                                 @foreach($allConstitutionalActs as $allConstitutionalAct)
                                     <tr>
                                         <td>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Post1992Article;
 use App\RegulationArticle;
 use App\ConstitutionalArticle;
+use App\ExecutiveArticle;
 use App\FooterNote;
 use App\AmendedArticle;
 use App\AmendRegulationArticle;
@@ -166,6 +167,25 @@ class HomeSearchController extends Controller
                             return $row;
                         });
 
+        $executives     = ExecutiveArticle::select('*')
+                        ->where('part', 'LIKE', "%$query%")
+                        ->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('executive_act','LIKE', "%$query%")
+                        ->orderBy('executive_act')
+                        ->orderBy('priority')
+                        ->get()
+                        ->map(function ($row) use ($query) {
+                            $row->executive_act = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->executive_act);
+                            return $row;
+                        })
+                        ->map(function ($row2) use ($query) {
+                            $row2->section = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row2->section);
+                            return $row2;
+                        })
+                        ->map(function ($row) use ($query) {
+                            $row->content   = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
+                            return $row;
+                        });                
+
         $amends         = AmendedArticle::select('*')
                         ->where('section', 'LIKE', "%$query%")
                         ->orWhere('content','LIKE', "%$query%")->orWhere('act_title','LIKE', "%$query%")
@@ -206,8 +226,9 @@ class HomeSearchController extends Controller
                         $amends_regs_count    = AmendRegulationArticle::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('title','LIKE', "%$query%")
                         ->count();
                         $constitutionals_count = $constitutionals->count();
+                        $executives_count = $executives->count();
  
-        $posts_total_count    =  $posts_count + $regulations_count + $constitutionals_count + $amends_count + $amends_regs_count; 
+        $posts_total_count    =  $posts_count + $regulations_count + $constitutionals_count + $executives_count + $amends_count + $amends_regs_count; 
         
         //--------------------------------------------------------------------- HOME SEARCH: PRE 4TH REPUBLIC LAWS------------------------------------------------
 
@@ -367,6 +388,7 @@ class HomeSearchController extends Controller
             count($posts) > 0 or 
             count($regulations) > 0 or 
             count($constitutionals) > 0 or
+            count($executives) > 0 or
             count($amends) > 0 or 
             count($amends_regs) > 0 or 
             count($supreme_court_cases) > 0 or 
@@ -389,7 +411,7 @@ class HomeSearchController extends Controller
             count($ghana_amended_articles) > 0
             )
             return view('extenders.home_search_page_index', compact('query','footer_notes', 'all_total_count',
-                                                                    'posts','regulations', 'constitutionals', 'amends', 'amends_regs','posts_total_count', 
+                                                                    'posts','regulations', 'constitutionals', 'executives', 'amends', 'amends_regs','posts_total_count', 
                                                                     'supreme_court_cases','court_of_appeal_cases','high_court_cases','cases_total_count',
                                                                     'first_republic_laws','second_republic_laws', 'third_republic_laws','nlc_decree_laws',
                                                                     'nrc_decree_laws', 'smc_decree_laws', 'afrc_decree_laws','pndc_laws','pre_total_count',
