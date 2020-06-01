@@ -467,37 +467,37 @@ Route::get('/judgement/Ghana','JudgementController@index');
     //Supreme Court
     Route::get('/judgement/1/{name}','JudgementController@supreme_court');
     Route::get('/judgement/1/supreme-court/filter/{year}/{category}','JudgementController@supreme_court_filter'); //supreme court filtering
-    Route::get('/judgement/view/1/{name}/{id}','JudgementController@supreme_court_cases');
+    // Route::get('/judgement/view/1/{name}/{id}','JudgementController@supreme_court_cases');
     // Route::get('/judgement/supreme-court/case/{id}','JudgementController@supreme_court_cases_view'); //do same for the others
 
     //High Court
     Route::get('/judgement/2/{name}','JudgementController@high_court');
     Route::get('/judgement/2/high-court/filter/{year}/{category}','JudgementController@high_court_filter'); //high court filtering
-    Route::get('/judgement/view/2/{name}/{id}','JudgementController@high_court_cases');
+    // Route::get('/judgement/view/2/{name}/{id}','JudgementController@high_court_cases');
     // Route::get('/judgement/high-court/case/{id}','JudgementController@high_court_cases_view');
 
     //Court of Appeal
     Route::get('/judgement/3/{name}','JudgementController@court_of_appeal');
     Route::get('/judgement/3/court-of-appeal/filter/{year}/{category}','JudgementController@court_of_appeal_filter'); //court of appeal filtering
-    Route::get('/judgement/view/3/{name}/{id}','JudgementController@court_of_appeal_cases');
+    // Route::get('/judgement/view/3/{name}/{id}','JudgementController@court_of_appeal_cases');
     // Route::get('/judgement/court-of-appeal/case/{id}','JudgementController@court_of_appeal_cases_view');
  
     //Circuit Court
     Route::get('/judgement/4/{name}','JudgementController@circuit_court'); 
     Route::get('/judgement/4/circuit-court/filter/{year}/{category}','JudgementController@circuit_court_filter'); //circuit court filtering
-    Route::get('/judgement/view/4/{name}/{id}','JudgementController@circuit_court_cases');
+    // Route::get('/judgement/view/4/{name}/{id}','JudgementController@circuit_court_cases');
     // Route::get('/judgement/circuit-court/case/{id}','JudgementController@circuit_court_cases_view');
 
     //District Court
     Route::get('/judgement/5/{name}','JudgementController@district_court');
     Route::get('/judgement/5/district-court/filter/{year}/{category}','JudgementController@district_court_filter'); //circuit court filtering 
-    Route::get('/judgement/view/5/{name}/{id}','JudgementController@district_court_cases');
+    // Route::get('/judgement/view/5/{name}/{id}','JudgementController@district_court_cases');
     // Route::get('/judgement/district-court/case/{id}','JudgementController@district_court_cases_view');
 
     //High Court (Tema)
     Route::get('/judgement/6/{name}','JudgementController@high_court_tema');
     // Route::get('/judgement/6/district-court/filter/{year}/{category}','JudgementController@district_court_filter'); //circuit court filtering 
-    Route::get('/judgement/view/6/{name}/{id}','JudgementController@high_court_tema_cases');
+    // Route::get('/judgement/view/6/{name}/{id}','JudgementController@high_court_tema_cases');
 
 
 
