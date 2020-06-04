@@ -19,7 +19,7 @@
                 <hr><br>
 
         @endforeach
-        @include('extenders.footer_caption_print')
+        @include('extenders.footer_caption')
         </div>
     </div>  
 @endsection 

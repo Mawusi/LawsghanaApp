@@ -1,7 +1,7 @@
 
 
         <div class="container">
-                <p class="pull-right">@include('extenders.footer_caption_download')</p>
+                
                 <center><h4><b>{{ $allPost1992Act['title'] }}</b></h4></center>
                 </div>
                 <br>
@@ -14,6 +14,6 @@
                                 {!! $allPost1992Article->content !!}
                                 <hr><br>
                         @endforeach
-                        @include('extenders.footer_caption_download')
+                        
                 </div>
         </div>  
