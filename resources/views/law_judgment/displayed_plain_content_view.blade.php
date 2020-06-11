@@ -55,6 +55,7 @@
 
 @section('content')
     <div class="container">
+      <br>
         <!-- <center><h4><b>{{ $allGhanaLawPlainView['gh_law_judgment_group_name'] }}</b></h4></center><br> -->
         <!-- Court Name -->
         <center><h5><b>{!! $allGhanaLawPlainView['court_name'] !!}</b></h5></center><br>

@@ -209,7 +209,8 @@
                                             <div class="menu_options pull-right" style="display: none;">
                                                 @if (Route::has('login'))
                                                     @auth
-                                                        <a href="/judgement/pdf_view/{{ $allGhanaLaw['case_title'] }}/{{$allGhanaLaw['id']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
+                                                        <a class="case_download_link" href="javascript:;" rel="/judgement/1/case_law/pdf_view/{{ $allGhanaLaw['case_title'] }}/{{$allGhanaLaw['id']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
+                                                        <a class="case_id hidden" href="javascript:;" rel="/acts-downloads/{{$allGhanaLaw['case_title']}}/{{ Auth::user()->name }}/{{ Auth::user()->id }}/{{$allGhanaLaw['judgement_type']}}/{{$allGhanaLaw['id']}}/{{ Auth::user()->id }}{{$allGhanaLaw['case_title']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>
                                                         <a href="/judgement/plain_view/{{$allGhanaLaw['id']}}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp;
                                                         <a href="/judgement/print_preview/{{$allGhanaLaw['id']}}" target="_blank"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                         
@@ -362,4 +363,55 @@
 
             </div>
         </div>         
+@endsection
+
+@section('scripts')
+
+<script>
+    $(".case_id").click(function(e){
+        e.preventDefault();
+        var case_id = $(this).attr("rel");
+        console.log(case_id);
+
+        $.ajax({
+            url: case_id,
+            type: "GET",
+            success:function(response){
+            if(response.success){
+                  $("#bookmarked").notify(
+                      response.message,
+                { position:"left", className: "info", autoHideDelay: 900000}
+                );
+            }else{
+                $("#bookmarked").notify(
+               "Section to Download",
+                { position:"left", className: "success", autoHideDelay: 10000}
+                );
+              }
+            },
+            error:function (){
+                $("#bookmarked").notify(
+               "Issue with database entry",
+                { position:"left", className: "error" }
+                );
+            }
+        });
+
+    });
+    
+</script>
+
+<script>
+    $(".case_download_link").click(function(e){
+        e.preventDefault();
+        var case_download_link = $(this).attr("rel");
+        $('.case_id').trigger("click");
+       
+        $.ajax({
+            url: case_download_link,
+            type: "GET",
+        });
+    });  
+</script>
+
 @endsection

@@ -47,7 +47,7 @@
         </div>
 
         <!-- <div class="container"> 
-            {{-- @include('extenders.footer_caption') --}}
+            @include('extenders.footer_caption')
         </div> -->
         <!--scripts-->
         <script src="{{ asset('js/jquery.min.js') }}"></script>
