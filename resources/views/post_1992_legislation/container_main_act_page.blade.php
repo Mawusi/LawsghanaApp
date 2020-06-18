@@ -94,7 +94,8 @@
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                 <li><a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}"><span class="small"><center>Expanded View</center></span></a></li>
-                <li><a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/plain_view/{{ $allPost1992Act['id'] }}" target="_blank"><span class="small"><center>Plain View</center></span></a></li>
+                <li><a><span class="small"><center>Plain View</center></span></a></li>
+                {{-- <li><a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/plain_view/{{ $allPost1992Act['id'] }}" target="_blank"><span class="small"><center>Plain View</center></span></a></li> --}}
               </ul>
           </div>
 
