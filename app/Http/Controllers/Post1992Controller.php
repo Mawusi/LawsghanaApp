@@ -498,11 +498,11 @@ class Post1992Controller extends Controller
                         }
 
                          //Display Pdf View for Expanded view
-                        public function post_1992_legislation_pdf_regulation_expanded($id, $title, $category){
+                        public function post_1992_legislation_pdf_regulation_expanded($id, $title, $group){
                             $regulationtitle              = RegulationTitle::find(
                                 [
                                     'id' => $id,
-                                    'act_category' => $category
+                                    'group' => $group
                                 ])->toArray()[0];
                                 
                             $ActsRegulationArticles1            = RegulationArticle::where(['regulation_title' => $title])->get();
@@ -836,11 +836,11 @@ class Post1992Controller extends Controller
     //---------------------------------------------------------------------------------------------------------------------------
     //NEW DISPLAY OF REGULATIONS UNDER ALL POST-LEGISLATION
     //Regulation Act Table of Content
-    public function regulation_acts_display_table_of_content($id, $title, $category){
+    public function regulation_acts_display_table_of_content($id, $title, $group){
         $regulationAct             = RegulationTitle::find(
             [
                 'id' => $id,
-                'act_category' => $category
+                'group' => $group
             ])->toArray()[0];
 
         $allRegulationArticles1      = RegulationArticle::where(['regulation_title' => $title])->get();

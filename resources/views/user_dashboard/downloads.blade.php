@@ -160,12 +160,12 @@
                                         <tr>
                                             <th style="visibility: hidden">{{$order_by_section->id}}</th>
                                             <td>
-                                                @include('pre_legislative_user_downloads.section_act_link')
+                                                @include('all_user_downloads.section_act_link')
                                             </td>
                                             <td>{{ date("F j, Y, g:i a", strtotime($order_by_section->created_at)) }}</td>
                                             <td>
-                                                @include('pre_legislative_user_downloads.section_act_download_link_icon')    
-                                                @include('pre_legislative_user_downloads.section_act_link_icon')
+                                                @include('all_user_downloads.section_act_download_link_icon')    
+                                                @include('all_user_downloads.section_act_link_icon')
                                                 <a href="#" class="btn btn-sm btn-outline-danger delete">
                                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                                 </a>
@@ -199,12 +199,12 @@
                                         <tr>
                                             <th style="visibility: hidden">{{$order_by_act->id}}</th>
                                             <td>
-                                                @include('pre_legislative_user_downloads.full_act_link')
+                                                @include('all_user_downloads.full_act_link')
                                             </td>
                                             <td>{{ date("F j, Y, g:i a", strtotime($order_by_act->created_at)) }}</td>
                                             <td>
-                                                @include('pre_legislative_user_downloads.full_act_download_link_icon')
-                                                @include('pre_legislative_user_downloads.full_act_link_icon')
+                                                @include('all_user_downloads.full_act_download_link_icon')
+                                                @include('all_user_downloads.full_act_link_icon')
                                                 <a href="#" class="btn btn-sm btn-outline-danger delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                             </td>
                                         </tr>

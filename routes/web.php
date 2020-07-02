@@ -363,7 +363,7 @@ Route::get('/post-1992-legislation','Post1992Controller@index');//display all ac
                                                                             // FOR REGULATIONS
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------
          //New Regulations for an act: Regulations in all Post-Legislation
-         Route::get('/post_1992_legislation/regulation_acts_table_of_content/{category}/{title}/{id}','Post1992Controller@regulation_acts_display_table_of_content');//display regulation acts table of content
+         Route::get('/post_1992_legislation/regulation_acts_table_of_content/{group}/{title}/{id}','Post1992Controller@regulation_acts_display_table_of_content');//display regulation acts table of content
          Route::get('/post_1992_legislation/regulation/preamble/{id}','Post1992Controller@regulation_acts_preamble');//display regulation act preamble
          Route::get('/post_1992_legislation/regulation_act/content/{id}','Post1992Controller@regulation_acts_content');//display regulation act content
          Route::get('/post_1992_legislation/regulation/expanded_view/{category}/{title}/{id}','Post1992Controller@regulation_act_expanded_view');//display regulation acts in expanded view
@@ -383,7 +383,7 @@ Route::get('/post-1992-legislation','Post1992Controller@index');//display all ac
 
             Route::get('/post_1992_legislation/pdf/regulation/preamble/{title}/{id}','Post1992Controller@post_1992_legislation_pdf_regulation_preamble');//display plain act content
             Route::get('/post_1992_legislation/pdf/regulation/content_section/{title}/{id}','Post1992Controller@post_1992_legislation_pdf_regulation_content_section');//display plain act content
-            Route::get('/post_1992_legislation/pdf/regulation/expanded/{category}/{title}/{id}','Post1992Controller@post_1992_legislation_pdf_regulation_expanded');//display in print view
+            Route::get('/post_1992_legislation/pdf/regulation/expanded/{group}/{title}/{id}','Post1992Controller@post_1992_legislation_pdf_regulation_expanded');//display in print view
 
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
