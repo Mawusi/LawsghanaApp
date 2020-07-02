@@ -160,60 +160,12 @@
                                         <tr>
                                             <th style="visibility: hidden">{{$order_by_section->id}}</th>
                                             <td>
-                                                @if($order_by_section->act_group == 'Judiciary')
-                                                    <a href="/post-1992-legislation/constitutional-acts-table-of-content/{{$order_by_section->act_group}}/{{$order_by_section->act_title}}/{{$order_by_section->act_id}}" target="_blank">{{$order_by_section->act_section}}</a>
-                                                    <br>{{$order_by_section->act_title}}
-
-                                                    @elseif($order_by_section->act_group == 'Acts of Parliament')
-                                                        <a href="/post-1992-legislation/table-of-content/{{$order_by_section->act_group}}/{{$order_by_section->act_title}}/{{$order_by_section->act_id}}" target="_blank">{{$order_by_section->act_section}}</a>
-                                                        <br>{{$order_by_section->act_title}}
-
-                                                    @else
-                                                        <a href="/post-1992-legislation/executive-acts-table-of-content/{{$order_by_section->act_group}}/{{$order_by_section->act_title}}/{{$order_by_section->act_id}}" target="_blank">{{$order_by_section->act_section}}</a>
-                                                        <br>{{$order_by_section->act_title}}
-
-                                                @endif
+                                                @include('pre_legislative_user_downloads.section_act_link')
                                             </td>
                                             <td>{{ date("F j, Y, g:i a", strtotime($order_by_section->created_at)) }}</td>
                                             <td>
-                                                {{-- <a href="/post_1992_legislation/pdf_content/{{$allPost1992Article['post_act']}}/{{ $allPost1992Article['id'] }}" class="btn btn-sm btn-outline-secondary">
-                                                    <i class="fa fa-cloud-download" aria-hidden="true"></i>
-                                                </a> --}}
-                                                @if($order_by_section->act_group == 'Judiciary')
-                                                    <a href="/post-1992-legislation/constitutional-acts/pdf-section-content/{{$order_by_section->act_title}}/{{$order_by_section->section_id}}" class="btn btn-sm btn-outline-secondary">
-                                                        <i class="fa fa-cloud-download" aria-hidden="true"></i>
-                                                    </a>
-
-                                                    @elseif($order_by_section->act_group == 'Acts of Parliament')
-                                                        <a href="/post-1992-legislation/pdf-content/{{$order_by_section->act_title}}/{{$order_by_section->section_id}}
-                                                            " class="btn btn-sm btn-outline-secondary">
-                                                            <i class="fa fa-cloud-download" aria-hidden="true"></i>
-                                                        </a>
-
-                                                    @else
-                                                        <a href="/post-1992-legislation/executive-acts/pdf-section-content/{{$order_by_section->act_title}}/{{$order_by_section->section_id}}" class="btn btn-sm btn-outline-secondary">
-                                                            <i class="fa fa-cloud-download" aria-hidden="true"></i>
-                                                        </a>
-
-                                                @endif    
-                                                
-                                                @if($order_by_section->act_group == 'Judiciary')
-                                                    <a href="/post-1992-legislation/constitutional-acts-table-of-content/{{$order_by_section->act_group}}/{{$order_by_section->act_title}}/{{$order_by_section->act_id}}" target="_blank"" class="btn btn-sm btn-outline-secondary">
-                                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                                    </a>
-
-                                                    @elseif($order_by_section->act_group == 'Acts of Parliament')
-                                                        <a href="/post-1992-legislation/table-of-content/{{$order_by_section->act_group}}/{{$order_by_section->act_title}}/{{$order_by_section->act_id}}" target="_blank"" class="btn btn-sm btn-outline-secondary">
-                                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                                        </a>
-
-                                                    @else
-                                                        <a href="/post-1992-legislation/executive-acts-table-of-content/{{$order_by_section->act_group}}/{{$order_by_section->act_title}}/{{$order_by_section->act_id}}" target="_blank"" class="btn btn-sm btn-outline-secondary">
-                                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                                        </a>
-                                                @endif
-
-
+                                                @include('pre_legislative_user_downloads.section_act_download_link_icon')    
+                                                @include('pre_legislative_user_downloads.section_act_link_icon')
                                                 <a href="#" class="btn btn-sm btn-outline-danger delete">
                                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                                 </a>
@@ -247,55 +199,13 @@
                                         <tr>
                                             <th style="visibility: hidden">{{$order_by_act->id}}</th>
                                             <td>
-                                                @if($order_by_act->act_group == 'Judiciary')
-                                                    <a href="/post-1992-legislation/constitutional-acts-table-of-content/{{$order_by_act->act_group}}/{{$order_by_act->act_title}}/{{$order_by_act->act_id}}" target="_blank">{{$order_by_act->act_title}}</a>
-                                                    
-                                                    @elseif($order_by_act->act_group == 'Acts of Parliament')
-                                                        <a href="/post-1992-legislation/table-of-content/{{$order_by_act->act_group}}/{{$order_by_act->act_title}}/{{$order_by_act->act_id}}" target="_blank">{{$order_by_act->act_title}}</a>
-                                                    
-                                                    @else
-                                                        <a href="/post-1992-legislation/executive-acts-table-of-content/{{$order_by_act->act_group}}/{{$order_by_act->act_title}}/{{$order_by_act->act_id}}" target="_blank">{{$order_by_act->act_title}}</a>
-
-                                                @endif
+                                                @include('pre_legislative_user_downloads.full_act_link')
                                             </td>
                                             <td>{{ date("F j, Y, g:i a", strtotime($order_by_act->created_at)) }}</td>
                                             <td>
-                                                @if($order_by_act->act_group == 'Judiciary')
-                                                    <a href="/post-1992-legislation/constitutional-acts/pdf-full-act-content/{{$order_by_act->act_group}}/{{$order_by_act->act_title}}/{{$order_by_act->act_id}}" class="btn btn-sm btn-outline-secondary">
-                                                        <i class="fa fa-cloud-download" aria-hidden="true"></i>
-                                                    </a>
-
-                                                    @elseif($order_by_act->act_group == 'Acts of Parliament')
-                                                        <a href="/post-1992-legislation/1/{{$order_by_act->act_group}}/{{$order_by_act->act_title}}/pdf-view/{{$order_by_act->act_id}}" class="btn btn-sm btn-outline-secondary">
-                                                            <i class="fa fa-cloud-download" aria-hidden="true"></i>
-                                                        </a>
-
-                                                    @else
-                                                        <a href="/post-1992-legislation/executive-acts/pdf-full-act-content/{{$order_by_act->act_group}}/{{$order_by_act->act_title}}/{{$order_by_act->act_id}}" class="btn btn-sm btn-outline-secondary">
-                                                            <i class="fa fa-cloud-download" aria-hidden="true"></i>
-                                                        </a>
-
-                                                @endif    
-
-                                                @if($order_by_act->act_group == 'Judiciary')
-                                                    <a href="/post-1992-legislation/constitutional-acts-table-of-content/{{$order_by_act->act_group}}/{{$order_by_act->act_title}}/{{$order_by_act->act_id}}" target="_blank"" class="btn btn-sm btn-outline-secondary">
-                                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                                    </a>
-
-                                                    @elseif($order_by_act->act_group == 'Acts of Parliament')
-                                                        <a href="/post-1992-legislation/table-of-content/{{$order_by_act->act_group}}/{{$order_by_act->act_title}}/{{$order_by_act->act_id}}" target="_blank"" class="btn btn-sm btn-outline-secondary">
-                                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                                        </a>
-
-                                                    @else
-                                                        <a href="/post-1992-legislation/executive-acts-table-of-content/{{$order_by_act->act_group}}/{{$order_by_act->act_title}}/{{$order_by_act->act_id}}" target="_blank"" class="btn btn-sm btn-outline-secondary">
-                                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                                        </a>
-                                                @endif
-
-                                                <a href="#" class="btn btn-sm btn-outline-danger delete">
-                                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                                </a>
+                                                @include('pre_legislative_user_downloads.full_act_download_link_icon')
+                                                @include('pre_legislative_user_downloads.full_act_link_icon')
+                                                <a href="#" class="btn btn-sm btn-outline-danger delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach

@@ -271,12 +271,12 @@
                                                             Bookmarks </a>
                                                         </li>
                                                         <li>
-                                                            <a href="">
+                                                            <a href="/accounts/downloads/{{ Auth::user()->id }}">
                                                             <i class="glyphicon glyphicon-cloud-download"></i>
                                                             Downloads </a>
                                                         </li>
                                                         <li>
-                                                            <a href="#">
+                                                            <a href="">
                                                             <i class="glyphicon glyphicon-credit-card"></i>
                                                             Subscriptions </a>
                                                         </li>

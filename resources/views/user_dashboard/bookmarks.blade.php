@@ -157,8 +157,36 @@
                                                         <a href="/post-1992-legislation/table-of-content/{{$order_by_date->act_group}}/{{$order_by_date->act_title}}/{{$order_by_date->act_id}}" target="_blank">{{$order_by_date->act_section}}</a>
                                                         <br>{{$order_by_date->act_title}}
 
+                                                    @elseif($order_by_date->act_group == 'First Republic')
+                                                        <a href="/pre_1992_legislation/{{$order_by_date->act_group}}/{{$order_by_date->act_title}}/{{$order_by_date->act_id}}" target="_blank">{{$order_by_date->act_section}}</a>
+                                                        <br>{{$order_by_date->act_title}}
+
+                                                    @elseif($order_by_date->act_group == 'Second Republic')
+                                                        <a href="/pre_1992_legislation/{{$order_by_date->act_group}}/{{$order_by_date->act_title}}/{{$order_by_date->act_id}}" target="_blank">{{$order_by_date->act_section}}</a>
+                                                        <br>{{$order_by_date->act_title}}
+
+                                                    @elseif($order_by_date->act_group == 'Third Republic')
+                                                        <a href="/pre_1992_legislation/{{$order_by_date->act_group}}/{{$order_by_date->act_title}}/{{$order_by_date->act_id}}" target="_blank">{{$order_by_date->act_section}}</a>
+                                                        <br>{{$order_by_date->act_title}}
+
+                                                    @elseif($order_by_date->act_group == 'NLC Decree')
+                                                        <a href="/pre_1992_legislation/{{$order_by_date->act_group}}/{{$order_by_date->act_title}}/{{$order_by_date->act_id}}" target="_blank">{{$order_by_date->act_section}}</a>
+                                                        <br>{{$order_by_date->act_title}}
+
+                                                    @elseif($order_by_date->act_group == 'NRC Decree')
+                                                        <a href="/pre_1992_legislation/{{$order_by_date->act_group}}/{{$order_by_date->act_title}}/{{$order_by_date->act_id}}" target="_blank">{{$order_by_date->act_section}}</a>
+                                                        <br>{{$order_by_date->act_title}}
+
+                                                    @elseif($order_by_date->act_group == 'SMC Decree')
+                                                        <a href="/pre_1992_legislation/{{$order_by_date->act_group}}/{{$order_by_date->act_title}}/{{$order_by_date->act_id}}" target="_blank">{{$order_by_date->act_section}}</a>
+                                                        <br>{{$order_by_date->act_title}}
+
+                                                    @elseif($order_by_date->act_group == 'AFRC Decree')
+                                                        <a href="/pre_1992_legislation/{{$order_by_date->act_group}}/{{$order_by_date->act_title}}/{{$order_by_date->act_id}}" target="_blank">{{$order_by_date->act_section}}</a>
+                                                        <br>{{$order_by_date->act_title}}
+
                                                     @else
-                                                        <a href="/post-1992-legislation/executive-acts-table-of-content/{{$order_by_date->act_group}}/{{$order_by_date->act_title}}/{{$order_by_date->act_id}}" target="_blank">{{$order_by_date->act_section}}</a>
+                                                        <a href="/pre_1992_legislation/{{$order_by_date->act_group}}/{{$order_by_date->act_title}}/{{$order_by_date->act_id}}" target="_blank">{{$order_by_date->act_section}}</a>
                                                         <br>{{$order_by_date->act_title}}
 
                                                 @endif
@@ -176,8 +204,43 @@
                                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                                         </a>
 
+                                                    @elseif($order_by_date->act_group == 'First Republic')
+                                                        <a href="/pre_1992_legislation/{{$order_by_date->act_group}}/{{$order_by_date->act_title}}/{{$order_by_date->act_id}}" target="_blank"" class="btn btn-sm btn-outline-secondary">
+                                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                                        </a>
+
+                                                    @elseif($order_by_date->act_group == 'Second Republic')
+                                                        <a href="/pre_1992_legislation/{{$order_by_date->act_group}}/{{$order_by_date->act_title}}/{{$order_by_date->act_id}}" target="_blank"" class="btn btn-sm btn-outline-secondary">
+                                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                                        </a>
+
+                                                    @elseif($order_by_date->act_group == 'Third Republic')
+                                                        <a href="/pre_1992_legislation/{{$order_by_date->act_group}}/{{$order_by_date->act_title}}/{{$order_by_date->act_id}}" target="_blank"" class="btn btn-sm btn-outline-secondary">
+                                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                                        </a>
+
+                                                    @elseif($order_by_date->act_group == 'NLC Decree')
+                                                        <a href="/pre_1992_legislation/{{$order_by_date->act_group}}/{{$order_by_date->act_title}}/{{$order_by_date->act_id}}" target="_blank"" class="btn btn-sm btn-outline-secondary">
+                                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                                        </a>
+
+                                                    @elseif($order_by_date->act_group == 'NRC Decree')
+                                                        <a href="/pre_1992_legislation/{{$order_by_date->act_group}}/{{$order_by_date->act_title}}/{{$order_by_date->act_id}}" target="_blank"" class="btn btn-sm btn-outline-secondary">
+                                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                                        </a>
+
+                                                    @elseif($order_by_date->act_group == 'SMC Decree')
+                                                        <a href="/pre_1992_legislation/{{$order_by_date->act_group}}/{{$order_by_date->act_title}}/{{$order_by_date->act_id}}" target="_blank"" class="btn btn-sm btn-outline-secondary">
+                                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                                        </a>
+
+                                                    @elseif($order_by_date->act_group == 'AFRC Decree')
+                                                        <a href="/pre_1992_legislation/{{$order_by_date->act_group}}/{{$order_by_date->act_title}}/{{$order_by_date->act_id}}" target="_blank"" class="btn btn-sm btn-outline-secondary">
+                                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                                        </a>
+
                                                     @else
-                                                        <a href="/post-1992-legislation/executive-acts-table-of-content/{{$order_by_date->act_group}}/{{$order_by_date->act_title}}/{{$order_by_date->act_id}}" target="_blank"" class="btn btn-sm btn-outline-secondary">
+                                                        <a href="/pre_1992_legislation/{{$order_by_date->act_group}}/{{$order_by_date->act_title}}/{{$order_by_date->act_id}}" target="_blank"" class="btn btn-sm btn-outline-secondary">
                                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                                         </a>
 

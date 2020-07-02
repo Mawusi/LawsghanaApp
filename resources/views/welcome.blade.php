@@ -313,7 +313,7 @@
                                         Downloads </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="">
                                         <i class="glyphicon glyphicon-credit-card"></i>
                                         Subscriptions </a>
                                     </li>
