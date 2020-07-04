@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -9,7 +8,7 @@
 <body>
     {{-- For the bookmark --}}
     <div class="header_only" style="border: .1px solid #ddd;">
-        <!--<p><b>{{$allPre1992Article['pre_1992_act']}}</b></p>-->
+        {{--<p><b>{{$allPre1992Article['pre_1992_act']}}</b></p>--}}
         <p style="padding-top: 7px; padding-bottom: .1px; padding-left: 16px; padding-right: 16px;"><b>{{ $allPre1992Article['section'] }}</b>
             @if (Route::has('login'))
                 @auth                        
