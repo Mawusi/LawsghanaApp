@@ -41,6 +41,9 @@ Route::get('/acts-downloads/{act_title}/{user_name}/{user_id}/{act_group}/{act_i
 Route::get('/accounts/downloads/{user_id}','DownloadsController@show_user_downloads'); //Download page.........shows all list of downloads
 Route::resource('/downloads', 'DownloadsController'); //To delete a record of bookmark
 
+//-------------------------------------------------------SUBSCRIPTION-------------------------------------
+Route::get('/subscription','UserDashBoardController@subscription_index');
+
 
 //-------------------------------------------------------------------------------SEARCH ENGINE-----------------------------------------------------------------------------------------------
 //Search for Main Home Page

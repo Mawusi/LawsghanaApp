@@ -150,7 +150,8 @@ color: green;
 
             @foreach ($high_court_cases as $high_court_case)
             <div class="search-well">
-                <a href="/judgement/plain_view/{{$high_court_case->id}}" target="_blank"><h5 style="color:blue;"><b>{!! $high_court_case->case_title !!}</b></h5></a>
+                {{-- <a href="/judgement/plain_view/{{$high_court_case->id}}" target="_blank"><h5 style="color:blue;"><b>{!! $high_court_case->case_title !!}</b></h5></a> --}}
+                <a><h5 style="color:blue;"><b>{!! $high_court_case->case_title !!}</b></h5></a>
                     <b>{!! $high_court_case->gh_law_judgment_group_name !!} | {!! $high_court_case->reference_number !!}</b>
                     <br><br>
                     {!! str_limit(strip_tags(strstr($high_court_case->content,  $query, false)),450, '...' ) !!}

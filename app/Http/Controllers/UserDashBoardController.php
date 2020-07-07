@@ -50,4 +50,8 @@ class UserDashBoardController extends Controller
             $user_bookmark->save();           
     }
 
+    public function subscription_index(){
+        return view('user_dashboard.subscription');
+    }
+
 }

@@ -77,14 +77,14 @@ class JudgementController extends Controller
     }
 
 
-    public function all_ghana_court_cases_view($id, $name){
-        $allGhanaLaw = GhLawJudgment::find(
-            ['
-                id' => $id,
-                'gh_law_judgment_group_name' => $name
-            ])->toArray()[0];
-        return view('law_judgment.ghana_all_court_case_view', compact('allGhanaLaw'));
-    }
+    // public function all_ghana_court_cases_view($id, $name){
+    //     $allGhanaLaw = GhLawJudgment::find(
+    //         ['
+    //             id' => $id,
+    //             'gh_law_judgment_group_name' => $name
+    //         ])->toArray()[0];
+    //     return view('law_judgment.ghana_all_court_case_view', compact('allGhanaLaw'));
+    // }
 
     //Display print section Content for Ghana
     public function Ghana_all_print_preview($id){

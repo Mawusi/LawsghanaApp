@@ -8,7 +8,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- <title>{{ config('app.name', 'LawsGhana') }}</title> --}}
-    <title>LawsGhana</title>
+    {{-- <title>LawsGhana</title> --}}
+    <title> 
+        @hasSection('title')
+            @yield('title')
+        @else
+            {{ setting('site.title') }}
+        @endif
+    </title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
