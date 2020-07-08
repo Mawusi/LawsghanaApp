@@ -31,8 +31,8 @@
                 <ul class="list-unstyled mb-4">
                     {{-- <li>Up to 5 users</li> --}}
                     {{-- <li>Basic support on Github</li> --}}
-                    <li>Read and Access all documents</li>
-                    <li>Download 5O documents for 3months</li>
+                    <li>Free Access to Constitution and Pre-4th Republic Laws</li>
+                    <li>Download 5O documents (4th Republic Laws and Cases) for 3months</li>
                 </ul>
                 <button type="button" class="btn btn-outline-secondary mb-3">Order now</button>
             </div>
@@ -47,8 +47,8 @@
                 <ul class="list-unstyled mb-4">
                     {{-- <li>Up to 5 users</li> --}}
                     {{-- <li>Basic support on Github</li> --}}
-                    <li>Read and Access all documents</li>
-                    <li>Download 10O documents for 6months</li>
+                    <li>Free Access to Constitution and Pre-4th Republic Laws</li>
+                    <li>Download 10O documents (4th Republic Laws and Cases) for 6months</li>
                 </ul>
                 <a href="/" target="_blank" class="btn btn-primary mb-3">Order Now</a>
             </div>
@@ -63,8 +63,8 @@
                 <ul class="list-unstyled mb-4">
                     {{-- <li>Up to 5 users</li> --}}
                     {{-- <li>Basic support on Github</li> --}}
-                    <li>Read and Access all documents</li>
-                    <li>Download 20O documents for 1 year</li>
+                    <li>Free Access to Constitution and Pre-4th Republic Laws</li>
+                    <li>Download 20O documents (4th Republic Laws and Cases) for 1 year</li>
                 </ul>
                 <button type="button" class="btn btn-outline-secondary mb-3">Order now</button>
             </div>
@@ -78,8 +78,8 @@
             <div class="card-body pt-0">
                 <ul class="list-unstyled mb-4">
                     {{-- <li>Up to 5 users</li> --}}
-                    <li>Read and Access all documents</li>
-                    <li>Download all documents for 1 year</li>
+                    <li>Free Access to Constitution and Pre-4th Republic Laws</li>
+                    <li>Download all documents (4th Republic Laws and Cases) for 1 year</li>
                     {{-- <li>Receive email notification of new documents</li> --}}
                 </ul>
                 <button type="button" class="btn btn-outline-secondary mb-3">Order now</button>
