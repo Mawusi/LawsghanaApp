@@ -275,11 +275,23 @@
                                                             <i class="glyphicon glyphicon-cloud-download"></i>
                                                             Downloads </a>
                                                         </li>
-                                                        <li>
-                                                            <a href="">
-                                                            <i class="glyphicon glyphicon-credit-card"></i>
-                                                            Subscriptions </a>
-                                                        </li>
+
+                                                        @if( Auth::user()->subscription_id == null)
+
+                                                            <li class="hidden">
+                                                                <a href="/accounts/subscription/{{ Auth::user()->subscription_id }}">
+                                                                <i class="glyphicon glyphicon-credit-card"></i>
+                                                                My Subscriptions </a>
+                                                            </li>
+
+                                                            @else
+                                                                <li>
+                                                                    <a href="/accounts/subscription/{{ Auth::user()->subscription_id }}">
+                                                                    <i class="glyphicon glyphicon-credit-card"></i>
+                                                                    My Subscription </a>
+                                                                </li>
+                                                        @endif
+                                                        
                                                         <li>
                                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                                             onclick="event.preventDefault();

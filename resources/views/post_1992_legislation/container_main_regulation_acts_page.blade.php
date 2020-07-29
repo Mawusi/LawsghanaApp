@@ -22,50 +22,30 @@
         </div>
 
 
-      
-          {{-- <label style="color: black;">Related Acts</label><br>
-          
-             @if($amendedregulationcount > 0)
-             
-                <a class="all_amendments_link" id="all_amendments_link_toggle" href="/post_1992_legislation/{{$regulationAct['act_category']}}/all_amended_regulation_acts/{{$regulationAct['title']}}/{{ $regulationAct['id'] }}"><li style="list-style:none;"> View Amendents</li>
-                </a>
-                <br>
-                
-                @else
-                <!--None-->
-                  <p style="text-decoration: none;">None</p>
-                  <br><br>
-             
-             @endif --}}
+        <div class="dropdown no_list">
+          <button style="background-color:white; border-color:black;" class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            View Related Acts
+            <span class="caret"></span>
+          </button>
 
-            <div class="dropdown no_list">
-              <button style="background-color:white; border-color:black;" class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                View Related Acts
-                <span class="caret"></span>
-              </button>
-
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              
+                @if($amendedregulationcount > 0)
+                    <li><a class="all_amendments_link" id="all_amendments_link_toggle"  href="/post_1992_legislation/{{$regulationAct['act_category']}}/all_amended_regulation_acts/{{$regulationAct['title']}}/{{ $regulationAct['id'] }}"><span class="small"><center>Amendments</center></span></a></li>
+                    
+                    @else
+                    
+                    @section('scripts')
+                      <script>
+                      $( ".no_list" ).hide();
+                      </script>
+                    @endsection
                   
-                    @if($amendedregulationcount > 0)
-                        <li><a class="all_amendments_link" id="all_amendments_link_toggle"  href="/post_1992_legislation/{{$regulationAct['act_category']}}/all_amended_regulation_acts/{{$regulationAct['title']}}/{{ $regulationAct['id'] }}"><span class="small"><center>Amendments</center></span></a></li>
-                        
-                        @else
-                        
-                        @section('scripts')
-                          <script>
-                          $( ".no_list" ).hide();
-                          </script>
-                        @endsection
-                      
-                    @endif
-                </ul>
-            </div>
+                @endif
+            </ul>
+        </div>
 
-             <br>
-        
-        {{-- <label>View Options</label>
-        <a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/post_1992_legislation/regulation/expanded_view/{{$regulationAct['act_category']}}/{{$regulationAct['title']}}/{{$regulationAct['id']}}"><li style="list-style:none;">Expanded View</li></a>
-        <a href=""><li style="list-style:none;">Plain View</li></a> --}}
+        <br>
 
         <div class="dropdown">
           <button style="background-color:white; border-color:black;" class="btn btn-sm dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -74,10 +54,32 @@
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
             <li><a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/post_1992_legislation/regulation/expanded_view/{{$regulationAct['act_category']}}/{{$regulationAct['title']}}/{{$regulationAct['id']}}"><span class="small"><center>Expanded View</center></span></a></li>
-            <li><a href="" target="_blank"><span class="small"><center>Plain View</center></span></a></li>
+
+            @if (Route::has('login'))
+              @auth  
+                  {{-- No Subscription --}}
+                  @if(auth()->user()->check_subscription == 0)
+                    <li><a href="" data-toggle="modal" data-target="#myModalplainSubscribe"><span class="small"><center>Plain View</center></span></a></li>
+                    {{-- Subscription has expired --}}
+                    @elseif(auth()->user()->subscription_expiry < today())
+                    <li><a href="" data-toggle="modal" data-target="#myModalplainExpiry"><span class="small"><center>Plain View</center></span></a></li>                                          
+                    {{-- Subscription download limit reached --}}
+                    @elseif(auth()->user()->subscription_downloads <= auth()->user()->downloads_counts)
+                    <li><a href="" data-toggle="modal" data-target="#maximumDownloadReachedplain"><span class="small"><center>Plain View</center></span></a></li>
+
+                    @else
+                    {{-- View Plain View --}}
+                    <li><a href="/post_1992_legislation/plain/regulation/expanded/{{$regulationAct['act_category']}}/{{$regulationAct['title']}}/{{ $regulationAct['id'] }}" target="_blank"><span class="small"><center>Plain View</center></span></a></li>
+                  @endif
+
+                @else
+                {{-- Create Account --}}
+                <li><a href="" data-toggle="modal" data-target="#myModalplainAccount"><span class="small"><center>Plain View</center></span></a></li>
+              @endauth
+            @endif
+              
           </ul>
         </div>
-
         <hr>
         {{-- @include('extenders.case_law_main_search') --}}
         <form action="" method="GET">
@@ -88,6 +90,11 @@
       </div>
     </center>
     </div>
+        @include('layouts.plain_view_no_subscription')
+        @include('layouts.plain_view_subscription_expiry')
+        @include('layouts.plain_view_downloaded_exceeded')
+        @include('layouts.plain_create_account')
+
 </div>
 
 

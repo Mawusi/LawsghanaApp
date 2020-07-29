@@ -6,94 +6,115 @@
     <style type="text/css">
         .card-pricing.popular {
         z-index: 1;
-        border: 3px solid #007bff;
+        border: 2px solid #396871;
         }
         .card-pricing .list-unstyled li {
         padding: .5rem 0;
         color: #6c757d;
         }
+        .template_color{
+            background-color: #396871;
+        }
+        .pricing_text_color{
+            color: #396871;
+        }
+        
     </style>
+    
 @endsection
+
+@section('scripts_first')
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
+@endsection
+
+
+{{-- https://dashboard.flutterwave.com/signup --}}
+{{-- currency: "{{ env('RAVE_CURRENCY')}}", --}}
+{{-- url:"/process/subscription/" +subscription+"/check/{{Auth::user()->id}}", --}}
 
 
 @section('content')
 
 <div class="container mb-5 mt-3">
-    <h1 class="text-muted text-center mb-3">Choose your package<span><h4 class="text-danger">......coming soon</h4></span></h1>
+    <h1 class="text-muted text-center mb-3">Choose your package</h1>
     <div class="pricing card-deck flex-column flex-md-row mb-3">
-        <div class="card card-pricing text-center px-3 mb-4">
-            <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white shadow-sm">Starter</span>
-            <div class="bg-transparent card-header pt-4 border-0">
-                <h1 class="h1 font-weight-normal text-primary text-center mb-0" data-pricing-value="15">Gh<span class="price">50</span>
-                    {{-- <span class="h6 text-muted ml-2">/ per month</span></h1> --}}
+        {{-- STARTER --}}
+        @foreach($subscriptions as $subscription)
+            <div class="card card-pricing text-center px-3 mb-4">
+                <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom template_color text-white shadow-sm">{{ $subscription->type }}</span>
+                <div class="bg-transparent card-header pt-4 border-0">
+                    <h1 class="h1 font-weight-normal pricing_text_color text-center mb-0" data-pricing-value="15">Gh<span class="price">{{$subscription->price}}</span></h1>
+                </div>
+                <div class="card-body pt-0">
+                    <ul class="list-unstyled mb-4">
+                        <li>{{$subscription->general_notes}}</li>
+                        <li>{{$subscription->specific_notes}}</li>
+                    </ul>
+                    <button type="button" class="btn btn-outline-secondary mb-3" onClick="makePayment({{$subscription->id}}, {{$subscription->price}})">Subscribe</button>
+                </div>
             </div>
-            <div class="card-body pt-0">
-                <ul class="list-unstyled mb-4">
-                    {{-- <li>Up to 5 users</li> --}}
-                    {{-- <li>Basic support on Github</li> --}}
-                    <li>Free Access to Constitution and Pre-4th Republic Laws</li>
-                    <li>Download 5O documents (4th Republic Laws and Cases) for 3months</li>
-                </ul>
-                <button type="button" class="btn btn-outline-secondary mb-3">Order now</button>
-            </div>
-        </div>
-        <div class="card card-pricing popular shadow text-center px-3 mb-4">
-            <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white shadow-sm">Professional</span>
-            <div class="bg-transparent card-header pt-4 border-0">
-                <h1 class="h1 font-weight-normal text-primary text-center mb-0" data-pricing-value="30">Gh<span class="price">100</span>
-                    {{-- <span class="h6 text-muted ml-2">/ per month</span></h1> --}}
-            </div>
-            <div class="card-body pt-0">
-                <ul class="list-unstyled mb-4">
-                    {{-- <li>Up to 5 users</li> --}}
-                    {{-- <li>Basic support on Github</li> --}}
-                    <li>Free Access to Constitution and Pre-4th Republic Laws</li>
-                    <li>Download 10O documents (4th Republic Laws and Cases) for 6months</li>
-                </ul>
-                <a href="/" target="_blank" class="btn btn-primary mb-3">Order Now</a>
-            </div>
-        </div>
-        <div class="card card-pricing text-center px-3 mb-4">
-            <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white shadow-sm">Business</span>
-            <div class="bg-transparent card-header pt-4 border-0">
-                <h1 class="h1 font-weight-normal text-primary text-center mb-0" data-pricing-value="45">Gh<span class="price">180</span>
-                    {{-- <span class="h6 text-muted ml-2">/ per month</span></h1> --}}
-            </div>
-            <div class="card-body pt-0">
-                <ul class="list-unstyled mb-4">
-                    {{-- <li>Up to 5 users</li> --}}
-                    {{-- <li>Basic support on Github</li> --}}
-                    <li>Free Access to Constitution and Pre-4th Republic Laws</li>
-                    <li>Download 20O documents (4th Republic Laws and Cases) for 1 year</li>
-                </ul>
-                <button type="button" class="btn btn-outline-secondary mb-3">Order now</button>
-            </div>
-        </div>
-        <div class="card card-pricing text-center px-3 mb-4">
-            <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white shadow-sm">Unlimited</span>
-            <div class="bg-transparent card-header pt-4 border-0">
-                <h1 class="h1 font-weight-normal text-primary text-center mb-0" data-pricing-value="60">Gh<span class="price">200</span>
-                    {{-- <span class="h6 text-muted ml-2">/ per month</span></h1> --}}
-            </div>
-            <div class="card-body pt-0">
-                <ul class="list-unstyled mb-4">
-                    {{-- <li>Up to 5 users</li> --}}
-                    <li>Free Access to Constitution and Pre-4th Republic Laws</li>
-                    <li>Download all documents (4th Republic Laws and Cases) for 1 year</li>
-                    {{-- <li>Receive email notification of new documents</li> --}}
-                </ul>
-                <button type="button" class="btn btn-outline-secondary mb-3">Order now</button>
-                {{-- <p class="alert alert-primary" role="alert">
-                    Receive email notification of current documents
-                </p> --}}
-                <div class="p-1 mb-0 bg-success text-white">Receive email notification of current documents</div>
-
-            </div>
-        </div>
+        @endforeach
     </div>
 </div>
-{{-- <div class="text-muted mt-5 mb-5 text-center small">by : <a class="text-muted" target="_blank" href="http://totoprayogo.com">totoprayogo.com</a></div> --}}
 
 
+@endsection
 
+@section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+    function makePayment(subscription, amount) {
+        var name = '{{ Auth::user()->name }}';
+        var email = '{{ Auth::user()->email }}';
+        var phone = '{{ Auth::user()->phone }}';
+
+        FlutterwaveCheckout({
+        public_key: "FLWPUBK-8f9fbb57646670b5149ef0af2fd24834-X",
+        // public_key: "FLWPUBK_TEST-504cb06bb23964c64b49447c1ea7fd50-X",
+        tx_ref: "hooli-tx-1920bbtyt",
+        amount: amount,
+        currency:"GHS",
+        payment_options: "card,mobilemoney,ussd",
+        meta: {
+            consumer_id: "{{ Auth::user()->id }}",
+            consumer_mac: "92a3-912ba-1192a",
+        },
+        customer: {
+            email:email,
+            phone_number: phone,
+            name: name,
+        },
+        callback: function (data) {
+            console.log(data);
+
+            $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            url:"/process/" +subscription,
+            type:'GET',
+            success:function(data){
+                //redirect to articles page
+                window.location.href = "/";
+                alert('Your subscription Package is activated');
+            },
+            error: function(){
+                //do something when there is an error
+                alert('Something went wrong. Please try again');
+            },
+         });
+        },
+        customizations: {
+            title: "My package",
+            description: "Payment for items in cart",
+            // logo: "https://assets.piedpiper.com/logo.png",
+            // logo: "{{ asset('/logo/lawsghlog.png') }}"
+        },
+        });
+    }
+    </script>
 @endsection

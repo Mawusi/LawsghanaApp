@@ -94,25 +94,44 @@
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                 <li><a class="expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}"><span class="small"><center>Expanded View</center></span></a></li>
-                <li><a><span class="small"><center>Plain View</center></span></a></li>
-                {{-- <li><a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/plain_view/{{ $allPost1992Act['id'] }}" target="_blank"><span class="small"><center>Plain View</center></span></a></li> --}}
+                
+                @if (Route::has('login'))
+                  @auth
+                        {{-- No Subscription --}}
+                        @if(auth()->user()->check_subscription == 0)
+                          <li><a href="" data-toggle="modal" data-target="#myModalplainSubscribe"><span class="small"><center>Plain View</center></span></a></li>
+                          {{-- Subscription has expired --}}
+                          @elseif(auth()->user()->subscription_expiry < today())
+                          <li><a href="" data-toggle="modal" data-target="#myModalplainExpiry"><span class="small"><center>Plain View</center></span></a></li>                                          
+                          {{-- Subscription download limit reached --}}
+                          @elseif(auth()->user()->subscription_downloads <= auth()->user()->downloads_counts)
+                          <li><a href="" data-toggle="modal" data-target="#maximumDownloadReachedplain"><span class="small"><center>Plain View</center></span></a></li>
+                      
+                          @else
+                          {{-- View Plain View --}}
+                            <li><a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/plain_view/{{ $allPost1992Act['id'] }}" target="_blank"><span class="small"><center>Plain View</center></span></a></li>
+                        @endif
+                      @else
+                    {{-- Create Account --}}
+                    <li><a href="" data-toggle="modal" data-target="#myModalplainAccount"><span class="small"><center>Plain View</center></span></a></li>
+                  @endauth
+                @endif
               </ul>
           </div>
-
           <hr>
-          
           {{-- @include('extenders.case_law_main_search') --}}
           <form action="/acts-of-parliament-act-search/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}" method="GET">
             {{ csrf_field() }}
                 <input style="padding: 15px;" class="form-control" name="search_text" type="text" placeholder="Search word in section" aria-label="Search">
           </form>
-
           <div id="content"></div>
-
-
         </div>
         </center>
     </div>
+        @include('layouts.plain_view_no_subscription')
+        @include('layouts.plain_view_subscription_expiry')
+        @include('layouts.plain_view_downloaded_exceeded')
+        @include('layouts.plain_create_account')
 </div>
 
 

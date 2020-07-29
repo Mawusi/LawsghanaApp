@@ -43,6 +43,9 @@ Route::resource('/downloads', 'DownloadsController'); //To delete a record of bo
 
 //-------------------------------------------------------SUBSCRIPTION-------------------------------------
 Route::get('/subscription','UserDashBoardController@subscription_index');
+// Route::get('/process/subscription/{subscription}/check/{user_id}', 'UserDashBoardController@process')->name('process');
+Route::get('/process/{subscription}', 'UserDashBoardController@process')->name('process');
+Route::get('/accounts/subscription/{subscription}','UserDashBoardController@show_user_subscriptions');
 
 
 //-------------------------------------------------------------------------------SEARCH ENGINE-----------------------------------------------------------------------------------------------

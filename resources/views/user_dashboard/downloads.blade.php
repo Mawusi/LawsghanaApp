@@ -87,7 +87,7 @@
                       <li class="breadcrumb-item"><a href="/accounts/manage-password">Manage Accounts</a></li>
                       <li class="breadcrumb-item"><a href="/accounts/bookmarks/{{ Auth::user()->id }}">Bookmarks</a></li>
                       <li class="breadcrumb-item"><a href="/accounts/downloads/{{ Auth::user()->id }}">Downloads</a></li>
-                      <li class="breadcrumb-item"><a href="#">Subscriptions</a></li>
+                      <li class="breadcrumb-item"><a href="#">My Subscriptions</a></li>
                       {{-- <li class="breadcrumb-item active" aria-current="page">Data</li> --}}
                     </ol>
                 </nav>
@@ -127,6 +127,12 @@
                         <div class="row justify-content-center">
                             <h2>My Downloads</h2>
                         </div>
+                        
+                        <div class="pull-right">
+                            <p style="color:blue">Total Acts/Cases Downloads: {{$user_total_full_downloads}}</p>
+                            <p style="color:blue">Total Section Downloads: {{$user_total_section_downloads}}</p>
+                        </div>
+                        
 
                         <div class="col-md-3">
                             <nav aria-label="breadcrumb">

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -16,7 +17,7 @@ class User extends \TCG\Voyager\Models\User
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone', 'country', 'lname',
+        'name', 'email', 'password', 'phone', 'country', 'lname', 'check_subscription', 'subscription_id', 'subscription_expiry'
     ];
 
     /**
@@ -36,4 +37,11 @@ class User extends \TCG\Voyager\Models\User
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function setExpiry(){
+        if ($this->subscription_expiry < Carbon::today()) {
+            return true;
+        }
+        return false;
+    }
 }

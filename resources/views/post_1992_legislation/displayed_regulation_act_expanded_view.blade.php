@@ -14,21 +14,34 @@
       <div class="menu_options pull-right" style="display: none;">
         @if (Route::has('login'))
           @auth
-              {{-- <a class="regulation_act_download_link" href="javascript:;"  rel="/post_1992_legislation/pdf/regulation/expanded/{{$regulationAct['group']}}/{{$regulationAct['title']}}/{{ $regulationAct['id'] }}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp; --}}
-              <a><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
+                {{-- No Subscription --}}
+                @if(auth()->user()->check_subscription == 0)
+                    @include('layouts.no_subscription')
+                        
+                    {{-- Subscription has expired --}}
+                    @elseif(auth()->user()->subscription_expiry < today())
+                    @include('layouts.expired_subscription')
+                        
+                    {{-- Subscription download limit reached --}}
+                    @elseif(auth()->user()->subscription_downloads <= auth()->user()->downloads_counts)
+                    @include('layouts.exceeded_downloads_subscription')
 
-              <a class="regulation_act_id hidden" href="javascript:;" rel="/acts-downloads/{{$regulationAct['title']}}/{{ Auth::user()->name }}/{{ Auth::user()->id }}/{{$regulationAct['group']}}/{{$regulationAct['id']}}/{{ Auth::user()->id }}{{$regulationAct['title']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>
-              
-              {{-- <a href="/post_1992_legislation/plain/regulation/expanded/{{$regulationAct['act_category']}}/{{$regulationAct['title']}}/{{ $regulationAct['id'] }}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp; --}}
-              <a>Plain View</a>&nbsp;&nbsp;||&nbsp;
+                    {{-- Download PDF and Others --}}
+                    @else
+                      {{-- DOWNLOAD PDF --}}
+                      <a class="regulation_act_download_link" href="javascript:;"  rel="/post_1992_legislation/pdf/regulation/expanded/{{$regulationAct['group']}}/{{$regulationAct['title']}}/{{ $regulationAct['id'] }}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
+                      {{-- SAVE USER DOWNLOAD --}}
+                      <a class="regulation_act_id hidden" href="javascript:;" rel="/acts-downloads/{{$regulationAct['title']}}/{{ Auth::user()->name }}/{{ Auth::user()->id }}/{{$regulationAct['group']}}/{{$regulationAct['id']}}/{{ Auth::user()->id }}{{$regulationAct['title']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>
+                      {{-- PLAIN VIEW --}}
+                      <a href="/post_1992_legislation/plain/regulation/expanded/{{$regulationAct['act_category']}}/{{$regulationAct['title']}}/{{ $regulationAct['id'] }}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp;
+                      {{-- PRINT --}}
+                      <a href="/post_1992_legislation/print/regulation/expanded/{{$regulationAct['act_category']}}/{{$regulationAct['title']}}/{{ $regulationAct['id'] }}" target="_blank"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                @endif
 
-              {{-- <a href="/post_1992_legislation/print/regulation/expanded/{{$regulationAct['act_category']}}/{{$regulationAct['title']}}/{{ $regulationAct['id'] }}" target="_blank"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --}}
-              <a><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              
               @else
-
+              {{-- Create Account --}}
               <a href="" data-toggle="modal" data-target="#myModal"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
-              <a href="/post_1992_legislation/plain/regulation/expanded/{{$regulationAct['act_category']}}/{{$regulationAct['title']}}/{{ $regulationAct['id'] }}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp;
+              <a href="" data-toggle="modal" data-target="#myModal">Plain View</a>&nbsp;&nbsp;||&nbsp;
               <a href="" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
               <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -44,7 +57,6 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                      {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
                     </div>
                   </div>
                 </div>

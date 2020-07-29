@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\UserBookmark;
-// use App\User;
+use App\Subscription;
+use App\User;
+use App\UserDownload;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+
 // use App\Post1992Act;
 // use Illuminate\Support\Facades\DB;
 
@@ -50,8 +55,35 @@ class UserDashBoardController extends Controller
             $user_bookmark->save();           
     }
 
+    //----------------------------------------------------------Subscription-------------------------------------------------------------
+    //Display Packages
     public function subscription_index(){
-        return view('user_dashboard.subscription');
+        // if (auth()->user()->check_subscription) {
+        //     return redirect()->back();
+        // }
+        $subscriptions = Subscription::all();
+        return view('user_dashboard.subscription', compact('subscriptions'));
+    }
+    
+    //Display Users Selected Package
+    public function show_user_subscriptions(Subscription $subscription){
+        // $user = User::findOrFail(auth()->user()->id);
+        $type = $subscription->type;
+        dd($type);
+    }
+
+    //Processing
+    public function process(Subscription $subscription){
+        $user = User::findOrFail(auth()->user()->id);
+            $user->check_subscription = 1;
+            $user->subscription_id = $subscription->id;
+            $user->subscription_downloads = $subscription->no_downloads;
+            $user->subscription_expiry = Carbon::today()->addDays($subscription->duration);
+            $user->downloads_counts = 0;
+
+        $user->saveOrFail();
+
+        return 'successful';
     }
 
 }

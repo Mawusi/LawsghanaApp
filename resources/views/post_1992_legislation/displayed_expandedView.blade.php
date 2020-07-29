@@ -19,42 +19,36 @@
         <div class="menu_options pull-right" style="display: none;">
             @if (Route::has('login'))
                 @auth
+                        {{-- No Subscription --}}
+                        @if(auth()->user()->check_subscription == 0)
+                        @include('layouts.no_subscription')
+                            
+                        {{-- Subscription has expired --}}
+                        @elseif(auth()->user()->subscription_expiry < today())
+                        @include('layouts.expired_subscription')
+                            
+                        {{-- Subscription download limit reached --}}
+                        @elseif(auth()->user()->subscription_downloads <= auth()->user()->downloads_counts)
+                        @include('layouts.exceeded_downloads_subscription')
 
-                    {{-- PDF --}}
-                    {{-- <a class="act_download_link" href="javascript:;" rel="/post-1992-legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/pdf-view/{{ $allPost1992Act['id'] }}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp; --}}
-                    <a ><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
-
-                    <a class="act_id hidden" href="javascript:;" rel="/acts-downloads/{{$allPost1992Act['title']}}/{{ Auth::user()->name }}/{{ Auth::user()->id }}/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['id']}}/{{ Auth::user()->id }}{{$allPost1992Act['title']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>
-                    
-                    {{-- PLAIN --}}
-                    {{-- <a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/plain_view/{{ $allPost1992Act['id'] }}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp; --}}
-                    <a>Plain View</a>&nbsp;&nbsp;||&nbsp;
-
-                    {{-- PRINT --}}
-                    {{-- <a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/print_view/{{ $allPost1992Act['id'] }}" target="_blank"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --}}
-                    <a><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            {{-- Download PDF and Others --}}
+                            @else
+                                {{-- DOWNLOAD PDF --}}
+                                <a class="act_download_link" href="javascript:;" rel="/post-1992-legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/pdf-view/{{ $allPost1992Act['id'] }}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
+                                {{-- SAVE USER DOWNLOAD --}}
+                                <a class="act_id hidden" href="javascript:;" rel="/acts-downloads/{{$allPost1992Act['title']}}/{{ Auth::user()->name }}/{{ Auth::user()->id }}/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['id']}}/{{ Auth::user()->id }}{{$allPost1992Act['title']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>  
+                                {{-- PLAIN VIEW --}}
+                                <a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/plain_view/{{ $allPost1992Act['id'] }}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp;
+                                {{-- PRINT --}}
+                                <a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/print_view/{{ $allPost1992Act['id'] }}" target="_blank"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        @endif
 
                     @else
-
+                    {{-- Create Account --}}
                     <a href="" data-toggle="modal" data-target="#myModal"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
-                    {{-- <a href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/plain_view/{{ $allPost1992Act['id'] }}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp; --}} 
-                    <a>Plain View</a>&nbsp;&nbsp;||&nbsp;
+                    <a href="" data-toggle="modal" data-target="#myModal">Plain View</a>&nbsp;&nbsp;||&nbsp;
                     <a href="" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                    {{-- <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-                        <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                <br>
-                                <div class="container">
-                                    <h3>Kindly <span style="color:blue;"><b>Log In</b></span> or <span style="color:blue;"><b>Register</b></span> to Create An Account</h3>
-                                    <br>
-                                    <a class="btn btn-sm btn-primary" href="{{ route('login') }}">Login</a>
-                                    <a class="btn btn-sm btn-primary" href="{{ route('register') }}">Register</a>
-                                </div>
-                                <br>
-                            </div>
-                        </div>
-                    </div> --}}
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
@@ -68,7 +62,6 @@
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                              {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
                             </div>
                           </div>
                         </div>

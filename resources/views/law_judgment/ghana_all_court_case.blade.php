@@ -209,28 +209,42 @@
                                             <div class="menu_options pull-right" style="display: none;">
                                                 @if (Route::has('login'))
                                                     @auth
-                                                        {{-- PDF --}}
-                                                        {{-- <a class="case_download_link" href="javascript:;" rel="/judgement/1/case_law/pdf_view/{{ $allGhanaLaw['case_title'] }}/{{$allGhanaLaw['id']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp; --}}
-                                                        {{-- <a href="/subscription"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp; --}}
-                                                        <a><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
+                                                            
+                                                            {{-- No Subscription --}}
+                                                            @if(auth()->user()->check_subscription == 0)
+                                                                @include('layouts.no_subscription')
+                                                                    
+                                                                {{-- Subscription has expired --}}
+                                                                @elseif(auth()->user()->subscription_expiry < today())
+                                                                @include('layouts.expired_subscription')
+                                                                    
+                                                                {{-- Subscription download limit reached --}}
+                                                                @elseif(auth()->user()->subscription_downloads <= auth()->user()->downloads_counts)
+                                                                @include('layouts.exceeded_downloads_subscription')
+                                                                    
+                                                                {{-- Download PDF and Others --}}
+                                                                @else
+                                                                    {{-- DOWNLOAD PDF --}}
+                                                                    <a class="case_download_link" href="javascript:;" rel="/judgement/1/case_law/pdf_view/{{ $allGhanaLaw['case_title'] }}/{{$allGhanaLaw['id']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
+                                                                    
+                                                                    {{-- SAVE USER DOWNLOAD --}}
+                                                                    <a class="case_id hidden" href="javascript:;" rel="/acts-downloads/{{$allGhanaLaw['case_title']}}/{{ Auth::user()->name }}/{{ Auth::user()->id }}/{{$allGhanaLaw['gh_law_judgment_group_name']}}/{{$allGhanaLaw['id']}}/{{ Auth::user()->id }}{{$allGhanaLaw['case_title']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>
 
-                                                        <a class="case_id hidden" href="javascript:;" rel="/acts-downloads/{{$allGhanaLaw['case_title']}}/{{ Auth::user()->name }}/{{ Auth::user()->id }}/{{$allGhanaLaw['gh_law_judgment_group_name']}}/{{$allGhanaLaw['id']}}/{{ Auth::user()->id }}{{$allGhanaLaw['case_title']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>
-                                                        
-                                                        {{-- PLAIN VIEW --}}
-                                                        {{-- <a href="/judgement/plain_view/{{$allGhanaLaw['id']}}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp; --}}
-                                                        <a>Plain View</a>&nbsp;&nbsp;||&nbsp;
-                                                        
-                                                        {{-- PRINT --}}
-                                                        {{-- <a href="/judgement/print_preview/{{$allGhanaLaw['id']}}" target="_blank"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --}}
-                                                        <a><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                    {{-- PLAIN VIEW --}}
+                                                                    <a href="/judgement/plain_view/{{$allGhanaLaw['id']}}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp;
+                                                                    
+                                                                    {{-- PRINT --}}
+                                                                    <a href="/judgement/print_preview/{{$allGhanaLaw['id']}}" target="_blank"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            
+                                                            @endif
 
                                                         @else
 
+                                                        {{-- Create Account --}}
                                                         <a href="" data-toggle="modal" data-target="#myModal"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
-                                                        
                                                         {{-- PLAIN --}}
                                                         {{-- <a href="/judgement/plain_view/{{$allGhanaLaw['id']}}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp; --}}
-                                                        <a>Plain View</a>&nbsp;&nbsp;||&nbsp;
+                                                        <a href="" data-toggle="modal" data-target="#myModal">Plain View</a>&nbsp;&nbsp;||&nbsp;
 
                                                         <a href="" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 

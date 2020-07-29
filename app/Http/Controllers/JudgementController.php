@@ -10,6 +10,7 @@ use App\ForeignLawJudgment;
 use App\Country;
 use PDF;
 use App\FooterNote;
+use Carbon\Carbon;
 
 class JudgementController extends Controller
 {
@@ -73,6 +74,7 @@ class JudgementController extends Controller
 
         $allGhanaLaws = GhLawJudgment::where(['gh_law_judgment_group_name' => $name])->get();
         $footer_notes           = FooterNote::all();
+        
         return view('law_judgment.ghana_all_court_case', compact('footer_notes','allGhanaLaws', 'allGhanaLaw'));
     }
 
@@ -106,7 +108,7 @@ class JudgementController extends Controller
                 'id' => $id,
                 'case_title' => $name
             ])->toArray()[0];
-        $pdf = PDF::loadView('law_judgment.displayed_pdf_content_view', compact('allGhanaLawpdf'));
+        $pdf = PDF::loadView('law_judgment.displayed_pdf_content_view', compact('allGhanaLawpdf'));        
         return $pdf->download($name.'.case_law.pdf');
     }
 
