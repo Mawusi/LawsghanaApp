@@ -71,6 +71,7 @@
 
         FlutterwaveCheckout({
         public_key: "FLWPUBK-8f9fbb57646670b5149ef0af2fd24834-X",
+        //local key
         // public_key: "FLWPUBK_TEST-504cb06bb23964c64b49447c1ea7fd50-X",
         tx_ref: "hooli-tx-1920bbtyt",
         amount: amount,

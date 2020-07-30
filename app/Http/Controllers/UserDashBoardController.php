@@ -6,9 +6,8 @@ use Illuminate\Http\Request;
 use App\UserBookmark;
 use App\Subscription;
 use App\User;
-use App\UserDownload;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
+
 
 // use App\Post1992Act;
 // use Illuminate\Support\Facades\DB;

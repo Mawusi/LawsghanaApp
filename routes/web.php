@@ -36,7 +36,6 @@ Route::resource('/bookmarks', 'BookmarkController'); //To delete a record of boo
 
 // -----------------------------------------------------DOWNLOADS-------------------------------------
 Route::get('/section_downloads/{act}/{sections}/{section_id}/{user_name}/{user_id}/{user_section}/{group}/{act_id}','DownloadsController@save_download_section'); //To Download from section
-// Route::get('/constitutional_act/section_downloads/{act}/{sections}/{section_id}/{user_name}/{user_id}/{user_section}/{group}/{act_id}','DownloadsController@save_download_section'); //To Download from section
 Route::get('/acts-downloads/{act_title}/{user_name}/{user_id}/{act_group}/{act_id}/{user_title}','DownloadsController@save_download_act'); //To Download from section
 Route::get('/accounts/downloads/{user_id}','DownloadsController@show_user_downloads'); //Download page.........shows all list of downloads
 Route::resource('/downloads', 'DownloadsController'); //To delete a record of bookmark

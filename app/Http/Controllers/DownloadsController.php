@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\UserDownload;
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 class DownloadsController extends Controller
 {
@@ -24,6 +25,9 @@ class DownloadsController extends Controller
 
         return view('user_dashboard.downloads', compact('order_by_sections', 'order_by_acts', 'user_total_full_downloads','user_total_section_downloads'));
     }
+
+
+    // FOR CASES AND 4TH REPUBLIC LAWS------------------------------------------------------------------------------------------------------------------------------------------
 
     public function save_download_section($act_title, $section, $section_id, $user_name, $user_id, $user_section, $act_group, $act_id){
         
@@ -45,7 +49,7 @@ class DownloadsController extends Controller
     }
 
     public function save_download_act($act_title, $user_name, $user_id, $act_group, $act_id, $user_act){
-
+        // DB::table('user_downloads')->truncate();
         if (UserDownload::where('user_act', '=', $user_act)->first())
             {
                 return response()->json(
@@ -61,11 +65,20 @@ class DownloadsController extends Controller
                 );  
             }
 
-            $user_download->save(); 
-
+            $user_download->save();
+            
+          if($act_group == 'Acts of Parliament' or 
+             $act_group == 'Legislative Instruments' or 
+             $act_group == 'Supreme-Court' or 
+             $act_group == 'Court-of-Appeal' or 
+             $act_group == 'High-Court' )
+             {
             User::where('id', $user_id)->increment('downloads_counts', 1);
-
-            // User::find($user_id)->increment('downloads_counts', 1);
+          }  
+          else{
+            $user = User::where('id', $user_id);
+            $user->downloads_counts =+ 0;
+          }
     }
 
     public function destroy($id){
