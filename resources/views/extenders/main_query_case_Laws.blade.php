@@ -22,7 +22,7 @@
     
                         @else
                         {{-- View Plain View --}}
-                            <a href="/judgement/plain_view/{{$supreme_court_case->id}}" target="_blank"><h5 style="color:blue;"><b>{!! $supreme_court_case->case_title !!}</b></h5></a>
+                            <a href="/judgement/Ghana/{{$supreme_court_case->gh_law_judgment_group_name}}/{{$supreme_court_case->id}}" target="_blank"><h5 style="color:blue;"><b>{!! $supreme_court_case->case_title !!}</b></h5></a>
                     @endif
                 @else
                 {{-- Create Account --}}

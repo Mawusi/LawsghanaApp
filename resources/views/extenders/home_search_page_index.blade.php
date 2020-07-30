@@ -170,7 +170,7 @@
           <div class="move_here hidden  top_here"><br></div>
           @include('extenders.main_query_on_4th_Rep_Laws')
           @include('extenders.main_query_on_pre_4th_Rep_Laws')
-          @include('extenders.main_query_case_Laws')  
+          @include('extenders.main_query_case_Laws_revised')  
           @include('extenders.main_query_country_constitution')  
           @include('extenders.main_query_ghana_constitution')                                          
       </div>

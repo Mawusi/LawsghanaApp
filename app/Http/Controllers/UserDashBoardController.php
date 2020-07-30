@@ -28,15 +28,11 @@ class UserDashBoardController extends Controller
 
     //----------------------------------------------------------Bookmarks-------------------------------------------------------------
     public function show_user_bookmarks($user_id){
-        $userbookmark = UserBookmark::find($user_id);
         $order_by_dates = UserBookmark::where(['user_id' => $user_id])->orderBy('created_at')->get();
-
-        return view('user_dashboard.bookmarks', compact('userbookmark','order_by_dates'));
+        return view('user_dashboard.bookmarks', compact('order_by_dates'));
     }
 
     public function save_bookmark_article($act, $section, $section_id, $user_name, $user_id, $user_section, $act_group, $act_id){
-        $user_bookmark = new UserBookmark;
-
         if (UserBookmark::where('user_section', '=', $user_section)->first())
             {
                 return response()->json(
