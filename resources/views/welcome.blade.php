@@ -242,6 +242,17 @@
                 border-color:#2176bd;
             }
         </style>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174662621-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-174662621-1');
+        </script>
+
     </head>
             <!--Start of Tawk.to Script-->
             <script type="text/javascript">
