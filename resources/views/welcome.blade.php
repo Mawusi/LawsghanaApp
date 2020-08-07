@@ -284,7 +284,7 @@
         <!-- <div class="container flex-center position-ref full-height"> -->
         <div class="container">
             
-            <p class="top-left">It's a new experience,&nbsp;<span style="color:red;" id="target"><b>Coming Soon...</b></span></p>
+            <p class="top-left">It's a new experience,&nbsp;<span style="color:red;" id="target"><b>clould-based platform...</b></span></p>
             {{-- <p class="top-left-enquiry">For further enquires, kindly contact <span style="color:red;"><b>0209534818</b></span></p> --}}
             
             @if (Route::has('login'))
