@@ -19,15 +19,26 @@
         <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('logo/favicon/favicon-16x16.png') }}">
         <link rel="manifest" href="{{ asset('logo/favicon/site.webmanifest') }}">
 
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}" defer></script>
+
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link rel="dns-prefetch" href="//fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+        <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        @yield('assets')
+        @yield('scripts_first')
+        <!-- Fonts -->
+        {{-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet"> --}}
         
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        {{-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> --}}
         
         <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">        
+        {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">         --}}
         <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> --}}
 
         <!-- Styles -->
         <style>
@@ -275,12 +286,6 @@
             </a>
         </div>
         
-            
-            
-            
-        
-
-        
         <!-- <div class="container flex-center position-ref full-height"> -->
         <div class="container">
             
@@ -291,18 +296,13 @@
                 <div class="top-right links">
                     
                     @auth
-                        <a style="color: blue;"  id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <a style="color: blue;" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             Hi, {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <div class="profile-usermenu">
                                 <ul class="nav">
-                                    {{-- <li>
-                                        <a href="#">
-                                        <i class="glyphicon glyphicon-dashboard"></i>
-                                        Dashboard </a>
-                                    </li> --}}
                                     <li>
                                         <a href="/accounts/profile/{{ Auth::user()->id }}">
                                         <i class="glyphicon glyphicon-user"></i>
@@ -380,13 +380,7 @@
         {{-- <div class="container content m-b-md"> --}}
 
             <div id="mycarousel" class="carousel slide carousel-fade" data-ride="carousel">
-                <!-- Indicators -->
-                {{-- <ol class="carousel-indicators">
-                  <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#mycarousel" data-slide-to="1"></li>
-                  <li data-target="#mycarousel" data-slide-to="2"></li>
-                  <li data-target="#mycarousel" data-slide-to="3"></li>
-                </ol> --}}
+                
               
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
@@ -400,7 +394,7 @@
                         <form action="{{ url('main_home_search') }}" method="GET">
                             {{ csrf_field() }}
                             <div class="input-group" style="border: 1px solid black; box-shadow: .1px .1px .1px black;">         
-                                    <input style="font-size:14pt;height:50px;" type="text" class="form-control" name="search_text" placeholder="Search any law or case in Ghana"">
+                                    <input style="font-size:14pt;height:50px;" type="text" class="form-control" name="search_text" placeholder="Search any law or case in Ghana">
                                     <span class="input-group-btn">
                                         <button style="font-size:14pt;height:50px;" class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
                                     </span>
@@ -530,71 +524,8 @@
                 </div>
               </section>
                 
-              {{-- <center>
-                <div style="margin-top:6px;">
-                        <a class="btn btn-primary btn-space btn-width" href="/constitution/Republic/Ghana/1">
-                            <b>CONSTITUTION</b><br>
-                            <p>an aggregate of fundamental<br> principles or established<br> precedents that constitute</p>
-                        </a>
-                        <a class="btn btn-primary btn-space btn-width" href="/pre_1992_legislation">
-                            <b>PRE 4TH REPUBLIC LAWS</b><br>
-                            <p>an aggregate of fundamental<br> principles or established<br> precedents that constitute</p>
-                        </a>
-                        <a class="btn btn-primary btn-space btn-width" href="/post_1992_legislation">
-                            <b>4TH REPUBLIC LAWS</b><br>
-                            <p>an aggregate of fundamental<br> principles or established<br> precedents that constitute</p>
-                        </a>
-                        <a class="btn btn-primary btn-space btn-width" href="/judgement/Ghana">
-                            <b>CASE LAWS</b><br>
-                            <p>an aggregate of fundamental<br> principles or established<br> precedents that constitute</p>
-                        </a>
-                        <a class="btn btn-primary btn-width" href="/News/Ghana-News/1" target="_blank">
-                            <b>NEWS</b><br>
-                            <p>an aggregate of fundamental<br> principles or established<br> precedents that constitute</p>
-                        </a>    
-                </div>
-              </center> --}}
-
-                                {{-- https://www.youtube.com/watch?v=aVNzDsz5YL4 --}}
-
-                
-                {{-- <div class="row">
-                    <div class="title">
-                        Coming Soon
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2" style="margin-bottom: 50px; margin-top: 50px;">
-                        <form action="{{ url('main_home_search') }}" method="GET">
-                            {{ csrf_field() }}
-                            <div class="input-group">         
-                                    <input type="text" class="form-control" name="search_text" placeholder="Search any law or case in Ghana"">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
-                                    </span>
-                            </div>
-                        </form>       
-                    </div>
-                </div>
-                    
-                    
-                <div class="row">
-                    <div class="col-xs-12 col-xs-offset-0 col-sm-12 col-sm-offset-0 col-md-12 col-md-offset-0 links">
-                        
-                            <a href="/constitution/Republic/Ghana/1">Constitution</a>
-                            <a href="/pre_1992_legislation">Pre 4th Republic Laws</a>
-                            <a href="/post_1992_legislation">4th Republic Laws</a>
-                            <a href="/judgement/Ghana">Case Laws</a>
-                            <a href="/News/Ghana-News/1" target="_blank">News</a>
-                        
-                    </div>
-                </div> --}}
-                
-        {{-- </div> --}}
-        
-
-        <script src="{{ asset('js/jquery.min.js') }}"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        {{-- <script src="{{ asset('js/jquery.min.js') }}"></script> --}}
+        {{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> --}}
         
         <script src="{{ asset('js/jquery-3.0.0.js') }}"></script>
         <script src="{{ asset('js/jquery-ui.js') }}"></script>
@@ -608,9 +539,7 @@
                 $("#mycarousel").carousel({
                     interval: 3800
                 });
-            });
-        
-                   
+            });         
         </script>
         
     </body>

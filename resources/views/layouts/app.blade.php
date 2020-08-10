@@ -67,41 +67,44 @@
                     {{ config('app.name', 'LawsGhana') }}
                 </a> --}}
                 <a href="/" class="">
-                    <img src="{{ asset('/logo/lawsghlog.png') }}" class="img-responsive" style="width:18em; padding-top: 5px; padding-bottom:5px;padding-left:5px;"> 
+                    <img src="{{ asset('/logo/lawsghlog.png') }}" class="img-responsive" style="width:12em; padding-top: 1px; padding-bottom:1px;padding-left:1px;"> 
                 </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <p class="pt-0 my-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A new experience,&nbsp;<span style="color:blue;" id="target"><b>clould-based platform...</b></span></p>&nbsp;&nbsp;&nbsp;&nbsp;
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
+                        &nbsp;<a class="btn btn-sm btn-primary" href="{{ route('login') }}">Login</a>&nbsp;
+
                             @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
+                                <a class="btn btn-sm btn-primary" href="{{ route('register') }}">Sign Up</a>
                             @endif
+                            
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                <a style="color: blue;" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Hi, {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/accounts/profile/{{ Auth::user()->id }}">Profile </a>
+                                    <a class="dropdown-item" href="/accounts/manage-password">Manage Accounts </a>
+                                    <a class="dropdown-item" href="/accounts/downloads/{{ Auth::user()->id }}">Downloads</a>
+                                    <a class="dropdown-item" href="/accounts/bookmarks/{{ Auth::user()->id }}">Bookmarks</a>
+                                    @if( Auth::user()->subscription_id == null)
+                                        <a class="dropdown-item" style="color: red;">No Subscription</a>
+                                        @else
+                                            <a class="dropdown-item" href="/accounts/subscription/{{ Auth::user()->subscription_id }}">My Subscription</a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                    onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -116,7 +119,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-0">
             @yield('content')
         </main>
     </div>

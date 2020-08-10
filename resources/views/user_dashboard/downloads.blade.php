@@ -5,6 +5,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title> 
+        @hasSection('title')
+            @yield('title')
+        @else
+            {{ setting('site.title') }}
+        @endif
+    </title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('logo/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('logo/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('logo/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('logo/favicon/site.webmanifest') }}">
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -15,54 +31,75 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
-    <style>
-         /* body {
-                background-color: white;
-            } */
-    </style>
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174662621-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-    <title>LawsGhana</title>
+    gtag('config', 'UA-174662621-1');
+    </script>
+
   </head>
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/5e398d16298c395d1ce62ab4/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+</script>
+<!--End of Tawk.to Script-->
   <body>
     {{-- <div id="app"> --}}
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a href="/" class="">
-                <img src="{{ asset('/logo/lawsghlog.png') }}" class="img-responsive" style="width:18em; padding-top: 5px; padding-bottom:5px;padding-left:5px;"> 
+                <img src="{{ asset('/logo/lawsghlog.png') }}" class="img-responsive" style="width:12em; padding-top: 1px; padding-bottom:1px;padding-left:1px;"> 
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <p class="pt-0 my-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A new experience,&nbsp;<span style="color:blue;" id="target"><b>clould-based platform...</b></span></p>&nbsp;&nbsp;&nbsp;&nbsp;
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-
-                </ul>
-
+                
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
+                    &nbsp;<a class="btn btn-sm btn-primary" href="{{ route('login') }}">Login</a>&nbsp;
+
                         @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
+                            <a class="btn btn-sm btn-primary" href="{{ route('register') }}">Sign Up</a>
                         @endif
+                        
                     @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                            <a style="color: blue;" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Hi, {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/accounts/profile/{{ Auth::user()->id }}">Profile </a>
+                                <a class="dropdown-item" href="/accounts/manage-password">Manage Accounts </a>
+                                <a class="dropdown-item" href="/accounts/downloads/{{ Auth::user()->id }}">Downloads</a>
+                                <a class="dropdown-item" href="/accounts/bookmarks/{{ Auth::user()->id }}">Bookmarks</a>
+                                @if( Auth::user()->subscription_id == null)
+                                    <a class="dropdown-item" style="color: red;">No Subscription</a>
+                                    @else
+                                        <a class="dropdown-item" href="/accounts/subscription/{{ Auth::user()->subscription_id }}">My Subscription</a>
+                                @endif
                                 <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
+                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
 
@@ -79,22 +116,9 @@
 
     
 
-    <main class="py-4">
-            <div class="container">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a href="/accounts/profile/{{ Auth::user()->id }}">Profile</a></li>
-                      <li class="breadcrumb-item"><a href="/accounts/manage-password">Manage Accounts</a></li>
-                      <li class="breadcrumb-item"><a href="/accounts/bookmarks/{{ Auth::user()->id }}">Bookmarks</a></li>
-                      <li class="breadcrumb-item"><a href="/accounts/downloads/{{ Auth::user()->id }}">Downloads</a></li>
-                      <li class="breadcrumb-item"><a href="#">My Subscriptions</a></li>
-                      {{-- <li class="breadcrumb-item active" aria-current="page">Data</li> --}}
-                    </ol>
-                </nav>
-                
-                {{-- <div class="row justify-content-center"> --}}
-                    {{-- <div class="col-md-11"> --}}
-                    <!-- Button trigger modal -->
+    <main class="py-0">
+            <div class="container mt-3">
+                @include('user_dashboard.accounts_dropdown')
                         
                         <!-- Modal -->
                         <div class="modal fade" id="deleteModal_section" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

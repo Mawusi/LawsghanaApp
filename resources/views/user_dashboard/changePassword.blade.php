@@ -2,23 +2,14 @@
 
 @section('content')
 
-<div class="container">
+<div class="container mt-3">
 
         <div id="app">
             @include('flash-message')
             @yield('content')
         </div>
 
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="/accounts/profile/{{ Auth::user()->id }}">Profile</a></li>
-              <li class="breadcrumb-item"><a href="/accounts/manage-password">Manage Accounts</a></li>
-              <li class="breadcrumb-item"><a href="/accounts/bookmarks/{{ Auth::user()->id }}">Bookmarks</a></li>
-              <li class="breadcrumb-item"><a href="#">Downloads</a></li>
-              <li class="breadcrumb-item"><a href="#">Subscriptions</a></li>
-              {{-- <li class="breadcrumb-item active" aria-current="page">Data</li> --}}
-            </ol>
-        </nav>
+        @include('user_dashboard.accounts_dropdown')
 
     <div class="row justify-content-center">
         <div class="col-md-8">
