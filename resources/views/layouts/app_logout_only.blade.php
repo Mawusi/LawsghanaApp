@@ -35,6 +35,12 @@
     @yield('assets')
     @yield('scripts_first')
 
+    <style type="text/css">
+        .mt-0 {
+            margin-top: 90px !important;
+        }
+    </style>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174662621-1"></script>
     <script>
@@ -61,7 +67,7 @@
     <!--End of Tawk.to Script-->
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top shadow-sm">
             <div class="container">
                 {{-- <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'LawsGhana') }}

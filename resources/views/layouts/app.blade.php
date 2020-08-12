@@ -40,6 +40,12 @@
     @yield('assets')
     @yield('scripts_first')
 
+    <style type="text/css">
+        .mt-customised {
+            margin-top: 90px !important;
+        }
+    </style>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174662621-1"></script>
     <script>
@@ -146,7 +152,7 @@
             </div>
         </nav>
 
-        <main class="py-0">
+        <main class="py-o">
             @yield('content')
         </main>
     </div>

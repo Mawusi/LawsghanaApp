@@ -89,7 +89,7 @@
   overflow: auto;
   position: -webkit-sticky;
   position: sticky;
-  top: 10%;
+  top: 15%;
 }.make_stick{
   position: -webkit-sticky;
   position: sticky;
@@ -100,12 +100,12 @@
 
 @section('content')
 
-<div class="container-fluid mt-5">
+<div class="container-fluid mt-customised">
   <div class="row">
       <div class="col-md-3 mx-auto">
         <div class="sidebar">
           <div class="search-well-filter">
-            <label style="color:blue;">Filter Options</label>
+            <span style="color:blue;">Filter Options</span>
             <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($all_total_count)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p><hr>
             
               <div class="custom-radio mb-2"> 

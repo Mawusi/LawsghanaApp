@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container mt-3">
+<div class="container mt-0">
 
         <div id="app">
             @include('flash-message')

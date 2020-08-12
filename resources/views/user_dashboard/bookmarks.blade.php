@@ -32,6 +32,12 @@
     {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     
+    <style type="text/css">
+    .mt-0 {
+        margin-top: 90px !important;
+    }
+    </style>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174662621-1"></script>
     <script>
@@ -58,7 +64,7 @@
     <!--End of Tawk.to Script-->
   <body>
     {{-- <div id="app"> --}}
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top shadow-sm">
         <div class="container">
             <a href="/" class="">
                 <img src="{{ asset('/logo/lawsghlog.png') }}" class="img-responsive" style="width:12em; padding-top: 1px; padding-bottom:1px;padding-left:1px;"> 
@@ -110,7 +116,7 @@
     </nav>
 
     <main class="py-0">
-            <div class="container mt-3">
+            <div class="container mt-0">
                 @include('user_dashboard.accounts_dropdown')
                         
                         <!-- Modal -->

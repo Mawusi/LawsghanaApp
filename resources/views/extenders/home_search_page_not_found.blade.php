@@ -89,7 +89,7 @@
   overflow: auto;
   position: -webkit-sticky;
   position: sticky;
-  top: 10%;
+  top: 15%;
 }.make_stick{
   position: -webkit-sticky;
   position: sticky;
@@ -100,30 +100,12 @@
 
 @section('content')
 
-<div class="container-fluid mt-5">
-
-  {{-- <div class="row fixed-top" style="margin-top:75px; margin-bottom: 85px;">
-      <div class="col-md-3">
-      </div>
-      
-      <div class="col-md-offset-1 col-md-6">
-        <form action="{{ url('main_home_search') }}" method="GET">
-          {{ csrf_field() }}
-          <div class="input-group">         
-            <input style="font-size:12pt;height:35px;width:350px;" type="text" class="form-control" name="search_text" placeholder="Search any law or case in Ghana...">
-          </div>
-        </form>
-      </div>
-      <div class="col-md-2">
-      <p style="color:blue;"><b class="hidden">Found: {{$all_total_count}} Results</b></p>
-      </div>
-  </div> --}}
-
+<div class="container-fluid mt-customised">
   <div class="row">
       <div class="col-md-3 mx-auto">
         <div class="sidebar">
           <div class="search-well-filter">
-            <label style="color:blue;">Filter Options</label>
+            <span style="color:blue;">Filter Options</span>
             <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($all_total_count)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p><hr>
             
             <div class="custom-radio mb-2"> 

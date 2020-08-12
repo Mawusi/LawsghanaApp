@@ -40,6 +40,12 @@
     @yield('assets')
     @yield('scripts_first')
 
+    <style type="text/css">
+        .mt-customised {
+            margin-top: 70px !important;
+        }
+    </style>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174662621-1"></script>
     <script>
@@ -74,19 +80,27 @@
                 </a> --}}
                 <a href="/" class="">
                     <img src="{{ asset('/logo/lawsghlog.png') }}" class="img-responsive" style="width:12em; padding-top: 1px; padding-bottom:1px;padding-left:1px;"> 
-                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="mx-auto" style="width: 550px;">
+                <div class="mx-auto" style="width: 650px;">
                     <form action="{{ url('main_home_search') }}" method="GET">
                         {{ csrf_field() }}
                         <div class="input-group">         
-                        <input type="text" class="form-control" name="search_text" placeholder="Search any law or case in Ghana...">
+                            <input type="text" class="form-control border border-dark rounded-lg" name="search_text" placeholder="Search any law or case in Ghana...">
                         </div>
                     </form>
                 </div>
-                {{-- <p class="pt-0 my-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A new experience,&nbsp;<span style="color:blue;" id="target"><b>clould-based platform...</b></span></p>&nbsp;&nbsp;&nbsp;&nbsp; --}}
+                {{-- <div class="input-group input-group-sm" style="width: 650px;">
+                    <form action="{{ url('main_home_search') }}" method="GET">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Search</span>
+                        </div>
+                        <input type="text" class="form-control border border-dark rounded-lg" name="search_text" placeholder="Search any law or case in Ghana...">
+                    </form>
+                </div> --}}
+                
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

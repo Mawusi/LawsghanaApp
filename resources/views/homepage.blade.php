@@ -14,7 +14,7 @@
     margin-left: 1.5px;
     }
     .carousel-item {
-    height: 66vh;
+    height: 75vh;
     min-height: 150px;
     background: no-repeat center center scroll;
     -webkit-background-size: cover;
@@ -52,9 +52,10 @@
       <form action="{{ url('main_home_search') }}" method="GET">
         {{ csrf_field() }}
         <div class="input-group">         
-          <input style="font-size:12pt;height:35px;width:350px;" type="text" class="form-control" name="search_text" placeholder="Search any law or case in Ghana...">
+          <input style="font-size:12pt;height:35px;width:350px;" type="text" class="form-control border border-dark rounded-lg" name="search_text" placeholder="Search any law or case in Ghana...">
         </div>
       </form>
+    
     </div>
   
     <div class="carousel-inner" role="listbox">
