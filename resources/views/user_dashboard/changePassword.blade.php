@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_logout_only')
 
 @section('content')
 

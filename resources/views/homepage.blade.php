@@ -68,21 +68,21 @@
       <!-- Slide Two - Set the background image for this slide in the line below -->
       <div class="carousel-item" style="background-image: url(home_background/parliament.jpg)">
         <div class="carousel-caption d-none d-md-block">
-          <h2 class="display-4">Flexible Access to Resources</h2>
+          <h1 class="display-4"><b>Flexible Access to Resources</b></h1>
           <p class="lead">Multiple search and filter for need-based research</p>
         </div>
       </div>
       <!-- Slide Three - Set the background image for this slide in the line below -->
       <div class="carousel-item" style="background-image: url(home_background/text_book.jpeg)">
         <div class="carousel-caption d-none d-md-block">
-          <h2 class="display-4">Convenient & Cost Effective</h2>
+          <h1 class="display-4"><b>Convenient & Cost Effective</b></h1>
           <p class="lead">Access thousands of Cases and laws for free</p>
         </div>
       </div>
       <!-- Slide Four - Set the background image for this slide in the line below -->
       <div class="carousel-item" style="background-image: url(home_background/scholar.jpg)">
         <div class="carousel-caption d-none d-md-block">
-          <h2 class="display-4">Precise Search Navigation</h2>
+          <h1 class="display-4"><b>Precise Search Navigation</b></h1>
           <p class="lead">Explore and find your desired searches</p>
         </div>
       </div>
@@ -104,52 +104,52 @@
     <div class="pricing card-deck flex-column flex-md-row mb-0">
         {{-- @foreach($subscriptions as $subscription) --}}
         <div class="card card-pricing text-center pt-1 mb-0">
-            <span class="h5 w-60 mx-auto px-4 py-1 rounded-bottom text-primary shadow-sm"><a href="/constitution/Republic/Ghana/1">Constitution</a></span>
+            <span class="h5 w-60 mx-auto px-4 py-1 rounded-bottom text-primary shadow-sm"><a href="/constitution/Republic/Ghana/1"><b>Constitution</b></a></span>
             <a href="/constitution/Republic/Ghana/1">
               <div class="card-body pt-0">
                 <ul class="list-unstyled mb-0 text-dark">
-                    <li>Access constitution of Ghana along with constitution of over 100 countries in Africa, Asia, America and Europe</li>
+                    <li><b>Access constitution of Ghana along with constitution of over 100 countries in Africa, Asia, America and Europe</b></li>
                 </ul>
             </div>
             </a>
         </div>
         {{-- @endforeach --}}
         <div class="card card-pricing text-center pt-1 mb-0">
-          <span class="h5 w-60 mx-auto px-4 py-1 rounded-bottom text-primary shadow-sm"><a href="/pre_1992_legislation">Old Laws</a></span>
+          <span class="h5 w-60 mx-auto px-4 py-1 rounded-bottom text-primary shadow-sm"><a href="/pre_1992_legislation"><b>Old Laws</b></a></span>
           <a href="/pre_1992_legislation">
           <div class="card-body pt-0">
               <ul class="list-unstyled mb-0 text-dark">
-                  <li>Access over 200 Ghanaian laws and enactments before the Fourth Republic</li>
+                  <li><b>Access over 200 Ghanaian laws and enactments before the Fourth Republic</b></li>
               </ul>
           </div>
           </a>
         </div>
         <div class="card card-pricing text-center pt-1 mb-0">
-          <span class="h5 w-60 mx-auto px-4 py-1 rounded-bottom text-primary shadow-sm"><a href="/post-1992-legislation">New Laws</a></span>
+          <span class="h5 w-60 mx-auto px-4 py-1 rounded-bottom text-primary shadow-sm"><a href="/post-1992-legislation"><b>New Laws</b></a></span>
           <a href="/post-1992-legislation">
           <div class="card-body pt-0">
               <ul class="list-unstyled mb-0 text-dark">
-                  <li>Access over 200 consolidated laws of Ghana including Acts, Regulations and Amendments in the Fourth Republic</li>
+                  <li><b>Access over 200 consolidated laws of Ghana including Acts, Regulations and Amendments in the Fourth Republic</b></li>
               </ul>
           </div>
           </a>
         </div>
         <div class="card card-pricing text-center pt-1 mb-0">
-          <span class="h5 w-60 mx-auto px-4 py-1 rounded-bottom text-primary shadow-sm"><a href="/judgement/Ghana">Case Laws</a></span>
+          <span class="h5 w-60 mx-auto px-4 py-1 rounded-bottom text-primary shadow-sm"><a href="/judgement/Ghana"><b>Case Laws</b></a></span>
           <a href="/judgement/Ghana">
           <div class="card-body pt-0">
               <ul class="list-unstyled mb-0 text-dark">
-                  <li>Access several decided cases in Ghana including Supreme Court, High Court and Court of Appeal cases</li>
+                  <li><b>Access several decided cases in Ghana including Supreme Court, High Court and Court of Appeal cases</b></li>
               </ul>
           </div>
           </a>
         </div>
         <div class="card card-pricing text-center pt-1 mb-0">
-          <span class="h5 w-60 mx-auto px-4 py-1 rounded-bottom text-primary shadow-sm"><a href="/News/Ghana-News/1">News</a></span>
+          <span class="h5 w-60 mx-auto px-4 py-1 rounded-bottom text-primary shadow-sm"><a href="/News/Ghana-News/1"><b>News</b></a></span>
           <a href="/News/Ghana-News/1">
           <div class="card-body pt-0">
               <ul class="list-unstyled mb-0 text-dark">
-                  <li>Access relevant legal and business news content in Ghana, Africa, Asia, Europe and America</li>
+                  <li><b>Access relevant legal and business news content in Ghana, Africa, Asia, Europe and America</b></li>
               </ul>
           </div>
           </a>

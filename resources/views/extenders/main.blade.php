@@ -23,7 +23,6 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
         
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
         <link rel="stylesheet" href="{{ asset('css/print.css') }}" type="text/css" media="print">
         <link rel="stylesheet" href="{{ asset('css/print-preview.css') }}" type="text/css" media="screen">
 
@@ -215,56 +214,16 @@
                     <div class="collapse navbar-collapse container-fluid pull-right" style="padding-top:13px;" id="bs-example-navbar-collapse-2">
                         {{ menu('main', 'bootstrap') }} 
                     
-
                         <div class="pull-right" style="margin-top: 7px;">
-
-                        {{-- @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest --}}
-
-
                             @if (Route::has('login'))
                                     <div class="links">
-                                        
                                         @auth
-                                            
                                             <a style="text-decoration: none; color: blue; font-family: 'Nunito', sans-serif;"  id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                 {{ Auth::user()->name }} <span class="caret"></span>
                                             </a>
-
                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                                 <div class="profile-usermenu">
                                                     <ul class="nav">
-                                                        {{-- <li>
-                                                            <a href="#">
-                                                            <i class="glyphicon glyphicon-dashboard"></i>
-                                                            Dashboard </a>
-                                                        </li> --}}
                                                         <li>
                                                             <a href="/accounts/profile/{{ Auth::user()->id }}">
                                                             <i class="glyphicon glyphicon-user"></i>
@@ -356,6 +315,7 @@
         <script src="{{ asset('js/print-preview.js') }}"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
         </script>
+
         <script src="{{ asset('js/myscript.js') }}"></script>
 
         <script type="text/javascript">
@@ -371,9 +331,7 @@
                 });
             });
         </script>
-        
-        
-        
+         
         @yield('scripts')
 
     </body>

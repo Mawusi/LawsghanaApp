@@ -1,4 +1,5 @@
-@extends('extenders.main')
+{{-- @extends('extenders.main') --}}
+@extends('layouts.app_search_only')
 
 @section('title', 'Search Results')
 
@@ -88,7 +89,7 @@
   overflow: auto;
   position: -webkit-sticky;
   position: sticky;
-  top: 15%;
+  top: 10%;
 }.make_stick{
   position: -webkit-sticky;
   position: sticky;
@@ -99,68 +100,55 @@
 
 @section('content')
 
-<div class="container-fluid">
+<div class="container-fluid mt-5">
 
-  <div class="row">
-      <div class="col-md-3" style="margin-top:10px;">
-        {{-- <h4>Filter</h4> --}}
+  {{-- <div class="row fixed-top" style="margin-top:75px; margin-bottom: 85px;">
+      <div class="col-md-3">
       </div>
       
-      <div class="col-md-offset-1 col-md-6" style="margin-top:10px; margin-bottom: 10px;">
+      <div class="col-md-offset-1 col-md-6">
         <form action="{{ url('main_home_search') }}" method="GET">
           {{ csrf_field() }}
           <div class="input-group">         
-                <input type="text" class="form-control" name="search_text" placeholder="Search any law or case in Ghana"">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
-                </span>
+            <input style="font-size:12pt;height:35px;width:350px;" type="text" class="form-control" name="search_text" placeholder="Search any law or case in Ghana...">
           </div>
-        </form>       
+        </form>
       </div>
-      <div class="col-md-2" style="margin-top:25px;">
+      <div class="col-md-2">
       <p style="color:blue;"><b class="hidden">Found: {{$all_total_count}} Results</b></p>
       </div>
-    
-  </div>
+  </div> --}}
 
   <div class="row">
-    {{-- <div class="wrapper"> --}}
-
-      <div class="col-md-3">
+      <div class="col-md-3 mx-auto">
         <div class="sidebar">
           <div class="search-well-filter">
-            {{-- <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($all_total_count)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p><hr> --}}
-            <p style="color:blue;">Filter Options</p>
-            <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input all1" id="all_laws" name="act-type" value="All" checked>
-              <label class="custom-control-label" for="defaultChecked">All</label>&nbsp;<span class="badge">{{$all_total_count}}</span>
+            <label style="color:blue;">Filter Options</label>
+            <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($all_total_count)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p><hr>
+            
+            <div class="custom-radio mb-2"> 
+              <input type="radio" class="all1" id="all_laws" name="act-type" value="All">&nbsp;All&nbsp;<span class="badge badge-secondary">{{$all_total_count}}</span>
             </div>
-            <br>
-            <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input consti_ghana1" id="consti_ghana" name="act-type" value="Constitution_Ghana">
-              <label class="custom-control-label" for="defaultUnchecked">Constitution(Ghana)</label>&nbsp;<span class="badge">{{$total_constitution_articles_count}}</span>
+            
+            <div class="custom-radio mb-2">
+              <input type="radio" class="consti_ghana1" id="consti_ghana" name="act-type" value="Constitution_Ghana">&nbsp;Constitution(Ghana)&nbsp;<span class="badge badge-secondary">{{$total_constitution_articles_count}}</span>
             </div>
-            <br>
-            <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input consti_others1" id="consti_others" name="act-type" value="Constitution_Others">
-              <label class="custom-control-label" for="defaultUnchecked">Constitution(Countries)</label>&nbsp;<span class="badge">{{$total_constitution_countries}}</span>
+
+            <div class="custom-radio mb-2">
+              <input type="radio" class="consti_others1" id="consti_others" name="act-type" value="Constitution_Others">&nbsp;Constitution(Countries)&nbsp;<span class="badge badge-secondary">{{$total_constitution_countries}}</span>
             </div>
-            <br>
-            <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input pre_4th1" id="pre_4th" name="act-type" value="Pre_4th_Republic">
-              <label class="custom-control-label" for="defaultUnchecked">Pre 4th Republic Laws</label>&nbsp;<span class="badge">{{$pre_total_count}}</span>
+
+            <div class="custom-radio mb-2">
+              <input type="radio" class="pre_4th1" id="pre_4th" name="act-type" value="Pre_4th_Republic">&nbsp;Pre 4th Republic Laws&nbsp;<span class="badge badge-secondary">{{$pre_total_count}}</span>
             </div>
-            <br>
-            <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input 4th_rep1" id="4th_rep" name="act-type" value="4th_Republic">
-              <label class="custom-control-label" for="defaultUnchecked">4th Republic Laws</label>&nbsp;<span class="badge">{{$posts_total_count}}</span>
+
+            <div class="custom-radio mb-2">
+              <input type="radio" class="4th_rep1" id="4th_rep" name="act-type" value="4th_Republic">&nbsp;4th Republic Laws&nbsp;<span class="badge badge-secondary">{{$posts_total_count}}</span>
             </div>
-            <br>
-            <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input cases1" id="case_laws" name="act-type" value="Case_Laws">
-              <label class="custom-control-label" for="defaultUnchecked">Case Laws</label>&nbsp;<span class="badge">{{$cases_total_count}}</span>
+
+            <div class="custom-radio mb-2">
+              <input type="radio" class="cases1" id="case_laws" name="act-type" value="Case_Laws">&nbsp;Case Laws&nbsp;<span class="badge badge-secondary">{{$cases_total_count}}</span>
             </div>
-            <br>
 
           </div>
         </div>
@@ -168,16 +156,14 @@
 
       <div class="col-md-9">
         <div class="row">
-          <div class="col-md-2"></div>
-          <div class="col-md-6" style="background-color: white; padding: 10px; margin-top: 150px; border: 1px solid; box-shadow: 5px 5px 5px grey">
+          <div class="col-md-1"></div>
+          <div class="col-md-6" style="background-color: white; padding: 10px; margin-top: 80px; border: 1px solid; box-shadow: 5px 5px 5px grey">
             <center><h4>Results for <span style="color:red;">"{{$query}}"</span> not found</h4></center>    
-          <div class="col-md-4"></div>                                 
+            <center><h6>please try again with related words</h6></center>    
+            <div class="col-md-5"></div>                                 
           </div>
         </div>
-        
       </div>
-
-    </div>
   </div>
 
 </div>

@@ -92,15 +92,6 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/accounts/profile/{{ Auth::user()->id }}">Profile </a>
-                                <a class="dropdown-item" href="/accounts/manage-password">Manage Accounts </a>
-                                <a class="dropdown-item" href="/accounts/downloads/{{ Auth::user()->id }}">Downloads</a>
-                                <a class="dropdown-item" href="/accounts/bookmarks/{{ Auth::user()->id }}">Bookmarks</a>
-                                @if( Auth::user()->subscription_id == null)
-                                    <a class="dropdown-item" style="color: red;">No Subscription</a>
-                                    @else
-                                        <a class="dropdown-item" href="/accounts/subscription/{{ Auth::user()->subscription_id }}">My Subscription</a>
-                                @endif
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">

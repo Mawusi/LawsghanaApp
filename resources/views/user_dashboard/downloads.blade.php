@@ -88,15 +88,6 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/accounts/profile/{{ Auth::user()->id }}">Profile </a>
-                                <a class="dropdown-item" href="/accounts/manage-password">Manage Accounts </a>
-                                <a class="dropdown-item" href="/accounts/downloads/{{ Auth::user()->id }}">Downloads</a>
-                                <a class="dropdown-item" href="/accounts/bookmarks/{{ Auth::user()->id }}">Bookmarks</a>
-                                @if( Auth::user()->subscription_id == null)
-                                    <a class="dropdown-item" style="color: red;">No Subscription</a>
-                                    @else
-                                        <a class="dropdown-item" href="/accounts/subscription/{{ Auth::user()->subscription_id }}">My Subscription</a>
-                                @endif
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
@@ -118,9 +109,22 @@
 
     <main class="py-0">
             <div class="container mt-3">
-                @include('user_dashboard.accounts_dropdown')
+
+                <div class="row mt-2">
+                    <div class="col-md-7">@include('user_dashboard.accounts_dropdown')</div>
+                    <div class="col-md-4">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                            <li class="breadcrumb-item show_sections"><a href="javascript:;">View Dowloaded Sections:</a><span class="badge">{{$user_total_section_downloads}}</span></li>
+                            <li class="breadcrumb-item show_full_acts"><a href="javascript:;">Full Acts:</a><span class="badge">{{$user_total_full_downloads}}</span></li>
+                            </ol>
+                        </nav>
+                    </div>
+                    {{-- <div class="col-md-2">Total Acts/Cases Downloads: {{$user_total_full_downloads}}/Total Section Downloads: {{$user_total_section_downloads}}</div> --}}
+                    {{-- <div class="col-md-2">Total Section Downloads: {{$user_total_section_downloads}}</div> --}}
+                </div> 
                         
-                        <!-- Modal -->
+                    <!-- Modal -->
                         <div class="modal fade" id="deleteModal_section" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -151,23 +155,7 @@
                         <div class="row justify-content-center">
                             <h2>My Downloads</h2>
                         </div>
-                        
-                        <div class="pull-right">
-                            <p style="color:blue">Total Acts/Cases Downloads: {{$user_total_full_downloads}}</p>
-                            <p style="color:blue">Total Section Downloads: {{$user_total_section_downloads}}</p>
-                        </div>
-                        
-
-                        <div class="col-md-3">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                  <li class="breadcrumb-item show_sections"><a href="javascript:;">Sections</a></li>
-                                  <li class="breadcrumb-item show_full_acts"><a href="javascript:;">Full Acts</a></li>
-                                  {{-- <li class="breadcrumb-item active" aria-current="page">Data</li> --}}
-                                </ol>
-                            </nav>
-                        </div>
-                        
+                
                         {{-- FOR SECTIONS DOWNLOADS --}}
                         <div class="card-body single_section">
                             <div class="table-responsive">
