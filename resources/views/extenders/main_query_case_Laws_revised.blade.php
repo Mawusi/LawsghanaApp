@@ -4,7 +4,7 @@
     <h5 class="all_specific"><b>Case Laws</b></h5>
     <a href="/judgement/Ghana/{{$supreme_court_case->gh_law_judgment_group_name}}/{{$supreme_court_case->id}}" target="_blank"><h5 style="color:blue;"><b>{!! $supreme_court_case->case_title !!}</b></h5></a>
     <b>{!! $supreme_court_case->gh_law_judgment_group_name !!} | {!! $supreme_court_case->reference_number !!}</b>
-        <br><br>
+        <br>
         {!! str_limit(strip_tags(strstr($supreme_court_case->content,  $query, false)),450, '...' ) !!}
         {{-- {!! $supreme_court_case->content !!} --}}
         {{-- {!! str_limit(strstr($supreme_court_case->content,  $query, false),450, '...' ) !!} --}}
@@ -17,7 +17,7 @@
             <h5 class="all_specific"><b>Case Laws</b></h5>
             <a href="/judgement/Ghana/{{$court_of_appeal_case->gh_law_judgment_group_name}}/{{$court_of_appeal_case->id}}" target="_blank"><h5 style="color:blue;"><b>{!! $court_of_appeal_case->case_title !!}</b></h5></a> 
             <b>{!! $court_of_appeal_case->gh_law_judgment_group_name !!} | {!! $court_of_appeal_case->reference_number !!}</b>
-            <br><br>
+            <br>
             {!! str_limit(strip_tags(strstr($court_of_appeal_case->content,  $query, false)),450, '...' ) !!}
             {{-- {!! $court_of_appeal_case->content !!} --}}
             {{-- {!! str_limit(strstr($court_of_appeal_case->content,  $query, false),450, '...' ) !!} --}}
@@ -30,7 +30,7 @@
             <h5 class="all_specific"><b>Case Laws</b></h5>
             <a href="/judgement/Ghana/{{$high_court_case->gh_law_judgment_group_name}}/{{$high_court_case->id}}" target="_blank"><h5 style="color:blue;"><b>{!! $high_court_case->case_title !!}</b></h5></a>
             <b>{!! $high_court_case->gh_law_judgment_group_name !!} | {!! $high_court_case->reference_number !!}</b>
-            <br><br>
+            <br>
             {!! str_limit(strip_tags(strstr($high_court_case->content,  $query, false)),450, '...' ) !!}
             {{-- {!! $court_of_appeal_case->content !!} --}}
             {{-- {!! str_limit(strstr($court_of_appeal_case->content,  $query, false),450, '...' ) !!} --}}

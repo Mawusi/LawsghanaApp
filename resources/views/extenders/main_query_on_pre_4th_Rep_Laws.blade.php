@@ -3,8 +3,8 @@
     <div class="search-well">
     <h5 class="all_specific"><b>{!! $first_republic_law->pre_1992_group !!}</b></h5>
     <a href="" target="_blank"><h5 style="color:blue;"><b>{!! $first_republic_law->title !!}</b></h5></a>
-        <b>{!! $first_republic_law->section !!}</b>
-        <br><br>
+        <a><h5><b>{!! $first_republic_law->section !!}</b></h5></a>
+        <br>
         {!! $first_republic_law->content !!}
     </div>
     <br>
@@ -15,8 +15,8 @@
     <div class="search-well">
     <h5 class="all_specific"><b>{!! $second_republic_law->pre_1992_group !!}</b></h5>
     <a href="" target="_blank"><h5 style="color:blue;"><b>{!! $second_republic_law->title !!}</b></h5></a>
-        <b>{!! $second_republic_law->section !!}</b>
-        <br><br>
+        <a><h5><b>{!! $second_republic_law->section !!}</b></h5></a>
+        <br>
         {!! $second_republic_law->content !!}
     </div>
     <br>
@@ -27,8 +27,8 @@
     <div class="search-well">
     <h5 class="all_specific"><b>{!! $third_republic_law->pre_1992_group !!}</b></h5>
     <a href="" target="_blank"><h5 style="color:blue;"><b>{!! $third_republic_law->title !!}</b></h5></a>
-        <b>{!! $third_republic_law->section !!}</b>
-        <br><br>
+        <a><h5><b>{!! $third_republic_law->section !!}</b></h5></a>
+        <br>
         {!! $third_republic_law->content !!}
     </div>
     <br>
@@ -39,8 +39,8 @@
     <div class="search-well">
     <h5 class="all_specific"><b>{!! $nlc_decree_law->pre_1992_group !!}</b></h5>
     <a href="" target="_blank"><h5 style="color:blue;"><b>{!! $nlc_decree_law->title !!}</b></h5></a>
-        <b>{!! $nlc_decree_law->section !!}</b>
-        <br><br>
+        <a><h5><b>{!! $nlc_decree_law->section !!}</b></h5></a>
+        <br>
         {!! $nlc_decree_law->content !!}
     </div>
     <br>
@@ -50,8 +50,8 @@
     <div class="search-well">
     <h5 class="all_specific"><b>{!! $nrc_decree_law->pre_1992_group !!}</b></h5>
     <a href="" target="_blank"><h5 style="color:blue;"><b>{!! $nrc_decree_law->title !!}</b></h5></a>
-        <b>{!! $nrc_decree_law->section !!}</b>
-        <br><br>
+        <a><h5><b>{!! $nrc_decree_law->section !!}</b></h5></a>
+        <br>
         {!! $nrc_decree_law->content !!}
     </div>
     <br>
@@ -61,8 +61,8 @@
     <div class="search-well">
     <h5 class="all_specific"><b>{!! $smc_decree_law->pre_1992_group !!}</b></h5>
     <a href="" target="_blank"><h5 style="color:blue;"><b>{!! $smc_decree_law->title !!}</b></h5></a>
-        <b>{!! $smc_decree_law->section !!}</b>
-        <br><br>
+        <a><h5><b>{!! $smc_decree_law->section !!}</b></h5></a>
+        <br>
         {!! $smc_decree_law->content !!}
     </div>
     <br>
@@ -72,8 +72,8 @@
     <div class="search-well">
     <h5 class="all_specific"><b>{!! $afrc_decree_law->pre_1992_group !!}</b></h5>
     <a href="" target="_blank"><h5 style="color:blue;"><b>{!! $afrc_decree_law->title !!}</b></h5></a>
-        <b>{!! $afrc_decree_law->section !!}</b>
-        <br><br>
+        <a><h5><b>{!! $afrc_decree_law->section !!}</b></h5></a>
+        <br>
         {!! $afrc_decree_law->content !!}
     </div>
     <br>
@@ -83,8 +83,8 @@
     <div class="search-well">
     <h5 class="all_specific"><b>{!! $pndc_law->pre_1992_group !!}</b></h5>
     <a href="" target="_blank"><h5 style="color:blue;"><b>{!! $pndc_law->title !!}</b></h5></a>
-        <b>{!! $pndc_law->section !!}</b>
-        <br><br>
+        <a><h5><b>{!! $pndc_law->section !!}</b></h5></a>
+        <br>
         {!! $pndc_law->content !!}
     </div>
     <br>
