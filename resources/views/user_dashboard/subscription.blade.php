@@ -35,7 +35,7 @@
 
 @section('content')
 
-<div class="container mb-5 mt-3">
+<div class="container mb-1 mt-customised">
     <h1 class="text-muted text-center mb-3">Choose your package</h1>
     <div class="pricing card-deck flex-column flex-md-row mb-3">
         {{-- STARTER --}}

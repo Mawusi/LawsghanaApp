@@ -37,7 +37,7 @@
     @yield('scripts_first')
 
     <style type="text/css">
-        .mt-0 {
+        .mt-customised {
             margin-top: 90px !important;
         }
     </style>
