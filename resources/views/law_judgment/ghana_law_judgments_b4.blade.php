@@ -1,4 +1,5 @@
-@extends('extenders.main')
+{{-- @extends('extenders.main') --}}
+@extends('layouts.app_main_header')
 
 @section('title', 'Ghana Case Laws')
 
