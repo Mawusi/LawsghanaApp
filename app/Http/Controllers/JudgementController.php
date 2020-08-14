@@ -123,6 +123,7 @@ class JudgementController extends Controller
         $supremecategories   = GhLawJudgmentCategory::all();
         $footer_notes           = FooterNote::all();
         return view('law_judgment.law_supreme_court', compact('footer_notes','supremeCourts', 'supremecategories'));
+        // return view('law_judgment.law_supreme_court_b4', compact('footer_notes','supremeCourts', 'supremecategories'));
     }
 
     //SUPREME COURT FILTERING
@@ -171,6 +172,7 @@ class JudgementController extends Controller
         $highcategories   = GhLawJudgmentCategory::all();
         $footer_notes           = FooterNote::all();
         return view('law_judgment.law_high_court', compact('footer_notes','highCourts', 'highcategories'));
+        // return view('law_judgment.law_high_court_b4', compact('footer_notes','highCourts', 'highcategories'));
     }
 
     //HIGH COURT FILTERING
@@ -219,6 +221,7 @@ class JudgementController extends Controller
         $courtOfAppealcategories   = GhLawJudgmentCategory::all();
         $footer_notes           = FooterNote::all();
         return view('law_judgment.law_court_of_appeal', compact('footer_notes','courtOfAppeals', 'courtOfAppealcategories'));
+        // return view('law_judgment.law_court_of_appeal_b4', compact('footer_notes','courtOfAppeals', 'courtOfAppealcategories'));
     }
 
     //COURT OF APPEAL FILTERING

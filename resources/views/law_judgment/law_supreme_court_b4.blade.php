@@ -239,19 +239,19 @@
                                 <table class="table table-striped table-condensed" id="datatable">
                                     <thead>
                                         <tr>
-                                            <th>Case Laws Title</th>
+                                            <th>Supreme Court</th>
                                             <th>Ref No.</th>
                                             <th>Year</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($ghlawjudgments as $ghlawjudgment)
+                                    @foreach($supremeCourts as $supremeCourt)
                                         <tr>
                                             <td>
-                                            <a href="/judgement/Ghana/{{ $ghlawjudgment->gh_law_judgment_group_name }}/{{ $ghlawjudgment->id}}"><li style="list-style: none;">{{ $ghlawjudgment->case_title }}</li></a>
+                                                <a href="/judgement/Ghana/{{ $supremeCourt->gh_law_judgment_group_name }}/{{ $supremeCourt->id}}"><li style="list-style: none;">{{ $supremeCourt->case_title }}</li></a>
                                             </td>
-                                            <td>{{ $ghlawjudgment->reference_number }}</td>
-                                            <td>{{ $ghlawjudgment->year }}</td>
+                                            <td>{{ $supremeCourt->reference_number }}</td>
+                                            <td>{{ $supremeCourt->year }}</td>
                                         </tr>
                                     @endforeach 
                                     </tbody>
@@ -268,13 +268,13 @@
                                     <center>
                                         <select class="form-control browser-default custom-select all_judgment_filter_category" style="width: 149px;">
                                             <option selected value="">Select Category</option>
-                                            @foreach($ghcategories as $ghcategory)
+                                            @foreach($supremecategories as $supremecategory)
                                             @endforeach	
                                         </select>
                                     </center><br>
-                                    <form action="{{ url('cases_index_search') }}" method="GET">
+                                    <form action="{{ url('supreme_court_index_search') }}" method="GET">
                                         {{ csrf_field() }}
-                                            <input style="padding: 15px;" class="form-control" name="search_text" type="text" placeholder="Search word in all Cases" aria-label="Search">
+                                    <input style="padding: 15px;" class="form-control" name="search_text" type="text" placeholder="Supreme Court word-search" aria-label="Search">
                                     </form>
                                 </div>
                             </div>

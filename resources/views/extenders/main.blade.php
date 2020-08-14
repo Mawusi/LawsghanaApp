@@ -133,8 +133,8 @@
 
             .btn-primarys{
                 color:#fff;
-                background-color:#3490dc;
-                border-color:#3490dc;
+                background-color:#004353;
+                border-color:#004353;
             }
             .btn-primarys:hover{
                 color:#fff;

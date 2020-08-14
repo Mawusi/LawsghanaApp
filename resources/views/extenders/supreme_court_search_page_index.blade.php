@@ -132,14 +132,6 @@ color: green;
         <div class="sidebar">
           <div class="search-well-filter">
             <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($supreme_court_cases_count)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p>
-            
-            {{-- @foreach ()
-                <div class="custom-control custom-radio">
-                    <input type="radio" class="custom-control-input all1" id="defaultChecked" name="act-type" value="All" checked>
-                    <span class="small"><label class="custom-control-label" for="defaultChecked">{!! $single_post_act->post_act !!}</label>&nbsp;<span class="badge"></span></span>
-                </div>
-            @endforeach --}}
-            
           </div>
         </div>
       </div>

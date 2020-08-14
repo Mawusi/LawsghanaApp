@@ -62,12 +62,14 @@ class CasesSearchController extends Controller
           count($court_of_appeal_cases) > 0 or 
           count($high_court_cases) > 0 
           )
-            return view('extenders.cases_search_page_index', compact('query','total_cases',
+          // cases_search_page_index
+            return view('extenders.all_cases_search_page_index', compact('query','total_cases',
                                                                  'supreme_court_cases', 'supreme_court_cases_count',
                                                                  'court_of_appeal_cases', 'court_of_appeal_cases_count',
                                                                  'high_court_cases','high_court_cases_count', 'footer_notes'));
         else
-            return view ('extenders.cases_search_page_not_found', compact('footer_notes', 'total_cases','supreme_court_cases_count','court_of_appeal_cases_count','high_court_cases_count','query'));
+        //cases_search_page_not_found
+            return view ('extenders.all_cases_search_page_not_found', compact('footer_notes', 'total_cases','supreme_court_cases_count','court_of_appeal_cases_count','high_court_cases_count','query'));
     }
 
     public function supreme_court_index_search(Request $request){
@@ -90,9 +92,11 @@ class CasesSearchController extends Controller
             (
             count($supreme_court_cases) > 0
             )                              
-        return view('extenders.supreme_court_search_page_index', compact('query','footer_notes','supreme_court_cases','supreme_court_cases_count'));
+            //supreme_court_search_page_index
+        return view('extenders.all_supreme_court_search_page_index', compact('query','footer_notes','supreme_court_cases','supreme_court_cases_count'));
         else 
-        return view ('extenders.supreme_court_search_page_index_not_found', compact('query','footer_notes', 'supreme_court_cases_count'));
+        // supreme_court_search_page_index_not_found
+        return view ('extenders.all_supreme_court_search_page_index_not_found', compact('query','footer_notes', 'supreme_court_cases_count'));
 
     }
 
@@ -114,10 +118,12 @@ class CasesSearchController extends Controller
       if
             (
             count($court_of_appeal_cases) > 0
-            )                              
-        return view('extenders.court_of_appeal_search_page_index', compact('query','footer_notes','court_of_appeal_cases','court_of_appeal_cases_count'));
+            )    
+            // court_of_appeal_search_page_index                          
+        return view('extenders.all_court_of_appeal_search_page_index', compact('query','footer_notes','court_of_appeal_cases','court_of_appeal_cases_count'));
         else 
-        return view ('extenders.court_of_appeal_search_page_index_not_found', compact('query','footer_notes', 'court_of_appeal_cases_count'));
+        //court_of_appeal_search_page_index_not_found
+        return view ('extenders.all_court_of_appeal_search_page_index_not_found', compact('query','footer_notes', 'court_of_appeal_cases_count'));
 
     }
 
@@ -139,10 +145,12 @@ class CasesSearchController extends Controller
       if
             (
             count($high_court_cases) > 0
-            )                              
-        return view('extenders.high_court_search_page_index', compact('query','footer_notes','high_court_cases','high_court_cases_count'));
+            )    
+            //high_court_search_page_index                          
+        return view('extenders.all_high_court_search_page_index', compact('query','footer_notes','high_court_cases','high_court_cases_count'));
         else 
-        return view ('extenders.high_court_search_page_index_not_found', compact('query','footer_notes', 'high_court_cases_count'));
+        //high_court_search_page_index_not_found
+        return view ('extenders.all_high_court_search_page_index_not_found', compact('query','footer_notes', 'high_court_cases_count'));
 
     }
 }

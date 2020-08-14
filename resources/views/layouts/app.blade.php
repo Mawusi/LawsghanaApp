@@ -46,6 +46,9 @@
         .mt-customised {
             margin-top: 90px !important;
         }
+        .bg-header-color{
+            background-color: #004353;
+        }
     </style>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -92,10 +95,10 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                        &nbsp;<a class="btn btn-sm btn-primary" href="{{ route('login') }}">Login</a>&nbsp;
+                        &nbsp;<a class="btn btn-sm bg-header-color text-white" href="{{ route('login') }}">Login</a>&nbsp;
 
                             @if (Route::has('register'))
-                                <a class="btn btn-sm btn-primary" href="{{ route('register') }}">Sign Up</a>
+                                <a class="btn btn-sm bg-header-color text-white" href="{{ route('register') }}">Sign Up</a>
                             @endif
                             
                         @else

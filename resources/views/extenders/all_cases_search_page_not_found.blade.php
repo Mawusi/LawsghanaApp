@@ -1,4 +1,5 @@
-@extends('extenders.main')
+{{-- @extends('extenders.main') --}}
+@extends('layouts.app_search_only')
 
 @section('title', 'Search Results')
 
@@ -99,52 +100,44 @@
 
 @section('content')
 
-<div class="container-fluid">
-
+<div class="container-fluid mt-customised">
   <div class="row">
-      <div class="col-md-3" style="margin-top:10px;">
-        {{-- <h4>Filter</h4> --}}
-      </div>
-      
-      <div class="col-md-offset-1 col-md-6" style="margin-top:10px; margin-bottom: 10px;">
-        <form action="{{ url('main_home_search') }}" method="GET">
-          {{ csrf_field() }}
-          <div class="input-group">         
-                <input type="text" class="form-control" name="search_text" placeholder="Search any law or case in Ghana"">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
-                </span>
-          </div>
-        </form>       
-      </div>
-      <div class="col-md-2" style="margin-top:25px;">
-      <p style="color:blue;"><b class="hidden">Found: {{$supreme_court_cases_count}} Results</b></p>
-      </div>
-    
-  </div>
-
-  <div class="row">
-    {{-- <div class="wrapper"> --}}
-
-      <div class="col-md-3">
+      <div class="col-md-3 mx-auto">
         <div class="sidebar">
           <div class="search-well-filter">
-            <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($supreme_court_cases_count)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p>
+            <span style="color:blue;">Filter Options</span>
+            <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($total_cases)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p><hr>
+            
+            <div class="custom-radio mb-2"> 
+              <input type="radio" id="all_cases" name="act-type" value="All">&nbsp;All&nbsp;<span class="badge badge-secondary">{{$total_cases}}</span>
+            </div>
+            
+            <div class="custom-radio mb-2">
+              <input type="radio" id="supreme_court" name="act-type" value="Constitution_Ghana">&nbsp;Supreme Court&nbsp;<span class="badge badge-secondary">{{$supreme_court_cases_count}}</span>
+            </div>
+
+            <div class="custom-radio mb-2">
+              <input type="radio" id="court_of_appeal" name="act-type" value="Constitution_Others">&nbsp;Court of Appeal&nbsp;<span class="badge badge-secondary">{{$court_of_appeal_cases_count}}</span>
+            </div>
+
+            <div class="custom-radio mb-2">
+              <input type="radio" id="high_court" name="act-type" value="Pre_4th_Republic">&nbsp;High Court&nbsp;<span class="badge badge-secondary">{{$high_court_cases_count}}</span>
+            </div>
+
           </div>
         </div>
       </div>
 
       <div class="col-md-9">
         <div class="row">
-          <div class="col-md-2"></div>
-          <div class="col-md-6" style="background-color: white; padding: 10px; margin-top: 150px; border: 1px solid; box-shadow: 5px 5px 5px grey">
+          <div class="col-md-1"></div>
+          <div class="col-md-6" style="background-color: white; padding: 10px; margin-top: 80px; border: 1px solid; box-shadow: 5px 5px 5px grey">
             <center><h4>Results for <span style="color:red;">"{{$query}}"</span> not found</h4></center>    
-          <div class="col-md-4"></div>                                 
+            <center><h6>please try again with related words</h6></center>    
+            <div class="col-md-5"></div>                                 
           </div>
         </div>
       </div>
-
-    </div>
   </div>
 
 </div>
@@ -152,7 +145,14 @@
 @endsection 
 
 @section('scripts')
-
+<script>
+    if ( {{$total_cases}} == 0 ) {
+      document.getElementById("all_cases").disabled = true;
+      document.getElementById("supreme_court").disabled = true;
+      document.getElementById("court_of_appeal").disabled = true;
+      document.getElementById("high_court").disabled = true;  
+    }
+  </script>
 @endsection
 
     

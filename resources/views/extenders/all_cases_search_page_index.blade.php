@@ -1,4 +1,5 @@
-@extends('extenders.main')
+{{-- @extends('extenders.main') --}}
+@extends('layouts.app_search_only')
 
 @section('title', 'Search Results')
 
@@ -93,90 +94,52 @@
   position: -webkit-sticky;
   position: sticky;
   top: 10%;
-}#title{
-color: green;
 }
 </style>
 @endsection
 
 @section('content')
 
-<div class="container-fluid">
-
+<div class="container-fluid mt-customised">
   <div class="row">
-      <div class="col-md-3" style="margin-top:10px;">
-        {{-- <h4>Filter</h4> --}}
-      </div>
-      
-      <div class="col-md-offset-1 col-md-6" style="margin-top:10px; margin-bottom: 10px;">
-        <form action="{{ url('main_home_search') }}" method="GET">
-          {{ csrf_field() }}
-          <div class="input-group">         
-                <input type="text" class="form-control" name="search_text" placeholder="Search any law or case in Ghana"">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
-                </span>
-          </div>
-        </form>       
-      </div>
-      <div class="col-md-2" style="margin-top:25px;">
-      <p style="color:blue;"><b class="hidden">Found:Results</b></p>
-      </div>
-    
-  </div>
-
-  <div class="row">
-    {{-- <div class="wrapper"> --}}
-
-      <div class="col-md-3">
+      <div class="col-md-3 mx-auto">
         <div class="sidebar">
           <div class="search-well-filter">
+            <h5 style="color:blue;">All Case Laws Search</h5><hr>
+            <span style="color:blue;">Filter Options</span>
             <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($total_cases)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p><hr>
-            <p style="color:blue;">Filter Options</p>
             
-            <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input all1" id="all_cases" name="act-type" value="All" checked>
-            <label class="custom-control-label" for="defaultChecked">All</label>&nbsp;<span class="badge">{{$total_cases}}</span>
-            </div>
-            <br>
+              <div class="custom-radio mb-2"> 
+                <input type="radio" class="all1" id="all_cases" name="act-type" value="All" checked>&nbsp;All&nbsp;<span class="badge badge-secondary">{{$total_cases}}</span>
+              </div>
+              
+              <div class="custom-radio mb-2">
+                <input type="radio" class="supreme1" id="supreme_court" name="act-type" value="Supreme">&nbsp;Supreme Court&nbsp;<span class="badge badge-secondary">{{$supreme_court_cases_count}}</span>
+              </div>
 
-            <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input supreme1" id="supreme_court" name="act-type" value="Supreme">
-              <label class="custom-control-label" for="defaultUnchecked">Supreme Court</label>&nbsp;<span class="badge">{{$supreme_court_cases_count}}</span>
-            </div>
-            <br>
+              <div class="custom-radio mb-2">
+                <input type="radio" class="appeal1" id="court_of_appeal" name="act-type" value="Appeal">&nbsp;Court of Appeal&nbsp;<span class="badge badge-secondary">{{$court_of_appeal_cases_count}}</span>
+              </div>
 
-            <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input appeal1" id="court_of_appeal" name="act-type" value="Appeal">
-            <label class="custom-control-label" for="defaultUnchecked">Court of Appeal</label>&nbsp;<span class="badge">{{$court_of_appeal_cases_count}}</span>
+              <div class="custom-radio mb-2">
+                <input type="radio" class="high1" id="high_court" name="act-type" value="High">&nbsp;High Court&nbsp;<span class="badge badge-secondary">{{$high_court_cases_count}}</span>
+              </div>
+
             </div>
-            <br>
-            
-            <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input high1" id="high_court" name="act-type" value="High">
-            <label class="custom-control-label" for="defaultUnchecked">High Court</label>&nbsp;<span class="badge">{{$high_court_cases_count}}</span>
-            </div>
-            <br>
-          
-          </div>
         </div>
       </div>
 
       <div class="col-md-9">
-        <div class="">
-          <div class="move_here hidden  top_here"><br></div>
-            @include('extenders.query_case_Laws')            
-        </div>
+          <div class="move_here hidden"><br></div>
+          @include('extenders.query_case_Laws')                                          
       </div>
-
-    </div>
   </div>
-
 </div>
     
 @endsection 
 
 @section('scripts')
+
 <script>
   if ( {{$total_cases}} == 0 ) {
     document.getElementById("all_cases").disabled = true;
@@ -196,7 +159,7 @@ color: green;
 </script>
 
 <script>
-  
+
     $(function () {
       $("input[name=act-type]:radio").click(function () {
         

@@ -106,7 +106,7 @@
         <div class="sidebar">
           <div class="search-well-filter">
             <span style="color:blue;">Filter Options</span>
-            <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($all_total_count)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p><hr>
+              <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($all_total_count)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p><hr>
             
             <div class="custom-radio mb-2"> 
               <input type="radio" class="all1" id="all_laws" name="act-type" value="All">&nbsp;All&nbsp;<span class="badge badge-secondary">{{$all_total_count}}</span>

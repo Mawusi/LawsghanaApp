@@ -1,4 +1,5 @@
-@extends('extenders.main')
+{{-- @extends('extenders.main') --}}
+@extends('layouts.app_search_only')
 
 @section('title', 'Search Results')
 
@@ -99,59 +100,40 @@
 
 @section('content')
 
-<div class="container-fluid">
-
+<div class="container-fluid mt-customised">
   <div class="row">
-      <div class="col-md-3" style="margin-top:10px;">
-        {{-- <h4>Filter</h4> --}}
-      </div>
-      
-      <div class="col-md-offset-1 col-md-6" style="margin-top:10px; margin-bottom: 10px;">
-        <form action="{{ url('main_home_search') }}" method="GET">
-          {{ csrf_field() }}
-          <div class="input-group">         
-                <input type="text" class="form-control" name="search_text" placeholder="Search any law or case in Ghana"">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
-                </span>
-          </div>
-        </form>       
-      </div>
-      <div class="col-md-2" style="margin-top:25px;">
-      <p style="color:blue;"><b class="hidden">Found: {{$supreme_court_cases_count}} Results</b></p>
-      </div>
-    
-  </div>
-
-  <div class="row">
-    {{-- <div class="wrapper"> --}}
-
-      <div class="col-md-3">
+      <div class="col-md-3 mx-auto">
         <div class="sidebar">
           <div class="search-well-filter">
+            <h5 style="color:blue;">Supreme Court Search</h5><hr>
+            <span style="color:blue;">Filter Options</span>
             <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($supreme_court_cases_count)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p>
           </div>
         </div>
       </div>
 
       <div class="col-md-9">
-        <div class="row">
-          <div class="col-md-2"></div>
-          <div class="col-md-6" style="background-color: white; padding: 10px; margin-top: 150px; border: 1px solid; box-shadow: 5px 5px 5px grey">
-            <center><h4>Results for <span style="color:red;">"{{$query}}"</span> not found</h4></center>    
-          <div class="col-md-4"></div>                                 
-          </div>
-        </div>
+        <div><br></div>
+        @foreach ($supreme_court_cases as $supreme_court_case)
+            <div class="search-well">
+                {{-- <a href="/judgement/plain_view/{{$supreme_court_case->id}}" target="_blank"><h5 style="color:blue;"><b>{!! $supreme_court_case->case_title !!}</b></h5></a> --}}
+                <a href="/judgement/Ghana/{{$supreme_court_case->gh_law_judgment_group_name}}/{{$supreme_court_case->id}}" target="_blank"><h5 style="color:blue;"><b>{!! $supreme_court_case->case_title !!}</b></h5></a>
+                <b>{!! $supreme_court_case->gh_law_judgment_group_name !!} | {!! $supreme_court_case->reference_number !!}</b>
+                    <br><br>
+                    {!! str_limit(strip_tags(strstr($supreme_court_case->content,  $query, false)),450, '...' ) !!}
+                    {{-- {!! $supreme_court_case->content !!} --}}
+                    {{-- {!! str_limit(strstr($supreme_court_case->content,  $query, false),450, '...' ) !!} --}}
+            </div>
+        <br>
+        @endforeach                                     
       </div>
-
-    </div>
   </div>
-
 </div>
     
 @endsection 
 
 @section('scripts')
+
 
 @endsection
 
