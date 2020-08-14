@@ -19,9 +19,9 @@ class JudgementController extends Controller
         $ghlawjudgments = GhLawJudgment::all();
         $ghcategories   = GhLawJudgmentCategory::all();
         $footer_notes           = FooterNote::all();
-        // return view('law_judgment.ghana_law_judgments', compact('footer_notes','ghlawjudgments', 'ghcategories'));
+        return view('law_judgment.ghana_law_judgments', compact('footer_notes','ghlawjudgments', 'ghcategories'));
         // return view('law_judgment.ghana_law_judgments_b4', compact('footer_notes','ghlawjudgments', 'ghcategories'));
-        return view('layouts.app_main_header', compact('footer_notes','ghlawjudgments', 'ghcategories'));
+        // return view('layouts.app_main_header', compact('footer_notes','ghlawjudgments', 'ghcategories'));
 
     }
     
