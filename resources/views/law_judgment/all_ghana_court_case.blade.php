@@ -60,13 +60,64 @@
         margin-bottom: .1rem!important;
         padding: .5rem!important
       }
-      .pt_for_content_container{
-        margin-bottom: 1rem!important;
+      .pt_for_content{
+        margin-bottom: .3rem!important;
       }
       .bg-header-color{
             background-color: #004353;
       }
       
+      .header_only {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+        }
+        .dimension_align{
+            padding: 3px 1px 0.1px 1px;
+            background: #f5f5f5;
+            color: black;
+            text-align: center;
+            margin-bottom: 25px; border: .1px solid #ddd;
+        }
+      
+        ::-webkit-scrollbar {
+            width: 7px;
+            }
+            div::-webkit-scrollbar-button {
+            display: block;
+            width: 1px;
+            height: 1px;
+            }
+            div::-webkit-scrollbar-button:decrement:start {
+            background-color:lightblue;
+            border:1px solid #eee;
+            }
+            div::-webkit-scrollbar-button:increment:start {
+            background-color:lightblue;
+            border:1px solid #eee;
+            }
+            div::-webkit-scrollbar-button:decrement:end {
+            background-color:lightblue;
+            border:1px solid #eee;
+            }
+            div::-webkit-scrollbar-button:increment:end {
+            background-color:lightblue;
+            border:1px solid #eee;;
+            }
+            ::-webkit-scrollbar-thumb {
+            background: #888; 
+            }
+            ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+            border-radius: 10px;
+            } 
+            ::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+            }
+            body {
+                height: 620px;
+            }
+
     </style>
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/offcanvas.css') }}" rel="stylesheet">
@@ -212,13 +263,13 @@
                 <div class="lh-100">
                     <form action="{{ url('cases_index_search') }}" method="GET" class="form-inline my-2 my-lg-0 justify-content-center">
                         {{ csrf_field() }}
-                        <input style="width:350px;" class="form-control mr-sm-2" type="search" placeholder="Search any word in all Case Laws" aria-label="Search" name="search_text">
+                        <input style="width:400px;" class="form-control mr-sm-2" type="search" placeholder="Search any word in all Case Laws..." aria-label="Search" name="search_text">
                     </form>
                 </div>
             </div>
 
             <div class="content_container bg-white rounded shadow-sm">
-                <div class="pt_for_content_container">
+                <div class="pt_for_content">
                     <div class="nav-scroller bg-header-color rounded shadow-sm">
                         <nav class="nav nav-underline">
                             <a class="nav-link active text-white" href="/judgement/Ghana">Case Laws</a>
@@ -232,62 +283,144 @@
                         </nav>
                     </div>
                 </div>
+                {{-- For the filter --}}
+                <div class="text-right mb-1">
+                    <button id="print_options"  type="button" class="btn btn-outline-secondary btn-sm open">
+                        <span class="glyphicon glyphicon-tasks"></span>Print Options&nbsp;
+                    </button>
                 
-                    <div class="row">
-                        <div class="col-md-9">
-                            <div class="list-group">
-                                <table class="table table-striped table-condensed" id="datatable">
-                                    <thead>
-                                        <tr>
-                                            <th>Case Laws Title</th>
-                                            <th>Ref No.</th>
-                                            <th>Year</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($ghlawjudgments as $ghlawjudgment)
-                                        <tr>
-                                            <td>
-                                            <a href="/judgement/Ghana/{{ $ghlawjudgment->gh_law_judgment_group_name }}/{{ $ghlawjudgment->id}}"><li style="list-style: none;">{{ $ghlawjudgment->case_title }}</li></a>
-                                            </td>
-                                            <td>{{ $ghlawjudgment->reference_number }}</td>
-                                            <td>{{ $ghlawjudgment->year }}</td>
-                                        </tr>
-                                    @endforeach 
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="col-md-3" style="padding-top: 2.5em;">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <center><p class="panel-title">Filter</p></center>
-                                </div>
-                            
-                                <div class="panel-body">
-                                    <center>
-                                        <select class="form-control browser-default custom-select all_judgment_filter_category" style="width: 149px;">
-                                            <option selected value="">Select Category</option>
-                                            @foreach($ghcategories as $ghcategory)
-                                            @endforeach	
-                                        </select>
-                                    </center><br>
-                                    <form action="{{ url('cases_index_search') }}" method="GET">
-                                        {{ csrf_field() }}
-                                            <input style="padding: 15px;" class="form-control" name="search_text" type="text" placeholder="Search word in all Cases" aria-label="Search">
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
+                    {{-- <button type="button" class="btn btn-outline-secondary btn-sm open">
+                        <span class="glyphicon glyphicon-tasks"></span> View Other Cases
+                    </button> --}}
+                </div>
 
+                {{-- Start of container content --}}
+                <div class="judgement_display" style="height: auto;">
+                    <div id="display_content">
+                            <div class="header_only dimension_align">
+                                <h5><b>{{ $allGhanaLaw['case_title'] }}</b></h5>
+                            </div>
+                            <div class="menu_options text-right mb-3" style="display: none;">
+                                @if (Route::has('login'))
+                                    @auth
+                                            
+                                            {{-- No Subscription --}}
+                                            @if(auth()->user()->check_subscription == 0)
+                                                @include('layouts.no_subscription')
+                                                    
+                                                {{-- Subscription has expired --}}
+                                                @elseif(auth()->user()->subscription_expiry < today())
+                                                @include('layouts.expired_subscription')
+                                                    
+                                                {{-- Subscription download limit reached --}}
+                                                @elseif(auth()->user()->subscription_downloads <= auth()->user()->downloads_counts)
+                                                @include('layouts.exceeded_downloads_subscription')
+                                                    
+                                                {{-- Download PDF and Others --}}
+                                                @else
+                                                    {{-- DOWNLOAD PDF --}}
+                                                    <a class="case_download_link" href="javascript:;" rel="/judgement/1/case_law/pdf_view/{{ $allGhanaLaw['case_title'] }}/{{$allGhanaLaw['id']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
+                                                    
+                                                    {{-- SAVE USER DOWNLOAD --}}
+                                                    <a class="case_id hidden" href="javascript:;" rel="/acts-downloads/{{$allGhanaLaw['case_title']}}/{{ Auth::user()->name }}/{{ Auth::user()->id }}/{{$allGhanaLaw['gh_law_judgment_group_name']}}/{{$allGhanaLaw['id']}}/{{ Auth::user()->id }}{{$allGhanaLaw['case_title']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>
+
+                                                    {{-- PLAIN VIEW --}}
+                                                    <a href="/judgement/plain_view/{{$allGhanaLaw['id']}}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp;
+                                                    
+                                                    {{-- PRINT --}}
+                                                    <a href="/judgement/print_preview/{{$allGhanaLaw['id']}}" target="_blank"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            
+                                            @endif
+
+                                        @else
+
+                                        {{-- Create Account --}}
+                                        <a href="" data-toggle="modal" data-target="#myModal"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
+                                        {{-- PLAIN --}}
+                                        {{-- <a href="/judgement/plain_view/{{$allGhanaLaw['id']}}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp; --}}
+                                        <a href="" data-toggle="modal" data-target="#myModal">Plain View</a>&nbsp;&nbsp;||&nbsp;
+
+                                        <a href="" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                  <h4 class="modal-title" id="myModalLabel">Kindly <span style="color:#3490dc;">Log In</span> or <span style="color:#3490dc;">Register</span> to Create An Account</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <a class="btn btn-sm btn-primary_3" href="{{ route('login') }}">Login</a>
+                                                    <a class="btn btn-sm btn-primary_3" href="{{ route('register') }}">Register</a>                            
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                </div>
+                                              </div>
+                                            </div>
+                                        </div>  
+                                    
+                                    @endauth
+                                @endif
+                            </div>
+                            
+
+                        <div class="content">
+                            <!-- Court Name -->
+                            <center>
+                                <ul class="mb-3">
+                                    <li style="list-style: none;">
+                                    <h5><b>{!! $allGhanaLaw['court_name'] !!}</b></h5>
+                                    </li>
+                                </ul>
+                            </center>
+                            
+                            <!-- Case Title -->
+                            <center>
+                                <b>
+                                    <h6 style="color:blue;"><b>{!! $allGhanaLaw['case_title_1'] !!}</b></h6>
+                                    <label>vs.</label>
+                                    <h6 style="color:blue;"><b>{!! $allGhanaLaw['case_title_2'] !!}</b></h6>
+                                </b>
+                            </center>
+                            <br>
+
+                            <div style="padding: 15px;">
+                                <div class="row">
+                                        <h6><b style="color:blue;">DATE:&nbsp;</b>
+                                        <b style="color:black;">{{$allGhanaLaw['date']}}</b></h6>
+                                </div>
+                                <div class="row">
+                                    <h6><b style="color:blue;">{{$allGhanaLaw['case_type_name']}}:&nbsp;</b>
+                                    <b style="color:black;">{{$allGhanaLaw['reference_number']}}</b></h6>
+                                </div>
+                                
+                                <div class="row">
+                                    <h6><b style="color:blue;">JUDGES:&nbsp;</b>
+                                    <b style="color:black;">{{$allGhanaLaw['coram']}}</b></h6>
+                                </div>
+                                
+                                <div class="row">
+                                    <h6><b style="color:blue;">LAWYERS:&nbsp;</b>
+                                    <b style="color:black;">{!! $allGhanaLaw['counsellors'] !!}</b></h6>
+                                </div>
+                            </div>
+                            <h6><b style="color:blue;">{{$allGhanaLaw['judgement_type']}}</b></h6>
+                            <hr>
+                            
+                            {{--Body--}}   
+                            <p style="background-color: #FFFFFF;">{!! $allGhanaLaw['content'] !!}</p>
+                        </div>
+                    </div> 
+                    <div id="display_view_all_section"></div>
+                </div>
+                {{-- End of content container --}}
+        
             </div>
 
         </div>
-
-        {{-- <div class="col-md-3 content_container p-3 bg-white rounded shadow-sm"></div> --}}
-        <div class="col-md-3 content_container"></div>
+        <div class="col-md-3"></div>
+        
 
     </div>
 </div>
@@ -300,6 +433,8 @@
 {{-- <script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script> --}}
 <script src="{{ asset('js/bootstrap_update.min.js') }}"></script>
 <script src="{{ asset('js/offcanvas.js') }}"></script>
+
+<script src="{{ asset('js/myscript.js') }}"></script>
 
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     <script>
