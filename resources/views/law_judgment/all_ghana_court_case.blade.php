@@ -116,7 +116,7 @@
             body {
                 height: 620px;
             }
-
+            /* https://www.youtube.com/watch?v=O9toDm97VQM */
     </style>
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/offcanvas.css') }}" rel="stylesheet">
@@ -262,7 +262,7 @@
                 <div class="lh-100">
                     <form action="{{ url('cases_index_search') }}" method="GET" class="form-inline my-2 my-lg-0 justify-content-center">
                         {{ csrf_field() }}
-                        <input style="width:350px;" class="form-control mr-sm-2" type="search" placeholder="Search any word in all Case Laws..." aria-label="Search" name="search_text">
+                        <input style="width:300px;" class="form-control mr-sm-2" type="search" placeholder="Search any word in all Case Laws..." aria-label="Search" name="search_text">
                     </form>
                 </div>
             </div>
@@ -329,10 +329,10 @@
                                                     <a class="case_id d-none" href="javascript:;" rel="/acts-downloads/{{$allGhanaLaw['case_title']}}/{{ Auth::user()->name }}/{{ Auth::user()->id }}/{{$allGhanaLaw['gh_law_judgment_group_name']}}/{{$allGhanaLaw['id']}}/{{ Auth::user()->id }}{{$allGhanaLaw['case_title']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>
 
                                                     {{-- PLAIN VIEW --}}
-                                                    <a href="/judgement/plain_view/{{$allGhanaLaw['id']}}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp;
+                                                    <a href="/judgement/plain/simple-preview/{{$allGhanaLaw['id']}}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp;
                                                     
                                                     {{-- PRINT --}}
-                                                    <a href="/judgement/print_preview/{{$allGhanaLaw['id']}}" target="_blank"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <a href="/judgement/print/simple-preview/{{$allGhanaLaw['id']}}" target="_blank"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             
                                             @endif
 
@@ -366,11 +366,6 @@
                                     
                                     @endauth
                                 @endif
-
-  
-                                
-
-
 
                             </div>
                             
@@ -420,9 +415,12 @@
                             
                             {{--Body--}}   
                             <p style="background-color: #FFFFFF;">{!! $allGhanaLaw['content'] !!}</p>
+                            
                         </div>
                     </div> 
+
                     <div id="display_view_all_section"></div>
+                    
                 </div>
                 {{-- End of content container --}}
         
@@ -503,6 +501,8 @@
         });
     });  
 </script>
+
+
 
 </body>
 </html>

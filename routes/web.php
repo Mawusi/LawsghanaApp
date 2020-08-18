@@ -462,8 +462,8 @@ Route::get('/judgement/Ghana','JudgementController@index');
     Route::get('/judgement/Ghana/filter/{year}/{category}','JudgementController@all_judgment_filter'); //all judgment filtering
     Route::get('/judgement/Ghana/{name}/{id}','JudgementController@all_ghana_court_cases');
     // Route::get('/judgement/Ghana/Case-view/{name}/{id}','JudgementController@all_ghana_court_cases_view');
-    Route::get('/judgement/print_preview/{id}','JudgementController@Ghana_all_print_preview');
-    Route::get('/judgement/plain_view/{id}','JudgementController@Ghana_all_plain_view');
+    Route::get('/judgement/print/simple-preview/{id}','JudgementController@Ghana_all_print_preview');
+    Route::get('/judgement/plain/simple-preview/{id}','JudgementController@Ghana_all_plain_view');
     Route::get('/judgement/1/case_law/pdf_view/{title}/{id}','JudgementController@Ghana_all_pdf_view');
     // Route::get('/judgement/pdf_view/{name}/{id}','JudgementController@Ghana_all_pdf_view');
 

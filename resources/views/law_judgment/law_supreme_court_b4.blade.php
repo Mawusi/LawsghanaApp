@@ -35,7 +35,7 @@
         user-select: none;
       }
       .mt-customised {
-            margin-top: 25px !important;
+            margin-top: 15px !important;
             margin-bottom: 25px !important;
       }
       @media (min-width: 768px) {
@@ -66,6 +66,40 @@
       .bg-header-color{
             background-color: #004353;
       }
+      ::-webkit-scrollbar {
+            width: 7px;
+            }
+            div::-webkit-scrollbar-button {
+            display: block;
+            width: 1px;
+            height: 1px;
+            }
+            div::-webkit-scrollbar-button:decrement:start {
+            background-color:lightblue;
+            border:1px solid #eee;
+            }
+            div::-webkit-scrollbar-button:increment:start {
+            background-color:lightblue;
+            border:1px solid #eee;
+            }
+            div::-webkit-scrollbar-button:decrement:end {
+            background-color:lightblue;
+            border:1px solid #eee;
+            }
+            div::-webkit-scrollbar-button:increment:end {
+            background-color:lightblue;
+            border:1px solid #eee;;
+            }
+            ::-webkit-scrollbar-thumb {
+            background: #888; 
+            }
+            ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+            border-radius: 10px;
+            } 
+            ::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+            }
       
     </style>
     <!-- Custom styles for this template -->
@@ -212,7 +246,7 @@
                 <div class="lh-100">
                     <form action="{{ url('cases_index_search') }}" method="GET" class="form-inline my-2 my-lg-0 justify-content-center">
                         {{ csrf_field() }}
-                        <input style="width:350px;" class="form-control mr-sm-2" type="search" placeholder="Search any word in all Case Laws" aria-label="Search" name="search_text">
+                        <input style="width:300px;" class="form-control mr-sm-2" type="search" placeholder="Search any word in all Case Laws..." aria-label="Search" name="search_text">
                     </form>
                 </div>
             </div>
