@@ -16,14 +16,10 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
 
     <!-- Favicons -->
-    <link rel="apple-touch-icon" href="/docs/4.5/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-    <link rel="icon" href="/docs/4.5/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="/docs/4.5/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="manifest" href="/docs/4.5/assets/img/favicons/manifest.json">
-    <link rel="mask-icon" href="/docs/4.5/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
-    <link rel="icon" href="/docs/4.5/assets/img/favicons/favicon.ico">
-    <meta name="msapplication-config" content="/docs/4.5/assets/img/favicons/browserconfig.xml">
-    <meta name="theme-color" content="#563d7c">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('logo/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('logo/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('logo/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('logo/favicon/site.webmanifest') }}">
 
     <style>
       .bd-placeholder-img {
@@ -330,7 +326,7 @@
                                                     <a class="case_download_link" href="javascript:;" rel="/judgement/1/case_law/pdf_view/{{ $allGhanaLaw['case_title'] }}/{{$allGhanaLaw['id']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
                                                     
                                                     {{-- SAVE USER DOWNLOAD --}}
-                                                    <a class="case_id hidden" href="javascript:;" rel="/acts-downloads/{{$allGhanaLaw['case_title']}}/{{ Auth::user()->name }}/{{ Auth::user()->id }}/{{$allGhanaLaw['gh_law_judgment_group_name']}}/{{$allGhanaLaw['id']}}/{{ Auth::user()->id }}{{$allGhanaLaw['case_title']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>
+                                                    <a class="case_id d-none" href="javascript:;" rel="/acts-downloads/{{$allGhanaLaw['case_title']}}/{{ Auth::user()->name }}/{{ Auth::user()->id }}/{{$allGhanaLaw['gh_law_judgment_group_name']}}/{{$allGhanaLaw['id']}}/{{ Auth::user()->id }}{{$allGhanaLaw['case_title']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>
 
                                                     {{-- PLAIN VIEW --}}
                                                     <a href="/judgement/plain_view/{{$allGhanaLaw['id']}}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp;
@@ -441,21 +437,72 @@
 
 
 
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+{{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
 {{-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> --}}
-<script src="{{ asset('js/slim.js') }}"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
-{{-- <script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script> --}}
-<script src="{{ asset('js/bootstrap_update.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+<script src="{{ asset('js/tooltipster.bundle.min.js') }}"></script>
+<script src="{{ asset('js/print-preview.js') }}"></script>
 <script src="{{ asset('js/offcanvas.js') }}"></script>
 
 <script src="{{ asset('js/myscript.js') }}"></script>
 
+
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('#datatable').DataTable();
+<script>
+    $(document).ready(function(){
+        $('#datatable').DataTable();
+    });
+</script>
+
+<script>
+    $(".case_id").click(function(e){
+        e.preventDefault();
+        var case_id = $(this).attr("rel");
+        console.log(case_id);
+
+        $.ajax({
+            url: case_id,
+            type: "GET",
+            success:function(response){
+            if(response.success){
+                  $("#bookmarked").notify(
+                      response.message,
+                { position:"left", className: "info", autoHideDelay: 900000}
+                );
+            }else{
+                $("#bookmarked").notify(
+               "Section to Download",
+                { position:"left", className: "success", autoHideDelay: 10000}
+                );
+              }
+            },
+            error:function (){
+                $("#bookmarked").notify(
+               "Issue with database entry",
+                { position:"left", className: "error" }
+                );
+            }
         });
-    </script>
+
+    });
+    
+</script>
+
+<script>
+    $(".case_download_link").click(function(e){
+        e.preventDefault();
+        var case_download_link = $(this).attr("rel");
+        $('.case_id').trigger("click");
+       
+        $.ajax({
+            url: case_download_link,
+            type: "GET",
+        });
+    });  
+</script>
 
 </body>
 </html>
