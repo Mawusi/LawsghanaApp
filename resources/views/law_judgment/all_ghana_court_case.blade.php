@@ -73,7 +73,7 @@
             background: #f5f5f5;
             color: black;
             text-align: center;
-            margin-bottom: 5px; border: .1px solid #ddd;
+            margin-bottom: 15px; border: .1px solid #ddd;
         }
       
         ::-webkit-scrollbar {
