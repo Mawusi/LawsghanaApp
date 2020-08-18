@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
-    <title>Offcanvas template · Bootstrap</title>
+    <title>Case Laws</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/offcanvas/">
 
@@ -77,7 +77,7 @@
             background: #f5f5f5;
             color: black;
             text-align: center;
-            margin-bottom: 25px; border: .1px solid #ddd;
+            margin-bottom: 5px; border: .1px solid #ddd;
         }
       
         ::-webkit-scrollbar {
@@ -113,6 +113,9 @@
             } 
             ::-webkit-scrollbar-thumb:hover {
             background: #555; 
+            }
+            .bg-header-color{
+            background-color: #004353;
             }
             body {
                 height: 620px;
@@ -263,7 +266,7 @@
                 <div class="lh-100">
                     <form action="{{ url('cases_index_search') }}" method="GET" class="form-inline my-2 my-lg-0 justify-content-center">
                         {{ csrf_field() }}
-                        <input style="width:400px;" class="form-control mr-sm-2" type="search" placeholder="Search any word in all Case Laws..." aria-label="Search" name="search_text">
+                        <input style="width:350px;" class="form-control mr-sm-2" type="search" placeholder="Search any word in all Case Laws..." aria-label="Search" name="search_text">
                     </form>
                 </div>
             </div>
@@ -292,6 +295,11 @@
                     {{-- <button type="button" class="btn btn-outline-secondary btn-sm open">
                         <span class="glyphicon glyphicon-tasks"></span> View Other Cases
                     </button> --}}
+                    <!-- Button trigger modal -->
+                    {{-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+                        Launch demo modal
+                    </button> --}}
+
                 </div>
 
                 {{-- Start of container content --}}
@@ -300,7 +308,7 @@
                             <div class="header_only dimension_align">
                                 <h5><b>{{ $allGhanaLaw['case_title'] }}</b></h5>
                             </div>
-                            <div class="menu_options text-right mb-3" style="display: none;">
+                            <div class="menu_options text-right" style="display: none;">
                                 @if (Route::has('login'))
                                     @auth
                                             
@@ -335,33 +343,39 @@
                                         @else
 
                                         {{-- Create Account --}}
-                                        <a href="" data-toggle="modal" data-target="#myModal"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
+                                        <a href="" data-toggle="modal" data-target="#exampleModal"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
                                         {{-- PLAIN --}}
                                         {{-- <a href="/judgement/plain_view/{{$allGhanaLaw['id']}}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp; --}}
-                                        <a href="" data-toggle="modal" data-target="#myModal">Plain View</a>&nbsp;&nbsp;||&nbsp;
+                                        <a href="" data-toggle="modal" data-target="#exampleModal">Plain View</a>&nbsp;&nbsp;||&nbsp;
 
-                                        <a href="" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a href="" data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                            <div class="modal-dialog" role="document">
-                                              <div class="modal-content">
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content">
                                                 <div class="modal-header">
-                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                  <h4 class="modal-title" id="myModalLabel">Kindly <span style="color:#3490dc;">Log In</span> or <span style="color:#3490dc;">Register</span> to Create An Account</h4>
+                                                <h5 class="modal-title" id="exampleModalLabel"><b>Kindly Log In or Sign Up to Create An Account</b></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <a class="btn btn-sm btn-primary_3" href="{{ route('login') }}">Login</a>
-                                                    <a class="btn btn-sm btn-primary_3" href="{{ route('register') }}">Register</a>                            
+                                                    <a class="btn btn-sm bg-header-color text-white" href="{{ route('login') }}">Login</a>
+                                                    <a class="btn btn-sm bg-header-color text-white" href="{{ route('register') }}">Sign Up</a>
                                                 </div>
-                                                <div class="modal-footer">
-                                                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                </div>
-                                              </div>
                                             </div>
-                                        </div>  
+                                            </div>
+                                        </div> 
                                     
                                     @endauth
                                 @endif
+
+  
+                                
+
+
+
                             </div>
                             
 
