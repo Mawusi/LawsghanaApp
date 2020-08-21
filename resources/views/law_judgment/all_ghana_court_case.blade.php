@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
-    <title>Case Laws</title>
+    <title>{{ucwords(strtolower($allGhanaLaw['case_title']))}}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/offcanvas/">
 
@@ -275,10 +275,6 @@
                             <a class="nav-link text-white" href="/judgement/1/Supreme-Court">Supreme Court</a>
                             <a class="nav-link text-white" href="/judgement/3/Court-of-Appeal">Court of Appeal</a>
                             <a class="nav-link text-white" href="/judgement/2/High-Court">High Court</a>
-                            {{-- <form action="{{ url('cases_index_search') }}" method="GET" class="form-inline my-2 my-lg-0 justify-content-center">
-                              {{ csrf_field() }}
-                              <input style="width: 200px;" class="form-control mr-sm-2" type="search" placeholder="Search any word in all Case Laws" aria-label="Search" name="search_text">
-                            </form> --}}
                         </nav>
                     </div>
                 </div>
@@ -288,21 +284,16 @@
                         <span class="glyphicon glyphicon-tasks"></span>Print Options&nbsp;
                     </button>
                 
-                    {{-- <button type="button" class="btn btn-outline-secondary btn-sm open">
-                        <span class="glyphicon glyphicon-tasks"></span> View Other Cases
-                    </button> --}}
-                    <!-- Button trigger modal -->
-                    {{-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
-                        Launch demo modal
-                    </button> --}}
-
+                    <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#viewCases">
+                      View {{$allGhanaLaw['gh_law_judgment_group_name']}} Cases
+                    </button>
                 </div>
 
                 {{-- Start of container content --}}
                 <div class="judgement_display" style="height: auto;">
                     <div id="display_content">
                             <div class="header_only dimension_align">
-                                <h5><b>{{ $allGhanaLaw['case_title'] }}</b></h5>
+                                <h6 class="font-weight-bold">{{ $allGhanaLaw['case_title'] }}</h6>
                             </div>
                             <div class="menu_options text-right" style="display: none;">
                                 @if (Route::has('login'))
@@ -363,6 +354,8 @@
                                             </div>
                                             </div>
                                         </div> 
+
+                                        
                                     
                                     @endauth
                                 @endif
@@ -419,6 +412,43 @@
                         </div>
                     </div> 
 
+                    <!-- View Ohter cases -->
+                    <div class="modal fade" id="viewCases" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"><b>{{$allGhanaLaw['gh_law_judgment_group_name']}} Cases</b></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body text-left">
+                              <table class="table table-striped table-condensed" id="datatable">
+                                <thead>
+                                    <tr>
+                                        <th>Case Laws Title</th>
+                                        <th>Ref No.</th>
+                                        <th>Year</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($allGhanaLaws as $allGhanaLaw)
+                                    <tr>
+                                        <td>
+                                        <a href="/judgement/Ghana/{{ $allGhanaLaw->gh_law_judgment_group_name }}/{{ $allGhanaLaw->id}}"><li style="list-style: none;">{{ $allGhanaLaw->case_title }}</li></a>
+                                        </td>
+                                        <td>{{ $allGhanaLaw->reference_number }}</td>
+                                        <td>{{ $allGhanaLaw->year }}</td>
+                                    </tr>
+                                @endforeach 
+                                </tbody>
+                            </table>
+                            </div>
+                            
+                        </div>
+                      </div>
+                    </div>
+
                     <div id="display_view_all_section"></div>
                     
                 </div>
@@ -427,7 +457,31 @@
             </div>
 
         </div>
-        <div class="col-md-3"></div>
+
+        <div class="col-md-3">
+          {{-- <div class="popup-overlay" style="padding-top: 75px;">
+            <div class="panel panel-default">
+                <a class="close" href="#">&times;</a>
+                  <div class="panel-heading"><center><p class="panel-title"><small><b>Quick Look on Cases</b></small></p></center></div>
+                  <div class="panel-body">
+                      <center>
+                          <br>
+                      <div class="btn-group" style="margin-bottom: 10px;">
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <small>Select <b>{{$allGhanaLaw['gh_law_judgment_group_name']}}</b> Cases</small> <span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu scroll-view-judgement dropdown-menu-right" style=" height: 370px; width: 600px;">
+                              @foreach($allGhanaLaws as $allGhanaLaw) 
+                                  <li><a class="alt_section_link" href="/judgement/Ghana/{{$allGhanaLaw->gh_law_judgment_group_name}}/{{ $allGhanaLaw->id}}">{{$allGhanaLaw->case_title}}</a></li>
+                              @endforeach
+                          </ul>
+                      </div>
+                      </center>
+                      <br>
+                  </div>
+            </div>    
+          </div> --}}
+        </div>
         
 
     </div>
