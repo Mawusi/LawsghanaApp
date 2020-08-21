@@ -95,6 +95,11 @@
   position: sticky;
   top: 10%;
 }
+.back-to-top {
+  position: sticky;
+  bottom: 80px;
+  left: 1295px;
+}
 </style>
 @endsection
 
@@ -133,12 +138,29 @@
           <div class="move_here hidden"><br></div>
           @include('extenders.query_case_Laws')                                          
       </div>
+      <a id="back-to-top" href="#" class="back-to-top">
+        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-10.646.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z"/>
+        </svg>
+      </a>
   </div>
 </div>
     
 @endsection 
 
 @section('scripts')
+
+<script>
+  $(document).ready(function(){
+		// scroll body to 0px on click
+		$('#back-to-top').click(function () {
+			$('body,html').animate({
+				scrollTop: 0
+			}, 400);
+			return false;
+		});
+  });
+</script>
 
 <script>
   if ( {{$total_cases}} == 0 ) {
