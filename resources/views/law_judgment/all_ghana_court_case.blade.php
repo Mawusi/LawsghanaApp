@@ -22,6 +22,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('logo/favicon/favicon-16x16.png') }}">
     <link rel="manifest" href="{{ asset('logo/favicon/site.webmanifest') }}">
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -114,8 +116,13 @@
             .bg-header-color{
             background-color: #004353;
             }
+            .back-to-top {
+            position: sticky;
+            bottom: 80px;
+            left: 950px;
+            }
             body {
-                height: 620px;
+                height: 655px;
             }
             /* https://www.youtube.com/watch?v=O9toDm97VQM */
     </style>
@@ -310,6 +317,7 @@
                     <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#viewCases">
                       View {{$allGhanaLaw['gh_law_judgment_group_name']}} Cases
                     </button>
+                    
                 </div>
 
                 {{-- Start of container content --}}
@@ -473,42 +481,34 @@
                     </div>
 
                     <div id="display_view_all_section"></div>
-                    
+
+
                 </div>
+                
+
+
                 {{-- End of content container --}}
         
             </div>
-
+            {{-- <a id="back-to-top" href="#" class="btn btn-light back-to-top" role="button"><i class="fas fa-chevron-up"></i></a> --}}
+            <a id="back-to-top" href="#" class="back-to-top"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-10.646.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z"/>
+            </svg></a>
         </div>
 
+
         <div class="col-md-3">
-          {{-- <div class="popup-overlay" style="padding-top: 75px;">
-            <div class="panel panel-default">
-                <a class="close" href="#">&times;</a>
-                  <div class="panel-heading"><center><p class="panel-title"><small><b>Quick Look on Cases</b></small></p></center></div>
-                  <div class="panel-body">
-                      <center>
-                          <br>
-                      <div class="btn-group" style="margin-bottom: 10px;">
-                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <small>Select <b>{{$allGhanaLaw['gh_law_judgment_group_name']}}</b> Cases</small> <span class="caret"></span>
-                          </button>
-                          <ul class="dropdown-menu scroll-view-judgement dropdown-menu-right" style=" height: 370px; width: 600px;">
-                              @foreach($allGhanaLaws as $allGhanaLaw) 
-                                  <li><a class="alt_section_link" href="/judgement/Ghana/{{$allGhanaLaw->gh_law_judgment_group_name}}/{{ $allGhanaLaw->id}}">{{$allGhanaLaw->case_title}}</a></li>
-                              @endforeach
-                          </ul>
-                      </div>
-                      </center>
-                      <br>
-                  </div>
-            </div>    
-          </div> --}}
         </div>
         
 
     </div>
+    
 </div>
+
+
+
+
+
 
 
 
@@ -531,6 +531,19 @@
         $('#datatable').DataTable();
     });
 </script>
+
+<script>
+  $(document).ready(function(){
+		// scroll body to 0px on click
+		$('#back-to-top').click(function () {
+			$('body,html').animate({
+				scrollTop: 0
+			}, 400);
+			return false;
+		});
+});
+</script>
+
 
 <script>
     $(".case_id").click(function(e){
@@ -578,6 +591,7 @@
         });
     });  
 </script>
+
 
 
 
