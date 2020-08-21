@@ -239,7 +239,7 @@
             <!-- ACTS CONTENTS -->
             <div id="contentTab" class="tab-pane fade">
                 <div class="row">
-                     <div class="col-md-9 table-wrapper-scroll-display" style="height: 600px;">
+                     <div class="col-md-9 table-wrapper-scroll-display" style="height: auto;">
                         <div id="display_content"></div>
                         <div id="display_preamble"></div>
                         <div id="display_view_all_section"></div>  
