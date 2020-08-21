@@ -76,7 +76,8 @@
             background: #f5f5f5;
             color: black;
             text-align: center;
-            margin-bottom: 15px; border: .1px solid #ddd;
+            margin-bottom: 15px; 
+            border: .1px solid #ddd;
         }
       
         ::-webkit-scrollbar {
@@ -544,6 +545,20 @@
 			return false;
 		});
 });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+      //Disable full page
+      $('body').bind('cut copy paste', function (e) {
+          e.preventDefault();
+      });
+      
+      //Disable part of page
+      $('#id').bind('cut copy paste', function (e) {
+          e.preventDefault();
+      });
+  });
 </script>
 
 
