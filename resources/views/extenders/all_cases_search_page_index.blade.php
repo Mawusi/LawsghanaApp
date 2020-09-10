@@ -70,11 +70,11 @@
   justify-content: space-between;
 }.main,
 .sidebar {
-  border: 5px solid $color-dark;
+  /* border: 5px solid $color-dark;
   background-color: $color-background;
   border-radius: 2px;
   color: $color-dark;
-  padding: .1px;
+  padding: .1px; */
   /* margin-top: 20px; */
 }.main {
   width: 80%;

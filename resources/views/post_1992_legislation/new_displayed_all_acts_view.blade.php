@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
-    <title>Case Laws</title>
+    <title>4th Republic Laws</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/offcanvas/">
 
@@ -267,9 +267,9 @@
         <div class="col-md-9">
             <div class="d-flex p-m my-m">
                 <div class="lh-100">
-                    <form action="{{ url('cases_index_search') }}" method="GET" class="form-inline my-2 my-lg-0 justify-content-center">
+                    <form action="{{ url('post_index_search') }}" method="GET" class="form-inline my-2 my-lg-0 justify-content-center">
                         {{ csrf_field() }}
-                        <input style="width:300px;" class="form-control mr-sm-2" type="search" placeholder="Search any word in all Case Laws..." aria-label="Search" name="search_text">
+                        <input style="width:300px;" class="form-control mr-sm-2" type="search" placeholder="Search any word in all Laws..." aria-label="Search" name="search_text">
                     </form>
                 </div>
             </div>
@@ -278,10 +278,13 @@
                 <div class="pt_for_content_container">
                     <div class="nav-scroller bg-header-color rounded shadow-sm">
                         <nav class="nav nav-underline">
-                            <a class="nav-link active text-white" href="/judgement/Ghana">Case Laws</a>
-                            <a class="nav-link text-white" href="/judgement/1/Supreme-Court">Supreme Court</a>
-                            <a class="nav-link text-white" href="/judgement/3/Court-of-Appeal">Court of Appeal</a>
-                            <a class="nav-link text-white" href="/judgement/2/High-Court">High Court</a>
+                            <a class="nav-link active text-white" href="/post-1992-legislation">All 4th Republic Laws</a>
+                            <a class="nav-link text-white" href="/post-1992-legislation/1/Acts of Parliament">Acts of Parliament</a>
+                            <a class="nav-link text-white" href="/post-1992-legislation/only-regulations">Legislative Instruments</a>
+                            <a class="nav-link text-white" href="/post-1992-legislation/Constitutional-Intruments">Constitutional Instruments</a>
+                            <a class="nav-link text-white" href="/post-1992-legislation/Executive-Intruments">Executive Instruments</a>
+                            <a class="nav-link text-white" href="/post-1992-legislation/only-amendments">Amendments</a>
+
                             {{-- <form action="{{ url('cases_index_search') }}" method="GET" class="form-inline my-2 my-lg-0 justify-content-center">
                               {{ csrf_field() }}
                               <input style="width: 200px;" class="form-control mr-sm-2" type="search" placeholder="Search any word in all Case Laws" aria-label="Search" name="search_text">
@@ -296,22 +299,73 @@
                                 <table class="table table-striped table-condensed" id="datatable">
                                     <thead>
                                         <tr>
-                                            <th>Case Laws Title</th>
-                                            <th>Ref No.</th>
+                                            <th>All Post-1992 Legislation</th>
                                             <th>Year</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($ghlawjudgments as $ghlawjudgment)
-                                        <tr>
-                                            <td>
-                                            <a href="/judgement/Ghana/{{ $ghlawjudgment->gh_law_judgment_group_name }}/{{ $ghlawjudgment->id}}"><li style="list-style: none;">{{ $ghlawjudgment->case_title }}</li></a>
-                                            </td>
-                                            <td>{{ $ghlawjudgment->reference_number }}</td>
-                                            <td>{{ $ghlawjudgment->year }}</td>
-                                        </tr>
-                                    @endforeach 
-                                    </tbody>
+
+                                        <!-- Acts of Parliament -->
+                                        @foreach($allPost1992Acts as $allPost1992Act)
+                                            <tr>
+                                                <td>
+                                                    <a href="/post-1992-legislation/table-of-content/{{$allPost1992Act->post_group}}/{{ $allPost1992Act->title }}/{{ $allPost1992Act->id}}"><li style="list-style: none;">{{ $allPost1992Act->title }}</li></a>
+                                                </td> 
+                                                <td>{{ $allPost1992Act->year }}</td>
+                                            </tr>
+                                        @endforeach
+    
+                                        <!-- Constitutional Instruments -->
+                                        @foreach($allConstitutionalActs as $allConstitutionalAct)
+                                            <tr>
+                                                <td>
+                                                    <a href="/post-1992-legislation/constitutional-acts-table-of-content/{{$allConstitutionalAct->constitutional_group}}/{{ $allConstitutionalAct->title }}/{{ $allConstitutionalAct->id}}"><li style="list-style: none;">{{ $allConstitutionalAct->title }}</li></a>
+                                                </td> 
+                                                <td>{{ $allConstitutionalAct->year }}</td>
+                                            </tr>
+                                        @endforeach
+    
+                                        <!-- Executive Instruments -->
+                                        @foreach($allExecutiveActs as $allExecutiveAct)
+                                            <tr>
+                                                <td>
+                                                    <a href="/post-1992-legislation/table-of-content/{{$allExecutiveAct->executive_group}}/{{ $allExecutiveAct->title }}/{{ $allExecutiveAct->id}}"><li style="list-style: none;">{{ $allExecutiveAct->title }}</li></a>
+                                                </td> 
+                                                <td>{{ $allExecutiveAct->year }}</td>
+                                            </tr>
+                                        @endforeach
+    
+                                        <!-- Regulations -->
+                                        @foreach($allPostRegulations as $allPostRegulation)
+                                            <tr>
+                                                <td>
+                                                    <a href="/post_1992_legislation/regulation_acts_table_of_content/{{$allPostRegulation->act_category}}/{{ $allPostRegulation->title }}/{{ $allPostRegulation->id}}"><li style="list-style: none;">{{ $allPostRegulation->title }}</li></a>
+                                                </td> 
+                                                <td>{{ $allPostRegulation->year }}</td>
+                                            </tr>
+                                        @endforeach
+    
+                                        <!-- Amendments on Acts -->
+                                        @foreach($allPostsAmends as $allPostsAmend)
+                                            <tr>
+                                                <td>
+                                                    <a href="/post_1992_legislation/amended_acts_table_of_content/{{$allPostsAmend->post_category}}/{{ $allPostsAmend->title }}/{{ $allPostsAmend->id}}"><li style="list-style: none;">{{ $allPostsAmend->title }}</li></a>
+                                                </td> 
+                                                <td>{{ $allPostsAmend->year }}</td>
+                                            </tr>
+                                        @endforeach
+    
+                                        <!-- Amendments on Regulations -->
+                                        @foreach($allPostsAmendsOnRegulations as $allPostsAmendsOnRegulation)
+                                            <tr>
+                                                <td>
+                                                    <a href="/post_1992_legislation/amended_regulation_acts_table_of_content/{{$allPostsAmendsOnRegulation->act_category}}/{{ $allPostsAmendsOnRegulation->title }}/{{ $allPostsAmendsOnRegulation->id}}"><li style="list-style: none;">{{ $allPostsAmendsOnRegulation->title }}</li></a>
+                                                </td> 
+                                                <td>{{ $allPostsAmendsOnRegulation->year }}</td>
+                                            </tr>
+                                        @endforeach
+                                        
+                                        </tbody>
                                 </table>
                             </div>
                         </div>
@@ -325,13 +379,13 @@
                                     <center>
                                         <select class="form-control browser-default custom-select all_judgment_filter_category" style="width: 149px;">
                                             <option selected value="">Select Category</option>
-                                            @foreach($ghcategories as $ghcategory)
+                                            @foreach($allPost1992ategories as $allPost1992ategory)
                                             @endforeach	
                                         </select>
                                     </center><br>
-                                    <form action="{{ url('cases_index_search') }}" method="GET">
+                                    <form action="{{ url('post_index_search') }}" method="GET">
                                         {{ csrf_field() }}
-                                            <input style="padding: 15px;" class="form-control" name="search_text" type="text" placeholder="Search word in all Cases" aria-label="Search">
+                                            <input style="padding: 15px;" class="form-control" name="search_text" type="text" placeholder="All laws word-search" aria-label="Search">
                                     </form>
                                 </div>
                             </div>

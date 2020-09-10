@@ -1,17 +1,19 @@
 {{-- No Subscription --}}
-<div class="modal fade" id="myModalplainSubscribe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
+<!-- Modal -->
+<div class="modal fade" id="myModalplainSubscribe" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h3 class="modal-title" id="myModalLabel">Join a Subscription Plan</h3>
+            <h5 class="modal-title" id="exampleModalLabel"><b>Join a Subscription Plan</b></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
-        <div class="modal-body">
-            <h4>Kindly click <a href="/subscription">here</a> to access our subscription packages</h4>                            
-        </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <div class="modal-body text-left">
+            <h5>Kindly click <a href="/subscription">here</a> to access our subscription packages</h5>
         </div>
     </div>
     </div>
-</div>
+</div> 
+
+

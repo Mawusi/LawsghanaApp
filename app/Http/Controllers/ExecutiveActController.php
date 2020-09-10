@@ -14,8 +14,8 @@ class ExecutiveActController extends Controller
     public function only_executive_acts(){
         $allExecutiveActs         = ExecutiveAct::all();
         $footer_notes             = FooterNote::all();
-
-        return view('post_1992_legislation.displayed_all_executive_acts', compact('footer_notes', 'allExecutiveActs'));
+            return view('post_1992_legislation.new_all_executive_acts', compact('footer_notes', 'allExecutiveActs'));
+        // return view('post_1992_legislation.displayed_all_executive_acts', compact('footer_notes', 'allExecutiveActs'));
     }
 
      //Display Table of Content for Executive Acts

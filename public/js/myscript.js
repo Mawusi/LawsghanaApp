@@ -24,6 +24,136 @@ $(document).ready(function(){
   $('.tabPanedHide_acts_content').hide();
   $('.tabPanedHide_expanded_view').hide();
 
+
+  //-------------------------New changing background colors
+  // Default table of content color
+  $('.tabPaned_table_of_table_color').css("background-color","#f5f5f5");
+  $('.tabPaned_table_of_table_color').css("border",".1px solid #ddd");
+  $('.tabPaned_table_of_table_color').css("color","blue");
+
+  //click table of content tab
+  $(".tabPaned_table_of_table_color").click(function(){
+    $('.tabPaned_table_of_table_color').css("background-color","#f5f5f5");
+    $('.tabPaned_table_of_table_color').css("border",".1px solid #ddd");
+    $('.tabPaned_table_of_table_color').css("color","blue");
+    //color change on other tabs
+    $('.tabPanedHide_acts_content').css("background-color","white");
+    $('.tabPanedHide_acts_content').css("color","blue");
+    $('.tabPanedHide_expanded_view').css("background-color","white");
+    $('.tabPanedHide_expanded_view').css("color","blue");
+    $('.tabPanedHide_amendments').css("background-color","white");
+    $('.tabPanedHide_amendments').css("color","blue");
+    $('.tabPanedHide_amendments_table').css("background-color","white");
+    $('.tabPanedHide_amendments_table').css("color","blue");
+    $('.tabPanedHide_amendments_content').css("background-color","white");
+    $('.tabPanedHide_amendments_content').css("color","blue");
+  });
+
+  //click section link
+  $(".content_link, .tabPanedHide_acts_content, .preamble_link").click(function(){
+    $('.tabPanedHide_acts_content').css("background-color","#f5f5f5");
+    $('.tabPanedHide_acts_content').css("border",".1px solid #ddd");
+    $('.tabPanedHide_acts_content').css("color","blue");
+    //color change on other tabs
+    $('.tabPaned_table_of_table_color').css("background-color","white");
+    $('.tabPaned_table_of_table_color').css("color","blue");
+    $('.tabPanedHide_expanded_view').css("background-color","white");
+    $('.tabPanedHide_expanded_view').css("color","blue");
+    $('.tabPanedHide_amendments').css("background-color","white");
+    $('.tabPanedHide_amendments').css("color","blue");
+    $('.tabPanedHide_amendments_table').css("background-color","white");
+    $('.tabPanedHide_amendments_table').css("color","blue");
+    $('.tabPanedHide_amendments_content').css("background-color","white");
+    $('.tabPanedHide_amendments_content').css("color","blue");
+  });
+
+  //click expanded link
+  $(".expanded_link, .tabPanedHide_expanded_view").click(function(){
+    $('.tabPanedHide_expanded_view').css("background-color","#f5f5f5");
+    $('.tabPanedHide_expanded_view').css("border",".1px solid #ddd");
+    $('.tabPanedHide_expanded_view').css("color","blue");
+    //color change on other tabs
+    $('.tabPaned_table_of_table_color').css("background-color","white");
+    $('.tabPaned_table_of_table_color').css("color","blue");
+    $('.tabPanedHide_acts_content').css("background-color","white");
+    $('.tabPanedHide_acts_content').css("color","blue");
+    $('.tabPanedHide_amendments').css("background-color","white");
+    $('.tabPanedHide_amendments').css("color","blue");
+    $('.tabPanedHide_amendments_table').css("background-color","white");
+    $('.tabPanedHide_amendments_table').css("color","blue");
+    $('.tabPanedHide_amendments_content').css("background-color","white");
+    $('.tabPanedHide_amendments_content').css("color","blue");
+  });
+
+  //click all amendments link from related Acts
+  $(".all_amendments_link, .tabPanedHide_amendments").click(function(){
+    $('.tabPanedHide_amendments').css("background-color","#f5f5f5");
+    $('.tabPanedHide_amendments').css("border",".1px solid #ddd");
+    $('.tabPanedHide_amendments').css("color","blue");
+    //color change on other tabs
+    $('.tabPaned_table_of_table_color').css("background-color","white");
+    $('.tabPaned_table_of_table_color').css("color","blue");
+    $('.tabPanedHide_acts_content').css("background-color","white");
+    $('.tabPanedHide_acts_content').css("color","blue");
+    $('.tabPanedHide_expanded_view').css("background-color","white");
+    $('.tabPanedHide_expanded_view').css("color","blue");
+    $('.tabPanedHide_amendments_table').css("background-color","white");
+    $('.tabPanedHide_amendments_table').css("color","blue");
+    $('.tabPanedHide_amendments_content').css("background-color","white");
+    $('.tabPanedHide_amendments_content').css("color","blue");
+  });
+
+  //click all amendments link from related Acts
+  $(".amended_link, .tabPanedHide_amendments_table").click(function(){
+    $('.tabPanedHide_amendments_table').css("background-color","#f5f5f5");
+    $('.tabPanedHide_amendments_table').css("border",".1px solid #ddd");
+    $('.tabPanedHide_amendments_table').css("color","blue");
+    //color change on other tabs
+    $('.tabPaned_table_of_table_color').css("background-color","white");
+    $('.tabPaned_table_of_table_color').css("color","blue");
+    $('.tabPanedHide_acts_content').css("background-color","white");
+    $('.tabPanedHide_acts_content').css("color","blue");
+    $('.tabPanedHide_expanded_view').css("background-color","white");
+    $('.tabPanedHide_expanded_view').css("color","blue");
+    $('.tabPanedHide_amendments').css("background-color","white");
+    $('.tabPanedHide_amendments').css("color","blue");
+    $('.tabPanedHide_amendments_content').css("background-color","white");
+    $('.tabPanedHide_amendments_content').css("color","blue");
+  });
+
+  //click amended section link to move to it's content display
+  $(".sinlge_amended_act_content_link, .tabPanedHide_amendments_content").click(function(){
+    $('.tabPanedHide_amendments_content').css("background-color","#f5f5f5");
+    $('.tabPanedHide_amendments_content').css("border",".1px solid #ddd");
+    $('.tabPanedHide_amendments_content').css("color","blue");
+    //color change on other tabs
+    $('.tabPaned_table_of_table_color').css("background-color","white");
+    $('.tabPaned_table_of_table_color').css("color","blue");
+    $('.tabPanedHide_acts_content').css("background-color","white");
+    $('.tabPanedHide_acts_content').css("color","blue");
+    $('.tabPanedHide_expanded_view').css("background-color","white");
+    $('.tabPanedHide_expanded_view').css("color","blue");
+    $('.tabPanedHide_amendments').css("background-color","white");
+    $('.tabPanedHide_amendments').css("color","blue");
+    $('.tabPanedHide_amendments_table').css("background-color","white");
+    $('.tabPanedHide_amendments_table').css("color","blue");
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   //For the table of content tab color on document ready
   $('.tabPaned_color_table_of_table').css("background-color","#f5f5f5");
   $('.tabPaned_color_table_of_table').css("border-color","#ddd");
@@ -145,6 +275,7 @@ $(document).ready(function(){
         var link = $(this).attr("href");
         xhr.open("GET", link, true);
         xhr.onreadystatechange = function receiveUpdate(e) { 
+            $("#v-pills-settings-tab").trigger("click");
             $("#all_amendments").html(this.responseText); 
             $("#amend_datatable").DataTable();
         }
@@ -186,7 +317,8 @@ $(document).ready(function(){
     {
     $('#tabs a[href="#contentTab"]').tab('show');
     $('.tabPanedHide_acts_content').show();
-    }   
+    }  
+    
     // For a particular amendment .....toggle to content
    function amended_act_toggle_content() {
     $('#tabs a[href="#amendmentcontentTab"]').tab('show');
@@ -214,18 +346,19 @@ $(document).ready(function(){
         var link = $(this).attr("href");
         xhr.open("GET", link, true);
         xhr.onreadystatechange = function receiveUpdate(e) { 
-            $("#single_preamble_amended_content").html(""); 
-            $("#single_amended_content").html("");
-            $("#single_view_all_sections_amend").html("");
-            $("#single_container_details_amend").hide();
+            // $("#single_preamble_amended_content").html(""); 
+            // $("#single_amended_content").html("");
+            // $("#single_view_all_sections_amend").html("");
+            // $("#single_container_details_amend").hide();
 
-            $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations, .bg-color-amendments').css("background-color","white");
-            $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations, .bg-color-amendments').css("border-color","#ddd");
-            $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations, .bg-color-amendments').css("color","black");
+            // $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations, .bg-color-amendments').css("background-color","white");
+            // $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations, .bg-color-amendments').css("border-color","#ddd");
+            // $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-regulations, .bg-color-amendments').css("color","black");
 
-            $('.bg-color-amendments-table').css({"backgroundColor" : "#f5f5f5"});
-            $('.bg-color-amendments-table').css({"color" : "black"});
-
+            // $('.bg-color-amendments-table').css({"backgroundColor" : "#f5f5f5"});
+            // $('.bg-color-amendments-table').css({"color" : "black"});
+            // $("#v-pills-amendments-content-tab").tab('hide')
+            $("#v-pills-amendments-tab").trigger("click");
             $("#amended_table_of_content").html(this.responseText);
         }
     xhr.send();
@@ -376,29 +509,6 @@ $(document).ready(function(){
     });
 
     //-----------------------------------------------------end
-
-//    $('.amended_link_content').click(function(e){
-//         e.preventDefault();
-//         var xhr = new XMLHttpRequest();
-//         var link = $(this).attr("href");
-//         xhr.open("GET", link, true);
-//         xhr.onreadystatechange = function receiveUpdate(e) {
-//             $("#amended_content").html(this.responseText); 
-//         }
-//         xhr.send();
-//     });
-
-
-    //GENERAL PREAMBLE LINK
-    // General preamble click to show on content tab
-    $('#preamble_link_toggle').click(function (e) {
-         e.preventDefault();
-         $('#tabs a[href="#contentTab"]').tab('show');
-         $('.tabPanedHide_acts_content').show();
-        //  $('.tabPanedHide_amendments').hide();
-        //  $('.tabPanedHide_regulations').hide();
-    });
-    
     //GENERAL CONTENT LINK
     // General content click to show on content tab
     $('.content_link_toggle').click(function (e) {
@@ -1427,8 +1537,8 @@ $(document).ready(function(){
         xhr.open("GET", link, true);
 
         xhr.onreadystatechange = function receiveUpdate(e) {
-            $("#display_preamble").html("");
             $("#display_view_all_section").html("");
+            $("#v-pills-profile-tab").trigger("click");
             $("#display_content").html(this.responseText);
         }
         xhr.send();
@@ -1586,18 +1696,18 @@ $(document).ready(function(){
         
         xhr.open("GET", link, true);
         xhr.onreadystatechange = function receiveUpdate(e) {
-            $("#single_preamble_amended_content").html("");
 
-            $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-amendments-table').css("background-color","white");
-            $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-amendments-table').css("border-color","#ddd");
-            $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-amendments-table').css("color","black");
+            // $("#single_preamble_amended_content").html("");
+            // $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-amendments-table').css("background-color","white");
+            // $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-amendments-table').css("border-color","#ddd");
+            // $('.tabPaned_color_table_of_table, .bg-color-content, .bg-color-expanded, .bg-color-amendments-table').css("color","black");
             
-            $('.bg-color-amendments-contents').css({"backgroundColor" : "#f5f5f5"});
-            $('.bg-color-amendments-contents').css({"color" : "black"});
-
+            // $('.bg-color-amendments-contents').css({"backgroundColor" : "#f5f5f5"});
+            // $('.bg-color-amendments-contents').css({"color" : "black"});
+            // $('.single_container_details_link_amend').trigger("click");
             $("#single_amended_content").html(this.responseText);
             $("#single_view_all_sections_amend").html("");
-            $('.single_container_details_link_amend').trigger("click");
+            $("#v-pills-amendments-content-tab").trigger("click");
             $(".show li").show();
             
         }
@@ -1690,6 +1800,7 @@ $(document).ready(function(){
         var link = $(this).attr("href");
         xhr.open("GET", link, true);
         xhr.onreadystatechange = function receiveUpdate(e) {
+            $("#v-pills-messages-tab").trigger("click");
             $("#acts_expanded_view").html(this.responseText);
         }
         xhr.send();
@@ -1719,6 +1830,7 @@ $(document).ready(function(){
         xhr.onreadystatechange = function receiveUpdate(e) {
             $("#display_content").html("");
             $("#display_view_all_section").html("");
+            $("#v-pills-profile-tab").trigger("click");
             $("#display_preamble").html(this.responseText);
         }
         xhr.send();

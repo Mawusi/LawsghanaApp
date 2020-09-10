@@ -15,8 +15,8 @@ class ConstitutionalActController extends Controller
     public function only_constitutional_acts(){
         $allConstitutionalActs       = ConstitutionalAct::all();
         $footer_notes                = FooterNote::all();
-
-        return view('post_1992_legislation.displayed_all_constitutional_acts', compact('footer_notes', 'allConstitutionalActs'));
+            return view('post_1992_legislation.new_all_constitutional_acts', compact('footer_notes', 'allConstitutionalActs'));
+        // return view('post_1992_legislation.displayed_all_constitutional_acts', compact('footer_notes', 'allConstitutionalActs'));
     }
     
     //Display Table of Content for Constitutional Acts

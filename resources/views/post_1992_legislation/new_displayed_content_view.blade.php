@@ -15,26 +15,40 @@
 </head>
 
 <body>
+
+    {{-- For the bookmark --}}
     <div class="nav-links">
-        <span>{{ $amendedContent['section'] }}</span>
+        <span class="text-left">{{ $allPost1992Article['section'] }}
+            @if (Route::has('login'))
+                @auth                        
+                        <a class="bookmarking" href="javascript:;" rel="/bookmarks/{{$allPost1992Article['post_act']}}/{{$allPost1992Article['section']}}/{{$allPost1992Article['id']}}/{{ Auth::user()->name }}/{{ Auth::user()->id }}/{{ Auth::user()->id }}{{$allPost1992Article['section']}}/{{$allPost1992Article['act_group']}}/{{$allPost1992Article['act_id']}}">
+                            <i title="Bookmark this section" style="color:blue;" id="bookmarked" class="tooltips glyphicon glyphicon-bookmark pull-right"></i>
+                        </a>
+                    @else
+                    <i style="color:blue;" class="glyphicon glyphicon-bookmark hidden"></i>
+                @endauth
+            @endif
+        </span>  
     </div>
 
-    <div style="margin-bottom: 5px;">
-        &nbsp;&nbsp;&nbsp;&nbsp;<a class="pull-right" id="print_options" href="#">Print Options</a>
+    <div style="margin-bottom: 1px;">
+        &nbsp;&nbsp;&nbsp;&nbsp;<a class="pull-right" id="print_options" href="#"> Print Options</a>
         <div class="menu_options pull-right" style="display: none;">
             @if (Route::has('login'))
                 @auth
-                    <a href="/post_1992_legislation/pdf/amended_content_section/{{$amendedContent['act_title']}}/{{ $amendedContent['id'] }}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
-                    {{-- <a href="/post_1992_legislation/plain_amended/content_section/{{ $amendedContent['id'] }}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp; --}}
-                    <a href="/post_1992_legislation/print_amended/content_section/{{ $amendedContent['id'] }}" target="_blank"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        
+                    <a class="download_link" href="javascript:;" rel="/post-1992-legislation/pdf-content/{{$allPost1992Article['post_act']}}/{{ $allPost1992Article['id'] }}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
+                    <a class="d-none section_id" href="javascript:;" rel="/section_downloads/{{$allPost1992Article['post_act']}}/{{$allPost1992Article['section']}}/{{$allPost1992Article['id']}}/{{ Auth::user()->name }}/{{ Auth::user()->id }}/{{ Auth::user()->id }}{{$allPost1992Article['section']}}/{{$allPost1992Article['act_group']}}/{{$allPost1992Article['act_id']}}">Testing</a>
+                    {{-- <a href="/post_1992_legislation/plain-content/{{ $allPost1992Article['post_act'] }}/{{ $allPost1992Article['id'] }}" class="checking_link" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp; --}}
+                    <a href="/post_1992_legislation/print_section_content/{{ $allPost1992Article['id'] }}" target="_blank"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    
                     @else
 
-                    <a href="" data-toggle="modal" data-target="#myModal"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
-                    {{-- <a href="/post_1992_legislation/plain_amended/content_section/{{ $amendedContent['id'] }}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp; --}}
-                    <a href="" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        
-                    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button> --}}
+                    <a href="" data-toggle="modal" data-target="#myModals"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
+                    <a href="" data-toggle="modal" data-target="#myModals"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                   <!-- Modal -->
+                    <div class="modal fade" id="myModals" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -49,18 +63,27 @@
                             </div>
                         </div>
                         </div>
-                    </div>
+                    </div> 
+
+                    {{-- <a href=""><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF Download</a>&nbsp;&nbsp;||&nbsp; --}}
+                    
+
+                    {{-- <a href="{{ route('login') }}">Login </a> or
+
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}">Register an account</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    @endif --}}
 
                 @endauth
             @endif
-        </div>
+            </div>
     </div>
 
-    <div class="content">
-        <p>{!! $amendedContent['content'] !!}</p>
+    <div class="content">            
+        <p>{!! $allPost1992Article['content'] !!}</p>
     </div>
 
-    {{-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.0.min.js"></script> --}}
+{{-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.0.min.js"></script> --}}
 {{-- <script src="{{ asset('js/tooltipster.bundle.min.js') }}"></script> --}}
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
 
@@ -151,10 +174,6 @@
 
 </html>
 
-
-
-
-
-    
+   
 
 

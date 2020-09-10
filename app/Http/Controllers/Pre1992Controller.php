@@ -18,7 +18,8 @@ class Pre1992Controller extends Controller
         $allPre1992Acts        = Pre1992LegislationAct::all();
         $allPre1992ategories   = Pre1992LegislationCategory::all();
         $footer_notes           = FooterNote::all();
-        return view('pre_1992_legislation.displayed_all_acts_view', compact('footer_notes','allPre1992Acts','allPre1992ategories'));
+        // return view('pre_1992_legislation.displayed_all_acts_view', compact('footer_notes','allPre1992Acts','allPre1992ategories'));
+        return view('pre_1992_legislation.new_displayed_all_acts_view', compact('footer_notes','allPre1992Acts','allPre1992ategories'));
     }
 
     //ALL PRE 1992 LEGISLATION FILTERING

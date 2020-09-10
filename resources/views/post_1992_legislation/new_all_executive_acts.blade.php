@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
-    <title>Case Laws</title>
+    <title>Executive Instruments</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/offcanvas/">
 
@@ -267,9 +267,9 @@
         <div class="col-md-9">
             <div class="d-flex p-m my-m">
                 <div class="lh-100">
-                    <form action="{{ url('cases_index_search') }}" method="GET" class="form-inline my-2 my-lg-0 justify-content-center">
+                    <form action="{{ url('post_index_search') }}" method="GET" class="form-inline my-2 my-lg-0 justify-content-center">
                         {{ csrf_field() }}
-                        <input style="width:300px;" class="form-control mr-sm-2" type="search" placeholder="Search any word in all Case Laws..." aria-label="Search" name="search_text">
+                        <input style="width:300px;" class="form-control mr-sm-2" type="search" placeholder="Search any word in all Laws..." aria-label="Search" name="search_text">
                     </form>
                 </div>
             </div>
@@ -278,10 +278,13 @@
                 <div class="pt_for_content_container">
                     <div class="nav-scroller bg-header-color rounded shadow-sm">
                         <nav class="nav nav-underline">
-                            <a class="nav-link active text-white" href="/judgement/Ghana">Case Laws</a>
-                            <a class="nav-link text-white" href="/judgement/1/Supreme-Court">Supreme Court</a>
-                            <a class="nav-link text-white" href="/judgement/3/Court-of-Appeal">Court of Appeal</a>
-                            <a class="nav-link text-white" href="/judgement/2/High-Court">High Court</a>
+                            <a class="nav-link active text-white" href="/post-1992-legislation">All 4th Republic Laws</a>
+                            <a class="nav-link text-white" href="/post-1992-legislation/1/Acts of Parliament">Acts of Parliament</a>
+                            <a class="nav-link text-white" href="/post-1992-legislation/only-regulations">Legislative Instruments</a>
+                            <a class="nav-link text-white" href="/post-1992-legislation/Constitutional-Intruments">Constitutional Instruments</a>
+                            <a class="nav-link text-white" href="/post-1992-legislation/Executive-Intruments">Executive Instruments</a>
+                            <a class="nav-link text-white" href="/post-1992-legislation/only-amendments">Amendments</a>
+
                             {{-- <form action="{{ url('cases_index_search') }}" method="GET" class="form-inline my-2 my-lg-0 justify-content-center">
                               {{ csrf_field() }}
                               <input style="width: 200px;" class="form-control mr-sm-2" type="search" placeholder="Search any word in all Case Laws" aria-label="Search" name="search_text">
@@ -296,21 +299,19 @@
                                 <table class="table table-striped table-condensed" id="datatable">
                                     <thead>
                                         <tr>
-                                            <th>Case Laws Title</th>
-                                            <th>Ref No.</th>
+                                            <th>All Executive Instruments</th>
                                             <th>Year</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($ghlawjudgments as $ghlawjudgment)
-                                        <tr>
-                                            <td>
-                                            <a href="/judgement/Ghana/{{ $ghlawjudgment->gh_law_judgment_group_name }}/{{ $ghlawjudgment->id}}"><li style="list-style: none;">{{ $ghlawjudgment->case_title }}</li></a>
-                                            </td>
-                                            <td>{{ $ghlawjudgment->reference_number }}</td>
-                                            <td>{{ $ghlawjudgment->year }}</td>
-                                        </tr>
-                                    @endforeach 
+                                        @foreach($allExecutiveActs as $allExecutiveAct)
+                                            <tr>
+                                                <td>
+                                                    <a href="/post-1992-legislation/executive-acts-table-of-content/{{$allExecutiveAct->executive_group}}/{{ $allExecutiveAct->title }}/{{ $allExecutiveAct->id}}"><li style="list-style: none;">{{ $allExecutiveAct->title }}</li></a>
+                                                </td> 
+                                                <td>{{ $allExecutiveAct->year }}</td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -325,13 +326,13 @@
                                     <center>
                                         <select class="form-control browser-default custom-select all_judgment_filter_category" style="width: 149px;">
                                             <option selected value="">Select Category</option>
-                                            @foreach($ghcategories as $ghcategory)
-                                            @endforeach	
+                                            {{-- @foreach($actsOfParliamentCategories as $actsOfParliamentCategory)
+                                            @endforeach	 --}}
                                         </select>
                                     </center><br>
-                                    <form action="{{ url('cases_index_search') }}" method="GET">
+                                    <form action="{{ url('executive_instruments_index_search') }}" method="GET">
                                         {{ csrf_field() }}
-                                            <input style="padding: 15px;" class="form-control" name="search_text" type="text" placeholder="Search word in all Cases" aria-label="Search">
+                                            <input style="padding: 15px;" class="form-control" name="search_text" type="text" placeholder="Executive Instruments search" aria-label="Search">
                                     </form>
                                 </div>
                             </div>

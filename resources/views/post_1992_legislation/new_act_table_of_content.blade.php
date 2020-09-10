@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
-    <title>{{ucwords(strtolower($allGhanaLaw['case_title']))}}</title>
+    <title>{{ucwords(strtolower($allPost1992Act['title']))}}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/offcanvas/">
 
@@ -67,21 +67,29 @@
       }
       
       .header_only {
-            position: -webkit-sticky;
+            /* position: -webkit-sticky;
             position: sticky;
-            top: 0;
+            top: 0; */
+        }
+        .nav-links{
+        /* background-color: #f5f5f5; */
+        /* border: .1px solid #ddd; */
+        border-radius: .25rem;
+        display: block;
+        padding: .1rem .9rem;
         }
         .dimension_align{
             padding: 3px 1px 0.1px 1px;
-            background: #f5f5f5;
+            /* background: #f5f5f5; */
             color: black;
             text-align: center;
+            margin-top: 25px;
             margin-bottom: 15px; 
-            border: .1px solid #ddd;
+            /* border: .1px solid #ddd; */
         }
         .alignment{
           text-align: center;
-          /* border: .1px solid #ddd; */
+          border: .1px solid #ddd;
         }
         ::-webkit-scrollbar {
             width: 7px;
@@ -117,17 +125,35 @@
             ::-webkit-scrollbar-thumb:hover {
             background: #555; 
             }
-            .bg-header-color{
-            background-color: #004353;
-            }
             .back-to-top {
             position: sticky;
             bottom: 80px;
-            left: 950px;
+            left: 850px;
+            }
+            .back-to-top-expanded {
+            position: sticky;
+            bottom: 80px;
+            left: 1070px;
             }
             .nav-link {
             display: block;
             padding: .1rem .9rem;
+            }
+            ul{
+              margin-bottom: .5rem;
+            }
+            hr{
+              margin-top: .1rem;
+              margin-bottom: .7rem;
+            }
+            .sidebar {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 7%;
+            }
+            .btn-outlined{
+              color: white;
+              background-color: #004353;
             }
             body {
                 height: 655px;
@@ -295,12 +321,12 @@
 
 <div class="container-fluid mt-customised">
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-10">
             <div class="d-flex p-m my-m">
                 <div class="lh-100">
-                    <form action="{{ url('cases_index_search') }}" method="GET" class="form-inline my-2 my-lg-0 justify-content-center">
+                    <form action="{{ url('post_index_search') }}" method="GET" class="form-inline my-2 my-lg-0 justify-content-center">
                         {{ csrf_field() }}
-                        <input style="width:300px;" class="form-control mr-sm-2" type="search" placeholder="Search any word in all Case Laws..." aria-label="Search" name="search_text">
+                        <input style="width:300px;" class="form-control mr-sm-2" type="search" placeholder="Search any word in all Laws..." aria-label="Search" name="search_text">
                     </form>
                 </div>
             </div>
@@ -309,220 +335,246 @@
                 <div class="pt_for_content">
                     <div class="nav-scroller bg-header-color rounded shadow-sm">
                         <nav class="nav nav-underline">
-                            <a class="nav-link active text-white" href="/judgement/Ghana">Case Laws</a>
-                            <a class="nav-link text-white" href="/judgement/1/Supreme-Court">Supreme Court</a>
-                            <a class="nav-link text-white" href="/judgement/3/Court-of-Appeal">Court of Appeal</a>
-                            <a class="nav-link text-white" href="/judgement/2/High-Court">High Court</a>
+                            <a class="nav-link active text-white" href="/post-1992-legislation">All 4th Republic Laws</a>
+                            <a class="nav-link text-white" href="/post-1992-legislation/1/Acts of Parliament">Acts of Parliament</a>
+                            <a class="nav-link text-white" href="/post-1992-legislation/only-regulations">Legislative Instruments</a>
+                            <a class="nav-link text-white" href="/post-1992-legislation/Constitutional-Intruments">Constitutional Instruments</a>
+                            <a class="nav-link text-white" href="/post-1992-legislation/Executive-Intruments">Executive Instruments</a>
+                            <a class="nav-link text-white" href="/post-1992-legislation/only-amendments">Amendments</a>
                         </nav>
                     </div>
                 </div>
-                {{-- For the filter --}}
-                <div class="text-right mb-1">
-                    <button id="print_options"  type="button" class="btn btn-outline-secondary btn-sm open">
-                        <span class="glyphicon glyphicon-tasks"></span>Print Options&nbsp;
-                    </button>
-                
-                    <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#viewCases">
-                      View {{$allGhanaLaw['gh_law_judgment_group_name']}} Cases
-                    </button>
-                    
-                </div>
-
                 {{-- Start of container content --}}
-                <div class="judgement_display" style="height: auto;">
-                    <div id="display_content">
-                            <div class="header_only dimension_align">
-                                <h6 class="font-weight-bold">{{ $allGhanaLaw['case_title'] }}</h6>
-                            </div>
-                            <div class="menu_options text-right" style="display: none;">
-                                @if (Route::has('login'))
-                                    @auth
-                                            
-                                            {{-- No Subscription --}}
-                                            @if(auth()->user()->check_subscription == 0)
-                                                @include('layouts.no_subscription')
-                                                    
-                                                {{-- Subscription has expired --}}
-                                                @elseif(auth()->user()->subscription_expiry < today())
-                                                @include('layouts.expired_subscription')
-                                                    
-                                                {{-- Subscription download limit reached --}}
-                                                @elseif(auth()->user()->subscription_downloads <= auth()->user()->downloads_counts)
-                                                @include('layouts.exceeded_downloads_subscription')
-                                                    
-                                                {{-- Download PDF and Others --}}
-                                                @else
-                                                    {{-- DOWNLOAD PDF --}}
-                                                    <a class="case_download_link" href="javascript:;" rel="/judgement/1/case_law/pdf_view/{{ $allGhanaLaw['case_title'] }}/{{$allGhanaLaw['id']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
-                                                    
-                                                    {{-- SAVE USER DOWNLOAD --}}
-                                                    <a class="case_id d-none" href="javascript:;" rel="/acts-downloads/{{$allGhanaLaw['case_title']}}/{{ Auth::user()->name }}/{{ Auth::user()->id }}/{{$allGhanaLaw['gh_law_judgment_group_name']}}/{{$allGhanaLaw['id']}}/{{ Auth::user()->id }}{{$allGhanaLaw['case_title']}}"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>
-
-                                                    {{-- PLAIN VIEW --}}
-                                                    <a href="/judgement/plain/simple-preview/{{$allGhanaLaw['id']}}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp;
-                                                    
-                                                    {{-- PRINT --}}
-                                                    <a href="/judgement/print/simple-preview/{{$allGhanaLaw['id']}}" target="_blank"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            
-                                            @endif
-
-                                        @else
-
-                                        {{-- Create Account --}}
-                                        <a href="" data-toggle="modal" data-target="#exampleModal"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
-                                        {{-- PLAIN --}}
-                                        {{-- <a href="/judgement/plain_view/{{$allGhanaLaw['id']}}" target="_blank">Plain View</a>&nbsp;&nbsp;||&nbsp; --}}
-                                        <a href="" data-toggle="modal" data-target="#exampleModal">Plain View</a>&nbsp;&nbsp;||&nbsp;
-
-                                        <a href="" data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel"><b>Kindly Log In or Sign Up to Create An Account</b></h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <a class="btn btn-sm bg-header-color text-white" href="{{ route('login') }}">Login</a>
-                                                    <a class="btn btn-sm bg-header-color text-white" href="{{ route('register') }}">Sign Up</a>
-                                                </div>
-                                            </div>
-                                            </div>
-                                        </div> 
-
-                                        
-                                    
-                                    @endauth
-                                @endif
-
-                            </div>
-                            
-
-                        <div class="content">
-                            <!-- Court Name -->
-                            <center>
-                                <ul class="mb-3">
-                                    <li style="list-style: none;">
-                                    <h5><b>{!! $allGhanaLaw['court_name'] !!}</b></h5>
-                                    </li>
-                                </ul>
-                            </center>
-                            
-                            <!-- Case Title -->
-                            <center>
-                                <b>
-                                    <h6 style="color:blue;"><b>{!! $allGhanaLaw['case_title_1'] !!}</b></h6>
-                                    <label>vs.</label>
-                                    <h6 style="color:blue;"><b>{!! $allGhanaLaw['case_title_2'] !!}</b></h6>
-                                </b>
-                            </center>
-                            <br>
-
-                            <div style="padding: 15px;">
-                                <div class="row">
-                                        <h6><b style="color:blue;">DATE:&nbsp;</b>
-                                        <b style="color:black;">{{$allGhanaLaw['date']}}</b></h6>
-                                </div>
-                                <div class="row">
-                                    <h6><b style="color:blue;">{{$allGhanaLaw['case_type_name']}}:&nbsp;</b>
-                                    <b style="color:black;">{{$allGhanaLaw['reference_number']}}</b></h6>
-                                </div>
-                                
-                                <div class="row">
-                                    <h6><b style="color:blue;">JUDGES:&nbsp;</b>
-                                    <b style="color:black;">{{$allGhanaLaw['coram']}}</b></h6>
-                                </div>
-                                
-                                <div class="row">
-                                    <h6><b style="color:blue;">LAWYERS:&nbsp;</b>
-                                    <b style="color:black;">{!! $allGhanaLaw['counsellors'] !!}</b></h6>
-                                </div>
-                            </div>
-                            
-                              <h6 class="alignment"><b style="color:blue;">{{$allGhanaLaw['judgement_type']}}</b></h6>
-                            
-                            <hr>
-                            
-                            {{--Body--}}   
-                            <p style="background-color: #FFFFFF;">{!! $allGhanaLaw['content'] !!}</p>
-                            
+                <div class="" style="height: auto;">
+                      <div class="header_only dimension_align">
+                          <h5 class="font-weight-bold">{{ $allPost1992Act['title'] }}</h5>
+                      </div>
+                      {{-- {{$allPost1992Act['post_group']}} --}}
+                    <div class="row">
+                      <div class="col-2">
+                        <div class="sidebar">
+                        <button type="button" class="btn btn-outlined btn-sm mb-2" data-toggle="modal" data-target="#viewActs">Find an Act</button>
+                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                          <a data-scroll-to="body"
+                          data-scroll-focus="body"
+                          data-scroll-speed="400"
+                          data-scroll-offset="-60" class="nav-links tabPaned_table_of_table_color active mb-1" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Table of Contents</a>
+                          <a data-scroll-to="body"
+                          data-scroll-focus="body"
+                          data-scroll-speed="400"
+                          data-scroll-offset="-60" class="nav-links tabPanedHide_acts_content mb-1" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Content</a>
+                          <a data-scroll-to="body"
+                          data-scroll-focus="body"
+                          data-scroll-speed="400"
+                          data-scroll-offset="-60" class="nav-links tabPanedHide_expanded_view mb-1" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Expanded View</a>
+                          <a data-scroll-to="body"
+                          data-scroll-focus="body"
+                          data-scroll-speed="400"
+                          data-scroll-offset="-60" class="nav-links tabPanedHide_amendments mb-1" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Amendments</a>
+                          <a data-scroll-to="body"
+                          data-scroll-focus="body"
+                          data-scroll-speed="400"
+                          data-scroll-offset="-60" class="nav-links tabPanedHide_amendments_table mb-1" id="v-pills-amendments-tab" data-toggle="pill" href="#v-pills-amendments" role="tab" aria-controls="v-pills-amendments" aria-selected="false">Table of Contents (Amendments)</a>
+                          <a data-scroll-to="body"
+                          data-scroll-focus="body"
+                          data-scroll-speed="400"
+                          data-scroll-offset="-60" class="nav-links tabPanedHide_amendments_content mb-1" id="v-pills-amendments-content-tab" data-toggle="pill" href="#v-pills-amendments-content" role="tab" aria-controls="v-pills-amendments-content" aria-selected="false">Contents (Amendments)</a>
+                          
+                          <a class="nav-links tabPanedHide_regulations mb-1" id="v-pills-regulations-tab" data-toggle="pill" href="#v-pills-regulations" role="tab" aria-controls="v-pills-regulations" aria-selected="false">Regulations</a>
+                          <a class="nav-links tabPanedHide_regulations_table mb-1" id="v-pills-regulations-table-of-content-tab" data-toggle="pill" href="#v-pills-regulations-table-of-content" role="tab" aria-controls="v-pills-regulations-table-of-content" aria-selected="false">Table of Contents (Regulations)</a>
+                          <a class="nav-links tabPanedHide_regulations_content mb-1" id="v-pills-regulations-content-tab" data-toggle="pill" href="#v-pills-regulations-content" role="tab" aria-controls="v-pills-regulations-content" aria-selected="false">Contents (Regulations)</a>
                         </div>
-                    </div> 
-
-                    <!-- View Other cases -->
-                    <div class="modal fade" id="viewCases" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"><b>{{$allGhanaLaw['gh_law_judgment_group_name']}} Cases</b></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>
-                            <div class="modal-body text-left">
-                              <table class="table table-striped table-condensed" id="datatable">
-                                <thead>
-                                    <tr>
-                                        <th>Case Laws Title</th>
-                                        <th>Ref No.</th>
-                                        <th>Year</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($allGhanaLaws as $allGhanaLaw)
-                                    <tr>
-                                        <td>
-                                        <a href="/judgement/Ghana/{{ $allGhanaLaw->gh_law_judgment_group_name }}/{{ $allGhanaLaw->id}}"><li style="list-style: none;">{{ $allGhanaLaw->case_title }}</li></a>
-                                        </td>
-                                        <td>{{ $allGhanaLaw->reference_number }}</td>
-                                        <td>{{ $allGhanaLaw->year }}</td>
-                                    </tr>
-                                @endforeach 
-                                </tbody>
-                            </table>
-                            </div>
-                            
                         </div>
                       </div>
+
+                      <div class="col-10">
+                        <div class="tab-content" id="v-pills-tabContent">
+
+                          {{-- table of content --}}
+                          <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                            <div class="row">
+                              <div class="col-md-9">
+                                <a class="content_link" href="/post_1992_legislation/preamble/{{ $allPost1992Act['id'] }}">
+                                    
+                                  @if($allPost1992Act['preamble'] != null)
+                                      <span style="color: blue;" class="preamble_hide">Introductory Text</span><hr>
+
+                                      @elseif($allPost1992Act['preamble'] == null  && ($amendedcount < 0 && $regulationcount < 0))
+                                          @section('scripts')
+                                              <script>
+                                              $( ".preamble_hide" ).hide();
+                                              $( ".no_list" ).hide();
+                                              </script>
+                                          @endsection
+
+                                      @elseif($allPost1992Act['preamble'] == null  && ($amendedcount > 0))
+                                          @section('scripts')
+                                              <script>
+                                              $( ".preamble_hide" ).hide();
+                                              $( ".no_list" ).show();
+                                              </script>
+                                          @endsection  
+                                          
+                                      @elseif($allPost1992Act['preamble'] == null  && ($regulationcount > 0))
+                                          @section('scripts')
+                                              <script>
+                                              $( ".preamble_hide" ).hide();
+                                              $( ".no_list" ).show();
+                                              </script>
+                                          @endsection
+
+                                      @else
+                                          @section('scripts')
+                                              <script>
+                                              $( ".preamble_hide" ).hide();
+                                              $( ".no_list" ).hide();
+                                              </script>
+                                          @endsection
+                                  @endif
+
+                                </a>
+                                      <div class="accordion-content">
+                                          @include('post_1992_legislation.displayed_parts_sections')
+                                      </div>
+                              </div>
+                              @include('post_1992_legislation.new_container_main_act_page')
+                            </div>
+                            <a id="back-to-top" href="#" class="back-to-top">
+                              <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-10.646.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z"/>
+                              </svg>
+                            </a>
+                          </div>
+                          {{-- end of table of content --}}
+
+                          {{-- remove table-wrapper-scroll-display --}}
+                          {{-- Contents --}}
+                          <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                            <div class="row">
+                              <div class="col-md-9" style="height: auto">
+                                <div id="display_content"></div>
+                                <div id="display_view_all_section"></div>
+                              </div>
+                              @include('post_1992_legislation.container_details_main_act_page')  
+                            </div> 
+                            <a id="back-to-top-content" href="#" class="back-to-top">
+                              <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-10.646.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z"/>
+                              </svg>
+                            </a>        
+                          </div>
+                          {{-- end of content --}}
+
+                          {{-- expanded --}}
+                          <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                            <div class="row">
+                              <div class="col-md-12" style="height: auto;">
+                                <div id="acts_expanded_view"></div> 
+                              </div>
+                            </div>
+                            <a id="back-to-top-expanded" href="#" class="back-to-top-expanded">
+                              <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-10.646.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z"/>
+                              </svg>
+                            </a>                          
+                          </div>
+                          {{-- end of expanded --}}
+
+                          {{-- amendments --}}
+                          <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                            <div class="row">
+                              <div class="col-md-12">
+                                  <div id="all_amendments" class="amended_act_toggle"></div>
+                              </div>
+                              {{-- @include('post_1992_legislation.new_container_main_amended_act_page') --}}
+                            </div>                          
+                          </div>
+                          {{-- end of amendments --}}
+
+                          {{-- amendments table of content --}}
+                          <div class="tab-pane fade" id="v-pills-amendments" role="tabpanel" aria-labelledby="v-pills-amendments-tab">
+                            <div class="row">
+                              <div class="col-md-12">
+                                  <div id="amended_table_of_content" class="amended_act_toggle_content"></div>   
+                              </div>
+                              {{-- @include('post_1992_legislation.new_container_expanded_amended_act_page') --}}
+                              </div>                       
+                          </div>
+                          {{-- end of amendments table of content --}}
+
+                          {{-- amendments content --}}
+                          <div class="tab-pane fade" id="v-pills-amendments-content" role="tabpanel" aria-labelledby="v-pills-amendments-content-tab">
+                            <div class="row">
+                              <div class="col-md-12" style="height: auto;">
+                                <div id="single_preamble_amended_content"></div>
+                                <div id="single_amended_content"></div>
+                                <div id="single_view_all_sections_amend"></div> 
+                              </div>
+                              {{-- <div class="col-md-3">
+                                  <div id="single_container_details_amend"></div>
+                              </div> --}}
+                            </div>                       
+                          </div>
+                          {{-- end of amendments content --}}
+
+                        </div>
+                        {{-- end of v-pills-tab-content --}}
+
+                      </div>
+                      {{-- end of col-10 --}}
+
                     </div>
-
-                    <div id="display_view_all_section"></div>
-
-
+                    {{-- end of main row --}}
+              
                 </div>
-                
+                {{-- end of container content --}}
 
-
-                {{-- End of content container --}}
+                <!-- View Other cases -->
+                <div class="modal fade" id="viewActs" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel"><b>Select {{$allPost1992Act['post_group']}}</b></h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                          </div>
+                          <div class="modal-body text-left">
+                            <table class="table table-striped table-condensed" id="datatable">
+                              <thead>
+                                  <tr>
+                                    <th>All Acts of Parliament</th>
+                                    <th>Year</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                @foreach($actsOfParliaments as $actsOfParliament)
+                                    <tr>
+                                        <td>
+                                            <a href="/post-1992-legislation/table-of-content/{{$actsOfParliament->post_group}}/{{ $actsOfParliament->title }}/{{ $actsOfParliament->id}}"><li style="list-style: none;">{{ $actsOfParliament->title }}</li></a>
+                                        </td> 
+                                        <td>{{ $actsOfParliament->year }}</td>
+                                    </tr>
+                                @endforeach  
+                              </tbody>
+                          </table>
+                          </div>
+                          
+                      </div>
+                    </div>
+                  </div>
         
             </div>
-            {{-- <a id="back-to-top" href="#" class="btn btn-light back-to-top" role="button"><i class="fas fa-chevron-up"></i></a> --}}
-            <a id="back-to-top" href="#" class="back-to-top">
-              <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-10.646.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z"/>
-              </svg>
-            </a>
         </div>
 
-
-        <div class="col-md-3">
+        {{-- For ads --}}
+        <div class="col-md-2">
         </div>
         
 
     </div>
     
 </div>
-
-
-
-
-
-
-
 
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
@@ -536,8 +588,8 @@
 
 <script src="{{ asset('js/myscript.js') }}"></script>
 
-
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
 <script>
     $(document).ready(function(){
         $('#datatable').DataTable();
@@ -547,7 +599,7 @@
 <script>
   $(document).ready(function(){
 		// scroll body to 0px on click
-		$('#back-to-top').click(function () {
+		$('#back-to-top, #back-to-top-content, #back-to-top-expanded').click(function () {
 			$('body,html').animate({
 				scrollTop: 0
 			}, 400);
@@ -568,54 +620,6 @@
           e.preventDefault();
       });
   });
-</script>
-
-
-<script>
-    $(".case_id").click(function(e){
-        e.preventDefault();
-        var case_id = $(this).attr("rel");
-        console.log(case_id);
-
-        $.ajax({
-            url: case_id,
-            type: "GET",
-            success:function(response){
-            if(response.success){
-                  $("#bookmarked").notify(
-                      response.message,
-                { position:"left", className: "info", autoHideDelay: 900000}
-                );
-            }else{
-                $("#bookmarked").notify(
-               "Section to Download",
-                { position:"left", className: "success", autoHideDelay: 10000}
-                );
-              }
-            },
-            error:function (){
-                $("#bookmarked").notify(
-               "Issue with database entry",
-                { position:"left", className: "error" }
-                );
-            }
-        });
-
-    });
-    
-</script>
-
-<script>
-    $(".case_download_link").click(function(e){
-        e.preventDefault();
-        var case_download_link = $(this).attr("rel");
-        $('.case_id').trigger("click");
-       
-        $.ajax({
-            url: case_download_link,
-            type: "GET",
-        });
-    });  
 </script>
 
 </body>
