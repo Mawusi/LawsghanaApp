@@ -12,7 +12,7 @@
     
            
         <div class="container">
-            <a href="/post_1992_legislation/amended_preamble/{{ $amendedAct['id'] }}" class="single_preamble_amended_link" style="color: blue;">Introductory Text</a>
+            {{-- <a href="/post_1992_legislation/amended_preamble/{{ $amendedAct['id'] }}" class="single_preamble_amended_link" style="color: blue;">Introductory Text</a> --}}
 
             <div style="height: auto;">
                 @include('post_1992_legislation.displayed_amended_act_parts_section')

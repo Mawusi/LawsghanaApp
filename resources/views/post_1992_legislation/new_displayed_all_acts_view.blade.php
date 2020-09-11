@@ -1,7 +1,9 @@
 <!doctype html>
 <html lang="en">
   <head>
+    {{-- Google Ads --}}
     <script data-ad-client="ca-pub-4293461101625028" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -103,11 +105,13 @@
             }
       
     </style>
+
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/offcanvas.css') }}" rel="stylesheet">
-    {{-- navbar-white bg-white --}}
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174662621-1"></script>
+
     <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -115,7 +119,10 @@
 
     gtag('config', 'UA-174662621-1');
     </script>
-  </head>
+    {{-- End of Google Analytics --}}
+  
+</head>
+
   <!--Start of Tawk.to Script-->
   <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -127,8 +134,9 @@
     s1.setAttribute('crossorigin','*');
     s0.parentNode.insertBefore(s1,s0);
     })();
-</script>
-<!--End of Tawk.to Script-->
+  </script>
+  <!--End of Tawk.to Script-->
+
   <body class="bg-light">
       
     <nav class="navbar navbar-custom navbar-expand-lg fixed-top navbar-light bg-white">
