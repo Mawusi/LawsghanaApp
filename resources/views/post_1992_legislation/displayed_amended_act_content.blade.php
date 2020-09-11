@@ -15,6 +15,7 @@
 </head>
 
 <body>
+    <span style="color: blue;">{{ $amendedContent['act_title'] }}</span>
     <div class="nav-links">
         <span>{{ $amendedContent['section'] }}</span>
     </div>

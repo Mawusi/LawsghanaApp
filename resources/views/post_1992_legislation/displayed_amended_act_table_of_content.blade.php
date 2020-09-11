@@ -3,7 +3,7 @@
 <div class="row">
     {{-- <div class="col-md-12"> --}}
 
-        <div class="container"><h6><b>{{ $amendedAct['title'] }}</b></h6></div>
+        <span style="color: blue;">{{ $amendedAct['title'] }}</span>
         {{-- style="display:none;" --}}
         <div class="container" style="display:none;">
             <a href="/post_1992_legislation/display_amended_sections/{{$amendedAct['title']}}" class="single_container_details_link_amend"><p>Click to View details</p>
