@@ -159,18 +159,9 @@
                 height: 655px;
             }
 
-
             @media screen and (max-width: 600px) {
-                .mobile-adjust {
-                  
-                  /* padding: 2px 4px !important; */
-                }
-
                 .mobile-adjust-2 {
-                  
-                  /* padding-left: 15px; */
-                  /* padding-right: 15px; */
-                  padding-left: 32px;
+                  padding-left: 45px;
                 }
             }
             /* https://www.youtube.com/watch?v=O9toDm97VQM */
