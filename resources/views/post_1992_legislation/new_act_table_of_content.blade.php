@@ -158,6 +158,21 @@
             body {
                 height: 655px;
             }
+
+
+            @media screen and (max-width: 600px) {
+                .mobile-adjust {
+                  
+                  /* padding: 2px 4px !important; */
+                }
+
+                .mobile-adjust-2 {
+                  
+                  /* padding-left: 15px; */
+                  /* padding-right: 15px; */
+                  padding-left: 32px;
+                }
+            }
             /* https://www.youtube.com/watch?v=O9toDm97VQM */
     </style>
     <!-- Custom styles for this template -->
@@ -351,9 +366,9 @@
                       </div>
                       {{-- {{$allPost1992Act['post_group']}} --}}
                     <div class="row">
-                      <div class="col-2">
+                      <div class="col-2 mobile-adjust">
                         <div class="sidebar">
-                        <button type="button" class="btn btn-outlined btn-sm mb-2" data-toggle="modal" data-target="#viewActs">Find an Act</button>
+                          <button type="button" class="btn btn-outlined btn-sm mb-2" data-toggle="modal" data-target="#viewActs">Find an Act</button>
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                           <a data-scroll-to="body"
                           data-scroll-focus="body"
@@ -387,7 +402,7 @@
                         </div>
                       </div>
 
-                      <div class="col-10">
+                      <div class="col-10 mobile-adjust-2">
                         <div class="tab-content" id="v-pills-tabContent">
 
                           {{-- table of content --}}
