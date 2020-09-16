@@ -24,7 +24,7 @@
 
 <body>
 
-<div class="col-md-3" id="mobile-filter">
+<div class="col-md-3 mobile-filter-hide">
   <div class="sidebar">
     <div class="card border-secondary" style="max-width: 18rem;">
       <div class="card-header" style="padding: .25rem 1.25rem;">Filter</div>

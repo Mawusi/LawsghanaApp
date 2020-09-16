@@ -169,15 +169,16 @@
                   padding-left: 45px;
                 }
             }
+            /* hide on mobile the filer for related acts at the table of content */
             /* hide on mobile the filer for select sections at the content view */
             @media screen and (max-width: 1160px) {               
-              #mobile-filter {
+              .mobile-filter-hide {
                   display: none;
                 }                 
             }
             /* hide on desktop when it's 1160 and above */
             @media screen and (min-width: 1159px) {
-                #hide-on-desktop {
+                .hide-on-desktop {
                   display: none;
                 }
             }
@@ -459,6 +460,75 @@
                                       <div class="accordion-content">
                                           @include('post_1992_legislation.displayed_parts_sections')
                                       </div>
+
+                                      <center>
+                                        <div class="hide-on-desktop mt-4">
+                                          @if($amendedcount > 0 && $regulationcount > 0)
+                                            <div class="dropdown mb-3">
+                                              <a class="btn btn-outline-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <span>Related Acts</span>
+                                              </a>
+                                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <li><a class="all_amendments_link dropdown-item" id="all_amendments_link_toggle"  href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_amended_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><center>Amendments</center></a></li>
+                                                {{-- <li><a class="all_regulations_link dropdown-item" id="all_regulations_link_toggle" href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_regulations_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><center>Regulations</center></a></li> --}}
+                                              </div>
+                                            </div>
+                                              {{-- For Amendments --}}
+                                              @elseif($amendedcount > 0)
+                                                  <div class="dropdown mb-3">
+                                                    <a class="btn btn-outline-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                      <span>View Related Acts</span>
+                                                    </a>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                      <li><a class="all_amendments_link dropdown-item" id="all_amendments_link_toggle" href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_amended_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><center>Amendments</center></a></li>
+                                                    </div>
+                                                  </div>
+                                                
+                                              {{-- For Regulations --}}
+                                              {{-- @elseif($regulationcount > 0)
+                                                  <div class="dropdown mb-3">
+                                                    <a class="btn btn-outline-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                      <span>View Related Acts</span>
+                                                    </a>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                      <li><a class="all_regulations_link dropdown-item" id="all_regulations_link_toggle" href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_regulations_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><center>Regulations</center></a></li>
+                                                    </div>
+                                                  </div> --}}
+                                              @else
+                                                  <div class="d-none"></div>
+                                          @endif
+
+                                          <a class="btn btn-outline-dark btn-sm expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}" role="button">Expanded View</a>
+                                          
+                                          @if (Route::has('login'))
+                                            @auth
+                                                  {{-- No Subscription --}}
+                                                  @if(auth()->user()->check_subscription == 0)
+                                                    <a class="btn btn-outline-dark btn-sm" href="" data-toggle="modal" data-target="#myModalplainSubscribe">Plain View</a>
+                                                    {{-- Subscription has expired --}}
+                                                    @elseif(auth()->user()->subscription_expiry < today())
+                                                    <a class="btn btn-outline-dark btn-sm" href="" data-toggle="modal" data-target="#myModalplainExpiry">Plain View</a>                                          
+                                                    {{-- Subscription download limit reached --}}
+                                                    @elseif(auth()->user()->subscription_downloads <= auth()->user()->downloads_counts)
+                                                    <a class="btn btn-outline-dark btn-sm" href="" data-toggle="modal" data-target="#maximumDownloadReachedplain">Plain View</a>
+                                                
+                                                    @else
+                                                    {{-- View Plain View --}}
+                                                      <a class="btn btn-outline-dark btn-sm" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/plain_view/{{ $allPost1992Act['id'] }}" target="_blank">Plain View</a>
+                                                  @endif
+                                                @else
+                                              {{-- Create Account --}}
+                                              <a class="btn btn-outline-dark btn-sm" href="" data-toggle="modal" data-target="#myModalplainAccount">Plain View</a>
+                                            @endauth
+                                          @endif                                        
+                                        </div>
+                                      </center>
+                                      
+                                      @include('layouts.plain_view_no_subscription')
+                                      @include('layouts.plain_view_subscription_expiry')
+                                      @include('layouts.plain_view_downloaded_exceeded')
+                                      @include('layouts.plain_create_account')
+
                               </div>
                               @include('post_1992_legislation.new_container_main_act_page')
                             </div>
@@ -478,20 +548,41 @@
                               <div class="col-md-9" style="height: auto">
                                 <div id="display_content"></div>
                                 <div id="display_view_all_section"></div>
-                                  <div id="hide-on-desktop">
+                                  
+                                {{--Select Sections, Previous and Next button on Content --}}
+                                <center>
+                                  <div class="hide-on-desktop mt-4 flex">
+                                    
+                                    <a class="btn btn-outline-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      <span>Select Sections</span>
+                                    </a>
+                                    <div class="dropdown-menu scroll-view" aria-labelledby="dropdownMenuLink-3">
+                                      @foreach($allPost1992Articles as $allPost1992Article)
+                                          <a data-scroll-to="body"
+                                          data-scroll-focus="body"
+                                          data-scroll-speed="400"
+                                          data-scroll-offset="-60" class="view_all_section_link_with_prev_next dropdown-item" sid="{{$allPost1992Article->id}}" href="/post_1992_legislation/content/{{ $allPost1992Article->id }}">{{$allPost1992Article->section }}
+                                          </a>
+                                      @endforeach              
+                                    </div>
+                                    
                                     <button a data-scroll-to="body"
                                     data-scroll-focus="body"
                                     data-scroll-speed="400"
                                     data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm previous_content_act">
-                                    &laquo;&nbsp;Previous Section
+                                    &laquo;&nbsp;Previous
                                     </button>
+
                                     <button a data-scroll-to="body"
                                     data-scroll-focus="body"
                                     data-scroll-speed="400"
                                     data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm next_content_act">
-                                    Next Section&nbsp;&raquo;
+                                    Next&nbsp;&raquo;
                                     </button>
+
                                   </div>
+                                </center>
+
                               </div>
                               @include('post_1992_legislation.container_details_main_act_page')
 
@@ -522,7 +613,7 @@
                           {{-- amendments --}}
                           <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                             <div class="row">
-                              <div class="col-md-12">
+                              <div class="col-md-12 mobile-adjust-2">
                                   <div id="all_amendments" class="amended_act_toggle"></div>
                               </div>
                               {{-- @include('post_1992_legislation.new_container_main_amended_act_page') --}}
@@ -533,7 +624,7 @@
                           {{-- amendments table of content --}}
                           <div class="tab-pane fade" id="v-pills-amendments" role="tabpanel" aria-labelledby="v-pills-amendments-tab">
                             <div class="row">
-                              <div class="col-md-12">
+                              <div class="col-md-12 mobile-adjust-2">
                                   <div id="amended_table_of_content" class="amended_act_toggle_content"></div>   
                               </div>
                               {{-- @include('post_1992_legislation.new_container_expanded_amended_act_page') --}}
@@ -544,7 +635,7 @@
                           {{-- amendments content --}}
                           <div class="tab-pane fade" id="v-pills-amendments-content" role="tabpanel" aria-labelledby="v-pills-amendments-content-tab">
                             <div class="row">
-                              <div class="col-md-12" style="height: auto;">
+                              <div class="col-md-12 mobile-adjust-2" style="height: auto;">
                                 <div id="single_preamble_amended_content"></div>
                                 <div id="single_amended_content"></div>
                                 <div id="single_view_all_sections_amend"></div> 

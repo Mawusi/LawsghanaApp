@@ -81,7 +81,6 @@
 
     <div class="content">            
         <p>{!! $allPost1992Article['content'] !!}</p>
-        
     </div>
 
 {{-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.0.min.js"></script> --}}

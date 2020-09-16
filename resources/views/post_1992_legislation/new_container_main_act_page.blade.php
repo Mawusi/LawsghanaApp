@@ -15,7 +15,7 @@
 
 <body>
 
-<div class="col-md-3">
+<div class="col-md-3 mobile-filter-hide">
   <div class="sidebar">
     <div class="card border-secondary" style="max-width: 18rem;">
       <div class="card-header" style="padding: .25rem 1.25rem;">Filter</div>
@@ -26,7 +26,7 @@
       @if($amendedcount > 0 && $regulationcount > 0)
             <div class="dropdown mb-3">
               <a class="btn btn-outline-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span>View Related Acts</span>
+                <span>Related Acts</span>
               </a>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <li><a class="all_amendments_link dropdown-item" id="all_amendments_link_toggle"  href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_amended_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><center>Amendments</center></a></li>
@@ -58,7 +58,7 @@
                 @else
                     <div class="d-none"></div>
       
-                @endif
+      @endif
     </center>
                 
     <center>
