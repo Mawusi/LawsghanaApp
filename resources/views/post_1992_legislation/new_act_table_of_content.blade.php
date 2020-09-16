@@ -158,10 +158,27 @@
             body {
                 height: 655px;
             }
-
+            
+            /* Mobile adjustments of the sticky and table of content */
             @media screen and (max-width: 600px) {
+                .mobile-adjust-1 {
+                  padding-right: 2px !important;
+                  padding-left: 2px !important;
+                }
                 .mobile-adjust-2 {
                   padding-left: 45px;
+                }
+            }
+            /* hide on mobile the filer for select sections at the content view */
+            @media screen and (max-width: 1160px) {               
+              #mobile-filter {
+                  display: none;
+                }                 
+            }
+            /* hide on desktop when it's 1160 and above */
+            @media screen and (min-width: 1159px) {
+                #hide-on-desktop {
+                  display: none;
                 }
             }
             /* https://www.youtube.com/watch?v=O9toDm97VQM */
@@ -357,39 +374,39 @@
                       </div>
                       {{-- {{$allPost1992Act['post_group']}} --}}
                     <div class="row">
-                      <div class="col-2 mobile-adjust">
+                      <div class="col-2">
                         <div class="sidebar">
-                          <button type="button" class="btn btn-outlined btn-sm mb-2" data-toggle="modal" data-target="#viewActs">Find an Act</button>
-                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                          <a data-scroll-to="body"
-                          data-scroll-focus="body"
-                          data-scroll-speed="400"
-                          data-scroll-offset="-60" class="nav-links tabPaned_table_of_table_color active mb-1" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Table of Contents</a>
-                          <a data-scroll-to="body"
-                          data-scroll-focus="body"
-                          data-scroll-speed="400"
-                          data-scroll-offset="-60" class="nav-links tabPanedHide_acts_content mb-1" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Content</a>
-                          <a data-scroll-to="body"
-                          data-scroll-focus="body"
-                          data-scroll-speed="400"
-                          data-scroll-offset="-60" class="nav-links tabPanedHide_expanded_view mb-1" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Expanded View</a>
-                          <a data-scroll-to="body"
-                          data-scroll-focus="body"
-                          data-scroll-speed="400"
-                          data-scroll-offset="-60" class="nav-links tabPanedHide_amendments mb-1" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Amendments</a>
-                          <a data-scroll-to="body"
-                          data-scroll-focus="body"
-                          data-scroll-speed="400"
-                          data-scroll-offset="-60" class="nav-links tabPanedHide_amendments_table mb-1" id="v-pills-amendments-tab" data-toggle="pill" href="#v-pills-amendments" role="tab" aria-controls="v-pills-amendments" aria-selected="false">Table of Contents (Amendments)</a>
-                          <a data-scroll-to="body"
-                          data-scroll-focus="body"
-                          data-scroll-speed="400"
-                          data-scroll-offset="-60" class="nav-links tabPanedHide_amendments_content mb-1" id="v-pills-amendments-content-tab" data-toggle="pill" href="#v-pills-amendments-content" role="tab" aria-controls="v-pills-amendments-content" aria-selected="false">Contents (Amendments)</a>
-                          
-                          <a class="nav-links tabPanedHide_regulations mb-1" id="v-pills-regulations-tab" data-toggle="pill" href="#v-pills-regulations" role="tab" aria-controls="v-pills-regulations" aria-selected="false">Regulations</a>
-                          <a class="nav-links tabPanedHide_regulations_table mb-1" id="v-pills-regulations-table-of-content-tab" data-toggle="pill" href="#v-pills-regulations-table-of-content" role="tab" aria-controls="v-pills-regulations-table-of-content" aria-selected="false">Table of Contents (Regulations)</a>
-                          <a class="nav-links tabPanedHide_regulations_content mb-1" id="v-pills-regulations-content-tab" data-toggle="pill" href="#v-pills-regulations-content" role="tab" aria-controls="v-pills-regulations-content" aria-selected="false">Contents (Regulations)</a>
-                        </div>
+                          <button type="button" class="btn btn-outlined btn-sm mb-2 mobile-adjust-1" data-toggle="modal" data-target="#viewActs">Find an Act</button>
+                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                              <a data-scroll-to="body"
+                              data-scroll-focus="body"
+                              data-scroll-speed="400"
+                              data-scroll-offset="-60" class="nav-links tabPaned_table_of_table_color active mb-1 mobile-adjust-1" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Table of Contents</a>
+                              <a data-scroll-to="body"
+                              data-scroll-focus="body"
+                              data-scroll-speed="400"
+                              data-scroll-offset="-60" class="nav-links tabPanedHide_acts_content mb-1 mobile-adjust-1" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Content</a>
+                              <a data-scroll-to="body"
+                              data-scroll-focus="body"
+                              data-scroll-speed="400"
+                              data-scroll-offset="-60" class="nav-links tabPanedHide_expanded_view mb-1 mobile-adjust-1" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Expanded View</a>
+                              <a data-scroll-to="body"
+                              data-scroll-focus="body"
+                              data-scroll-speed="400"
+                              data-scroll-offset="-60" class="nav-links tabPanedHide_amendments mb-1 mobile-adjust-1" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Amendments</a>
+                              <a data-scroll-to="body"
+                              data-scroll-focus="body"
+                              data-scroll-speed="400"
+                              data-scroll-offset="-60" class="nav-links tabPanedHide_amendments_table mb-1 mobile-adjust-1" id="v-pills-amendments-tab" data-toggle="pill" href="#v-pills-amendments" role="tab" aria-controls="v-pills-amendments" aria-selected="false">Table of Contents (Amendments)</a>
+                              <a data-scroll-to="body"
+                              data-scroll-focus="body"
+                              data-scroll-speed="400"
+                              data-scroll-offset="-60" class="nav-links tabPanedHide_amendments_content mb-1 mobile-adjust-1" id="v-pills-amendments-content-tab" data-toggle="pill" href="#v-pills-amendments-content" role="tab" aria-controls="v-pills-amendments-content" aria-selected="false">Contents (Amendments)</a>
+                              
+                              <a class="nav-links tabPanedHide_regulations mb-1" id="v-pills-regulations-tab" data-toggle="pill" href="#v-pills-regulations" role="tab" aria-controls="v-pills-regulations" aria-selected="false">Regulations</a>
+                              <a class="nav-links tabPanedHide_regulations_table mb-1" id="v-pills-regulations-table-of-content-tab" data-toggle="pill" href="#v-pills-regulations-table-of-content" role="tab" aria-controls="v-pills-regulations-table-of-content" aria-selected="false">Table of Contents (Regulations)</a>
+                              <a class="nav-links tabPanedHide_regulations_content mb-1" id="v-pills-regulations-content-tab" data-toggle="pill" href="#v-pills-regulations-content" role="tab" aria-controls="v-pills-regulations-content" aria-selected="false">Contents (Regulations)</a>
+                            </div>
                         </div>
                       </div>
 
@@ -457,11 +474,27 @@
                           {{-- Contents --}}
                           <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                             <div class="row">
+
                               <div class="col-md-9" style="height: auto">
                                 <div id="display_content"></div>
                                 <div id="display_view_all_section"></div>
+                                  <div id="hide-on-desktop">
+                                    <button a data-scroll-to="body"
+                                    data-scroll-focus="body"
+                                    data-scroll-speed="400"
+                                    data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm previous_content_act">
+                                    &laquo;&nbsp;Previous Section
+                                    </button>
+                                    <button a data-scroll-to="body"
+                                    data-scroll-focus="body"
+                                    data-scroll-speed="400"
+                                    data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm next_content_act">
+                                    Next Section&nbsp;&raquo;
+                                    </button>
+                                  </div>
                               </div>
-                              @include('post_1992_legislation.container_details_main_act_page')  
+                              @include('post_1992_legislation.container_details_main_act_page')
+
                             </div> 
                             <a id="back-to-top-content" href="#" class="back-to-top">
                               <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" xmlns="http://www.w3.org/2000/svg">
