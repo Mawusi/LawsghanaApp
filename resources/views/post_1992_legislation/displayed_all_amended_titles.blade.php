@@ -1,7 +1,7 @@
 <table class="table table-striped table-condensed" id="amend_datatable">
     <thead>
         <tr>
-            <th>Amendments on <b>{{ $allPost1992Act['title'] }}</b></th>
+            <th>Amendments</th>
             <th>Year</th>
         </tr>
     </thead>

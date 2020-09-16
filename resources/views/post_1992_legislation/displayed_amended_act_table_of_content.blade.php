@@ -1,7 +1,10 @@
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    
+</head>
 
-
-<div class="row">
-    {{-- <div class="col-md-12"> --}}
+<body>
 
         <span style="color: blue;">{{ $amendedAct['title'] }}</span>
         {{-- style="display:none;" --}}
@@ -18,6 +21,17 @@
                 @include('post_1992_legislation.displayed_amended_act_parts_section')
             </div>
         </div>  
-    {{-- </div>  --}}
+    
+
+</body>
+
+</html>
+
+
+
+
+
+    
+
+
                          
-</div>
