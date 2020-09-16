@@ -169,7 +169,7 @@
                   padding-left: 45px;
                 }
                 .mobile-adjust-3 {
-                  padding-left: 5px;
+                  padding-left: 25px;
                 }
             }
             /* hide on mobile the filer for related acts at the table of content */
