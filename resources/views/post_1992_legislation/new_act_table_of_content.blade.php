@@ -465,7 +465,7 @@
                                       </div>
 
                                       <center>
-                                        <div class="hide-on-desktop mt-4">
+                                        <div class="hide-on-desktop mt-3 flex">
                                           @if($amendedcount > 0 && $regulationcount > 0)
                                             <div class="dropdown mb-3">
                                               <a class="btn btn-outline-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -554,19 +554,20 @@
                                   
                                 {{--Select Sections, Previous and Next button on Content --}}
                                 <center>
-                                  <div class="hide-on-desktop mt-4 flex">
-                                    
-                                    <a class="btn btn-outline-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      <span>Select Sections</span>
-                                    </a>
-                                    <div class="dropdown-menu scroll-view" aria-labelledby="dropdownMenuLink-3">
-                                      @foreach($allPost1992Articles as $allPost1992Article)
-                                          <a data-scroll-to="body"
-                                          data-scroll-focus="body"
-                                          data-scroll-speed="400"
-                                          data-scroll-offset="-60" class="view_all_section_link_with_prev_next dropdown-item" sid="{{$allPost1992Article->id}}" href="/post_1992_legislation/content/{{ $allPost1992Article->id }}">{{$allPost1992Article->section }}
-                                          </a>
-                                      @endforeach              
+                                  <div class="hide-on-desktop mt-3 flex">
+                                    <div class="dropdown mb-3">
+                                      <a class="btn btn-outline-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span>Select Sections</span>
+                                      </a>
+                                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-3">
+                                        @foreach($allPost1992Articles as $allPost1992Article)
+                                            <a data-scroll-to="body"
+                                            data-scroll-focus="body"
+                                            data-scroll-speed="400"
+                                            data-scroll-offset="-60" class="view_all_section_link_with_prev_next dropdown-item" sid="{{$allPost1992Article->id}}" href="/post_1992_legislation/content/{{ $allPost1992Article->id }}">{{$allPost1992Article->section }}
+                                            </a>
+                                        @endforeach              
+                                      </div>
                                     </div>
                                     
                                     <button a data-scroll-to="body"
