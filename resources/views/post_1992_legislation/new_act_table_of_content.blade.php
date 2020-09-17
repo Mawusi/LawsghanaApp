@@ -559,7 +559,7 @@
                                       <a class="btn btn-outline-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span>Select Sections</span>
                                       </a>
-                                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-3">
+                                      <div class="dropdown-menu scroll-view" aria-labelledby="dropdownMenuLink-3">
                                         @foreach($allPost1992Articles as $allPost1992Article)
                                             <a data-scroll-to="body"
                                             data-scroll-focus="body"
