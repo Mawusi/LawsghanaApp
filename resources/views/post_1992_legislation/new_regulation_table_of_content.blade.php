@@ -511,7 +511,7 @@
                                       @include('layouts.plain_create_account')
 
                               </div>
-                              {{-- @include('post_1992_legislation.new_container_main_regulation_acts_page') --}}
+                              @include('post_1992_legislation.new_container_main_regulation_acts_page')
                             </div>
                             {{-- <a id="back-to-top" href="#" class="back-to-top">
                               <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" xmlns="http://www.w3.org/2000/svg">
@@ -566,7 +566,7 @@
                                 </center>
 
                               </div>
-                              {{-- @include('post_1992_legislation.container_details_main_act_page') --}}
+                              @include('post_1992_legislation.new_container_details_main_regulation_acts_page')
 
                             </div> 
                             {{-- <a id="back-to-top-content" href="#" class="back-to-top">
@@ -646,7 +646,7 @@
                     <div class="modal-dialog">
                       <div class="modal-content">
                           <div class="modal-header">
-                          {{-- <h5 class="modal-title" id="exampleModalLabel"><b>Select {{$allPost1992Act['post_group']}}</b></h5> --}}
+                          <h5 class="modal-title" id="exampleModalLabel"><b>Select {{$regulationAct['group']}}</b></h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                           </button>
@@ -655,19 +655,19 @@
                             <table class="table table-striped table-condensed" id="datatable">
                               <thead>
                                   <tr>
-                                    <th>All Acts of Parliament</th>
+                                    <th>All Legislative Instruments</th>
                                     <th>Year</th>
                                   </tr>
                               </thead>
                               <tbody>
-                                {{-- @foreach($actsOfParliaments as $actsOfParliament)
-                                    <tr>
-                                        <td>
-                                            <a href="/post-1992-legislation/table-of-content/{{$actsOfParliament->post_group}}/{{ $actsOfParliament->title }}/{{ $actsOfParliament->id}}"><li style="list-style: none;">{{ $actsOfParliament->title }}</li></a>
-                                        </td> 
-                                        <td>{{ $actsOfParliament->year }}</td>
-                                    </tr>
-                                @endforeach   --}}
+                                @foreach($allRegulations as $allRegulation)
+                                  <tr>
+                                      <td>
+                                          <a href="/post_1992_legislation/regulation_acts_table_of_content/{{$allRegulation->group}}/{{ $allRegulation->title }}/{{ $allRegulation->id}}"><li style="list-style: none;">{{ $allRegulation->title }}</li></a>
+                                      </td> 
+                                      <td>{{ $allRegulation->year }}</td>
+                                  </tr>
+                                @endforeach
                               </tbody>
                           </table>
                           </div>

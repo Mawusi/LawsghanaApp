@@ -3,11 +3,36 @@
 <head>
     <link rel="stylesheet" href="{{ asset('css/tooltipster.bundle.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/tooltipster-sideTip-borderless.min.css') }}" type="text/css">    
+    <style>
+        .nav-links{
+        background-color: #f5f5f5;
+        border: .1px solid #ddd;
+        border-radius: .25rem;
+        display: block;
+        padding: .1rem .9rem;
+        }
+    </style>  
 </head>
 
 <body>
+
     {{-- For the bookmark --}}
-    <div class="header_only" style="border: .1px solid #ddd;">
+    <div class="nav-links">
+        <span class="text-left">{{ $regulationAct['section'] }}
+            @if (Route::has('login'))
+                @auth                        
+                    <a class="bookmarking" href="javascript:;" rel="/bookmarks/{{$regulationAct['regulation_title']}}/{{$regulationAct['section']}}/{{$regulationAct['id']}}/{{ Auth::user()->name }}/{{ Auth::user()->id }}/{{ Auth::user()->id }}{{$regulationAct['section']}}/{{$regulationAct['act_group']}}/{{$regulationAct['act_id']}}">
+                        <i title="Bookmark this section" style="color:blue;" id="bookmarked" class="tooltips glyphicon glyphicon-bookmark pull-right"></i>
+                    </a>
+                    @else
+                    <i style="color:blue;" class="glyphicon glyphicon-bookmark hidden"></i>
+                @endauth
+            @endif
+        </span>  
+    </div>
+
+    {{-- For the bookmark --}}
+    {{-- <div class="header_only" style="border: .1px solid #ddd;">
         <p style="padding-top: 7px; padding-bottom: .1px; padding-left: 16px; padding-right: 16px;"><b>{{ $regulationAct['section'] }}</b>
             @if (Route::has('login'))
                 @auth                        
@@ -19,7 +44,7 @@
                 @endauth
             @endif
         </p>
-    </div>
+    </div> --}}
             
     <div style="margin-bottom: 5px;">
         &nbsp;&nbsp;&nbsp;&nbsp;<a class="pull-right" id="print_options" href="#">Print Options</a>
@@ -38,23 +63,23 @@
                     <a href="" data-toggle="modal" data-target="#myModals"><img alt="Brand" src="{{ asset('/logo/pdf.png') }}" style="width:1.5em;">&nbsp;PDF</a>&nbsp;&nbsp;||&nbsp;
                     <a href="" data-toggle="modal" data-target="#myModals"><span class="glyphicon glyphicon-print" aria-hidden="true"></span>&nbsp;Print</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                    <div class="modal fade" id="myModals" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                        <div class="modal-dialog" role="document">
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModals" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Kindly <span style="color:#3490dc;">Log In</span> or <span style="color:#3490dc;">Register</span> to Create An Account</h4>
+                            <h5 class="modal-title" id="exampleModalLabel"><b>Kindly Log In or Sign Up to Create An Account</b></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                             </div>
                             <div class="modal-body">
-                                <a class="btn btn-sm btn-primarys" href="{{ route('login') }}">Login</a>
-                                <a class="btn btn-sm btn-primarys" href="{{ route('register') }}">Register</a>                            
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <a class="btn btn-sm bg-header-color text-white" href="{{ route('login') }}">Login</a>
+                                <a class="btn btn-sm bg-header-color text-white" href="{{ route('register') }}">Sign Up</a>
                             </div>
                         </div>
                         </div>
-                    </div>
+                    </div> 
                     
                 @endauth
             @endif

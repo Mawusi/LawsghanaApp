@@ -68,7 +68,7 @@
           </a>
         
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-2">
-            <li><a class="expanded_link dropdown-item" id="expanded_link_toggle_all_pre1992_preview_1" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}"><center>Expanded View</center></a></li>
+            <li><a class="expanded_link dropdown-item toggle_expanded_view" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}"><center>Expanded View</center></a></li>
             
             @if (Route::has('login'))
               @auth

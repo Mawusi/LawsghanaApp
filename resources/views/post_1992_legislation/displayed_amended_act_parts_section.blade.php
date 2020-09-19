@@ -16,7 +16,7 @@ if ($oldpart !== $amendedContent->part){
         <div class="panel-heading" role="tab" id="heading{{$c}}">
             <span style="line-height: 0.7cm;"> 
             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_{{ $c }}" aria-expanded="true" aria-controls="collapse_{{$c}}">
-            <span style="color: blue;">{{($amendedContent->part == '')? 'Sections':$amendedContent->part}}</span>
+                <span style="color: blue;">{{($amendedContent->part == '')? 'Sections':$amendedContent->part}}</span>
             </a>
             </span>
         </div>

@@ -85,7 +85,7 @@
         @endif
 
         @foreach($allPost1992Articles as $allPost1992Article)
-            <span class="text-left" style="color: blue;"><u>{{$allPost1992Article->section }}</u></span>
+            <span class="text-left" style="color: blue; font-size: 1rem;"><u>{{$allPost1992Article->section }}</u></span>
             <span>{!! $allPost1992Article->content !!}</span>
         @endforeach
     </div>

@@ -104,7 +104,7 @@ $(document).ready(function(){
   });
 
   //click all amendments link from related Acts
-  $(".amended_link, .tabPanedHide_amendments_table").click(function(){
+  $(".amended_link, .amended_for_regulation_link, .tabPanedHide_amendments_table").click(function(){
     $('.tabPanedHide_amendments_table').css("background-color","#f5f5f5");
     $('.tabPanedHide_amendments_table').css("border",".1px solid #ddd");
     $('.tabPanedHide_amendments_table').css("color","blue");
@@ -122,7 +122,7 @@ $(document).ready(function(){
   });
 
   //click amended section link to move to it's content display
-  $(".sinlge_amended_act_content_link, .tabPanedHide_amendments_content").click(function(){
+  $(".sinlge_amended_act_content_link, .single_amendments_to_regulation_link, .tabPanedHide_amendments_content").click(function(){
     $('.tabPanedHide_amendments_content').css("background-color","#f5f5f5");
     $('.tabPanedHide_amendments_content').css("border",".1px solid #ddd");
     $('.tabPanedHide_amendments_content').css("color","blue");
@@ -372,11 +372,12 @@ $(document).ready(function(){
         var link = $(this).attr("href");
         xhr.open("GET", link, true);
         xhr.onreadystatechange = function receiveUpdate(e) { 
-            $("#single_preamble_amended_content_for_regulation").html(""); 
-            $("#single_amended_content_for_regulation").html("");
-            $("#single_view_all_sections_amend_for_regulation").html("");
-            $("#single_container_details_amends_under_regulation").hide();
-            $("#amended_regulation_table_of_content").html(this.responseText);
+            // $("#single_preamble_amended_content_for_regulation").html(""); 
+            // $("#single_amended_content_for_regulation").html("");
+            // $("#single_view_all_sections_amend_for_regulation").html("");
+            // $("#single_container_details_amends_under_regulation").hide();
+            $("#v-pills-amendments-tab").trigger("click");
+            $("#amended_table_of_content").html(this.responseText);
         }
     xhr.send();
     });
@@ -1728,10 +1729,11 @@ $(document).ready(function(){
         
         xhr.open("GET", link, true);
         xhr.onreadystatechange = function receiveUpdate(e) {
-            $("#single_preamble_amended_content_for_regulation").html(""); 
-            $("#single_amended_content_for_regulation").html(this.responseText);
-            $("#single_view_all_sections_amend_for_regulation").html("");
-            $('.single_container_details_link_amend_regulation').trigger("click");
+            // $("#single_preamble_amended_content_for_regulation").html(""); 
+            // $('.single_container_details_link_amend_regulation').trigger("click");
+            $("#single_amended_content").html(this.responseText);
+            $("#single_view_all_sections_amend").html("");
+            $("#v-pills-amendments-content-tab").trigger("click");
             $(".show li").show();
             
         }
@@ -1814,6 +1816,12 @@ $(document).ready(function(){
         $('.tabPanedHide_expanded_view').show();
     });
     $('#expanded_link_toggle_all_pre1992_preview_2').click(function (e) {
+        e.preventDefault();
+        $('#tabs a[href="#expandedTab"]').tab('show');
+        $('.tabPanedHide_expanded_view').show();
+    });
+
+    $('.toggle_expanded_view').click(function (e) {
         e.preventDefault();
         $('#tabs a[href="#expandedTab"]').tab('show');
         $('.tabPanedHide_expanded_view').show();

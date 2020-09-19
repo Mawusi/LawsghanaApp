@@ -33,14 +33,14 @@
         <center>
             <div class="dropdown mb-3">
               <a class="btn btn-outline-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span>Select Sections</span>
+                <span>Select Regulations</span>
               </a>
               <div class="dropdown-menu scroll-view" aria-labelledby="dropdownMenuLink-3">
-                @foreach($allPost1992Articles as $allPost1992Article)
+                @foreach($allRegulationArticles as $allRegulationArticle)
                     <a data-scroll-to="body"
                     data-scroll-focus="body"
                     data-scroll-speed="400"
-                    data-scroll-offset="-60" class="view_all_section_link_with_prev_next dropdown-item" sid="{{$allPost1992Article->id}}" href="/post_1992_legislation/content/{{ $allPost1992Article->id }}">{{$allPost1992Article->section }}
+                    data-scroll-offset="-60" class="regulation_view_all_section_link_with_prev_next dropdown-item" sid="{{$allRegulationArticle->id}}" href="/post_1992_legislation/regulation_act/content/{{ $allRegulationArticle->id }}">{{$allRegulationArticle->section }}
                     </a>
                 @endforeach              
               </div>
@@ -51,13 +51,13 @@
             <button a data-scroll-to="body"
             data-scroll-focus="body"
             data-scroll-speed="400"
-            data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm previous_content_act">
+            data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm previous_content_regulation">
             &laquo;&nbsp;Previous Section
             </button>
             <button a data-scroll-to="body"
             data-scroll-focus="body"
             data-scroll-speed="400"
-            data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm next_content_act">
+            data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm next_content_regulation">
             Next Section&nbsp;&raquo;
             </button>
         </div>
@@ -66,7 +66,7 @@
           <button a data-scroll-to="body"
               data-scroll-focus="body"
               data-scroll-speed="400"
-              data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm expanded_link toggle_expanded_view" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}">
+              data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm expanded_link toggle_expanded_view" href="/post_1992_legislation/regulation/expanded_view/{{$regulationAct['act_category']}}/{{$regulationAct['title']}}/{{$regulationAct['id']}}">
               Expanded View
           </button>
         <div>
