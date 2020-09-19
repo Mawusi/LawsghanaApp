@@ -17,7 +17,7 @@
 <body>
 
     <div class="nav-links">
-        <span class="text-left"">Introductory Text
+        <span class="text-left">Introductory Text
             @if (Route::has('login'))
                 @auth                        
                         <a class="bookmarking" href="javascript:;" rel="/bookmarks/{{$allPost1992Article['post_act']}}/{{$allPost1992Article['section']}}/{{$allPost1992Article['id']}}/{{ Auth::user()->name }}/{{ Auth::user()->id }}/{{ Auth::user()->id }}{{$allPost1992Article['section']}}/{{$allPost1992Article['act_group']}}/{{$allPost1992Article['act_id']}}">

@@ -2,7 +2,7 @@
 
 <?php $oldpart = ''; $c=1; $closure = ''; ?>
 
-<div class="panel-group table" id="accordion" role="tablist" aria-multiselectable="true">
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
     @foreach($allRegulationArticles as $allRegulationArticle )    
             <?php 
@@ -15,10 +15,11 @@
             ?>
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="heading{{$c}}">
-                <p style="white-space:normal; line-height: 0.4cm;" class="panel-title"> 
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_{{ $c }}" aria-expanded="true" aria-controls="collapse_{{$c}}"><b class="small">{{
-                    ($allRegulationArticle->part == '')? 'SECTIONS':$allRegulationArticle->part}}</b></a>
-                </p>
+                <span style="line-height: 0.7cm;"> 
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_{{ $c }}" aria-expanded="true" aria-controls="collapse_{{$c}}">
+                        <span style="color: blue;">{{($allRegulationArticle->part == '')? 'Sections':$allRegulationArticle->part}}</span>
+                    </a>
+                </span>
             </div>
 
             <div id="collapse_{{$c}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{$c}}">
@@ -26,14 +27,16 @@
     <?php }
                         $oldpart = $allRegulationArticle->part; ?>
                     
+                            <ul>
+                                <li>
                                 <a data-scroll-to="body"
                                 data-scroll-focus="body"
                                 data-scroll-speed="400"
-                                data-scroll-offset="-60" class="regulation_content_link list-group-item" style="white-space:normal; line-height: 0.4cm;" sid="{{ $allRegulationArticle->id }}"  href="/post_1992_legislation/regulation_act/content/{{ $allRegulationArticle->id }}">
-                                <li style="list-style: none;">
-                                    {{ $allRegulationArticle->section }}
-                                </li>
-                                </a> 
+                                data-scroll-offset="-60" class="regulation_content_link" sid="{{ $allRegulationArticle->id }}"  href="/post_1992_legislation/regulation_act/content/{{ $allRegulationArticle->id }}">
+                                <span style="color:black;">{{ $allRegulationArticle->section }}</span>
+                                </a>
+                            </li>
+                        </ul> 
     @endforeach 
                 <input type="hidden" id="regulation_act_contents" value="<?php echo json_encode($ids); ?>" />
             </div>

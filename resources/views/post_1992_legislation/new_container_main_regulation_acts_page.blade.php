@@ -23,38 +23,16 @@
         
     <center>
       {{-- For both amendments and regulations --}}
-      @if($amendedcount > 0 && $regulationcount > 0)
+      @if($amendedregulationcount > 0)
             <div class="dropdown mb-3">
               <a class="btn btn-outline-dark dropdown-toggle btn-customised" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span>Related Acts</span>
               </a>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <li><a class="all_amendments_link dropdown-item" id="all_amendments_link_toggle"  href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_amended_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><center>Amendments</center></a></li>
-                {{-- <li><a class="all_regulations_link dropdown-item" id="all_regulations_link_toggle" href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_regulations_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><center>Regulations</center></a></li> --}}
+                <li><a class="all_amendments_link dropdown-item" id="all_amendments_link_toggle"  href="/post_1992_legislation/{{$regulationAct['act_category']}}/all_amended_regulation_acts/{{$regulationAct['title']}}/{{ $regulationAct['id'] }}"><center>Amendments</center></a></li>
               </div>
             </div>
-                {{-- For Amendments --}}
-                @elseif($amendedcount > 0)
-                    <div class="dropdown mb-3">
-                      <a class="btn btn-outline-dark dropdown-toggle btn-customised" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span>View Related Acts</span>
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a class="all_amendments_link dropdown-item" id="all_amendments_link_toggle" href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_amended_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><center>Amendments</center></a></li>
-                      </div>
-                    </div>
-                  
-                {{-- For Regulations --}}
-                {{-- @elseif($regulationcount > 0)
-                    <div class="dropdown mb-3">
-                      <a class="btn btn-outline-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span>View Related Acts</span>
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <li><a class="all_regulations_link dropdown-item" id="all_regulations_link_toggle" href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_regulations_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><center>Regulations</center></a></li>
-                      </div>
-                    </div> --}}
-                  
+            
                 @else
                     <div class="d-none"></div>
       
@@ -68,7 +46,7 @@
           </a>
         
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink-2">
-            <li><a class="expanded_link dropdown-item" id="expanded_link_toggle_all_pre1992_preview_1" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}"><center>Expanded View</center></a></li>
+            <li><a class="expanded_link dropdown-item" id="expanded_link_toggle_all_pre1992_preview_1" href="/post_1992_legislation/regulation/expanded_view/{{$regulationAct['act_category']}}/{{$regulationAct['title']}}/{{$regulationAct['id']}}"><center>Expanded View</center></a></li>
             
             @if (Route::has('login'))
               @auth
@@ -84,7 +62,7 @@
                   
                       @else
                       {{-- View Plain View --}}
-                        <li><a class="dropdown-item" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/plain_view/{{ $allPost1992Act['id'] }}" target="_blank"><center>Plain View</center></a></li>
+                        <li><a class="dropdown-item" href="/post_1992_legislation/plain/regulation/expanded/{{$regulationAct['act_category']}}/{{$regulationAct['title']}}/{{ $regulationAct['id'] }}" target="_blank"><center>Plain View</center></a></li>
                     @endif
                   @else
                 {{-- Create Account --}}
@@ -97,7 +75,7 @@
     </center>
       <hr>
 
-      <form action="/acts-of-parliament-act-search/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}" method="GET" class="mt-4">
+      <form action="" method="GET" class="mt-4">
         {{ csrf_field() }}
             <input style="padding: 13px;" class="form-control" name="search_text" type="text" placeholder="Section word-search" aria-label="Search">
       </form>

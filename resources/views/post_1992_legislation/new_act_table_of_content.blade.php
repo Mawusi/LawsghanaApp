@@ -158,6 +158,13 @@
             body {
                 height: 655px;
             }
+
+            .btn-customised{
+            font-weight: 550;
+            padding: .175rem .75rem;
+            line-height: 1.3;
+            font-size: .8rem;
+            }
             
             /* Mobile adjustments of the sticky and table of content */
             @media screen and (max-width: 600px) {
@@ -380,32 +387,32 @@
                     <div class="row">
                       <div class="col-2">
                         <div class="sidebar">
-                          <button type="button" class="btn btn-outlined btn-sm mb-2 mobile-adjust-1" data-toggle="modal" data-target="#viewActs">Find an Act</button>
+                          <button type="button" class="btn btn-outlined btn-sm mb-2 mobile-adjust-1 btn-customised" data-toggle="modal" data-target="#viewActs">Find an Act</button>
                             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                               <a data-scroll-to="body"
                               data-scroll-focus="body"
                               data-scroll-speed="400"
-                              data-scroll-offset="-60" class="nav-links tabPaned_table_of_table_color active mb-1 mobile-adjust-1" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Table of Contents</a>
+                              data-scroll-offset="-60" class="nav-links tabPaned_table_of_table_color active mb-1 mobile-adjust-1 btn-customised" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Table of Contents</a>
                               <a data-scroll-to="body"
                               data-scroll-focus="body"
                               data-scroll-speed="400"
-                              data-scroll-offset="-60" class="nav-links tabPanedHide_acts_content mb-1 mobile-adjust-1" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Content</a>
+                              data-scroll-offset="-60" class="nav-links tabPanedHide_acts_content mb-1 mobile-adjust-1 btn-customised" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Content</a>
                               <a data-scroll-to="body"
                               data-scroll-focus="body"
                               data-scroll-speed="400"
-                              data-scroll-offset="-60" class="nav-links tabPanedHide_expanded_view mb-1 mobile-adjust-1" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Expanded View</a>
+                              data-scroll-offset="-60" class="nav-links tabPanedHide_expanded_view mb-1 mobile-adjust-1 btn-customised" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Expanded View</a>
                               <a data-scroll-to="body"
                               data-scroll-focus="body"
                               data-scroll-speed="400"
-                              data-scroll-offset="-60" class="nav-links tabPanedHide_amendments mb-1 mobile-adjust-1" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Amendments</a>
+                              data-scroll-offset="-60" class="nav-links tabPanedHide_amendments mb-1 mobile-adjust-1 btn-customised" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Amendments</a>
                               <a data-scroll-to="body"
                               data-scroll-focus="body"
                               data-scroll-speed="400"
-                              data-scroll-offset="-60" class="nav-links tabPanedHide_amendments_table mb-1 mobile-adjust-1" id="v-pills-amendments-tab" data-toggle="pill" href="#v-pills-amendments" role="tab" aria-controls="v-pills-amendments" aria-selected="false">Table of Contents (Amendments)</a>
+                              data-scroll-offset="-60" class="nav-links tabPanedHide_amendments_table mb-1 mobile-adjust-1 btn-customised" id="v-pills-amendments-tab" data-toggle="pill" href="#v-pills-amendments" role="tab" aria-controls="v-pills-amendments" aria-selected="false">Table of Contents (Amendments)</a>
                               <a data-scroll-to="body"
                               data-scroll-focus="body"
                               data-scroll-speed="400"
-                              data-scroll-offset="-60" class="nav-links tabPanedHide_amendments_content mb-1 mobile-adjust-1" id="v-pills-amendments-content-tab" data-toggle="pill" href="#v-pills-amendments-content" role="tab" aria-controls="v-pills-amendments-content" aria-selected="false">Contents (Amendments)</a>
+                              data-scroll-offset="-60" class="nav-links tabPanedHide_amendments_content mb-1 mobile-adjust-1 btn-customised" id="v-pills-amendments-content-tab" data-toggle="pill" href="#v-pills-amendments-content" role="tab" aria-controls="v-pills-amendments-content" aria-selected="false">Contents (Amendments)</a>
                               
                               <a class="nav-links tabPanedHide_regulations mb-1" id="v-pills-regulations-tab" data-toggle="pill" href="#v-pills-regulations" role="tab" aria-controls="v-pills-regulations" aria-selected="false">Regulations</a>
                               <a class="nav-links tabPanedHide_regulations_table mb-1" id="v-pills-regulations-table-of-content-tab" data-toggle="pill" href="#v-pills-regulations-table-of-content" role="tab" aria-controls="v-pills-regulations-table-of-content" aria-selected="false">Table of Contents (Regulations)</a>

@@ -67,18 +67,25 @@
       }
       
       .header_only {
-            position: -webkit-sticky;
+            /* position: -webkit-sticky;
             position: sticky;
-            top: 0;
+            top: 0; */
+        }
+        .nav-links{
+        /* background-color: #f5f5f5; */
+        /* border: .1px solid #ddd; */
+        border-radius: .25rem;
+        display: block;
+        padding: .1rem .9rem;
         }
         .dimension_align{
             padding: 3px 1px 0.1px 1px;
-            background: #f5f5f5;
+            /* background: #f5f5f5; */
             color: black;
             text-align: center;
-            margin-top: 5px;
+            margin-top: 25px;
             margin-bottom: 15px; 
-            border: .1px solid #ddd;
+            /* border: .1px solid #ddd; */
         }
         .alignment{
           text-align: center;
@@ -118,20 +125,72 @@
             ::-webkit-scrollbar-thumb:hover {
             background: #555; 
             }
-            .bg-header-color{
-            background-color: #004353;
-            }
             .back-to-top {
             position: sticky;
             bottom: 80px;
-            left: 950px;
+            left: 850px;
+            }
+            .back-to-top-expanded {
+            position: sticky;
+            bottom: 80px;
+            left: 1070px;
             }
             .nav-link {
             display: block;
             padding: .1rem .9rem;
             }
+            ul{
+              margin-bottom: .5rem;
+            }
+            hr{
+              margin-top: .1rem;
+              margin-bottom: .7rem;
+            }
+            .sidebar {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 7%;
+            }
+            .btn-outlined{
+              color: white;
+              background-color: #004353;
+            }
             body {
                 height: 655px;
+            }
+
+            .btn-customised{
+            font-weight: 550;
+            padding: .175rem .75rem;
+            line-height: 1.3;
+            font-size: .8rem;
+            }
+            
+            /* Mobile adjustments of the sticky and table of content */
+            @media screen and (max-width: 600px) {
+                .mobile-adjust-1 {
+                  padding-right: 2px !important;
+                  padding-left: 2px !important;
+                }
+                .mobile-adjust-2 {
+                  padding-left: 45px;
+                }
+                .mobile-adjust-3 {
+                  padding-left: 25px;
+                }
+            }
+            /* hide on mobile the filer for related acts at the table of content */
+            /* hide on mobile the filer for select sections at the content view */
+            @media screen and (max-width: 1160px) {               
+              .mobile-filter-hide {
+                  display: none;
+                }                 
+            }
+            /* hide on desktop when it's 1160 and above */
+            @media screen and (min-width: 1159px) {
+                .hide-on-desktop {
+                  display: none;
+                }
             }
             /* https://www.youtube.com/watch?v=O9toDm97VQM */
     </style>
@@ -296,7 +355,7 @@
 
 <div class="container-fluid mt-customised">
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-10">
             <div class="d-flex p-m my-m">
                 <div class="lh-100">
                     <form action="{{ url('post_index_search') }}" method="GET" class="form-inline my-2 my-lg-0 justify-content-center">
@@ -319,63 +378,60 @@
                         </nav>
                     </div>
                 </div>
-
-                {{-- For the filter --}}
-                <div class="text-right mb-1">
-                    <button type="button" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#viewRegulations">
-                      View {{$regulationAct['group']}}
-                    </button>  
-                </div>
-
                 {{-- Start of container content --}}
-                <div class="judgement_display" style="height: auto;">
-                    <div id="display_content">
-                            <div class="header_only dimension_align">
-                                <h6 class="font-weight-bold">{{ $regulationAct['title'] }}</h6>
+                <div class="" style="height: auto;">
+                      <div class="header_only dimension_align">
+                          <h5 class="font-weight-bold">{{ $regulationAct['title'] }}</h5>
+                      </div>
+                    <div class="row">
+                      <div class="col-2">
+                        <div class="sidebar">
+                          <button type="button" class="btn btn-outlined btn-sm mb-2 mobile-adjust-1 btn-customised" data-toggle="modal" data-target="#viewActs">Find an Act</button>
+                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                              <a data-scroll-to="body"
+                              data-scroll-focus="body"
+                              data-scroll-speed="400"
+                              data-scroll-offset="-60" class="nav-links tabPaned_table_of_table_color active mb-1 mobile-adjust-1 btn-customised" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Table of Contents</a>
+                              <a data-scroll-to="body"
+                              data-scroll-focus="body"
+                              data-scroll-speed="400"
+                              data-scroll-offset="-60" class="nav-links tabPanedHide_acts_content mb-1 mobile-adjust-1 btn-customised" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Content</a>
+                              <a data-scroll-to="body"
+                              data-scroll-focus="body"
+                              data-scroll-speed="400"
+                              data-scroll-offset="-60" class="nav-links tabPanedHide_expanded_view mb-1 mobile-adjust-1 btn-customised" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Expanded View</a>
+                              <a data-scroll-to="body"
+                              data-scroll-focus="body"
+                              data-scroll-speed="400"
+                              data-scroll-offset="-60" class="nav-links tabPanedHide_amendments mb-1 mobile-adjust-1 btn-customised" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Amendments</a>
+                              <a data-scroll-to="body"
+                              data-scroll-focus="body"
+                              data-scroll-speed="400"
+                              data-scroll-offset="-60" class="nav-links tabPanedHide_amendments_table mb-1 mobile-adjust-1 btn-customised" id="v-pills-amendments-tab" data-toggle="pill" href="#v-pills-amendments" role="tab" aria-controls="v-pills-amendments" aria-selected="false">Table of Contents (Amendments)</a>
+                              <a data-scroll-to="body"
+                              data-scroll-focus="body"
+                              data-scroll-speed="400"
+                              data-scroll-offset="-60" class="nav-links tabPanedHide_amendments_content mb-1 mobile-adjust-1 btn-customised" id="v-pills-amendments-content-tab" data-toggle="pill" href="#v-pills-amendments-content" role="tab" aria-controls="v-pills-amendments-content" aria-selected="false">Contents (Amendments)</a>
+                              
+                              <a class="nav-links tabPanedHide_regulations mb-1" id="v-pills-regulations-tab" data-toggle="pill" href="#v-pills-regulations" role="tab" aria-controls="v-pills-regulations" aria-selected="false">Regulations</a>
+                              <a class="nav-links tabPanedHide_regulations_table mb-1" id="v-pills-regulations-table-of-content-tab" data-toggle="pill" href="#v-pills-regulations-table-of-content" role="tab" aria-controls="v-pills-regulations-table-of-content" aria-selected="false">Table of Contents (Regulations)</a>
+                              <a class="nav-links tabPanedHide_regulations_content mb-1" id="v-pills-regulations-content-tab" data-toggle="pill" href="#v-pills-regulations-content" role="tab" aria-controls="v-pills-regulations-content" aria-selected="false">Contents (Regulations)</a>
                             </div>
-                    </div>
+                        </div>
+                      </div>
 
-                    {{-- Nav tabs --}}
-                  <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-                    <li class="active">
-                        <a href="#tableOfContentTab" data-toggle="tab" class="tabPaned_color_table_of_table">Table of Contents</a>
-                    </li>
-                    <li class="tabPanedHide_acts_content">
-                        <a href="#contentTab" data-toggle="tab" class="bg-color-content">Content</a>
-                    </li> 
-                    <!-- Expanded View -->
-                    <li class="tabPanedHide_expanded_view">
-                            <a href="#expandedTab" data-toggle="tab" class="bg-color-expanded">Expanded View</a>
-                    </li> 
+                      <div class="col-10 mobile-adjust-2">
+                        <div class="tab-content" id="v-pills-tabContent">
 
-                    <!-- Amendments -->
-                    <li class="tabPanedHide_amendments">
-                            <a href="#all_amendmentsTab" data-toggle="tab" class="bg-color-amendments">Amendments</a>
-                    </li>
-                    <li class="tabPanedHide_amendments_table">
-                        <a href="#amended_table_of_Content_Tab" data-toggle="tab" class="">Amendments Table of Contents</a>
-                    </li>
-                    <li class="tabPanedHide_amendments_content">
-                            <a href="#amendmentcontentTab" data-toggle="tab" class="">Amended Content</a>
-                    </li>  
-                </ul>
-                {{-- ------------------------------------------------------End of Nav tab for the panels----------------------------------------------------------- --}}
-
-                    {{-- tab panes content --}}
-                  <div id="my-tab-content" class="tab-content">
-
-                    {{-- table of Contents --}}
-                        <div id="tableOfContentTab" class="tab-pane fade in active">
-                            
+                          {{-- table of content --}}
+                          <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                             <div class="row">
-                                <div class="col-md-9">
-                                    {{--<h5><b>{{ $regulationAct['title'] }}</b></h5>--}}
-                                    <br>
-                                  <a class="preamble_link" id="preamble_link_toggle" href="/post_1992_legislation/regulation/preamble/{{ $regulationAct['id'] }}">
-                                   
-                                    @if($regulationAct['preamble'] != null)
-                                      <p class="preamble_hide">Introductory Text</p>
-  
+                              <div class="col-md-9">
+                                <a class="regulation_content_link" href="/post_1992_legislation/regulation/preamble/{{ $regulationAct['id'] }}">
+                                    
+                                  @if($regulationAct['preamble'] != null)
+                                      <span style="color: blue;" class="preamble_hide">Introductory Text</span><hr>
+
                                       @elseif($regulationAct['preamble'] == null  && ($amendedregulationcount < 0))
                                         @section('scripts')
                                             <script>
@@ -383,7 +439,7 @@
                                             $( ".no_list" ).hide();
                                             </script>
                                         @endsection
-  
+
                                       @elseif($regulationAct['preamble'] == null  && ($amendedregulationcount > 0))
                                         @section('scripts')
                                             <script>
@@ -391,7 +447,7 @@
                                             $( ".no_list" ).show();
                                             </script>
                                         @endsection
-  
+
                                       @else
                                         @section('scripts')
                                             <script>
@@ -399,154 +455,198 @@
                                             $( ".no_list" ).hide();
                                             </script>
                                         @endsection
-  
-                                    @endif
-                                  </a>
-                                  
-                                        <div class="accordion-content">
-                                            @include('post_1992_legislation.displayed_regulation_parts_sections')
+                                  @endif
+
+                                </a>
+                                      <div class="accordion-content">
+                                          @include('post_1992_legislation.displayed_regulation_parts_sections')
+                                      </div>
+
+                                      <center>
+                                        <div class="hide-on-desktop mt-3 flex">
+                                          @if($amendedregulationcount > 0)
+                                            <div class="dropdown mb-3">
+                                              <a class="btn btn-outline-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <span>Related Acts</span>
+                                              </a>
+                                              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <li><a class="all_amendments_link dropdown-item" id="all_amendments_link_toggle"  href="/post_1992_legislation/{{$regulationAct['act_category']}}/all_amended_regulation_acts/{{$regulationAct['title']}}/{{ $regulationAct['id'] }}"><center>Amendments</center></a></li>
+                                                {{-- <li><a class="all_regulations_link dropdown-item" id="all_regulations_link_toggle" href="/post_1992_legislation/{{$allPost1992Act['post_group']}}/all_regulations_acts/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}"><center>Regulations</center></a></li> --}}
+                                              </div>
+                                            </div>
+                                              
+                                              @else
+                                                  <div class="d-none"></div>
+                                          @endif
+
+                                          {{-- <a class="btn btn-outline-dark btn-sm expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}" role="button">Expanded View</a> --}}
+                                          
+                                          @if (Route::has('login'))
+                                            @auth
+                                                  {{-- No Subscription --}}
+                                                  @if(auth()->user()->check_subscription == 0)
+                                                    <a class="btn btn-outline-dark btn-sm" href="" data-toggle="modal" data-target="#myModalplainSubscribe">Plain View</a>
+                                                    {{-- Subscription has expired --}}
+                                                    @elseif(auth()->user()->subscription_expiry < today())
+                                                    <a class="btn btn-outline-dark btn-sm" href="" data-toggle="modal" data-target="#myModalplainExpiry">Plain View</a>                                          
+                                                    {{-- Subscription download limit reached --}}
+                                                    @elseif(auth()->user()->subscription_downloads <= auth()->user()->downloads_counts)
+                                                    <a class="btn btn-outline-dark btn-sm" href="" data-toggle="modal" data-target="#maximumDownloadReachedplain">Plain View</a>
+                                                
+                                                    @else
+                                                    {{-- View Plain View --}}
+                                                      {{-- <a class="btn btn-outline-dark btn-sm" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/plain_view/{{ $allPost1992Act['id'] }}" target="_blank">Plain View</a> --}}
+                                                  @endif
+                                                @else
+                                              {{-- Create Account --}}
+                                              <a class="btn btn-outline-dark btn-sm" href="" data-toggle="modal" data-target="#myModalplainAccount">Plain View</a>
+                                            @endauth
+                                          @endif                                        
                                         </div>
-                                        
-                                        <div class="col-md-12 text-center">
-                                            <!--<ul id="myPager" class="pagination"></ul>-->
-                                            <p><a data-scroll-to="body"
+                                      </center>
+                                      
+                                      @include('layouts.plain_view_no_subscription')
+                                      @include('layouts.plain_view_subscription_expiry')
+                                      @include('layouts.plain_view_downloaded_exceeded')
+                                      @include('layouts.plain_create_account')
+
+                              </div>
+                              {{-- @include('post_1992_legislation.new_container_main_regulation_acts_page') --}}
+                            </div>
+                            {{-- <a id="back-to-top" href="#" class="back-to-top">
+                              <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-10.646.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z"/>
+                              </svg>
+                            </a> --}}
+                          </div>
+                          {{-- end of table of content --}}
+
+                          {{-- remove table-wrapper-scroll-display --}}
+                          {{-- Contents --}}
+                          <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                            <div class="row">
+
+                              <div class="col-md-9" style="height: auto">
+                                <div id="display_content"></div>
+                                <div id="display_view_all_section"></div>
+                                  
+                                {{--Select Sections, Previous and Next button on Content --}}
+                                <center>
+                                  <div class="hide-on-desktop mt-3 flex">
+                                    <div class="dropdown mb-3">
+                                      <a class="btn btn-outline-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span>Select Sections</span>
+                                      </a>
+                                      <div class="dropdown-menu scroll-view" aria-labelledby="dropdownMenuLink-3">
+                                        @foreach($allRegulationArticles as $allRegulationArticle)
+                                            <a data-scroll-to="body"
                                             data-scroll-focus="body"
                                             data-scroll-speed="400"
-                                            data-scroll-offset="-60" href="#" data-scroll-to="body">Move to Top</button></p>
-                                        </div>
-                                </div> 
-                                        @include('post_1992_legislation.container_main_regulation_acts_page')
-                            </div>
-  
-                        </div>
-                        {{-- -------------------------------------------------------End of table of Contents---------------------------------------------------------------- --}}
-  
-  
-                        {{-- Contents --}}
-                        <div id="contentTab" class="tab-pane fade">
-                          <div class="row">
-                            <div class="col-md-9 table-wrapper-scroll-display" style="height: 600px;">
-                                <div id="display_content"></div>
-                                <div id="display_preamble"></div>
-                                <div id="display_view_all_section"></div>
-                            </div>
-                                        @include('post_1992_legislation.container_details_main_regulation_acts_page')
-                          </div>
-                          
-                          <div class="row show">
-                                <div class="col-md-9">
-                                <ul class="pager">
-                                    <li><a data-scroll-to="body"
-                                        data-scroll-focus="body"
-                                        data-scroll-speed="400"
-                                        data-scroll-offset="-60" href="#" class="previous_content_regulation">Previous Regulation</a></li>
-                                    <li><a data-scroll-to="body"
-                                        data-scroll-focus="body"
-                                        data-scroll-speed="400"
-                                        data-scroll-offset="-60" href="#" class="next_content_regulation">Next Regulation</a></li>
-                                </ul>
-                                </div>
-                            </div>
-                        </div>
-                        {{-- -------------------------------------------------------End of Contents---------------------------------------------------------------- --}}
-  
-  
-                        <!-- ACTS EXPANDED CONTENTS -->
-                        <div id="expandedTab" class="tab-pane fade">
-                        <span style="padding: .2em;">
-                                <div class="row">
-                                    <div class="col-md-12 expanded_view" style="background-color: #FFFFFF;">
-                                        <div id="acts_expanded_view"></div> 
-                                    </div>
-                                    {{--@include('post_1992_legislation.container_details_act_expanded_regulation')--}}
-                                </div>
-                        </div>
-                        {{-- -------------------------------------------------------End of Expanded View Content---------------------------------------------------------------- --}}
-  
-  
-                        <!-- ALL AMENDMENTS LISTS -->
-                          <div id="all_amendmentsTab" class="tab-pane fade">
-                                <div class="row">
-                                        <div class="col-md-9">
-                                            <div id="all_amendments" class="amended_act_toggle"></div> 
-                                        </div>
-                                        @include('post_1992_legislation.container_main_regulation_amended_act_page')
-                                </div>
-                          </div>
-                          {{-- -------------------------------------------------------End of All Amendments Lists---------------------------------------------------------------- --}}
-  
-  
-                          <!-- AMENDMENTS TABLE OF CONTENTS -->
-                          <div id="amended_table_of_Content_Tab" class="tab-pane fade">
-                                <div class="row">
-                                    <div class="col-md-9">
-                                    <div id="amended_regulation_table_of_content" class="amended_act_toggle_content"></div>  
+                                            data-scroll-offset="-60" class="view_all_section_link_with_prev_next dropdown-item" sid="{{$allRegulationArticle->id}}" href="/post_1992_legislation/regulation_act/content/{{ $allRegulationArticle->id }}">{{$allRegulationArticle->section }}"
+                                            </a>
+                                        @endforeach              
+                                      </div>
                                     </div>
                                     
-                                    @include('post_1992_legislation.container_expanded_regulation_amended_act_page')
-  
-                                </div>
+                                    <button a data-scroll-to="body"
+                                    data-scroll-focus="body"
+                                    data-scroll-speed="400"
+                                    data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm previous_content_act">
+                                    &laquo;&nbsp;Previous
+                                    </button>
+
+                                    <button a data-scroll-to="body"
+                                    data-scroll-focus="body"
+                                    data-scroll-speed="400"
+                                    data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm next_content_act">
+                                    Next&nbsp;&raquo;
+                                    </button>
+
+                                  </div>
+                                </center>
+
+                              </div>
+                              {{-- @include('post_1992_legislation.container_details_main_act_page') --}}
+
+                            </div> 
+                            {{-- <a id="back-to-top-content" href="#" class="back-to-top">
+                              <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-10.646.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z"/>
+                              </svg>
+                            </a>         --}}
                           </div>
-                          {{-- -------------------------------------------------------End of Amendments table of contents---------------------------------------------------------------- --}}
-  
-  
-                          <!-- AMENDMENTS CONTENT -->
-                          <div id="amendmentcontentTab" class="tab-pane fade">
-                                <div class="row">
-                                    <div class="col-md-9 table-wrapper-scroll-display" style="height: 600px;">
-                                        <div id="single_preamble_amended_content_for_regulation"></div>
-                                        <div id="single_amended_content_for_regulation"></div>
-                                        <div id="single_view_all_sections_amend_for_regulation"></div>  
-                                    </div>
-                                    
-                                    <div class="col-md-3">
-                                        <div id="single_container_details_amends_under_regulation"></div>
-                                    </div>
-                                    
-                                    {{-- ADVERTISEMENT
-                                    <div class="col-md-3">
-                                        <div class="panel panel-default">
-                                          <div class="panel-heading">
-                                            <p class="panel-title"><small>Advertisement</small></p>
-                                          </div>
-                                          <div class="panel-body">
-                                            <div class="embed-responsive embed-responsive-4by3">
-                                                <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>       
-                                            </div>        
-                                          </div>
-                                        </div>
-                                    </div>
-                                    --}}
-                                </div>
-                                
-                                <div class="row show">
-                                        <div class="col-md-9">
-                                        <ul class="pager">
-                                            <li><a data-scroll-to="body"
-                                                data-scroll-focus="body"
-                                                data-scroll-speed="400"
-                                                data-scroll-offset="-60" href="#" class="previous_amendment_under_regulation">Previous Regulation</a></li>
-                                            <li><a data-scroll-to="body"
-                                                data-scroll-focus="body"
-                                                data-scroll-speed="400"
-                                                data-scroll-offset="-60" href="#" class="next_amendment_under_regulation">Next Regulation</a></li>
-                                        </ul>
-                                        </div>
-                                </div>
-            </div>
-            {{-- -------------------------------------------------------End of Amendments contents---------------------------------------------------------------- --}}
+                          {{-- end of content --}}
+
+                          {{-- expanded --}}
+                          <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                            <div class="row">
+                              <div class="col-md-12" style="height: auto;">
+                                <div id="acts_expanded_view"></div> 
+                              </div>
+                            </div>
+                            {{-- <a id="back-to-top-expanded" href="#" class="back-to-top-expanded">
+                              <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-10.646.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z"/>
+                              </svg>
+                            </a>                           --}}
+                          </div>
+                          {{-- end of expanded --}}
+
+                          {{-- amendments --}}
+                          <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                            <div class="row">
+                              <div class="col-md-12 mobile-adjust-3">
+                                  <div id="all_amendments" class="amended_act_toggle"></div>
+                              </div>
+                              {{-- @include('post_1992_legislation.new_container_main_amended_act_page') --}}
+                            </div>                          
+                          </div>
+                          {{-- end of amendments --}}
+
+                          {{-- amendments table of content --}}
+                          <div class="tab-pane fade" id="v-pills-amendments" role="tabpanel" aria-labelledby="v-pills-amendments-tab">
+                            <div class="row">
+                              <div class="col-md-12 mobile-adjust-3">
+                                  <div id="amended_table_of_content" class="amended_act_toggle_content"></div>   
+                              </div>
+                              {{-- @include('post_1992_legislation.new_container_expanded_amended_act_page') --}}
+                              </div>                       
+                          </div>
+                          {{-- end of amendments table of content --}}
+
+                          {{-- amendments content --}}
+                          <div class="tab-pane fade" id="v-pills-amendments-content" role="tabpanel" aria-labelledby="v-pills-amendments-content-tab">
+                            <div class="row">
+                              <div class="col-md-12 mobile-adjust-3" style="height: auto;">
+                                <div id="single_preamble_amended_content"></div>
+                                <div id="single_amended_content"></div>
+                                <div id="single_view_all_sections_amend"></div> 
+                              </div>
+                              {{-- <div class="col-md-3">
+                                  <div id="single_container_details_amend"></div>
+                              </div> --}}
+                            </div>                       
+                          </div>
+                          {{-- end of amendments content --}}
+
+                        </div>
+                        {{-- end of v-pills-tab-content --}}
+
+                      </div>
+                      {{-- end of col-10 --}}
+
                     </div>
-                
-                
+                    {{-- end of main row --}}
+              
                 </div>
                 {{-- end of container content --}}
 
                 <!-- View Other cases -->
-                <div class="modal fade" id="viewRegulations" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="viewActs" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                           <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel"><b>Select {{$regulationAct['group']}}</b></h5>
+                          {{-- <h5 class="modal-title" id="exampleModalLabel"><b>Select {{$allPost1992Act['post_group']}}</b></h5> --}}
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                           </button>
@@ -555,19 +655,19 @@
                             <table class="table table-striped table-condensed" id="datatable">
                               <thead>
                                   <tr>
-                                    <th>All Legislative Instruments</th>
+                                    <th>All Acts of Parliament</th>
                                     <th>Year</th>
                                   </tr>
                               </thead>
                               <tbody>
-                                @foreach($allRegulations as $allRegulation)
+                                {{-- @foreach($actsOfParliaments as $actsOfParliament)
                                     <tr>
                                         <td>
-                                            <a href="/post_1992_legislation/regulation_acts_table_of_content/{{$allRegulation->group}}/{{ $allRegulation->title }}/{{ $allRegulation->id}}"><li style="list-style: none;">{{ $allRegulation->title }}</li></a>
+                                            <a href="/post-1992-legislation/table-of-content/{{$actsOfParliament->post_group}}/{{ $actsOfParliament->title }}/{{ $actsOfParliament->id}}"><li style="list-style: none;">{{ $actsOfParliament->title }}</li></a>
                                         </td> 
-                                        <td>{{ $allRegulation->year }}</td>
+                                        <td>{{ $actsOfParliament->year }}</td>
                                     </tr>
-                                @endforeach  
+                                @endforeach   --}}
                               </tbody>
                           </table>
                           </div>
@@ -579,7 +679,8 @@
             </div>
         </div>
 
-        <div class="col-md-3">
+        {{-- For ads --}}
+        <div class="col-md-2">
         </div>
         
 
@@ -610,7 +711,7 @@
 <script>
   $(document).ready(function(){
 		// scroll body to 0px on click
-		$('#back-to-top').click(function () {
+		$('#back-to-top, #back-to-top-content, #back-to-top-expanded').click(function () {
 			$('body,html').animate({
 				scrollTop: 0
 			}, 400);

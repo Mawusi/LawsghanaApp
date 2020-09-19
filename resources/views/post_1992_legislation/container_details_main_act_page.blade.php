@@ -4,12 +4,12 @@
     <link rel="stylesheet" href="{{ asset('css/tooltipster.bundle.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/tooltipster-sideTip-borderless.min.css') }}" type="text/css"> 
     <style>
-        .btn{
+        /* .btn{
           font-weight: 550;
           padding: .175rem .75rem;
           line-height: 1.3;
           font-size: .8rem;
-        }
+        } */
         .scroll-view {
           height: auto;
           max-height: 280px;
