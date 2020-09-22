@@ -173,7 +173,7 @@
                   padding-left: 2px !important;
                 }
                 .mobile-adjust-2 {
-                  padding-left: 45px;
+                  padding-left: 43px;
                 }
                 .mobile-adjust-3 {
                   padding-left: 25px;
@@ -181,13 +181,13 @@
             }
             /* hide on mobile the filer for related acts at the table of content */
             /* hide on mobile the filer for select sections at the content view */
-            @media screen and (max-width: 1160px) {               
+            @media screen and (max-width: 1120px) {               
               .mobile-filter-hide {
                   display: none;
                 }                 
             }
             /* hide on desktop when it's 1160 and above */
-            @media screen and (min-width: 1159px) {
+            @media screen and (min-width: 1119px) {
                 .hide-on-desktop {
                   display: none;
                 }
@@ -623,8 +623,8 @@
 
                           {{-- amendments --}}
                           <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                            <div class="row">
-                              <div class="col-md-12 mobile-adjust-3">
+                            <div class="row mobile-adjust-3">
+                              <div class="col-md-12">
                                   <div id="all_amendments" class="amended_act_toggle"></div>
                               </div>
                               {{-- @include('post_1992_legislation.new_container_main_amended_act_page') --}}
@@ -634,8 +634,8 @@
 
                           {{-- amendments table of content --}}
                           <div class="tab-pane fade" id="v-pills-amendments" role="tabpanel" aria-labelledby="v-pills-amendments-tab">
-                            <div class="row">
-                              <div class="col-md-12 mobile-adjust-3">
+                            <div class="row mobile-adjust-3">
+                              <div class="col-md-12">
                                   <div id="amended_table_of_content" class="amended_act_toggle_content"></div>   
                               </div>
                               {{-- @include('post_1992_legislation.new_container_expanded_amended_act_page') --}}
@@ -645,8 +645,8 @@
 
                           {{-- amendments content --}}
                           <div class="tab-pane fade" id="v-pills-amendments-content" role="tabpanel" aria-labelledby="v-pills-amendments-content-tab">
-                            <div class="row">
-                              <div class="col-md-12 mobile-adjust-3" style="height: auto;">
+                            <div class="row mobile-adjust-3">
+                              <div class="col-md-12" style="height: auto;">
                                 <div id="single_preamble_amended_content"></div>
                                 <div id="single_amended_content"></div>
                                 <div id="single_view_all_sections_amend"></div> 

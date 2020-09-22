@@ -33,7 +33,7 @@
         <center>
             <div class="dropdown mb-3">
               <a class="btn btn-outline-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span>Select Sections</span>
+                <span>Sections</span>
               </a>
               <div class="dropdown-menu scroll-view" aria-labelledby="dropdownMenuLink-3">
                 @foreach($allPost1992Articles as $allPost1992Article)
@@ -52,13 +52,13 @@
             data-scroll-focus="body"
             data-scroll-speed="400"
             data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm previous_content_act">
-            &laquo;&nbsp;Previous Section
+            &laquo;&nbsp;Previous
             </button>
             <button a data-scroll-to="body"
             data-scroll-focus="body"
             data-scroll-speed="400"
             data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm next_content_act">
-            Next Section&nbsp;&raquo;
+            Next&nbsp;&raquo;
             </button>
         </div>
         <hr>

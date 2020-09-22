@@ -13,7 +13,7 @@
         <center>
         <div class="btn-group">
               <button style="background-color:white; border-color:black;" type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <small>Select Sections</small></small> <span class="caret"></span>
+                <small>Sections</small></small> <span class="caret"></span>
               </button>
               <ul class="dropdown-menu table-wrapper-scroll-view" style="width: 520px;">
                  @foreach($allPre1992Articles as $allPre1992Article)

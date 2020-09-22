@@ -173,7 +173,7 @@
                   padding-left: 2px !important;
                 }
                 .mobile-adjust-2 {
-                  padding-left: 45px;
+                  padding-left: 43px;
                 }
                 .mobile-adjust-3 {
                   padding-left: 25px;
@@ -181,13 +181,13 @@
             }
             /* hide on mobile the filer for related acts at the table of content */
             /* hide on mobile the filer for select sections at the content view */
-            @media screen and (max-width: 1160px) {               
+            @media screen and (max-width: 1120px) {               
               .mobile-filter-hide {
                   display: none;
                 }                 
             }
             /* hide on desktop when it's 1160 and above */
-            @media screen and (min-width: 1159px) {
+            @media screen and (min-width: 1119px) {
                 .hide-on-desktop {
                   display: none;
                 }
