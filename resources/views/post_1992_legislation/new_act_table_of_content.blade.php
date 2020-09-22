@@ -508,7 +508,7 @@
                                                   <div class="d-none"></div>
                                           @endif
 
-                                          <a class="btn btn-outline-dark btn-sm expanded_link" id="expanded_link_toggle_all_pre1992_preview_1" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}" role="button">Expanded View</a>
+                                          <a class="btn btn-outline-dark btn-sm expanded_link toggle_expanded_view" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}" role="button">Expanded View</a>
                                           
                                           @if (Route::has('login'))
                                             @auth
