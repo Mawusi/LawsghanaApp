@@ -4,12 +4,12 @@
     <link rel="stylesheet" href="{{ asset('css/tooltipster.bundle.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/tooltipster-sideTip-borderless.min.css') }}" type="text/css"> 
     <style>
-        /* .btn{
+        .btn-customised{
           font-weight: 550;
           padding: .175rem .75rem;
           line-height: 1.3;
           font-size: .8rem;
-        } */
+        }
         .scroll-view {
           height: auto;
           max-height: 280px;
@@ -32,7 +32,7 @@
         
         <center>
             <div class="dropdown mb-3">
-              <a class="btn btn-outline-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="btn btn-outline-dark dropdown-toggle btn-customised" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span>Sections</span>
               </a>
               <div class="dropdown-menu scroll-view" aria-labelledby="dropdownMenuLink-3">
@@ -51,13 +51,13 @@
             <button a data-scroll-to="body"
             data-scroll-focus="body"
             data-scroll-speed="400"
-            data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm previous_content_act">
+            data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm previous_content_act btn-customised">
             &laquo;&nbsp;Previous
             </button>
             <button a data-scroll-to="body"
             data-scroll-focus="body"
             data-scroll-speed="400"
-            data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm next_content_act">
+            data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm next_content_act btn-customised">
             Next&nbsp;&raquo;
             </button>
         </div>
@@ -66,7 +66,7 @@
           <button a data-scroll-to="body"
               data-scroll-focus="body"
               data-scroll-speed="400"
-              data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm expanded_link toggle_expanded_view" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}">
+              data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm expanded_link toggle_expanded_view btn-customised" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}">
               Expanded View
           </button>
         <div>

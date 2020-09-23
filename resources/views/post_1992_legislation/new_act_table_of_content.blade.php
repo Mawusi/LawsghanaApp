@@ -475,7 +475,7 @@
                                         <div class="hide-on-desktop mt-3 flex">
                                           @if($amendedcount > 0 && $regulationcount > 0)
                                             <div class="dropdown mb-3">
-                                              <a class="btn btn-outline-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                              <a class="btn btn-outline-dark dropdown-toggle btn-customised" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <span>Related Acts</span>
                                               </a>
                                               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -486,7 +486,7 @@
                                               {{-- For Amendments --}}
                                               @elseif($amendedcount > 0)
                                                   <div class="dropdown mb-3">
-                                                    <a class="btn btn-outline-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <a class="btn btn-outline-dark dropdown-toggle btn-customised" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                       <span>View Related Acts</span>
                                                     </a>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -508,7 +508,7 @@
                                                   <div class="d-none"></div>
                                           @endif
 
-                                          <a class="btn btn-outline-dark btn-sm expanded_link toggle_expanded_view" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}" role="button">Expanded View</a>
+                                          <a class="btn btn-outline-dark btn-sm expanded_link toggle_expanded_view btn-customised" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}" role="button">Expanded View</a>
                                           
                                           @if (Route::has('login'))
                                             @auth
@@ -524,11 +524,11 @@
                                                 
                                                     @else
                                                     {{-- View Plain View --}}
-                                                      <a class="btn btn-outline-dark btn-sm" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/plain_view/{{ $allPost1992Act['id'] }}" target="_blank">Plain View</a>
+                                                      <a class="btn btn-outline-dark btn-sm btn-customised" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/plain_view/{{ $allPost1992Act['id'] }}" target="_blank">Plain View</a>
                                                   @endif
                                                 @else
                                               {{-- Create Account --}}
-                                              <a class="btn btn-outline-dark btn-sm" href="" data-toggle="modal" data-target="#myModalplainAccount">Plain View</a>
+                                              <a class="btn btn-outline-dark btn-sm btn-customised" href="" data-toggle="modal" data-target="#myModalplainAccount">Plain View</a>
                                             @endauth
                                           @endif                                        
                                         </div>
@@ -563,10 +563,10 @@
                                 <center>
                                   <div class="hide-on-desktop mt-3 flex">
                                     <div class="dropdown mb-3">
-                                      <a class="btn btn-outline-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      <a class="btn btn-outline-dark dropdown-toggle btn-customised" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span>Select Sections</span>
                                       </a>
-                                      <div class="dropdown-menu scroll-view" aria-labelledby="dropdownMenuLink-3">
+                                      <div class="dropdown-menu scroll-view btn-customised" aria-labelledby="dropdownMenuLink-3">
                                         @foreach($allPost1992Articles as $allPost1992Article)
                                             <a data-scroll-to="body"
                                             data-scroll-focus="body"
@@ -580,14 +580,14 @@
                                     <button a data-scroll-to="body"
                                     data-scroll-focus="body"
                                     data-scroll-speed="400"
-                                    data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm previous_content_act">
+                                    data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm previous_content_act btn-customised">
                                     &laquo;&nbsp;Previous
                                     </button>
 
                                     <button a data-scroll-to="body"
                                     data-scroll-focus="body"
                                     data-scroll-speed="400"
-                                    data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm next_content_act">
+                                    data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm next_content_act btn-customised">
                                     Next&nbsp;&raquo;
                                     </button>
 

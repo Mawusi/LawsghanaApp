@@ -412,7 +412,7 @@
                           <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                             <div class="row">
                               <div class="col-md-9">
-                                <a class="content_link" href="/post_1992_legislation/amended_acts/preamble/{{ $amendedAct['id'] }}">
+                                <a class="amendments_content_link" href="/post_1992_legislation/amended_acts/preamble/{{ $amendedAct['id'] }}">
                                     
                                   @if($amendedAct['preamble'] != null)
                                       <span style="color: blue;" class="preamble_hide">Introductory Text</span><hr>
@@ -433,7 +433,7 @@
                                       <center>
                                         <div class="hide-on-desktop mt-3 flex">
                                           
-                                          {{-- <a class="btn btn-outline-dark btn-sm expanded_link toggle_expanded_view" href="/post_1992_legislation/1/{{$allPost1992Act['post_group']}}/{{$allPost1992Act['title']}}/expanded-view/{{ $allPost1992Act['id'] }}" role="button">Expanded View</a> --}}
+                                          <a class="btn btn-outline-dark btn-sm expanded_link toggle_expanded_view btn-customised" href="/post_1992_legislation/amended_acts/expanded_view/{{$amendedAct['post_category']}}/{{$amendedAct['title']}}/{{$amendedAct['id']}}" role="button">Expanded View</a>
                                           
                                           @if (Route::has('login'))
                                             @auth
@@ -453,7 +453,7 @@
                                                   @endif
                                                 @else
                                               {{-- Create Account --}}
-                                              <a class="btn btn-outline-dark btn-sm" href="" data-toggle="modal" data-target="#myModalplainAccount">Plain View</a>
+                                              <a class="btn btn-outline-dark btn-sm btn-customised" href="" data-toggle="modal" data-target="#myModalplainAccount">Plain View</a>
                                             @endauth
                                           @endif                                        
                                         </div>
@@ -484,19 +484,19 @@
                                 <div id="display_content"></div>
                                 <div id="display_view_all_section"></div>
                                   
-                                {{--Select Sections, Previous and Next button on Content --}}
-                                {{-- <center>
+                                {{-- Select Sections, Previous and Next button on Content --}}
+                                <center>
                                   <div class="hide-on-desktop mt-3 flex">
                                     <div class="dropdown mb-3">
-                                      <a class="btn btn-outline-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      <a class="btn btn-outline-dark dropdown-toggle btn-customised" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span>Select Sections</span>
                                       </a>
-                                      <div class="dropdown-menu scroll-view" aria-labelledby="dropdownMenuLink-3">
-                                        @foreach($allPost1992Articles as $allPost1992Article)
+                                      <div class="dropdown-menu scroll-view btn-customised" aria-labelledby="dropdownMenuLink-3">
+                                        @foreach($allAmendedArticles as $allAmendedArticle)
                                             <a data-scroll-to="body"
                                             data-scroll-focus="body"
                                             data-scroll-speed="400"
-                                            data-scroll-offset="-60" class="view_all_section_link_with_prev_next dropdown-item" sid="{{$allPost1992Article->id}}" href="/post_1992_legislation/content/{{ $allPost1992Article->id }}">{{$allPost1992Article->section }}
+                                            data-scroll-offset="-60" class="amendments_view_all_section_link_with_prev_next dropdown-item" sid="{{$allAmendedArticle->id}}" href="/post_1992_legislation/amended_acts/content/{{ $allAmendedArticle->id }}">{{$allAmendedArticle->section }}
                                             </a>
                                         @endforeach              
                                       </div>
@@ -505,22 +505,22 @@
                                     <button a data-scroll-to="body"
                                     data-scroll-focus="body"
                                     data-scroll-speed="400"
-                                    data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm previous_content_act">
+                                    data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm previous_content_amendments btn-customised">
                                     &laquo;&nbsp;Previous
                                     </button>
 
                                     <button a data-scroll-to="body"
                                     data-scroll-focus="body"
                                     data-scroll-speed="400"
-                                    data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm next_content_act">
+                                    data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm next_content_amendments btn-customised">
                                     Next&nbsp;&raquo;
                                     </button>
 
                                   </div>
-                                </center> --}}
+                                </center>
 
                               </div>
-                              {{-- @include('post_1992_legislation.container_details_main_act_page') --}}
+                              @include('post_1992_legislation.new_container_details_main_amended_acts_page')
 
                             </div> 
                             {{-- <a id="back-to-top-content" href="#" class="back-to-top">
