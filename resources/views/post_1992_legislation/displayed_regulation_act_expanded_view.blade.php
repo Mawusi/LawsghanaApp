@@ -71,7 +71,7 @@
   <div class="content">	
       
         @if($regulationAct['preamble'] != null)
-            <span class="text-left" style="color: blue;">Introductory Text</span>
+            <p class="text-left" style="color: blue;">Introductory Text</p>
             <span>{!! $regulationAct['preamble'] !!}</span><hr>
             @else
               <span></span>

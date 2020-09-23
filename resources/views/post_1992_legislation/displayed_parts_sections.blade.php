@@ -22,7 +22,7 @@
                 </div>
 
                 {{-- show the sections --}}
-                <div id="collapse_{{$c}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{$c}}">
+                <div id="collapse_{{$c}}" class="collapse show" role="tabpanel" aria-labelledby="heading{{$c}}">
                     <div class="panel-body" style="padding:0em;">
             <?php }
                                 $oldpart = $allPost1992Article->part;

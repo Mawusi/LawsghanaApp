@@ -561,7 +561,11 @@ class Post1992Controller extends Controller
         $allAmendedArticles   = $unique;
         $footer_notes           = FooterNote::all();
 
-        return view('post_1992_legislation.displayed_amended_table_of_content_view', compact('footer_notes','amendedAct', 'allAmendedArticles'));
+        $allAmendments     = AmendedTitle::all();
+
+        
+        return view('post_1992_legislation.new_amended_table_of_content_view', compact('footer_notes','amendedAct', 'allAmendedArticles','allAmendments'));
+        // return view('post_1992_legislation.displayed_amended_table_of_content_view', compact('footer_notes','amendedAct', 'allAmendedArticles'));
     }
 
     //Amendment Act Preamble
