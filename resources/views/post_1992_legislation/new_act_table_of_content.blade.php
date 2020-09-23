@@ -149,7 +149,7 @@
             .sidebar {
             position: -webkit-sticky;
             position: sticky;
-            top: 7%;
+            top: 4%;
             }
             .btn-outlined{
               color: white;
