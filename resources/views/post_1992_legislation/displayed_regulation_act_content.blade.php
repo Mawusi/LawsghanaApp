@@ -10,6 +10,9 @@
         border-radius: .25rem;
         display: block;
         padding: .1rem .9rem;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0%;
         }
     </style>  
 </head>
