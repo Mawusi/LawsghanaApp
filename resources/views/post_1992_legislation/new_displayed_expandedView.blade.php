@@ -9,11 +9,6 @@
 <body>
 
 <div>
-{{--
-    <div class="header_only" style="margin-bottom: 5px;">
-        <p><b>{{ $allPost1992Act['title'] }}</b></p>
-    </div>
-    --}}
     <div>
         <span class="text-left mb-5" style="color: blue;">Full Act
         &nbsp;&nbsp;&nbsp;&nbsp;<a class="pull-right" id="print_options" href="#">Print Options</a>

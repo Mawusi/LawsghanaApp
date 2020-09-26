@@ -50,7 +50,7 @@ $(document).ready(function(){
   });
 
   //click section link
-  $(".content_link, .regulation_content_link, .amendments_content_link, .tabPanedHide_acts_content, .preamble_link").click(function(){
+  $(".content_link, .pre_content_link, .regulation_content_link, .amendments_content_link, .tabPanedHide_acts_content, .preamble_link").click(function(){
     $('.tabPanedHide_acts_content').css("background-color","#f5f5f5");
     $('.tabPanedHide_acts_content').css("border",".1px solid #ddd");
     $('.tabPanedHide_acts_content').css("color","blue");
@@ -1596,7 +1596,8 @@ $(document).ready(function(){
         xhr.open("GET", link, true);
 
         xhr.onreadystatechange = function receiveUpdate(e) {
-            $("#display_preamble").html("");
+            // $("#display_preamble").html("");
+            $("#v-pills-profile-tab").trigger("click");
             $("#display_view_all_section").html("");
             $("#display_content").html(this.responseText);
         }

@@ -53,8 +53,12 @@ class Pre1992Controller extends Controller
         $allPreArticles1      = Pre1992LegislationArticle::where(['pre_1992_act' => $title])->get();
         $unique               = $allPreArticles1->sortBy('part')->sortBy('priority');
         $allPre1992Articles   = $unique;
+
+        $allPre1992Acts = Pre1992LegislationAct::all();
         $footer_notes           = FooterNote::all();
-        return view('pre_1992_legislation.displayed_table_of_content_view', compact('footer_notes','allPre1992Act', 'allPre1992Articles'));
+
+        return view('pre_1992_legislation.new_displayed_table_of_content_view', compact('footer_notes','allPre1992Act', 'allPre1992Acts', 'allPre1992Articles'));
+        // return view('pre_1992_legislation.displayed_table_of_content_view', compact('footer_notes','allPre1992Act', 'allPre1992Articles'));
     }
 
     //Display Preamble
@@ -188,7 +192,9 @@ class Pre1992Controller extends Controller
         $firstRepublicActs         = Pre1992LegislationAct::where(['pre_1992_group' => $group])->get();
         $firstRepublicCategories   = Pre1992LegislationCategory::all();
         $footer_notes           = FooterNote::all();
-        return view('pre_1992_legislation.displayed_first_republic_acts_view', compact('footer_notes','firstRepublicActs', 'firstRepublicCategories'));
+        
+        return view('pre_1992_legislation.new_displayed_first_republic_acts_view', compact('footer_notes','firstRepublicActs', 'firstRepublicCategories'));
+        // return view('pre_1992_legislation.displayed_first_republic_acts_view', compact('footer_notes','firstRepublicActs', 'firstRepublicCategories'));
     }
 
     //FIRST REPUBLIC LEGISLATION FILTERING
@@ -217,7 +223,9 @@ class Pre1992Controller extends Controller
         $secondRepublicActs         = Pre1992LegislationAct::where(['pre_1992_group' => $group])->get();
         $secondRepublicCategories   = Pre1992LegislationCategory::all();
         $footer_notes           = FooterNote::all();
-        return view('pre_1992_legislation.displayed_second_republic_acts_view', compact('footer_notes','secondRepublicActs', 'secondRepublicCategories'));
+        
+        return view('pre_1992_legislation.new_displayed_second_republic_acts_view', compact('footer_notes','secondRepublicActs', 'secondRepublicCategories'));
+        // return view('pre_1992_legislation.displayed_second_republic_acts_view', compact('footer_notes','secondRepublicActs', 'secondRepublicCategories'));
     }
 
     //SECOND REPUBLIC LEGISLATION FILTERING
@@ -246,7 +254,8 @@ class Pre1992Controller extends Controller
         $thirdRepublicActs         = Pre1992LegislationAct::where(['pre_1992_group' => $group])->get();
         $thirdRepublicCategories   = Pre1992LegislationCategory::all();
         $footer_notes           = FooterNote::all();
-        return view('pre_1992_legislation.displayed_third_republic_acts_view', compact('footer_notes','thirdRepublicActs', 'thirdRepublicCategories'));
+        return view('pre_1992_legislation.new_displayed_third_republic_acts_view', compact('footer_notes','thirdRepublicActs', 'thirdRepublicCategories'));
+        // return view('pre_1992_legislation.displayed_third_republic_acts_view', compact('footer_notes','thirdRepublicActs', 'thirdRepublicCategories'));
     }
 
     //THIRD REPUBLIC LEGISLATION FILTERING
@@ -275,7 +284,8 @@ class Pre1992Controller extends Controller
         $pndcLaws         = Pre1992LegislationAct::where(['pre_1992_group' => $group])->get();
         $pndcCategories   = Pre1992LegislationCategory::all();
         $footer_notes           = FooterNote::all();
-        return view('pre_1992_legislation.displayed_pndc_law_view', compact('footer_notes','pndcLaws', 'pndcCategories'));
+        return view('pre_1992_legislation.new_displayed_pndc_law_view', compact('footer_notes','pndcLaws', 'pndcCategories'));
+        // return view('pre_1992_legislation.displayed_pndc_law_view', compact('footer_notes','pndcLaws', 'pndcCategories'));
     }
 
     //PNDC FILTERING
@@ -304,7 +314,8 @@ class Pre1992Controller extends Controller
         $nlcDecrees         = Pre1992LegislationAct::where(['pre_1992_group' => $group])->get();
         $nlcCategories   = Pre1992LegislationCategory::all();
         $footer_notes           = FooterNote::all();
-        return view('pre_1992_legislation.displayed_nlc_decree_view', compact('footer_notes','nlcDecrees', 'nlcCategories'));
+        return view('pre_1992_legislation.new_displayed_nlc_decree_view', compact('footer_notes','nlcDecrees', 'nlcCategories'));
+        // return view('pre_1992_legislation.displayed_nlc_decree_view', compact('footer_notes','nlcDecrees', 'nlcCategories'));
     }
 
     //NLC Decree FILTERING
@@ -333,7 +344,8 @@ class Pre1992Controller extends Controller
         $nrcDecrees         = Pre1992LegislationAct::where(['pre_1992_group' => $group])->get();
         $nrcCategories   = Pre1992LegislationCategory::all();
         $footer_notes           = FooterNote::all();
-        return view('pre_1992_legislation.displayed_nrc_decree_view', compact('footer_notes','nrcDecrees', 'nrcCategories'));
+        return view('pre_1992_legislation.new_displayed_nrc_decree_view', compact('footer_notes','nrcDecrees', 'nrcCategories'));
+        // return view('pre_1992_legislation.displayed_nrc_decree_view', compact('footer_notes','nrcDecrees', 'nrcCategories'));
     }
 
     //NRC Decree FILTERING
@@ -363,7 +375,8 @@ class Pre1992Controller extends Controller
         $smcDecrees         = Pre1992LegislationAct::where(['pre_1992_group' => $group])->get();
         $smcCategories   = Pre1992LegislationCategory::all();
         $footer_notes           = FooterNote::all();
-        return view('pre_1992_legislation.displayed_smc_decree_view', compact('footer_notes','smcDecrees', 'smcCategories'));
+        return view('pre_1992_legislation.new_displayed_smc_decree_view', compact('footer_notes','smcDecrees', 'smcCategories'));
+        // return view('pre_1992_legislation.displayed_smc_decree_view', compact('footer_notes','smcDecrees', 'smcCategories'));
     }
 
     //SMC Decree FILTERING
@@ -392,6 +405,7 @@ class Pre1992Controller extends Controller
         $afrcDecrees         = Pre1992LegislationAct::where(['pre_1992_group' => $group])->get();
         $afrcCategories   = Pre1992LegislationCategory::all();
         $footer_notes           = FooterNote::all();
-        return view('pre_1992_legislation.displayed_afrc_decree_view', compact('footer_notes','afrcDecrees', 'afrcCategories'));
+        return view('pre_1992_legislation.new_displayed_afrc_decree_view', compact('footer_notes','afrcDecrees', 'afrcCategories'));
+        // return view('pre_1992_legislation.displayed_afrc_decree_view', compact('footer_notes','afrcDecrees', 'afrcCategories'));
     }
 }

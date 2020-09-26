@@ -117,7 +117,7 @@
         {{-- @endforeach --}}
         <div class="card card-pricing text-center pt-1 mb-0">
           <span class="h5 w-60 mx-auto px-4 py-1 rounded-bottom text-primary shadow-sm"><a href="/pre_1992_legislation"><b>Old Laws</b></a></span>
-          <a href="/pre_1992_legislation">
+          <a href="/pre-1992-legislation">
           <div class="card-body pt-0">
               <ul class="list-unstyled mb-0 text-dark">
                   <li><b>Access over 200 Ghanaian laws and enactments before the Fourth Republic</b></li>

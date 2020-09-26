@@ -174,7 +174,7 @@ Route::view('/scan', 'scan');
 
 //------------------------------------------------------------------------------------PRE_1992_LEGISLATION------------------------------------------------------------------------------------
 
-Route::get('/pre_1992_legislation','Pre1992Controller@index');//display all acts
+Route::get('/pre-1992-legislation','Pre1992Controller@index');//display all acts
     Route::get('/pre_1992_legislation/filter/{year}/{category}','Pre1992Controller@all_pre_1992_legislation_filter'); //all pre-1992 filtering
     Route::get('/pre_1992_legislation/{group}/{title}/{id}','Pre1992Controller@pre_1992_legislation_table_of_content');//display acts table of content
     Route::get('/pre_1992_legislation/preamble/{id}','Pre1992Controller@pre_1992_legislation_preamble');//display act preamble

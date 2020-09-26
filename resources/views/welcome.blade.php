@@ -476,7 +476,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="/pre_1992_legislation" style="text-decoration: none;">
+                        <a href="/pre-1992-legislation" style="text-decoration: none;">
                             <div class="intro-block">
                                 <h4><b><u>OLD LAWS</u></b></h4>
                                 <p><b>Access over 200 Ghanaian laws and enactments before the Fourth Republic</b></p>

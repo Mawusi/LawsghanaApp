@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
-    <title>Pre 4th Republic Laws</title>
+    <title>First Republic</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/offcanvas/">
 
@@ -287,6 +287,7 @@
                             <a class="nav-link text-white" href="/pre_1992_legislation/7/SMC Decree">SMCD</a>
                             <a class="nav-link text-white" href="/pre_1992_legislation/8/AFRC Decree">AFRCD</a>
                             <a class="nav-link text-white" href="/pre_1992_legislation/4/PNDC Law">PNDC</a>
+
                             {{-- <form action="{{ url('cases_index_search') }}" method="GET" class="form-inline my-2 my-lg-0 justify-content-center">
                               {{ csrf_field() }}
                               <input style="width: 200px;" class="form-control mr-sm-2" type="search" placeholder="Search any word in all Case Laws" aria-label="Search" name="search_text">
@@ -300,23 +301,21 @@
                             <div class="list-group">
                                 <table class="table table-striped table-condensed" id="datatable">
                                     <thead>
-                                            <tr>
-                                                <th>All Pre-1992 Legislation</th>
-                                                <th>Year</th>
+                                        <tr>
+                                            <th>PNDC Laws</th>
+                                            <th>Year</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-
-                                        @foreach($allPre1992Acts as $allPre1992Act)
-                                    <tr>
-                                        <td>
-                                            <a href="/pre_1992_legislation/{{$allPre1992Act->pre_1992_group}}/{{ $allPre1992Act->title }}/{{ $allPre1992Act->id}}"><li style="list-style: none;">{{ $allPre1992Act->title }}</li></a>
-                                        </td> 
-                                        <td>{{ $allPre1992Act->year }}</td>
-                                    </tr>
-                                @endforeach
-                                        
-                                        </tbody>
+                                        @foreach($pndcLaws as $pndcLaw)
+                                        <tr>
+                                            <td>
+                                                <a href="/pre_1992_legislation/{{$pndcLaw->pre_1992_group}}/{{ $pndcLaw->title }}/{{ $pndcLaw->id}}"><li style="list-style: none;">{{ $pndcLaw->title }}</li></a>
+                                            </td> 
+                                            <td>{{ $pndcLaw->year }}</td>
+                                        </tr>
+                                        @endforeach 
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -330,13 +329,14 @@
                                     <center>
                                         <select class="form-control browser-default custom-select all_judgment_filter_category" style="width: 149px;">
                                             <option selected value="">Select Category</option>
-                                            @foreach($allPre1992ategories as $allPre1992ategory)
-                                            @endforeach	
+                                            {{-- @foreach($firstRepublicCategories as $firstRepublicCategory)
+                                                <option value="{{ $firstRepublicCategory->name }}">{{ $firstRepublicCategory->name }}</option>
+                                            @endforeach	 --}}
                                         </select>
                                     </center><br>
-                                    <form action="{{ url('pre_4th_index_search') }}" method="GET">
+                                    <form action="{{ url('pndc_law_index_search') }}" method="GET">
                                         {{ csrf_field() }}
-                                            <input style="padding: 15px;" class="form-control" name="search_text" type="text" placeholder="Search word in Acts" aria-label="Search">
+                                            <input style="padding: 15px;" class="form-control" name="search_text" type="text" placeholder="PNDC Law search" aria-label="Search">
                                     </form>
                                 </div>
                             </div>
