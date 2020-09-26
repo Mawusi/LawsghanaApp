@@ -20,7 +20,7 @@
 <body>
     {{-- For the bookmark --}}
     <div class="nav-links">
-        <span class="text-left"><b>{{ $allPre1992Article['section'] }}</b>
+        <span class="text-left">{{ $allPre1992Article['section'] }}
             @if (Route::has('login'))
                 @auth                        
                         <a class="bookmarking" href="javascript:;" rel="/bookmarks/{{$allPre1992Article['pre_1992_act']}}/{{$allPre1992Article['section']}}/{{$allPre1992Article['id']}}/{{ Auth::user()->name }}/{{ Auth::user()->id }}/{{ Auth::user()->id }}{{$allPre1992Article['section']}}/{{$allPre1992Article['act_group']}}/{{$allPre1992Article['act_id']}}">
