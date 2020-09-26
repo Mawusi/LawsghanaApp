@@ -1829,11 +1829,11 @@ $(document).ready(function(){
         $('.tabPanedHide_expanded_view').show();
     });
 
-    $('.pre_content_link').click(function (e) {
-        e.preventDefault();
-        $('#tabs a[href="#expandedTab"]').tab('show');
-        $('.tabPanedHide_acts_content').show();
-    });
+    // $('.pre_content_link').click(function (e) {
+    //     e.preventDefault();
+    //     $('#tabs a[href="#expandedTab"]').tab('show');
+    //     $('.tabPanedHide_acts_content').show();
+    // });
     
 
 
