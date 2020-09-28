@@ -454,7 +454,7 @@
                                       <center>
                                         <div class="hide-on-desktop mt-3 flex">
                                         
-                                          <a class="btn btn-outline-dark btn-sm expanded_link toggle_expanded_view btn-customised" href="pre_1992_legislation/1/{{$allPre1992Act['pre_1992_group']}}/{{$allPre1992Act['title']}}/expanded-view/{{ $allPre1992Act['id'] }}" role="button">Expanded View</a>
+                                          <a class="btn btn-outline-dark btn-sm expanded_link toggle_expanded_view btn-customised" href="/pre_1992_legislation/1/{{$allPre1992Act['pre_1992_group']}}/{{$allPre1992Act['title']}}/expanded-view/{{ $allPre1992Act['id'] }}" role="button">Expanded View</a>
                                           
                                           @if (Route::has('login'))
                                             @auth
