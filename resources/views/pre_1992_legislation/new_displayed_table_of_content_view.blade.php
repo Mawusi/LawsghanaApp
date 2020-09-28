@@ -192,6 +192,7 @@
                   display: none;
                 }
             }
+            
             /* https://www.youtube.com/watch?v=O9toDm97VQM */
     </style>
     <!-- Custom styles for this template -->
@@ -431,7 +432,9 @@
                           <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                             <div class="row">
                               <div class="col-md-9">
-                                <a class="content_link" href="/pre_1992_legislation/preamble/{{ $allPre1992Act['id'] }}">
+                                {{-- pre_preamble_content_link --}}
+                                
+                                  <a class="pre_preamble_content_link" href="/pre_1992_legislation/preamble/{{ $allPre1992Act['id'] }}">
                                     
                                   @if($allPre1992Act['preamble'] != null)
                                       <span style="color: blue;" class="preamble_hide">Introductory Text</span><hr>

@@ -428,7 +428,7 @@
                           <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                             <div class="row">
                               <div class="col-md-9">
-                                <a class="content_link" href="/post_1992_legislation/preamble/{{ $allPost1992Act['id'] }}">
+                                <a class="post_preamble_content_link" href="/post_1992_legislation/preamble/{{ $allPost1992Act['id'] }}">
                                     
                                   @if($allPost1992Act['preamble'] != null)
                                       <span style="color: blue;" class="preamble_hide">Introductory Text</span><hr>
