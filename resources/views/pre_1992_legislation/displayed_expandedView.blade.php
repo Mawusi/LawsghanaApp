@@ -57,7 +57,7 @@
         
         @if($allPre1992Act['preamble'] != null)
             <p class="text-left" style="color: blue;">Introductory Text</p>
-            <span>{!! $allPost1992Act['preamble'] !!}</span><hr>
+            <span>{!! $allPre1992Act['preamble'] !!}</span><hr>
             @else
                 <span></span>
         @endif
