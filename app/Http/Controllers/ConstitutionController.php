@@ -305,7 +305,9 @@ class ConstitutionController extends Controller
         $allCountriesConstitutions = AllConstitution::all();
         //$allCountries   = Country::all();
         $footer_notes           = FooterNote::all();
-        return view('constitution.all_countries', compact('footer_notes','allCountriesConstitutions'));
+        
+        return view('constitution.new_all_countries', compact('footer_notes','allCountriesConstitutions'));
+        // return view('constitution.all_countries', compact('footer_notes','allCountriesConstitutions'));
     }
 
      //ALL COUNTRIES CONSTITUTION FILTERING
@@ -338,7 +340,9 @@ class ConstitutionController extends Controller
 
         $allCountriesConstitutions = AllConstitution::where(['continent' => $continent])->get();
         $footer_notes           = FooterNote::all();
-        return view('constitution.display_country_constitution', compact('footer_notes','allCountriesConstitutions', 'allCountriesConstitution'));
+        
+        return view('constitution.new_display_country_constitution', compact('footer_notes','allCountriesConstitutions', 'allCountriesConstitution'));
+        // return view('constitution.display_country_constitution', compact('footer_notes','allCountriesConstitutions', 'allCountriesConstitution'));
     }
 
     //AFRICA
@@ -346,7 +350,8 @@ class ConstitutionController extends Controller
         $africaConstitutions = AllConstitution::where(['continent' => $continent])->get();
         $footer_notes           = FooterNote::all();
         //$africanCountries   = Country::where(['continent_name' => $continent])->get();
-        return view('constitution.display_only_african_countries', compact('footer_notes','africaConstitutions'));
+        return view('constitution.new_display_only_african_countries', compact('footer_notes','africaConstitutions'));
+        // return view('constitution.display_only_african_countries', compact('footer_notes','africaConstitutions'));
     }
 
     //AFRICA FILTERING
@@ -375,7 +380,8 @@ class ConstitutionController extends Controller
         $asiaConstitutions = AllConstitution::where(['continent' => $continent])->get();
         $footer_notes           = FooterNote::all();
         //$asiaCountries   = Country::where(['continent_name' => $continent])->get();
-        return view('constitution.display_only_asia_countries', compact('footer_notes','asiaConstitutions'));
+        return view('constitution.new_display_only_asia_countries', compact('footer_notes','asiaConstitutions'));
+        // return view('constitution.display_only_asia_countries', compact('footer_notes','asiaConstitutions'));
     }
 
     //ASIA FILTERING
@@ -404,7 +410,8 @@ class ConstitutionController extends Controller
         $europeConstitutions = AllConstitution::where(['continent' => $continent])->get();
         $footer_notes           = FooterNote::all();
         //$europeCountries   = Country::where(['continent_name' => $continent])->get();
-        return view('constitution.display_only_europe_countries', compact('footer_notes','europeConstitutions'));
+        return view('constitution.new_display_only_europe_countries', compact('footer_notes','europeConstitutions'));
+        // return view('constitution.display_only_europe_countries', compact('footer_notes','europeConstitutions'));
     }
 
     //EUROPE FILTERING
@@ -433,7 +440,8 @@ class ConstitutionController extends Controller
         $north_americaConstitutions = AllConstitution::where(['continent' => $continent])->get();
         $footer_notes           = FooterNote::all();
         //$north_americaCountries   = Country::where(['continent_name' => $continent])->get();
-        return view('constitution.display_only_north_america_countries', compact('footer_notes','north_americaConstitutions'));
+        return view('constitution.new_display_only_north_america_countries', compact('footer_notes','north_americaConstitutions'));
+        // return view('constitution.display_only_north_america_countries', compact('footer_notes','north_americaConstitutions'));
     }
 
     //NORTH AMERICA FILTERING
@@ -462,7 +470,8 @@ class ConstitutionController extends Controller
         $south_americaConstitutions = AllConstitution::where(['continent' => $continent])->get();
         $footer_notes           = FooterNote::all();
         //$south_americaCountries   = Country::where(['continent_name' => $continent])->get();
-        return view('constitution.display_only_south_america_countries', compact('footer_notes','south_americaConstitutions'));
+        return view('constitution.new_display_only_south_america_countries', compact('footer_notes','south_americaConstitutions'));
+        // return view('constitution.display_only_south_america_countries', compact('footer_notes','south_americaConstitutions'));
     }
 
     //SOUTH AMERICA FILTERING
