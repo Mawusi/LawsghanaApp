@@ -17,7 +17,7 @@
 //WELCOME PAGE
 Route::get('/','WelcomePageController@index');
 
-//-------------------------------------------------------DASHBOARD-----------------------------------
+//----------------------------------------------------------------------------DASHBOARD------------------------------------------------------------------------------------------------------------
 Route::get('/accounts/dashboard','UserDashBoardController@dashboard');
 
 //-------------------------------------------------------PROFILE-------------------------------------
@@ -46,8 +46,14 @@ Route::get('/subscription','UserDashBoardController@subscription_index');
 Route::get('/process/{subscription}', 'UserDashBoardController@process')->name('process');
 Route::get('/accounts/subscription/{subscription}','UserDashBoardController@show_user_subscriptions');
 
+//---------------------------------------------------------------------------END OF DASHBOARD---------------------------------------------------------------------------------------------------
 
-//-------------------------------------------------------------------------------SEARCH ENGINE-----------------------------------------------------------------------------------------------
+
+
+
+
+
+//---------------------------------------------------------------------------SEARCH ENGINE------------------------------------------------------------------------------------------------------
 //Search for Main Home Page
 Route::get('main_home_search','HomeSearchController@main_home_search');
 
@@ -171,6 +177,11 @@ Route::view('/scan', 'scan');
         Route::get('/constitution_amended/Republic/pdf_article_content/{title}/{id}','ConstitutionController@pdf_article_content_amended');//display plain act content
         Route::get('/constitution_amended/Republic/pdf/expanded_content/{group}/{title}/{id}','ConstitutionController@pdf_expanded_article_content_amended');//display in print view
 
+//------------------------------------------------------------------------------------END OF CONSTITUTION------------------------------------------------------------------------------------
+
+
+
+
 
 //------------------------------------------------------------------------------------PRE_1992_LEGISLATION------------------------------------------------------------------------------------
 
@@ -228,6 +239,11 @@ Route::get('/pre-1992-legislation','Pre1992Controller@index');//display all acts
     Route::get('/pre_1992_legislation/8/{group}','Pre1992Controller@afrc_decree');
         // Route::get('/pre_1992_legislation/7/filter/{year}/{category}','Pre1992Controller@smc_decree_filter'); //smc filtering
 
+//----------------------------------------------------------------------------END OF PRE-1992-LEGISLATION------------------------------------------------------------------------------------
+
+
+
+
 
 //-----------------------------------------------------------------------------CONSTITUTIONAL INSTRUMENTS-------------------------------------------------------------------------------------
 Route::get('/post-1992-legislation/Constitutional-Intruments','ConstitutionalActController@only_constitutional_acts');
@@ -251,6 +267,12 @@ Route::get('/post-1992-legislation/Constitutional-Intruments','ConstitutionalAct
     Route::get('/post-1992-legislation/constitutional-acts/pdf-section-content/{title}/{id}','ConstitutionalActController@pdf_section_content');//display plain act content
     Route::get('/post-1992-legislation/constitutional-acts/pdf-full-act-content/{group}/{title}/{id}','ConstitutionalActController@pdf_full_act_content');//display in plain view
 
+//-----------------------------------------------------------------------------END OF CONSTITUTIONAL INSRUMENTS--------------------------------------------------------------------------
+
+
+
+
+
     
 //-----------------------------------------------------------------------------EXECUTIVE INSTRUMENTS-------------------------------------------------------------------------------------
 Route::get('/post-1992-legislation/Executive-Intruments','ExecutiveActController@only_executive_acts');
@@ -273,6 +295,13 @@ Route::get('/post-1992-legislation/Executive-Intruments','ExecutiveActController
     Route::get('/post_1992_legislation/executive-acts/pdf_preamble_content/{title}/{id}','ExecutiveActController@pdf_preamble_content');//display plain act content
     Route::get('/post-1992-legislation/executive-acts/pdf-section-content/{title}/{id}','ExecutiveActController@pdf_section_content');//display plain act content
     Route::get('/post-1992-legislation/executive-acts/pdf-full-act-content/{group}/{title}/{id}','ExecutiveActController@pdf_full_act_content');//display in plain view
+
+//---------------------------------------------------------------------------END OF EXECUTIVE INSRUMENTS---------------------------------------------------------------------------------
+
+
+
+
+
 
 //-----------------------------------------------------------------------------POST_1992_LEGISLATION-------------------------------------------------------------------------------------
 
@@ -455,8 +484,12 @@ Route::get('/post-1992-legislation','Post1992Controller@index');//display all ac
         //----------------------------------------------------------------------------------------------------------------------------------------------------------------------
         Route::get('/post_1992_legislation/act_pdf/{id}', 'PDFController@post_act_pdf');
 
+//-----------------------------------------------------------------------------------END OF POST-1992-LEGISLATION-------------------------------------------------------------------------------
 
-// LAW JUDGMENTS
+
+
+
+//------------------------------------------------------------------------------------LAW JUDGMENTS--------------------------------------------------------------------------------------------
 //Ghana Law Judgement routes
 Route::get('/judgement/Ghana','JudgementController@index');
     Route::get('/judgement/Ghana/filter/{year}/{category}','JudgementController@all_judgment_filter'); //all judgment filtering
@@ -543,15 +576,24 @@ Route::get('/judgement/all-countries','JudgementController@all_countries_laws');
     Route::get('/judgement/5/south-america-court/filter/{year}/{country}','JudgementController@south_america_court_filter'); //south-america court filtering
     Route::get('/judgement/all-countries/5/{name}/{id}','JudgementController@south_america_court_cases');
 
-//NEWS
+
+//---------------------------------------------------------------------------------END OF LAW JUDGEMENT-----------------------------------------------------------------------------------------
+
+
+
+
+
+//----------------------------------------------------------------------------------NEWS--------------------------------------------------------------------------------------------------------
 Route::get('/News/{category}/{id}','NewsController@news_index');//display homepage of Ghana News
 Route::get('/News/Next/{category}/fetch_data','NewsController@news_ajax_display');//display homepage of Ghana News
 Route::get('/News/{category}/{title}/{id}','NewsController@news_content');//display homepage of Ghana News
 
+//------------------------------------------------------------------------------------END OF NEWS----------------------------------------------------------------------------------------------
 
 
 //FOOTER
 Route::get('/caption/{caption_name}/{id}','Post1992Controller@footer_content');
+
 
 //ADMIN LOGIN
 Route::group(['prefix' => 'ajaxx'], function () {

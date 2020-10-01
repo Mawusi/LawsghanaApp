@@ -281,7 +281,7 @@
                             <a class="nav-link active text-white" href="/pre-1992-legislation">All Pre 4th Republic Laws</a>
                             <a class="nav-link text-white" href="/pre_1992_legislation/1/First Republic">1st Republic Laws</a>
                             <a class="nav-link text-white" href="/pre_1992_legislation/2/Second Republic">2nd Republic Laws</a>
-                            <a class="nav-link text-white" href="/pre_1992_legislation/3/Third%20Republic">3rd Republic Laws</a>
+                            <a class="nav-link text-white" href="/pre_1992_legislation/3/Third Republic">3rd Republic Laws</a>
                             <a class="nav-link text-white" href="/pre_1992_legislation/5/NLC Decree">NLCD</a>
                             <a class="nav-link text-white" href="/pre_1992_legislation/6/NRC Decree">NRCD</a>
                             <a class="nav-link text-white" href="/pre_1992_legislation/7/SMC Decree">SMCD</a>

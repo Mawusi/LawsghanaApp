@@ -20,8 +20,11 @@ class ConstitutionController extends Controller
         $constitutionContent1     = GhanaArticle::all();  
         $unique                   = $constitutionContent1->sortBy('chapter')->sortBy('priority');
         $constitutionContents     = $unique;
+        $allCountriesConstitutions = AllConstitution::all();
         $footer_notes           = FooterNote::all();
-        return view('constitution.ghana_constitution_table', compact('footer_notes','ghana_act', 'constitutionContents'));
+
+        return view('constitution.new_ghana_constitution_table', compact('footer_notes','ghana_act', 'constitutionContents', 'allCountriesConstitutions'));
+        // return view('constitution.ghana_constitution_table', compact('footer_notes','ghana_act', 'constitutionContents'));
     }
 
     //Display print section Content for article print

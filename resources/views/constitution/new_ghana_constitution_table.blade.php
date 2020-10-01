@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
-    <title>{{ucwords(strtolower($allPre1992Act['title']))}}</title>
+    <title>{{ucwords(strtolower($ghana_act['title']))}}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/offcanvas/">
 
@@ -359,9 +359,9 @@
         <div class="col-md-10">
             <div class="d-flex p-m my-m">
                 <div class="lh-100">
-                    <form action="{{ url('post_index_search') }}" method="GET" class="form-inline my-2 my-lg-0 justify-content-center">
+                    <form action="{{ url('all_constitution_index_search') }}" method="GET" class="form-inline my-2 my-lg-0 justify-content-center">
                         {{ csrf_field() }}
-                        <input style="width:300px;" class="form-control mr-sm-2" type="search" placeholder="Search any word in all Laws..." aria-label="Search" name="search_text">
+                        <input style="width:300px;" class="form-control mr-sm-2" type="search" placeholder="Search any word..." aria-label="Search" name="search_text">
                     </form>
                 </div>
             </div>
@@ -370,28 +370,27 @@
                 <div class="pt_for_content">
                     <div class="nav-scroller bg-header-color rounded shadow-sm">
                         <nav class="nav nav-underline">
-                            <a class="nav-link active text-white" href="/pre-1992-legislation">All Pre 4th Republic Laws</a>
-                            <a class="nav-link text-white" href="/pre_1992_legislation/1/First Republic">1st Republic Laws</a>
-                            <a class="nav-link text-white" href="/pre_1992_legislation/2/Second Republic">2nd Republic Laws</a>
-                            <a class="nav-link text-white" href="/pre_1992_legislation/3/Third Republic">3rd Republic Laws</a>
-                            <a class="nav-link text-white" href="/pre_1992_legislation/5/NLC Decree">NLCD</a>
-                            <a class="nav-link text-white" href="/pre_1992_legislation/6/NRC Decree">NRCD</a>
-                            <a class="nav-link text-white" href="/pre_1992_legislation/7/SMC Decree">SMCD</a>
-                            <a class="nav-link text-white" href="/pre_1992_legislation/8/AFRC Decree">AFRCD</a>
-                            <a class="nav-link text-white" href="/pre_1992_legislation/4/PNDC Law">PNDC</a>
+                            <a class="nav-link active text-white" href="/constitution/all_countries">All Countries</a>
+                            <a class="nav-link active text-white" href="/constitution/Republic/Ghana/1">Ghana</a>
+                            {{-- <a class="nav-link active text-white" href="/constitution_amended/Republic/Ghana/1">Ghana(Amended)</a> --}}
+                            <a class="nav-link text-white" href="/constitution/all-countries/1/Africa">Africa</a>
+                            <a class="nav-link text-white" href="/constitution/all-countries/2/Asia">Asia</a>
+                            <a class="nav-link text-white" href="/constitution/all-countries/3/Europe">Europe</a>
+                            <a class="nav-link text-white" href="/constitution/all-countries/4/North-America">North America</a>
+                            <a class="nav-link text-white" href="/constitution/all-countries/5/South-America">South America</a>
                         </nav>
                     </div>
                 </div>
                 {{-- Start of container content --}}
                 <div class="" style="height: auto;">
                       <div class="header_only dimension_align">
-                          <h5 class="font-weight-bold">{{ $allPre1992Act['title'] }}</h5>
+                          <h5 class="font-weight-bold">{{ $ghana_act['title'] }}</h5>
                       </div>
                       {{-- {{$allPost1992Act['post_group']}} --}}
                     <div class="row">
                       <div class="col-2">
                         <div class="sidebar">
-                          <button type="button" class="btn btn-outlined btn-sm mb-2 mobile-adjust-1 btn-customised" data-toggle="modal" data-target="#viewActs">Find an Act</button>
+                          <button type="button" class="btn btn-outlined btn-sm mb-2 mobile-adjust-1 btn-customised" data-toggle="modal" data-target="#viewActs">Find Constitution</button>
                             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                               <a data-scroll-to="body"
                               data-scroll-focus="body"
@@ -405,22 +404,6 @@
                               data-scroll-focus="body"
                               data-scroll-speed="400"
                               data-scroll-offset="-60" class="nav-links tabPanedHide_expanded_view mb-1 mobile-adjust-1 btn-customised" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Expanded View</a>
-                              <a data-scroll-to="body"
-                              data-scroll-focus="body"
-                              data-scroll-speed="400"
-                              data-scroll-offset="-60" class="nav-links tabPanedHide_amendments mb-1 mobile-adjust-1 btn-customised" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Amendments</a>
-                              <a data-scroll-to="body"
-                              data-scroll-focus="body"
-                              data-scroll-speed="400"
-                              data-scroll-offset="-60" class="nav-links tabPanedHide_amendments_table mb-1 mobile-adjust-1 btn-customised" id="v-pills-amendments-tab" data-toggle="pill" href="#v-pills-amendments" role="tab" aria-controls="v-pills-amendments" aria-selected="false">Table of Contents (Amendments)</a>
-                              <a data-scroll-to="body"
-                              data-scroll-focus="body"
-                              data-scroll-speed="400"
-                              data-scroll-offset="-60" class="nav-links tabPanedHide_amendments_content mb-1 mobile-adjust-1 btn-customised" id="v-pills-amendments-content-tab" data-toggle="pill" href="#v-pills-amendments-content" role="tab" aria-controls="v-pills-amendments-content" aria-selected="false">Contents (Amendments)</a>
-                              
-                              <a class="nav-links tabPanedHide_regulations mb-1" id="v-pills-regulations-tab" data-toggle="pill" href="#v-pills-regulations" role="tab" aria-controls="v-pills-regulations" aria-selected="false">Regulations</a>
-                              <a class="nav-links tabPanedHide_regulations_table mb-1" id="v-pills-regulations-table-of-content-tab" data-toggle="pill" href="#v-pills-regulations-table-of-content" role="tab" aria-controls="v-pills-regulations-table-of-content" aria-selected="false">Table of Contents (Regulations)</a>
-                              <a class="nav-links tabPanedHide_regulations_content mb-1" id="v-pills-regulations-content-tab" data-toggle="pill" href="#v-pills-regulations-content" role="tab" aria-controls="v-pills-regulations-content" aria-selected="false">Contents (Regulations)</a>
                             </div>
                         </div>
                       </div>
@@ -433,27 +416,17 @@
                             <div class="row">
                               <div class="col-md-9">
                                 
-                                  <a class="pre_preamble_content_link" href="/pre_1992_legislation/preamble/{{ $allPre1992Act['id'] }}">
-                                    
-                                  @if($allPre1992Act['preamble'] != null)
+                                  <a class="constitution_preamble_link" href="/constitution/Republic/constitution_preamble/{{ $ghana_act['id'] }}">
                                       <span style="color: blue;" class="preamble_hide">Introductory Text</span><hr>
-                                      @else
-                                          @section('scripts')
-                                              <script>
-                                              $( ".preamble_hide" ).hide();
-                                              </script>
-                                          @endsection
-                                  @endif
-
-                                </a>
+                                  </a>
                                       <div class="accordion-content">
-                                          @include('pre_1992_legislation.new_pre_displayed_parts_sections')
+                                          @include('constitution.new_chapters_articles')
                                       </div>
 
                                       <center>
                                         <div class="hide-on-desktop mt-3 flex">
                                         
-                                          <a class="btn btn-outline-dark btn-sm expanded_link toggle_expanded_view btn-customised" href="/pre_1992_legislation/1/{{$allPre1992Act['pre_1992_group']}}/{{$allPre1992Act['title']}}/expanded-view/{{ $allPre1992Act['id'] }}" role="button">Expanded View</a>
+                                          {{-- <a class="btn btn-outline-dark btn-sm expanded_link toggle_expanded_view btn-customised" href="/pre_1992_legislation/1/{{$allPre1992Act['pre_1992_group']}}/{{$allPre1992Act['title']}}/expanded-view/{{ $allPre1992Act['id'] }}" role="button">Expanded View</a> --}}
                                           
                                           @if (Route::has('login'))
                                             @auth
@@ -485,7 +458,7 @@
                                       @include('layouts.plain_create_account')
 
                               </div>
-                              @include('pre_1992_legislation.new_pre_container_main_act_page')
+                                @include('constitution.new_container_plain')
                             </div>
                             {{-- <a id="back-to-top" href="#" class="back-to-top">
                               <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" xmlns="http://www.w3.org/2000/svg">
@@ -505,7 +478,7 @@
                                 <div id="display_view_all_section"></div>
                                   
                                 {{--Select Sections, Previous and Next button on Content --}}
-                                <center>
+                                {{-- <center>
                                   <div class="hide-on-desktop mt-3 flex">
                                     <div class="dropdown mb-3">
                                       <a class="btn btn-outline-dark dropdown-toggle btn-customised" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -537,10 +510,10 @@
                                     </button>
 
                                   </div>
-                                </center>
+                                </center> --}}
 
                               </div>
-                              @include('pre_1992_legislation.new_pre_container_details_main_act_page')
+                                @include('constitution.new_container_details_constitution')
 
                             </div> 
                             {{-- <a id="back-to-top-content" href="#" class="back-to-top">
@@ -583,7 +556,7 @@
                     <div class="modal-dialog">
                       <div class="modal-content">
                           <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel"><b>Select Pre-4th Republic Laws</b></h5>
+                          <h5 class="modal-title" id="exampleModalLabel"><b>Select Constitution</b></h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                           </button>
@@ -592,17 +565,19 @@
                             <table class="table table-striped table-condensed" id="datatable">
                               <thead>
                                   <tr>
-                                    <th>All Pre-1992 Legislation</th>
+                                    <th>Name of Country</th>
+                                    <th>Constitution Title</th>
                                     <th>Year</th>
                                   </tr>
                               </thead>
                               <tbody>
-                                @foreach($allPre1992Acts as $allPre1992Act)
+                                @foreach($allCountriesConstitutions as $allCountriesConstitution)
                                     <tr>
+                                        <td>{{ $allCountriesConstitution->country }}</td>
                                         <td>
-                                            <a href="/pre_1992_legislation/{{$allPre1992Act->pre_1992_group}}/{{ $allPre1992Act->title }}/{{ $allPre1992Act->id}}"><li style="list-style: none;">{{ $allPre1992Act->title }}</li></a>
+                                            <a href="/constitution/1/{{ $allCountriesConstitution->continent }}/{{ $allCountriesConstitution->country }}/{{ $allCountriesConstitution->id}}"><li style="list-style: none;">{{ $allCountriesConstitution->title }}</li></a>
                                         </td> 
-                                        <td>{{ $allPre1992Act->year }}</td>
+                                        <td>{{ $allCountriesConstitution->year }}</td>  
                                     </tr>
                                 @endforeach  
                               </tbody>
