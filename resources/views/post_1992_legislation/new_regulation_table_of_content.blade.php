@@ -427,7 +427,7 @@
                           <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                             <div class="row">
                               <div class="col-md-9">
-                                <a class="regulation_content_link" href="/post_1992_legislation/regulation/preamble/{{ $regulationAct['id'] }}">
+                                <a class="regulation_preamble_link" href="/post_1992_legislation/regulation/preamble/{{ $regulationAct['id'] }}">
                                     
                                   @if($regulationAct['preamble'] != null)
                                       <span style="color: blue;" class="preamble_hide">Introductory Text</span><hr>
@@ -549,6 +549,7 @@
                                       </div>
                                     </div>
                                     
+                                  <div class="mb-2 preamble_hide_pre_next">
                                     <button a data-scroll-to="body"
                                     data-scroll-focus="body"
                                     data-scroll-speed="400"
@@ -562,6 +563,7 @@
                                     data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm next_content_regulation btn-customised">
                                     Next&nbsp;&raquo;
                                     </button>
+                                  </div>
 
                                   </div>
                                 </center>

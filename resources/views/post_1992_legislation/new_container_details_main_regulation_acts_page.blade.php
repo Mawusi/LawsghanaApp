@@ -45,9 +45,8 @@
                 @endforeach              
               </div>
             </div>
-
-            
-        <div class="mb-2">
+           
+        <div class="mb-2 preamble_hide_pre_next">
             <button a data-scroll-to="body"
             data-scroll-focus="body"
             data-scroll-speed="400"

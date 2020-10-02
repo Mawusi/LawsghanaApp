@@ -390,7 +390,7 @@
                     <div class="row">
                       <div class="col-2">
                         <div class="sidebar">
-                          <button type="button" class="btn btn-outlined btn-sm mb-2 mobile-adjust-1 btn-customised" data-toggle="modal" data-target="#viewActs">Find Constitution</button>
+                          <button type="button" class="btn btn-outlined btn-sm mb-2 mobile-adjust-1 btn-customised" data-toggle="modal" data-target="#viewActs">Constitution</button>
                             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                               <a data-scroll-to="body"
                               data-scroll-focus="body"
@@ -426,7 +426,7 @@
                                       <center>
                                         <div class="hide-on-desktop mt-3 flex">
                                         
-                                          {{-- <a class="btn btn-outline-dark btn-sm expanded_link toggle_expanded_view btn-customised" href="/pre_1992_legislation/1/{{$allPre1992Act['pre_1992_group']}}/{{$allPre1992Act['title']}}/expanded-view/{{ $allPre1992Act['id'] }}" role="button">Expanded View</a> --}}
+                                          <a class="btn btn-outline-dark btn-sm expanded_link toggle_expanded_view btn-customised" href="/constitution/Republic/expanded_view/{{ $ghana_act['id'] }}" role="button">Expanded View</a>
                                           
                                           @if (Route::has('login'))
                                             @auth
@@ -478,39 +478,41 @@
                                 <div id="display_view_all_section"></div>
                                   
                                 {{--Select Sections, Previous and Next button on Content --}}
-                                {{-- <center>
+                                <center>
                                   <div class="hide-on-desktop mt-3 flex">
                                     <div class="dropdown mb-3">
                                       <a class="btn btn-outline-dark dropdown-toggle btn-customised" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span>Select Sections</span>
+                                        <span>Select Articles</span>
                                       </a>
                                       <div class="dropdown-menu scroll-view btn-customised" aria-labelledby="dropdownMenuLink-3">
-                                        @foreach($allPre1992Articles as $allPre1992Article)
+                                        @foreach($constitutionContents as $constitutionContent)
                                             <a data-scroll-to="body"
                                             data-scroll-focus="body"
                                             data-scroll-speed="400"
-                                            data-scroll-offset="-60" class="pre_view_all_section_link_with_prev_next dropdown-item" sid="{{$allPre1992Article->id}}" href="/pre_1992_legislation/content/{{ $allPre1992Article->id }}">{{$allPre1992Article->section }}
+                                            data-scroll-offset="-60" class="constitution_view_all_section_link_with_prev_next dropdown-item" sid="{{$constitutionContent->id}}" href="/constitution/Republic/constitution_content/{{ $constitutionContent->id }}">{{$constitutionContent->section }}
                                             </a>
                                         @endforeach              
                                       </div>
                                     </div>
                                     
+                                  <div class="mb-2 preamble_hide_pre_next">
                                     <button a data-scroll-to="body"
                                     data-scroll-focus="body"
                                     data-scroll-speed="400"
-                                    data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm previous_content_pre_act btn-customised">
+                                    data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm previous_content_constitution_act btn-customised">
                                     &laquo;&nbsp;Previous
                                     </button>
 
                                     <button a data-scroll-to="body"
                                     data-scroll-focus="body"
                                     data-scroll-speed="400"
-                                    data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm next_content_pre_act btn-customised">
+                                    data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm next_content_constitution_act btn-customised">
                                     Next&nbsp;&raquo;
                                     </button>
+                                  </div>
 
                                   </div>
-                                </center> --}}
+                                </center>
 
                               </div>
                                 @include('constitution.new_container_details_constitution')

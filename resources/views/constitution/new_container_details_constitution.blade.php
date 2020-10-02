@@ -33,7 +33,7 @@
         <center>
             <div class="dropdown mb-3">
               <a class="btn btn-outline-dark dropdown-toggle btn-customised" href="#" role="button" id="dropdownMenuLink-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span>Articles</span>
+                <span>Select Articles</span>
               </a>
               <div class="dropdown-menu scroll-view" aria-labelledby="dropdownMenuLink-3">
                 @foreach($constitutionContents as $constitutionContent)

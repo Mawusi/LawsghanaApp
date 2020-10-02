@@ -577,6 +577,7 @@
                                       </div>
                                     </div>
                                     
+                                  <div class="mb-2 preamble_hide_pre_next">
                                     <button a data-scroll-to="body"
                                     data-scroll-focus="body"
                                     data-scroll-speed="400"
@@ -590,6 +591,7 @@
                                     data-scroll-offset="-60" type="button" class="btn btn-outline-dark btn-sm next_content_act btn-customised">
                                     Next&nbsp;&raquo;
                                     </button>
+                                  </div>
 
                                   </div>
                                 </center>

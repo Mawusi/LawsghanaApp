@@ -50,7 +50,7 @@ $(document).ready(function(){
   });
 
   //click section link
-  $(".content_link, .post_preamble_content_link, .pre_content_link, .pre_preamble_content_link, .constitution_preamble_link, .regulation_content_link, .amendments_content_link, .tabPanedHide_acts_content, .preamble_link").click(function(){
+  $(".content_link, .post_preamble_content_link, .amendments_preamble_link, .regulation_preamble_link, .pre_content_link, .pre_preamble_content_link, .constitution_preamble_link, .regulation_content_link, .amendments_content_link, .tabPanedHide_acts_content, .preamble_link").click(function(){
     $('.tabPanedHide_acts_content').css("background-color","#f5f5f5");
     $('.tabPanedHide_acts_content').css("border",".1px solid #ddd");
     $('.tabPanedHide_acts_content').css("color","blue");
@@ -170,7 +170,7 @@ $(document).ready(function(){
   });
 
   //Click to change color for Content
-  $(".constitution_amended_content_link, .constitution_content_link, .pre_content_link, .pre_preamble_content_link, .constitution_preamble_link, .content_link, .post_preamble_content_link, .amendments_content_link, .regulation_content_link, .amended_regulation_content_link, .tabPanedHide_acts_content, .preamble_link").click(function(){
+  $(".constitution_amended_content_link, .constitution_content_link, .pre_content_link, .pre_preamble_content_link, .constitution_preamble_link, .content_link, .post_preamble_content_link, .amendments_preamble_link, .regulation_preamble_link, .amendments_content_link, .regulation_content_link, .amended_regulation_content_link, .tabPanedHide_acts_content, .preamble_link").click(function(){
     $('.bg-color-content').css({"backgroundColor" : "#f5f5f5"});
     $('.bg-color-content').css({"color" : "black"});
     //changes in table of content
@@ -673,7 +673,8 @@ $(document).ready(function(){
         xhr.onreadystatechange = function receiveUpdate(e) {
             $("#display_content").html("");
             $("#display_preamble").html("");
-            $("#display_view_all_section").html(this.responseText);   
+            $("#display_view_all_section").html(this.responseText);
+            $(".preamble_hide_pre_next").css("display", "block");   
         }
         xhr.send();
     });
@@ -693,7 +694,8 @@ $(document).ready(function(){
         xhr.onreadystatechange = function receiveUpdate(e) {
             $("#display_content").html("");
             $("#display_preamble").html("");
-            $("#display_view_all_section").html(this.responseText);   
+            $("#display_view_all_section").html(this.responseText);
+            $(".preamble_hide_pre_next").css("display", "block");   
         }
         xhr.send();
     });
@@ -1651,6 +1653,48 @@ $(document).ready(function(){
         }
         xhr.send();
     });
+
+    $(document).on('click','.amendments_preamble_link', function(e){
+        e.preventDefault();
+        act_content_link_toggle();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");  
+
+        //set previous and next function
+        gsid = $(this).attr("sid"); 
+        amendmentsSetPrevNext(gsid);
+        
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            // $("#display_preamble").html("");
+            $("#v-pills-profile-tab").trigger("click");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+            $(".preamble_hide_pre_next").css("display", "none");            
+        }
+        xhr.send();
+    });
+
+    $(document).on('click','.regulation_preamble_link', function(e){
+        e.preventDefault();
+        act_content_link_toggle();
+        var xhr = new XMLHttpRequest();
+        var link = $(this).attr("href");  
+
+        //set previous and next function
+        gsid = $(this).attr("sid"); 
+        regulationSetPrevNext(gsid);
+        
+        xhr.open("GET", link, true);
+        xhr.onreadystatechange = function receiveUpdate(e) {
+            // $("#display_preamble").html("");
+            $("#v-pills-profile-tab").trigger("click");
+            $("#display_view_all_section").html("");
+            $("#display_content").html(this.responseText);
+            $(".preamble_hide_pre_next").css("display", "none");            
+        }
+        xhr.send();
+    });
     
     
     //PREVIOUS AND NEXT FOR THE PARTS AND SECTION 
@@ -1721,8 +1765,10 @@ $(document).ready(function(){
     //FOR REGULATIONS
     $(document).on('click','.regulation_content_link', function(e){
         e.preventDefault();
+        act_content_link_toggle();
         var xhr = new XMLHttpRequest();
-        var link = $(this).attr("href");        
+        var link = $(this).attr("href");
+
         //set previous and next function
         gsid = $(this).attr("sid"); 
         regulationSetPrevNext(gsid);
@@ -1734,6 +1780,7 @@ $(document).ready(function(){
             $("#display_view_all_section").html("");
             $("#v-pills-profile-tab").trigger("click");
             $("#display_content").html(this.responseText);
+            $(".preamble_hide_pre_next").css("display", "block");
         }
         xhr.send();
     });
@@ -1742,6 +1789,7 @@ $(document).ready(function(){
     //FOR AMENDMENTS
     $(document).on('click','.amendments_content_link', function(e){
         e.preventDefault();
+        act_content_link_toggle();
         var xhr = new XMLHttpRequest();
         var link = $(this).attr("href");        
         //set previous and next function
@@ -1755,6 +1803,7 @@ $(document).ready(function(){
             $("#display_view_all_section").html("");
             $("#v-pills-profile-tab").trigger("click");
             $("#display_content").html(this.responseText);
+            $(".preamble_hide_pre_next").css("display", "block");
         }
         xhr.send();
     });
@@ -2031,36 +2080,36 @@ $(document).ready(function(){
     });
     
     // General content link: Click and go to Display section at Content for regulation
-    $('.regulation_content_link').click(function(e){
-        e.preventDefault();
-        act_content_link_toggle();
-        var xhr = new XMLHttpRequest();
-        var link = $(this).attr("href");
-        xhr.open("GET", link, true);
-        xhr.onreadystatechange = function receiveUpdate(e) {
-            $("#display_preamble").html("");
-            $("#display_view_all_section").html("");
-            $("#display_content").html(this.responseText);
+    // $('.regulation_content_link').click(function(e){
+    //     e.preventDefault();
+    //     act_content_link_toggle();
+    //     var xhr = new XMLHttpRequest();
+    //     var link = $(this).attr("href");
+    //     xhr.open("GET", link, true);
+    //     xhr.onreadystatechange = function receiveUpdate(e) {
+    //         $("#display_preamble").html("");
+    //         $("#display_view_all_section").html("");
+    //         $("#display_content").html(this.responseText);
             
-        }
-        xhr.send();
-    });
+    //     }
+    //     xhr.send();
+    // });
     
     // General content link: Click and go to Display section at Content for amendments
-    $('.amendments_content_link').click(function(e){
-        e.preventDefault();
-        act_content_link_toggle();
-        var xhr = new XMLHttpRequest();
-        var link = $(this).attr("href");
-        xhr.open("GET", link, true);
-        xhr.onreadystatechange = function receiveUpdate(e) {
-            $("#display_preamble").html("");
-            $("#display_view_all_section").html("");
-            $("#display_content").html(this.responseText);
+    // $('.amendments_content_link').click(function(e){
+    //     e.preventDefault();
+    //     act_content_link_toggle();
+    //     var xhr = new XMLHttpRequest();
+    //     var link = $(this).attr("href");
+    //     xhr.open("GET", link, true);
+    //     xhr.onreadystatechange = function receiveUpdate(e) {
+    //         $("#display_preamble").html("");
+    //         $("#display_view_all_section").html("");
+    //         $("#display_content").html(this.responseText);
             
-        }
-        xhr.send();
-    });
+    //     }
+    //     xhr.send();
+    // });
 
     // General content link: Click and go to Display section at Content for amendments on regulation
     $('.amended_regulation_content_link').click(function(e){
@@ -2083,7 +2132,7 @@ $(document).ready(function(){
     $(".preamble_link").click(function(){
         $(".show li").hide();
     });
-    $(".content_link, .post_preamble_content_link, .pre_content_link,.pre_preamble_content_link, .constitution_preamble_link, .constitution_content_link,.constitution_amended_content_link,.amendments_content_link, .amended_regulation_content_link,.regulation_content_link, .view_all_section_link").click(function(){
+    $(".content_link, .post_preamble_content_link, .amendments_preamble_link, .regulation_preamble_link, .pre_content_link,.pre_preamble_content_link, .constitution_preamble_link, .constitution_content_link,.constitution_amended_content_link,.amendments_content_link, .amended_regulation_content_link,.regulation_content_link, .view_all_section_link").click(function(){
         $(".show li").show();
     });
     //----------------------------------------------------IMPORTANT FOR THE PREVIOUS AND NEXT----------THE END
