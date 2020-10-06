@@ -77,7 +77,7 @@
 
       <form action="" method="GET" class="mt-4">
         {{ csrf_field() }}
-            <input style="padding: 13px;" class="form-control" name="search_text" type="text" placeholder="Section word-search" aria-label="Search">
+            <input style="padding: 13px;" class="form-control" name="search_text" type="text" placeholder="Word-search" aria-label="Search">
       </form>
         
       </div>

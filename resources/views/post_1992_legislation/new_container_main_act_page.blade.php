@@ -99,7 +99,7 @@
 
       <form action="/acts-of-parliament-act-search/{{$allPost1992Act['title']}}/{{ $allPost1992Act['id'] }}" method="GET" class="mt-4">
         {{ csrf_field() }}
-            <input style="padding: 13px;" class="form-control" name="search_text" type="text" placeholder="Section word-search" aria-label="Search">
+            <input style="padding: 13px;" class="form-control" name="search_text" type="text" placeholder="Word-search" aria-label="Search">
       </form>
         
       </div>

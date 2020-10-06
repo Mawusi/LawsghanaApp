@@ -355,7 +355,7 @@
 
 <div class="container-fluid mt-customised">
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-9">
             <div class="d-flex p-m my-m">
                 <div class="lh-100">
                     <form action="{{ url('post_index_search') }}" method="GET" class="form-inline my-2 my-lg-0 justify-content-center">
@@ -711,7 +711,7 @@
         </div>
 
         {{-- For ads --}}
-        <div class="col-md-2">
+        <div class="col-md-3">
         </div>
         
 
