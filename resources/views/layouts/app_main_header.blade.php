@@ -266,18 +266,7 @@
     <div class="row">
 
         <div class="col-md-9">
-          {{-- AdSense --}}
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <!-- Lawsghana_horizontal -->
-          <ins class="adsbygoogle"
-              style="display:block"
-              data-ad-client="ca-pub-4293461101625028"
-              data-ad-slot="8053979218"
-              data-ad-format="auto"
-              data-full-width-responsive="true"></ins>
-          <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
+          
 
             <div class="d-flex p-m my-m">
                 <div class="lh-100">
