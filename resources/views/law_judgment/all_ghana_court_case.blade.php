@@ -508,8 +508,19 @@
             </a>
         </div>
 
-
+        {{-- Reserved Sidebar for Adsense --}}
         <div class="col-md-3">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- Lawsghana_sidebar -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-4293461101625028"
+                data-ad-slot="5878068550"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </div>
         
 
