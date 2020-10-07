@@ -308,7 +308,7 @@
           <script>
               (adsbygoogle = window.adsbygoogle || []).push({});
           </script>
-          
+
             <div class="d-flex p-m my-m">
                 <div class="lh-100">
                     <form action="{{ url('cases_index_search') }}" method="GET" class="form-inline my-2 my-lg-0 justify-content-center">
@@ -534,6 +534,8 @@
             <script>
                 (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
+
+            <br><br><br>
 
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             <!-- Lawsghana_sidebar -->
