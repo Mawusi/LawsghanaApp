@@ -468,7 +468,8 @@
         </div>
 
 
-        <div class="col-md-3">
+        <div class="col-md-3 fixing_top">
+          @include('ads.content_adsense_vertical')
         </div>
         
 
