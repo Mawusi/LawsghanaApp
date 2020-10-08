@@ -1,6 +1,6 @@
 <?php
 
-
+use Illuminate\Support\Facades\URL;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +14,10 @@
 
 //Route::get('/customer/print-pdf', [ 'as' => 'customer.printpdf, 'uses' => 'CustomerController@printPDF']);
 //<a href="{{route('customer.printpdf')}}">Print PDF</a>
+
+if (env('APP_ENV') === 'production') {
+    URL::forceSchema('https');
+}
 
 //WELCOME PAGE
 Route::get('/','WelcomePageController@index');
