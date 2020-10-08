@@ -348,6 +348,7 @@
 
         {{-- <div class="col-md-3 content_container p-3 bg-white rounded shadow-sm"></div> --}}
         <div class="col-md-3 content_container">
+          {{-- @include('layouts.no_subscription') --}}
 
           <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
           <!-- Lawsghana_sidebar -->
