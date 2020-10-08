@@ -349,7 +349,9 @@
         </div>
 
         {{-- <div class="col-md-3 content_container p-3 bg-white rounded shadow-sm"></div> --}}
-        <div class="col-md-3 content_container"></div>
+        <div class="col-md-3 content_container">
+          @include('ads.adsense_vertical')
+        </div>
 
     </div>
 </div>
