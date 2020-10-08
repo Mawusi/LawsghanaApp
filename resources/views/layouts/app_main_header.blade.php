@@ -101,6 +101,7 @@
             display: block;
             padding: .1rem .9rem;
             }
+            
       
     </style>
     <!-- Custom styles for this template -->

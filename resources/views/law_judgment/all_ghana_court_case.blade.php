@@ -129,6 +129,7 @@
             display: block;
             padding: .1rem .9rem;
             }
+            
             body {
                 height: 655px;
             }
@@ -511,8 +512,8 @@
         </div>
 
         {{-- Reserved Sidebar for Adsense --}}
-        <div class="col-md-3 header_only">
-          @include('ads.adsense_vertical')
+        <div class="col-md-3">
+          @include('ads.content_adsense_vertical')
         </div>
         
 
