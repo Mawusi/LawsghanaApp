@@ -155,6 +155,11 @@
               color: white;
               background-color: #004353;
             }
+            .fixing_top{
+            position: fixed;
+            bottom: 10;
+            right: 0;
+            }
             body {
                 height: 655px;
             }
@@ -599,7 +604,8 @@
         </div>
 
         {{-- For ads --}}
-        <div class="col-md-3">
+        <div class="col-md-3 fixing_top">
+          @include('ads.content_adsense_vertical')
         </div>
         
 
