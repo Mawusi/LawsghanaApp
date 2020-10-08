@@ -511,8 +511,8 @@
         </div>
 
         {{-- Reserved Sidebar for Adsense --}}
-        <div class="col-md-3">
-            
+        <div class="col-md-3 header_only">
+          @include('ads.adsense_vertical')
         </div>
         
 
