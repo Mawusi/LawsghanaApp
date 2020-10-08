@@ -129,6 +129,11 @@
             display: block;
             padding: .1rem .9rem;
             }
+            .fixing_top{
+            position: fixed;
+            bottom: 10;
+            right: 0;
+            }
             body {
                 height: 655px;
             }
