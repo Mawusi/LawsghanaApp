@@ -138,6 +138,11 @@
             body {
                 height: 655px;
             }
+            @media screen and (max-width: 1120px) {                 
+                .fixing_top{
+                position: relative;
+              }                
+            }
             /* https://www.youtube.com/watch?v=O9toDm97VQM */
     </style>
     <!-- Custom styles for this template -->

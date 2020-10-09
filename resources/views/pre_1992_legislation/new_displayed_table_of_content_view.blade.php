@@ -189,7 +189,10 @@
             @media screen and (max-width: 1120px) {               
               .mobile-filter-hide {
                   display: none;
-                }                 
+                }   
+              .fixing_top{
+                position: relative;
+              }               
             }
             /* hide on desktop when it's 1160 and above */
             @media screen and (min-width: 1119px) {
