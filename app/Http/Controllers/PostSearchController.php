@@ -224,7 +224,7 @@ class PostSearchController extends Controller
           count($amends) > 0 or 
           count($amends_regs) > 0 
           )
-            return view('extenders.post_search_page_index',compact('posts_count','regulations_count','constitutional_count', 'executives_count','amends_count','amends_regs_count','posts', 'total_posts_count','regulations','constitutionals', 'executives', 'amends', 'amends_regs', 'query', 'footer_notes'));
+            return view('extenders.all_post_search_page_index',compact('posts_count','regulations_count','constitutional_count', 'executives_count','amends_count','amends_regs_count','posts', 'total_posts_count','regulations','constitutionals', 'executives', 'amends', 'amends_regs', 'query', 'footer_notes'));
         else
             return view ('extenders.post_search_page_not_found', compact('footer_notes', 'total_posts_count','posts_count','regulations_count','constitutional_count', 'executives_count','amends_count','amends_regs_count','query'));
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container mt-customised">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -38,6 +38,7 @@
                                 </button>
                             </div>
                         </div>
+                        
                     </form>
                 </div>
             </div>
