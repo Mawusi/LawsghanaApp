@@ -24,7 +24,16 @@ class PostSearchController extends Controller
                         ->where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('post_act','LIKE', "%$query%")
                         ->orderBy('post_act')
                         ->orderBy('priority')
-                        ->paginate(5);
+                        // ->paginate(5);
+                        ->get()
+                        ->map(function ($row) use ($query) {
+                            $row->section = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->section);
+                            return $row;
+                        })
+                        ->map(function ($row) use ($query) {
+                            $row->content = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
+                            return $row;
+                        });
 
                         // $posts->setCollection(
                         //     $posts->getCollection()
@@ -34,185 +43,97 @@ class PostSearchController extends Controller
                         //     return $row;
                         //         })
                         // );
-
-                        $posts->setCollection(
-                            $posts->getCollection()
-                                ->map(function($row) use ($query)
-                                {
-                                    $row->section = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->section);
-                            return $row;
-                                })
-                        );
-
-                        $posts->setCollection(
-                            $posts->getCollection()
-                                ->map(function($row) use ($query)
-                                {
-                                    $row->content = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
-                            return $row;
-                                })
-                        );
+        $posts_count    = $posts->count();
 
         $regulations    = RegulationArticle::select('*')
                         ->where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('regulation_title','LIKE', "%$query%")
                         ->orderBy('regulation_title')
                         ->orderBy('priority')
-                        ->paginate(5);
-
-                        // $regulations->setCollection(
-                        //     $regulations->getCollection()
-                        //         ->map(function($row) use ($query)
-                        //         {
-                        //             $row->post_act = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->regulation_title);
-                        //     return $row;
-                        //         })
-                        // );
-
-                        $regulations->setCollection(
-                            $regulations->getCollection()
-                                ->map(function($row) use ($query)
-                                {
-                                    $row->section = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->section);
+                        ->get()
+                        ->map(function ($row) use ($query) {
+                            $row->section = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->section);
                             return $row;
-                                })
-                        );
-
-                        $regulations->setCollection(
-                            $regulations->getCollection()
-                                ->map(function($row) use ($query)
-                                {
-                                    $row->content = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
+                        })
+                        ->map(function ($row) use ($query) {
+                            $row->content = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
                             return $row;
-                                })
-                        );
-
+                        });
+   $regulations_count    = $regulations->count();
+                    
         $constitutionals = ConstitutionalArticle::select('*')
                         ->where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('constitutional_act','LIKE', "%$query%")
                         ->orderBy('constitutional_act')
                         ->orderBy('priority')
-                        ->paginate(5);
-
-                        $constitutionals->setCollection(
-                            $constitutionals->getCollection()
-                                ->map(function($row) use ($query)
-                                {
-                                    $row->section = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->section);
+                        ->get()
+                        ->map(function ($row) use ($query) {
+                            $row->section = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->section);
                             return $row;
-                                })
-                        );
-
-                        $constitutionals->setCollection(
-                            $constitutionals->getCollection()
-                                ->map(function($row) use ($query)
-                                {
-                                    $row->content = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
+                        })
+                        ->map(function ($row) use ($query) {
+                            $row->content = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
                             return $row;
-                                })
-                        );
+                        });
+  $constitutional_count = $constitutionals->count();
 
         $executives     = ExecutiveArticle::select('*')
                         ->where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('executive_act','LIKE', "%$query%")
                         ->orderBy('executive_act')
                         ->orderBy('priority')
-                        ->paginate(5);
-
-                        $executives->setCollection(
-                            $executives->getCollection()
-                                ->map(function($row) use ($query)
-                                {
-                                    $row->section = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->section);
+                        ->get()
+                        ->map(function ($row) use ($query) {
+                            $row->section = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->section);
                             return $row;
-                                })
-                        );
-
-                        $executives->setCollection(
-                            $executives->getCollection()
-                                ->map(function($row) use ($query)
-                                {
-                                    $row->content = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
+                        })
+                        ->map(function ($row) use ($query) {
+                            $row->content = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
                             return $row;
-                                })
-                        );
-                        
+                        });
+      $executives_count = $executives->count();
+
         $amends         = AmendedArticle::select('*')
                         ->where('section', 'LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('act_title','LIKE', "%$query%")
                         ->orderBy('act_title')
                         ->orderBy('priority')
-                        ->paginate(5);
-
-                        // $amends->setCollection(
-                        //     $amends->getCollection()
-                        //         ->map(function($row) use ($query)
-                        //         {
-                        //             $row->post_act = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->act_title);
-                        //     return $row;
-                        //         })
-                        // );
-
-                        $amends->setCollection(
-                            $amends->getCollection()
-                                ->map(function($row) use ($query)
-                                {
-                                    $row->section = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->section);
+                        ->get()
+                        ->map(function ($row) use ($query) {
+                            $row->section = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->section);
                             return $row;
-                                })
-                        );
-
-                        $amends->setCollection(
-                            $amends->getCollection()
-                                ->map(function($row) use ($query)
-                                {
-                                    $row->content = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
+                        })
+                        ->map(function ($row) use ($query) {
+                            $row->content = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
                             return $row;
-                                })
-                        );
+                        });
+          $amends_count = $amends->count();
                         
         $amends_regs    = AmendRegulationArticle::select('*')
                         ->where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('title','LIKE', "%$query%")
                         ->orderBy('title')
                         ->orderBy('priority')
-                        ->paginate(5);
-
-                        // $amends_regs->setCollection(
-                        //     $amends_regs->getCollection()
-                        //         ->map(function($row) use ($query)
-                        //         {
-                        //             $row->post_act = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->title);
-                        //     return $row;
-                        //         })
-                        // );
-
-                        $amends_regs->setCollection(
-                            $amends_regs->getCollection()
-                                ->map(function($row) use ($query)
-                                {
-                                    $row->section = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->section);
+                        ->get()
+                        ->map(function ($row) use ($query) {
+                            $row->section = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->section);
                             return $row;
-                                })
-                        );
-
-                        $amends_regs->setCollection(
-                            $amends_regs->getCollection()
-                                ->map(function($row) use ($query)
-                                {
-                                    $row->content = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
+                        })
+                        ->map(function ($row) use ($query) {
+                            $row->content = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row->content);
                             return $row;
-                                })
-                        );
+                        });
+        $amends_regs_count = $amends_regs->count();
+
 
                         
-                        $posts_count = Post1992Article::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('post_act','LIKE', "%$query%")
-                        ->count();
-                        $regulations_count = RegulationArticle::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('regulation_title','LIKE', "%$query%")
-                        ->count();
-                        $constitutional_count = ConstitutionalArticle::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('constitutional_act','LIKE', "%$query%")
-                        ->count();
-                        $executives_count = ExecutiveArticle::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('executive_act','LIKE', "%$query%")
-                        ->count();
-                        $amends_count = AmendedArticle::where('section', 'LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('act_title','LIKE', "%$query%")
-                        ->count();
-                        $amends_regs_count    = AmendRegulationArticle::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('title','LIKE', "%$query%")
-                        ->count();
+                        // $posts_count = Post1992Article::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('post_act','LIKE', "%$query%")
+                        // ->count();
+                        // $regulations_count = RegulationArticle::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('regulation_title','LIKE', "%$query%")
+                        // ->count();
+                        // $constitutional_count = ConstitutionalArticle::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('constitutional_act','LIKE', "%$query%")
+                        // ->count();
+                        // $executives_count = ExecutiveArticle::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('executive_act','LIKE', "%$query%")
+                        // ->count();
+                        // $amends_count = AmendedArticle::where('section', 'LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('act_title','LIKE', "%$query%")
+                        // ->count();
+                        // $amends_regs_count    = AmendRegulationArticle::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('title','LIKE', "%$query%")
+                        // ->count();
                         
 
         $total_posts_count    =  $posts_count + $regulations_count + $constitutional_count + $executives_count + $amends_count + $amends_regs_count;

@@ -32,7 +32,7 @@ class CasesSearchController extends Controller
                                     //  ->map(function ($row2) use ($query) {
                                     //     $row2->reference_number = preg_replace('/(' . $query . ')/i', "<b style='color:red;'>$1</b>", $row2->reference_number);
                                     //     return $row2;
-                                    // })
+                                    //  });
         $supreme_court_cases_count     = $supreme_court_cases->count();
 
                                                                          
