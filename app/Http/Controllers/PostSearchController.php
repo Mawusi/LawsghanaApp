@@ -120,22 +120,6 @@ class PostSearchController extends Controller
                         });
         $amends_regs_count = $amends_regs->count();
 
-
-                        
-                        // $posts_count = Post1992Article::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('post_act','LIKE', "%$query%")
-                        // ->count();
-                        // $regulations_count = RegulationArticle::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('regulation_title','LIKE', "%$query%")
-                        // ->count();
-                        // $constitutional_count = ConstitutionalArticle::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('constitutional_act','LIKE', "%$query%")
-                        // ->count();
-                        // $executives_count = ExecutiveArticle::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('executive_act','LIKE', "%$query%")
-                        // ->count();
-                        // $amends_count = AmendedArticle::where('section', 'LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('act_title','LIKE', "%$query%")
-                        // ->count();
-                        // $amends_regs_count    = AmendRegulationArticle::where('part', 'LIKE', "%$query%")->orWhere('section','LIKE', "%$query%")->orWhere('content','LIKE', "%$query%")->orWhere('title','LIKE', "%$query%")
-                        // ->count();
-                        
-
         $total_posts_count    =  $posts_count + $regulations_count + $constitutional_count + $executives_count + $amends_count + $amends_regs_count;
 
         if(count($posts) > 0 or
@@ -147,7 +131,7 @@ class PostSearchController extends Controller
           )
             return view('extenders.all_post_search_page_index',compact('posts_count','regulations_count','constitutional_count', 'executives_count','amends_count','amends_regs_count','posts', 'total_posts_count','regulations','constitutionals', 'executives', 'amends', 'amends_regs', 'query', 'footer_notes'));
         else
-            return view ('extenders.post_search_page_not_found', compact('footer_notes', 'total_posts_count','posts_count','regulations_count','constitutional_count', 'executives_count','amends_count','amends_regs_count','query'));
+            return view ('extenders.all_post_search_page_not_found', compact('footer_notes', 'total_posts_count','posts_count','regulations_count','constitutional_count', 'executives_count','amends_count','amends_regs_count','query'));
 
     }
 
