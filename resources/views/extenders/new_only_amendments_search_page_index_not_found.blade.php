@@ -105,26 +105,9 @@
       <div class="col-md-3 mx-auto">
         <div class="sidebar">
           <div class="search-well-filter">
-            <h5 style="color:blue;">All Case Laws Search</h5><hr>
+            <h5 style="color:blue;">Amendments Search</h5><hr>
             <span style="color:blue;">Filter Options</span>
-            <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($total_cases)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p><hr>
-            
-            <div class="custom-radio mb-2"> 
-              <input type="radio" id="all_cases" name="act-type" value="All">&nbsp;All&nbsp;<span class="badge badge-secondary">{{$total_cases}}</span>
-            </div>
-            
-            <div class="custom-radio mb-2">
-              <input type="radio" id="supreme_court" name="act-type" value="Constitution_Ghana">&nbsp;Supreme Court&nbsp;<span class="badge badge-secondary">{{$supreme_court_cases_count}}</span>
-            </div>
-
-            <div class="custom-radio mb-2">
-              <input type="radio" id="court_of_appeal" name="act-type" value="Constitution_Others">&nbsp;Court of Appeal&nbsp;<span class="badge badge-secondary">{{$court_of_appeal_cases_count}}</span>
-            </div>
-
-            <div class="custom-radio mb-2">
-              <input type="radio" id="high_court" name="act-type" value="Pre_4th_Republic">&nbsp;High Court&nbsp;<span class="badge badge-secondary">{{$high_court_cases_count}}</span>
-            </div>
-
+                <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($all_amends_counts)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p>
           </div>
         </div>
       </div>
@@ -146,14 +129,7 @@
 @endsection 
 
 @section('scripts')
-<script>
-    if ( {{$total_cases}} == 0 ) {
-      document.getElementById("all_cases").disabled = true;
-      document.getElementById("supreme_court").disabled = true;
-      document.getElementById("court_of_appeal").disabled = true;
-      document.getElementById("high_court").disabled = true;  
-    }
-  </script>
+
 @endsection
 
     

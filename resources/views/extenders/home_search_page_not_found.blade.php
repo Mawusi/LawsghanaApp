@@ -105,6 +105,7 @@
       <div class="col-md-3 mx-auto">
         <div class="sidebar">
           <div class="search-well-filter">
+            <h5 style="color:blue;">All Laws Search</h5><hr>
             <span style="color:blue;">Filter Options</span>
               <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($all_total_count)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p><hr>
             

@@ -95,6 +95,11 @@
   position: sticky;
   top: 10%;
 }
+.back-to-top {
+  position: sticky;
+  bottom: 80px;
+  left: 1295px;
+}
 </style>
 @endsection
 
@@ -105,55 +110,50 @@
       <div class="col-md-3 mx-auto">
         <div class="sidebar">
           <div class="search-well-filter">
-            <h5 style="color:blue;">All Case Laws Search</h5><hr>
+            <h5 style="color:blue;">Amendments Search</h5><hr>
             <span style="color:blue;">Filter Options</span>
-            <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($total_cases)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p><hr>
-            
-            <div class="custom-radio mb-2"> 
-              <input type="radio" id="all_cases" name="act-type" value="All">&nbsp;All&nbsp;<span class="badge badge-secondary">{{$total_cases}}</span>
-            </div>
-            
-            <div class="custom-radio mb-2">
-              <input type="radio" id="supreme_court" name="act-type" value="Constitution_Ghana">&nbsp;Supreme Court&nbsp;<span class="badge badge-secondary">{{$supreme_court_cases_count}}</span>
-            </div>
-
-            <div class="custom-radio mb-2">
-              <input type="radio" id="court_of_appeal" name="act-type" value="Constitution_Others">&nbsp;Court of Appeal&nbsp;<span class="badge badge-secondary">{{$court_of_appeal_cases_count}}</span>
-            </div>
-
-            <div class="custom-radio mb-2">
-              <input type="radio" id="high_court" name="act-type" value="Pre_4th_Republic">&nbsp;High Court&nbsp;<span class="badge badge-secondary">{{$high_court_cases_count}}</span>
-            </div>
-
+            <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($all_amends_counts)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p>
           </div>
         </div>
       </div>
 
       <div class="col-md-9">
-        <div class="row">
-          <div class="col-md-1"></div>
-          <div class="col-md-6" style="background-color: white; padding: 10px; margin-top: 80px; border: 1px solid; box-shadow: 5px 5px 5px grey">
-            <center><h4>Results for <span style="color:red;">"{{$query}}"</span> not found</h4></center>    
-            <center><h6>please try again with related words</h6></center>    
-            <div class="col-md-5"></div>                                 
-          </div>
-        </div>
+        <div><br></div>
+            @foreach ($amends as $amend)
+            <div class="search-well">
+                <h5 style="color:blue;"><b>{!! $amend->act_title !!}</b></h4>
+                <b>{!! $amend->section !!}</b>
+            {{-- <a href="/post_1992_legislation/content/{{$single_post_act->id}}" target="_blank"><b>{!! $single_post_act->section !!}</b></a> --}}
+            <br><br>
+            {!! $amend->content !!}
+            </div>
+            <br>
+            @endforeach                                     
       </div>
+      <a id="back-to-top" href="#" class="back-to-top">
+        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-10.646.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z"/>
+        </svg>
+      </a>
   </div>
-
 </div>
     
 @endsection 
 
 @section('scripts')
+
 <script>
-    if ( {{$total_cases}} == 0 ) {
-      document.getElementById("all_cases").disabled = true;
-      document.getElementById("supreme_court").disabled = true;
-      document.getElementById("court_of_appeal").disabled = true;
-      document.getElementById("high_court").disabled = true;  
-    }
-  </script>
+  $(document).ready(function(){
+		// scroll body to 0px on click
+		$('#back-to-top').click(function () {
+			$('body,html').animate({
+				scrollTop: 0
+			}, 400);
+			return false;
+		});
+  });
+</script>
+
 @endsection
 
     

@@ -165,9 +165,9 @@ class PostSearchController extends Controller
             (
             count($posts) > 0
             )                              
-        return view('extenders.acts_of_parliament_search_page_index', compact('query','footer_notes','posts','posts_count'));
+        return view('extenders.all_acts_of_parliament_search_page_index', compact('query','footer_notes','posts','posts_count'));
         else 
-        return view ('extenders.acts_of_parliament_search_page_index_not_found', compact('query','footer_notes', 'posts_count'));
+        return view ('extenders.all_acts_of_parliament_search_page_index_not_found', compact('query','footer_notes', 'posts_count'));
 
     }
 
@@ -197,9 +197,9 @@ class PostSearchController extends Controller
             (
             count($regulations) > 0
             )                              
-        return view('extenders.only_regulations_search_page_index', compact('query','footer_notes','regulations','regulations_count'));
+        return view('extenders.new_only_regulations_search_page_index', compact('query','footer_notes','regulations','regulations_count'));
         else 
-        return view ('extenders.only_regulations_search_page_index_not_found', compact('query','footer_notes', 'regulations_count'));
+        return view ('extenders.new_only_regulations_search_page_index_not_found', compact('query','footer_notes', 'regulations_count'));
 
     }
 
@@ -321,10 +321,10 @@ class PostSearchController extends Controller
             count($amends) > 0 or
             count($amends_regs)
             )                              
-        return view('extenders.only_amendments_search_page_index', compact('query','footer_notes','all_amends_counts',
+        return view('extenders.new_only_amendments_search_page_index', compact('query','footer_notes','all_amends_counts',
                                                                             'amends', 'amends_count','amends_regs','amends_regs_counts'));
         else 
-        return view ('extenders.only_amendments_search_page_index_not_found', compact('query','footer_notes', 'all_amends_counts'));
+        return view ('extenders.new_only_amendments_search_page_index_not_found', compact('query','footer_notes', 'all_amends_counts'));
 
     }
 
