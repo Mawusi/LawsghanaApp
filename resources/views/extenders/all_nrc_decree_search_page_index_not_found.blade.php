@@ -105,38 +105,9 @@
       <div class="col-md-3 mx-auto">
         <div class="sidebar">
           <div class="search-well-filter">
-            <h5 style="color:blue;">All Post-1992 Legislation Search</h5><hr>
+            <h5 style="color:blue;">NRC Decree Search</h5><hr>
             <span style="color:blue;">Filter Options</span>
-            <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($total_posts_count)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p><hr>
-            
-            <div class="custom-radio mb-2"> 
-              <input type="radio" id="all_posts" name="act-type">&nbsp;All&nbsp;<span class="badge badge-secondary">{{$total_posts_count}}</span>
-            </div>
-            
-            <div class="custom-radio mb-2">
-              <input type="radio" id="acts_of_parliament" name="act-type">&nbsp;Acts of Parliament&nbsp;<span class="badge badge-secondary">{{$posts_count}}</span>
-            </div>
-
-            <div class="custom-radio mb-2">
-              <input type="radio" id="legislative_instruments" name="act-type">&nbsp;Legislative Instruments&nbsp;<span class="badge badge-secondary">{{$regulations_count}}</span>
-            </div>
-
-            <div class="custom-radio mb-2">
-              <input type="radio" id="constitutional_instruments" name="act-type">&nbsp;Constitutional Instruments&nbsp;<span class="badge badge-secondary">{{$constitutional_count}}</span>
-            </div>
-
-            <div class="custom-radio mb-2">
-              <input type="radio" id="executive_instruments" name="act-type">&nbsp;Executive Instruments&nbsp;<span class="badge badge-secondary">{{$executives_count}}</span>
-            </div>
-
-            <div class="custom-radio mb-2">
-              <input type="radio" id="amended_acts" name="act-type">&nbsp;Amended Acts&nbsp;<span class="badge badge-secondary">{{$amends_count}}</span>
-            </div>
-
-            <div class="custom-radio mb-2">
-              <input type="radio" id="amended_regulation" name="act-type">&nbsp;Amended Regulations&nbsp;<span class="badge badge-secondary">{{$amends_regs_count}}</span>
-            </div>
-
+                <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($nrc_decree_laws_count)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p>
           </div>
         </div>
       </div>
@@ -158,17 +129,7 @@
 @endsection 
 
 @section('scripts')
-<script>
-    if ( {{$total_posts_count}} == 0 ) {
-    document.getElementById("all_posts").disabled = true;
-    document.getElementById("acts_of_parliament").disabled = true;
-    document.getElementById("legislative_instruments").disabled = true;
-    document.getElementById("constitutional_instruments").disabled = true;
-    document.getElementById("executive_instruments").disabled = true;
-    document.getElementById("amended_acts").disabled = true;  
-    document.getElementById("amended_regulation").disabled = true;    
-  }
-  </script>
+
 @endsection
 
     

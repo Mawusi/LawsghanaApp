@@ -70,12 +70,12 @@
   justify-content: space-between;
 }.main,
 .sidebar {
-  /* border: 5px solid $color-dark;
+  border: 5px solid $color-dark;
   background-color: $color-background;
   border-radius: 2px;
   color: $color-dark;
   padding: .1px; */
-  /* margin-top: 20px; */
+  /* margin-top: 20px;
 }.main {
   width: 80%;
   /* height: 200vh; */
@@ -231,12 +231,12 @@
           }, 1000)
           });
 
-          $('.only_post').show().insertAfter( ".move_here" );
-          $('.only_amend_acts').hide();
-          $('.only_regulation').hide();
-          $('.only_amend_reg').hide();
-          $('.only_constitutional').hide();
-          $('.only_executive').hide();
+          $('.only_post').fadeIn().insertAfter( ".move_here" );
+          $('.only_amend_acts').fadeOut();
+          $('.only_regulation').fadeOut();
+          $('.only_amend_reg').fadeOut();
+          $('.only_constitutional').fadeOut();
+          $('.only_executive').fadeOut();
 
 
         }
@@ -249,12 +249,12 @@
             }, 1000)
           });
 
-            $('.only_regulation').show().insertAfter( ".move_here" );
-            $('.only_post').hide();
-            $('.only_amend_acts').hide();
-            $('.only_amend_reg').hide();
-            $('.only_constitutional').hide();
-            $('.only_executive').hide();
+            $('.only_regulation').fadeIn().insertAfter( ".move_here" );
+            $('.only_post').fadeOut();
+            $('.only_amend_acts').fadeOut();
+            $('.only_amend_reg').fadeOut();
+            $('.only_constitutional').fadeOut();
+            $('.only_executive').fadeOut();
         }
         else if ($('input[name=act-type]:checked').val() == "Constitutional") {
           $('.consti1').click(function() {
@@ -264,12 +264,12 @@
             }, 1000)
           });
 
-            $('.only_constitutional').show().insertAfter( ".move_here" );
-            $('.only_post').hide();
-            $('.only_regulation').hide();
-            $('.only_amend_acts').hide();
-            $('.only_amend_reg').hide();
-            $('.only_executive').hide();
+            $('.only_constitutional').fadeIn().insertAfter( ".move_here" );
+            $('.only_post').fadeOut();
+            $('.only_regulation').fadeOut();
+            $('.only_amend_acts').fadeOut();
+            $('.only_amend_reg').fadeOut();
+            $('.only_executive').fadeOut();
         }
         else if ($('input[name=act-type]:checked').val() == "Executive") {
           $('.exe1').click(function() {
@@ -279,12 +279,12 @@
             }, 1000)
           });
 
-            $('.only_executive').show().insertAfter( ".move_here" );
-            $('.only_post').hide();
-            $('.only_regulation').hide();
-            $('.only_amend_acts').hide();
-            $('.only_amend_reg').hide();
-            $('.only_constitutional').hide();
+            $('.only_executive').fadeIn().insertAfter( ".move_here" );
+            $('.only_post').fadeOut();
+            $('.only_regulation').fadeOut();
+            $('.only_amend_acts').fadeOut();
+            $('.only_amend_reg').fadeOut();
+            $('.only_constitutional').fadeOut();
         }
         else if ($('input[name=act-type]:checked').val() == "Amend_Act") {
           $('.amend_act1').click(function() {
@@ -294,12 +294,12 @@
           }, 1000)
           });
 
-          $('.only_amend_acts').show().insertAfter( ".move_here" );
-          $('.only_post').hide();
-          $('.only_regulation').hide();
-          $('.only_amend_reg').hide();
-          $('.only_constitutional').hide();
-          $('.only_executive').hide();
+          $('.only_amend_acts').fadeIn().insertAfter( ".move_here" );
+          $('.only_post').fadeOut();
+          $('.only_regulation').fadeOut();
+          $('.only_amend_reg').fadeOut();
+          $('.only_constitutional').fadeOut();
+          $('.only_executive').fadeOut();
 
 
         }
@@ -311,12 +311,12 @@
           }, 1000)
           });
 
-          $('.only_amend_reg').show().insertAfter( ".move_here" );
-          $('.only_post').hide();
-          $('.only_amend_acts').hide();
-          $('.only_regulation').hide();
-          $('.only_constitutional').hide();
-          $('.only_executive').hide();
+          $('.only_amend_reg').fadeIn().insertAfter( ".move_here" );
+          $('.only_post').fadeOut();
+          $('.only_amend_acts').fadeOut();
+          $('.only_regulation').fadeOut();
+          $('.only_constitutional').fadeOut();
+          $('.only_executive').fadeOut();
 
         }
       });

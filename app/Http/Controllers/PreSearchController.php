@@ -136,7 +136,7 @@ class PreSearchController extends Controller
         count($pndc_laws) > 0
         )
 
-        return view('extenders.pre_4th_search_page_index', compact('query', 'footer_notes','total_pre_laws',
+        return view('extenders.all_pre_4th_search_page_index', compact('query', 'footer_notes','total_pre_laws',
                                                                    'first_republic_laws', 'first_republic_laws_count',
                                                                    'second_republic_laws','second_republic_laws_count',
                                                                    'third_republic_laws', 'third_republic_laws_count',
@@ -146,7 +146,7 @@ class PreSearchController extends Controller
                                                                    'afrc_decree_laws', 'afrc_decree_laws_count',
                                                                    'pndc_laws', 'pndc_laws_count'));
         else 
-            return view ('extenders.pre_4th_search_page_not_found', compact('query','footer_notes', 'total_pre_laws','first_republic_laws_count',
+            return view ('extenders.all_pre_4th_search_page_not_found', compact('query','footer_notes', 'total_pre_laws','first_republic_laws_count',
                                                                         'second_republic_laws_count','third_republic_laws_count','nlc_decree_laws_count',
                                                                         'nrc_decree_laws_count','smc_decree_laws_count', 'afrc_decree_laws_count', 'pndc_laws_count'));
     
@@ -176,9 +176,9 @@ class PreSearchController extends Controller
             (
             count($first_republic_laws) > 0
             )                              
-        return view('extenders.first_republic_search_page_index', compact('query','footer_notes','first_republic_laws','first_republic_laws_count'));
+        return view('extenders.all_first_republic_search_page_index', compact('query','footer_notes','first_republic_laws','first_republic_laws_count'));
         else 
-        return view ('extenders.first_republic_search_page_index_not_found', compact('query','footer_notes', 'first_republic_laws_count'));
+        return view ('extenders.all_first_republic_search_page_index_not_found', compact('query','footer_notes', 'first_republic_laws_count'));
 
     
     }
@@ -207,9 +207,9 @@ class PreSearchController extends Controller
             (
             count($second_republic_laws) > 0
             )                              
-        return view('extenders.second_republic_search_page_index', compact('query','footer_notes','second_republic_laws','second_republic_laws_count'));
+        return view('extenders.all_second_republic_search_page_index', compact('query','footer_notes','second_republic_laws','second_republic_laws_count'));
         else 
-        return view ('extenders.second_republic_search_page_index_not_found', compact('query','footer_notes', 'second_republic_laws_count'));
+        return view ('extenders.all_second_republic_search_page_index_not_found', compact('query','footer_notes', 'second_republic_laws_count'));
     }
 
     public function third_rep_index_search(){
@@ -236,9 +236,9 @@ class PreSearchController extends Controller
             (
             count($third_republic_laws) > 0
             )                              
-        return view('extenders.third_republic_search_page_index', compact('query','footer_notes','third_republic_laws','third_republic_laws_count'));
+        return view('extenders.all_third_republic_search_page_index', compact('query','footer_notes','third_republic_laws','third_republic_laws_count'));
         else 
-        return view ('extenders.third_republic_search_page_index_not_found', compact('query','footer_notes', 'third_republic_laws_count'));
+        return view ('extenders.all_third_republic_search_page_index_not_found', compact('query','footer_notes', 'third_republic_laws_count'));
     }
 
     public function nlc_decree_index_search(){
@@ -265,9 +265,9 @@ class PreSearchController extends Controller
             (
             count($nlc_decree_laws) > 0
             )                              
-        return view('extenders.nlc_decree_search_page_index', compact('query','footer_notes','nlc_decree_laws','nlc_decree_laws_count'));
+        return view('extenders.all_nlc_decree_search_page_index', compact('query','footer_notes','nlc_decree_laws','nlc_decree_laws_count'));
         else 
-        return view ('extenders.nlc_decree_search_page_index_not_found', compact('query','footer_notes', 'nlc_decree_laws_count'));
+        return view ('extenders.all_nlc_decree_search_page_index_not_found', compact('query','footer_notes', 'nlc_decree_laws_count'));
     }
 
     public function nrc_decree_index_search(){
@@ -294,9 +294,9 @@ class PreSearchController extends Controller
             (
             count($nrc_decree_laws) > 0
             )                              
-        return view('extenders.nrc_decree_search_page_index', compact('query','footer_notes','nrc_decree_laws','nrc_decree_laws_count'));
+        return view('extenders.all_nrc_decree_search_page_index', compact('query','footer_notes','nrc_decree_laws','nrc_decree_laws_count'));
         else 
-        return view ('extenders.nrc_decree_search_page_index_not_found', compact('query','footer_notes', 'nrc_decree_laws_count'));
+        return view ('extenders.all_nrc_decree_search_page_index_not_found', compact('query','footer_notes', 'nrc_decree_laws_count'));
     }
 
     public function smc_decree_index_search(){
@@ -323,9 +323,9 @@ class PreSearchController extends Controller
             (
             count($smc_decree_laws) > 0
             )                              
-        return view('extenders.smc_decree_search_page_index', compact('query','footer_notes','smc_decree_laws','smc_decree_laws_count'));
+        return view('extenders.all_smc_decree_search_page_index', compact('query','footer_notes','smc_decree_laws','smc_decree_laws_count'));
         else 
-        return view ('extenders.smc_decree_search_page_index_not_found', compact('query','footer_notes', 'smc_decree_laws_count'));
+        return view ('extenders.all_smc_decree_search_page_index_not_found', compact('query','footer_notes', 'smc_decree_laws_count'));
     }
 
     public function afrc_decree_index_search(){
@@ -352,9 +352,9 @@ class PreSearchController extends Controller
             (
             count($afrc_decree_laws) > 0
             )                              
-        return view('extenders.afrc_decree_search_page_index', compact('query','footer_notes','afrc_decree_laws','afrc_decree_laws_count'));
+        return view('extenders.all_afrc_decree_search_page_index', compact('query','footer_notes','afrc_decree_laws','afrc_decree_laws_count'));
         else 
-        return view ('extenders.afrc_decree_search_page_index_not_found', compact('query','footer_notes', 'afrc_decree_laws_count'));
+        return view ('extenders.all_afrc_decree_search_page_index_not_found', compact('query','footer_notes', 'afrc_decree_laws_count'));
     }
 
     public function pndc_law_index_search(){
@@ -381,8 +381,8 @@ class PreSearchController extends Controller
             (
             count($pndc_laws) > 0
             )                              
-        return view('extenders.pndc_law_search_page_index', compact('query','footer_notes','pndc_laws','pndc_laws_count'));
+        return view('extenders.all_pndc_law_search_page_index', compact('query','footer_notes','pndc_laws','pndc_laws_count'));
         else 
-        return view ('extenders.pndc_law_search_page_index_not_found', compact('query','footer_notes', 'pndc_laws_count'));
+        return view ('extenders.all_pndc_law_search_page_index_not_found', compact('query','footer_notes', 'pndc_laws_count'));
     }
 }

@@ -74,8 +74,8 @@
   background-color: $color-background;
   border-radius: 2px;
   color: $color-dark;
-  padding: .1px;
-  /* margin-top: 20px; */
+  padding: .1px; */
+  /* margin-top: 20px;
 }.main {
   width: 80%;
   /* height: 200vh; */
@@ -95,6 +95,11 @@
   position: sticky;
   top: 10%;
 }
+.back-to-top {
+  position: sticky;
+  bottom: 80px;
+  left: 1295px;
+}
 </style>
 @endsection
 
@@ -105,39 +110,47 @@
       <div class="col-md-3 mx-auto">
         <div class="sidebar">
           <div class="search-well-filter">
-            <h5 style="color:blue;">All Post-1992 Legislation Search</h5><hr>
+            <h5 style="color:blue;">All Pre-1992 Legislation Search</h5><hr>
             <span style="color:blue;">Filter Options</span>
-            <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($total_posts_count)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p><hr>
+            <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($total_pre_laws)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p><hr>
             
-            <div class="custom-radio mb-2"> 
-              <input type="radio" id="all_posts" name="act-type">&nbsp;All&nbsp;<span class="badge badge-secondary">{{$total_posts_count}}</span>
-            </div>
-            
-            <div class="custom-radio mb-2">
-              <input type="radio" id="acts_of_parliament" name="act-type">&nbsp;Acts of Parliament&nbsp;<span class="badge badge-secondary">{{$posts_count}}</span>
-            </div>
+              <div class="custom-radio mb-2"> 
+                <input type="radio" class="all1" id="all_laws" name="act-type" value="All" checked>&nbsp;All&nbsp;<span class="badge badge-secondary">{{$total_pre_laws}}</span>
+              </div>
+              
+              <div class="custom-radio mb-2">
+                <input type="radio" class="1strep1" id="1st_republic" name="act-type" value="1st_Republic">&nbsp;1st Republic Laws&nbsp;<span class="badge badge-secondary">{{$first_republic_laws_count}}</span>
+              </div>
 
-            <div class="custom-radio mb-2">
-              <input type="radio" id="legislative_instruments" name="act-type">&nbsp;Legislative Instruments&nbsp;<span class="badge badge-secondary">{{$regulations_count}}</span>
-            </div>
+              <div class="custom-radio mb-2">
+                <input type="radio" class="2ndrep1" id="2nd_republic" name="act-type" value="2nd_Republic">&nbsp;2nd Republic Laws&nbsp;<span class="badge badge-secondary">{{$second_republic_laws_count}}</span>
+              </div>
 
-            <div class="custom-radio mb-2">
-              <input type="radio" id="constitutional_instruments" name="act-type">&nbsp;Constitutional Instruments&nbsp;<span class="badge badge-secondary">{{$constitutional_count}}</span>
-            </div>
+              <div class="custom-radio mb-2">
+                <input type="radio" class="3rdrep1" id="3rd_republic" name="act-type" value="3rd_Republic">&nbsp;3rd Republic Laws&nbsp;<span class="badge badge-secondary">{{$third_republic_laws_count}}</span>
+              </div>
 
-            <div class="custom-radio mb-2">
-              <input type="radio" id="executive_instruments" name="act-type">&nbsp;Executive Instruments&nbsp;<span class="badge badge-secondary">{{$executives_count}}</span>
-            </div>
+              <div class="custom-radio mb-2">
+                <input type="radio" class="nlcd1" id="nlcd" name="act-type" value="NLCD">&nbsp;NLC Decree&nbsp;<span class="badge badge-secondary">{{$nlc_decree_laws_count}}</span>
+              </div>
 
-            <div class="custom-radio mb-2">
-              <input type="radio" id="amended_acts" name="act-type">&nbsp;Amended Acts&nbsp;<span class="badge badge-secondary">{{$amends_count}}</span>
-            </div>
+              <div class="custom-radio mb-2">
+                <input type="radio" class="nrcd1" id="nrcd" name="act-type" value="NRCD">&nbsp;NRC Decree&nbsp;<span class="badge badge-secondary">{{$nrc_decree_laws_count}}</span>
+              </div>
 
-            <div class="custom-radio mb-2">
-              <input type="radio" id="amended_regulation" name="act-type">&nbsp;Amended Regulations&nbsp;<span class="badge badge-secondary">{{$amends_regs_count}}</span>
-            </div>
+              <div class="custom-radio mb-2">
+                <input type="radio" class="amend_reg1" id="smcd1" name="act-type" value="SMCD">&nbsp;SMC Decree&nbsp;<span class="badge badge-secondary">{{$smc_decree_laws_count}}</span>
+              </div>
 
-          </div>
+              <div class="custom-radio mb-2">
+                <input type="radio" class="afrcd1" id="afrcd" name="act-type" value="AFRCD">&nbsp;AFRC Decree&nbsp;<span class="badge badge-secondary">{{$afrc_decree_laws_count}}</span>
+              </div>
+
+              <div class="custom-radio mb-2">
+                <input type="radio" class="pndc1" id="pndc" name="act-type" value="PNDC">&nbsp;PNDC Law&nbsp;<span class="badge badge-secondary">{{$pndc_laws_count}}</span>
+              </div>
+
+            </div>
         </div>
       </div>
 
@@ -152,23 +165,26 @@
         </div>
       </div>
   </div>
-
 </div>
     
 @endsection 
 
 @section('scripts')
+
 <script>
-    if ( {{$total_posts_count}} == 0 ) {
-    document.getElementById("all_posts").disabled = true;
-    document.getElementById("acts_of_parliament").disabled = true;
-    document.getElementById("legislative_instruments").disabled = true;
-    document.getElementById("constitutional_instruments").disabled = true;
-    document.getElementById("executive_instruments").disabled = true;
-    document.getElementById("amended_acts").disabled = true;  
-    document.getElementById("amended_regulation").disabled = true;    
+  if ( {{$total_pre_laws}} == 0 ) {
+    document.getElementById("all_laws").disabled = true;
+    document.getElementById("1st_republic").disabled = true;
+    document.getElementById("2nd_republic").disabled = true;
+    document.getElementById("3rd_republic").disabled = true;
+    document.getElementById("nlcd").disabled = true;
+    document.getElementById("nrcd").disabled = true;
+    document.getElementById("smcd").disabled = true;
+    document.getElementById("afrcd").disabled = true;
+    document.getElementById("pndc").disabled = true;
   }
-  </script>
+</script>
+
 @endsection
 
     
