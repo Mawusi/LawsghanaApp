@@ -29,9 +29,9 @@ class ConstitutionGhanaSearchController extends Controller
             (
             count($ghana_articles) > 0
             )                              
-        return view('extenders.ghana_constitution_search_page_index', compact('query','footer_notes','ghana_articles','ghana_articles_count'));
+        return view('extenders.all_ghana_constitution_search_page_index', compact('query','footer_notes','ghana_articles','ghana_articles_count'));
         else 
-        return view ('extenders.ghana_constitution_search_page_not_found', compact('query','footer_notes', 'ghana_articles_count'));
+        return view ('extenders.all_ghana_constitution_search_page_not_found', compact('query','footer_notes', 'ghana_articles_count'));
     }
 
 }

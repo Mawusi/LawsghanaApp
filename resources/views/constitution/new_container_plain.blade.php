@@ -44,7 +44,7 @@
         </center>
         <hr>
 
-      <form action="search_ghana_constitution" method="GET" class="mt-4">
+      <form action="{{ url('search_ghana_constitution') }}" method="GET" class="mt-4">
         {{ csrf_field() }}
             <input style="padding: 13px;" class="form-control" name="search_text" type="text" placeholder="Word-search" aria-label="Search">
       </form>
