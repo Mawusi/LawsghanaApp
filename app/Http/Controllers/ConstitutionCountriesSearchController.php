@@ -90,7 +90,7 @@ class ConstitutionCountriesSearchController extends Controller
                                                                                   'north_america_countries_constitutions','north_america_countries_constitutions_count',
                                                                                   'south_america_countries_constitutions','south_america_countries_constitutions_count'));
         else 
-            return view ('extenders.constitution_countries_search_page_not_found', compact('query','footer_notes', 'total_constitution_countries','africa_countries_constitution_count',
+            return view ('extenders.all_constitution_countries_search_page_not_found', compact('query','footer_notes', 'total_constitution_countries','africa_countries_constitution_count',
                                                                         'europe_countries_constitution_count','asia_countries_constitution_count','north_america_countries_constitutions_count',
                                                                         'south_america_countries_constitutions_count'));
 
@@ -118,9 +118,9 @@ class ConstitutionCountriesSearchController extends Controller
             (
             count($africa_countries_constitutions) > 0
             )                              
-        return view('extenders.africa_constitution_search_page_index', compact('query','footer_notes','africa_countries_constitutions','africa_countries_constitution_count'));
+        return view('extenders.all_africa_constitution_search_page_index', compact('query','footer_notes','africa_countries_constitutions','africa_countries_constitution_count'));
         else 
-        return view ('extenders.africa_constitution_search_page_index_not_found', compact('query','footer_notes', 'africa_countries_constitution_count'));
+        return view ('extenders.all_africa_constitution_search_page_index_not_found', compact('query','footer_notes', 'africa_countries_constitution_count'));
 
     }
 
@@ -144,9 +144,9 @@ class ConstitutionCountriesSearchController extends Controller
             (
             count($asia_countries_constitutions) > 0
             )                              
-        return view('extenders.asia_constitution_search_page_index', compact('query','footer_notes','asia_countries_constitutions','asia_countries_constitution_count'));
+        return view('extenders.all_asia_constitution_search_page_index', compact('query','footer_notes','asia_countries_constitutions','asia_countries_constitution_count'));
         else 
-        return view ('extenders.asia_constitution_search_page_index_not_found', compact('query','footer_notes', 'asia_countries_constitution_count'));
+        return view ('extenders.all_asia_constitution_search_page_index_not_found', compact('query','footer_notes', 'asia_countries_constitution_count'));
 
     }
 
@@ -170,9 +170,9 @@ class ConstitutionCountriesSearchController extends Controller
             (
             count($europe_countries_constitutions) > 0
             )                              
-        return view('extenders.europe_constitution_search_page_index', compact('query','footer_notes','europe_countries_constitutions','europe_countries_constitution_count'));
+        return view('extenders.all_europe_constitution_search_page_index', compact('query','footer_notes','europe_countries_constitutions','europe_countries_constitution_count'));
         else 
-        return view ('extenders.europe_constitution_search_page_index_not_found', compact('query','footer_notes', 'europe_countries_constitution_count'));
+        return view ('extenders.all_europe_constitution_search_page_index_not_found', compact('query','footer_notes', 'europe_countries_constitution_count'));
 
     }
 
@@ -196,9 +196,9 @@ class ConstitutionCountriesSearchController extends Controller
             (
             count($north_america_countries_constitutions) > 0
             )                              
-        return view('extenders.north_america_constitution_search_page_index', compact('query','footer_notes','north_america_countries_constitutions','north_america_countries_constitutions_count'));
+        return view('extenders.all_north_america_constitution_search_page_index', compact('query','footer_notes','north_america_countries_constitutions','north_america_countries_constitutions_count'));
         else 
-        return view ('extenders.north_america_constitution_search_page_index_not_found', compact('query','footer_notes', 'north_america_countries_constitutions_count'));
+        return view ('extenders.all_north_america_constitution_search_page_index_not_found', compact('query','footer_notes', 'north_america_countries_constitutions_count'));
 
     }
 
@@ -222,9 +222,9 @@ class ConstitutionCountriesSearchController extends Controller
             (
             count($south_america_countries_constitutions) > 0
             )                              
-        return view('extenders.south_america_constitution_search_page_index', compact('query','footer_notes','south_america_countries_constitutions','south_america_countries_constitutions_count'));
+        return view('extenders.all_south_america_constitution_search_page_index', compact('query','footer_notes','south_america_countries_constitutions','south_america_countries_constitutions_count'));
         else 
-        return view ('extenders.south_america_constitution_search_page_index_not_found', compact('query','footer_notes', 'south_america_countries_constitutions_count'));
+        return view ('extenders.all_south_america_constitution_search_page_index_not_found', compact('query','footer_notes', 'south_america_countries_constitutions_count'));
 
     }
 }

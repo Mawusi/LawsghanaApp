@@ -337,7 +337,7 @@
                                             @endforeach		 --}}
                                         </select>
                                     </center><br>
-                                    <form action="{{ url('africa_constitution_index_search') }}" method="GET">
+                                    <form action="{{ url('all_constitution_index_search') }}" method="GET">
                                         {{ csrf_field() }}
                                             <input style="padding: 15px;" class="form-control" name="search_text" type="text" placeholder="Search word in Constitution" aria-label="Search">
                                     </form>

@@ -267,7 +267,7 @@
         <div class="col-md-9">
             <div class="d-flex p-m my-m">
                 <div class="lh-100">
-                    <form action="{{ url('pre_4th_index_search') }}" method="GET" class="form-inline my-2 my-lg-0 justify-content-center">
+                    <form action="{{ url('all_constitution_index_search') }}" method="GET" class="form-inline my-2 my-lg-0 justify-content-center">
                         {{ csrf_field() }}
                         <input style="width:300px;" class="form-control mr-sm-2" type="search" placeholder="Search any word in all Laws..." aria-label="Search" name="search_text">
                     </form>
