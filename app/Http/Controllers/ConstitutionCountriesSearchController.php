@@ -83,7 +83,7 @@ class ConstitutionCountriesSearchController extends Controller
             count($north_america_countries_constitutions) > 0 or 
             count($south_america_countries_constitutions) > 0 
             )
-        return view('extenders.constitution_countries_search_page_index', compact('footer_notes', 'query', 'total_constitution_countries',
+        return view('extenders.all_constitution_countries_search_page_index', compact('footer_notes', 'query', 'total_constitution_countries',
                                                                                   'africa_countries_constitutions','africa_countries_constitution_count',
                                                                                   'europe_countries_constitutions','europe_countries_constitution_count',
                                                                                   'asia_countries_constitutions','asia_countries_constitution_count',

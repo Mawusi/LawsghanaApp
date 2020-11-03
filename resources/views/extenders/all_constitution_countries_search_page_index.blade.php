@@ -1,4 +1,5 @@
-@extends('extenders.main')
+{{-- @extends('extenders.main') --}}
+@extends('layouts.app_search_only')
 
 @section('title', 'Search Results')
 
@@ -73,8 +74,8 @@
   background-color: $color-background;
   border-radius: 2px;
   color: $color-dark;
-  padding: .1px;
-  /* margin-top: 20px; */
+  padding: .1px; */
+  /* margin-top: 20px;
 }.main {
   width: 80%;
   /* height: 200vh; */
@@ -93,97 +94,64 @@
   position: -webkit-sticky;
   position: sticky;
   top: 10%;
-}#title{
-color: green;
+}
+.back-to-top {
+  position: sticky;
+  bottom: 80px;
+  left: 1295px;
 }
 </style>
 @endsection
 
 @section('content')
 
-<div class="container-fluid">
-
+<div class="container-fluid mt-customised">
   <div class="row">
-      <div class="col-md-3" style="margin-top:10px;">
-        {{-- <h4>Filter</h4> --}}
-      </div>
-      
-      <div class="col-md-offset-1 col-md-6" style="margin-top:10px; margin-bottom: 10px;">
-        <form action="{{ url('main_home_search') }}" method="GET">
-          {{ csrf_field() }}
-          <div class="input-group">         
-                <input type="text" class="form-control" name="search_text" placeholder="Search any law or case in Ghana"">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
-                </span>
-          </div>
-        </form>       
-      </div>
-      <div class="col-md-2" style="margin-top:25px;">
-      <p style="color:blue;"><b class="hidden">Found:Results</b></p>
-      </div>
-    
-  </div>
-
-  <div class="row">
-    {{-- <div class="wrapper"> --}}
-
-      <div class="col-md-3">
+      <div class="col-md-3 mx-auto">
         <div class="sidebar">
           <div class="search-well-filter">
-            <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($total_constitution_countries)}}</span></span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p><hr>
-            <p style="color:blue;">Filter Options</p>
-            <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input all1" id="all_constitions" name="act-type" value="All" checked>
-            <label class="custom-control-label" for="defaultChecked">All</label>&nbsp;<span class="badge">{{$total_constitution_countries}}</span>
-            </div>
-            <br>
-            <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input africa1" id="africa" name="act-type" value="Africa">
-              <label class="custom-control-label" for="defaultUnchecked">Africa</label>&nbsp;<span class="badge">{{$africa_countries_constitution_count}}</span>
-            </div>
-            <br>
-
+            <h5 style="color:blue;">Country Constitution Search</h5><hr>
+            <span style="color:blue;">Filter Options</span>
+            <p class="small" style="color:blue;"><b><span style="color:red;">{{number_format($total_constitution_countries)}}</span>&nbsp;Results Found&nbsp;for&nbsp;<span style="color:red;">"{{$query}}"</span></b></p><hr>
             
-            <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input asia1" id="asia" name="act-type" value="Asia">
-            <label class="custom-control-label" for="defaultUnchecked">Asia</label>&nbsp;<span class="badge">{{$asia_countries_constitution_count}}</span>
-            </div>
-            <br>
-            
-
-            <div class="custom-control custom-radio">
-              <input type="radio" class="custom-control-input europe1" id="europe" name="act-type" value="Europe">
-            <label class="custom-control-label" for="defaultUnchecked">Europe</label>&nbsp;<span class="badge">{{$europe_countries_constitution_count}}</span>
-            </div>
-            <br>
-
-            <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input north_america1" id="north_america" name="act-type" value="North_America">
-              <label class="custom-control-label" for="defaultUnchecked">North America</label>&nbsp;<span class="badge">{{$north_america_countries_constitutions_count}}</span>
+              <div class="custom-radio mb-2"> 
+                <input type="radio" class="all1" id="all_constitions" name="act-type" value="All" checked>&nbsp;All&nbsp;<span class="badge badge-secondary">{{$total_constitution_countries}}</span>
               </div>
-            <br>
+              
+              <div class="custom-radio mb-2">
+                <input type="radio" class="africa1" id="africa" name="act-type" value="Africa">&nbsp;Africa&nbsp;<span class="badge badge-secondary">{{$africa_countries_constitution_count}}</span>
+              </div>
 
-            <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input south_america1" id="south_america" name="act-type" value="South_America">
-            <label class="custom-control-label" for="defaultUnchecked">South America</label>&nbsp;<span class="badge">{{$south_america_countries_constitutions_count}}</span>
+              <div class="custom-radio mb-2">
+                <input type="radio" class="asia1" id="asia" name="act-type" value="Asia">&nbsp;Asia&nbsp;<span class="badge badge-secondary">{{$asia_countries_constitution_count}}</span>
+              </div>
+
+              <div class="custom-radio mb-2">
+                <input type="radio" class="europe1" id="europe" name="act-type" value="Europe">&nbsp;Europe&nbsp;<span class="badge badge-secondary">{{$europe_countries_constitution_count}}</span>
+              </div>
+
+              <div class="custom-radio mb-2">
+                <input type="radio" class="north_america1" id="north_america" name="act-type" value="North_America">&nbsp;North America&nbsp;<span class="badge badge-secondary">{{$north_america_countries_constitutions_count}}</span>
+              </div>
+
+              <div class="custom-radio mb-2">
+                <input type="radio" class="south_america1" id="south_america" name="act-type" value="South_America">&nbsp;South America&nbsp;<span class="badge badge-secondary">{{$south_america_countries_constitutions_count}}</span>
+              </div>
+
             </div>
-            <br>
-
-          </div>
         </div>
       </div>
 
       <div class="col-md-9">
-        <div class="">
-          <div class="move_here hidden  top_here"><br></div>
-            @include('extenders.constitution_countries')            
-        </div>
+          <div class="move_here hidden"><br></div>
+          {{-- @include('extenders.query_pre_1992_legislation')                                           --}}
       </div>
-
-    </div>
+      <a id="back-to-top" href="#" class="back-to-top">
+        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-10.646.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z"/>
+        </svg>
+      </a>
   </div>
-
 </div>
     
 @endsection 
@@ -191,7 +159,19 @@ color: green;
 @section('scripts')
 
 <script>
-if ( {{$total_constitution_countries}} == 0 ) {
+  $(document).ready(function(){
+		// scroll body to 0px on click
+		$('#back-to-top').click(function () {
+			$('body,html').animate({
+				scrollTop: 0
+			}, 400);
+			return false;
+		});
+  });
+</script>
+
+<script>
+  if ( {{$total_constitution_countries}} == 0 ) {
     document.getElementById("all_constitions").disabled = true;
     document.getElementById("africa").disabled = true;
     document.getElementById("asia").disabled = true;
@@ -217,11 +197,9 @@ if ( {{$total_constitution_countries}} == 0 ) {
 </script>
 
 <script>
-  
+
     $(function () {
-      $("input[name=act-type]:radio").click(function () {
-        
-          if ($('input[name=act-type]:checked').val() == "All") {
+        if ($('input[name=act-type]:checked').val() == "All") {
             $('.all1').click(function() {
 
             $('html, body').animate({
@@ -304,10 +282,10 @@ if ( {{$total_constitution_countries}} == 0 ) {
             $('.only_asia').fadeOut();
             $('.only_africa').fadeOut();
           }
+        //end of click function
       });
     });
 </script>
-
 @endsection
 
     
