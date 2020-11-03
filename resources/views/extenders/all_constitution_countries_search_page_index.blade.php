@@ -144,7 +144,7 @@
 
       <div class="col-md-9">
           <div class="move_here hidden"><br></div>
-          {{-- @include('extenders.query_pre_1992_legislation')                                           --}}
+          @include('extenders.query_constitution_countries')                                          
       </div>
       <a id="back-to-top" href="#" class="back-to-top">
         <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" xmlns="http://www.w3.org/2000/svg">
