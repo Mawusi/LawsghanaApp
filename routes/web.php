@@ -25,6 +25,9 @@ Route::get('/','WelcomePageController@index');
 //----------------------------------------------------------------------------DASHBOARD------------------------------------------------------------------------------------------------------------
 Route::get('/accounts/dashboard','UserDashBoardController@dashboard');
 
+//testing
+Route::get('/accounts/dashboardsss','UserDashBoardController@dashboard');
+
 //-------------------------------------------------------PROFILE-------------------------------------
 Route::get('/accounts/profile/{user_id}',  ['as' => 'users.edit', 'uses' => 'ProfileController@edit']);
 // Route::get('/accounts/profile/{user_id}','UserDashBoardController@show_user_profile'); //Bookmarks page.........shows all list of bookmarks
